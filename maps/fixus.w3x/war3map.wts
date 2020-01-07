@@ -1,0 +1,9532 @@
+﻿STRING 13
+{
+Sheep
+}
+
+STRING 39
+{
+Ultimate Sheep Tag Fixus 7b
+}
+
+STRING 40
+{
+8v3
+}
+
+STRING 41
+{
+Fixus by |CFF959697Chakra|r
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 42
+{
+Chakra
+}
+
+STRING 308
+{
+Sheep 1
+}
+
+STRING 309
+{
+Sheep 2
+}
+
+STRING 310
+{
+Sheep 3
+}
+
+STRING 311
+{
+Sheep 4
+}
+
+STRING 312
+{
+Sheep 5
+}
+
+STRING 313
+{
+Sheep 6
+}
+
+STRING 314
+{
+Sheep 7
+}
+
+STRING 883
+{
+Shepherd 1
+}
+
+STRING 884
+{
+Shepherd 2
+}
+
+STRING 885
+{
+Shepherd 3
+}
+
+STRING 886
+{
+Shepherd 4
+}
+
+STRING 1221
+{
+|cff000000Ultimate Sheep Tag Evolution
+}
+
+STRING 1222
+{
+Ultimate Sheep Tag Fixus
+}
+
+STRING 1389
+// Units: ngme (Weapon Merchant), Name (Name)
+{
+Weapon Merchant
+}
+
+STRING 1391
+// Units: hctw (Frost Farm), Name (Name)
+{
+Frost Farm
+}
+
+STRING 1394
+// Units: hctw (Frost Farm), Ubertip (Tooltip - Extended)
+{
+A farm that slowly attacks wolves with frosty Power! Can be pretty abusive when used in combo with aura.
+}
+
+STRING 1395
+// Units: hbar (Upgraded Farm), Name (Name)
+{
+Upgraded Farm
+}
+
+STRING 1397
+// Units: hctw (Frost Farm), Hotkey (Hotkey)
+{
+G
+}
+
+STRING 1399
+// Units: hlum (Aura Farm), Name (Name)
+{
+Aura Farm
+}
+
+STRING 1400
+// Units: hlum (Aura Farm), Tip (Tooltip - Basic)
+{
+Build |cffffcc00A|rura Farm
+}
+
+STRING 1401
+// Units: hlum (Aura Farm), Hotkey (Hotkey)
+{
+A
+}
+
+STRING 1403
+// Units: ohun (Saving Farm), Name (Name)
+{
+Saving Farm
+}
+
+STRING 1404
+// Units: ohun (Saving Farm), Tip (Tooltip - Basic)
+{
+Build Saving Farm (|cffffcc00C|r)
+}
+
+STRING 1406
+// Units: ohun (Saving Farm), Hotkey (Hotkey)
+{
+C
+}
+
+STRING 1407
+// Units: nshf (Dolly), Name (Name)
+{
+Dolly
+}
+
+STRING 1408
+// Units: nfel (Sheep Stalker), Name (Name)
+{
+Sheep Stalker
+}
+
+STRING 1409
+// Units: eC01 (Sheep Spirit), Name (Name)
+{
+Sheep Spirit
+}
+
+STRING 1410
+// Units: eC01 (Sheep Spirit), Ubertip (Tooltip - Extended)
+{
+These little wisps are the remains of sheep who were cruelly and harshly slaughtered by the orcish shepards. They have lost all of their furryness.
+}
+
+STRING 1411
+// Units: uC04 (Sheep), Name (Name)
+{
+Sheep
+}
+
+STRING 1412
+// Units: uC04 (Sheep), Ubertip (Tooltip - Extended)
+{
+This is a SHEEP!
+}
+
+STRING 1413
+// Units: uC04 (Sheep), Tip (Tooltip - Basic)
+{
+Baaahhh Bahhh!!
+}
+
+STRING 1414
+// Units: uC04 (Sheep), Description (Description)
+{
+These furry creatures are fun to slaughter!
+}
+
+STRING 1417
+// Units: hC06 (Hard Farm), Name (Name)
+{
+Hard Farm
+}
+
+STRING 1419
+// Units: hC06 (Hard Farm), Hotkey (Hotkey)
+{
+R
+}
+
+STRING 1422
+// Units: nC13 (Destroy), Name (Name)
+{
+Destroy
+}
+
+STRING 1423
+// Units: nC13 (Destroy), Tip (Tooltip - Basic)
+{
+|cffffcc00D|restroy
+}
+
+STRING 1424
+// Units: nC13 (Destroy), Hotkey (Hotkey)
+{
+D
+}
+
+STRING 1425
+// Units: nC13 (Destroy), Ubertip (Tooltip - Extended)
+{
+Destroys the building.
+}
+
+STRING 1426
+// Units: uC02 (Black Sheep), Name (Name)
+{
+Black Sheep
+}
+
+STRING 1427
+// Units: uC02 (Black Sheep), Tip (Tooltip - Basic)
+{
+Black Sheep
+}
+
+STRING 1428
+// Units: uC02 (Black Sheep), Ubertip (Tooltip - Extended)
+{
+This is a SHEEP!
+}
+
+STRING 1429
+// Units: uC02 (Black Sheep), Description (Description)
+{
+These furry creatures are fun but harder to slaughter!
+}
+
+STRING 1430
+// Units: eC16 (White Wolf), Name (Name)
+{
+White Wolf
+}
+
+STRING 1431
+// Units: eC16 (White Wolf), Tip (Tooltip - Basic)
+{
+White Wolf
+}
+
+STRING 1432
+// Units: eC16 (White Wolf), Ubertip (Tooltip - Extended)
+{
+Call upon the White Wolfs spirit to assist you in killing other sheep.
+}
+
+STRING 1433
+// Units: eC16 (White Wolf), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 1435
+// Units: hC07 (Tiny Farm), Tip (Tooltip - Basic)
+{
+Build |cffffcc00T|riny Farm
+}
+
+STRING 1436
+// Units: hC07 (Tiny Farm), Ubertip (Tooltip - Extended)
+{
+This useful little farm can get you out of tight spaces where normal farms won't fit.
+}
+
+STRING 1437
+// Units: hC07 (Tiny Farm), Hotkey (Hotkey)
+{
+T
+}
+
+STRING 1438
+// Units: e001 (Magic Farm), Name (Name)
+{
+Magic Farm
+}
+
+STRING 1440
+// Units: e001 (Magic Farm), Ubertip (Tooltip - Extended)
+{
+An over-priced farm that many players are too dependent on. Don't rely on this thing to get you by 5 wolves and 3 golems -_-. Use invis in open spaces, and heal can piss wolves off :).
+}
+
+STRING 1441
+// Units: hbar (Upgraded Farm), Hotkey (Hotkey)
+{
+G
+}
+
+STRING 1442
+// Units: n000 (Stack Farm), Name (Name)
+{
+Stack Farm
+}
+
+STRING 1443
+// Units: n000 (Stack Farm), Tip (Tooltip - Basic)
+{
+Build |cffffcc00S|rtack Farm
+}
+
+STRING 1444
+// Units: n000 (Stack Farm), Hotkey (Hotkey)
+{
+S
+}
+
+STRING 1445
+// Units: n000 (Stack Farm), Ubertip (Tooltip - Extended)
+{
+DON'T ABUSE THIS FARM PLEASE.
+}
+
+STRING 1446
+// Units: u000 (Silv3rSheep), Tip (Tooltip - Basic)
+{
+Silver Sheep
+}
+
+STRING 1448
+// Units: u000 (Silv3rSheep), Ubertip (Tooltip - Extended)
+{
+This is a SHEEP!
+}
+
+STRING 1449
+// Units: u000 (Silv3rSheep), Description (Description)
+{
+These furry creatures are fun but harder to slaughter!
+}
+
+STRING 1450
+// Units: u001 (GoldenSheep), Tip (Tooltip - Basic)
+{
+Golden Sheep
+}
+
+STRING 1452
+// Units: u001 (GoldenSheep), Ubertip (Tooltip - Extended)
+{
+This is a SHEEP!
+}
+
+STRING 1453
+// Units: u001 (GoldenSheep), Description (Description)
+{
+These furry creatures are fun but harder to slaughter!
+}
+
+STRING 1454
+// Units: h000 (Golden Farm), Name (Name)
+{
+Golden Farm
+}
+
+STRING 1456
+// Units: h000 (Golden Farm), Ubertip (Tooltip - Extended)
+{
+Free aura, and upgraded farms? What the fuck was zero thinking?
+}
+
+STRING 1457
+// Units: h001 (Silver Farm), Name (Name)
+{
+Silver Farm
+}
+
+STRING 1458
+// Units: h001 (Silver Farm), Tip (Tooltip - Basic)
+{
+Build Silver Farm |cffffcc00(F)|r
+}
+
+STRING 1459
+// Units: h001 (Silver Farm), Ubertip (Tooltip - Extended)
+{
+An extension of the black farm, not only with upgraded HP, but passive invisibility. Enjoy it, it's free.
+}
+
+STRING 1460
+// Units: h002 (Invisible Farm), Name (Name)
+{
+Invisible Farm
+}
+
+STRING 1462
+// Units: h002 (Invisible Farm), Hotkey (Hotkey)
+{
+X
+}
+
+STRING 1463
+// Units: h002 (Invisible Farm), Ubertip (Tooltip - Extended)
+{
+This farm is really only effective on noob wolves, but if you place them right (where wolves don't ward), they can be entertaining.
+}
+
+STRING 1464
+// Units: h003 (Stun Farm), Name (Name)
+{
+Stun Farm
+}
+
+STRING 1465
+// Units: h003 (Stun Farm), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 1466
+// Units: h003 (Stun Farm), Tip (Tooltip - Basic)
+{
+Build Stun Farm (|cffffcc00W|r)
+}
+
+STRING 1467
+// Units: h003 (Stun Farm), Ubertip (Tooltip - Extended)
+{
+A rather gay farm that only noobs seriously use. Use it if you must for golems, but don't try to perma stun?
+}
+
+STRING 1470
+// Units: h004 (Black Farm), Name (Name)
+{
+Black Farm
+}
+
+STRING 1471
+// Units: h004 (Black Farm), Tip (Tooltip - Basic)
+{
+Build Black |cffffcc00F|rarm
+}
+
+STRING 1472
+// Units: h004 (Black Farm), Ubertip (Tooltip - Extended)
+{
+Strong as upgraded farms but free, yay!
+}
+
+STRING 1473
+// Units: h005 (Sentry Farm), Name (Name)
+{
+Sentry Farm
+}
+
+STRING 1474
+// Units: h005 (Sentry Farm), Tip (Tooltip - Basic)
+{
+Build S|cffffcc00e|rntry Farm
+}
+
+STRING 1475
+// Units: h005 (Sentry Farm), Ubertip (Tooltip - Extended)
+{
+The New, yet Original, Sentry farm. Same looks, same high hit points, same vision.
+}
+
+STRING 1476
+// Units: h005 (Sentry Farm), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 1477
+// Abilities: A001 (Sentry Ward), Name (Name)
+{
+Sentry Ward
+}
+
+STRING 1478
+// Units: n001 (iStick), Tip (Tooltip - Basic)
+{
+Spies for you.
+}
+
+STRING 1479
+// Units: n001 (iStick), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 1482
+// Abilities: A001 (Sentry Ward), Ubertip (Tooltip - Normal - Extended)
+{
+Places a little eye on stick somewhere to keep watch for you.
+}
+
+STRING 1483
+// Abilities: A001 (Sentry Ward), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 1494
+// Units: h007 (Silver Farm), Hotkey (Hotkey)
+{
+X
+}
+
+STRING 1495
+// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
+{
+X
+}
+
+STRING 1499
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 1500
+// Items: ratf (Claws of Attack +21), Name (Name)
+{
+Claws of Attack +21
+}
+
+STRING 1501
+// Items: ratf (Claws of Attack +21), Tip (Tooltip - Basic)
+{
+Purchase Claws of Attack +21
+}
+
+STRING 1503
+// Items: ratf (Claws of Attack +21), Description (Description)
+{
+Boosts attack damage by 21.
+}
+
+STRING 1510
+// Items: I000 (Anti's Light Sabre +30), Name (Name)
+{
+Anti's Light Sabre +30
+}
+
+STRING 1511
+// Items: I000 (Anti's Light Sabre +30), Description (Description)
+{
+Boosts attack damage by 30.
+}
+
+STRING 1514
+// Items: I001 (Super Stone Token), Name (Name)
+{
+Super Stone Token
+}
+
+STRING 1515
+// Items: I001 (Super Stone Token), Description (Description)
+{
+Summons 3 Rock Golems.
+}
+
+STRING 1516
+// Items: I001 (Super Stone Token), Tip (Tooltip - Basic)
+{
+Purchase Super Stone Token
+}
+
+STRING 1518
+// Items: I003 (White Wolf), Name (Name)
+{
+White Wolf
+}
+
+STRING 1519
+// Items: I003 (White Wolf), Tip (Tooltip - Basic)
+{
+Morph into White Wolf
+}
+
+STRING 1520
+// Items: I003 (White Wolf), Description (Description)
+{
+White Wolf
+}
+
+STRING 1522
+// Items: mcou (Dagger), Name (Name)
+{
+Dagger
+}
+
+STRING 1524
+// Items: mcou (Dagger), Tip (Tooltip - Basic)
+{
+Purchase Dagger
+}
+
+STRING 1526
+// Units: ohun (Saving Farm), Ubertip (Tooltip - Extended)
+{
+Saving Farm is very, very fragile but it gets 1 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+}
+
+STRING 1527
+// Units: hbar (Upgraded Farm), Tip (Tooltip - Basic)
+{
+Build Up|cffffcc00g|rraded Farm
+}
+
+STRING 1528
+// Units: hC06 (Hard Farm), Tip (Tooltip - Basic)
+{
+Build Ha|cffffcc00r|rd Farm
+}
+
+STRING 1529
+// Units: hC06 (Hard Farm), Ubertip (Tooltip - Extended)
+{
+As the Farm, but 4 times bigger and 4 times more resistant. Very effective when used well.
+}
+
+STRING 1532
+// Units: hctw (Frost Farm), Tip (Tooltip - Basic)
+{
+Build Frost Farm - |cffffcc00G|r
+}
+
+STRING 1533
+// Units: e001 (Magic Farm), Tip (Tooltip - Basic)
+{
+Build Magic Farm - |cffffcc00Z|r
+}
+
+STRING 1534
+// Units: e001 (Magic Farm), Hotkey (Hotkey)
+{
+Z
+}
+
+STRING 1542
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 1547
+// Abilities: A001 (Sentry Ward), Tip (Tooltip - Normal)
+{
+Sentry |cffffcc00W|rard
+}
+
+STRING 1548
+// Units: n001 (iStick), Name (Name)
+{
+iStick
+}
+
+STRING 1555
+// Units: EC03 (Wolf (not really...)), Name (Name)
+{
+Wolf (not really...)
+}
+
+STRING 1560
+// Units: hC07 (Tiny Farm), Name (Name)
+{
+Tiny Farm
+}
+
+STRING 1561
+// Units: u000 (Silv3rSheep), Name (Name)
+{
+Silv3rSheep
+}
+
+STRING 1562
+// Units: u001 (GoldenSheep), Name (Name)
+{
+GoldenSheep
+}
+
+STRING 1563
+// Units: E002 (Black Wolf (not really...)), Name (Name)
+{
+Black Wolf (not really...)
+}
+
+STRING 1564
+// Abilities: A000 (Gem), Name (Name)
+{
+Gem
+}
+
+STRING 1565
+// Units: h002 (Invisible Farm), Tip (Tooltip - Basic)
+{
+Build Invisible Farm (|cffffcc00X|r)
+}
+
+STRING 1566
+// Units: h006 (Jotye Farm), Ubertip (Tooltip - Extended)
+{
+A crazy farm that inverts orderz.
+}
+
+STRING 1567
+// Units: h006 (Jotye Farm), Name (Name)
+{
+Jotye Farm
+}
+
+STRING 1572
+// Units: h006 (Jotye Farm), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 1573
+// Units: h006 (Jotye Farm), Tip (Tooltip - Basic)
+{
+Build Jotye Farm (|cffffcc00V|r)
+}
+
+STRING 1577
+// Units: h00C (Factory Farm), Hotkey (Hotkey)
+{
+D
+}
+
+STRING 1580
+// Abilities: A002 (Jotye Aura), Name (Name)
+{
+Jotye Aura
+}
+
+STRING 1581
+// Abilities: A002 (Jotye Aura), Tip (Tooltip - Normal)
+{
+Jotye Aura
+}
+
+STRING 1582
+// Abilities: A002 (Jotye Aura), Ubertip (Tooltip - Normal - Extended)
+{
+A crazy aura that inverts orderz.
+}
+
+STRING 1583
+// Buffs/Effects: BHab (), Bufftip (Tooltip)
+{
+Jotye Aura
+}
+
+STRING 1585
+// Buffs/Effects: BHab (), Buffubertip (Tooltip - Extended)
+{
+A crazy aura that inverts orderz.
+}
+
+STRING 1586
+// Units: h007 (Silver Farm), Name (Name)
+{
+Silver Farm
+}
+
+STRING 1587
+// Units: h007 (Silver Farm), Tip (Tooltip - Basic)
+{
+Build Silver Farm |cffffcc00(X)|r
+}
+
+STRING 1588
+// Units: h007 (Silver Farm), Ubertip (Tooltip - Extended)
+{
+An extension of the black farm, not only with upgraded HP, but passive invisibility. Enjoy it, it's free.
+}
+
+STRING 1589
+// Units: h007 (Silver Farm), EditorSuffix (Name - Editor Suffix)
+{
+(GoldenSheep)
+}
+
+STRING 1591
+// Units: h000 (Golden Farm), Tip (Tooltip - Basic)
+{
+Build Golden Farm |cffffcc00(F)|r
+}
+
+STRING 1592
+// Units: n002 (Katama), Name (Name)
+{
+Katama
+}
+
+STRING 1593
+// Items: mcou (Dagger), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 1596
+// Units: E000 (Doom Guard), Name (Name)
+{
+Doom Guard
+}
+
+STRING 1602
+// Units: h008 (Power Tower), Name (Name)
+{
+Power Tower
+}
+
+STRING 1603
+// Units: h008 (Power Tower), Hotkey (Hotkey)
+{
+T
+}
+
+STRING 1604
+// Units: h008 (Power Tower), Tip (Tooltip - Basic)
+{
+Upgrade to Power Tower (|cffffcc00T|r)
+}
+
+STRING 1605
+// Units: h008 (Power Tower), Ubertip (Tooltip - Extended)
+{
+SupA damage!
+}
+
+STRING 1611
+{
+Sheep 8 
+}
+
+STRING 1614
+// Abilities: AIsx (Item Attack Speed Bonus), EditorSuffix (Editor Suffix)
+{
+(Sabre)
+}
+
+STRING 1615
+// Units: h009 (Better Saving Farm), Name (Name)
+{
+Better Saving Farm
+}
+
+STRING 1616
+// Units: h009 (Better Saving Farm), Tip (Tooltip - Basic)
+{
+Upgrade to Better Saving Farm (|cffffcc00C|r)
+}
+
+STRING 1617
+// Units: h009 (Better Saving Farm), Ubertip (Tooltip - Extended)
+{
+Saving Farm is very, very fragile but it gets 2 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+}
+
+STRING 1618
+// Units: otbk (Saving Farm), Hotkey (Hotkey)
+{
+C
+}
+
+STRING 1619
+// Units: h00A (Super Saving Farm), Name (Name)
+{
+Super Saving Farm
+}
+
+STRING 1620
+// Units: h00A (Super Saving Farm), Tip (Tooltip - Basic)
+{
+Upgrade to Super Saving Farm (|cffffcc00C|r)
+}
+
+STRING 1621
+// Units: h00A (Super Saving Farm), Ubertip (Tooltip - Extended)
+{
+Saving Farm is very, very fragile but it gets 4 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+}
+
+STRING 1622
+// Units: h009 (Better Saving Farm), Hotkey (Hotkey)
+{
+C
+}
+
+STRING 1623
+// Items: I002 (Claws of Attack +50), Description (Description)
+{
+Boosts attack damage by 50.
+}
+
+STRING 1624
+// Items: I002 (Claws of Attack +50), Name (Name)
+{
+Claws of Attack +50
+}
+
+STRING 1625
+// Items: I002 (Claws of Attack +50), Tip (Tooltip - Basic)
+{
+Purchase Claws of Attack +50
+}
+
+STRING 1631
+// Units: nC12 (Blue Item Merchant), Name (Name)
+{
+Blue Item Merchant
+}
+
+STRING 1641
+// Units: EC03 (Wolf (not really...)), Propernames (Proper Names)
+{
+Tameyoshi,drewisfat,wanna-be-sheep,Mr.Fishy,baah,Celestial_One,Wilshire12,307thperson,Chakra,AcEx,MasteR-SheP,CowardlyShoe,GosuSheep,penguinoflight,Zo0LanDeR,RyuUboruZ,nGPure,duncan(donuts),Grim.Shadow,prodigy-,above92,Tollison,dbz-Chris138
+}
+
+STRING 1642
+// Units: E002 (Black Wolf (not really...)), Propernames (Proper Names)
+{
+Tameyoshi,drewisfat,wanna-be-sheep,Mr.Fishy,baah,Celestial_One,Wilshire12,307thperson,Chakra,AcEx,MasteR-SheP,CowardlyShoe,GosuSheep,penguinoflight,Zo0LanDeR,RyuUboruZ,nGPure,duncan(donuts),Grim.Shadow,prodigy-,above92,Tollison,dbz-Chris138
+}
+
+STRING 1643
+// Units: E000 (Doom Guard), Propernames (Proper Names)
+{
+Tameyoshi,drewisfat,wanna-be-sheep,Mr.Fishy,baah,Celestial_One,Wilshire12,307thperson,Chakra,AcEx,MasteR-SheP,CowardlyShoe,GosuSheep,penguinoflight,Zo0LanDeR,RyuUboruZ,nGPure,duncan(donuts),Grim.Shadow,prodigy-,above92,Tollison,dbz-Chris138
+}
+
+STRING 1649
+// Units: otbk (Saving Farm), Name (Name)
+{
+Saving Farm
+}
+
+STRING 1650
+// Units: otbk (Saving Farm), Tip (Tooltip - Basic)
+{
+Build Saving Farm (|cffffcc00C|r)
+}
+
+STRING 1651
+// Units: otbk (Saving Farm), Ubertip (Tooltip - Extended)
+{
+Saving Farm is very, very fragile but it gets 1 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+}
+
+STRING 1652
+// Units: h00A (Super Saving Farm), Hotkey (Hotkey)
+{
+C
+}
+
+STRING 1653
+// Units: otbk (Saving Farm), EditorSuffix (Name - Editor Suffix)
+{
+(Hidden)
+}
+
+STRING 1654
+// Upgrades: Robk (Berserker Upgrade), Name (Name)
+{
+Hidden Saving Farms
+}
+
+STRING 1657
+// Abilities: A00C (Hulk), Hotkey (Hotkey - Normal)
+{
+H
+}
+
+STRING 1658
+// Upgrades: Robk (Berserker Upgrade), Ubertip (Tooltip - Extended)
+{
+Increases the size of Saving Farms so they look like normal Farms.|nDoes not effect upgraded Saving Farms.
+}
+
+STRING 1660
+// Upgrades: Robk (Berserker Upgrade), Tip (Tooltip)
+{
+Research |cffffcc00H|ridden Saving Farms
+}
+
+STRING 1661
+// Upgrades: Rhan (Animal War Training), effect1 (Effect 1)
+{
+raud
+}
+
+STRING 1662
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 1663
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 1667
+// Upgrades: Rusm (Skeletal Mastery), Name (Name)
+{
+|cffffcc00U|rnholy Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1668
+// Upgrades: Rusm (Skeletal Mastery), Name (Name)
+{
+|cffffcc00U|rnholy Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1672
+// Abilities: ACua (Unholy Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases nearby friendly units' life regeneration rate by <ACua,DataB2,%>%.
+}
+
+STRING 1673
+// Abilities: ACua (Unholy Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases nearby friendly units' life regeneration rate by <ACua,DataB3,%>%.
+}
+
+STRING 1674
+// Abilities: ACua (Unholy Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases nearby friendly units' life regeneration rate by <ACua,DataB1,%>%.
+}
+
+STRING 1675
+// Upgrades: Rusm (Skeletal Mastery), Tip (Tooltip)
+{
+Research |cffffcc00U|rnholy Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1676
+// Upgrades: Rusm (Skeletal Mastery), Tip (Tooltip)
+{
+Research |cffffcc00U|rnholy Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1677
+// Upgrades: Rusm (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Increases nearby friendly units' life regeneration rate by <ACua,DataB2,%>%.
+}
+
+STRING 1678
+// Upgrades: Rusm (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Increases nearby friendly units' life regeneration rate by <ACua,DataB3,%>%.
+}
+
+STRING 1679
+// Abilities: SCae (Endurance Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases nearby friendly units' movement speed by <SCae,DataA1,%>%.
+}
+
+STRING 1680
+// Abilities: SCae (Endurance Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases nearby friendly units' movement speed by <SCae,DataA2,%>%.
+}
+
+STRING 1681
+// Abilities: SCae (Endurance Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases nearby friendly units' movement speed by <SCae,DataA3,%>%.
+}
+
+STRING 1682
+// Abilities: SCae (Endurance Aura), Tip (Tooltip - Normal)
+{
+Endurance Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1683
+// Abilities: SCae (Endurance Aura), Tip (Tooltip - Normal)
+{
+Endurance Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1684
+// Abilities: ACua (Unholy Aura), Tip (Tooltip - Normal)
+{
+Unholy Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1685
+// Abilities: ACua (Unholy Aura), Tip (Tooltip - Normal)
+{
+Unholy Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1686
+// Upgrades: Rusm (Skeletal Mastery), Hotkey (Hotkey)
+{
+U
+}
+
+STRING 1687
+// Upgrades: Rusm (Skeletal Mastery), Hotkey (Hotkey)
+{
+U
+}
+
+STRING 1690
+// Upgrades: R000 (Skeletal Mastery), Tip (Tooltip)
+{
+Research |cffffcc00E|rndurance Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1691
+// Upgrades: R000 (Skeletal Mastery), Tip (Tooltip)
+{
+Research |cffffcc00E|rndurance Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1694
+// Items: tfar (Siege Tower), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 1695
+// Abilities: A006 (Specialize), Hotkey (Hotkey - Normal)
+{
+E
+}
+
+STRING 1697
+// Abilities: ACav (Devotion Aura), Tip (Tooltip - Normal)
+{
+Devotion Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1698
+// Abilities: ACav (Devotion Aura), Tip (Tooltip - Normal)
+{
+Devotion Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1699
+// Abilities: ACav (Devotion Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Gives <ACav,DataA2> additional armor to nearby friendly units.
+}
+
+STRING 1700
+// Abilities: ACav (Devotion Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Gives <ACav,DataA3> additional armor to nearby friendly units.
+}
+
+STRING 1702
+// Upgrades: R001 (Skeletal Mastery), Tip (Tooltip)
+{
+Research De|cffffcc00v|rotion Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1703
+// Upgrades: R001 (Skeletal Mastery), Tip (Tooltip)
+{
+Research De|cffffcc00v|rotion Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1706
+// Abilities: A008 (Engineer), Hotkey (Hotkey - Normal)
+{
+E
+}
+
+STRING 1707
+// Upgrades: R000 (Skeletal Mastery), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 1709
+// Upgrades: R001 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Gives <ACav,DataA2> additional armor to nearby friendly units.
+}
+
+STRING 1710
+// Upgrades: R001 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Gives <ACav,DataA3> additional armor to nearby friendly units.
+}
+
+STRING 1711
+// Upgrades: R000 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Increases nearby friendly units' movement speed by <SCae,DataA2,%>%.
+}
+
+STRING 1712
+// Upgrades: R000 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Increases nearby friendly units' movement speed by <SCae,DataA3,%>%.
+}
+
+STRING 1719
+// Upgrades: R000 (Skeletal Mastery), Name (Name)
+{
+|cffffcc00E|rndurance Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1720
+// Upgrades: R000 (Skeletal Mastery), Name (Name)
+{
+|cffffcc00E|rndurance Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1721
+// Upgrades: R001 (Skeletal Mastery), Name (Name)
+{
+De|cffffcc00v|rotion Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1722
+// Upgrades: R001 (Skeletal Mastery), Name (Name)
+{
+De|cffffcc00v|rotion Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1723
+// Units: ewsp (Rock Golem), Name (Name)
+{
+Rock Golem
+}
+
+STRING 1724
+// Units: ewsp (Rock Golem), Ubertip (Tooltip - Extended)
+{
+Summon Rock Golem
+}
+
+STRING 1725
+// Units: etol (Golem Totem), Name (Name)
+{
+Golem Totem
+}
+
+STRING 1727
+// Units: etol (Golem Totem), Hotkey (Hotkey)
+{
+G
+}
+
+STRING 1729
+// Upgrades: Repm (Backpack), Ubertip (Tooltip - Extended)
+{
+Gives Rock Golems the ability to carry items.
+}
+
+STRING 1730
+// Abilities: Adtn (Detonate), Ubertip (Tooltip - Normal - Extended)
+{
+Destroys the Rock Golem, dispelling all magical buffs and draining <Adtn,DataA1> mana from each unit in an area around the Wisp. |n|cffffcc00Deals <Adtn,DataB1> damage to structures.|r
+}
+
+STRING 1731
+// Abilities: Asdg (Kaboom!), Ubertip (Tooltip - Normal - Extended)
+{
+Deals <Asdg,DataB1> damage to nearby structures.
+}
+
+STRING 1732
+// Units: etol (Golem Totem), Tip (Tooltip - Basic)
+{
+Become |cffffcc00G|rolem Totem
+}
+
+STRING 1734
+// Units: h00C (Factory Farm), Name (Name)
+{
+Factory Farm
+}
+
+STRING 1735
+// Units: h00C (Factory Farm), Tip (Tooltip - Basic)
+{
+Build Factory Farm (|cffffcc00D|r)
+}
+
+STRING 1737
+// Units: u002 (Sheep), Name (Name)
+{
+Sheep
+}
+
+STRING 1738
+// Units: u002 (Sheep), Ubertip (Tooltip - Extended)
+{
+This is a SHEEP!
+}
+
+STRING 1739
+// Units: u002 (Sheep), Tip (Tooltip - Basic)
+{
+Baaahhh Bahhh!!
+}
+
+STRING 1740
+// Units: u002 (Sheep), Description (Description)
+{
+These furry creatures are fun to slaughter!
+}
+
+STRING 1754
+// Abilities: A00P (Phoenix), Researchhotkey (Hotkey - Learn)
+{
+C
+}
+
+STRING 1762
+// Buffs/Effects: Basl (), Bufftip (Tooltip)
+{
+Dolly Speed Aura
+}
+
+STRING 1764
+// Buffs/Effects: Basl (), Buffubertip (Tooltip - Extended)
+{
+Dolly has blessed you with swiftness.
+}
+
+STRING 1765
+// Units: u002 (Sheep), EditorSuffix (Name - Editor Suffix)
+{
+(Factory)
+}
+
+STRING 1768
+// Abilities: ACac (Command Aura), Tip (Tooltip - Normal)
+{
+Command Aura
+}
+
+STRING 1769
+// Abilities: ACac (Command Aura), Tip (Tooltip - Normal)
+{
+Command Aura
+}
+
+STRING 1770
+// Abilities: ACac (Command Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases Rock Golem damage by <ACac,DataA2,%>%.
+}
+
+STRING 1771
+// Abilities: ACac (Command Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases Rock Golem damage by <ACac,DataA3,%>%.
+}
+
+STRING 1772
+// Abilities: ACac (Command Aura), Ubertip (Tooltip - Normal - Extended)
+{
+Increases Rock Golem damage by <ACac,DataA1,%>%.
+}
+
+STRING 1773
+// Upgrades: R002 (Skeletal Mastery), Name (Name)
+{
+|cffffcc00C|rommand Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1774
+// Upgrades: R002 (Skeletal Mastery), Tip (Tooltip)
+{
+Research |cffffcc00C|rommand Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 1775
+// Upgrades: R002 (Skeletal Mastery), Tip (Tooltip)
+{
+Research |cffffcc00C|rommand Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1776
+// Upgrades: R002 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Increases Rock Golem damage by <ACac,DataA2,%>%.
+}
+
+STRING 1777
+// Upgrades: R002 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Increases Rock Golem damage by <ACac,DataA3,%>%.
+}
+
+STRING 1778
+// Upgrades: R000 (Skeletal Mastery), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 1780
+// Upgrades: R002 (Skeletal Mastery), Name (Name)
+{
+|cffffcc00C|rommand Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 1781
+// Abilities: A00P (Phoenix), Hotkey (Hotkey - Normal)
+{
+C
+}
+
+STRING 1790
+// Abilities: Asdg (Kaboom!), Tip (Tooltip - Normal)
+{
+K|cffffcc00a|rboom!
+}
+
+STRING 1791
+// Abilities: Asdg (Kaboom!), Hotkey (Hotkey - Normal)
+{
+A
+}
+
+STRING 1792
+// Abilities: Asdg (Kaboom!), Unhotkey (Hotkey - Turn Off)
+{
+A
+}
+
+STRING 1793
+// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
+{
+(Rock Golems)
+}
+
+STRING 1794
+// Units: h00B (Siege Tower), Name (Name)
+{
+Siege Tower
+}
+
+STRING 1795
+// Units: h00B (Siege Tower), Ubertip (Tooltip - Extended)
+{
+A tower that kills farms.
+}
+
+STRING 1796
+// Items: tfar (Siege Tower), Name (Name)
+{
+Siege Tower
+}
+
+STRING 1798
+// Abilities: AIbt (Build Siege Tower), Name (Name)
+{
+Build Siege Tower
+}
+
+STRING 1799
+// Abilities: Ahea (Heal), Tip (Tooltip - Normal)
+{
+H|cffffcc00e|ral
+}
+
+STRING 1800
+// Abilities: Ahea (Heal), Ubertip (Tooltip - Normal - Extended)
+{
+Heals a target friendly non-mechanical wounded unit for <Ahea,DataA2> hit points.
+}
+
+STRING 1801
+// Abilities: Ahea (Heal), Untip (Tooltip - Turn Off)
+{
+|cffc3dbffRight-click to activate auto-casting.|r
+}
+
+STRING 1802
+// Abilities: Ahea (Heal), Unubertip (Tooltip - Turn Off - Extended)
+{
+|cffc3dbffRight-click to deactivate auto-casting.|r
+}
+
+STRING 1812
+// Units: h00D (Strong Farm), Name (Name)
+{
+Strong Farm
+}
+
+STRING 1814
+// Units: h00D (Strong Farm), Hotkey (Hotkey)
+{
+S
+}
+
+STRING 1815
+// Units: h00D (Strong Farm), Ubertip (Tooltip - Extended)
+{
+A farm with a lot more health.
+}
+
+STRING 1816
+// Units: e003 (Healing Farm), Name (Name)
+{
+Healing Farm
+}
+
+STRING 1817
+// Units: e003 (Healing Farm), Tip (Tooltip - Basic)
+{
+Upgrade to Healing Farm
+}
+
+STRING 1818
+// Units: e003 (Healing Farm), Ubertip (Tooltip - Extended)
+{
+Specialize into a farm dedicated to healing.
+}
+
+STRING 1819
+// Abilities: A004 (Heal), Tip (Tooltip - Normal)
+{
+H|cffffcc00e|ral
+}
+
+STRING 1820
+// Abilities: A004 (Heal), Ubertip (Tooltip - Normal - Extended)
+{
+Heals a target friendly non-mechanical wounded unit for <Ahea,DataA2> hit points.
+}
+
+STRING 1821
+// Abilities: A004 (Heal), Untip (Tooltip - Turn Off)
+{
+|cffc3dbffRight-click to activate auto-casting.|r
+}
+
+STRING 1822
+// Abilities: A004 (Heal), Unubertip (Tooltip - Turn Off - Extended)
+{
+|cffc3dbffRight-click to deactivate auto-casting.|r
+}
+
+STRING 1823
+// Abilities: A004 (Heal), EditorSuffix (Editor Suffix)
+{
+(Healing Farm)
+}
+
+STRING 1828
+// Abilities: A005 (Barricade), Tip (Tooltip - Normal)
+{
+Thorns
+}
+
+STRING 1830
+// Abilities: A005 (Barricade), Ubertip (Tooltip - Normal - Extended)
+{
+Reflects <A005,DataA1,%>% of an enemy unit's attack damage back to it.
+}
+
+STRING 1831
+// Units: h00D (Strong Farm), Tip (Tooltip - Basic)
+{
+Upgrade to |cffffcc00S|rtrong Farm
+}
+
+STRING 1835
+// Units: h00E (Barricaded Farm), Ubertip (Tooltip - Extended)
+{
+A farm that reflects damage back to its attackers.
+}
+
+STRING 1836
+// Units: h00E (Barricaded Farm), Name (Name)
+{
+Barricaded Farm
+}
+
+STRING 1837
+// Units: h00E (Barricaded Farm), Tip (Tooltip - Basic)
+{
+Upgrade to |cffffcc00B|rarricaded Farm
+}
+
+STRING 1839
+// Units: hhou (Farm), Ubertip (Tooltip - Extended)
+{
+Your standard building.|nBest to build these in a regular grid one space apart. Build tightly packed to jump over things.
+}
+
+STRING 1840
+// Units: hbar (Upgraded Farm), Ubertip (Tooltip - Extended)
+{
+A more resilient farm with twice the health as a normal farm. Can be upgraded.|nPlace these at choke points and late game.
+}
+
+STRING 1841
+// Units: hlum (Aura Farm), Ubertip (Tooltip - Extended)
+{
+Grants armor, health regeneration, and movement speed auras. Can upgrade all auras.|nPlace this in large masses bases.
+}
+
+STRING 1843
+// Abilities: A006 (Specialize), Name (Name)
+{
+Specialize
+}
+
+STRING 1845
+// Abilities: A007 (Flash), Name (Name)
+{
+Flash
+}
+
+STRING 1847
+// Abilities: A007 (Flash), Researchhotkey (Hotkey - Learn)
+{
+F
+}
+
+STRING 1848
+// Abilities: A007 (Flash), Hotkey (Hotkey - Normal)
+{
+F
+}
+
+STRING 1850
+// Abilities: A007 (Flash), Tip (Tooltip - Normal)
+{
+|cffffcc00F|rlash
+}
+
+STRING 1853
+// Abilities: A008 (Engineer), Name (Name)
+{
+Engineer
+}
+
+STRING 1856
+// Abilities: A008 (Engineer), Tip (Tooltip - Normal)
+{
+|cffffcc00E|rngineer
+}
+
+STRING 1859
+// Abilities: A00C (Hulk), Name (Name)
+{
+Hulk
+}
+
+STRING 1860
+// Abilities: A00C (Hulk), Tip (Tooltip - Normal)
+{
+|cffffcc00H|rulk
+}
+
+STRING 1861
+// Abilities: A006 (Specialize), Ubertip (Tooltip - Normal - Extended)
+{
+You've saved someone! Now you can specialize, but pick carefully, you'll be locked in for the rest of the game!|nEach specialization grants both a passive ability and an active ability. Abilities level with each save, but reset to zero upon death.
+}
+
+STRING 1862
+// Abilities: A005 (Barricade), Name (Name)
+{
+Barricade
+}
+
+STRING 1865
+// Abilities: A00E (Attacker), Name (Name)
+{
+Attacker
+}
+
+STRING 1866
+// Abilities: A00E (Attacker), Hotkey (Hotkey - Normal)
+{
+A
+}
+
+STRING 1867
+// Abilities: A00E (Attacker), Tip (Tooltip - Normal)
+{
+|cffffcc00A|rttacker
+}
+
+STRING 1870
+// Upgrades: Robk (Berserker Upgrade), Hotkey (Hotkey)
+{
+H
+}
+
+STRING 1871
+// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 1872
+// Abilities: A00F (Swift Feet), Name (Name)
+{
+Swift Feet
+}
+
+STRING 1873
+// Abilities: A00A (Blink), Hotkey (Hotkey - Normal)
+{
+N
+}
+
+STRING 1932
+// Abilities: A00A (Blink), EditorSuffix (Editor Suffix)
+{
+(Flash)
+}
+
+STRING 1933
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 1|r]
+}
+
+STRING 1934
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 2|r]
+}
+
+STRING 1935
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 3|r]
+}
+
+STRING 1936
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 4|r]
+}
+
+STRING 1937
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 5|r]
+}
+
+STRING 1938
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 6|r]
+}
+
+STRING 1939
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 7|r]
+}
+
+STRING 1940
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 8|r]
+}
+
+STRING 1941
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 9|r]
+}
+
+STRING 1942
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 10|r]
+}
+
+STRING 1943
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 11|r]
+}
+
+STRING 1944
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 12|r]
+}
+
+STRING 1945
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 13|r]
+}
+
+STRING 1946
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 14|r]
+}
+
+STRING 1947
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 15|r]
+}
+
+STRING 1948
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 16|r]
+}
+
+STRING 1949
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 17|r]
+}
+
+STRING 1950
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 18|r]
+}
+
+STRING 1951
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 19|r]
+}
+
+STRING 1952
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 20|r]
+}
+
+STRING 1953
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 21|r]
+}
+
+STRING 1954
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 22|r]
+}
+
+STRING 1955
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 23|r]
+}
+
+STRING 1956
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 24|r]
+}
+
+STRING 1957
+// Abilities: A00F (Swift Feet), Tip (Tooltip - Normal)
+{
+Swift Feet - [|cffffcc00Level 25|r]
+}
+
+STRING 1987
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA1,%>%.
+}
+
+STRING 1988
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA2,%>%.
+}
+
+STRING 1989
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA3,%>%.
+}
+
+STRING 1990
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA4,%>%.
+}
+
+STRING 1991
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA5,%>%.
+}
+
+STRING 1992
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA6,%>%.
+}
+
+STRING 1993
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA7,%>%.
+}
+
+STRING 1994
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA8,%>%.
+}
+
+STRING 1995
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA9,%>%.
+}
+
+STRING 1996
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA10,%>%.
+}
+
+STRING 1997
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA11,%>%.
+}
+
+STRING 1998
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA12,%>%.
+}
+
+STRING 1999
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA13,%>%.
+}
+
+STRING 2000
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA14,%>%.
+}
+
+STRING 2001
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA15,%>%.
+}
+
+STRING 2002
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA16,%>%.
+}
+
+STRING 2003
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA17,%>%.
+}
+
+STRING 2004
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA18,%>%.
+}
+
+STRING 2005
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA19,%>%.
+}
+
+STRING 2006
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA20,%>%.
+}
+
+STRING 2007
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA21,%>%.
+}
+
+STRING 2008
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA22,%>%.
+}
+
+STRING 2009
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA23,%>%.
+}
+
+STRING 2010
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA24,%>%.
+}
+
+STRING 2011
+// Abilities: A00F (Swift Feet), Ubertip (Tooltip - Normal - Extended)
+{
+Increases movement speed by <A00F,DataA25,%>%.
+}
+
+STRING 2013
+// Abilities: A007 (Flash), EditorSuffix (Editor Suffix)
+{
+(Specialization)
+}
+
+STRING 2014
+// Abilities: A008 (Engineer), EditorSuffix (Editor Suffix)
+{
+(Specialization)
+}
+
+STRING 2015
+// Abilities: A00E (Attacker), EditorSuffix (Editor Suffix)
+{
+(Specialization)
+}
+
+STRING 2016
+// Abilities: A00C (Hulk), EditorSuffix (Editor Suffix)
+{
+(Specialization)
+}
+
+STRING 2042
+// Abilities: A00F (Swift Feet), EditorSuffix (Editor Suffix)
+{
+(Flash)
+}
+
+STRING 2043
+// Abilities: A009 (Hearty Farms), Name (Name)
+{
+Hearty Farms
+}
+
+STRING 2044
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 1|r]
+}
+
+STRING 2045
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 10.
+}
+
+STRING 2046
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 2|r]
+}
+
+STRING 2047
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 3|r]
+}
+
+STRING 2048
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 4|r]
+}
+
+STRING 2049
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 5|r]
+}
+
+STRING 2050
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 6|r]
+}
+
+STRING 2051
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 7|r]
+}
+
+STRING 2052
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 8|r]
+}
+
+STRING 2053
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 9|r]
+}
+
+STRING 2054
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 10|r]
+}
+
+STRING 2055
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 11|r]
+}
+
+STRING 2056
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 12|r]
+}
+
+STRING 2057
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 13|r]
+}
+
+STRING 2058
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 14|r]
+}
+
+STRING 2059
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 15|r]
+}
+
+STRING 2060
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 16|r]
+}
+
+STRING 2061
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 17|r]
+}
+
+STRING 2062
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 18|r]
+}
+
+STRING 2063
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 19|r]
+}
+
+STRING 2064
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 20|r]
+}
+
+STRING 2065
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 21|r]
+}
+
+STRING 2066
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 22|r]
+}
+
+STRING 2067
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 23|r]
+}
+
+STRING 2068
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 24|r]
+}
+
+STRING 2069
+// Abilities: A009 (Hearty Farms), Tip (Tooltip - Normal)
+{
+Hearty Farms - [|cffffcc00Level 25|r]
+}
+
+STRING 2070
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 20.
+}
+
+STRING 2071
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 30.
+}
+
+STRING 2072
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 40.
+}
+
+STRING 2073
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 50.
+}
+
+STRING 2074
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 60.
+}
+
+STRING 2075
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 70.
+}
+
+STRING 2076
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 80.
+}
+
+STRING 2077
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 90.
+}
+
+STRING 2078
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 100.
+}
+
+STRING 2079
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 110.
+}
+
+STRING 2080
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 120.
+}
+
+STRING 2081
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 130.
+}
+
+STRING 2082
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 140.
+}
+
+STRING 2083
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 150.
+}
+
+STRING 2084
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 160.
+}
+
+STRING 2085
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 170.
+}
+
+STRING 2086
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 180.
+}
+
+STRING 2087
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 190.
+}
+
+STRING 2088
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 200.
+}
+
+STRING 2089
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 210.
+}
+
+STRING 2090
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 220.
+}
+
+STRING 2091
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 230.
+}
+
+STRING 2092
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 240.
+}
+
+STRING 2093
+// Abilities: A009 (Hearty Farms), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the maximum health points of newly constructed farms by 250.
+}
+
+STRING 2094
+// Abilities: A009 (Hearty Farms), EditorSuffix (Editor Suffix)
+{
+(Engineer)
+}
+
+STRING 2095
+// Abilities: A00G (Harden), Name (Name)
+{
+Harden
+}
+
+STRING 2096
+// Abilities: A00G (Harden), EditorSuffix (Editor Suffix)
+{
+(Engineer)
+}
+
+STRING 2097
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 1|r]
+}
+
+STRING 2098
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 2|r]
+}
+
+STRING 2099
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 3|r]
+}
+
+STRING 2100
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 4|r]
+}
+
+STRING 2101
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 5|r]
+}
+
+STRING 2102
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 6|r]
+}
+
+STRING 2103
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 7|r]
+}
+
+STRING 2104
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 8|r]
+}
+
+STRING 2105
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 9|r]
+}
+
+STRING 2106
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 10|r]
+}
+
+STRING 2107
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 11|r]
+}
+
+STRING 2108
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 12|r]
+}
+
+STRING 2109
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 13|r]
+}
+
+STRING 2110
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 14|r]
+}
+
+STRING 2111
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 15|r]
+}
+
+STRING 2112
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 16|r]
+}
+
+STRING 2113
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 17|r]
+}
+
+STRING 2114
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 18|r]
+}
+
+STRING 2115
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 19|r]
+}
+
+STRING 2116
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 20|r]
+}
+
+STRING 2117
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 21|r]
+}
+
+STRING 2118
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 22|r]
+}
+
+STRING 2119
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 23|r]
+}
+
+STRING 2120
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 24|r]
+}
+
+STRING 2121
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harde|cffffcc00n|r - [|cffffcc00Level 25|r]
+}
+
+STRING 2173
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA1> for <A00G,Dur1> seconds.
+}
+
+STRING 2174
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA2> for <A00G,Dur2> seconds.
+}
+
+STRING 2175
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA3> for <A00G,Dur3> seconds.
+}
+
+STRING 2176
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA4> for <A00G,Dur4> seconds.
+}
+
+STRING 2177
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA5> for <A00G,Dur5> seconds.
+}
+
+STRING 2178
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA6> for <A00G,Dur6> seconds.
+}
+
+STRING 2179
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA7> for <A00G,Dur7> seconds.
+}
+
+STRING 2180
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA8> for <A00G,Dur8> seconds.
+}
+
+STRING 2181
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA9> for <A00G,Dur9> seconds.
+}
+
+STRING 2182
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA10> for <A00G,Dur10> seconds.
+}
+
+STRING 2183
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA11> for <A00G,Dur11> seconds.
+}
+
+STRING 2184
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA12> for <A00G,Dur12> seconds.
+}
+
+STRING 2185
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA13> for <A00G,Dur13> seconds.
+}
+
+STRING 2186
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA14> for <A00G,Dur14> seconds.
+}
+
+STRING 2187
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA15> for <A00G,Dur15> seconds.
+}
+
+STRING 2188
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA16> for <A00G,Dur16> seconds.
+}
+
+STRING 2189
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA17> for <A00G,Dur17> seconds.
+}
+
+STRING 2190
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA18> for <A00G,Dur18> seconds.
+}
+
+STRING 2191
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA19> for <A00G,Dur19> seconds.
+}
+
+STRING 2192
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA20> for <A00G,Dur20> seconds.
+}
+
+STRING 2193
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA21> for <A00G,Dur21> seconds.
+}
+
+STRING 2194
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA22> for <A00G,Dur22> seconds.
+}
+
+STRING 2195
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA23> for <A00G,Dur23> seconds.
+}
+
+STRING 2196
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA24> for <A00G,Dur24> seconds.
+}
+
+STRING 2197
+// Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
+{
+Increases the armor of nearby farms by <A00G,DataA25> for <A00G,Dur25> seconds.
+}
+
+STRING 2198
+// Abilities: A00G (Harden), Hotkey (Hotkey - Normal)
+{
+N
+}
+
+STRING 2199
+// Abilities: A00L (Copious Blood), Name (Name)
+{
+Copious Blood
+}
+
+STRING 2200
+// Abilities: A00I (Avatar), EditorSuffix (Editor Suffix)
+{
+(Hulk)
+}
+
+STRING 2201
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 1|r]
+}
+
+STRING 2202
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 2|r]
+}
+
+STRING 2203
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 3|r]
+}
+
+STRING 2204
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 4|r]
+}
+
+STRING 2205
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 5|r]
+}
+
+STRING 2206
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 6|r]
+}
+
+STRING 2207
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 7|r]
+}
+
+STRING 2208
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 8|r]
+}
+
+STRING 2209
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 9|r]
+}
+
+STRING 2210
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 10|r]
+}
+
+STRING 2211
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 11|r]
+}
+
+STRING 2212
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 12|r]
+}
+
+STRING 2213
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 13|r]
+}
+
+STRING 2214
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 14|r]
+}
+
+STRING 2215
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 15|r]
+}
+
+STRING 2216
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 16|r]
+}
+
+STRING 2217
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 17|r]
+}
+
+STRING 2218
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 18|r]
+}
+
+STRING 2219
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 19|r]
+}
+
+STRING 2220
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 20|r]
+}
+
+STRING 2221
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 21|r]
+}
+
+STRING 2222
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 22|r]
+}
+
+STRING 2223
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 23|r]
+}
+
+STRING 2224
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 24|r]
+}
+
+STRING 2225
+// Abilities: A00L (Copious Blood), Tip (Tooltip - Normal)
+{
+Copious Blood - [|cffffcc00Level 25|r]
+}
+
+STRING 2251
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 1|r] (|cffffcc00N|r)
+}
+
+STRING 2252
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 2|r] (|cffffcc00N|r)
+}
+
+STRING 2253
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 3|r] (|cffffcc00N|r)
+}
+
+STRING 2254
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 4|r] (|cffffcc00N|r)
+}
+
+STRING 2255
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 5|r] (|cffffcc00N|r)
+}
+
+STRING 2256
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 6|r] (|cffffcc00N|r)
+}
+
+STRING 2257
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 7|r] (|cffffcc00N|r)
+}
+
+STRING 2258
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 8|r] (|cffffcc00N|r)
+}
+
+STRING 2259
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 9|r] (|cffffcc00N|r)
+}
+
+STRING 2260
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 10|r] (|cffffcc00N|r)
+}
+
+STRING 2261
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 11|r] (|cffffcc00N|r)
+}
+
+STRING 2262
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 12|r] (|cffffcc00N|r)
+}
+
+STRING 2263
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 13|r] (|cffffcc00N|r)
+}
+
+STRING 2264
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 14|r] (|cffffcc00N|r)
+}
+
+STRING 2265
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 15|r] (|cffffcc00N|r)
+}
+
+STRING 2266
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 16|r] (|cffffcc00N|r)
+}
+
+STRING 2267
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 17|r] (|cffffcc00N|r)
+}
+
+STRING 2268
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 18|r] (|cffffcc00N|r)
+}
+
+STRING 2269
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 19|r] (|cffffcc00N|r)
+}
+
+STRING 2270
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 20|r] (|cffffcc00N|r)
+}
+
+STRING 2271
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 21|r] (|cffffcc00N|r)
+}
+
+STRING 2272
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 22|r] (|cffffcc00N|r)
+}
+
+STRING 2273
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 23|r] (|cffffcc00N|r)
+}
+
+STRING 2274
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 24|r] (|cffffcc00N|r)
+}
+
+STRING 2275
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 25|r] (|cffffcc00N|r)
+}
+
+STRING 2301
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2302
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2303
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2304
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2305
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2306
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2307
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2308
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2309
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2310
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2311
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2312
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2313
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2314
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2315
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2316
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2317
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2318
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2319
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2320
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2321
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2322
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2323
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2324
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate A|cffffcc00v|ratar
+}
+
+STRING 2325
+// Abilities: A00I (Avatar), Hotkey (Hotkey - Normal)
+{
+N
+}
+
+STRING 2326
+// Abilities: A00J (Entangling Roots), Hotkey (Hotkey - Normal)
+{
+N
+}
+
+STRING 2327
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 1|r]
+}
+
+STRING 2331
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 2|r]
+}
+
+STRING 2332
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 3|r]
+}
+
+STRING 2333
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 4|r]
+}
+
+STRING 2334
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 5|r]
+}
+
+STRING 2335
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 6|r]
+}
+
+STRING 2336
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 7|r]
+}
+
+STRING 2337
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 8|r]
+}
+
+STRING 2338
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 9|r]
+}
+
+STRING 2339
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 10|r]
+}
+
+STRING 2340
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 11|r]
+}
+
+STRING 2341
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 12|r]
+}
+
+STRING 2342
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 13|r]
+}
+
+STRING 2343
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 14|r]
+}
+
+STRING 2344
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 15|r]
+}
+
+STRING 2345
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 16|r]
+}
+
+STRING 2346
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 17|r]
+}
+
+STRING 2347
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 18|r]
+}
+
+STRING 2348
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 19|r]
+}
+
+STRING 2349
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 20|r]
+}
+
+STRING 2350
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 21|r]
+}
+
+STRING 2351
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 22|r]
+}
+
+STRING 2352
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 23|r]
+}
+
+STRING 2353
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 24|r]
+}
+
+STRING 2354
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+E|cffffcc00n|rtangling Roots - [|cffffcc00Level 25|r]
+}
+
+STRING 2377
+// Abilities: A00J (Entangling Roots), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2378
+// Abilities: A00K (Projectile Spit), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2379
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 1|r]
+}
+
+STRING 2380
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 2|r]
+}
+
+STRING 2381
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 3|r]
+}
+
+STRING 2382
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 4|r]
+}
+
+STRING 2383
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 5|r]
+}
+
+STRING 2384
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 6|r]
+}
+
+STRING 2385
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 7|r]
+}
+
+STRING 2386
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 8|r]
+}
+
+STRING 2387
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 9|r]
+}
+
+STRING 2388
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 10|r]
+}
+
+STRING 2389
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 11|r]
+}
+
+STRING 2390
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 12|r]
+}
+
+STRING 2391
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 13|r]
+}
+
+STRING 2392
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 14|r]
+}
+
+STRING 2393
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 15|r]
+}
+
+STRING 2394
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 16|r]
+}
+
+STRING 2395
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 17|r]
+}
+
+STRING 2396
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 18|r]
+}
+
+STRING 2397
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 19|r]
+}
+
+STRING 2398
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 20|r]
+}
+
+STRING 2399
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 21|r]
+}
+
+STRING 2400
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 22|r]
+}
+
+STRING 2401
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 23|r]
+}
+
+STRING 2402
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 24|r]
+}
+
+STRING 2403
+// Abilities: A00K (Projectile Spit), Tip (Tooltip - Normal)
+{
+Projectile Spit - [|cffffcc00Level 25|r]
+}
+
+STRING 2404
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area1>.
+}
+
+STRING 2405
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area2>.
+}
+
+STRING 2406
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area3>.
+}
+
+STRING 2407
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area4>.
+}
+
+STRING 2408
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area5>.
+}
+
+STRING 2409
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area6>.
+}
+
+STRING 2410
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area7>.
+}
+
+STRING 2411
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area8>.
+}
+
+STRING 2412
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area9>.
+}
+
+STRING 2413
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area10>.
+}
+
+STRING 2414
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area11>.
+}
+
+STRING 2415
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area12>.
+}
+
+STRING 2416
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area13>.
+}
+
+STRING 2417
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area14>.
+}
+
+STRING 2418
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area15>.
+}
+
+STRING 2419
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area16>.
+}
+
+STRING 2420
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area17>.
+}
+
+STRING 2421
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area18>.
+}
+
+STRING 2422
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area19>.
+}
+
+STRING 2423
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area20>.
+}
+
+STRING 2424
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area21>.
+}
+
+STRING 2425
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area22>.
+}
+
+STRING 2426
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area23>.
+}
+
+STRING 2427
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area24>.
+}
+
+STRING 2428
+// Abilities: A00K (Projectile Spit), Ubertip (Tooltip - Normal - Extended)
+{
+Increases attack range by <A00K,Area25>.
+}
+
+STRING 2429
+// Abilities: A00K (Projectile Spit), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2455
+// Buffs/Effects: B001 (), Bufftip (Tooltip)
+{
+Harden
+}
+
+STRING 2456
+// Buffs/Effects: B001 (), Buffubertip (Tooltip - Extended)
+{
+This unit is affected by a Harden; its armor is temporarily increased.
+}
+
+STRING 2457
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2458
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2459
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2460
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2461
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2462
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2463
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2464
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2465
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2466
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2467
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2468
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2469
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2470
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2471
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2472
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2473
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2474
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2475
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2476
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2477
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2478
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2479
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2480
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2481
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2482
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2483
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2484
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2485
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2486
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2487
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2488
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2489
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2490
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2491
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2492
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2493
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2494
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2495
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2496
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2497
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2498
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2499
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2500
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2501
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2502
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2503
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2504
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2505
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2506
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2507
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2508
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2509
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2510
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2511
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2512
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2513
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2514
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2515
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2516
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2517
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2518
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2519
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2520
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2521
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2522
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2523
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2524
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2525
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2526
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2527
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2528
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2529
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2530
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2531
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2532
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2533
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2534
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2535
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2536
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2537
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2538
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2539
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2540
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2541
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2542
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2543
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2544
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2545
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2546
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2547
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2548
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2549
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2550
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2551
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2552
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2553
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2554
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2555
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2556
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2557
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2558
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2559
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2560
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2561
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2562
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2563
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2564
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2565
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2566
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2567
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2568
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2569
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2570
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2571
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2572
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2573
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2574
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2575
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2576
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2577
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2578
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2579
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2580
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2581
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2582
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2583
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2584
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2585
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2586
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2587
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2588
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2589
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2590
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2591
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2592
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2593
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2594
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2595
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2596
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2597
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2598
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2599
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2600
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2601
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2602
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2603
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2604
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2605
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2606
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2607
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2608
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2609
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2610
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2611
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2612
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2613
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2614
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2615
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2616
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2617
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2618
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2619
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2620
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2621
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2622
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2623
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2624
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2625
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2626
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2627
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2628
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2629
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2630
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2631
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2632
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2633
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2634
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2635
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2636
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2637
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2638
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2639
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2640
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2641
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2642
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2643
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2644
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2645
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2646
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2647
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2648
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2649
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2650
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2651
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2652
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2653
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2654
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2655
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2656
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2657
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2658
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2659
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2660
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2661
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2662
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2663
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2664
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2665
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2666
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2667
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2668
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2669
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2670
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2671
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2672
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2673
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2674
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2675
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2676
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2677
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2678
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2679
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2680
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2681
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2682
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2683
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2684
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2685
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2686
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2687
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2688
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2689
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2690
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2691
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2692
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2693
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2694
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2695
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2696
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2697
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2698
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2699
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2700
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2701
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2702
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2703
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2704
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2705
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2706
+// Upgrades: R003 (Long Rifles), Name (Name)
+{
+Projectile Spit
+}
+
+STRING 2707
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area1>.
+}
+
+STRING 2708
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area2>.
+}
+
+STRING 2709
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area3>.
+}
+
+STRING 2710
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area4>.
+}
+
+STRING 2711
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area5>.
+}
+
+STRING 2712
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area6>.
+}
+
+STRING 2713
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area7>.
+}
+
+STRING 2714
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area8>.
+}
+
+STRING 2715
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area9>.
+}
+
+STRING 2716
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area10>.
+}
+
+STRING 2717
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area11>.
+}
+
+STRING 2718
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area12>.
+}
+
+STRING 2719
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area13>.
+}
+
+STRING 2720
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area14>.
+}
+
+STRING 2721
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area15>.
+}
+
+STRING 2722
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area16>.
+}
+
+STRING 2723
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area17>.
+}
+
+STRING 2724
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area18>.
+}
+
+STRING 2725
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area19>.
+}
+
+STRING 2726
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area20>.
+}
+
+STRING 2727
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area21>.
+}
+
+STRING 2728
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area22>.
+}
+
+STRING 2729
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area23>.
+}
+
+STRING 2730
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area24>.
+}
+
+STRING 2731
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area25>.
+}
+
+STRING 2732
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area26>.
+}
+
+STRING 2733
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area27>.
+}
+
+STRING 2734
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area28>.
+}
+
+STRING 2735
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area29>.
+}
+
+STRING 2736
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area30>.
+}
+
+STRING 2737
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area31>.
+}
+
+STRING 2738
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area32>.
+}
+
+STRING 2739
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area33>.
+}
+
+STRING 2740
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area34>.
+}
+
+STRING 2741
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area35>.
+}
+
+STRING 2742
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area36>.
+}
+
+STRING 2743
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area37>.
+}
+
+STRING 2744
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area38>.
+}
+
+STRING 2745
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area39>.
+}
+
+STRING 2746
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area40>.
+}
+
+STRING 2747
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area41>.
+}
+
+STRING 2748
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area42>.
+}
+
+STRING 2749
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area43>.
+}
+
+STRING 2750
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area44>.
+}
+
+STRING 2751
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area45>.
+}
+
+STRING 2752
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area46>.
+}
+
+STRING 2753
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area47>.
+}
+
+STRING 2754
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area48>.
+}
+
+STRING 2755
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area49>.
+}
+
+STRING 2756
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area50>.
+}
+
+STRING 2757
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area51>.
+}
+
+STRING 2758
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area52>.
+}
+
+STRING 2759
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area53>.
+}
+
+STRING 2760
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area54>.
+}
+
+STRING 2761
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area55>.
+}
+
+STRING 2762
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area56>.
+}
+
+STRING 2763
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area57>.
+}
+
+STRING 2764
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area58>.
+}
+
+STRING 2765
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area59>.
+}
+
+STRING 2766
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area60>.
+}
+
+STRING 2767
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area61>.
+}
+
+STRING 2768
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area62>.
+}
+
+STRING 2769
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area63>.
+}
+
+STRING 2770
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area64>.
+}
+
+STRING 2771
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area65>.
+}
+
+STRING 2772
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area66>.
+}
+
+STRING 2773
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area67>.
+}
+
+STRING 2774
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area68>.
+}
+
+STRING 2775
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area69>.
+}
+
+STRING 2776
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area70>.
+}
+
+STRING 2777
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area71>.
+}
+
+STRING 2778
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area72>.
+}
+
+STRING 2779
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area73>.
+}
+
+STRING 2780
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area74>.
+}
+
+STRING 2781
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area75>.
+}
+
+STRING 2782
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area76>.
+}
+
+STRING 2783
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area77>.
+}
+
+STRING 2784
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area78>.
+}
+
+STRING 2785
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area79>.
+}
+
+STRING 2786
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area80>.
+}
+
+STRING 2787
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area81>.
+}
+
+STRING 2788
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area82>.
+}
+
+STRING 2789
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area83>.
+}
+
+STRING 2790
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area84>.
+}
+
+STRING 2791
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area85>.
+}
+
+STRING 2792
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area86>.
+}
+
+STRING 2793
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area87>.
+}
+
+STRING 2794
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area88>.
+}
+
+STRING 2795
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area89>.
+}
+
+STRING 2796
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area90>.
+}
+
+STRING 2797
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area91>.
+}
+
+STRING 2798
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area92>.
+}
+
+STRING 2799
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area93>.
+}
+
+STRING 2800
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area94>.
+}
+
+STRING 2801
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area95>.
+}
+
+STRING 2802
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area96>.
+}
+
+STRING 2803
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area97>.
+}
+
+STRING 2804
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area98>.
+}
+
+STRING 2805
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area99>.
+}
+
+STRING 2806
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area100>.
+}
+
+STRING 2807
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area101>.
+}
+
+STRING 2808
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area102>.
+}
+
+STRING 2809
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area103>.
+}
+
+STRING 2810
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area104>.
+}
+
+STRING 2811
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area105>.
+}
+
+STRING 2812
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area106>.
+}
+
+STRING 2813
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area107>.
+}
+
+STRING 2814
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area108>.
+}
+
+STRING 2815
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area109>.
+}
+
+STRING 2816
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area110>.
+}
+
+STRING 2817
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area111>.
+}
+
+STRING 2818
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area112>.
+}
+
+STRING 2819
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area113>.
+}
+
+STRING 2820
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area114>.
+}
+
+STRING 2821
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area115>.
+}
+
+STRING 2822
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area116>.
+}
+
+STRING 2823
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area117>.
+}
+
+STRING 2824
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area118>.
+}
+
+STRING 2825
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area119>.
+}
+
+STRING 2826
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area120>.
+}
+
+STRING 2827
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area121>.
+}
+
+STRING 2828
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area122>.
+}
+
+STRING 2829
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area123>.
+}
+
+STRING 2830
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area124>.
+}
+
+STRING 2831
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area125>.
+}
+
+STRING 2832
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area126>.
+}
+
+STRING 2833
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area127>.
+}
+
+STRING 2834
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area128>.
+}
+
+STRING 2835
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area129>.
+}
+
+STRING 2836
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area130>.
+}
+
+STRING 2837
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area131>.
+}
+
+STRING 2838
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area132>.
+}
+
+STRING 2839
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area133>.
+}
+
+STRING 2840
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area134>.
+}
+
+STRING 2841
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area135>.
+}
+
+STRING 2842
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area136>.
+}
+
+STRING 2843
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area137>.
+}
+
+STRING 2844
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area138>.
+}
+
+STRING 2845
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area139>.
+}
+
+STRING 2846
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area140>.
+}
+
+STRING 2847
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area141>.
+}
+
+STRING 2848
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area142>.
+}
+
+STRING 2849
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area143>.
+}
+
+STRING 2850
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area144>.
+}
+
+STRING 2851
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area145>.
+}
+
+STRING 2852
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area146>.
+}
+
+STRING 2853
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area147>.
+}
+
+STRING 2854
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area148>.
+}
+
+STRING 2855
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area149>.
+}
+
+STRING 2856
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area150>.
+}
+
+STRING 2857
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area151>.
+}
+
+STRING 2858
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area152>.
+}
+
+STRING 2859
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area153>.
+}
+
+STRING 2860
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area154>.
+}
+
+STRING 2861
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area155>.
+}
+
+STRING 2862
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area156>.
+}
+
+STRING 2863
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area157>.
+}
+
+STRING 2864
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area158>.
+}
+
+STRING 2865
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area159>.
+}
+
+STRING 2866
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area160>.
+}
+
+STRING 2867
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area161>.
+}
+
+STRING 2868
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area162>.
+}
+
+STRING 2869
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area163>.
+}
+
+STRING 2870
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area164>.
+}
+
+STRING 2871
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area165>.
+}
+
+STRING 2872
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area166>.
+}
+
+STRING 2873
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area167>.
+}
+
+STRING 2874
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area168>.
+}
+
+STRING 2875
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area169>.
+}
+
+STRING 2876
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area170>.
+}
+
+STRING 2877
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area171>.
+}
+
+STRING 2878
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area172>.
+}
+
+STRING 2879
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area173>.
+}
+
+STRING 2880
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area174>.
+}
+
+STRING 2881
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area175>.
+}
+
+STRING 2882
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area176>.
+}
+
+STRING 2883
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area177>.
+}
+
+STRING 2884
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area178>.
+}
+
+STRING 2885
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area179>.
+}
+
+STRING 2886
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area180>.
+}
+
+STRING 2887
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area181>.
+}
+
+STRING 2888
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area182>.
+}
+
+STRING 2889
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area183>.
+}
+
+STRING 2890
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area184>.
+}
+
+STRING 2891
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area185>.
+}
+
+STRING 2892
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area186>.
+}
+
+STRING 2893
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area187>.
+}
+
+STRING 2894
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area188>.
+}
+
+STRING 2895
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area189>.
+}
+
+STRING 2896
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area190>.
+}
+
+STRING 2897
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area191>.
+}
+
+STRING 2898
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area192>.
+}
+
+STRING 2899
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area193>.
+}
+
+STRING 2900
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area194>.
+}
+
+STRING 2901
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area195>.
+}
+
+STRING 2902
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area196>.
+}
+
+STRING 2903
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area197>.
+}
+
+STRING 2904
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area198>.
+}
+
+STRING 2905
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area199>.
+}
+
+STRING 2906
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area200>.
+}
+
+STRING 2907
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area201>.
+}
+
+STRING 2908
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area202>.
+}
+
+STRING 2909
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area203>.
+}
+
+STRING 2910
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area204>.
+}
+
+STRING 2911
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area205>.
+}
+
+STRING 2912
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area206>.
+}
+
+STRING 2913
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area207>.
+}
+
+STRING 2914
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area208>.
+}
+
+STRING 2915
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area209>.
+}
+
+STRING 2916
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area210>.
+}
+
+STRING 2917
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area211>.
+}
+
+STRING 2918
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area212>.
+}
+
+STRING 2919
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area213>.
+}
+
+STRING 2920
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area214>.
+}
+
+STRING 2921
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area215>.
+}
+
+STRING 2922
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area216>.
+}
+
+STRING 2923
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area217>.
+}
+
+STRING 2924
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area218>.
+}
+
+STRING 2925
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area219>.
+}
+
+STRING 2926
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area220>.
+}
+
+STRING 2927
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area221>.
+}
+
+STRING 2928
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area222>.
+}
+
+STRING 2929
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area223>.
+}
+
+STRING 2930
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area224>.
+}
+
+STRING 2931
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area225>.
+}
+
+STRING 2932
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area226>.
+}
+
+STRING 2933
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area227>.
+}
+
+STRING 2934
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area228>.
+}
+
+STRING 2935
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area229>.
+}
+
+STRING 2936
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area230>.
+}
+
+STRING 2937
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area231>.
+}
+
+STRING 2938
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area232>.
+}
+
+STRING 2939
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area233>.
+}
+
+STRING 2940
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area234>.
+}
+
+STRING 2941
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area235>.
+}
+
+STRING 2942
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area236>.
+}
+
+STRING 2943
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area237>.
+}
+
+STRING 2944
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area238>.
+}
+
+STRING 2945
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area239>.
+}
+
+STRING 2946
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area240>.
+}
+
+STRING 2947
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area241>.
+}
+
+STRING 2948
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area242>.
+}
+
+STRING 2949
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area243>.
+}
+
+STRING 2950
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area244>.
+}
+
+STRING 2951
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area245>.
+}
+
+STRING 2952
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area246>.
+}
+
+STRING 2953
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area247>.
+}
+
+STRING 2954
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area248>.
+}
+
+STRING 2955
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area249>.
+}
+
+STRING 2956
+// Upgrades: R003 (Long Rifles), Ubertip (Tooltip - Extended)
+{
+Increases attack range by <A00K,Area250>.
+}
+
+STRING 2962
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2963
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2964
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2965
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2966
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2967
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2968
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2969
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2970
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2971
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2972
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2973
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2974
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2975
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2976
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2977
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2978
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2979
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2980
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2981
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2982
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2983
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2984
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2985
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2986
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2987
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2988
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2989
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2990
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2991
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2992
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2993
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2994
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2995
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2996
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2997
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2998
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 2999
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3000
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3001
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3002
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3003
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3004
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3005
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3006
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3007
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3008
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3009
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3010
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3011
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3012
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3013
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3014
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3015
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3016
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3017
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3018
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3019
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3020
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3021
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3022
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3023
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3024
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3025
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3026
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3027
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3028
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3029
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3030
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3031
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3032
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3033
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3034
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3035
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3036
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3037
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3038
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3039
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3040
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3041
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3042
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3043
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3044
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3045
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3046
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3047
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3048
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3049
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3050
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3051
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3052
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3053
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3054
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3055
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3056
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3057
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3058
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3059
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3060
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3061
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3062
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3063
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3064
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3065
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3066
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3067
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3068
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3069
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3070
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3071
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3072
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3073
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3074
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3075
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3076
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3077
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3078
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3079
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3080
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3081
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3082
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3083
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3084
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3085
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3086
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3087
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3088
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3089
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3090
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3091
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3092
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3093
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3094
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3095
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3096
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3097
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3098
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3099
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3100
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3101
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3102
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3103
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3104
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3105
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3106
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3107
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3108
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3109
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3110
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3111
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3112
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3113
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3114
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3115
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3116
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3117
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3118
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3119
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3120
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3121
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3122
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3123
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3124
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3125
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3126
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3127
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3128
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3129
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3130
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3131
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3132
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3133
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3134
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3135
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3136
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3137
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3138
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3139
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3140
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3141
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3142
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3143
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3144
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3145
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3146
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3147
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3148
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3149
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3150
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3151
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3152
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3153
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3154
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3155
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3156
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3157
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3158
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3159
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3160
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3161
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3162
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3163
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3164
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3165
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3166
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3167
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3168
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3169
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3170
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3171
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3172
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3173
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3174
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3175
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3176
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3177
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3178
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3179
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3180
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3181
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3182
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3183
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3184
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3185
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3186
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3187
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3188
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3189
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3190
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3191
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3192
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3193
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3194
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3195
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3196
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3197
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3198
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3199
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3200
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3201
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3202
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3203
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3204
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3205
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3206
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3712
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3713
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3714
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3715
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3716
+// Upgrades: R003 (Long Rifles), EditorSuffix (Editor Suffix)
+{
+(Attacker)
+}
+
+STRING 3989
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur1,.> seconds and heroes for <A00J,HeroDur1,.> seconds.
+}
+
+STRING 3990
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur2,.> seconds and heroes for <A00J,HeroDur2,.> seconds.
+}
+
+STRING 3991
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur3,.> seconds and heroes for <A00J,HeroDur3,.> seconds.
+}
+
+STRING 3992
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur4,.> seconds and heroes for <A00J,HeroDur4,.> seconds.
+}
+
+STRING 3993
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur5,.> seconds and heroes for <A00J,HeroDur5,.> seconds.
+}
+
+STRING 3994
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur6,.> seconds and heroes for <A00J,HeroDur6,.> seconds.
+}
+
+STRING 3995
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur7,.> seconds and heroes for <A00J,HeroDur7,.> seconds.
+}
+
+STRING 3996
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur8,.> seconds and heroes for <A00J,HeroDur8,.> seconds.
+}
+
+STRING 3997
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur9,.> seconds and heroes for <A00J,HeroDur9,.> seconds.
+}
+
+STRING 3998
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur10,.> seconds and heroes for <A00J,HeroDur10,.> seconds.
+}
+
+STRING 3999
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur11,.> seconds and heroes for <A00J,HeroDur11,.> seconds.
+}
+
+STRING 4000
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur12,.> seconds and heroes for <A00J,HeroDur12,.> seconds.
+}
+
+STRING 4001
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur13,.> seconds and heroes for <A00J,HeroDur13,.> seconds.
+}
+
+STRING 4002
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur14,.> seconds and heroes for <A00J,HeroDur14,.> seconds.
+}
+
+STRING 4003
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur15,.> seconds and heroes for <A00J,HeroDur15,.> seconds.
+}
+
+STRING 4004
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur16,.> seconds and heroes for <A00J,HeroDur16,.> seconds.
+}
+
+STRING 4005
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur17,.> seconds and heroes for <A00J,HeroDur17,.> seconds.
+}
+
+STRING 4006
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur18,.> seconds and heroes for <A00J,HeroDur18,.> seconds.
+}
+
+STRING 4007
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur19,.> seconds and heroes for <A00J,HeroDur19,.> seconds.
+}
+
+STRING 4008
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur20,.> seconds and heroes for <A00J,HeroDur20,.> seconds.
+}
+
+STRING 4009
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur21,.> seconds and heroes for <A00J,HeroDur21,.> seconds.
+}
+
+STRING 4010
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur22,.> seconds and heroes for <A00J,HeroDur22,.> seconds.
+}
+
+STRING 4011
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur23,.> seconds and heroes for <A00J,HeroDur23,.> seconds.
+}
+
+STRING 4012
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur24,.> seconds and heroes for <A00J,HeroDur24,.> seconds.
+}
+
+STRING 4013
+// Abilities: A00J (Entangling Roots), Ubertip (Tooltip - Normal - Extended)
+{
+Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur25,.> seconds and heroes for <A00J,HeroDur25,.> seconds.
+}
+
+STRING 4040
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB1> bonus hit points and damage. |nLasts <A00I,Dur1> seconds.
+}
+
+STRING 4041
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB2> bonus hit points and damage. |nLasts <A00I,Dur2> seconds.
+}
+
+STRING 4042
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB3> bonus hit points and damage. |nLasts <A00I,Dur3> seconds.
+}
+
+STRING 4043
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB4> bonus hit points and damage. |nLasts <A00I,Dur4> seconds.
+}
+
+STRING 4044
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB5> bonus hit points and damage. |nLasts <A00I,Dur5> seconds.
+}
+
+STRING 4045
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB6> bonus hit points and damage. |nLasts <A00I,Dur6> seconds.
+}
+
+STRING 4046
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB7> bonus hit points and damage. |nLasts <A00I,Dur7> seconds.
+}
+
+STRING 4047
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB8> bonus hit points and damage. |nLasts <A00I,Dur8> seconds.
+}
+
+STRING 4048
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB9> bonus hit points and damage. |nLasts <A00I,Dur9> seconds.
+}
+
+STRING 4049
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB10> bonus hit points and damage. |nLasts <A00I,Dur10> seconds.
+}
+
+STRING 4050
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB11> bonus hit points and damage. |nLasts <A00I,Dur11> seconds.
+}
+
+STRING 4051
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB12> bonus hit points and damage. |nLasts <A00I,Dur12> seconds.
+}
+
+STRING 4052
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB13> bonus hit points and damage. |nLasts <A00I,Dur13> seconds.
+}
+
+STRING 4053
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB14> bonus hit points and damage. |nLasts <A00I,Dur14> seconds.
+}
+
+STRING 4054
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB15> bonus hit points and damage. |nLasts <A00I,Dur15> seconds.
+}
+
+STRING 4055
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB16> bonus hit points and damage. |nLasts <A00I,Dur16> seconds.
+}
+
+STRING 4056
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB17> bonus hit points and damage. |nLasts <A00I,Dur17> seconds.
+}
+
+STRING 4057
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB18> bonus hit points and damage. |nLasts <A00I,Dur18> seconds.
+}
+
+STRING 4058
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB19> bonus hit points and damage. |nLasts <A00I,Dur19> seconds.
+}
+
+STRING 4059
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB20> bonus hit points and damage. |nLasts <A00I,Dur20> seconds.
+}
+
+STRING 4060
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB21> bonus hit points and damage. |nLasts <A00I,Dur21> seconds.
+}
+
+STRING 4061
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB22> bonus hit points and damage. |nLasts <A00I,Dur22> seconds.
+}
+
+STRING 4062
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB23> bonus hit points and damage. |nLasts <A00I,Dur23> seconds.
+}
+
+STRING 4063
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB24> bonus hit points and damage. |nLasts <A00I,Dur24> seconds.
+}
+
+STRING 4064
+// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00I,DataB25> bonus hit points and damage. |nLasts <A00I,Dur25> seconds.
+}
+
+STRING 4065
+// Abilities: A00L (Copious Blood), EditorSuffix (Editor Suffix)
+{
+(Hulk)
+}
+
+STRING 4066
+// Abilities: A004 (Heal), Ubertip (Tooltip - Normal - Extended)
+{
+Heals a target friendly non-mechanical wounded unit for <A004,DataA1> hit points.
+}
+
+STRING 4092
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 4|r]
+}
+
+STRING 4093
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 5|r]
+}
+
+STRING 4094
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 6|r]
+}
+
+STRING 4095
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 7|r]
+}
+
+STRING 4096
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 8|r]
+}
+
+STRING 4097
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 9|r]
+}
+
+STRING 4098
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 10|r]
+}
+
+STRING 4099
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 11|r]
+}
+
+STRING 4100
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 12|r]
+}
+
+STRING 4101
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 13|r]
+}
+
+STRING 4102
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 14|r]
+}
+
+STRING 4103
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 15|r]
+}
+
+STRING 4104
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 16|r]
+}
+
+STRING 4105
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 17|r]
+}
+
+STRING 4106
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 18|r]
+}
+
+STRING 4107
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 19|r]
+}
+
+STRING 4108
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 20|r]
+}
+
+STRING 4109
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 21|r]
+}
+
+STRING 4110
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 22|r]
+}
+
+STRING 4111
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 23|r]
+}
+
+STRING 4112
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 24|r]
+}
+
+STRING 4113
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 25|r]
+}
+
+STRING 4114
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 1|r]
+}
+
+STRING 4115
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 2|r]
+}
+
+STRING 4116
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Bli|cffffcc00n|rk - [|cffffcc00Level 3|r]
+}
+
+STRING 4168
+// Abilities: A006 (Specialize), Tip (Tooltip - Normal)
+{
+Sp|cffffcc00e|rcialize
+}
+
+STRING 4221
+// Items: I004 (Dragon Glass), Name (Name)
+{
+Dragon Glass
+}
+
+STRING 4222
+// Items: I004 (Dragon Glass), Tip (Tooltip - Basic)
+{
+Purchase Dragon Glass
+}
+
+STRING 4225
+// Abilities: A00N (Dragon Fire), Name (Name)
+{
+Dragon Fire
+}
+
+STRING 4227
+// Abilities: A00H (Dragon Glass), Name (Name)
+{
+Dragon Glass
+}
+
+STRING 4228
+// Abilities: A00H (Dragon Glass), Tip (Tooltip - Normal)
+{
+Dragon Glass
+}
+
+STRING 4229
+// Abilities: A00H (Dragon Glass), Ubertip (Tooltip - Normal - Extended)
+{
+Throws a vile of Dragon Fire, which spreads and burns structures until they are destroyed.
+}
+
+STRING 4231
+// Buffs/Effects: B000 (), Buffubertip (Tooltip - Extended)
+{
+This unit is under the effects of Dragon Fire; it is burning down.
+}
+
+STRING 4232
+// Abilities: Adt1 (Detector), Tip (Tooltip - Normal)
+{
+Detector
+}
+
+STRING 4233
+// Abilities: Adt1 (Detector), Ubertip (Tooltip - Normal - Extended)
+{
+Reveals nearby invisible units.
+}
+
+STRING 4247
+// Abilities: AOmi (Mirror Image), Ubertip (Tooltip - Normal - Extended)
+{
+Confuses the enemy by creating an illusion. Dispels all magic from the Blademaster. |nLasts <AOmi,Dur1> seconds.|nDirect attacks deal <AOmi,DataB1,%>% damage.
+}
+
+STRING 4248
+// Abilities: AOmi (Mirror Image), Ubertip (Tooltip - Normal - Extended)
+{
+Confuses the enemy by creating an illusion. Dispels all magic from the Blademaster. |nLasts <AOmi,Dur2> seconds.|nDirect attacks deal <AOmi,DataB2,%>% damage.
+}
+
+STRING 4249
+// Abilities: AOmi (Mirror Image), Ubertip (Tooltip - Normal - Extended)
+{
+Confuses the enemy by creating an illusion. Dispels all magic from the Blademaster. |nLasts <AOmi,Dur3> seconds.|nDirect attacks deal <AOmi,DataB3,%>% damage.
+}
+
+STRING 4250
+// Items: I005 (Charm of Mana Negation), Name (Name)
+{
+Charm of Mana Negation
+}
+
+STRING 4251
+// Items: I005 (Charm of Mana Negation), Tip (Tooltip - Basic)
+{
+Purchase Charm of Mana Negation
+}
+
+STRING 4252
+// Items: I005 (Charm of Mana Negation), Description (Description)
+{
+Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
+}
+
+STRING 4254
+// Abilities: A00O (Mana Negation Aura), Name (Name)
+{
+Mana Negation Aura
+}
+
+STRING 4255
+// Buffs/Effects: B002 (), Buffubertip (Tooltip - Extended)
+{
+This unit is under the effects of Mana Negation Aura; it has decreased mana regeneration.
+}
+
+STRING 4256
+// Buffs/Effects: B002 (), Bufftip (Tooltip)
+{
+Mana Negation Aura
+}
+
+STRING 4257
+// Units: h00F (Phoenix), EditorSuffix (Name - Editor Suffix)
+{
+(Level 1)
+}
+
+STRING 4260
+// Upgrades: R004 (Berserker Upgrade), Name (Name)
+{
+Phoenix Scouts
+}
+
+STRING 4262
+// Upgrades: R004 (Berserker Upgrade), Tip (Tooltip)
+{
+Research Ph|cffffcc00o|renix Scouts
+}
+
+STRING 4263
+// Upgrades: R004 (Berserker Upgrade), Hotkey (Hotkey)
+{
+H
+}
+
+STRING 4264
+// Abilities: A00B (Scout Upgrade), Name (Name)
+{
+Scout Upgrade
+}
+
+STRING 4265
+// Units: h00G (Phoenix), EditorSuffix (Name - Editor Suffix)
+{
+(Level 2)
+}
+
+STRING 4266
+// Units: h00H (Phoenix), EditorSuffix (Name - Editor Suffix)
+{
+(Level 3)
+}
+
+STRING 4270
+// Abilities: A00P (Phoenix), Tip (Tooltip - Normal)
+{
+Phoenix (|cffffcc00C|r)
+}
+
+STRING 4273
+// Upgrades: R002 (Skeletal Mastery), Hotkey (Hotkey)
+{
+C
+}
+
+STRING 4274
+// Upgrades: R002 (Skeletal Mastery), Hotkey (Hotkey)
+{
+C
+}
+
+STRING 4275
+// Units: etol (Golem Totem), Ubertip (Tooltip - Extended)
+{
+Becomes a permement structure that increases damage of other golems in a large area of effect.|n|nHas various researches available, upgrading both golems and your shepherd.
+}
+
+STRING 4276
+// Abilities: AOmi (Mirror Image), Researchubertip (Tooltip - Learn - Extended)
+{
+Confuses the enemy by creating an illusion. Dispels all magic from the Blademaster. |nLasts <AOmi,Dur1> seconds.|n|n|cffffcc00Level 1|r - Direct attacks deal <AOmi,DataB1,%>% damage. |n|cffffcc00Level 2|r - Direct attacks deal <AOmi,DataB2,%>% damage. |n|cffffcc00Level 3|r - Direct attacks deal <AOmi,DataB3,%>% damage.
+}
+
+STRING 4279
+// Abilities: A00P (Phoenix), Tip (Tooltip - Normal)
+{
+Phoenix (|cffffcc00C|r)
+}
+
+STRING 4280
+// Abilities: A00P (Phoenix), Tip (Tooltip - Normal)
+{
+Phoenix (|cffffcc00C|r)
+}
+
+STRING 4283
+// Abilities: A00P (Phoenix), Researchubertip (Tooltip - Learn - Extended)
+{
+Summons a powerful Phoenix. The Phoenix burns with such intensity that it damages itself and nearby enemy structures. When a Phoenix dies, it creates an egg that will hatch into a Phoenix.|n|n|cffffcc00Level 1|r - Phoenix has 1250 maximum health.|n|cffffcc00Level 2|r - Phoenix has 1750 maximum health. |n|cffffcc00Level 3|r - Phoenix has 2250 maximum health.
+}
+
+STRING 4284
+// Abilities: A00P (Phoenix), Ubertip (Tooltip - Normal - Extended)
+{
+Summons a powerful Phoenix. The Phoenix burns with such intensity that it damages itself and nearby enemy structures. When a Phoenix dies, it creates an egg that will hatch into a Phoenix|nPhoenix has 1250 maximum health.
+}
+
+STRING 4285
+// Abilities: A00P (Phoenix), Ubertip (Tooltip - Normal - Extended)
+{
+Summons a powerful Phoenix. The Phoenix burns with such intensity that it damages itself and nearby enemy structures. When a Phoenix dies, it creates an egg that will hatch into a Phoenix|nPhoenix has 1750 maximum health.
+}
+
+STRING 4286
+// Abilities: A00P (Phoenix), Ubertip (Tooltip - Normal - Extended)
+{
+Summons a powerful Phoenix. The Phoenix burns with such intensity that it damages itself and nearby enemy structures. When a Phoenix dies, it creates an egg that will hatch into a Phoenix|nPhoenix has 2250 maximum health.
+}
+
+STRING 4287
+// Upgrades: R004 (Berserker Upgrade), Ubertip (Tooltip - Extended)
+{
+Replaces Scouts with Phoenix Scouts. Phoenixes deal damage to structures and can be reborn.
+}
+
+STRING 4290
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng1>.
+}
+
+STRING 4291
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng2>.
+}
+
+STRING 4292
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng3>.
+}
+
+STRING 4293
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng4>.
+}
+
+STRING 4294
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng5>.
+}
+
+STRING 4295
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng6>.
+}
+
+STRING 4296
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng7>.
+}
+
+STRING 4297
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng8>.
+}
+
+STRING 4298
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng9>.
+}
+
+STRING 4299
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng10>.
+}
+
+STRING 4300
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng11>.
+}
+
+STRING 4301
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng12>.
+}
+
+STRING 4302
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng13>.
+}
+
+STRING 4303
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng14>.
+}
+
+STRING 4304
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng15>.
+}
+
+STRING 4305
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng16>.
+}
+
+STRING 4306
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng17>.
+}
+
+STRING 4307
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng18>.
+}
+
+STRING 4308
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng19>.
+}
+
+STRING 4309
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng20>.
+}
+
+STRING 4310
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng21>.
+}
+
+STRING 4311
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng22>.
+}
+
+STRING 4312
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng23>.
+}
+
+STRING 4313
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng24>.
+}
+
+STRING 4314
+// Abilities: A00L (Copious Blood), Ubertip (Tooltip - Normal - Extended)
+{
+Increases maximum health by <A00L,Rng25>.
+}
+
+STRING 4315
+// Abilities: A007 (Flash), Ubertip (Tooltip - Normal - Extended)
+{
+Passive: Swift Feet - Increases movement speed by <A00F,DataA1,%>% per level.|nActive: Blink - Teleports a short distance (<A00A,DataA1> per level).
+}
+
+STRING 4316
+// Abilities: A008 (Engineer), Ubertip (Tooltip - Normal - Extended)
+{
+Passive: Hearty Farms - Increases the maximum health points of newly constructed farms by 10 per level.|nActive: Harden - Increases the armor of nearby farms by <A00G,DataA1> per level for <A00G,Dur1> seconds.
+}
+
+STRING 4317
+// Abilities: A00E (Attacker), Ubertip (Tooltip - Normal - Extended)
+{
+Passive: Projectile Spit - Increases attack range by <A00K,Area1> per level.|nActive: Entangling Roots - Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur1,.> seconds per level and heroes for <A00J,HeroDur1,.> seconds per level.
+}
+
+STRING 4318
+// Abilities: A00C (Hulk), Ubertip (Tooltip - Normal - Extended)
+{
+Passive: Copious Blood - Increases maximum health by <A00L,Rng1> per level.|nActive: Avatar - Gives your sheep <A00I,DataB1> bonus hit points and damage per level. |nLasts <A00I,Dur1> seconds.
+}
+
+STRING 4319
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA1>).
+}
+
+STRING 4320
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA2>).
+}
+
+STRING 4321
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA3>).
+}
+
+STRING 4322
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA4>).
+}
+
+STRING 4323
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA5>).
+}
+
+STRING 4324
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA6>).
+}
+
+STRING 4325
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA7>).
+}
+
+STRING 4326
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA8>).
+}
+
+STRING 4327
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA9>).
+}
+
+STRING 4328
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA10>).
+}
+
+STRING 4329
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA11>).
+}
+
+STRING 4330
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA12>).
+}
+
+STRING 4331
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA13>).
+}
+
+STRING 4332
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA14>).
+}
+
+STRING 4333
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA15>).
+}
+
+STRING 4334
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA16>).
+}
+
+STRING 4335
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA17>).
+}
+
+STRING 4336
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA18>).
+}
+
+STRING 4337
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA19>).
+}
+
+STRING 4338
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA20>).
+}
+
+STRING 4339
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA21>).
+}
+
+STRING 4340
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA22>).
+}
+
+STRING 4341
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA23>).
+}
+
+STRING 4342
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA24>).
+}
+
+STRING 4343
+// Abilities: A00A (Blink), Ubertip (Tooltip - Normal - Extended)
+{
+Teleports a short distance (<A00A,DataA25>).
+}
+
+STRING 4344
+// Units: h00I (Piiri Tower), Name (Name)
+{
+Piiri Tower
+}
+
+STRING 4346
+// Items: tfar (Siege Tower), Tip (Tooltip - Basic)
+{
+Purchase Si|cffffcc00e|rge Tower
+}
+
+STRING 4348
+// Abilities: Abof (Burning Oil), Ubertip (Tooltip - Normal - Extended)
+{
+Drenches the Piiri Tower's ammo in burning oil, causing them to light the ground on fire and burn structures.
+}
+
+STRING 4349
+// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 4350
+// Units: h00I (Piiri Tower), Tip (Tooltip - Basic)
+{
+Piiri Tower
+}
+
+STRING 4351
+// Units: h00I (Piiri Tower), Ubertip (Tooltip - Extended)
+{
+An upgraded tower with more range, health, and health regeneration. Also has Burning Oil, which deals structural damage over time.
+}
+
+STRING 4352
+// Abilities: A00N (Dragon Fire), Tip (Tooltip - Normal)
+{
+|cffff0000Dragon Fire
+}
+
+STRING 4353
+// Buffs/Effects: B000 (), Bufftip (Tooltip)
+{
+|cffff0000Dragon Fire
+}
+
+STRING 4354
+// Abilities: Aasl (|cff00ff00Dolly Speed Aura|r), Name (Name)
+{
+|cff00ff00Dolly Speed Aura|r
+}
+
+STRING 4360
+{
+Wolves
+}
+
+STRING 4364
+// Abilities: A00Q (True Sight), EditorSuffix (Editor Suffix)
+{
+(Phoenix)
+}
+
+STRING 4367
+// Abilities: AHds (Divine Shield), Researchubertip (Tooltip - Learn - Extended)
+{
+An impenetrable shield surrounds the unit, protecting them from all damage and spells for a set amount of time. |n|n|cffffcc00Level 1|r - Lasts <AHds,Dur1> seconds. |n|cffffcc00Level 2|r - Lasts <AHds,Dur2> seconds. |n|cffffcc00Level 3|r - Lasts <AHds,Dur3> seconds.
+}
+
+STRING 4374
+// Items: mcou (Dagger), Description (Description)
+{
+Increases the Intelligence of the Hero by 4 when worn.
+}
+
+STRING 4379
+// Items: I004 (Dragon Glass), Description (Description)
+{
+A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures.|nDeals 1% damage per second.
+}
+
+STRING 4381
+// Abilities: A00N (Dragon Fire), Ubertip (Tooltip - Normal - Extended)
+{
+This structure has under the effect of Dragon Fire; it will burn forever and spread Dragon Fire to nearby structures.|nDeals 1% damage per second.|n|cffff0000Destroy structures to stop the spread!|r
+}
+
+STRING 4382
+// Items: ofir (Orb of Fire), Description (Description)
+{
+Attacks do fire damage. Doubles as claws +21.
+}
+
+STRING 4386
+// Abilities: A00M (Select Farm), Ubertip (Tooltip - Normal - Extended)
+{
+Selects the type of farm the Factory Farm produces.
+}
+
+STRING 4387
+// Abilities: A00M (Select Farm), Tip (Tooltip - Normal)
+{
+|cffffcc00S|relect Farm
+}
+
+STRING 4388
+// Abilities: A00M (Select Farm), Hotkey (Hotkey - Normal)
+{
+S
+}
+
+STRING 4389
+// Abilities: A00M (Select Farm), Name (Name)
+{
+Select Farm
+}
+
+STRING 4390
+// Abilities: A00M (Select Farm), EditorSuffix (Editor Suffix)
+{
+(Factory Farm)
+}
+
+STRING 4391
+// Units: h00C (Factory Farm), Ubertip (Tooltip - Extended)
+{
+A farm that produces other farms. I'm sure that's balanced!
+}
+
+STRING 4392
+// Abilities: A00D (Destroy Farm), Name (Name)
+{
+Destroy Farm
+}
+
+STRING 4393
+// Abilities: A00D (Destroy Farm), Tip (Tooltip - Normal)
+{
+Destory Farm (|cffffcc00X|r)
+}
+
+STRING 4394
+// Abilities: A00D (Destroy Farm), Ubertip (Tooltip - Normal - Extended)
+{
+Destroys your last constructed farm.
+}
+
+STRING 4396
+// Abilities: AIh2 (Item Healing), EditorSuffix (Editor Suffix)
+{
+(Health Stone)
+}
+
+STRING 4397
+// Abilities: Arll (Item Life Regeneration), EditorSuffix (Editor Suffix)
+{
+(Health Stone)
+}
+
+STRING 4400
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4402
+// Items: ratf (Claws of Attack +21), Ubertip (Tooltip - Extended)
+{
+Increases the attack damage of the Hero by 21 when worn.|n-buy 21
+}
+
+STRING 4403
+// Items: rat9 (Claws of Attack +9), Ubertip (Tooltip - Extended)
+{
+Increases the attack damage of the Hero by 9 when worn.|n-buy 9
+}
+
+STRING 4404
+// Items: gemt (Gem of True Seeing), Ubertip (Tooltip - Extended)
+{
+Allows the Hero to detect hidden or invisible units in the Hero's line of sight when carried.|n-buy gem
+}
+
+STRING 4405
+// Items: bspd (Boots of Speed), Ubertip (Tooltip - Extended)
+{
+Increases the movement speed of the Hero when worn.|n-buy boots
+}
+
+STRING 4406
+// Items: pnvu (Potion of Invulnerability), Ubertip (Tooltip - Extended)
+{
+Makes the Hero invulnerable to damage for <AIvu,Dur1> seconds when used. An invulnerable Hero may not be the target of spells or effects.|n-buy invul
+}
+
+STRING 4407
+// Items: clfm (Cloak of Flames), Ubertip (Tooltip - Extended)
+{
+Engulfs the Hero in fire which deals 15 damage per second to nearby enemy land units.|nEach additional Cloak of Flames increases the area of effect and damage.|n-buy cloak
+}
+
+STRING 4408
+// Items: clsd (Cloak of Shadows), Ubertip (Tooltip - Extended)
+{
+Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero moves, attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy shadow
+}
+
+STRING 4409
+// Items: ratc (Claws of Attack +12), Ubertip (Tooltip - Extended)
+{
+Increases the attack damage of the Hero by 12 when worn.|n-buy 12
+}
+
+STRING 4410
+// Items: rat6 (Claws of Attack +6), Ubertip (Tooltip - Extended)
+{
+Increases the attack damage of the Hero by 6 when worn.|n-buy 6
+}
+
+STRING 4411
+// Items: fgrg (Stone Token), Ubertip (Tooltip - Extended)
+{
+Summons a Rock Golem to fight for you. |nLasts <AIfr,Dur1> seconds.|n-buy golem
+}
+
+STRING 4412
+// Items: fgfh (Spiked Collar), Ubertip (Tooltip - Extended)
+{
+Summons a Fel Stalker to fight for you. |nLasts <AIfh,Dur1> seconds.|n-buy stalker
+}
+
+STRING 4413
+// Items: mcou (Dagger), Ubertip (Tooltip - Extended)
+{
+Increases the Intelligence of the Hero by 4 when worn. Useful to sell for some gold.|n-buy dagger
+}
+
+STRING 4414
+// Items: gcel (Gloves of Haste), Ubertip (Tooltip - Extended)
+{
+Increases the attack speed of the Hero by <A003,DataA1,%>% when worn.|n-buy gloves
+}
+
+STRING 4415
+// Items: hlst (Health Stone), Ubertip (Tooltip - Extended)
+{
+Increases the life regeneration rate of the Hero by <Arll,DataA1> hit points per second when worn. Can be consumed for <AIh2,DataA1> health.|n-buy health
+}
+
+STRING 4416
+// Items: tels (Goblin Night Scope), Ubertip (Tooltip - Extended)
+{
+Provides an increase to the Hero's line of sight radius at night when carried.|n-buy scope
+}
+
+STRING 4417
+// Items: pspd (Potion of Speed), Ubertip (Tooltip - Extended)
+{
+Increases the movement speed of the Hero by <AIsp,DataA1,%>% for <AIsp,Dur1> seconds.|n-buy speed
+}
+
+STRING 4418
+// Items: nspi (Necklace of Spell Immunity), Ubertip (Tooltip - Extended)
+{
+Renders the Hero invulnerable to magic.|n-buy neck
+}
+
+STRING 4419
+// Items: ofir (Orb of Fire), Ubertip (Tooltip - Extended)
+{
+Adds 16 bonus fire damage to the attack of a Hero when carried. The Hero's attacks also become ranged when attacking air and do 15 splash damage to nearby enemy units.|rDoes not stack.|n-buy orb
+}
+
+STRING 4420
+// Items: tfar (Siege Tower), Ubertip (Tooltip - Extended)
+{
+Creates a Siege Tower at a target location. Good for destroying bases. Can be upgraded to Piiri Tower.|n-buy siege
+}
+
+STRING 4421
+// Items: gobm (Goblin Land Mines), Ubertip (Tooltip - Extended)
+{
+Places a hidden land mine at a target point. Enemy units that move near the land mine will activate the mine, destroying the mine and causing area of effect damage to nearby units.|nContains <gobm,uses> charges.|n-buy mines
+}
+
+STRING 4422
+// Items: I000 (Anti's Light Sabre +30), Ubertip (Tooltip - Extended)
+{
+When worn, increases the attack damage of the Hero by 30, attack speed by 15%, and grants a frost effect on hit units.|n-buy sabre
+}
+
+STRING 4423
+// Items: I001 (Super Stone Token), Ubertip (Tooltip - Extended)
+{
+Summons 3 Rock Golems to fight for you.|n-buy supergolem
+}
+
+STRING 4424
+// Items: I003 (White Wolf), Ubertip (Tooltip - Extended)
+{
+Call upon the White Wolfs spirit to assist you in killing other sheep.|n-buy cheese
+}
+
+STRING 4425
+// Items: I002 (Claws of Attack +50), Ubertip (Tooltip - Extended)
+{
+Increases the attack damage of the Hero by 50 when worn.|n-buy 50
+}
+
+STRING 4426
+// Items: I004 (Dragon Glass), Ubertip (Tooltip - Extended)
+{
+A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 1% damage per second.|n-buy dragon
+}
+
+STRING 4427
+// Items: I005 (Charm of Mana Negation), Ubertip (Tooltip - Extended)
+{
+Decreases nearby units mana regeneration by <A00O,DataA1,%>%.|n-buy negation
+}
+
+STRING 4428
+// Items: pinv (Potion of Invisibility), Ubertip (Tooltip - Extended)
+{
+|cff87ceebNon-Combat Consumable|r|nRenders the Hero invisible for <AIv1,Dur1> seconds when used. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy invis
+}
+
+STRING 4429
+// Items: pman (Potion of Mana), Ubertip (Tooltip - Extended)
+{
+Restores <AIm1,DataA1> mana when used.|n-buy mana
+}
+
+STRING 4430
+// Items: tkno (Tome of Power), Ubertip (Tooltip - Extended)
+{
+Increases the level of the Hero by <AIlm,DataA1> when used. Can be used to gain lumber.|n-buy power
+}
+
+STRING 4431
+// Items: I000 (Anti's Light Sabre +30), Tip (Tooltip - Basic)
+{
+Purchase Anti's Light Sabre +30
+}
+
+STRING 4432
+{
+Kill things to get gold faster.
+}
+
+STRING 4433
+// Units: oeye (Sentry Ward), EditorSuffix (Name - Editor Suffix)
+{
+(Unused)
+}
+
+STRING 4434
+{
+Fixus 7b
+}
+

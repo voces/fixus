@@ -4,28 +4,20 @@
     "baseUrl": "./src",
     "allowJs": false,
     "target": "es6",
-    "lib": [
-      "es6"
-    ],
+    "lib": ["es6"],
     "moduleResolution": "classic",
     "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
-    "paths": {
-      "*": [
-        "../node_modules/*/src/index",
-        "../node_modules/*/lib/index",
-        "../node_modules/*/index",
-        "../node_modules/*/dist/index"
-      ]
-    },
-    "plugins": [
-      {
-        "transform": "ts-transformer-imports"
-      }
-    ],
+    "paths": {"*": [
+      "../node_modules/*/src/index",
+      "../node_modules/*/lib/index",
+      "../node_modules/*/index",
+      "../node_modules/*/dist/index"
+    ]},
+    "plugins": [{"transform": "ts-transformer-imports"}],
     "types": [
       "lua-types/core/coroutine",
       "lua-types/core/global",
@@ -43,16 +35,14 @@
       "war3-types/core/polyfill"
     ]
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [],
+  "include": ["src"],
+  "exclude": ["**/*.spec.ts"],
   "tstl": {
     "luaTarget": "5.3",
     "noHeader": true,
     "luaLibImport": "require",
     "noImplicitSelf": true,
     "luaBundle": "dist/tstl_output.lua",
-    "luaBundleEntry": "./src/main.ts"
+    "luaBundleEntry": "./src/index.ts"
   }
 }

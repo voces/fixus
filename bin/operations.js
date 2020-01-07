@@ -53,7 +53,7 @@ switch (operation) {
     break;
 
   case "run":
-    const filename = `${cwd}/dist/${config.mapFolder}`;
+    const filename = `${cwd.replace("/mnt/c/", "C://")}/dist/${config.mapFolder}`;
 
     console.log(`Launching map "${filename.replace(/\\/g, "/")}"...`);
 
