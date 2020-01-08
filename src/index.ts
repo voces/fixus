@@ -1,46 +1,30 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+import "./misc/fileIO";
+import "./sheep/factoryFarm";
+import "./sheep/specialization";
+import "./wolves/cloakOfFlames";
+import "./wolves/dragonFire";
+import "./wolves/scoutPhoenixUpgrade";
+import { myTimer, myTimerDialog } from "./core/init";
 
-// globals from AbilityPreload:
-const AbilityPreload__PreloadUnitRawcode = FourCC( "zsmc" );
-// // This is the rawcode for "Sammy!". It is never used and has no model,
-// // which makes an ideal preloading unit. Change it if you want to.
-let AbilityPreload__PreloadUnit: unit;
-// endglobals from AbilityPreload
-// globals from CloakOfFlames:
-const CloakOfFlames__cloakHolders = CreateGroup();
-// endglobals from CloakOfFlames
-// globals from DragonFire:
-let DragonFire__burnWolfId = 7;
-let DragonFire__emptyCount: number;
-const DragonFire__spreadFire = CreateTrigger();
-const DragonFire__burnUnits = CreateTrigger();
-// endglobals from DragonFire
-// globals from FactoryFarm:
-const FactoryFarm__factoryFarmTimer = CreateTimer();
-let FactoryFarm__factoryFarmSheep: unit;
-const FactoryFarm__factoryFarms = CreateGroup();
-const FactoryFarm__factoryFarmData = InitHashtable();
-const FactoryFarm__factoryFarmsTemp = CreateGroup();
-let FactoryFarm__factoryFarmBuilds: number;
-// endglobals from FactoryFarm
-// globals from FileIO:
-// Enable this if you want to allow the system to read files generated in patch 1.30 or below.
-// NOTE: For this to work properly you must edit the 'Amls' ability and change the levels to 2
-// as well as typing something in "Level 2 - Text - Tooltip - Normal" text field.
-//
-// Enabling this will also cause the system to treat files written with .write("") as empty files.
-//
-// This setting is really only intended for those who were already using the system in their map
-// prior to patch 1.31 and want to keep old files created with this system to still work.
-// endglobals from FileIO
-// globals from ScoutPhoenixUpgrade:
-// endglobals from ScoutPhoenixUpgrade
-// globals from Specialization:
-const Specialization__playerSpecializations: Array<number> = [];
-const Specialization__specializations: Array<number> = [];
-const Specialization__levels: Array<number> = [];
-// endglobals from Specialization
+const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
+
+	let value = init;
+	return ( newValue?: T ): T => {
+
+		if ( newValue !== undefined )
+			value = newValue;
+
+		if ( value === undefined )
+			throw new Error( "variable left undefined" );
+
+		return value;
+
+	};
+
+};
+
 // // Generated
 // let gg_rct_Pen: rect;
 // let gg_trg_coreInit: trigger;
@@ -54,115 +38,58 @@ const Specialization__levels: Array<number> = [];
 // let gg_trg_sheepJotyeFarm: trigger;
 // let gg_trg_eggGem: trigger;
 // let gg_trg_eggDolly: trigger;
-// let gameState = "init";
-const saveskills: Array<number> = [];
-// const myTimer = CreateTimer();
-// const myTimerDialog = CreateTimerDialog( myTimer );
-const wolves: Array<unit> = [];
-// const sheeps: Array<unit> = [];
+type GAME_STATES = "init" | "start" | "play";
+export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetterFunc( "init" as GAME_STATES );
+export const saveskills: Array<number> = [];
+export const wolves: Array<unit> = [];
+export const sheeps: Array<unit> = [];
 // const wisps: Array<unit> = [];
 // const wws: Array<unit> = [];
-// const sheepTeam = CreateForce();
-// const wolfTeam = CreateForce();
-// const wispTeam = CreateForce();
-// const color: Array<string> = [];
-// const itemSpecs: Array<number> = [];
-// // skip 0 to avoid typos
-// let itemSpecsLength = 1;
-// const itemSpecsNames = InitHashtable();
-// const itemSpecsIds = InitHashtable();
-// let board: multiboard;
+export const sheepTeam = CreateForce();
+export const wolfTeam = CreateForce();
+const wispTeam = CreateForce();
+export const color: Array<string> = [];
+export const board: ( newBoard?: multiboard ) => multiboard = getterSetterFunc();
 // const myArg: Array<string | null> = [];
 // let myArgCount = 0;
-// const gemActivated: Array<boolean> = [];
-let WORLD_BOUNDS: rect;
+export const gemActivated: Array<boolean> = [];
+export const WORLD_BOUNDS: ( newRect?: rect ) => rect = getterSetterFunc();
 
-// const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
+const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
 // const quickBuyTax = 1.5;
 // const quickSellTax = 0.5;
-// let gameEnded = false;
-// let someInteger: number;
+let gameEnded = false;
+let someInteger: number;
 // const sheepZoom: Array<number> = [];
 // const wolfZoom: Array<number> = [];
-// let goldFactor = 1;
+// export let goldFactor = 1;
+export const goldFactor: ( newFactory?: number ) => number = getterSetterFunc( 1 );
 // const wwTimer: Array<timer> = [];
 // const wwTimerDialog: Array<timerdialog> = [];
-// const dollyClick: Array<number> = [];
+export const dollyClick: Array<number> = [];
 // let katama = true;
 // const dollyTimer: Array<timer> = [];
 // const dollyTimerDialog: Array<timerdialog> = [];
 
-// // JASSHelper struct globals:
-const s__DragonFire__data_dragonGlass = FourCC( "A00H" );
-const s__DragonFire__data_dragonFireBuff = FourCC( "B000" );
-const s__DragonFire__data_dragonFireAbility = FourCC( "A00N" );
-const s__FactoryFarm__data_factoryFarmType = FourCC( "h00C" );
-const s__FactoryFarm__data_typeIndex = 0;
-const s__FactoryFarm__data_spiralIndex = 1;
-const s__FactoryFarm__data_waitBetweenTicks = 2.5;
-const s__FactoryFarm__data_waitBetweenBuilds = 0.1;
-const s__FactoryFarm__data_selectFarmType = FourCC( "A00M" );
-// const s__File_AbilityCount = 10;
-// const s__File_PreloadLimit = 200;
-// let s__File_Counter = 0;
-// const s__File_List: Array<number> = [];
-const s__File_AbilityList: Array<number> = [];
-// const s__File_filename: Array<string> = [];
-// const s__File_buffer: Array<string | null> = [];
-// // let s__File_ReadEnabled: boolean;
-const s__ScoutPhoenixUpgrade__data_upgradeId = FourCC( "R004" );
-const s__ScoutPhoenixUpgrade__data_abilityId = FourCC( "A00B" );
-let si__SpecializationStruct_F = 0;
-let si__SpecializationStruct_I = 0;
-const si__SpecializationStruct_V: Array<number> = [];
-const s__SpecializationStruct_learn: Array<number> = [];
-const s__SpecializationStruct_passive: Array<number> = [];
-const s__SpecializationStruct_active: Array<number> = [];
-const s__SpecializationStruct_upgrade: Array<number> = [];
-const s__data_spellbook = FourCC( "A006" );
-let s__data_flash: number;
-let s__data_engineer: number;
-let s__data_attacker: number;
-let s__data_hulk: number;
-// const s__sheep_type = FourCC( "uC04" );
+// JASSHelper struct globals:
 // const s__sheep_blacktype = FourCC( "uC02" );
 // const s__sheep_silvertype = FourCC( "u000" );
 // const s__sheep_goldtype = FourCC( "u001" );
 // const s__sheep_xability = FourCC( "A00D" );
 // const s__sheep_dolly = FourCC( "nshf" );
 // const s__sheep_katama = FourCC( "n002" );
-const s__sheep_farmType = FourCC( "hhou" );
-const s__sheep_blackFarmType = FourCC( "h004" );
-const s__sheep_silverFarmType = FourCC( "h001" );
-const s__sheep_goldenFarmType = FourCC( "h000" );
-const s__sheep_hardFarmType = FourCC( "hC06" );
-const s__sheep_tinyFarmType = FourCC( "hC07" );
 // const s__wisp_type = FourCC( "eC01" );
-// const s__wolf_type = FourCC( "EC03" );
 // const s__wolf_blacktype = FourCC( "E002" );
 // const s__wolf_imbatype = FourCC( "E000" );
 // const s__wolf_wwtype = FourCC( "eC16" );
 // const s__wolf_wwitem = FourCC( "I003" );
-const s__wolf_cloakitem = FourCC( "clfm" );
 // const s__wolf_wardtype = FourCC( "n001" );
 // const s__wolf_wardability = FourCC( "A001" );
 // const s__wolf_golemtype = FourCC( "ewsp" );
 // const s__wolf_stalkertype = FourCC( "nfel" );
-// const s__wolf_item1 = FourCC( "ratf" );
-// const s__wolf_item2 = FourCC( "ratc" );
-// const s__wolf_item3 = FourCC( "rat9" );
-// const s__wolf_item4 = FourCC( "rat6" );
-// const s__wolf_itemGlobal = FourCC( "mcou" );
 // const s__wolf_gem = FourCC( "gemt" );
 // const s__misc_dolly = FourCC( "nshf" );
 // const s__misc_dollySpeedAura = FourCC( "Aasl" );
-// let si__itemspec_F = 0;
-// let si__itemspec_I = 0;
-// const si__itemspec_V: Array<number> = [];
-// const s__itemspec_name: Array<string> = [];
-// const s__itemspec_gold: Array<number> = [];
-// const s__itemspec_lumber: Array<number> = [];
-// const s__itemspec_id: Array<number> = [];
 // let si__splitarray_I = 0;
 // let si__splitarray_F = 0;
 // const s__splitarray: Array<string> = [];
@@ -193,213 +120,55 @@ const s__wolf_cloakitem = FourCC( "clfm" );
 
 // };
 
-// // Generated allocator of itemspec
-// const s__itemspec__allocate = (): number => {
+// // ***************************************************************************
+// // *
+// // *  Custom Script Code
+// // *
+// // ***************************************************************************
 
-// 	let _this = si__itemspec_F;
-
-// 	if ( _this !== 0 )
-
-// 		si__itemspec_F = si__itemspec_V[ _this ];
-
-// 	else {
-
-// 		si__itemspec_I = si__itemspec_I + 1;
-// 		_this = si__itemspec_I;
-
-// 	}
-
-// 	if ( _this > 8190 )
-
-// 		return 0;
-
-// 	si__itemspec_V[ _this ] = - 1;
-// 	return _this;
-
-// };
-
-// Generated allocator of SpecializationStruct
-const s__SpecializationStruct__allocate = (): number => {
-
-	let _this = si__SpecializationStruct_F;
-
-	if ( _this !== 0 )
-
-		si__SpecializationStruct_F = si__SpecializationStruct_V[ _this ];
-
-	else {
-
-		si__SpecializationStruct_I = si__SpecializationStruct_I + 1;
-		_this = si__SpecializationStruct_I;
-
-	}
-
-	if ( _this > 8190 )
-
-		return 0;
-
-	si__SpecializationStruct_V[ _this ] = - 1;
-	return _this;
-
-};
-
-// // library AbilityPreload:
-// // ===========================================================================
-// // Information:
-// // ==============
-// //
-// //      Preloading removes the noticeable delay the first time an ability
-// //  is loaded in a game. If an ability was not already on a pre-placed unit
-// //  or a unit that was created during initialization, preloading is needed
-// //  to prevent a delay.
-// //
-// // ===========================================================================
-// // AbilityPreload API:
-// // =====================
-// //
-// //  AbilityPreload(abilityid) :
-// //        Call this before any time has elapsed to preload a specific
-// //     ability. If debug mode is enabled, you will see an error message
-// //     if you call this after initialization, or if you try to preload
-// //     an ability that does not exist. Will inline to a UnitAddAbility
-// //     call if debug mode is disabled.
-// //
-// //  AbilityRangePreload(start, end) :
-// //        Same as AbilityPreload, but preloads a range of abilities.
-// //      It will iterates between the two rawcode values and preload
-// //      every ability along the way. It will not show an error message
-// //      for non-existent abilities.
-// //
-// // ===========================================================================
-// // Configuration:
-// // ================
-
-// // ===========================================================================
-
-// const AbilityRangePreload = ( start: number, end: number ): void => {
-
-// 	let i = 1;
-
-// 	if ( start > end )
-
-// 		i = - 1;
-
-// 	while ( true ) {
-
-// 		if ( start > end ) break;
-// 		UnitAddAbility( AbilityPreload__PreloadUnit, start );
-// 		start = start + i;
-
-// 	}
-
-// };
-
-// // ===========================================================================
-
-// // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const s__AbilityPreload__Init_onInit = (): void => {
-
-	AbilityPreload__PreloadUnit = CreateUnit( Player( 15 ), AbilityPreload__PreloadUnitRawcode, 0, 0, 0 );
-	UnitApplyTimedLife( AbilityPreload__PreloadUnit, 0, 0.001 );
-	ShowUnit( AbilityPreload__PreloadUnit, false );
-	UnitAddAbility( AbilityPreload__PreloadUnit, FourCC( "Aloc" ) );
-
-};
-
-// library AbilityPreload ends
-// library CloakOfFlames:
-
-const CloakOfFlames__OnPickupItem = (): void => {
-
-	if ( GetItemTypeId( GetManipulatedItem() ) === s__wolf_cloakitem )
-
-		GroupAddUnit( CloakOfFlames__cloakHolders, GetManipulatingUnit() );
-
-};
-
-const CloakOfFlames__CountCloaks = ( u: unit ): number => {
+const DisplayTimedText = ( duration: number, message: string ): void => {
 
 	let i = 0;
-	let cloaks = 0;
 
 	while ( true ) {
 
-		if ( i === 6 ) break;
-
-		if ( GetItemTypeId( UnitItemInSlot( u, i ) ) === s__wolf_cloakitem )
-
-			cloaks = cloaks + 1;
-
+		if ( i === bj_MAX_PLAYERS ) break;
+		DisplayTimedTextToPlayer( Player( i ), 0, 0, duration, message );
 		i = i + 1;
 
 	}
 
-	return cloaks;
-
 };
 
-const CloakOfFlames__OnDropItem = (): void => {
+// Ends the game, awarding wins/loses and other W3MMD data
+export const endGame = ( winner: number ): void => {
 
-	if ( GetItemTypeId( GetManipulatedItem() ) === s__wolf_cloakitem && CloakOfFlames__CountCloaks( GetManipulatingUnit() ) === 1 )
+	let i = 0;
 
-		GroupRemoveUnit( CloakOfFlames__cloakHolders, GetManipulatingUnit() );
+	if ( gameEnded )
 
-};
+		return;
 
-const CloakOfFlames__Tick = (): void => {
+	gameEnded = true;
+	TimerDialogDisplay( myTimerDialog, false );
+	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
+	// todo: this should be nullable
+	TimerStart( myTimer, 15, false, () => { /* do nothing */ } );
+	TimerDialogSetTitle( myTimerDialog, "Ending in..." );
+	TimerDialogDisplay( myTimerDialog, true );
 
-	const unitsWithCloak = CreateGroup();
-	let cloakHolder: unit;
-	let x: number;
-	let y: number;
-	let i: number;
-	let cloaks: number;
-	let unitsToDamage: group;
-	let damagedUnit: unit;
-
-	BlzGroupAddGroupFast( CloakOfFlames__cloakHolders, unitsWithCloak );
-
-	while ( true ) {
-
-		cloakHolder = FirstOfGroup( unitsWithCloak );
-		if ( cloakHolder === null ) break;
-		x = GetUnitX( cloakHolder );
-		y = GetUnitY( cloakHolder );
-		i = 0;
-		cloaks = 0;
+	if ( winner < 1 )
 
 		while ( true ) {
 
-			if ( i === 6 ) break;
+			if ( i === 12 ) break;
 
-			if ( GetItemTypeId( UnitItemInSlot( cloakHolder, i ) ) === s__wolf_cloakitem ) {
+			if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
 
-				unitsToDamage = CreateGroup();
-				GroupEnumUnitsInRange( unitsToDamage, x, y, 256 + cloaks * 64, null );
-
-				while ( true ) {
-
-					damagedUnit = FirstOfGroup( unitsToDamage );
-					if ( damagedUnit === null ) break;
-
-					if ( IsUnitType( damagedUnit, UNIT_TYPE_STRUCTURE ) && IsUnitAlly( damagedUnit, GetOwningPlayer( cloakHolder ) ) === false )
-
-						if ( IsUnitIllusion( cloakHolder ) ) {
-
-							UnitDamageTarget( cloakHolder, damagedUnit, 6 - cloaks, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS );
-
-						} else {
-
-							UnitDamageTarget( cloakHolder, damagedUnit, 15 - cloaks * 2, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS );
-
-						}
-
-					GroupRemoveUnit( unitsToDamage, damagedUnit );
-
-				}
-
-				cloaks = cloaks + 1;
-				DestroyGroup( unitsToDamage );
+				SetUnitInvulnerable( sheeps[ i ], true );
+				BlzSetUnitBaseDamage( sheeps[ i ], 4999, 0 );
+				SetUnitMoveSpeed( sheeps[ i ], 522 );
+				BlzSetUnitRealField( sheeps[ i ], UNIT_RF_SIGHT_RADIUS, 5000 );
 
 			}
 
@@ -407,901 +176,42 @@ const CloakOfFlames__Tick = (): void => {
 
 		}
 
-		GroupRemoveUnit( unitsWithCloak, cloakHolder );
+	TriggerSleepAction( 15 );
 
-	}
-
-	DestroyGroup( unitsWithCloak );
-
-};
-
-// // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const CloakOfFlames__Init = (): void => {
-
-	let t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
-	TriggerAddAction( t, CloakOfFlames__OnPickupItem );
-
-	t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DROP_ITEM );
-	TriggerAddAction( t, CloakOfFlames__OnDropItem );
-
-	t = CreateTrigger();
-	TriggerRegisterTimerEvent( t, 1, true );
-	TriggerAddAction( t, CloakOfFlames__Tick );
-
-};
-
-// // library CloakOfFlames ends
-// // library DragonFire:
-
-const DragonFire__NeedsFireAbility = (): boolean => GetUnitAbilityLevel( GetFilterUnit(), s__DragonFire__data_dragonFireBuff ) > 0 && BlzGetUnitAbility( GetFilterUnit(), s__DragonFire__data_dragonFireAbility ) === null && IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE );
-
-const DragonFire__SpreadFire = (): void => {
-
-	const g = CreateGroup();
-	let u: unit;
-	GroupEnumUnitsInRect( g, WORLD_BOUNDS, Condition( DragonFire__NeedsFireAbility ) );
+	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
+	i = 0;
 
 	while ( true ) {
 
-		u = FirstOfGroup( g );
-		if ( u === null ) break;
-		UnitAddAbility( u, s__DragonFire__data_dragonFireAbility );
-		GroupRemoveUnit( g, u );
+		if ( i === 12 ) break;
 
-	}
+		if ( IsPlayerInForce( Player( i ), sheepTeam ) )
 
-	DestroyGroup( g );
+			if ( winner < 1 ) {
 
-};
+				CustomVictoryBJ( Player( i ), true, true );
 
-const DragonFire__NextWolfId = ( current: number ): number => {
+			} else {
 
-	let tries = 5;
-
-	while ( true ) {
-
-		if ( tries === 0 ) break;
-		current = current + 1;
-
-		if ( current === 12 )
-
-			current = 8;
-
-		if ( wolves[ current ] !== null )
-
-			return current;
-
-		tries = tries - 1;
-
-	}
-
-	return 8;
-
-};
-
-const DragonFire__BurningUnits = (): boolean => GetUnitAbilityLevel( GetFilterUnit(), s__DragonFire__data_dragonFireBuff ) > 0;
-
-const DragonFire__BurnUnits = (): void => {
-
-	const g = CreateGroup();
-	let u: unit;
-	let damage: number;
-	let isEmpty = true;
-
-	GroupEnumUnitsInRect( g, WORLD_BOUNDS, Condition( DragonFire__BurningUnits ) );
-
-	while ( true ) {
-
-		u = FirstOfGroup( g );
-		if ( u === null ) break;
-		isEmpty = false;
-		DragonFire__burnWolfId = DragonFire__NextWolfId( DragonFire__burnWolfId );
-		damage = R2I( BlzGetUnitMaxHP( u ) * 0.01 );
-
-		if ( damage < 1 )
-
-			damage = 1;
-
-		UnitDamageTarget( wolves[ DragonFire__burnWolfId ], u, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_FIRE, WEAPON_TYPE_WHOKNOWS );
-		GroupRemoveUnit( g, u );
-
-	}
-
-	if ( isEmpty ) {
-
-		DragonFire__emptyCount = DragonFire__emptyCount + 1;
-
-		if ( DragonFire__emptyCount > 3 ) {
-
-			DisableTrigger( DragonFire__spreadFire );
-			DisableTrigger( DragonFire__burnUnits );
-
-		}
-
-	} else
-
-		DragonFire__emptyCount = 0;
-
-	DestroyGroup( g );
-
-};
-
-const DragonFire__OnSpellCast = (): void => {
-
-	if ( GetSpellAbilityId() === s__DragonFire__data_dragonGlass ) {
-
-		DragonFire__emptyCount = 0;
-		EnableTrigger( DragonFire__spreadFire );
-		EnableTrigger( DragonFire__burnUnits );
-
-	}
-
-};
-
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const DragonFire__Init = (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	TriggerAddAction( t, DragonFire__OnSpellCast );
-
-	TriggerRegisterTimerEvent( DragonFire__spreadFire, 10, true );
-	TriggerAddAction( DragonFire__spreadFire, DragonFire__SpreadFire );
-	DisableTrigger( DragonFire__spreadFire );
-
-	TriggerRegisterTimerEvent( DragonFire__burnUnits, 1, true );
-	TriggerAddAction( DragonFire__burnUnits, DragonFire__BurnUnits );
-	DisableTrigger( DragonFire__burnUnits );
-
-};
-
-// library DragonFire ends
-// library FactoryFarm:
-
-const FactoryFarm__SpiralX = ( n: number ): number => {
-
-	const k = Math.ceil( ( SquareRoot( n ) - 1 ) / 2 );
-	let t = 2 * k + 1;
-	let m = Pow( t, 2 );
-	t = t - 1;
-
-	if ( n >= m - t )
-
-		return k - ( m - n );
-
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return - k;
-
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return - k + ( m - n );
-
-	return k;
-
-};
-
-const FactoryFarm__SpiralY = ( n: number ): number => {
-
-	const k = Math.ceil( ( SquareRoot( n ) - 1 ) / 2 );
-	let t = 2 * k + 1;
-	let m = Pow( t, 2 );
-	t = t - 1;
-
-	if ( n >= m - t )
-
-		return - k;
-
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return - k + ( m - n );
-
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return k;
-
-	return k - ( m - n - t );
-
-};
-
-let FactoryFarmStart: () => void = () => { /* do nothing */ };
-
-const FactoryFarm__FactoryFarmEnd = (): void => {
-
-	let wait = s__FactoryFarm__data_waitBetweenTicks - FactoryFarm__factoryFarmBuilds * s__FactoryFarm__data_waitBetweenBuilds;
-
-	// Return sheep to unowned
-	SetUnitOwner( FactoryFarm__factoryFarmSheep, Player( PLAYER_NEUTRAL_PASSIVE ), false );
-
-	// Invoke next run
-
-	if ( wait < s__FactoryFarm__data_waitBetweenBuilds )
-
-		wait = s__FactoryFarm__data_waitBetweenBuilds;
-
-	TimerStart( FactoryFarm__factoryFarmTimer, wait, false, FactoryFarmStart );
-
-};
-
-const FactoryFarm__FarmSize = ( farmType: number ): number => {
-
-	if ( farmType === s__sheep_hardFarmType )
-
-		return 320;
-
-	else if ( farmType === s__sheep_tinyFarmType )
-
-		return 128;
-
-	return 192;
-
-};
-
-const FactoryFarm__SpiralSize = ( size: number ): number => R2I( Pow( Math.floor( 640 / size ) * 2 + 1, 2 ) );
-
-const FactoryFarm__FactoryFarmTick = (): void => {
-
-	const u = FirstOfGroup( FactoryFarm__factoryFarmsTemp );
-	let farmType: number;
-	let spiralIndex: number;
-	let farmSize: number;
-	let x: number;
-	let y: number;
-
-	if ( u === null ) {
-
-		FactoryFarm__FactoryFarmEnd();
-		return;
-
-	}
-
-	if ( UnitAlive( u ) ) {
-
-		farmType = LoadInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_typeIndex );
-		farmSize = FactoryFarm__FarmSize( farmType );
-
-		// Get next location
-		spiralIndex = LoadInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex ) + 1;
-
-		if ( spiralIndex > FactoryFarm__SpiralSize( farmSize ) )
-
-			spiralIndex = 2;
-
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex, spiralIndex );
-
-		x = GetUnitX( u ) + Math.round( FactoryFarm__SpiralX( spiralIndex ) ) * farmSize;
-		y = GetUnitY( u ) + Math.round( FactoryFarm__SpiralY( spiralIndex ) ) * farmSize;
-
-		// Build the farm
-		SetUnitX( FactoryFarm__factoryFarmSheep, x );
-		SetUnitY( FactoryFarm__factoryFarmSheep, y );
-
-		SetUnitOwner( FactoryFarm__factoryFarmSheep, GetOwningPlayer( u ), false );
-		IssueBuildOrderById( FactoryFarm__factoryFarmSheep, farmType, x, y );
-
-		FactoryFarm__factoryFarmBuilds = FactoryFarm__factoryFarmBuilds + 1;
-
-	}
-
-	GroupRemoveUnit( FactoryFarm__factoryFarmsTemp, u );
-
-	TimerStart( FactoryFarm__factoryFarmTimer, s__FactoryFarm__data_waitBetweenBuilds, false, FactoryFarm__FactoryFarmTick );
-
-};
-
-FactoryFarmStart = (): void => {
-
-	FactoryFarm__factoryFarmBuilds = 0;
-	BlzGroupAddGroupFast( FactoryFarm__factoryFarms, FactoryFarm__factoryFarmsTemp );
-
-	FactoryFarm__FactoryFarmTick();
-
-};
-
-const FactoryFarm__GetBaseFarm = ( u: unit ): number => {
-
-	const playerId = GetPlayerId( GetOwningPlayer( u ) );
-
-	if ( saveskills[ playerId ] >= 25 )
-
-		return s__sheep_goldenFarmType;
-
-	else if ( saveskills[ playerId ] >= 15 )
-
-		return s__sheep_silverFarmType;
-
-	else if ( saveskills[ playerId ] >= 10 )
-
-		return s__sheep_blackFarmType;
-
-	return s__sheep_farmType;
-
-};
-
-const FactoryFarm__FinishConstruction = (): void => {
-
-	const u = GetTriggerUnit();
-
-	if ( GetUnitTypeId( u ) === s__FactoryFarm__data_factoryFarmType ) {
-
-		GroupAddUnit( FactoryFarm__factoryFarms, u );
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_typeIndex, FactoryFarm__GetBaseFarm( u ) );
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex, 1 );
-
-	}
-
-};
-
-const FactoryFarm__SelectFarm = (): void => {
-
-	if ( GetSpellAbilityId() === s__FactoryFarm__data_selectFarmType )
-
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( GetTriggerUnit() ), s__FactoryFarm__data_typeIndex, GetUnitTypeId( GetSpellTargetUnit() ) );
-
-};
-
-const FactoryFarm__Init = (): void => {
-
-	let t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_FINISH );
-	TriggerAddAction( t, FactoryFarm__FinishConstruction );
-
-	t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	TriggerAddAction( t, FactoryFarm__SelectFarm );
-
-	FactoryFarm__factoryFarmSheep = CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), FourCC( "u002" ), 0, 0, 270 );
-
-	TimerStart( FactoryFarm__factoryFarmTimer, s__FactoryFarm__data_waitBetweenTicks, false, FactoryFarmStart );
-
-};
-
-// library FactoryFarm ends
-// // library FileIO:
-
-// const s__File_open = ( filename: string ): number => {
-
-// 	let _this = s__File_List[ 0 ];
-
-// 	if ( _this === 0 ) {
-
-// 		_this = s__File_Counter + 1;
-// 		s__File_Counter = _this;
-
-// 	} else
-
-// 		s__File_List[ 0 ] = s__File_List[ _this ];
-
-// 	s__File_filename[ _this ] = filename;
-// 	s__File_buffer[ _this ] = null;
-
-// 	return _this;
-
-// };
-
-// // This is used to detect invalid characters which aren't supported in preload files.
-
-// const s__File_write = ( _this: number, contents: string ): number => {
-
-// 	let i = 0;
-// 	let c = 0;
-// 	let len = StringLength( contents );
-// 	let lev = 0;
-// 	const prefix = "-";
-// 	let chunk: string;
-
-// 	s__File_buffer[ _this ] = null;
-
-// 	// Check if the string is empty. If null, the contents will be cleared.
-
-// 	if ( contents === "" )
-
-// 		len = len + 1;
-
-// 	// Begin to generate the file
-// 	PreloadGenClear();
-// 	PreloadGenStart();
-
-// 	while ( true ) {
-
-// 		if ( i >= len ) break;
-
-// 		lev = 0;
-
-// 		chunk = SubString( contents, i, i + s__File_PreloadLimit );
-// 		Preload( "\" )\ncall BlzSetAbilityTooltip(" + I2S( s__File_AbilityList[ c ] ) + ", \"" + prefix + chunk + "\", " + I2S( lev ) + ")\n//" );
-// 		i = i + s__File_PreloadLimit;
-// 		c = c + 1;
-
-// 	}
-
-// 	Preload( "\" )\nendfunction\nfunction a takes nothing returns nothing\n //" );
-// 	PreloadGenEnd( s__File_filename[ _this ] );
-
-// 	return _this;
-
-// };
-
-// const s__File_readPreload = ( _this: number ): string | null => {
-
-// 	let i = 0;
-// 	let lev = 0;
-// 	const original: Array<string> = [];
-// 	let chunk = "";
-// 	let output = "";
-
-// 	while ( true ) {
-
-// 		if ( i === s__File_AbilityCount ) break;
-// 		original[ i ] = BlzGetAbilityTooltip( s__File_AbilityList[ i ], 0 );
-// 		i = i + 1;
-
-// 	}
-
-// 	// Execute the preload file
-// 	Preloader( s__File_filename[ _this ] );
-
-// 	// Read the output
-// 	i = 0;
-
-// 	while ( true ) {
-
-// 		if ( i === s__File_AbilityCount ) break;
-
-// 		lev = 0;
-
-// 		// Read from ability index 1 instead of 0 if
-// 		// backwards compatability is enabled
-
-// 		// Make sure the tooltip has changed
-// 		chunk = BlzGetAbilityTooltip( s__File_AbilityList[ i ], lev );
-
-// 		if ( chunk === original[ i ] ) {
-
-// 			if ( i === 0 && output === "" )
-
-// 				return null;
-
-// 			return output;
-
-// 		}
-
-// 		// Check if the file is an empty string or null
-
-// 		if ( i === 0 ) {
-
-// 			if ( SubString( chunk, 0, 1 ) !== "-" )
-
-// 				return null;
-
-// 			chunk = SubString( chunk, 1, StringLength( chunk ) );
-
-// 		}
-
-// 		// Remove the prefix
-
-// 		if ( i > 0 )
-
-// 			chunk = SubString( chunk, 1, StringLength( chunk ) );
-
-// 		// Restore the tooltip and append the chunk
-// 		BlzSetAbilityTooltip( s__File_AbilityList[ i ], original[ i ], lev );
-
-// 		output = output + chunk;
-
-// 		i = i + 1;
-
-// 	}
-
-// 	return output;
-
-// };
-
-// const s__File_close = ( _this: number ): void => {
-
-// 	if ( s__File_buffer[ _this ] !== null ) {
-
-// 		s__File_write( _this, ( s__File_readPreload( _this ) || "" ) + s__File_buffer[ _this ] );
-// 		s__File_buffer[ _this ] = null;
-
-// 	}
-
-// 	s__File_List[ _this ] = s__File_List[ 0 ];
-// 	s__File_List[ 0 ] = _this;
-
-// };
-
-// const s__File_readEx = ( _this: number, close: boolean ): string | null => {
-
-// 	let output = s__File_readPreload( _this );
-// 	const buf = s__File_buffer[ _this ];
-
-// 	if ( close )
-
-// 		s__File_close( _this );
-
-// 	if ( output === null )
-
-// 		return buf;
-
-// 	if ( buf !== null )
-
-// 		output = output + buf;
-
-// 	return output;
-
-// };
-
-// const s__File_readAndClose = ( _this: number ): string | null => s__File_readEx( _this, true );
-
-// Implemented from module FileIO__FileInit:
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const s__File_FileIO__FileInit___onInit = (): void => {
-
-	// We can't use a single ability with multiple levels because
-	// tooltips return the first level's value if the value hasn't
-	// been set. This way we don't need to edit any object editor data.
-	s__File_AbilityList[ 0 ] = FourCC( "Amls" );
-	s__File_AbilityList[ 1 ] = FourCC( "Aroc" );
-	s__File_AbilityList[ 2 ] = FourCC( "Amic" );
-	s__File_AbilityList[ 3 ] = FourCC( "Amil" );
-	s__File_AbilityList[ 4 ] = FourCC( "Aclf" );
-	s__File_AbilityList[ 5 ] = FourCC( "Acmg" );
-	s__File_AbilityList[ 6 ] = FourCC( "Adef" );
-	s__File_AbilityList[ 7 ] = FourCC( "Adis" );
-	s__File_AbilityList[ 8 ] = FourCC( "Afbt" );
-	s__File_AbilityList[ 9 ] = FourCC( "Afbk" );
-
-	// Backwards compatability check
-
-	// Read check
-	// s__File_ReadEnabled = s__File_readAndClose( s__File_write( s__File_open( "FileTester.pld" ), "FileIO_" ) ) === "FileIO_";
-
-};
-
-// library FileIO ends
-// library ScoutPhoenixUpgrade:
-
-const ScoutPhoenixUpgrade__EnablePhoenix = ( u: unit ): void => {
-
-	UnitAddAbilityBJ( s__ScoutPhoenixUpgrade__data_abilityId, u );
-	BlzUnitHideAbility( u, s__ScoutPhoenixUpgrade__data_abilityId, true );
-
-};
-
-const ScoutPhoenixUpgrade__OnResearch = (): void => {
-
-	if ( GetResearched() === s__ScoutPhoenixUpgrade__data_upgradeId )
-
-		ScoutPhoenixUpgrade__EnablePhoenix( wolves[ GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) ) ] );
-
-};
-
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const ScoutPhoenixUpgrade__Init = (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_RESEARCH_FINISH );
-	TriggerAddAction( t, ScoutPhoenixUpgrade__OnResearch );
-
-};
-
-const ScoutPhoenixUpgrade_onSpawn = ( u: unit ): void => {
-
-	if ( GetPlayerTechResearched( GetOwningPlayer( u ), s__ScoutPhoenixUpgrade__data_upgradeId, true ) )
-
-		ScoutPhoenixUpgrade__EnablePhoenix( u );
-
-};
-
-// library ScoutPhoenixUpgrade ends
-// library Specialization:
-
-const updateUnit = ( u: unit ): void => {
-
-	const playerIndex = GetPlayerId( GetOwningPlayer( u ) );
-	const specialization = Specialization__playerSpecializations[ playerIndex ];
-	const level = Specialization__levels[ playerIndex ];
-	let effectiveLevel: number;
-
-	// Player hasn't picked one yet (they got another save)
-
-	if ( specialization === null )
-
-		return;
-
-	if ( level > 25 )
-
-		effectiveLevel = 25;
-
-	else
-
-		effectiveLevel = level;
-
-	if ( effectiveLevel > 0 ) {
-
-		if ( BlzGetUnitAbility( u, s__SpecializationStruct_passive[ specialization ] ) === null ) {
-
-			UnitAddAbility( u, s__SpecializationStruct_passive[ specialization ] );
-			UnitAddAbility( u, s__SpecializationStruct_active[ specialization ] );
-
-			if ( specialization === s__data_hulk ) {
-
-				BlzSetUnitMaxHP( u, BlzGetUnitMaxHP( u ) + effectiveLevel * 15 );
-				SetUnitState( u, UNIT_STATE_LIFE, GetUnitState( u, UNIT_STATE_LIFE ) + effectiveLevel * 15 );
+				CustomDefeatBJ( Player( i ), defeatString );
 
 			}
 
-		} else
+		else
 
-		if ( specialization === s__data_hulk ) {
+		if ( winner > 1 )
 
-			BlzSetUnitMaxHP( u, BlzGetUnitMaxHP( u ) + 15 );
-			SetUnitState( u, UNIT_STATE_LIFE, GetUnitState( u, UNIT_STATE_LIFE ) + 15 );
+			CustomVictoryBJ( Player( i ), true, true );
 
-		}
+		else
 
-		SetUnitAbilityLevel( u, s__SpecializationStruct_passive[ specialization ], effectiveLevel );
-		SetUnitAbilityLevel( u, s__SpecializationStruct_active[ specialization ], effectiveLevel );
-
-	}
-
-	if ( specialization === s__data_attacker )
-
-		SetPlayerTechResearched( GetOwningPlayer( u ), s__SpecializationStruct_upgrade[ specialization ], effectiveLevel );
-
-};
-
-const setSpecialization = (): void => {
-
-	const playerId = GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) );
-	let i = 0;
-	const spellId = GetSpellAbilityId();
-
-	// Close and remove the spellbook
-	ForceUICancelBJ( GetOwningPlayer( GetTriggerUnit() ) );
-	UnitRemoveAbilityBJ( s__data_spellbook, GetTriggerUnit() );
-
-	// Set specialization and update unit
-
-	while ( true ) {
-
-		if ( Specialization__specializations[ i ] === null ) break;
-
-		if ( s__SpecializationStruct_learn[ Specialization__specializations[ i ] ] === spellId ) {
-
-			Specialization__playerSpecializations[ playerId ] = Specialization__specializations[ i ];
-			updateUnit( GetTriggerUnit() );
-			if ( true ) break;
-
-		}
+			CustomDefeatBJ( Player( i ), defeatString );
 
 		i = i + 1;
 
 	}
 
 };
-
-const isSpecializationAbility = (): boolean => GetSpellAbilityId() === s__SpecializationStruct_learn[ s__data_flash ] || GetSpellAbilityId() === s__SpecializationStruct_learn[ s__data_engineer ] || GetSpellAbilityId() === s__SpecializationStruct_learn[ s__data_attacker ] || GetSpellAbilityId() === s__SpecializationStruct_learn[ s__data_hulk ];
-
-const startConstruction = (): void => {
-
-	const playerIndex = GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) );
-	const specialization = Specialization__playerSpecializations[ playerIndex ];
-	const level = Specialization__levels[ playerIndex ];
-	let effectiveLevel: number;
-
-	if ( specialization === s__data_engineer ) {
-
-		if ( level > 25 )
-
-			effectiveLevel = 25;
-
-		else
-
-			effectiveLevel = level;
-
-		BlzSetUnitMaxHP( GetTriggerUnit(), BlzGetUnitMaxHP( GetTriggerUnit() ) + 10 * effectiveLevel );
-
-	}
-
-};
-
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const init = (): void => {
-
-	let t = CreateTrigger();
-
-	s__data_flash = s__SpecializationStruct__allocate();
-	s__SpecializationStruct_learn[ s__data_flash ] = FourCC( "A007" );
-	s__SpecializationStruct_passive[ s__data_flash ] = FourCC( "A00F" );
-	s__SpecializationStruct_active[ s__data_flash ] = FourCC( "A00A" );
-	Specialization__specializations[ 0 ] = s__data_flash;
-
-	s__data_engineer = s__SpecializationStruct__allocate();
-	s__SpecializationStruct_learn[ s__data_engineer ] = FourCC( "A008" );
-	s__SpecializationStruct_passive[ s__data_engineer ] = FourCC( "A009" );
-	s__SpecializationStruct_active[ s__data_engineer ] = FourCC( "A00G" );
-	Specialization__specializations[ 1 ] = s__data_engineer;
-
-	s__data_attacker = s__SpecializationStruct__allocate();
-	s__SpecializationStruct_learn[ s__data_attacker ] = FourCC( "A00E" );
-	s__SpecializationStruct_passive[ s__data_attacker ] = FourCC( "A00K" );
-	s__SpecializationStruct_active[ s__data_attacker ] = FourCC( "A00J" );
-	s__SpecializationStruct_upgrade[ s__data_attacker ] = FourCC( "R003" );
-	Specialization__specializations[ 2 ] = s__data_attacker;
-
-	s__data_hulk = s__SpecializationStruct__allocate();
-	s__SpecializationStruct_learn[ s__data_hulk ] = FourCC( "A00C" );
-	s__SpecializationStruct_passive[ s__data_hulk ] = FourCC( "A00L" );
-	s__SpecializationStruct_active[ s__data_hulk ] = FourCC( "A00I" );
-	Specialization__specializations[ 3 ] = s__data_hulk;
-
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	TriggerAddCondition( t, Condition( isSpecializationAbility ) );
-	TriggerAddAction( t, setSpecialization );
-
-	t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_START );
-	TriggerAddAction( t, startConstruction );
-
-};
-
-const Specialization_onSpawn = ( u: unit ): void => {
-
-	const i = GetPlayerId( GetOwningPlayer( u ) );
-
-	if ( Specialization__levels[ i ] === null )
-
-		Specialization__levels[ i ] = 0;
-
-	if ( Specialization__levels[ i ] >= 1 && Specialization__playerSpecializations[ i ] === null && BlzGetUnitAbility( u, s__data_spellbook ) === null )
-
-		UnitAddAbility( u, s__data_spellbook );
-
-	else if ( Specialization__playerSpecializations[ i ] !== null )
-
-		updateUnit( u );
-
-	BlzSetUnitIntegerField( u, UNIT_IF_LEVEL, GetUnitLevel( u ) + Specialization__levels[ i ] );
-
-};
-
-const Specialization_onSave = ( u: unit ): void => {
-
-	const i = GetPlayerId( GetOwningPlayer( u ) );
-
-	if ( Specialization__levels[ i ] === null )
-
-		Specialization__levels[ i ] = 0;
-
-	Specialization__levels[ i ] = Specialization__levels[ i ] + 1;
-	BlzSetUnitIntegerField( u, UNIT_IF_LEVEL, GetUnitLevel( u ) + 1 );
-
-	Specialization_onSpawn( u );
-
-};
-
-const Specialization_onDeath = ( u: unit ): void => {
-
-	Specialization__levels[ GetPlayerId( GetOwningPlayer( u ) ) ] = 0;
-
-};
-
-const Specialization_GetLevel = ( u: unit ): number => Specialization__levels[ GetPlayerId( GetOwningPlayer( u ) ) ];
-
-// library Specialization ends
-
-// // ***************************************************************************
-// // *
-// // *  Custom Script Code
-// // *
-// // ***************************************************************************
-
-// const DisplayTimedText = ( duration: number, message: string ): void => {
-
-// 	let i = 0;
-
-// 	while ( true ) {
-
-// 		if ( i === bj_MAX_PLAYERS ) break;
-// 		DisplayTimedTextToPlayer( Player( i ), 0, 0, duration, message );
-// 		i = i + 1;
-
-// 	}
-
-// };
-
-// // Ends the game, awarding wins/loses and other W3MMD data
-// const endGame = ( winner: number ): void => {
-
-// 	let i = 0;
-
-// 	if ( gameEnded )
-
-// 		return;
-
-// 	gameEnded = true;
-// 	TimerDialogDisplay( myTimerDialog, false );
-// 	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-// 	// todo: this should be nullable
-// 	TimerStart( myTimer, 15, false, () => { /* do nothing */ } );
-// 	TimerDialogSetTitle( myTimerDialog, "Ending in..." );
-// 	TimerDialogDisplay( myTimerDialog, true );
-
-// 	if ( winner < 1 )
-
-// 		while ( true ) {
-
-// 			if ( i === 12 ) break;
-
-// 			if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
-
-// 				SetUnitInvulnerable( sheeps[ i ], true );
-// 				BlzSetUnitBaseDamage( sheeps[ i ], 4999, 0 );
-// 				SetUnitMoveSpeed( sheeps[ i ], 522 );
-// 				BlzSetUnitRealField( sheeps[ i ], UNIT_RF_SIGHT_RADIUS, 5000 );
-
-// 			}
-
-// 			i = i + 1;
-
-// 		}
-
-// 	TriggerSleepAction( 15 );
-
-// 	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-// 	i = 0;
-
-// 	while ( true ) {
-
-// 		if ( i === 12 ) break;
-
-// 		if ( IsPlayerInForce( Player( i ), sheepTeam ) )
-
-// 			if ( winner < 1 ) {
-
-// 				CustomVictoryBJ( Player( i ), true, true );
-
-// 			} else {
-
-// 				CustomDefeatBJ( Player( i ), defeatString );
-
-// 			}
-
-// 		else
-
-// 		if ( winner > 1 )
-
-// 			CustomVictoryBJ( Player( i ), true, true );
-
-// 		else
-
-// 			CustomDefeatBJ( Player( i ), defeatString );
-
-// 		i = i + 1;
-
-// 	}
-
-// };
 
 // // Duh
 // const TriggerRegisterPlayerEventAll = ( t: trigger, e: playerevent ): void => {
@@ -1452,24 +362,23 @@ const Specialization_GetLevel = ( u: unit ): number => Specialization__levels[ G
 
 // };
 
-// const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
+export const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
 
-// const countHereEnum = (): void => {
+const countHereEnum = (): void => {
 
-// 	if ( GetPlayerSlotState( GetEnumPlayer() ) === PLAYER_SLOT_STATE_PLAYING )
+	if ( GetPlayerSlotState( GetEnumPlayer() ) === PLAYER_SLOT_STATE_PLAYING )
+		someInteger = someInteger + 1;
 
-// 		someInteger = someInteger + 1;
+};
 
-// };
+// Counts players in force that are here
+export const countHere = ( f: force ): number => {
 
-// // Counts players in force that are here
-// const countHere = ( f: force ): number => {
+	someInteger = 0;
+	ForForce( f, countHereEnum );
+	return someInteger;
 
-// 	someInteger = 0;
-// 	ForForce( f, countHereEnum );
-// 	return someInteger;
-
-// };
+};
 
 // const countHereRealEnum = (): void => {
 
@@ -1507,478 +416,167 @@ const Specialization_GetLevel = ( u: unit ): number => Specialization__levels[ G
 
 // };
 
-// // Returns the index in which string part is found in string whole
-// const InStr = ( whole: string, part: string ): number => {
+// Returns the index in which string part is found in string whole
+export const InStr = ( whole: string, part: string ): number => {
 
-// 	let index = 0;
+	let index = 0;
 
-// 	while ( true ) {
+	while ( true ) {
 
-// 		if ( StringLength( whole ) - index < StringLength( part ) ) break;
+		if ( StringLength( whole ) - index < StringLength( part ) ) break;
 
-// 		if ( SubString( whole, index, StringLength( part ) + index ) === part )
+		if ( SubString( whole, index, StringLength( part ) + index ) === part )
 
-// 			return index;
+			return index;
 
-// 		index = index + 1;
+		index = index + 1;
 
-// 	}
+	}
 
-// 	return - 1;
+	return - 1;
 
-// };
+};
 
-// const updateMultiboardRow = ( index: number, value1: string | null, icon: string | null, value2: string | null ): void => {
+const updateMultiboardRow = ( index: number, value1: string | null, icon: string | null, value2: string | null ): void => {
 
-// 	let mbi = MultiboardGetItem( board, index, 0 );
-// 	if ( value1 ) MultiboardSetItemValue( mbi, value1 );
-// 	MultiboardSetItemWidth( mbi, 0.1 );
-// 	MultiboardSetItemStyle( mbi, true, false );
-// 	MultiboardReleaseItem( mbi );
+	let mbi = MultiboardGetItem( board(), index, 0 );
+	if ( value1 ) MultiboardSetItemValue( mbi, value1 );
+	MultiboardSetItemWidth( mbi, 0.1 );
+	MultiboardSetItemStyle( mbi, true, false );
+	MultiboardReleaseItem( mbi );
 
-// 	mbi = MultiboardGetItem( board, index, 1 );
-// 	if ( value2 ) MultiboardSetItemValue( mbi, value2 );
+	mbi = MultiboardGetItem( board(), index, 1 );
+	if ( value2 ) MultiboardSetItemValue( mbi, value2 );
 
-// 	if ( icon === null )
-// 		MultiboardSetItemStyle( mbi, true, false );
-// 	else
-// 		MultiboardSetItemIcon( mbi, icon );
+	if ( icon === null )
+		MultiboardSetItemStyle( mbi, true, false );
+	else
+		MultiboardSetItemIcon( mbi, icon );
 
-// 	MultiboardReleaseItem( mbi );
+	MultiboardReleaseItem( mbi );
 
-// };
+};
 
-// const getSheepIcon = ( i: number ): string => {
+const getSheepIcon = ( i: number ): string => {
 
-// 	if ( saveskills[ i ] >= 25 )
+	if ( saveskills[ i ] >= 25 )
 
-// 		return "ReplaceableTextures\\CommandButtons\\BTNMaskOfDeath.blp";
+		return "ReplaceableTextures\\CommandButtons\\BTNMaskOfDeath.blp";
 
-// 	else if ( saveskills[ i ] >= 15 )
+	else if ( saveskills[ i ] >= 15 )
 
-// 		return "ReplaceableTextures\\CommandButtons\\BTNDruidOfTheClaw.blp";
+		return "ReplaceableTextures\\CommandButtons\\BTNDruidOfTheClaw.blp";
 
-// 	else if ( saveskills[ i ] >= 10 )
+	else if ( saveskills[ i ] >= 10 )
 
-// 		return "ReplaceableTextures\\CommandButtons\\BTNSheep.blp";
+		return "ReplaceableTextures\\CommandButtons\\BTNSheep.blp";
 
-// 	return "ReplaceableTextures\\CommandButtons\\BTNPolymorph.blp";
+	return "ReplaceableTextures\\CommandButtons\\BTNPolymorph.blp";
 
-// };
+};
 
-// const getWolfIcon = ( i: number ): string => {
+const getWolfIcon = ( i: number ): string => {
 
-// 	if ( saveskills[ i ] >= 25 )
+	if ( saveskills[ i ] >= 25 )
 
-// 		return "ReplaceableTextures\\CommandButtons\\BTNDoomGuard.blp";
+		return "ReplaceableTextures\\CommandButtons\\BTNDoomGuard.blp";
 
-// 	else if ( saveskills[ i ] >= 10 )
+	else if ( saveskills[ i ] >= 10 )
 
-// 		return "ReplaceableTextures\\CommandButtons\\BTNDireWolf.blp";
+		return "ReplaceableTextures\\CommandButtons\\BTNDireWolf.blp";
 
-// 	return "ReplaceableTextures\\CommandButtons\\BTNTimberWolf.blp";
+	return "ReplaceableTextures\\CommandButtons\\BTNTimberWolf.blp";
 
-// };
+};
 
-// const reloadMultiboard = (): void => {
+export const reloadMultiboard = (): void => {
 
-// 	let i = 0;
-// 	let index = 0;
-// 	MultiboardDisplay( board, false );
-// 	DestroyMultiboard( board );
+	let i = 0;
+	let index = 0;
+	const oldBoard = board();
+	MultiboardDisplay( oldBoard, false );
+	DestroyMultiboard( oldBoard );
 
-// 	board = CreateMultiboard();
-// 	MultiboardSetTitleText( board, "Ultimate Sheep Tag Fixus" );
-// 	MultiboardSetColumnCount( board, 2 );
-// 	MultiboardSetRowCount( board, 5 + CountPlayersInForceBJ( sheepTeam ) + CountPlayersInForceBJ( wolfTeam ) + CountPlayersInForceBJ( wispTeam ) );
+	const newBoard = CreateMultiboard();
+	board( newBoard );
+	MultiboardSetTitleText( newBoard, "Ultimate Sheep Tag Fixus" );
+	MultiboardSetColumnCount( newBoard, 2 );
+	MultiboardSetRowCount( newBoard, 5 + CountPlayersInForceBJ( sheepTeam ) + CountPlayersInForceBJ( wolfTeam ) + CountPlayersInForceBJ( wispTeam ) );
 
-// 	// sheep
-// 	updateMultiboardRow( index, color[ 12 ] + "Sheep: " + I2S( countHere( sheepTeam ) ), null, "Saves" );
-// 	index = index + 1;
+	// sheep
+	updateMultiboardRow( index, color[ 12 ] + "Sheep: " + I2S( countHere( sheepTeam ) ), null, "Saves" );
+	index = index + 1;
 
-// 	while ( true ) {
+	while ( true ) {
 
-// 		if ( i === 12 ) break;
+		if ( i === 12 ) break;
 
-// 		if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
+		if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
 
-// 			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getSheepIcon( i ), I2S( saveskills[ i ] ) );
-// 			index = index + 1;
+			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getSheepIcon( i ), I2S( saveskills[ i ] ) );
+			index = index + 1;
 
-// 		}
+		}
 
-// 		i = i + 1;
+		i = i + 1;
 
-// 	}
+	}
 
-// 	updateMultiboardRow( index, null, null, null );
-// 	index = index + 1;
+	updateMultiboardRow( index, null, null, null );
+	index = index + 1;
 
-// 	// Wisps
-// 	updateMultiboardRow( index, color[ 12 ] + "Wisps: " + I2S( countHere( wispTeam ) ), null, "Saves" );
-// 	index = index + 1;
-// 	i = 0;
+	// Wisps
+	updateMultiboardRow( index, color[ 12 ] + "Wisps: " + I2S( countHere( wispTeam ) ), null, "Saves" );
+	index = index + 1;
+	i = 0;
 
-// 	while ( true ) {
+	while ( true ) {
 
-// 		if ( i === 12 ) break;
+		if ( i === 12 ) break;
 
-// 		if ( IsPlayerInForce( Player( i ), wispTeam ) ) {
+		if ( IsPlayerInForce( Player( i ), wispTeam ) ) {
 
-// 			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), "ReplaceableTextures\\CommandButtons\\BTNWisp.blp", I2S( saveskills[ i ] ) );
-// 			index = index + 1;
+			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), "ReplaceableTextures\\CommandButtons\\BTNWisp.blp", I2S( saveskills[ i ] ) );
+			index = index + 1;
 
-// 		}
+		}
 
-// 		i = i + 1;
+		i = i + 1;
 
-// 	}
+	}
 
-// 	updateMultiboardRow( index, null, null, null );
-// 	index = index + 1;
+	updateMultiboardRow( index, null, null, null );
+	index = index + 1;
 
-// 	// Wolves
-// 	updateMultiboardRow( index, color[ 13 ] + "Wolves: " + I2S( countHere( wolfTeam ) ), null, "Kills" );
-// 	index = index + 1;
-// 	i = 0;
+	// Wolves
+	updateMultiboardRow( index, color[ 13 ] + "Wolves: " + I2S( countHere( wolfTeam ) ), null, "Kills" );
+	index = index + 1;
+	i = 0;
 
-// 	while ( true ) {
+	while ( true ) {
 
-// 		if ( i === 12 ) break;
+		if ( i === 12 ) break;
 
-// 		if ( IsPlayerInForce( Player( i ), wolfTeam ) ) {
+		if ( IsPlayerInForce( Player( i ), wolfTeam ) ) {
 
-// 			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getWolfIcon( i ), I2S( saveskills[ i ] ) );
-// 			index = index + 1;
+			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getWolfIcon( i ), I2S( saveskills[ i ] ) );
+			index = index + 1;
 
-// 		}
+		}
 
-// 		i = i + 1;
+		i = i + 1;
 
-// 	}
+	}
 
-// 	MultiboardDisplay( board, true );
+	MultiboardDisplay( oldBoard, true );
 
-// };
+};
 
 // // ***************************************************************************
 // // *
 // // *  Triggers
 // // *
 // // ***************************************************************************
-
-// // ===========================================================================
-// // Trigger: coreInit
-// // ===========================================================================
-
-// const Trig_coreInitDelay_Actions = (): void => {
-
-// 	let i: number;
-// 	let q: quest;
-// 	let qi: questitem;
-// 	q = CreateQuest();
-// 	QuestSetTitle( q, "Ultimate Sheep Tag Fixus" );
-// 	QuestSetDescription( q, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-// 	QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNAcorn.blp" );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Fixus by |CFF959697Chakra|r" );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Ultimate Sheep Tag using |CFF959697Chakra|r's Sheep Tag Template file." );
-
-// 	q = CreateQuest();
-// 	QuestSetTitle( q, "Sheep" );
-// 	QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNSheep.blp" );
-// 	QuestSetRequired( q, false );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Either last 25 minutes or until all wolves leave to win." );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Build farms to survive." );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Save dead sheep to last." );
-
-// 	q = CreateQuest();
-// 	QuestSetTitle( q, "Wolves" );
-// 	QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNRaider.blp" );
-// 	QuestSetRequired( q, false );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Either kill all sheep or wait until all sheep leave to win." );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Buy items to kill sheep." );
-// 	qi = QuestCreateItem( q );
-// 	QuestItemSetDescription( qi, "Camp the middle to avoid killed sheep to be revived." );
-
-// 	i = 0;
-
-// 	while ( true ) {
-
-// 		if ( i === 12 ) break;
-// 		DisplayTimedTextToPlayer( Player( i ), 0, 0, 3, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-// 		i = i + 1;
-
-// 	}
-
-// 	if ( countHere( wolfTeam ) === 0 || countHere( sheepTeam ) === 0 )
-
-// 		goldFactor = 1000;
-
-// 	// todo: should be nulalble
-// 	TimerStart( myTimer, 3, false, () => { /* do nothing */ } );
-// 	TimerDialogSetTitle( myTimerDialog, "Starting in..." );
-// 	TimerDialogDisplay( myTimerDialog, true );
-// 	board = CreateMultiboard();
-
-// };
-
-// const RegisterItem = ( name: string, gold: number, lumber: number, id: number ): number => {
-
-// 	// Can't directly get gold/lumber cost off an item, so... :(
-// 	itemSpecs[ itemSpecsLength ] = s__itemspec__allocate();
-// 	s__itemspec_name[ itemSpecs[ itemSpecsLength ] ] = name;
-// 	s__itemspec_gold[ itemSpecs[ itemSpecsLength ] ] = gold;
-// 	s__itemspec_lumber[ itemSpecs[ itemSpecsLength ] ] = lumber;
-// 	s__itemspec_id[ itemSpecs[ itemSpecsLength ] ] = id;
-// 	SaveInteger( itemSpecsNames, StringHash( name ), 0, itemSpecsLength );
-// 	SaveInteger( itemSpecsIds, id, 0, itemSpecsLength );
-// 	itemSpecsLength = itemSpecsLength + 1;
-// 	return itemSpecs[ itemSpecsLength - 1 ];
-
-// };
-
-// // ===========================================================================
-// const InitTrig_coreInit = (): void => {
-
-// 	const t = CreateTrigger();
-// 	let i: number;
-// 	WORLD_BOUNDS = GetWorldBounds();
-// 	SetMapFlag( MAP_SHARED_ADVANCED_CONTROL, true );
-// 	TriggerRegisterTimerEvent( t, 0.01, false );
-// 	TriggerAddAction( t, Trig_coreInitDelay_Actions );
-// 	i = 0;
-
-// 	while ( true ) {
-
-// 		if ( i === 12 ) break;
-// 		saveskills[ i ] = 0;
-// 		dollyClick[ i ] = 0;
-// 		gemActivated[ i ] = false;
-// 		i = i + 1;
-
-// 	}
-
-// 	RegisterItem( "supergolem", 350, 0, FourCC( "I001" ) );
-// 	RegisterItem( "stalker", 100, 0, FourCC( "fgfh" ) );
-// 	RegisterItem( "golem", 100, 0, FourCC( "fgrg" ) );
-// 	RegisterItem( "speed", 25, 0, FourCC( "pspd" ) );
-// 	RegisterItem( "invis", 35, 0, FourCC( "pinv" ) );
-// 	RegisterItem( "mana", 20, 0, FourCC( "pman" ) );
-// 	RegisterItem( "cheese", 0, 2, FourCC( "I003" ) );
-// 	RegisterItem( "50", 350, 0, FourCC( "I002" ) );
-// 	RegisterItem( "sabre", 300, 0, FourCC( "I000" ) );
-// 	RegisterItem( "21", 126, 0, FourCC( "ratf" ) );
-// 	RegisterItem( "12", 60, 0, FourCC( "ratc" ) );
-// 	RegisterItem( "dagger", 67, 0, FourCC( "mcou" ) );
-// 	RegisterItem( "cloak", 250, 0, FourCC( "clfm" ) );
-// 	RegisterItem( "neck", 150, 0, FourCC( "nspi" ) );
-// 	RegisterItem( "boots", 70, 0, FourCC( "bspd" ) );
-// 	RegisterItem( "gem", 125, 0, FourCC( "gemt" ) );
-// 	RegisterItem( "orb", 300, 0, FourCC( "ofir" ) );
-// 	RegisterItem( "scope", 30, 0, FourCC( "tels" ) );
-// 	RegisterItem( "invul", 25, 0, FourCC( "pnvu" ) );
-// 	RegisterItem( "6", 18, 0, FourCC( "rat6" ) );
-// 	RegisterItem( "gloves", 80, 0, FourCC( "gcel" ) );
-// 	RegisterItem( "9", 36, 0, FourCC( "rat9" ) );
-// 	RegisterItem( "shadow", 100, 0, FourCC( "clsd" ) );
-// 	RegisterItem( "siege", 150, 0, FourCC( "tfar" ) );
-// 	RegisterItem( "dragon", 400, 2, FourCC( "I004" ) );
-// 	RegisterItem( "mines", 150, 0, FourCC( "gobm" ) );
-// 	RegisterItem( "negation", 50, 0, FourCC( "I005" ) );
-// 	RegisterItem( "power", 200, 0, FourCC( "tkno" ) );
-// 	RegisterItem( "health", 50, 0, FourCC( "hlst" ) );
-// 	color[ 0 ] = "|CFFFF0303";
-// 	color[ 1 ] = "|CFF0042FF";
-// 	color[ 2 ] = "|CFF1CE6B9";
-// 	color[ 3 ] = "|CFF540081";
-// 	color[ 4 ] = "|CFFFFFF01";
-// 	color[ 5 ] = "|CFFFE8A0E";
-// 	color[ 6 ] = "|CFF20C000";
-// 	color[ 7 ] = "|CFFE55BB0";
-// 	color[ 8 ] = "|CFF959697";
-// 	color[ 9 ] = "|CFF7EBFF1";
-// 	color[ 10 ] = "|CFF106246";
-// 	color[ 11 ] = "|CFF4E2A04";
-// 	color[ 12 ] = "|CFF3F81F8";
-// 	color[ 13 ] = "|CFFC00040";
-// 	color[ 14 ] = "|CFFD9D919";
-// 	ForceEnumAllies( sheepTeam, Player( 0 ), Condition( isHere ) );
-// 	ForceEnumAllies( wolfTeam, Player( 11 ), Condition( isHere ) );
-// 	AbilityRangePreload( FourCC( "A001" ), FourCC( "A00P" ) );
-
-// };
-
-// // ===========================================================================
-// // Trigger: coreGame
-// // ===========================================================================
-// // TESH.scrollpos=41
-// // TESH.alwaysfold=0
-// const Trig_coreGame_Actions = (): void => {
-
-// 	let i: number;
-// 	let n: number;
-
-// 	if ( gameState === "init" ) {
-
-// 		TimerDialogDisplay( myTimerDialog, false );
-// 		i = 0;
-
-// 		while ( true ) {
-
-// 			if ( i === 12 ) break;
-
-// 			if ( IsPlayerInForce( Player( i ), sheepTeam ) && GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING ) {
-
-// 				sheeps[ i ] = CreateUnit( Player( i ), s__sheep_type, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
-
-// 				if ( GetLocalPlayer() === Player( i ) ) {
-
-// 					ClearSelection();
-// 					SelectUnit( sheeps[ i ], true );
-// 					PanCameraToTimed( GetStartLocationX( i ), GetStartLocationY( i ), 0 );
-
-// 				}
-
-// 				if ( InStr( GetPlayerName( Player( i ) ), "Grim" ) >= 0 ) {
-
-// 					AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", sheeps[ i ], "origin" );
-// 					AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", sheeps[ i ], "origin" );
-
-// 				}
-
-// 				if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_COMPUTER ) {
-
-// 					n = 0;
-
-// 					while ( true ) {
-
-// 						if ( n === 12 ) break;
-
-// 						if ( IsPlayerInForce( Player( n ), sheepTeam ) ) {
-
-// 							SetPlayerAlliance( Player( i ), Player( n ), ALLIANCE_SHARED_ADVANCED_CONTROL, true );
-// 							SetPlayerAlliance( Player( i ), Player( n ), ALLIANCE_SHARED_CONTROL, true );
-
-// 						}
-
-// 						n = n + 1;
-
-// 					}
-
-// 				}
-
-// 			}
-
-// 			i = i + 1;
-
-// 		}
-
-// 		gameState = "start";
-// 		// todo: should be nullable
-// 		TimerStart( myTimer, 20, false, () => { /* do nothing */ } );
-// 		TimerDialogSetTitle( myTimerDialog, "Wolves in..." );
-// 		TimerDialogDisplay( myTimerDialog, true );
-// 		reloadMultiboard();
-
-// 	} else if ( gameState === "start" ) {
-
-// 		TimerDialogDisplay( myTimerDialog, false );
-// 		i = 0;
-
-// 		while ( true ) {
-
-// 			if ( i === 12 ) break;
-
-// 			if ( IsPlayerInForce( Player( i ), wolfTeam ) && GetPlayerSlotState( Player( i ) ) !== PLAYER_SLOT_STATE_EMPTY ) {
-
-// 				wolves[ i ] = CreateUnit( Player( i ), s__wolf_type, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
-// 				UnitAddItem( wolves[ i ], CreateItem( s__wolf_itemGlobal, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-
-// 				if ( countHere( wolfTeam ) === 1 )
-
-// 					UnitAddItem( wolves[ i ], CreateItem( s__wolf_item1, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-
-// 				else if ( countHere( wolfTeam ) === 2 )
-
-// 					UnitAddItem( wolves[ i ], CreateItem( s__wolf_item2, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-
-// 				else if ( countHere( wolfTeam ) === 3 )
-
-// 					UnitAddItem( wolves[ i ], CreateItem( s__wolf_item3, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-
-// 				else if ( countHere( wolfTeam ) === 4 )
-
-// 					UnitAddItem( wolves[ i ], CreateItem( s__wolf_item4, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-
-// 				if ( InStr( GetPlayerName( Player( i ) ), "Grim" ) >= 0 ) {
-
-// 					AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", wolves[ i ], "origin" );
-// 					AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", wolves[ i ], "head" );
-
-// 				}
-
-// 				if ( GetLocalPlayer() === Player( i ) ) {
-
-// 					ClearSelection();
-// 					SelectUnit( wolves[ i ], true );
-// 					PanCameraToTimed( - 256, - 1024, 0 );
-
-// 				}
-
-// 				if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_COMPUTER ) {
-
-// 					n = 0;
-
-// 					while ( true ) {
-
-// 						if ( n === 12 ) break;
-
-// 						if ( IsPlayerInForce( Player( n ), wolfTeam ) ) {
-
-// 							SetPlayerAlliance( Player( i ), Player( n ), ALLIANCE_SHARED_ADVANCED_CONTROL, true );
-// 							SetPlayerAlliance( Player( i ), Player( n ), ALLIANCE_SHARED_CONTROL, true );
-
-// 						}
-
-// 						n = n + 1;
-
-// 					}
-
-// 				}
-
-// 			}
-
-// 			i = i + 1;
-
-// 		}
-
-// 		gameState = "play";
-// 		// should be nullable
-// 		TimerStart( myTimer, 1500, false, () => { /* do nothing */ } );
-// 		TimerDialogSetTitle( myTimerDialog, "Sheep win in..." );
-// 		TimerDialogDisplay( myTimerDialog, true );
-
-// 	} else if ( gameState === "play" )
-
-// 		endGame( 0 );
-
-// };
-
-// // ===========================================================================
-// const InitTrig_coreGame = (): void => {
-
-// 	gg_trg_coreGame = CreateTrigger();
-// 	TriggerRegisterTimerExpireEvent( gg_trg_coreGame, myTimer );
-// 	TriggerAddAction( gg_trg_coreGame, Trig_coreGame_Actions );
-
-// };
 
 // // ===========================================================================
 // // Trigger: changelog
@@ -4003,17 +2601,6 @@ const Specialization_GetLevel = ( u: unit ): number => Specialization__levels[ G
 
 // };
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const jasshelper__initstructs869046375 = (): void => {
-
-	// ExecuteFunc( "s__File_FileIO__FileInit___onInit" );
-	s__File_FileIO__FileInit___onInit();
-
-	// ExecuteFunc( "s__AbilityPreload__Init_onInit" );
-	s__AbilityPreload__Init_onInit();
-
-};
-
 // ***************************************************************************
 // *
 // *  Main Initialization
@@ -4021,22 +2608,6 @@ const jasshelper__initstructs869046375 = (): void => {
 // ***************************************************************************
 
 // ===========================================================================
-const mainBefore = (): void => {
-
-	// ExecuteFunc( "jasshelper__initstructs869046375" );
-	jasshelper__initstructs869046375();
-	// ExecuteFunc( "CloakOfFlames__Init" );
-	CloakOfFlames__Init();
-	// ExecuteFunc( "DragonFire__Init" );
-	DragonFire__Init();
-	// ExecuteFunc( "FactoryFarm__Init" );
-	FactoryFarm__Init();
-	// ExecuteFunc( "ScoutPhoenixUpgrade__Init" );
-	ScoutPhoenixUpgrade__Init();
-	// ExecuteFunc( "init" );
-	init();
-
-};
 
 const mainAfter = (): void => {
 
@@ -4079,5 +2650,4 @@ const mainAfter = (): void => {
 
 // };
 
-addScriptHook( W3TS_HOOK.MAIN_BEFORE, mainBefore );
 addScriptHook( W3TS_HOOK.MAIN_AFTER, mainAfter );
