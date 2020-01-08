@@ -1,22 +1,22 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
-	board,
 	color,
 	countHere,
 	dollyClick,
 	gemActivated,
 	goldFactor,
 	isHere,
+	myTimer,
+	myTimerDialog,
 	saveskills,
 	sheepTeam,
 	wolfTeam,
 	WORLD_BOUNDS,
-} from "../index";
+} from "../shared";
+import { board } from "../misc/multiboard";
 import { AbilityRangePreload } from "../misc/abilityPreload";
 
-export const myTimer = CreateTimer();
-export const myTimerDialog = CreateTimerDialog( myTimer );
 const itemSpecs: Array<number> = [];
 // skip 0 to avoid typos
 let itemSpecsLength = 1;

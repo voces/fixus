@@ -1,7 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-// todo: I doubt this works...
-import { WORLD_BOUNDS, wolves } from "../index";
+import { WORLD_BOUNDS, wolves } from "../shared";
 
 // globals from DragonFire:
 let DragonFire__burnWolfId = 7;

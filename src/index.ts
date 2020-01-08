@@ -1,29 +1,14 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+// todo: remove empty imports if used by other files
 import "./misc/fileIO";
+import "./core/init";
+import "./core/game";
 import "./sheep/factoryFarm";
 import "./sheep/specialization";
 import "./wolves/cloakOfFlames";
 import "./wolves/dragonFire";
 import "./wolves/scoutPhoenixUpgrade";
-import { myTimer, myTimerDialog } from "./core/init";
-
-const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
-
-	let value = init;
-	return ( newValue?: T ): T => {
-
-		if ( newValue !== undefined )
-			value = newValue;
-
-		if ( value === undefined )
-			throw new Error( "variable left undefined" );
-
-		return value;
-
-	};
-
-};
 
 // // Generated
 // let gg_rct_Pen: rect;
@@ -38,35 +23,18 @@ const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 // let gg_trg_sheepJotyeFarm: trigger;
 // let gg_trg_eggGem: trigger;
 // let gg_trg_eggDolly: trigger;
-type GAME_STATES = "init" | "start" | "play";
-export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetterFunc( "init" as GAME_STATES );
-export const saveskills: Array<number> = [];
-export const wolves: Array<unit> = [];
-export const sheeps: Array<unit> = [];
+
 // const wisps: Array<unit> = [];
 // const wws: Array<unit> = [];
-export const sheepTeam = CreateForce();
-export const wolfTeam = CreateForce();
-const wispTeam = CreateForce();
-export const color: Array<string> = [];
-export const board: ( newBoard?: multiboard ) => multiboard = getterSetterFunc();
 // const myArg: Array<string | null> = [];
 // let myArgCount = 0;
-export const gemActivated: Array<boolean> = [];
-export const WORLD_BOUNDS: ( newRect?: rect ) => rect = getterSetterFunc();
 
-const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
 // const quickBuyTax = 1.5;
 // const quickSellTax = 0.5;
-let gameEnded = false;
-let someInteger: number;
 // const sheepZoom: Array<number> = [];
 // const wolfZoom: Array<number> = [];
-// export let goldFactor = 1;
-export const goldFactor: ( newFactory?: number ) => number = getterSetterFunc( 1 );
 // const wwTimer: Array<timer> = [];
 // const wwTimerDialog: Array<timerdialog> = [];
-export const dollyClick: Array<number> = [];
 // let katama = true;
 // const dollyTimer: Array<timer> = [];
 // const dollyTimerDialog: Array<timerdialog> = [];
@@ -125,93 +93,6 @@ export const dollyClick: Array<number> = [];
 // // *  Custom Script Code
 // // *
 // // ***************************************************************************
-
-const DisplayTimedText = ( duration: number, message: string ): void => {
-
-	let i = 0;
-
-	while ( true ) {
-
-		if ( i === bj_MAX_PLAYERS ) break;
-		DisplayTimedTextToPlayer( Player( i ), 0, 0, duration, message );
-		i = i + 1;
-
-	}
-
-};
-
-// Ends the game, awarding wins/loses and other W3MMD data
-export const endGame = ( winner: number ): void => {
-
-	let i = 0;
-
-	if ( gameEnded )
-
-		return;
-
-	gameEnded = true;
-	TimerDialogDisplay( myTimerDialog, false );
-	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-	// todo: this should be nullable
-	TimerStart( myTimer, 15, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( myTimerDialog, "Ending in..." );
-	TimerDialogDisplay( myTimerDialog, true );
-
-	if ( winner < 1 )
-
-		while ( true ) {
-
-			if ( i === 12 ) break;
-
-			if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
-
-				SetUnitInvulnerable( sheeps[ i ], true );
-				BlzSetUnitBaseDamage( sheeps[ i ], 4999, 0 );
-				SetUnitMoveSpeed( sheeps[ i ], 522 );
-				BlzSetUnitRealField( sheeps[ i ], UNIT_RF_SIGHT_RADIUS, 5000 );
-
-			}
-
-			i = i + 1;
-
-		}
-
-	TriggerSleepAction( 15 );
-
-	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-	i = 0;
-
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
-		if ( IsPlayerInForce( Player( i ), sheepTeam ) )
-
-			if ( winner < 1 ) {
-
-				CustomVictoryBJ( Player( i ), true, true );
-
-			} else {
-
-				CustomDefeatBJ( Player( i ), defeatString );
-
-			}
-
-		else
-
-		if ( winner > 1 )
-
-			CustomVictoryBJ( Player( i ), true, true );
-
-		else
-
-			CustomDefeatBJ( Player( i ), defeatString );
-
-		i = i + 1;
-
-	}
-
-};
 
 // // Duh
 // const TriggerRegisterPlayerEventAll = ( t: trigger, e: playerevent ): void => {
@@ -362,24 +243,6 @@ export const endGame = ( winner: number ): void => {
 
 // };
 
-export const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
-
-const countHereEnum = (): void => {
-
-	if ( GetPlayerSlotState( GetEnumPlayer() ) === PLAYER_SLOT_STATE_PLAYING )
-		someInteger = someInteger + 1;
-
-};
-
-// Counts players in force that are here
-export const countHere = ( f: force ): number => {
-
-	someInteger = 0;
-	ForForce( f, countHereEnum );
-	return someInteger;
-
-};
-
 // const countHereRealEnum = (): void => {
 
 // 	if ( GetPlayerSlotState( GetEnumPlayer() ) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController( GetEnumPlayer() ) === MAP_CONTROL_USER )
@@ -415,162 +278,6 @@ export const countHere = ( f: force ): number => {
 // 		return wisps[ GetPlayerId( p ) ];
 
 // };
-
-// Returns the index in which string part is found in string whole
-export const InStr = ( whole: string, part: string ): number => {
-
-	let index = 0;
-
-	while ( true ) {
-
-		if ( StringLength( whole ) - index < StringLength( part ) ) break;
-
-		if ( SubString( whole, index, StringLength( part ) + index ) === part )
-
-			return index;
-
-		index = index + 1;
-
-	}
-
-	return - 1;
-
-};
-
-const updateMultiboardRow = ( index: number, value1: string | null, icon: string | null, value2: string | null ): void => {
-
-	let mbi = MultiboardGetItem( board(), index, 0 );
-	if ( value1 ) MultiboardSetItemValue( mbi, value1 );
-	MultiboardSetItemWidth( mbi, 0.1 );
-	MultiboardSetItemStyle( mbi, true, false );
-	MultiboardReleaseItem( mbi );
-
-	mbi = MultiboardGetItem( board(), index, 1 );
-	if ( value2 ) MultiboardSetItemValue( mbi, value2 );
-
-	if ( icon === null )
-		MultiboardSetItemStyle( mbi, true, false );
-	else
-		MultiboardSetItemIcon( mbi, icon );
-
-	MultiboardReleaseItem( mbi );
-
-};
-
-const getSheepIcon = ( i: number ): string => {
-
-	if ( saveskills[ i ] >= 25 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNMaskOfDeath.blp";
-
-	else if ( saveskills[ i ] >= 15 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNDruidOfTheClaw.blp";
-
-	else if ( saveskills[ i ] >= 10 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNSheep.blp";
-
-	return "ReplaceableTextures\\CommandButtons\\BTNPolymorph.blp";
-
-};
-
-const getWolfIcon = ( i: number ): string => {
-
-	if ( saveskills[ i ] >= 25 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNDoomGuard.blp";
-
-	else if ( saveskills[ i ] >= 10 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNDireWolf.blp";
-
-	return "ReplaceableTextures\\CommandButtons\\BTNTimberWolf.blp";
-
-};
-
-export const reloadMultiboard = (): void => {
-
-	let i = 0;
-	let index = 0;
-	const oldBoard = board();
-	MultiboardDisplay( oldBoard, false );
-	DestroyMultiboard( oldBoard );
-
-	const newBoard = CreateMultiboard();
-	board( newBoard );
-	MultiboardSetTitleText( newBoard, "Ultimate Sheep Tag Fixus" );
-	MultiboardSetColumnCount( newBoard, 2 );
-	MultiboardSetRowCount( newBoard, 5 + CountPlayersInForceBJ( sheepTeam ) + CountPlayersInForceBJ( wolfTeam ) + CountPlayersInForceBJ( wispTeam ) );
-
-	// sheep
-	updateMultiboardRow( index, color[ 12 ] + "Sheep: " + I2S( countHere( sheepTeam ) ), null, "Saves" );
-	index = index + 1;
-
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
-		if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
-
-			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getSheepIcon( i ), I2S( saveskills[ i ] ) );
-			index = index + 1;
-
-		}
-
-		i = i + 1;
-
-	}
-
-	updateMultiboardRow( index, null, null, null );
-	index = index + 1;
-
-	// Wisps
-	updateMultiboardRow( index, color[ 12 ] + "Wisps: " + I2S( countHere( wispTeam ) ), null, "Saves" );
-	index = index + 1;
-	i = 0;
-
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
-		if ( IsPlayerInForce( Player( i ), wispTeam ) ) {
-
-			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), "ReplaceableTextures\\CommandButtons\\BTNWisp.blp", I2S( saveskills[ i ] ) );
-			index = index + 1;
-
-		}
-
-		i = i + 1;
-
-	}
-
-	updateMultiboardRow( index, null, null, null );
-	index = index + 1;
-
-	// Wolves
-	updateMultiboardRow( index, color[ 13 ] + "Wolves: " + I2S( countHere( wolfTeam ) ), null, "Kills" );
-	index = index + 1;
-	i = 0;
-
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
-		if ( IsPlayerInForce( Player( i ), wolfTeam ) ) {
-
-			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getWolfIcon( i ), I2S( saveskills[ i ] ) );
-			index = index + 1;
-
-		}
-
-		i = i + 1;
-
-	}
-
-	MultiboardDisplay( oldBoard, true );
-
-};
 
 // // ***************************************************************************
 // // *

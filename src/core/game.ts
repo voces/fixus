@@ -5,13 +5,14 @@ import {
 	sheepTeam,
 	sheeps,
 	InStr,
-	reloadMultiboard,
 	wolfTeam,
 	wolves,
 	countHere,
 	endGame,
-} from "../index";
-import { myTimer, myTimerDialog } from "./init";
+	myTimer,
+	myTimerDialog,
+} from "../shared";
+import { reloadMultiboard } from "../misc/multiboard";
 
 const s__sheep_type = FourCC( "uC04" );
 const s__wolf_type = FourCC( "EC03" );

@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { saveskills } from "../index";
+import { saveskills } from "../shared";
 
 // globals from FactoryFarm:
 const FactoryFarm__factoryFarmTimer = CreateTimer();

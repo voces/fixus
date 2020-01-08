@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { wolves } from "../index";
+import { wolves } from "../shared";
 
 // globals from ScoutPhoenixUpgrade:
 // endglobals from ScoutPhoenixUpgrade
