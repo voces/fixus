@@ -120,7 +120,7 @@ const DragonFire__OnSpellCast = (): void => {
 
 };
 
-const DragonFire__Init = (): void => {
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
@@ -134,8 +134,7 @@ const DragonFire__Init = (): void => {
 	TriggerAddAction( DragonFire__burnUnits, DragonFire__BurnUnits );
 	DisableTrigger( DragonFire__burnUnits );
 
-};
+} );
 
 // library DragonFire ends
 
-addScriptHook( W3TS_HOOK.MAIN_AFTER, DragonFire__Init );

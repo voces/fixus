@@ -1,11 +1,10 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { s__wolf_cloakitem } from "shared";
 
 // globals from CloakOfFlames:
 const CloakOfFlames__cloakHolders = CreateGroup();
 // endglobals from CloakOfFlames
-
-const s__wolf_cloakitem = FourCC( "clfm" );
 
 // library CloakOfFlames:
 

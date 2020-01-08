@@ -11,11 +11,11 @@ import {
 	endGame,
 	myTimer,
 	myTimerDialog,
+	s__sheep_type,
+	s__wolf_type,
 } from "../shared";
 import { reloadMultiboard } from "../misc/multiboard";
 
-const s__sheep_type = FourCC( "uC04" );
-const s__wolf_type = FourCC( "EC03" );
 const s__wolf_item1 = FourCC( "ratf" );
 const s__wolf_item2 = FourCC( "ratc" );
 const s__wolf_item3 = FourCC( "rat9" );

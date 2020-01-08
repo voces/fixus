@@ -197,7 +197,7 @@ const init = (): void => {
 
 };
 
-const Specialization_onSpawn = ( u: unit ): void => {
+export const Specialization_onSpawn = ( u: unit ): void => {
 
 	const i = GetPlayerId( GetOwningPlayer( u ) );
 
