@@ -33,11 +33,10 @@ export const fillArray = <T>( size: number, value: T ): Array<T> => {
 
 };
 
-export const fillArrayFn = <T>( size: number, fn: ( index: number ) => T ): Array<T> => {
+export const fillArrayFn = <T>( size: number, fn: ( index: number ) => T, arr: Array<T> = [] ): Array<T> => {
 
-	const arr = [];
 	for ( let i = 0; i < size; i ++ )
-		arr.push( typeof fn === "function" ? fn( i ) : fn );
+		arr[ i ] = fn( i );
 
 	return arr;
 
@@ -65,6 +64,7 @@ export const s__wolf_wwtype = FourCC( "eC16" );
 export const s__sheep_type = FourCC( "uC04" );
 export const s__wolf_type = FourCC( "EC03" );
 export const s__wolf_cloakitem = FourCC( "clfm" );
+export const DOLLY_TYPE = FourCC( "nshf" );
 export const wisps: Array<unit> = [];
 
 let someInteger: number;

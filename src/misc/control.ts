@@ -14,7 +14,6 @@ const Trig_miscControl_Actions = (): void => {
 	const receiver: player = Player( receiverId );
 
 	if ( myArg[ 0 ] !== "c" || receiverId < 0 || receiverId > 11 || ! ( IsPlayerAlly( GetTriggerPlayer(), receiver ) && GetPlayerSlotState( receiver ) === PLAYER_SLOT_STATE_PLAYING ) )
-
 		return;
 
 	// Grant control

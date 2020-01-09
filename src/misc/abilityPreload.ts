@@ -45,9 +45,7 @@ export const AbilityRangePreload = ( start: number, end: number ): void => {
 
 	let i = 1;
 
-	if ( start > end )
-
-		i = - 1;
+	if ( start > end ) i = - 1;
 
 	while ( true ) {
 

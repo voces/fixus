@@ -3,7 +3,7 @@ import { color, fillArray } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const gemActivated: Array<boolean> = fillArray( bj_MAX_PLAYERS, false );
-const s__wolf_gem = FourCC( "gemt" );
+const GEM_TYPE = FourCC( "gemt" );
 
 // ===========================================================================
 // Trigger: eggGem
@@ -11,28 +11,13 @@ const s__wolf_gem = FourCC( "gemt" );
 
 const Trig_eggGem_Actions = (): void => {
 
-	const i = GetRandomInt( 0, 100 );
+	const playerId = GetPlayerId( GetTriggerPlayer() );
 
-	if ( GetItemTypeId( GetManipulatedItem() ) === s__wolf_gem )
+	if ( GetItemTypeId( GetManipulatedItem() ) !== GEM_TYPE ) return;
 
-		if ( gemActivated[ GetPlayerId( GetTriggerPlayer() ) ] ) {
-
-			gemActivated[ GetPlayerId( GetTriggerPlayer() ) ] = false;
-			DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color[ 3 ] + "Gem deactivated." );
-
-		} else {
-
-			gemActivated[ GetPlayerId( GetTriggerPlayer() ) ] = true;
-
-			if ( i === 0 )
-
-				DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color[ 3 ] + "Perfect gem activated." );
-
-			else
-
-				DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color[ 3 ] + "Gem activated." );
-
-		}
+	gemActivated[ playerId ] = ! gemActivated[ playerId ];
+	const message = gemActivated[ playerId ] ? GetRandomInt( 0, 100 ) === 0 ? "Perfect gem activated." : "Gem activated." : "Gem deactivated.";
+	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color[ 3 ] + message );
 
 };
 

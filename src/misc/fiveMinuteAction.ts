@@ -4,23 +4,19 @@ import {
 	WORLD_BOUNDS,
 	DisplayTimedText,
 	goldFactor,
+	DOLLY_TYPE,
 } from "shared";
 
-const s__misc_dolly = FourCC( "nshf" );
-const s__misc_dollySpeedAura = FourCC( "Aasl" );
+const DOLLY_SPEED_AURA = FourCC( "Aasl" );
 
-// ===========================================================================
-// Trigger: miscFiveMinuteAction
-// ===========================================================================
-
-const FilterDolly = (): boolean => GetUnitTypeId( GetFilterUnit() ) === s__misc_dolly;
+const filterDolly = (): boolean => GetUnitTypeId( GetFilterUnit() ) === DOLLY_TYPE;
 
 const increaseMovementSpeed = (): void => {
 
 	DisplayTimedText( 15, "Five minutes remaining! Movement speed increased by 25%!" );
 
 	const g = CreateGroup();
-	GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( FilterDolly ) );
+	GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( filterDolly ) );
 	const dolly = GroupPickRandomUnit( g );
 	DestroyGroup( g );
 
@@ -28,11 +24,11 @@ const increaseMovementSpeed = (): void => {
 
 		return;
 
-	UnitAddAbility( dolly, s__misc_dollySpeedAura );
+	UnitAddAbility( dolly, DOLLY_SPEED_AURA );
 
 };
 
-const Trig_miscFiveMinuteAction_Actions = (): void => {
+const action = (): void => {
 
 	const rand = GetRandomReal( 0, 1 );
 
@@ -41,9 +37,7 @@ const Trig_miscFiveMinuteAction_Actions = (): void => {
 		DisplayTimedText( 15, "Five minutes remaining! All income is doubled!" );
 		goldFactor( goldFactor() * 2 );
 
-	} else
-
-		increaseMovementSpeed();
+	} else increaseMovementSpeed();
 
 };
 
@@ -53,6 +47,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	const t = CreateTrigger();
 	// 3 (sheep delay) + 20 (shepherd delay) + 1200 (20 minutes)
 	TriggerRegisterTimerEventSingle( t, 1223 );
-	TriggerAddAction( t, Trig_miscFiveMinuteAction_Actions );
+	TriggerAddAction( t, action );
 
 } );

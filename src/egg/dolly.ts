@@ -1,11 +1,10 @@
 
-import { TriggerRegisterPlayerUnitEventAll, fillArray } from "shared";
+import { TriggerRegisterPlayerUnitEventAll, fillArray, fillArrayFn, DOLLY_TYPE } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const dollyTimer: Array<timer> = [];
 const dollyTimerDialog: Array<timerdialog> = [];
-const s__sheep_dolly = FourCC( "nshf" );
-const s__sheep_katama = FourCC( "n002" );
+const KATAMA_TYPE = FourCC( "n002" );
 
 const dollyClick: Array<number> = fillArray( bj_MAX_PLAYERS, 0 );
 let katama = true;
@@ -16,13 +15,12 @@ let katama = true;
 
 const Trig_eggDolly_Actions = (): void => {
 
-	let e: effect;
 	const playerId = GetPlayerId( GetTriggerPlayer() );
-	dollyClick[ playerId ] = dollyClick[ playerId ] + 1;
+	dollyClick[ playerId ] ++;
 
 	if ( dollyClick[ playerId ] > 10 ) {
 
-		e = AddSpecialEffectTarget( "Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdx", GetTriggerUnit(), "origin" );
+		let e = AddSpecialEffectTarget( "Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdx", GetTriggerUnit(), "origin" );
 		DestroyEffect( e );
 		e = AddSpecialEffectTarget( "Objects\\Spawnmodels\\Human\\HumanLargeDeathExplode\\HumanLargeDeathExplode.mdx", GetTriggerUnit(), "origin" );
 		DestroyEffect( e );
@@ -34,15 +32,12 @@ const Trig_eggDolly_Actions = (): void => {
 		if ( katama ) {
 
 			katama = false;
-			CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), s__sheep_katama, GetUnitX( GetTriggerUnit() ), GetUnitY( GetTriggerUnit() ), GetUnitFacing( GetTriggerUnit() ) + 180 );
+			CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), KATAMA_TYPE, GetUnitX( GetTriggerUnit() ), GetUnitY( GetTriggerUnit() ), GetUnitFacing( GetTriggerUnit() ) + 180 );
 
 		}
 
 		KillUnit( GetTriggerUnit() );
 		DisplayTimedTextToPlayer( GetTriggerPlayer(), 0, 0, 5, "You killed Dolly! You've been placed in time out!" );
-		// todo: should be nullable
-		TimerStart( dollyTimer[ playerId ], 15, false, () => { /* do nothing */ } );
-		TimerDialogSetTitle( dollyTimerDialog[ playerId ], "Time out ends in..." );
 
 		if ( GetTriggerPlayer() === GetLocalPlayer() ) {
 
@@ -51,14 +46,17 @@ const Trig_eggDolly_Actions = (): void => {
 
 		}
 
-		TriggerSleepAction( 15 );
+		TimerDialogSetTitle( dollyTimerDialog[ playerId ], "Time out ends in..." );
+		TimerStart( dollyTimer[ playerId ], 15, false, () => {
 
-		if ( GetTriggerPlayer() === GetLocalPlayer() ) {
+			if ( playerId === GetPlayerId( GetLocalPlayer() ) ) {
 
-			EnableUserControl( true );
-			TimerDialogDisplay( dollyTimerDialog[ playerId ], false );
+				EnableUserControl( true );
+				TimerDialogDisplay( dollyTimerDialog[ playerId ], false );
 
-		}
+			}
+
+		} );
 
 	}
 
@@ -66,27 +64,14 @@ const Trig_eggDolly_Actions = (): void => {
 
 const Trig_eggDolly_Tick = (): void => {
 
-	let i = 0;
+	dollyClick.forEach( ( _, index ) => dollyClick[ index ] -- );
 
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
-		if ( dollyClick[ i ] > 0 )
-
-			dollyClick[ i ] = dollyClick[ i ] - 1;
-
-		i = i + 1;
-
-	}
-
-	if ( GetPlayerUnitTypeCount( Player( PLAYER_NEUTRAL_PASSIVE ), s__sheep_dolly ) === 0 )
-
-		CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), s__sheep_dolly, - 256, - 768, 270 );
+	if ( GetPlayerUnitTypeCount( Player( PLAYER_NEUTRAL_PASSIVE ), DOLLY_TYPE ) === 0 )
+		CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), DOLLY_TYPE, - 256, - 768, 270 );
 
 };
 
-const Trig_eggDolly_isDolly = (): boolean => GetUnitTypeId( GetFilterUnit() ) === s__sheep_dolly;
+const Trig_eggDolly_isDolly = (): boolean => GetUnitTypeId( GetFilterUnit() ) === DOLLY_TYPE;
 
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
@@ -99,14 +84,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	TriggerRegisterTimerEvent( t, 1, true );
 	TriggerAddAction( t, Trig_eggDolly_Tick );
 
-	let i = 0;
-	while ( true ) {
-
-		if ( i === 12 ) break;
-		dollyTimer[ i ] = CreateTimer();
-		dollyTimerDialog[ i ] = CreateTimerDialog( dollyTimer[ i ] );
-		i = i + 1;
-
-	}
+	fillArrayFn( bj_MAX_PLAYERS, () => CreateTimer(), dollyTimer );
+	fillArrayFn( bj_MAX_PLAYERS, i => CreateTimerDialog( dollyTimer[ i ] ), dollyTimerDialog );
 
 } );

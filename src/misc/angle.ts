@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { Split, myArgCount, myArg, TriggerRegisterPlayerChatEventAll } from "../shared";
+import { TriggerRegisterPlayerChatEventAll } from "../shared";
 
 // ===========================================================================
 // Trigger: miscAngle
@@ -8,11 +8,10 @@ import { Split, myArgCount, myArg, TriggerRegisterPlayerChatEventAll } from "../
 
 const Trig_miscAngle_Actions = (): void => {
 
-	Split( GetEventPlayerChatString(), " ", true );
+	if ( GetLocalPlayer() !== GetTriggerPlayer() ) return;
 
-	if ( myArgCount === 1 && GetLocalPlayer() === GetTriggerPlayer() )
-
-		SetCameraField( CAMERA_FIELD_ANGLE_OF_ATTACK, S2R( myArg[ 0 ] || "" ), 0 );
+	const angle = S2R( GetEventPlayerChatString().split( " " )[ 1 ] );
+	SetCameraField( CAMERA_FIELD_ANGLE_OF_ATTACK, angle, 0 );
 
 };
 

@@ -19,15 +19,12 @@ const miscFace_Actions = (): void => {
 		if ( u === null ) break;
 
 		if ( SubString( myArg[ 0 ] || "", 0, 1 ) === "+" )
-
 			SetUnitFacing( u, GetUnitFacing( u ) + S2R( SubString( myArg[ 0 ] || "", 1, StringLength( myArg[ 0 ] || "" ) - 7 ) ) );
 
 		else if ( SubString( myArg[ 0 ] || "", 0, 1 ) === "-" )
-
 			SetUnitFacing( u, GetUnitFacing( u ) - S2R( SubString( myArg[ 0 ] || "", 1, StringLength( myArg[ 0 ] || "" ) - 7 ) ) );
 
 		else
-
 			SetUnitFacing( u, S2R( myArg[ 0 ] || "" ) );
 
 		GroupRemoveUnit( g, u );

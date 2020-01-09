@@ -1,19 +1,13 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { DOLLY_TYPE } from "shared";
 
 // ===========================================================================
 // Trigger: miscDollyMove
 // ===========================================================================
 
-const Trig_miscDollyMove_Conditions = (): boolean => {
-
-	if ( ! ( GetUnitTypeId( GetTriggerUnit() ) === FourCC( "nshf" ) ) )
-
-		return false;
-
-	return true;
-
-};
+const Trig_miscDollyMove_Conditions = (): boolean =>
+	GetUnitTypeId( GetTriggerUnit() ) === DOLLY_TYPE;
 
 const Trig_miscDollyMove_Actions = (): void => {
 
