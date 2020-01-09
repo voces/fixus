@@ -4,9 +4,10 @@ import {
 	WORLD_BOUNDS,
 	DisplayTimedText,
 	goldFactor,
-	s__misc_dolly,
-	s__misc_dollySpeedAura,
 } from "shared";
+
+const s__misc_dolly = FourCC( "nshf" );
+const s__misc_dollySpeedAura = FourCC( "Aasl" );
 
 // ===========================================================================
 // Trigger: miscFiveMinuteAction

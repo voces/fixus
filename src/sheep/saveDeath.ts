@@ -18,9 +18,6 @@ import {
 	s__wolf_imbatype,
 	s__wolf_type,
 	s__sheep_type,
-	s__sheep_goldtype,
-	s__sheep_silvertype,
-	s__sheep_blacktype,
 	wisps,
 	s__wolf_wwtype,
 	wws,
@@ -35,6 +32,10 @@ import {
 import { ScoutPhoenixUpgrade_onSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+
+const s__sheep_blacktype = FourCC( "uC02" );
+const s__sheep_silvertype = FourCC( "u000" );
+const s__sheep_goldtype = FourCC( "u001" );
 
 // ===========================================================================
 // Trigger: sheepSaveDeath

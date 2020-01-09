@@ -1,4 +1,9 @@
 
+// This file should not import anything from this repo except libs
+
+import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { AbilityRangePreload } from "./misc/abilityPreload";
+
 export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
 	let value = init;
@@ -19,9 +24,7 @@ export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 type GAME_STATES = "init" | "start" | "play";
 
 export const color: Array<string> = [];
-export const dollyClick: Array<number> = [];
 export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetterFunc( "init" as GAME_STATES );
-export const gemActivated: Array<boolean> = [];
 export const goldFactor: ( newFactory?: number ) => number = getterSetterFunc( 1 );
 export const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
 export const myTimer = CreateTimer();
@@ -37,27 +40,24 @@ export const WORLD_BOUNDS: ( newRect?: rect ) => rect = getterSetterFunc();
 export const myArg: Array<string | null> = [];
 export let myArgCount = 0;
 export const s__wisp_type = FourCC( "eC01" );
-export const s__misc_dolly = FourCC( "nshf" );
-export const s__misc_dollySpeedAura = FourCC( "Aasl" );
-export const s__sheep_blacktype = FourCC( "uC02" );
-export const s__sheep_silvertype = FourCC( "u000" );
-export const s__sheep_goldtype = FourCC( "u001" );
 
-// const s__sheep_dolly = FourCC( "nshf" );
-// const s__sheep_katama = FourCC( "n002" );
 export const s__wolf_blacktype = FourCC( "E002" );
 export const s__wolf_imbatype = FourCC( "E000" );
 export const s__wolf_wwtype = FourCC( "eC16" );
-// const s__wolf_wwitem = FourCC( "I003" );
-// const s__wolf_wardtype = FourCC( "n001" );
-// const s__wolf_wardability = FourCC( "A001" );
-export const s__wolf_golemtype = FourCC( "ewsp" );
-export const s__wolf_stalkertype = FourCC( "nfel" );
-// const s__wolf_gem = FourCC( "gemt" );
 export const s__sheep_type = FourCC( "uC04" );
 export const s__wolf_type = FourCC( "EC03" );
 export const s__wolf_cloakitem = FourCC( "clfm" );
 export const wisps: Array<unit> = [];
+
+export const fillArray = <T>( size: number, fn: ( index: number ) => T ): Array<T> => {
+
+	const arr = [];
+	for ( let i = 0; i < size; i ++ )
+		arr.push( fn( i ) );
+
+	return arr;
+
+};
 
 let someInteger: number;
 
@@ -347,6 +347,20 @@ export const TriggerRegisterPlayerEventAll = ( t: trigger, e: playerevent ): voi
 
 };
 
+export const TriggerRegisterPlayerUnitEventAll = ( t: trigger, p: playerunitevent, b: boolexpr ): void => {
+
+	let i = 0;
+
+	while ( true ) {
+
+		if ( i === bj_MAX_PLAYERS ) break;
+		TriggerRegisterPlayerUnitEvent( t, Player( i ), p, b );
+		i = i + 1;
+
+	}
+
+};
+
 // Grabs the player's main unit
 export const mainUnit = ( p: player ): unit => {
 
@@ -384,3 +398,39 @@ export const SmallText = ( amount: number, u: unit, cc: number, x: number, y: nu
 	}
 
 };
+
+addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
+
+	WORLD_BOUNDS( GetWorldBounds() );
+	SetMapFlag( MAP_SHARED_ADVANCED_CONTROL, true );
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		saveskills[ i ] = 0;
+
+	color[ 0 ] = "|CFFFF0303";
+	color[ 1 ] = "|CFF0042FF";
+	color[ 2 ] = "|CFF1CE6B9";
+	color[ 3 ] = "|CFF540081";
+	color[ 4 ] = "|CFFFFFF01";
+	color[ 5 ] = "|CFFFE8A0E";
+	color[ 6 ] = "|CFF20C000";
+	color[ 7 ] = "|CFFE55BB0";
+	color[ 8 ] = "|CFF959697";
+	color[ 9 ] = "|CFF7EBFF1";
+	color[ 10 ] = "|CFF106246";
+	color[ 11 ] = "|CFF4E2A04";
+	color[ 12 ] = "|CFF3F81F8";
+	color[ 13 ] = "|CFFC00040";
+	color[ 14 ] = "|CFFD9D919";
+
+	ForceEnumAllies( sheepTeam, Player( 0 ), Condition( isHere ) );
+	ForceEnumAllies( wolfTeam, Player( 11 ), Condition( isHere ) );
+
+} );
+
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+
+	AbilityRangePreload( FourCC( "A001" ), FourCC( "A00P" ) );
+
+} );
+

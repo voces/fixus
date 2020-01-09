@@ -1,5 +1,8 @@
-import { s__wolf_type, s__wolf_blacktype, s__wolf_imbatype, s__wolf_golemtype, s__wolf_stalkertype } from "shared";
+import { s__wolf_type, s__wolf_blacktype, s__wolf_imbatype } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+
+const s__wolf_golemtype = FourCC( "ewsp" );
+const s__wolf_stalkertype = FourCC( "nfel" );
 
 // ===========================================================================
 // Trigger: sheepJotyeFarm

@@ -1,21 +1,14 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
-	color,
 	countHere,
-	dollyClick,
-	gemActivated,
 	goldFactor,
-	isHere,
 	myTimer,
 	myTimerDialog,
-	saveskills,
 	sheepTeam,
 	wolfTeam,
-	WORLD_BOUNDS,
 } from "../shared";
 import { board } from "../misc/multiboard";
-import { AbilityRangePreload } from "../misc/abilityPreload";
 
 // ===========================================================================
 // Trigger: coreInit
@@ -83,40 +76,7 @@ const Trig_coreInitDelay_Actions = (): void => {
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
-	let i: number;
-	WORLD_BOUNDS( GetWorldBounds() );
-	SetMapFlag( MAP_SHARED_ADVANCED_CONTROL, true );
 	TriggerRegisterTimerEvent( t, 0.01, false );
 	TriggerAddAction( t, Trig_coreInitDelay_Actions );
-	i = 0;
-
-	while ( true ) {
-
-		if ( i === 12 ) break;
-		saveskills[ i ] = 0;
-		dollyClick[ i ] = 0;
-		gemActivated[ i ] = false;
-		i = i + 1;
-
-	}
-
-	color[ 0 ] = "|CFFFF0303";
-	color[ 1 ] = "|CFF0042FF";
-	color[ 2 ] = "|CFF1CE6B9";
-	color[ 3 ] = "|CFF540081";
-	color[ 4 ] = "|CFFFFFF01";
-	color[ 5 ] = "|CFFFE8A0E";
-	color[ 6 ] = "|CFF20C000";
-	color[ 7 ] = "|CFFE55BB0";
-	color[ 8 ] = "|CFF959697";
-	color[ 9 ] = "|CFF7EBFF1";
-	color[ 10 ] = "|CFF106246";
-	color[ 11 ] = "|CFF4E2A04";
-	color[ 12 ] = "|CFF3F81F8";
-	color[ 13 ] = "|CFFC00040";
-	color[ 14 ] = "|CFFD9D919";
-	ForceEnumAllies( sheepTeam, Player( 0 ), Condition( isHere ) );
-	ForceEnumAllies( wolfTeam, Player( 11 ), Condition( isHere ) );
-	AbilityRangePreload( FourCC( "A001" ), FourCC( "A00P" ) );
 
 } );
