@@ -23,13 +23,33 @@ export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
 type GAME_STATES = "init" | "start" | "play";
 
+export const fillArray = <T>( size: number, value: T ): Array<T> => {
+
+	const arr = [];
+	for ( let i = 0; i < size; i ++ )
+		arr.push( value );
+
+	return arr;
+
+};
+
+export const fillArrayFn = <T>( size: number, fn: ( index: number ) => T ): Array<T> => {
+
+	const arr = [];
+	for ( let i = 0; i < size; i ++ )
+		arr.push( typeof fn === "function" ? fn( i ) : fn );
+
+	return arr;
+
+};
+
 export const color: Array<string> = [];
 export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetterFunc( "init" as GAME_STATES );
 export const goldFactor: ( newFactory?: number ) => number = getterSetterFunc( 1 );
 export const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
 export const myTimer = CreateTimer();
 export const myTimerDialog = CreateTimerDialog( myTimer );
-export const saveskills: Array<number> = [];
+export const saveskills: Array<number> = fillArray( bj_MAX_PLAYERS, 0 );
 export const wws: Array<unit> = [];
 export const sheeps: Array<unit> = [];
 export const sheepTeam = CreateForce();
@@ -37,8 +57,6 @@ export const wispTeam = CreateForce();
 export const wolfTeam = CreateForce();
 export const wolves: Array<unit> = [];
 export const WORLD_BOUNDS: ( newRect?: rect ) => rect = getterSetterFunc();
-export const myArg: Array<string | null> = [];
-export let myArgCount = 0;
 export const s__wisp_type = FourCC( "eC01" );
 
 export const s__wolf_blacktype = FourCC( "E002" );
@@ -48,16 +66,6 @@ export const s__sheep_type = FourCC( "uC04" );
 export const s__wolf_type = FourCC( "EC03" );
 export const s__wolf_cloakitem = FourCC( "clfm" );
 export const wisps: Array<unit> = [];
-
-export const fillArray = <T>( size: number, fn: ( index: number ) => T ): Array<T> => {
-
-	const arr = [];
-	for ( let i = 0; i < size; i ++ )
-		arr.push( fn( i ) );
-
-	return arr;
-
-};
 
 let someInteger: number;
 
@@ -204,6 +212,8 @@ export const InStr = ( whole: string, part: string ): number => {
 
 };
 
+export const myArg: Array<string | null> = [];
+export let myArgCount = 0;
 // Splits a string into arguments around string c. If bb true, first argument is ignored.
 export const Split = ( s: string, c: string, bb: boolean ): void => {
 
@@ -365,28 +375,20 @@ export const TriggerRegisterPlayerUnitEventAll = ( t: trigger, p: playeruniteven
 export const mainUnit = ( p: player ): unit => {
 
 	if ( GetPlayerId( p ) > 6 )
-
 		return wolves[ GetPlayerId( p ) ];
 
-	else
-
 	if ( IsPlayerInForce( p, sheepTeam ) )
-
 		return sheeps[ GetPlayerId( p ) ];
 
-	else
-
-		return wisps[ GetPlayerId( p ) ];
+	return wisps[ GetPlayerId( p ) ];
 
 };
 
 export const SmallText = ( amount: number, u: unit, cc: number, x: number, y: number ): void => {
 
-	let tt: texttag;
-
 	if ( GetUnitAbilityLevel( u, FourCC( "Alv1" ) ) <= 0 && IsVisibleToPlayer( GetUnitX( u ), GetUnitY( u ), GetLocalPlayer() ) ) {
 
-		tt = CreateTextTag();
+		const tt = CreateTextTag();
 		SetTextTagPermanent( tt, false );
 		SetTextTagPos( tt, GetUnitX( u ) + x, GetUnitY( u ) + y, 25 );
 		SetTextTagText( tt, color[ cc ] + "+" + I2S( amount ), 0.0276 );

@@ -2,7 +2,7 @@
 import { color, fillArray } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
-const gemActivated: Array<boolean> = fillArray( bj_MAX_PLAYERS, () => false );
+const gemActivated: Array<boolean> = fillArray( bj_MAX_PLAYERS, false );
 const s__wolf_gem = FourCC( "gemt" );
 
 // ===========================================================================

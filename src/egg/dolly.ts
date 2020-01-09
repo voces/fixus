@@ -7,7 +7,7 @@ const dollyTimerDialog: Array<timerdialog> = [];
 const s__sheep_dolly = FourCC( "nshf" );
 const s__sheep_katama = FourCC( "n002" );
 
-const dollyClick: Array<number> = fillArray( bj_MAX_PLAYERS, () => 0 );
+const dollyClick: Array<number> = fillArray( bj_MAX_PLAYERS, 0 );
 let katama = true;
 
 // ===========================================================================
