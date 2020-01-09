@@ -4,11 +4,8 @@ import { Split, myArgCount, myArg, TriggerRegisterPlayerChatEventAll } from "../
 
 // ===========================================================================
 // Trigger: miscAngle
-//
-// Work
 // ===========================================================================
-// TESH.scrollpos=0
-// TESH.alwaysfold=0
+
 const Trig_miscAngle_Actions = (): void => {
 
 	Split( GetEventPlayerChatString(), " ", true );

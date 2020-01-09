@@ -10,7 +10,6 @@ const s__sheep_xability = FourCC( "A00D" );
 const Trig_sheepDestroyLastFarm_Actions = (): void => {
 
 	if ( GetSpellAbilityId() === s__sheep_xability )
-
 		KillUnit( GetBuilding( GetOwningPlayer( GetTriggerUnit() ) ) );
 
 };

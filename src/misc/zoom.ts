@@ -74,6 +74,7 @@ const Trig_miscZoom_Actions = (): void => {
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
+
 	const zooms = Split2( s__File_readAndClose( s__File_open( "fixus/zooms.txt" ) ) || "", " " );
 
 	TriggerRegisterPlayerChatEventAll( t, "-zoom", false );
@@ -83,21 +84,16 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	sheepZoom[ GetPlayerId( GetLocalPlayer() ) ] = S2R( s__splitarray[ zooms ] );
 
 	if ( sheepZoom[ GetPlayerId( GetLocalPlayer() ) ] === 0 )
-
 		sheepZoom[ GetPlayerId( GetLocalPlayer() ) ] = 1650;
 
 	wolfZoom[ GetPlayerId( GetLocalPlayer() ) ] = S2R( s__splitarray[ zooms + 1 ] );
 
 	if ( wolfZoom[ GetPlayerId( GetLocalPlayer() ) ] === 0 )
-
 		wolfZoom[ GetPlayerId( GetLocalPlayer() ) ] = 1650;
 
 	if ( IsPlayerInForce( GetLocalPlayer(), wolfTeam ) )
-
 		SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, wolfZoom[ GetPlayerId( GetLocalPlayer() ) ], 0 );
-
 	else
-
 		SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, sheepZoom[ GetPlayerId( GetLocalPlayer() ) ], 0 );
 
 } );

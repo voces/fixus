@@ -11,6 +11,7 @@ import {
 // ===========================================================================
 // Trigger: miscGoldTick
 // ===========================================================================
+
 const filterActiveUsers = (): boolean => GetPlayerController( GetFilterPlayer() ) !== MAP_CONTROL_COMPUTER && GetPlayerSlotState( GetFilterPlayer() ) !== PLAYER_SLOT_STATE_LEFT;
 
 const Trig_miscGoldTick_Actions = (): void => {

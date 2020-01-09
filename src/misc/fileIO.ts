@@ -15,7 +15,7 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 const s__File_AbilityCount = 10;
 const s__File_PreloadLimit = 200;
 let s__File_Counter = 0;
-const s__File_List: Array<number> = [];
+const s__File_List: Array<number> = [ 0 ];
 const s__File_AbilityList: Array<number> = [];
 const s__File_filename: Array<string> = [];
 const s__File_buffer: Array<string | null> = [];
@@ -32,9 +32,7 @@ export const s__File_open = ( filename: string ): number => {
 		_this = s__File_Counter + 1;
 		s__File_Counter = _this;
 
-	} else
-
-		s__File_List[ 0 ] = s__File_List[ _this ];
+	} else s__File_List[ 0 ] = s__File_List[ _this ];
 
 	s__File_filename[ _this ] = filename;
 	s__File_buffer[ _this ] = null;
@@ -199,7 +197,7 @@ const s__File_readEx = ( _this: number, close: boolean ): string | null => {
 export const s__File_readAndClose = ( _this: number ): string | null => s__File_readEx( _this, true );
 
 // Implemented from module FileIO__FileInit:
-const s__File_FileIO__FileInit___onInit = (): void => {
+addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
 	// We can't use a single ability with multiple levels because
 	// tooltips return the first level's value if the value hasn't
@@ -220,8 +218,7 @@ const s__File_FileIO__FileInit___onInit = (): void => {
 	// Read check
 	// s__File_ReadEnabled = s__File_readAndClose( s__File_write( s__File_open( "FileTester.pld" ), "FileIO_" ) ) === "FileIO_";
 
-};
+} );
 
 // library FileIO ends
 
-addScriptHook( W3TS_HOOK.MAIN_BEFORE, s__File_FileIO__FileInit___onInit );

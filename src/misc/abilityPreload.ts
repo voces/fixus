@@ -61,15 +61,13 @@ export const AbilityRangePreload = ( start: number, end: number ): void => {
 
 // ===========================================================================
 
-const s__AbilityPreload__Init_onInit = (): void => {
+addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
 	AbilityPreload__PreloadUnit = CreateUnit( Player( 15 ), AbilityPreload__PreloadUnitRawcode, 0, 0, 0 );
 	UnitApplyTimedLife( AbilityPreload__PreloadUnit, 0, 0.001 );
 	ShowUnit( AbilityPreload__PreloadUnit, false );
 	UnitAddAbility( AbilityPreload__PreloadUnit, FourCC( "Aloc" ) );
 
-};
+} );
 
 // library AbilityPreload ends
-
-addScriptHook( W3TS_HOOK.MAIN_BEFORE, s__AbilityPreload__Init_onInit );

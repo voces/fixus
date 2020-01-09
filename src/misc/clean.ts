@@ -3,11 +3,8 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 // ===========================================================================
 // Trigger: miscClean
-//
-// Work
 // ===========================================================================
-// TESH.scrollpos=0
-// TESH.alwaysfold=0
+
 const Trig_miscClean_Actions = (): void => {
 
 	if ( IsUnitType( GetTriggerUnit(), UNIT_TYPE_HERO ) === false ) {

@@ -4,6 +4,7 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 // ===========================================================================
 // Trigger: miscDollyMove
 // ===========================================================================
+
 const Trig_miscDollyMove_Conditions = (): boolean => {
 
 	if ( ! ( GetUnitTypeId( GetTriggerUnit() ) === FourCC( "nshf" ) ) )

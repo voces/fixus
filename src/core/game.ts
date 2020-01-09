@@ -25,8 +25,7 @@ const s__wolf_itemGlobal = FourCC( "mcou" );
 // ===========================================================================
 // Trigger: coreGame
 // ===========================================================================
-// TESH.scrollpos=41
-// TESH.alwaysfold=0
+
 const Trig_coreGame_Actions = (): void => {
 
 	let i: number;
