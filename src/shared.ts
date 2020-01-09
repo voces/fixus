@@ -61,8 +61,8 @@ export const s__wisp_type = FourCC( "eC01" );
 export const s__wolf_blacktype = FourCC( "E002" );
 export const s__wolf_imbatype = FourCC( "E000" );
 export const s__wolf_wwtype = FourCC( "eC16" );
-export const s__sheep_type = FourCC( "uC04" );
-export const s__wolf_type = FourCC( "EC03" );
+export const SHEEP_TYPE = FourCC( "uC04" );
+export const WOLF_TYPE = FourCC( "EC03" );
 export const s__wolf_cloakitem = FourCC( "clfm" );
 export const DOLLY_TYPE = FourCC( "nshf" );
 export const wisps: Array<unit> = [];
@@ -401,6 +401,82 @@ export const SmallText = ( amount: number, u: unit, cc: number, x: number, y: nu
 
 };
 
+export const grimEffect = ( u: unit ): void => {
+
+	AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", u, "origin" );
+	AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", u, "origin" );
+
+};
+
+export const registerCommand = <T>(
+	{ command, alias, args = [], fn }:
+	{
+		command: string;
+		alias?: string;
+		// eslint-disable-next-line @typescript-eslint/ban-types
+		args: Array<{
+			name: string;
+			required?: boolean;
+			type?: NumberConstructor | StringConstructor | "player";
+		}>;
+		fn: ( args: T, words: Array<string>, message: string ) => void;
+	},
+): void => {
+
+	const t = CreateTrigger();
+
+	let requiredArgs = 0;
+	for ( ; args[ requiredArgs ].required && requiredArgs < args.length; requiredArgs ++ ) {
+		/* do nothing */
+	}
+	const triggerWords = [ command ];
+	if ( alias ) triggerWords.push( alias );
+
+	const triggerCommands = triggerWords.map( w => `-${w}` );
+	triggerCommands.forEach( triggerCommand =>
+		TriggerRegisterPlayerChatEventAll(
+			t,
+			`${triggerCommand}${requiredArgs > 0 ? " " : ""}`,
+			requiredArgs > 0 ),
+	);
+
+	TriggerAddAction( t, () => {
+
+		const str = GetEventPlayerChatString();
+		const words = str.split( " " );
+
+		// with args, make sure the trigger leads
+		if ( triggerWords.indexOf( words[ 0 ] ) === - 1 ) return;
+
+		// Build our args object
+		const argsObject = Object.fromEntries( args.map( ( { name, type }, i ) => {
+
+			if ( type )
+				switch ( type ) {
+
+					case Number: return [ name, parseFloat( words[ i ] ) ];
+					case "player": {
+
+						const playerId = parseInt( words[ i ] );
+						// todo: test this and provide user feedback
+						if ( playerId < 0 || playerId > bj_MAX_PLAYERS )
+							throw new Error( "invalid player id" );
+						return [ name, Player( playerId ) ];
+
+					}
+
+				}
+
+			return [ name, words[ i ] ];
+
+		} ) );
+
+		fn( argsObject as unknown as T, words, str );
+
+	} );
+
+};
+
 addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
 	WORLD_BOUNDS( GetWorldBounds() );
@@ -435,4 +511,3 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	AbilityRangePreload( FourCC( "A001" ), FourCC( "A00P" ) );
 
 } );
-

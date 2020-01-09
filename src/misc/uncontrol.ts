@@ -1,33 +1,33 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { Split, myArg, TriggerRegisterPlayerChatEventAll, color } from "../shared";
+import { color, registerCommand } from "../shared";
 
 // ===========================================================================
 // Trigger: miscUncontrol
 // ===========================================================================
 
-const Trig_miscUncontrol_Actions = (): void => {
+const action = ( { player }: {player: player} ): void => {
 
-	// Preconditions
-	Split( GetEventPlayerChatString(), " ", false );
-	const receiverId: number = S2I( myArg[ 1 ] || "" ) - 1;
-	const receiver: player = Player( receiverId );
-
-	if ( myArg[ 0 ] !== "uc" || receiverId < 0 || receiverId > 11 || ! ( IsPlayerAlly( GetTriggerPlayer(), receiver ) && GetPlayerSlotState( receiver ) === PLAYER_SLOT_STATE_PLAYING ) )
-
+	if (
+		! ( IsPlayerAlly( GetTriggerPlayer(), player ) &&
+		GetPlayerSlotState( player ) === PLAYER_SLOT_STATE_PLAYING )
+	)
 		return;
 
+	const playerId = GetPlayerId( player );
+
 	// Remove control
-	SetPlayerAllianceStateBJ( GetTriggerPlayer(), receiver, bj_ALLIANCE_ALLIED_VISION );
-	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Control taken from " + color[ receiverId ] + GetPlayerName( receiver ) + "|r." );
+	SetPlayerAllianceStateBJ( GetTriggerPlayer(), player, bj_ALLIANCE_ALLIED_VISION );
+	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Control taken from " + color[ playerId ] + GetPlayerName( player ) + "|r." );
 
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterPlayerChatEventAll( t, "-uc ", false );
-	TriggerAddAction( t, Trig_miscUncontrol_Actions );
-
-} );
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
+	registerCommand( {
+		command: "uncontrol",
+		alias: "uc",
+		args: [ { name: "player", type: "player" } ],
+		fn: action,
+	} ),
+);

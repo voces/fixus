@@ -16,8 +16,8 @@ import {
 	endGame,
 	s__wolf_blacktype,
 	s__wolf_imbatype,
-	s__wolf_type,
-	s__sheep_type,
+	WOLF_TYPE,
+	SHEEP_TYPE,
 	wisps,
 	s__wolf_wwtype,
 	wws,
@@ -119,7 +119,7 @@ const getWolfType = ( p: player ): number => {
 
 		return s__wolf_imbatype;
 
-	return s__wolf_type;
+	return WOLF_TYPE;
 
 };
 
@@ -260,7 +260,7 @@ const getSheepType = ( p: player ): number => {
 
 		return s__sheep_blacktype;
 
-	return s__sheep_type;
+	return SHEEP_TYPE;
 
 };
 
@@ -366,7 +366,7 @@ const Trig_sheepSaveDeath_Actions = (): void => {
 
 	// Sheep death
 
-	if ( GetUnitTypeId( GetTriggerUnit() ) === s__sheep_type || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_blacktype || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_silvertype || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_goldtype ) {
+	if ( GetUnitTypeId( GetTriggerUnit() ) === SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_blacktype || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_silvertype || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_goldtype ) {
 
 		onSheepDeath( GetTriggerUnit(), GetKillingUnit() );
 		relevantDeath = true;
@@ -388,7 +388,7 @@ const Trig_sheepSaveDeath_Actions = (): void => {
 
 	// Wolf death
 
-	else if ( GetUnitTypeId( GetTriggerUnit() ) === s__wolf_type || GetUnitTypeId( GetTriggerUnit() ) === s__wolf_blacktype || GetUnitTypeId( GetTriggerUnit() ) === s__wolf_imbatype )
+	else if ( GetUnitTypeId( GetTriggerUnit() ) === WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === s__wolf_blacktype || GetUnitTypeId( GetTriggerUnit() ) === s__wolf_imbatype )
 
 		onWolfDeath( GetTriggerUnit(), GetKillingUnit() );
 

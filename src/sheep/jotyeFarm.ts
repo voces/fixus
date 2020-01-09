@@ -1,4 +1,4 @@
-import { s__wolf_type, s__wolf_blacktype, s__wolf_imbatype } from "shared";
+import { WOLF_TYPE, s__wolf_blacktype, s__wolf_imbatype } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const s__wolf_golemtype = FourCC( "ewsp" );
@@ -12,7 +12,7 @@ const s__wolf_stalkertype = FourCC( "nfel" );
 const sheepJotyeFarm_isProperType = ( u: unit ): boolean => {
 
 	const unitType = GetUnitTypeId( u );
-	return unitType === s__wolf_type || unitType === s__wolf_blacktype || unitType === s__wolf_imbatype || unitType === s__wolf_golemtype || unitType === s__wolf_stalkertype;
+	return unitType === WOLF_TYPE || unitType === s__wolf_blacktype || unitType === s__wolf_imbatype || unitType === s__wolf_golemtype || unitType === s__wolf_stalkertype;
 
 };
 

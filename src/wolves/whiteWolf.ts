@@ -1,5 +1,5 @@
 
-import { s__wolf_type, s__wolf_blacktype, s__wolf_imbatype, wws, s__wolf_wwtype, wolves } from "shared";
+import { WOLF_TYPE, s__wolf_blacktype, s__wolf_imbatype, wws, s__wolf_wwtype, wolves } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const wwTimer: Array<timer> = [];
@@ -28,7 +28,7 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 		f = GetUnitFacing( original );
 		p = GetOwningPlayer( original );
 
-		if ( GetUnitTypeId( original ) === s__wolf_type || GetUnitTypeId( original ) === s__wolf_blacktype || GetUnitTypeId( original ) === s__wolf_imbatype ) {
+		if ( GetUnitTypeId( original ) === WOLF_TYPE || GetUnitTypeId( original ) === s__wolf_blacktype || GetUnitTypeId( original ) === s__wolf_imbatype ) {
 
 			// Freeze wolf unit
 			PauseUnit( original, true );

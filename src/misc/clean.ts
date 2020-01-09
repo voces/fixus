@@ -5,7 +5,7 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 // Trigger: miscClean
 // ===========================================================================
 
-const Trig_miscClean_Actions = (): void => {
+const action = (): void => {
 
 	if ( IsUnitType( GetTriggerUnit(), UNIT_TYPE_HERO ) !== false ) return;
 
@@ -19,6 +19,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );
-	TriggerAddAction( t, Trig_miscClean_Actions );
+	TriggerAddAction( t, action );
 
 } );

@@ -7,6 +7,7 @@ import {
 	myTimerDialog,
 	sheepTeam,
 	wolfTeam,
+	DisplayTimedText,
 } from "../shared";
 import { board } from "../misc/multiboard";
 
@@ -14,16 +15,13 @@ import { board } from "../misc/multiboard";
 // Trigger: coreInit
 // ===========================================================================
 
-const Trig_coreInitDelay_Actions = (): void => {
+const action = (): void => {
 
-	let i: number;
-	let q: quest;
-	let qi: questitem;
-	q = CreateQuest();
+	let q = CreateQuest();
 	QuestSetTitle( q, "Ultimate Sheep Tag Fixus" );
 	QuestSetDescription( q, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
 	QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNAcorn.blp" );
-	qi = QuestCreateItem( q );
+	let qi = QuestCreateItem( q );
 	QuestItemSetDescription( qi, "Fixus by |CFF959697Chakra|r" );
 	qi = QuestCreateItem( q );
 	QuestItemSetDescription( qi, "Ultimate Sheep Tag using |CFF959697Chakra|r's Sheep Tag Template file." );
@@ -50,18 +48,10 @@ const Trig_coreInitDelay_Actions = (): void => {
 	qi = QuestCreateItem( q );
 	QuestItemSetDescription( qi, "Camp the middle to avoid killed sheep to be revived." );
 
-	i = 0;
+	DisplayTimedText( 3, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
 
-	while ( true ) {
-
-		if ( i === 12 ) break;
-		DisplayTimedTextToPlayer( Player( i ), 0, 0, 3, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-		i = i + 1;
-
-	}
-
+	// debug mode
 	if ( countHere( wolfTeam ) === 0 || countHere( sheepTeam ) === 0 )
-
 		goldFactor( 1000 );
 
 	// todo: should be nullable
@@ -77,6 +67,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 0.01, false );
-	TriggerAddAction( t, Trig_coreInitDelay_Actions );
+	TriggerAddAction( t, action );
 
 } );

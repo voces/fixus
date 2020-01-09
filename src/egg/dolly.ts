@@ -47,16 +47,16 @@ const Trig_eggDolly_Actions = (): void => {
 		}
 
 		TimerDialogSetTitle( dollyTimerDialog[ playerId ], "Time out ends in..." );
-		TimerStart( dollyTimer[ playerId ], 15, false, () => {
+		TimerStart( dollyTimer[ playerId ], 15, false, () => { /* do nothing */ } );
 
-			if ( playerId === GetPlayerId( GetLocalPlayer() ) ) {
+		TriggerSleepAction( 5 );
 
-				EnableUserControl( true );
-				TimerDialogDisplay( dollyTimerDialog[ playerId ], false );
+		if ( GetTriggerPlayer() === GetLocalPlayer() ) {
 
-			}
+			EnableUserControl( true );
+			TimerDialogDisplay( dollyTimerDialog[ playerId ], false );
 
-		} );
+		}
 
 	}
 
