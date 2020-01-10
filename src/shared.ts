@@ -429,8 +429,8 @@ export const registerCommand = <T>(
 
 	let requiredArgs = 0;
 	for ( ;
-		( args[ requiredArgs ].required || args[ requiredArgs ].required === undefined ) &&
-			requiredArgs < args.length;
+		requiredArgs < args.length &&
+			( args[ requiredArgs ].required || args[ requiredArgs ].required === undefined );
 		requiredArgs ++
 	) { /* do nothing */ }
 	const triggerWords = [ command ];
