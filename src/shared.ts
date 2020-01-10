@@ -56,7 +56,7 @@ export const wispTeam = CreateForce();
 export const wolfTeam = CreateForce();
 export const wolves: Array<unit> = [];
 export const WORLD_BOUNDS: ( newRect?: rect ) => rect = getterSetterFunc();
-export const s__wisp_type = FourCC( "eC01" );
+export const WISP_TYPE = FourCC( "eC01" );
 
 export const s__wolf_blacktype = FourCC( "E002" );
 export const s__wolf_imbatype = FourCC( "E000" );
@@ -88,7 +88,6 @@ export const countHere = ( f: force ): number => {
 const countHereRealEnum = (): void => {
 
 	if ( GetPlayerSlotState( GetEnumPlayer() ) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController( GetEnumPlayer() ) === MAP_CONTROL_USER )
-
 		someInteger = someInteger + 1;
 
 };
@@ -417,18 +416,23 @@ export const registerCommand = <T>(
 		args: Array<{
 			name: string;
 			required?: boolean;
-			type?: NumberConstructor | StringConstructor | "player";
+			// todo: add a function type, allowing the user to define whatever
+			type?: NumberConstructor
+				| StringConstructor
+				| "player";
 		}>;
-		fn: ( args: T, words: Array<string>, message: string ) => void;
+		fn: ( args: T, words: Array<string> ) => void;
 	},
 ): void => {
 
 	const t = CreateTrigger();
 
 	let requiredArgs = 0;
-	for ( ; args[ requiredArgs ].required && requiredArgs < args.length; requiredArgs ++ ) {
-		/* do nothing */
-	}
+	for ( ;
+		( args[ requiredArgs ].required || args[ requiredArgs ].required === undefined ) &&
+			requiredArgs < args.length;
+		requiredArgs ++
+	) { /* do nothing */ }
 	const triggerWords = [ command ];
 	if ( alias ) triggerWords.push( alias );
 
@@ -471,7 +475,8 @@ export const registerCommand = <T>(
 
 		} ) );
 
-		fn( argsObject as unknown as T, words, str );
+		// todo: somehow don't do this casting
+		fn( argsObject as unknown as T, words );
 
 	} );
 

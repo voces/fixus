@@ -11,21 +11,20 @@ const Trig_miscKillReturn_Actions = (): void => {
 	const gold = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) * goldFactor();
 	const xp = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_LUMBER_BOUNTY_AWARDED_BASE ) * goldFactor();
 
-	if ( GetKillingUnit() !== null && IsUnitAlly( GetKillingUnit(), GetOwningPlayer( GetTriggerUnit() ) ) === false ) {
+	if ( GetKillingUnit() === null || IsUnitAlly( GetKillingUnit(), GetOwningPlayer( GetTriggerUnit() ) ) )
+		return;
 
-		if ( gold > 0 ) {
+	if ( gold > 0 ) {
 
-			SetPlayerState( GetOwningPlayer( GetKillingUnit() ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( GetOwningPlayer( GetKillingUnit() ), PLAYER_STATE_RESOURCE_GOLD ) + gold );
-			SmallText( gold, GetTriggerUnit(), 14, 0, 0 );
+		AdjustPlayerStateSimpleBJ( GetOwningPlayer( GetKillingUnit() ), PLAYER_STATE_RESOURCE_GOLD, gold );
+		SmallText( gold, GetTriggerUnit(), 14, 0, 0 );
 
-		}
+	}
 
-		if ( xp > 0 ) {
+	if ( xp > 0 ) {
 
-			SetHeroXP( mainUnit( GetOwningPlayer( GetKillingUnit() ) ), GetHeroXP( mainUnit( GetOwningPlayer( GetKillingUnit() ) ) ) + xp, true );
-			SmallText( xp, GetTriggerUnit(), 3, 16, - 32 );
-
-		}
+		AddHeroXP( mainUnit( GetOwningPlayer( GetKillingUnit() ) ), xp, true );
+		SmallText( xp, GetTriggerUnit(), 3, 16, - 32 );
 
 	}
 

@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { s__wisp_type } from "shared";
+import { WISP_TYPE } from "shared";
 
 // ===========================================================================
 // Trigger: miscSmartSave
@@ -10,8 +10,11 @@ const Trig_miscSmartSave_Actions = (): void => {
 
 	const attacked = GetOrderTargetUnit();
 
-	if ( OrderId2StringBJ( GetIssuedOrderId() ) === "smart" && IsUnitAlly( GetTriggerUnit(), GetOwningPlayer( attacked ) ) && GetUnitTypeId( attacked ) === s__wisp_type )
-
+	if (
+		OrderId2StringBJ( GetIssuedOrderId() ) === "smart" &&
+		IsUnitAlly( GetTriggerUnit(), GetOwningPlayer( attacked ) ) &&
+		GetUnitTypeId( attacked ) === WISP_TYPE
+	)
 		IssueTargetOrder( GetTriggerUnit(), "attack", attacked );
 
 };

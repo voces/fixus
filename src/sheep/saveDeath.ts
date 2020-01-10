@@ -7,7 +7,7 @@ import {
 	color,
 	WORLD_BOUNDS,
 	wispTeam,
-	s__wisp_type,
+	WISP_TYPE,
 	wolves,
 	countHere,
 	wolfTeam,
@@ -184,7 +184,7 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 
 	// Move to wisps
 	ForceAddPlayer( wispTeam, killedPlayer );
-	killedUnit = CreateUnit( killedPlayer, s__wisp_type, - 256, - 832, 270 );
+	killedUnit = CreateUnit( killedPlayer, WISP_TYPE, - 256, - 832, 270 );
 	wisps[ killedPlayerId ] = killedUnit;
 	SetUnitPathing( killedUnit, false );
 
@@ -348,7 +348,7 @@ const onWispTK = ( wispUnit: unit ): void => {
 
 	const wispPlayer = GetOwningPlayer( wispUnit );
 	const wispPlayerId = GetPlayerId( wispPlayer );
-	wisps[ wispPlayerId ] = CreateUnit( wispPlayer, s__wisp_type, - 256, - 832, 270 );
+	wisps[ wispPlayerId ] = CreateUnit( wispPlayer, WISP_TYPE, - 256, - 832, 270 );
 	SetUnitPathing( wisps[ wispPlayerId ], false );
 
 	if ( InStr( GetPlayerName( wispPlayer ), "Grim" ) >= 0 ) {
@@ -373,18 +373,14 @@ const Trig_sheepSaveDeath_Actions = (): void => {
 
 		// Spirit death (save)
 
-	} else if ( GetUnitTypeId( GetTriggerUnit() ) === s__wisp_type )
+	} else if ( GetUnitTypeId( GetTriggerUnit() ) === WISP_TYPE )
 
-		if ( GetUnitTypeId( GetKillingUnit() ) !== s__wisp_type ) {
+		if ( GetUnitTypeId( GetKillingUnit() ) !== WISP_TYPE ) {
 
 			onSheepSave( GetTriggerUnit(), GetKillingUnit() );
 			relevantDeath = true;
 
-		} else {
-
-			onWispTK( GetTriggerUnit() );
-
-		}
+		} else onWispTK( GetTriggerUnit() );
 
 	// Wolf death
 
@@ -397,7 +393,6 @@ const Trig_sheepSaveDeath_Actions = (): void => {
 		reloadMultiboard();
 
 		if ( countHere( sheepTeam ) === 0 )
-
 			endGame( 2 );
 
 	}

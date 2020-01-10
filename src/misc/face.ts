@@ -1,45 +1,40 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { Split, myArg, TriggerRegisterPlayerChatEventAll } from "../shared";
+import { registerCommand } from "../shared";
+import { withTempGroup } from "util/temp";
 
 // ===========================================================================
 // Trigger: miscFace
 // ===========================================================================
 
-const miscFace_Actions = (): void => {
+const action = ( { angle }: {angle: string} ): void => {
 
-	const g = CreateGroup();
-	let u: unit;
-	Split( GetEventPlayerChatString(), " ", true );
-	GroupEnumUnitsSelected( g, GetTriggerPlayer(), null );
+	const adjustment = angle[ 0 ] === "+" ? 1 : angle[ 0 ] === "-" ? - 1 : 0;
+	const actualAngle = parseFloat( angle.slice( 1 ) );
 
-	while ( true ) {
+	withTempGroup( g => {
 
-		u = FirstOfGroup( g );
-		if ( u === null ) break;
+		GroupEnumUnitsSelected( g, GetTriggerPlayer(), null );
+		ForGroup( g, () => {
 
-		if ( SubString( myArg[ 0 ] || "", 0, 1 ) === "+" )
-			SetUnitFacing( u, GetUnitFacing( u ) + S2R( SubString( myArg[ 0 ] || "", 1, StringLength( myArg[ 0 ] || "" ) - 7 ) ) );
+			const u = GetEnumUnit();
+			const facing = adjustment !== 0 ?
+				GetUnitFacing( u ) + adjustment * actualAngle :
+				actualAngle;
 
-		else if ( SubString( myArg[ 0 ] || "", 0, 1 ) === "-" )
-			SetUnitFacing( u, GetUnitFacing( u ) - S2R( SubString( myArg[ 0 ] || "", 1, StringLength( myArg[ 0 ] || "" ) - 7 ) ) );
+			SetUnitFacing( u, facing );
 
-		else
-			SetUnitFacing( u, S2R( myArg[ 0 ] || "" ) );
+		} );
 
-		GroupRemoveUnit( g, u );
-
-	}
-
-	DestroyGroup( g );
+	} );
 
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterPlayerChatEventAll( t, "-face ", false );
-	TriggerAddAction( t, miscFace_Actions );
-
-} );
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
+	registerCommand( {
+		command: "face",
+		args: [ { name: "angle", type: String } ],
+		fn: action,
+	} ),
+);

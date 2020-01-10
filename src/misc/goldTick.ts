@@ -7,58 +7,53 @@ import {
 	wolfTeam,
 	saveskills,
 } from "../shared";
+import { isPlayingPlayer, hasLeft, isComputer } from "util/player";
+
+const SAVING_FARM_TYPE = FourCC( "ohun" );
+const HIDDEN_SAVING_FARM_TYPE = FourCC( "otbk" );
+const BETTER_SAING_FARM_TYPE = FourCC( "h009" );
+const SUPER_SAVING_FARM_TYPE = FourCC( "h00A" );
 
 // ===========================================================================
 // Trigger: miscGoldTick
 // ===========================================================================
 
-const filterActiveUsers = (): boolean => GetPlayerController( GetFilterPlayer() ) !== MAP_CONTROL_COMPUTER && GetPlayerSlotState( GetFilterPlayer() ) !== PLAYER_SLOT_STATE_LEFT;
-
 const Trig_miscGoldTick_Actions = (): void => {
 
-	let i = 0;
-	let n: number;
-	let t: number;
-	let f: force;
+	const wolves = countHereReal( wolfTeam );
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
-	while ( true ) {
+		const player = Player( i );
 
-		if ( i === 12 ) break;
+		// Give sheep their simple gold tick
+		if ( IsPlayerInForce( player, sheepTeam ) ) {
 
-		if ( IsPlayerInForce( Player( i ), sheepTeam ) )
-
-			SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + goldFactor() );
-
-		else {
-
-			t = countHereReal( wolfTeam );
-
-			if ( GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) > 0 && t > 0 && ModuloInteger( GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ), t ) === 0 && ( GetPlayerController( Player( i ) ) === MAP_CONTROL_COMPUTER || GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_LEFT ) ) {
-
-				n = 0;
-				f = CreateForce();
-				ForceEnumAllies( f, Player( i ), Condition( filterActiveUsers ) );
-
-				while ( true ) {
-
-					if ( n === 12 ) break;
-
-					if ( IsPlayerInForce( Player( n ), f ) )
-
-						SetPlayerState( Player( n ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( n ), PLAYER_STATE_RESOURCE_GOLD ) + GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) / t );
-
-					n = n + 1;
-
-				}
-
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, 0 );
-				DestroyForce( f );
-
-			}
+			AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, goldFactor() );
+			continue;
 
 		}
 
-		i = i + 1;
+		// Redistribute
+		const playerGold = GetPlayerState( player, PLAYER_STATE_RESOURCE_GOLD );
+
+		if (
+			playerGold > 0 &&
+			wolves > 0 &&
+			ModuloInteger( playerGold, wolves ) === 0 &&
+			( isComputer( player ) || hasLeft( player ) )
+		) {
+
+			for ( let n = 0; n < bj_MAX_PLAYERS; n ++ ) {
+
+				const player2 = Player( n );
+				if ( ! IsPlayerAlly( player, player2 ) && isPlayingPlayer( player2 ) ) continue;
+				AdjustPlayerStateSimpleBJ( player2, PLAYER_STATE_RESOURCE_GOLD, playerGold / wolves );
+
+			}
+
+			SetPlayerState( player, PLAYER_STATE_RESOURCE_GOLD, 0 );
+
+		}
 
 	}
 
@@ -66,35 +61,23 @@ const Trig_miscGoldTick_Actions = (): void => {
 
 const Trig_miscSavingTick_Actions = (): void => {
 
-	let i = 0;
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
-	while ( true ) {
+		const player = Player( i );
 
-		if ( i === 12 ) break;
+		// This might change if we let wolves get saving farms
+		if ( IsPlayerInForce( player, sheepTeam ) ) {
 
-		if ( IsPlayerInForce( Player( i ), sheepTeam ) )
+			let amount = goldFactor() * ( GetPlayerUnitTypeCount( player, SAVING_FARM_TYPE ) +
+				GetPlayerUnitTypeCount( player, HIDDEN_SAVING_FARM_TYPE ) +
+				2 * GetPlayerUnitTypeCount( player, BETTER_SAING_FARM_TYPE ) +
+				4 * GetPlayerUnitTypeCount( player, SUPER_SAVING_FARM_TYPE ) );
 
-			if ( saveskills[ i ] >= 25 ) {
+			if ( saveskills[ i ] >= 25 ) amount *= 2;
 
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 2 * goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "ohun" ) ) );
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 2 * goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "otbk" ) ) );
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 4 * goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "h009" ) ) );
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 8 * goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "h00A" ) ) );
+			AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, amount );
 
-			} else {
-
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "ohun" ) ) );
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "otbk" ) ) );
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 2 * goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "h009" ) ) );
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 4 * goldFactor() * GetPlayerUnitTypeCount( Player( i ), FourCC( "h00A" ) ) );
-
-			}
-
-		else
-
-			SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + goldFactor() );
-
-		i = i + 1;
+		} else AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, goldFactor() );
 
 	}
 
@@ -106,6 +89,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	let t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 2, true );
 	TriggerAddAction( t, Trig_miscGoldTick_Actions );
+
 	t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 4, true );
 	TriggerAddAction( t, Trig_miscSavingTick_Actions );

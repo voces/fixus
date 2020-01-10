@@ -1,11 +1,11 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
-	WORLD_BOUNDS,
 	DisplayTimedText,
 	goldFactor,
 	DOLLY_TYPE,
 } from "shared";
+import { withTempGroup } from "util/temp";
 
 const DOLLY_SPEED_AURA = FourCC( "Aasl" );
 
@@ -15,31 +15,30 @@ const increaseMovementSpeed = (): void => {
 
 	DisplayTimedText( 15, "Five minutes remaining! Movement speed increased by 25%!" );
 
-	const g = CreateGroup();
-	GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( filterDolly ) );
-	const dolly = GroupPickRandomUnit( g );
-	DestroyGroup( g );
+	const dolly = withTempGroup( g => {
 
-	if ( dolly === null )
+		GroupEnumUnitsOfPlayer( g, Player( PLAYER_NEUTRAL_PASSIVE ), Condition( filterDolly ) );
+		return FirstOfGroup( g );
 
-		return;
+	} );
+
+	if ( dolly === null ) return;
 
 	UnitAddAbility( dolly, DOLLY_SPEED_AURA );
 
 };
 
-const action = (): void => {
+const doubleIncome = (): void => {
 
-	const rand = GetRandomReal( 0, 1 );
-
-	if ( rand < 0.5 ) {
-
-		DisplayTimedText( 15, "Five minutes remaining! All income is doubled!" );
-		goldFactor( goldFactor() * 2 );
-
-	} else increaseMovementSpeed();
+	DisplayTimedText( 15, "Five minutes remaining! All income is doubled!" );
+	goldFactor( goldFactor() * 2 );
 
 };
+
+const cases = [ increaseMovementSpeed, doubleIncome ];
+
+const action = (): void =>
+	cases[ Math.floor( Math.random() * cases.length ) ]();
 
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {

@@ -11,26 +11,26 @@ import {
 	TriggerRegisterPlayerEventAll,
 } from "../shared";
 import { reloadMultiboard } from "./multiboard";
+import { isPlayingPlayer } from "util/player";
 
 // ===========================================================================
 // Trigger: miscLeaves
 // ===========================================================================
 
-const IsSameTeam = ( a: player, b: player ): boolean => IsPlayerInForce( a, wolfTeam ) && IsPlayerInForce( b, wolfTeam ) || ! IsPlayerInForce( a, wolfTeam ) && ! IsPlayerInForce( b, wolfTeam );
-
-const IsPlayerHere = ( checkPlayer: player ): boolean => GetPlayerSlotState( checkPlayer ) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController( checkPlayer ) === MAP_CONTROL_USER;
+const isSameTeam = ( a: player, b: player ): boolean =>
+	IsPlayerInForce( a, wolfTeam ) === IsPlayerInForce( b, wolfTeam );
 
 const Trig_miscLeaves_Actions = (): void => {
 
 	let i = 0;
-	const gold: number = GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) / i;
+	const gold = GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) / i; // divide by zero
 	const f = CreateForce();
 
 	while ( true ) {
 
 		if ( i === 12 ) break;
 
-		if ( IsSameTeam( GetTriggerPlayer(), Player( i ) ) && IsPlayerHere( Player( i ) ) )
+		if ( isSameTeam( GetTriggerPlayer(), Player( i ) ) && isPlayingPlayer( Player( i ) ) )
 
 			ForceAddPlayer( f, Player( i ) );
 

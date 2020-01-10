@@ -1,4 +1,5 @@
-import { s__wisp_type } from "shared";
+
+import { WISP_TYPE } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 // ===========================================================================
@@ -7,8 +8,7 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const Trig_sheepWispLeave_Actions = (): void => {
 
-	if ( GetUnitTypeId( GetTriggerUnit() ) === s__wisp_type )
-
+	if ( GetUnitTypeId( GetTriggerUnit() ) === WISP_TYPE )
 		SetUnitPosition( GetTriggerUnit(), - 256, - 832 );
 
 };

@@ -1,50 +1,48 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { Split, myArg, TriggerRegisterPlayerChatEventAll, color } from "../shared";
+import { registerCommand } from "../shared";
+import { colorizedName, displayToPlayer } from "util/player";
 
 // ===========================================================================
 // Trigger: miscGold
 // ===========================================================================
 
-const miscGold_Actions = (): void => {
+const action = ( { player: receiver, amount }: {player: player; amount?: number} ): void => {
 
-	// Preconditions
-	Split( GetEventPlayerChatString(), " ", false );
-	const senderId: number = GetPlayerId( GetTriggerPlayer() );
-	const receiverId: number = S2I( myArg[ 1 ] || "" ) - 1;
-	const receiver: player = Player( receiverId );
-	let gold: number;
-
-	if ( myArg[ 0 ] !== "g" )
-
+	if (
+		! IsPlayerAlly( GetTriggerPlayer(), receiver ) ||
+		GetPlayerSlotState( receiver ) !== PLAYER_SLOT_STATE_PLAYING ||
+		GetTriggerPlayer() === receiver
+	)
 		return;
 
-	if ( receiverId >= 0 && receiverId <= 11 && IsPlayerAlly( GetTriggerPlayer(), receiver ) && GetPlayerSlotState( receiver ) === PLAYER_SLOT_STATE_PLAYING && GetTriggerPlayer() !== receiver ) {
+	if ( amount === undefined )
+		amount = GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD );
 
-		gold = S2I( myArg[ 2 ] || "" );
+	else {
 
-		if ( gold === 0 )
-
-			gold = GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD );
-
-		if ( gold === 0 )
-
-			return;
-
-		DisplayTextToPlayer( receiver, 0, 0, color[ senderId ] + GetPlayerName( GetTriggerPlayer() ) + "|r gave you " + I2S( gold ) + " gold." );
-		DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, I2S( gold ) + " gold given to " + color[ receiverId ] + GetPlayerName( receiver ) + "|r." );
-		SetPlayerState( receiver, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( receiver, PLAYER_STATE_RESOURCE_GOLD ) + gold );
-		SetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) - gold );
+		if ( isNaN( amount ) || amount <= 0 ) return;
+		amount = Math.min( amount, GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) );
 
 	}
+
+	const amountSt = amount.toString();
+	displayToPlayer( receiver, `${colorizedName( GetTriggerPlayer() )} gave you ${amountSt} gold.` );
+	displayToPlayer( GetTriggerPlayer(), `${amountSt} gold given to ${colorizedName( receiver )}` );
+	AdjustPlayerStateSimpleBJ( receiver, PLAYER_STATE_RESOURCE_GOLD, amount );
+	AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, - amount );
 
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterPlayerChatEventAll( t, "-g ", false );
-	TriggerAddAction( t, miscGold_Actions );
-
-} );
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
+	registerCommand( {
+		command: "gold",
+		alias: "g",
+		args: [
+			{ name: "player", type: "player" },
+			{ name: "amount", type: Number, required: false },
+		],
+		fn: action,
+	} ),
+);
