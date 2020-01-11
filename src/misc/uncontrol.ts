@@ -1,6 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { color, registerCommand } from "../shared";
+import { color } from "../shared";
+import { registerCommand } from "util/commands";
 
 // ===========================================================================
 // Trigger: miscUncontrol

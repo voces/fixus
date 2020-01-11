@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { registerCommand } from "../shared";
 import { colorizedName, displayToPlayer } from "util/player";
+import { registerCommand } from "util/commands";
 
 // ===========================================================================
 // Trigger: miscGold

@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { registerCommand } from "../shared";
 import { withTempGroup } from "util/temp";
+import { registerCommand } from "util/commands";
 
 // ===========================================================================
 // Trigger: miscFace
