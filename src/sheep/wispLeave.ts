@@ -5,7 +5,7 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 // ===========================================================================
 // Trigger: sheepWispLeave
 // ===========================================================================
-
+// todo: test this
 const Trig_sheepWispLeave_Actions = (): void => {
 
 	if ( GetUnitTypeId( GetTriggerUnit() ) === WISP_TYPE )

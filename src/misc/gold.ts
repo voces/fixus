@@ -7,6 +7,7 @@ import { registerCommand } from "util/commands";
 // Trigger: miscGold
 // ===========================================================================
 
+// todo: test this
 const action = ( { player: receiver, amount }: {player: player; amount?: number} ): void => {
 
 	if (
@@ -41,7 +42,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
 		alias: "g",
 		args: [
 			{ name: "player", type: "player" },
-			{ name: "amount", type: Number, required: false },
+			{ name: "amount", type: "number", required: false },
 		],
 		fn: action,
 	} ),

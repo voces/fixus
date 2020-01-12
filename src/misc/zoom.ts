@@ -1,14 +1,8 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import {
-	myArg,
-	s__splitarray,
-	Split,
-	Split2,
-	TriggerRegisterPlayerChatEventAll,
-	wolfTeam,
-} from "../shared";
+import { wolfTeam } from "shared";
 import { s__File_close, s__File_write, s__File_open, s__File_readAndClose } from "./fileIO";
+import { registerCommand } from "util/commands";
 
 const sheepZoom: Array<number> = [];
 const wolfZoom: Array<number> = [];
@@ -17,48 +11,23 @@ const wolfZoom: Array<number> = [];
 // Trigger: miscZoom
 // ===========================================================================
 
-const Trig_miscZoom_Actions = (): void => {
+const action = ( { zoom = 0 }: {zoom: number} ): void => {
 
-	let zoom: number;
 	const playerId = GetPlayerId( GetTriggerPlayer() );
 
-	Split( GetEventPlayerChatString(), " ", false );
-
-	if ( myArg[ 0 ] !== "zoom" && myArg[ 0 ] !== "z" )
-
-		return;
-
-	zoom = S2R( myArg[ 1 ] || "" );
-
 	if ( zoom === 0 )
+		zoom = IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ?
+			wolfZoom[ playerId ] :
+			sheepZoom[ playerId ];
 
-		if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) {
+	if ( zoom <= 0 ) zoom = 1650;
 
-			zoom = wolfZoom[ playerId ];
-
-		} else {
-
-			zoom = sheepZoom[ playerId ];
-
-		}
-
-	if ( zoom <= 0 )
-
-		zoom = 1650;
-
-	while ( true ) {
-
-		if ( zoom > 400 ) break;
-		zoom = zoom * 10;
-
-	}
+	while ( zoom <= 400 )
+		zoom *= 10;
 
 	if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
-
 		wolfZoom[ playerId ] = zoom;
-
 	else
-
 		sheepZoom[ playerId ] = zoom;
 
 	if ( GetLocalPlayer() === GetTriggerPlayer() ) {
@@ -73,27 +42,28 @@ const Trig_miscZoom_Actions = (): void => {
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	const t = CreateTrigger();
+	registerCommand( {
+		command: "zoom",
+		alias: "z",
+		args: [ { name: "zoom", type: "number", required: false } ],
+		fn: action,
+	} );
 
-	const zooms = Split2( s__File_readAndClose( s__File_open( "fixus/zooms.txt" ) ) || "", " " );
+	const zooms = ( s__File_readAndClose( s__File_open( "fixus/zooms.txt" ) ) || "" ).split( " " );
+	const playerId = GetPlayerId( GetLocalPlayer() );
 
-	TriggerRegisterPlayerChatEventAll( t, "-zoom", false );
-	TriggerRegisterPlayerChatEventAll( t, "-z", false );
-	TriggerAddAction( t, Trig_miscZoom_Actions );
+	sheepZoom[ playerId ] = S2R( zooms[ 0 ] );
+	if ( sheepZoom[ playerId ] === 0 )
+		sheepZoom[ playerId ] = 1650;
 
-	sheepZoom[ GetPlayerId( GetLocalPlayer() ) ] = S2R( s__splitarray[ zooms ] );
+	wolfZoom[ playerId ] = S2R( zooms[ 1 ] );
+	if ( wolfZoom[ playerId ] === 0 )
+		wolfZoom[ playerId ] = 1650;
 
-	if ( sheepZoom[ GetPlayerId( GetLocalPlayer() ) ] === 0 )
-		sheepZoom[ GetPlayerId( GetLocalPlayer() ) ] = 1650;
-
-	wolfZoom[ GetPlayerId( GetLocalPlayer() ) ] = S2R( s__splitarray[ zooms + 1 ] );
-
-	if ( wolfZoom[ GetPlayerId( GetLocalPlayer() ) ] === 0 )
-		wolfZoom[ GetPlayerId( GetLocalPlayer() ) ] = 1650;
-
-	if ( IsPlayerInForce( GetLocalPlayer(), wolfTeam ) )
-		SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, wolfZoom[ GetPlayerId( GetLocalPlayer() ) ], 0 );
-	else
-		SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, sheepZoom[ GetPlayerId( GetLocalPlayer() ) ], 0 );
+	SetCameraField(
+		CAMERA_FIELD_TARGET_DISTANCE,
+		IsPlayerInForce( GetLocalPlayer(), wolfTeam ) ? wolfZoom[ playerId ] : sheepZoom[ playerId ],
+		0,
+	);
 
 } );

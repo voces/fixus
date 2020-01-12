@@ -1,12 +1,13 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { color } from "../shared";
+import { color } from "shared";
 import { registerCommand } from "util/commands";
 
 // ===========================================================================
 // Trigger: miscUncontrol
 // ===========================================================================
 
+// todo: test this
 const action = ( { player }: {player: player} ): void => {
 
 	if (

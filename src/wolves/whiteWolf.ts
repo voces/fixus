@@ -1,7 +1,7 @@
 
 import { WOLF_TYPE, s__wolf_blacktype, s__wolf_imbatype, wws, s__wolf_wwtype, wolves } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-
+// todo: test this
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
 const s__wolf_wwitem = FourCC( "I003" );

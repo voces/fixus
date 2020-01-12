@@ -1,9 +1,22 @@
 
-import { getterSetterFunc, saveskills, sheepTeam, wolfTeam, color, wispTeam, countHere } from "../shared";
+import {
+	getterSetterFunc,
+	saveskills,
+	sheepTeam,
+	wolfTeam,
+	color,
+	wispTeam,
+	countHere,
+} from "shared";
 
 export const board: ( newBoard?: multiboard ) => multiboard = getterSetterFunc();
 
-const updateMultiboardRow = ( index: number, value1: string | null, icon: string | null, value2: string | null ): void => {
+const updateMultiboardRow = (
+	index: number,
+	value1: string | null,
+	icon: string | null,
+	value2: string | null,
+): void => {
 
 	let mbi = MultiboardGetItem( board(), index, 0 );
 	if ( value1 ) MultiboardSetItemValue( mbi, value1 );
@@ -57,7 +70,6 @@ const getWolfIcon = ( i: number ): string => {
 
 export const reloadMultiboard = (): void => {
 
-	let i = 0;
 	let index = 0;
 	const oldBoard = board();
 	MultiboardDisplay( oldBoard, false );
@@ -67,73 +79,85 @@ export const reloadMultiboard = (): void => {
 	board( newBoard );
 	MultiboardSetTitleText( newBoard, "Ultimate Sheep Tag Fixus" );
 	MultiboardSetColumnCount( newBoard, 2 );
-	MultiboardSetRowCount( newBoard, 5 + CountPlayersInForceBJ( sheepTeam ) + CountPlayersInForceBJ( wolfTeam ) + CountPlayersInForceBJ( wispTeam ) );
+	MultiboardSetRowCount(
+		newBoard,
+		5 + CountPlayersInForceBJ( sheepTeam )
+			+ CountPlayersInForceBJ( wolfTeam )
+			+ CountPlayersInForceBJ( wispTeam ),
+	);
 
 	// sheep
-	updateMultiboardRow( index, color[ 12 ] + "Sheep: " + I2S( countHere( sheepTeam ) ), null, "Saves" );
+	updateMultiboardRow(
+		index,
+		color[ 12 ] + "Sheep: " + I2S( countHere( sheepTeam ) ),
+		null,
+		"Saves",
+	);
 	index = index + 1;
 
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
 
-			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getSheepIcon( i ), I2S( saveskills[ i ] ) );
+			updateMultiboardRow(
+				index,
+				color[ i ] + GetPlayerName( Player( i ) ),
+				getSheepIcon( i ),
+				I2S( saveskills[ i ] ),
+			);
 			index = index + 1;
 
 		}
-
-		i = i + 1;
-
-	}
 
 	updateMultiboardRow( index, null, null, null );
 	index = index + 1;
 
 	// Wisps
-	updateMultiboardRow( index, color[ 12 ] + "Wisps: " + I2S( countHere( wispTeam ) ), null, "Saves" );
+	updateMultiboardRow(
+		index,
+		color[ 12 ] + "Wisps: " + I2S( countHere( wispTeam ) ),
+		null,
+		"Saves",
+	);
 	index = index + 1;
-	i = 0;
 
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		if ( IsPlayerInForce( Player( i ), wispTeam ) ) {
 
-			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), "ReplaceableTextures\\CommandButtons\\BTNWisp.blp", I2S( saveskills[ i ] ) );
+			updateMultiboardRow(
+				index,
+				color[ i ] + GetPlayerName( Player( i ) ),
+				"ReplaceableTextures\\CommandButtons\\BTNWisp.blp",
+				I2S( saveskills[ i ] ),
+			);
 			index = index + 1;
 
 		}
-
-		i = i + 1;
-
-	}
 
 	updateMultiboardRow( index, null, null, null );
 	index = index + 1;
 
 	// Wolves
-	updateMultiboardRow( index, color[ 13 ] + "Wolves: " + I2S( countHere( wolfTeam ) ), null, "Kills" );
+	updateMultiboardRow(
+		index,
+		color[ 13 ] + "Wolves: " + I2S( countHere( wolfTeam ) ),
+		null,
+		"Kills",
+	);
 	index = index + 1;
-	i = 0;
 
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		if ( IsPlayerInForce( Player( i ), wolfTeam ) ) {
 
-			updateMultiboardRow( index, color[ i ] + GetPlayerName( Player( i ) ), getWolfIcon( i ), I2S( saveskills[ i ] ) );
+			updateMultiboardRow(
+				index,
+				color[ i ] + GetPlayerName( Player( i ) ),
+				getWolfIcon( i ),
+				I2S( saveskills[ i ] ),
+			);
 			index = index + 1;
 
 		}
 
-		i = i + 1;
-
-	}
-
-	MultiboardDisplay( oldBoard, true );
+	MultiboardDisplay( newBoard, true );
 
 };

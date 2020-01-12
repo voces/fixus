@@ -1,9 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { wolves } from "../shared";
-
-// globals from ScoutPhoenixUpgrade:
-// endglobals from ScoutPhoenixUpgrade
+import { wolves } from "shared";
+// todo: test this
 
 const s__ScoutPhoenixUpgrade__data_upgradeId = FourCC( "R004" );
 const s__ScoutPhoenixUpgrade__data_abilityId = FourCC( "A00B" );

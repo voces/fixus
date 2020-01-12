@@ -28,7 +28,7 @@ import {
 	Specialization_onDeath,
 	Specialization_onSave,
 	Specialization_onSpawn,
-} from "./specialization";
+} from "specialization";
 import { ScoutPhoenixUpgrade_onSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
@@ -36,6 +36,8 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 const s__sheep_blacktype = FourCC( "uC02" );
 const s__sheep_silvertype = FourCC( "u000" );
 const s__sheep_goldtype = FourCC( "u001" );
+
+// todo: test this
 
 // ===========================================================================
 // Trigger: sheepSaveDeath

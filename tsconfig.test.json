@@ -22,8 +22,9 @@
 			]
 		},
 		"esModuleInterop": true,
-		"plugins": [{"transform": "ts-transformer-imports"}],
+		// "plugins": [{"transform": "@zerollup/ts-transform-paths"}],
 		"types": [
+			"@types/jest",
 			"lua-types/core/coroutine",
 			"lua-types/core/global",
 			"lua-types/core/math",
@@ -43,9 +44,7 @@
 	"include": [
 		"src"
 	],
-	"exclude": [
-		"src/**/*.test.ts"
-	],
+	// "exclude": ["src/**/*.test.ts"],
 	"tstl": {
 		"luaTarget": "5.3",
 		"noHeader": true,

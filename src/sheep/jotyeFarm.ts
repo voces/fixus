@@ -4,6 +4,7 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 const s__wolf_golemtype = FourCC( "ewsp" );
 const s__wolf_stalkertype = FourCC( "nfel" );
 
+// todo: test this
 // ===========================================================================
 // Trigger: sheepJotyeFarm
 // ===========================================================================

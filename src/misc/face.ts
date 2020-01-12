@@ -10,7 +10,7 @@ import { registerCommand } from "util/commands";
 const action = ( { angle }: {angle: string} ): void => {
 
 	const adjustment = angle[ 0 ] === "+" ? 1 : angle[ 0 ] === "-" ? - 1 : 0;
-	const actualAngle = parseFloat( angle.slice( 1 ) );
+	const actualAngle = S2R( adjustment === 0 ? angle : angle.slice( 1 ) );
 
 	withTempGroup( g => {
 
@@ -34,7 +34,7 @@ const action = ( { angle }: {angle: string} ): void => {
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
 	registerCommand( {
 		command: "face",
-		args: [ { name: "angle", type: String } ],
+		args: [ { name: "angle", type: "string" } ],
 		fn: action,
 	} ),
 );

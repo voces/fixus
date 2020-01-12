@@ -60,6 +60,7 @@ const Trig_sheepCommands_Actions = (): void => {
 
 					if ( n === 12 ) break;
 
+					// todo: validate this actually works
 					if ( GetEventPlayerChatString() === "-wolf gold" ) {
 
 						DisplayTextToPlayer( Player( n ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r gave the shepherds 100 gold!" );
@@ -67,6 +68,8 @@ const Trig_sheepCommands_Actions = (): void => {
 						if ( IsPlayerInForce( Player( n ), wolfTeam ) )
 
 							SetPlayerState( Player( n ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( n ), PLAYER_STATE_RESOURCE_GOLD ) + 100 );
+
+						// todo: validate this actually works
 
 					} else if ( GetEventPlayerChatString() === "-destroy all farms" ) {
 

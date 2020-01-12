@@ -6,6 +6,7 @@ import { DOLLY_TYPE } from "shared";
 // Trigger: miscDollyMove
 // ===========================================================================
 
+// todo: test this
 const Trig_miscDollyMove_Conditions = (): boolean =>
 	GetUnitTypeId( GetTriggerUnit() ) === DOLLY_TYPE;
 

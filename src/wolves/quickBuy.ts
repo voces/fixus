@@ -1,7 +1,7 @@
 
 import { Split, myArg, wolfTeam, wolves, TriggerRegisterPlayerChatEventAll } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-
+// todo: test this
 const quickBuyTax = 1.5;
 const quickSellTax = 0.5;
 

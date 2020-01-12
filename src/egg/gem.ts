@@ -1,7 +1,7 @@
 
 import { color, fillArray } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-
+// todo: test this
 const gemActivated: Array<boolean> = fillArray( bj_MAX_PLAYERS, false );
 const GEM_TYPE = FourCC( "gemt" );
 

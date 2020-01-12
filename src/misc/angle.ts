@@ -20,7 +20,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
 	registerCommand( {
 		command: "angle",
 		alias: "a",
-		args: [ { name: "angle", type: Number } ],
+		args: [ { name: "angle", type: "number" } ],
 		fn: action,
 	} ),
 );

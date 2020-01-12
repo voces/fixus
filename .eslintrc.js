@@ -12,10 +12,4 @@ module.exports = {
 		"@typescript-eslint/camelcase": 0,
 		// "@typescript-eslint/strict-boolean-expressions": 2
 	},
-	// overrides: [{
-	// 	files: ["src/**/*.ts"],
-	// 	parserOptions: { project: "./tsconfig.json" },
-	// }]
-	// files: ["src/**/*.ts"],
-	// excludedFiles: "**/*.spec.ts",
 };

@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { goldFactor } from "shared";
-
+// todo: test this
 // ===========================================================================
 // Trigger: wolfLumber
 // ===========================================================================

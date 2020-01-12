@@ -1,21 +1,20 @@
 
-import { TriggerRegisterPlayerChatEventAll } from "../shared";
+import { TriggerRegisterPlayerChatEventAll } from "shared";
 
 export const registerCommand = <T>(
 	{ command, alias, args = [], fn }:
 	{
 		command: string;
 		alias?: string;
-		// eslint-disable-next-line @typescript-eslint/ban-types
 		args: Array<{
 			name: string;
 			required?: boolean;
-			// todo: add a function type, allowing the user to define whatever
-			type?: NumberConstructor
-				| StringConstructor
+			// todo: add a function type, allowing the user to define their own transformer
+			type?: "number"
+				| "string"
 				| "player";
 		}>;
-		fn: ( args: T, words: Array<string> ) => void;
+		fn: ( this: void, args: T, words: Array<string> ) => void;
 	},
 ): void => {
 
@@ -35,8 +34,8 @@ export const registerCommand = <T>(
 		TriggerRegisterPlayerChatEventAll(
 			t,
 			`${triggerCommand}${requiredArgs > 0 ? " " : ""}`,
-			requiredArgs > 0 ),
-	);
+			args.length === 0,
+		) );
 
 	TriggerAddAction( t, () => {
 
@@ -44,18 +43,19 @@ export const registerCommand = <T>(
 		const words = str.split( " " );
 
 		// with args, make sure the trigger leads
-		if ( triggerWords.indexOf( words[ 0 ] ) === - 1 ) return;
+		if ( triggerWords.indexOf( words[ 0 ].slice( 1 ) ) === - 1 ) return;
 
 		// Build our args object
-		const argsObject = Object.fromEntries( args.map( ( { name, type }, i ) => {
+		const argsObject: T = Object.fromEntries( args.map( ( { name, type }, i ) => {
 
+			const word = words[ i + 1 ];
 			if ( type )
 				switch ( type ) {
 
-					case Number: return [ name, parseFloat( words[ i ] ) ];
+					case "number": return [ name, S2R( word ) ];
 					case "player": {
 
-						const playerId = parseInt( words[ i ] );
+						const playerId = S2I( word );
 						// todo: test this and provide user feedback
 						if ( playerId < 0 || playerId > bj_MAX_PLAYERS )
 							throw new Error( "invalid player id" );
@@ -65,12 +65,11 @@ export const registerCommand = <T>(
 
 				}
 
-			return [ name, words[ i ] ];
+			return [ name, word ];
 
 		} ) );
 
-		// todo: somehow don't do this casting
-		fn( argsObject as unknown as T, words );
+		fn( argsObject, words );
 
 	} );
 

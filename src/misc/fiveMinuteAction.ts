@@ -6,7 +6,7 @@ import {
 	DOLLY_TYPE,
 } from "shared";
 import { withTempGroup } from "util/temp";
-
+// todo: test this
 const DOLLY_SPEED_AURA = FourCC( "Aasl" );
 
 const filterDolly = (): boolean => GetUnitTypeId( GetFilterUnit() ) === DOLLY_TYPE;

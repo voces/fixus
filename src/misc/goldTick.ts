@@ -6,7 +6,7 @@ import {
 	countHereReal,
 	wolfTeam,
 	saveskills,
-} from "../shared";
+} from "shared";
 import { isPlayingPlayer, hasLeft, isComputer } from "util/player";
 
 const SAVING_FARM_TYPE = FourCC( "ohun" );

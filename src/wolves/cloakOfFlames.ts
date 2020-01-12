@@ -5,7 +5,7 @@ import { s__wolf_cloakitem } from "shared";
 // globals from CloakOfFlames:
 const CloakOfFlames__cloakHolders = CreateGroup();
 // endglobals from CloakOfFlames
-
+// todo: test this
 // library CloakOfFlames:
 
 const CloakOfFlames__OnPickupItem = (): void => {

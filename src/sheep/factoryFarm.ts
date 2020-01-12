@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { saveskills } from "../shared";
+import { saveskills } from "shared";
 
 // globals from FactoryFarm:
 const FactoryFarm__factoryFarmTimer = CreateTimer();
@@ -27,6 +27,7 @@ const s__sheep_tinyFarmType = FourCC( "hC07" );
 
 // library FactoryFarm:
 
+// todo: SpiralX/Y are broken on bottom right, jumps strangely
 const FactoryFarm__SpiralX = ( n: number ): number => {
 
 	const k = Math.ceil( ( SquareRoot( n ) - 1 ) / 2 );

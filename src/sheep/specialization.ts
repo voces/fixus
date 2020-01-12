@@ -21,6 +21,8 @@ const s__SpecializationStruct_passive: Array<number> = [];
 const s__SpecializationStruct_active: Array<number> = [];
 const s__SpecializationStruct_upgrade: Array<number> = [];
 
+// todo: test this
+
 // Generated allocator of SpecializationStruct
 const s__SpecializationStruct__allocate = (): number => {
 

@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-
+// todo: test this
 const s__wolf_wardtype = FourCC( "n001" );
 const s__wolf_wardability = FourCC( "A001" );
 

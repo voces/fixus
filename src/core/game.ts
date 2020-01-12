@@ -14,8 +14,8 @@ import {
 	WOLF_TYPE,
 	grimEffect,
 	wispTeam,
-} from "../shared";
-import { reloadMultiboard } from "../misc/multiboard";
+} from "shared";
+import { reloadMultiboard } from "misc/multiboard";
 
 const STARTER_ITEM_TYPE = FourCC( "mcou" ); // everyone gets this
 const ONE_WOLF_ITEM_TYPE = FourCC( "ratf" );

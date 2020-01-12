@@ -8,8 +8,8 @@ import {
 	sheepTeam,
 	wolfTeam,
 	DisplayTimedText,
-} from "../shared";
-import { board } from "../misc/multiboard";
+} from "shared";
+import { board } from "misc/multiboard";
 
 // ===========================================================================
 // Trigger: coreInit

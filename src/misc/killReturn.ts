@@ -6,6 +6,7 @@ import { goldFactor, SmallText, mainUnit } from "shared";
 // Trigger: miscKillReturn
 // ===========================================================================
 
+// todo: test this
 const Trig_miscKillReturn_Actions = (): void => {
 
 	const gold = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) * goldFactor();
