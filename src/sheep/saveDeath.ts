@@ -5,7 +5,6 @@ import {
 	goldFactor,
 	sheepTeam,
 	color,
-	WORLD_BOUNDS,
 	wispTeam,
 	WISP_TYPE,
 	wolves,
@@ -22,16 +21,18 @@ import {
 	s__wolf_wwtype,
 	wws,
 	s__wolf_cloakitem,
+	grimEffect,
 } from "shared";
 import {
 	Specialization_GetLevel,
 	Specialization_onDeath,
 	Specialization_onSave,
 	Specialization_onSpawn,
-} from "specialization";
+} from "./specialization";
 import { ScoutPhoenixUpgrade_onSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
 
 const s__sheep_blacktype = FourCC( "uC02" );
 const s__sheep_silvertype = FourCC( "u000" );
@@ -43,19 +44,7 @@ const s__sheep_goldtype = FourCC( "u001" );
 // Trigger: sheepSaveDeath
 // ===========================================================================
 
-const sheepSaveDeath_removeDyingSheepUnits = (): boolean => {
-
-	if ( GetOwningPlayer( GetFilterUnit() ) === GetOwningPlayer( GetTriggerUnit() ) )
-
-		// return UnitDamageTarget(GetKillingUnit(), GetFilterUnit(), 10000, true, false, ATTACK_TYPE_HERO, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-		// call KillUnit(GetFilterUnit())
-		RemoveUnit( GetFilterUnit() );
-
-	return false;
-
-};
-
-const IsStructureFilter = (): boolean => IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE );
+const isStructureFilter = Filter( (): boolean => IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
 
 const replaceUnit = ( u: unit, newType: number ): unit => {
 
@@ -129,39 +118,22 @@ const GetSheepBounty = ( dyingUnit: unit ): number => {
 
 	const sheepType = GetUnitTypeId( dyingUnit );
 	let bounty = 100;
-	let u: unit;
 
 	// sheep type bonus
-
-	if ( sheepType === s__sheep_goldtype )
-
-		bounty = bounty + 100;
-
-	else if ( sheepType === s__sheep_silvertype )
-
-		bounty = bounty + 50;
-
-	else if ( sheepType === s__sheep_blacktype )
-
-		bounty = bounty + 25;
+	if ( sheepType === s__sheep_goldtype ) bounty += 100;
+	else if ( sheepType === s__sheep_silvertype ) bounty += 50;
+	else if ( sheepType === s__sheep_blacktype ) bounty += 25;
 
 	// level bonus
-	bounty = bounty + Specialization_GetLevel( dyingUnit ) * 10;
+	bounty += Specialization_GetLevel( dyingUnit ) * 10;
 
 	// farm bonus
-	const g = CreateGroup();
-	GroupEnumUnitsOfPlayer( g, GetOwningPlayer( dyingUnit ), Filter( IsStructureFilter ) );
-
-	while ( true ) {
-
-		u = FirstOfGroup( g );
-		if ( u === null ) break;
-		GroupRemoveUnit( g, u );
-		bounty = bounty + I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) ) / 2;
-
-	}
-
-	DestroyGroup( g );
+	bounty = reducePlayerUnits(
+		GetOwningPlayer( dyingUnit ),
+		( bounty, u ) => bounty + I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) ) / 2,
+		bounty,
+		isStructureFilter,
+	);
 
 	return bounty;
 
@@ -173,15 +145,12 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	const killedPlayerId = GetPlayerId( killedPlayer );
 	const killingPlayer = GetOwningPlayer( killingUnit );
 	const killingPlayerId = GetPlayerId( killingPlayer );
-	const g = CreateGroup();
-	let i: number;
 
 	// Handle dying sheep
 	const bounty = GetSheepBounty( killedUnit ) * goldFactor();
 	ForceRemovePlayer( sheepTeam, killedPlayer );
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, color[ killedPlayerId ] + GetPlayerName( killedPlayer ) + "|r has been " + color[ 13 ] + "killed|r by " + color[ GetPlayerId( killingPlayer ) ] + GetPlayerName( killingPlayer ) + "|r!" );
-	GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( sheepSaveDeath_removeDyingSheepUnits ) );
-	DestroyGroup( g );
+	forEachPlayerUnit( killingPlayer, RemoveUnit );
 	Specialization_onDeath( killedUnit );
 
 	// Move to wisps
@@ -220,14 +189,10 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	}
 
 	// Gold bounty
-	i = 0;
 	const allyBounty = R2I( bounty / ( I2R( countHere( wolfTeam ) ) + 0.5 ) );
 	const killerBounty = R2I( bounty - allyBounty * ( countHere( wolfTeam ) - 1 ) );
 
-	while ( true ) {
-
-		if ( i === 12 ) break;
-
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		if ( GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING && IsPlayerInForce( Player( i ), wolfTeam ) )
 
 			if ( Player( i ) === killingPlayer ) {
@@ -242,26 +207,13 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 
 			}
 
-		i = i + 1;
-
-	}
-
 };
 
 const getSheepType = ( p: player ): number => {
 
-	if ( saveskills[ GetPlayerId( p ) ] >= 25 )
-
-		return s__sheep_goldtype;
-
-	else if ( saveskills[ GetPlayerId( p ) ] >= 15 )
-
-		return s__sheep_silvertype;
-
-	else if ( saveskills[ GetPlayerId( p ) ] >= 10 )
-
-		return s__sheep_blacktype;
-
+	if ( saveskills[ GetPlayerId( p ) ] >= 25 ) return s__sheep_goldtype;
+	else if ( saveskills[ GetPlayerId( p ) ] >= 15 ) return s__sheep_silvertype;
+	else if ( saveskills[ GetPlayerId( p ) ] >= 10 ) return s__sheep_blacktype;
 	return SHEEP_TYPE;
 
 };
@@ -302,12 +254,8 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 	}
 
-	if ( InStr( GetPlayerName( savedPlayer ), "Grim" ) >= 0 ) {
-
-		AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", savedUnit, "origin" );
-		AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", savedUnit, "origin" );
-
-	}
+	if ( GetPlayerName( Player( i ) ).indexOf( "Grim" ) >= 0 )
+		grimEffect( savedUnit );
 
 	// Increase saves and upgrade
 	saveskills[ savingPlayerId ] = saveskills[ savingPlayerId ] + 1;
@@ -319,12 +267,8 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 		sheeps[ savingPlayerId ] = savingUnit;
 		SelectUnitForPlayerSingle( savingUnit, savingPlayer );
 
-		if ( InStr( GetPlayerName( savingPlayer ), "Grim" ) >= 0 ) {
-
-			AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", savingUnit, "origin" );
-			AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", savingUnit, "origin" );
-
-		}
+		if ( GetPlayerName( Player( i ) ).indexOf( "Grim" ) >= 0 )
+			grimEffect( savedUnit );
 
 		Specialization_onSpawn( savingUnit );
 
@@ -362,7 +306,7 @@ const onWispTK = ( wispUnit: unit ): void => {
 
 };
 
-const Trig_sheepSaveDeath_Actions = (): void => {
+const action = (): void => {
 
 	let relevantDeath = false;
 
@@ -406,6 +350,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );
-	TriggerAddAction( t, Trig_sheepSaveDeath_Actions );
+	TriggerAddAction( t, action );
 
 } );

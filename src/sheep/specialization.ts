@@ -1,10 +1,11 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { fillArray } from "shared";
 
 // globals from Specialization:
 const Specialization__playerSpecializations: Array<number> = [];
 const Specialization__specializations: Array<number> = [];
-const Specialization__levels: Array<number> = [];
+const Specialization__levels: Array<number> = fillArray( bj_MAX_PLAYERS, 0 );
 // endglobals from Specialization
 
 const s__data_spellbook = FourCC( "A006" );
