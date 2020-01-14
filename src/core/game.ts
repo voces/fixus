@@ -105,7 +105,7 @@ const startToPlay = (): void => {
 		UnitAddItem( wolves[ i ], CreateItem( starterItem, GetStartLocationX( i ), GetStartLocationY( i ) ) );
 
 		if ( GetPlayerName( Player( i ) ).indexOf( "Grim" ) >= 0 )
-			grimEffect( sheeps[ i ] );
+			grimEffect( wolves[ i ] );
 
 		if ( GetLocalPlayer() === Player( i ) ) {
 

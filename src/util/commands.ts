@@ -55,7 +55,7 @@ export const registerCommand = <T>(
 					case "number": return [ name, S2R( word ) ];
 					case "player": {
 
-						const playerId = S2I( word );
+						const playerId = S2I( word ) - 1;
 						// todo: test this and provide user feedback
 						if ( playerId < 0 || playerId > bj_MAX_PLAYERS )
 							throw new Error( "invalid player id" );

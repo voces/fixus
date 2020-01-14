@@ -9,7 +9,6 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 const Trig_sheepCommands_RemoveCheapFarms = (): boolean => {
 
 	if ( IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) && BlzGetUnitIntegerField( GetFilterUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) < 5 )
-
 		RemoveUnit( GetFilterUnit() );
 
 	return false;
@@ -19,21 +18,30 @@ const Trig_sheepCommands_RemoveCheapFarms = (): boolean => {
 const Trig_sheepCommands_RemoveAllFarms = (): boolean => {
 
 	if ( IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) )
-
 		RemoveUnit( GetFilterUnit() );
 
 	return false;
 
 };
 
+const getController = (): player => {
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		if ( GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING )
+			return Player( i );
+
+	// this can't happen
+	throw new Error( "No players!" );
+
+};
+
 const Trig_sheepCommands_Actions = (): void => {
 
-	let i = 0;
-	let n: number;
 	let g: group;
 
 	if ( GetEventPlayerChatString() === "-d" ) {
 
+		// todo: use a helper
 		g = CreateGroup();
 		GroupEnumUnitsOfPlayer( g, GetTriggerPlayer(), Condition( Trig_sheepCommands_RemoveCheapFarms ) );
 		DestroyGroup( g );
@@ -48,56 +56,28 @@ const Trig_sheepCommands_Actions = (): void => {
 
 	}
 
-	while ( true ) {
+	if ( getController() === GetTriggerPlayer() )
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			if ( GetEventPlayerChatString() === "-wolf gold" ) {
 
-		if ( GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING )
+				DisplayTextToPlayer( Player( i ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r gave the shepherds 100 gold!" );
 
-			if ( Player( i ) === GetTriggerPlayer() ) {
+				if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+					SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 100 );
 
-				n = 0;
+			} else if ( GetEventPlayerChatString() === "-destroy all farms" ) {
 
-				while ( true ) {
+				DisplayTextToPlayer( Player( i ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r has destroyed all the farms!" );
 
-					if ( n === 12 ) break;
+				if ( i === 0 ) {
 
-					// todo: validate this actually works
-					if ( GetEventPlayerChatString() === "-wolf gold" ) {
-
-						DisplayTextToPlayer( Player( n ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r gave the shepherds 100 gold!" );
-
-						if ( IsPlayerInForce( Player( n ), wolfTeam ) )
-
-							SetPlayerState( Player( n ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( n ), PLAYER_STATE_RESOURCE_GOLD ) + 100 );
-
-						// todo: validate this actually works
-
-					} else if ( GetEventPlayerChatString() === "-destroy all farms" ) {
-
-						DisplayTextToPlayer( Player( n ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r has destroyed all the farms!" );
-
-						if ( n === 0 ) {
-
-							g = CreateGroup();
-							GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( Trig_sheepCommands_RemoveCheapFarms ) );
-							DestroyGroup( g );
-
-						}
-
-					}
-
-					n = n + 1;
+					g = CreateGroup();
+					GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( Trig_sheepCommands_RemoveCheapFarms ) );
+					DestroyGroup( g );
 
 				}
 
-			} else {
-
-				return;
-
 			}
-
-		i = i + 1;
-
-	}
 
 };
 
@@ -105,6 +85,7 @@ const Trig_sheepCommands_Actions = (): void => {
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
+	// todo: register these as commands
 	TriggerRegisterPlayerChatEventAll( t, "-wolf gold", true );
 	TriggerRegisterPlayerChatEventAll( t, "-destroy all farms", true );
 	TriggerRegisterPlayerChatEventAll( t, "-d", true );

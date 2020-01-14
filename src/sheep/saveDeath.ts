@@ -13,8 +13,8 @@ import {
 	SmallText,
 	sheeps,
 	endGame,
-	s__wolf_blacktype,
-	s__wolf_imbatype,
+	BLACK_WOLF_TYPE,
+	IMBA_WOLF_TYPE,
 	WOLF_TYPE,
 	SHEEP_TYPE,
 	wisps,
@@ -34,9 +34,9 @@ import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
 
-const s__sheep_blacktype = FourCC( "uC02" );
-const s__sheep_silvertype = FourCC( "u000" );
-const s__sheep_goldtype = FourCC( "u001" );
+const BLACK_SHEEP_TYPE = FourCC( "uC02" );
+const SILVER_SHEEP_TYPE = FourCC( "u000" );
+const GOLD_SHEEP_TYPE = FourCC( "u001" );
 
 // todo: test this
 
@@ -53,48 +53,25 @@ const replaceUnit = ( u: unit, newType: number ): unit => {
 	const y = GetUnitY( u );
 	const f = GetUnitFacing( u );
 	const p = GetOwningPlayer( u );
-	// Hero props
-	const l = GetUnitLevel( u );
-	const it: Array<number> = [];
-
-	let i = 0;
 
 	// Copy hero props
-
-	while ( true ) {
-
-		if ( i === 6 ) break;
+	const l = GetUnitLevel( u );
+	const it: Array<number> = [];
+	for ( let i = 0; i < bj_MAX_INVENTORY; i ++ )
 		it[ i ] = GetItemTypeId( UnitItemInSlot( u, i ) );
-		i = i + 1;
-
-	}
 
 	// Remove it
 	RemoveUnit( u );
 
 	// Create a new one
 	u = CreateUnit( p, newType, x, y, f );
-
-	if ( InStr( GetPlayerName( p ), "Grim" ) >= 0 ) {
-
-		AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", u, "origin" );
-		AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", u, "head" );
-
-	}
-
+	if ( GetPlayerName( p ).indexOf( "Grim" ) >= 0 ) grimEffect( u );
 	SelectUnitForPlayerSingle( u, p );
 
 	// Copy hero props
 	SetHeroLevel( u, l, false );
-	i = 0;
-
-	while ( true ) {
-
-		if ( i === 6 ) break;
+	for ( let i = 0; i < bj_MAX_INVENTORY; i ++ )
 		UnitAddItem( u, CreateItem( it[ i ], x, y ) );
-		i = i + 1;
-
-	}
 
 	return u;
 
@@ -102,14 +79,8 @@ const replaceUnit = ( u: unit, newType: number ): unit => {
 
 const getWolfType = ( p: player ): number => {
 
-	if ( saveskills[ GetPlayerId( p ) ] === 10 )
-
-		return s__wolf_blacktype;
-
-	else if ( saveskills[ GetPlayerId( p ) ] === 25 )
-
-		return s__wolf_imbatype;
-
+	if ( saveskills[ GetPlayerId( p ) ] === 10 ) return BLACK_WOLF_TYPE;
+	else if ( saveskills[ GetPlayerId( p ) ] === 25 ) return IMBA_WOLF_TYPE;
 	return WOLF_TYPE;
 
 };
@@ -120,9 +91,9 @@ const GetSheepBounty = ( dyingUnit: unit ): number => {
 	let bounty = 100;
 
 	// sheep type bonus
-	if ( sheepType === s__sheep_goldtype ) bounty += 100;
-	else if ( sheepType === s__sheep_silvertype ) bounty += 50;
-	else if ( sheepType === s__sheep_blacktype ) bounty += 25;
+	if ( sheepType === GOLD_SHEEP_TYPE ) bounty += 100;
+	else if ( sheepType === SILVER_SHEEP_TYPE ) bounty += 50;
+	else if ( sheepType === BLACK_SHEEP_TYPE ) bounty += 25;
 
 	// level bonus
 	bounty += Specialization_GetLevel( dyingUnit ) * 10;
@@ -150,7 +121,7 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	const bounty = GetSheepBounty( killedUnit ) * goldFactor();
 	ForceRemovePlayer( sheepTeam, killedPlayer );
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, color[ killedPlayerId ] + GetPlayerName( killedPlayer ) + "|r has been " + color[ 13 ] + "killed|r by " + color[ GetPlayerId( killingPlayer ) ] + GetPlayerName( killingPlayer ) + "|r!" );
-	forEachPlayerUnit( killingPlayer, RemoveUnit );
+	forEachPlayerUnit( killedPlayer, RemoveUnit );
 	Specialization_onDeath( killedUnit );
 
 	// Move to wisps
@@ -159,12 +130,8 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	wisps[ killedPlayerId ] = killedUnit;
 	SetUnitPathing( killedUnit, false );
 
-	if ( InStr( GetPlayerName( killedPlayer ), "Grim" ) >= 0 ) {
-
-		AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", killedUnit, "origin" );
-		AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", killedUnit, "origin" );
-
-	}
+	if ( GetPlayerName( killedPlayer ).indexOf( "Grim" ) >= 0 )
+		grimEffect( killedUnit );
 
 	// Increase wolf kills and upgrade
 	saveskills[ killingPlayerId ] = saveskills[ killingPlayerId ] + 1;
@@ -211,9 +178,9 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 
 const getSheepType = ( p: player ): number => {
 
-	if ( saveskills[ GetPlayerId( p ) ] >= 25 ) return s__sheep_goldtype;
-	else if ( saveskills[ GetPlayerId( p ) ] >= 15 ) return s__sheep_silvertype;
-	else if ( saveskills[ GetPlayerId( p ) ] >= 10 ) return s__sheep_blacktype;
+	if ( saveskills[ GetPlayerId( p ) ] >= 25 ) return GOLD_SHEEP_TYPE;
+	else if ( saveskills[ GetPlayerId( p ) ] >= 15 ) return SILVER_SHEEP_TYPE;
+	else if ( saveskills[ GetPlayerId( p ) ] >= 10 ) return BLACK_SHEEP_TYPE;
 	return SHEEP_TYPE;
 
 };
@@ -312,7 +279,7 @@ const action = (): void => {
 
 	// Sheep death
 
-	if ( GetUnitTypeId( GetTriggerUnit() ) === SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_blacktype || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_silvertype || GetUnitTypeId( GetTriggerUnit() ) === s__sheep_goldtype ) {
+	if ( GetUnitTypeId( GetTriggerUnit() ) === SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === BLACK_SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === SILVER_SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === GOLD_SHEEP_TYPE ) {
 
 		onSheepDeath( GetTriggerUnit(), GetKillingUnit() );
 		relevantDeath = true;
@@ -330,7 +297,7 @@ const action = (): void => {
 
 	// Wolf death
 
-	else if ( GetUnitTypeId( GetTriggerUnit() ) === WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === s__wolf_blacktype || GetUnitTypeId( GetTriggerUnit() ) === s__wolf_imbatype )
+	else if ( GetUnitTypeId( GetTriggerUnit() ) === WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === BLACK_WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === IMBA_WOLF_TYPE )
 
 		onWolfDeath( GetTriggerUnit(), GetKillingUnit() );
 

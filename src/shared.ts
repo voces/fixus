@@ -58,8 +58,8 @@ export const wolves: Array<unit> = [];
 export const WORLD_BOUNDS: ( newRect?: rect ) => rect = getterSetterFunc();
 export const WISP_TYPE = FourCC( "eC01" );
 
-export const s__wolf_blacktype = FourCC( "E002" );
-export const s__wolf_imbatype = FourCC( "E000" );
+export const BLACK_WOLF_TYPE = FourCC( "E002" );
+export const IMBA_WOLF_TYPE = FourCC( "E000" );
 export const s__wolf_wwtype = FourCC( "eC16" );
 export const SHEEP_TYPE = FourCC( "uC04" );
 export const WOLF_TYPE = FourCC( "EC03" );

@@ -7,7 +7,6 @@ import { registerCommand } from "util/commands";
 // Trigger: miscUncontrol
 // ===========================================================================
 
-// todo: test this
 const action = ( { player }: {player: player} ): void => {
 
 	if (
