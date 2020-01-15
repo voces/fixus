@@ -38,8 +38,6 @@ const BLACK_SHEEP_TYPE = FourCC( "uC02" );
 const SILVER_SHEEP_TYPE = FourCC( "u000" );
 const GOLD_SHEEP_TYPE = FourCC( "u001" );
 
-// todo: test this
-
 // ===========================================================================
 // Trigger: sheepSaveDeath
 // ===========================================================================
@@ -247,11 +245,8 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 };
 
-const onWolfDeath = ( wolfUnit: unit, killer: unit ): void => {
+const onWolfDeath = ( wolfUnit: unit ): void => {
 
-	// todo: do we still get gold?
-	// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-	const killingPlayer = GetOwningPlayer( killer );
 	TriggerSleepAction( 5 );
 	ReviveHero( wolfUnit, - 256, - 832, true );
 
@@ -299,7 +294,7 @@ const action = (): void => {
 
 	else if ( GetUnitTypeId( GetTriggerUnit() ) === WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === BLACK_WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === IMBA_WOLF_TYPE )
 
-		onWolfDeath( GetTriggerUnit(), GetKillingUnit() );
+		onWolfDeath( GetTriggerUnit() );
 
 	if ( relevantDeath ) {
 

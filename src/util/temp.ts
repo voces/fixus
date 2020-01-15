@@ -17,6 +17,26 @@ export const forEachPlayerUnit = <T>( player: player, fn: ( unit: unit ) => void
 
 };
 
+export const withPlayerUnits = <T>( player: player, fn: ( group: group ) => T, filter?: boolexpr ): T => {
+
+	const g = CreateGroup();
+	GroupEnumUnitsOfPlayer( g, player, filter || null );
+	const result = fn( g );
+	DestroyGroup( g );
+	return result;
+
+};
+
+export const withSelectedUnits = <T>( player: player, fn: ( group: group ) => T, filter?: boolexpr ): T => {
+
+	const g = CreateGroup();
+	GroupEnumUnitsSelected( g, player, filter || null );
+	const result = fn( g );
+	DestroyGroup( g );
+	return result;
+
+};
+
 export const reducePlayerUnits = <T>( player: player, fn: ( acc: T, unit: unit ) => T, initial: T, filter?: boolexpr ): T => {
 
 	const g = CreateGroup();
