@@ -1,7 +1,7 @@
 
 import { WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE, wws, s__wolf_wwtype, wolves } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-// todo: test this
+
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
 const s__wolf_wwitem = FourCC( "I003" );
@@ -10,6 +10,7 @@ const s__wolf_wwitem = FourCC( "I003" );
 // Trigger: wolfWhiteWolf
 // ===========================================================================
 
+// todo: test whether hitting level 10 breaks this
 const Trig_wolfWhiteWolf_Actions = (): void => {
 
 	let x: number;
@@ -48,7 +49,6 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 			TimerDialogSetTitle( wwTimerDialog[ GetPlayerId( p ) ], "Changing in..." );
 
 			if ( GetLocalPlayer() === p )
-
 				TimerDialogDisplay( wwTimerDialog[ GetPlayerId( p ) ], true );
 
 			TriggerSleepAction( 60 );
@@ -56,7 +56,6 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 			// Clear the timer
 
 			if ( GetLocalPlayer() === p )
-
 				TimerDialogDisplay( wwTimerDialog[ GetPlayerId( p ) ], false );
 
 			// Remove the white wolf

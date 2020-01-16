@@ -1,28 +1,18 @@
 
-import { color, wolfTeam, WORLD_BOUNDS, TriggerRegisterPlayerChatEventAll } from "shared";
+import { color, wolfTeam, TriggerRegisterPlayerChatEventAll } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { forEachPlayerUnit } from "util/temp";
 
 // ===========================================================================
 // Trigger: sheepCommands
 // ===========================================================================
 
-const Trig_sheepCommands_RemoveCheapFarms = (): boolean => {
+const cheapStructureFilter = Condition( () =>
+	IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) &&
+	BlzGetUnitIntegerField( GetFilterUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) < 5,
+);
 
-	if ( IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) && BlzGetUnitIntegerField( GetFilterUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) < 5 )
-		RemoveUnit( GetFilterUnit() );
-
-	return false;
-
-};
-
-const Trig_sheepCommands_RemoveAllFarms = (): boolean => {
-
-	if ( IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) )
-		RemoveUnit( GetFilterUnit() );
-
-	return false;
-
-};
+const structureFilter = Condition( () =>IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
 
 const getController = (): player => {
 
@@ -37,24 +27,11 @@ const getController = (): player => {
 
 const Trig_sheepCommands_Actions = (): void => {
 
-	let g: group;
+	if ( GetEventPlayerChatString() === "-d" )
+		return forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, cheapStructureFilter );
 
-	if ( GetEventPlayerChatString() === "-d" ) {
-
-		// todo: use a helper
-		g = CreateGroup();
-		GroupEnumUnitsOfPlayer( g, GetTriggerPlayer(), Condition( Trig_sheepCommands_RemoveCheapFarms ) );
-		DestroyGroup( g );
-		return;
-
-	} else if ( GetEventPlayerChatString() === "-dall" ) {
-
-		g = CreateGroup();
-		GroupEnumUnitsOfPlayer( g, GetTriggerPlayer(), Condition( Trig_sheepCommands_RemoveAllFarms ) );
-		DestroyGroup( g );
-		return;
-
-	}
+	else if ( GetEventPlayerChatString() === "-dall" )
+		return forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, structureFilter );
 
 	if ( getController() === GetTriggerPlayer() )
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
@@ -68,14 +45,7 @@ const Trig_sheepCommands_Actions = (): void => {
 			} else if ( GetEventPlayerChatString() === "-destroy all farms" ) {
 
 				DisplayTextToPlayer( Player( i ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r has destroyed all the farms!" );
-
-				if ( i === 0 ) {
-
-					g = CreateGroup();
-					GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( Trig_sheepCommands_RemoveCheapFarms ) );
-					DestroyGroup( g );
-
-				}
+				forEachPlayerUnit( Player( i ), RemoveUnit, cheapStructureFilter );
 
 			}
 

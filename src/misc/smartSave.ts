@@ -5,7 +5,7 @@ import { WISP_TYPE } from "shared";
 // ===========================================================================
 // Trigger: miscSmartSave
 // ===========================================================================
-// todo: test this
+
 const Trig_miscSmartSave_Actions = (): void => {
 
 	const attacked = GetOrderTargetUnit();

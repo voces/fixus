@@ -1,8 +1,8 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-// todo: test this
-const s__wolf_wardtype = FourCC( "n001" );
-const s__wolf_wardability = FourCC( "A001" );
+
+const WARD_TYPE = FourCC( "n001" );
+const WARD_ABILITY_TYPE = FourCC( "A001" );
 
 // ===========================================================================
 // Trigger: wolfWard
@@ -10,15 +10,11 @@ const s__wolf_wardability = FourCC( "A001" );
 
 const Trig_wolfWard_Actions = (): void => {
 
-	let u: unit;
+	if ( GetSpellAbilityId() !== WARD_ABILITY_TYPE ) return;
 
-	if ( GetSpellAbilityId() === s__wolf_wardability ) {
-
-		u = CreateUnit( GetOwningPlayer( GetTriggerUnit() ), s__wolf_wardtype, GetSpellTargetX(), GetSpellTargetY(), 270 );
-		SetUnitPosition( u, GetSpellTargetX(), GetSpellTargetY() );
-		UnitApplyTimedLife( u, FourCC( "BTLF" ), 240 );
-
-	}
+	const u = CreateUnit( GetOwningPlayer( GetTriggerUnit() ), WARD_TYPE, GetSpellTargetX(), GetSpellTargetY(), 270 );
+	SetUnitPosition( u, GetSpellTargetX(), GetSpellTargetY() );
+	UnitApplyTimedLife( u, FourCC( "BTLF" ), 240 );
 
 };
 

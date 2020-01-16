@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { goldFactor } from "shared";
-// todo: test this
+
 // ===========================================================================
 // Trigger: wolfLumber
 // ===========================================================================
@@ -9,8 +9,7 @@ import { goldFactor } from "shared";
 const Trig_wolfLumber_Actions = (): void => {
 
 	if ( GetHeroLevel( GetTriggerUnit() ) >= 3 )
-
-		SetPlayerState( GetOwningPlayer( GetTriggerUnit() ), PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState( GetOwningPlayer( GetTriggerUnit() ), PLAYER_STATE_RESOURCE_LUMBER ) + 2 * goldFactor() );
+		AdjustPlayerStateSimpleBJ( GetOwningPlayer( GetTriggerUnit() ), PLAYER_STATE_RESOURCE_LUMBER, 2 * goldFactor() );
 
 };
 

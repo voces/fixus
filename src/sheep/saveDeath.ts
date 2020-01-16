@@ -20,7 +20,7 @@ import {
 	wisps,
 	s__wolf_wwtype,
 	wws,
-	s__wolf_cloakitem,
+	CLOAK_TYPE,
 	grimEffect,
 } from "shared";
 import {
@@ -149,7 +149,7 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 		}
 
 		ScoutPhoenixUpgrade_onSpawn( killingUnit );
-		UnitAddItem( killingUnit, CreateItem( s__wolf_cloakitem, GetUnitX( killingUnit ), GetUnitY( killingUnit ) ) );
+		UnitAddItem( killingUnit, CreateItem( CLOAK_TYPE, GetUnitX( killingUnit ), GetUnitY( killingUnit ) ) );
 
 	}
 

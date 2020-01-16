@@ -56,7 +56,7 @@ const buyAction = ( { item }: {item: string} ): void => {
 
 	// Get and buy the item
 	const itemSpec = itemSpecsNames[ item ];
-	if ( itemSpec === undefined ) return;
+	if ( ! itemSpec ) return;
 
 	const goldCost = Math.floor( itemSpec.gold * quickBuyTax );
 	const lumberCost = Math.floor( itemSpec.lumber * quickBuyTax );

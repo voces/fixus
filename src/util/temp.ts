@@ -8,6 +8,15 @@ export const withTempGroup = <T>( fn: ( group: group ) => T ): T => {
 
 };
 
+export const forEachUnit = <T>( fn: ( unit: unit ) => void, filter?: boolexpr ): void => {
+
+	const g = CreateGroup();
+	GroupEnumUnitsInRange( g, 0, 0, 0x100000, filter || null );
+	ForGroup( g, () => fn( GetEnumUnit() ) );
+	DestroyGroup( g );
+
+};
+
 export const forEachPlayerUnit = <T>( player: player, fn: ( unit: unit ) => void, filter?: boolexpr ): void => {
 
 	const g = CreateGroup();
