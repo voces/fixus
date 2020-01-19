@@ -1,9 +1,8 @@
 
-import { color, fillArray } from "shared";
+import { color } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { log } from "util/log";
 // todo: test this
-const gemActivated: Array<boolean> = fillArray( bj_MAX_PLAYERS, false );
+const gemActivated: Map<player, boolean> = new Map();
 const GEM_TYPE = FourCC( "gemt" );
 
 // ===========================================================================
@@ -12,18 +11,16 @@ const GEM_TYPE = FourCC( "gemt" );
 
 const Trig_eggGem_Actions = (): void => {
 
-	const playerId = GetPlayerId( GetTriggerPlayer() );
-
 	if ( GetItemTypeId( GetManipulatedItem() ) !== GEM_TYPE ) return;
 
-	log( "gemActivated", "before", gemActivated[ playerId ] );
-	gemActivated[ playerId ] = ! gemActivated[ playerId ];
-	log( "gemActivated", "after", gemActivated[ playerId ] );
-	const message = gemActivated[ playerId ] ?
-		GetRandomInt( 0, 100 ) === 0 ?
-			"Perfect gem activated." :
-			"Gem activated." :
-		"Gem deactivated.";
+	const wasActivated = gemActivated.get( GetTriggerPlayer() ) || false;
+	gemActivated.set( GetTriggerPlayer(), ! wasActivated );
+
+	let message = "Gem deactivated.";
+	if ( ! wasActivated )
+		if ( GetRandomInt( 0, 100 ) === 15 ) message = "Perfect gem activated.";
+		else message = "Gem activated.";
+
 	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color[ 3 ] + message );
 
 };

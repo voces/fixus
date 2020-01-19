@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { WORLD_BOUNDS, wolves } from "shared";
-// todo: test this
+
 // globals from DragonFire:
 let DragonFire__burnWolfId = 7;
 let DragonFire__emptyCount: number;

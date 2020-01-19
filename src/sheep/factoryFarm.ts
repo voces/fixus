@@ -35,26 +35,13 @@ const FactoryFarm__SpiralX = ( n: number ): number => {
 	let m = Pow( t, 2 );
 	t = t - 1;
 
-	if ( n >= m - t )
+	if ( n >= m - t ) return k - ( m - n );
+	else m = m - t;
 
-		return k - ( m - n );
+	if ( n >= m - t ) return - k;
+	else m = m - t;
 
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return - k;
-
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return - k + ( m - n );
-
+	if ( n >= m - t ) return - k + ( m - n );
 	return k;
 
 };

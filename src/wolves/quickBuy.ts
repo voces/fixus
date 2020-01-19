@@ -63,8 +63,8 @@ const buyAction = ( { item }: {item: string} ): void => {
 	if ( GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) >= goldCost && GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER ) >= lumberCost ) {
 
 		UnitAddItem( u, CreateItem( itemSpec.id, GetUnitX( u ), GetUnitY( u ) ) );
-		AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, goldCost );
-		AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, lumberCost );
+		AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, - goldCost );
+		AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, - lumberCost );
 
 	} else if ( GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) < goldCost && GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER ) < lumberCost )
 		DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "That item costs " + I2S( goldCost ) + " gold and " + I2S( lumberCost ) + " lumber." );

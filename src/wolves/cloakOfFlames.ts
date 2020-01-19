@@ -5,8 +5,6 @@ import { withTempGroup } from "util/temp";
 
 const cloakHolders = CreateGroup();
 
-// todo: test this
-
 const onPickupItem = (): void => {
 
 	if ( GetItemTypeId( GetManipulatedItem() ) === CLOAK_TYPE )

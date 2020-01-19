@@ -14,6 +14,8 @@ const HIDDEN_SAVING_FARM_TYPE = FourCC( "otbk" );
 const BETTER_SAING_FARM_TYPE = FourCC( "h009" );
 const SUPER_SAVING_FARM_TYPE = FourCC( "h00A" );
 
+// todo: test this
+
 // ===========================================================================
 // Trigger: miscGoldTick
 // ===========================================================================
@@ -46,7 +48,7 @@ const Trig_miscGoldTick_Actions = (): void => {
 			for ( let n = 0; n < bj_MAX_PLAYERS; n ++ ) {
 
 				const player2 = Player( n );
-				if ( ! IsPlayerAlly( player, player2 ) && isPlayingPlayer( player2 ) ) continue;
+				if ( ! IsPlayerAlly( player, player2 ) || ! isPlayingPlayer( player2 ) ) continue;
 				AdjustPlayerStateSimpleBJ( player2, PLAYER_STATE_RESOURCE_GOLD, playerGold / wolves );
 
 			}
@@ -68,16 +70,19 @@ const Trig_miscSavingTick_Actions = (): void => {
 		// This might change if we let wolves get saving farms
 		if ( IsPlayerInForce( player, sheepTeam ) ) {
 
-			let amount = goldFactor() * ( GetPlayerUnitTypeCount( player, SAVING_FARM_TYPE ) +
+			let amount = goldFactor() * (
+				GetPlayerUnitTypeCount( player, SAVING_FARM_TYPE ) +
 				GetPlayerUnitTypeCount( player, HIDDEN_SAVING_FARM_TYPE ) +
 				2 * GetPlayerUnitTypeCount( player, BETTER_SAING_FARM_TYPE ) +
-				4 * GetPlayerUnitTypeCount( player, SUPER_SAVING_FARM_TYPE ) );
+				4 * GetPlayerUnitTypeCount( player, SUPER_SAVING_FARM_TYPE )
+			);
 
 			if ( saveskills[ i ] >= 25 ) amount *= 2;
 
 			AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, amount );
 
-		} else AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, goldFactor() );
+		} else if ( GetPlayerController( player ) !== MAP_CONTROL_NONE )
+			AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, goldFactor() );
 
 	}
 
