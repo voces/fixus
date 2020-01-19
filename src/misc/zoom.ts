@@ -40,14 +40,14 @@ const action = ( { zoom = 0 }: {zoom: number} ): void => {
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+registerCommand( {
+	command: "zoom",
+	alias: "z",
+	args: [ { name: "zoom", type: "number", required: false } ],
+	fn: action,
+} );
 
-	registerCommand( {
-		command: "zoom",
-		alias: "z",
-		args: [ { name: "zoom", type: "number", required: false } ],
-		fn: action,
-	} );
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const zooms = ( s__File_readAndClose( s__File_open( "fixus/zooms.txt" ) ) || "" ).split( " " );
 	const playerId = GetPlayerId( GetLocalPlayer() );

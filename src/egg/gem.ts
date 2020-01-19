@@ -1,7 +1,7 @@
 
 import { color } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-// todo: test this
+
 const gemActivated: Map<player, boolean> = new Map();
 const GEM_TYPE = FourCC( "gemt" );
 
@@ -18,7 +18,7 @@ const Trig_eggGem_Actions = (): void => {
 
 	let message = "Gem deactivated.";
 	if ( ! wasActivated )
-		if ( GetRandomInt( 0, 100 ) === 15 ) message = "Perfect gem activated.";
+		if ( GetRandomInt( 0, 9 ) === 0 ) message = "Perfect gem activated.";
 		else message = "Gem activated.";
 
 	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color[ 3 ] + message );

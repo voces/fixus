@@ -19,7 +19,7 @@ const itemSpecsNames: Record<string, ItemSpec> = {};
 const itemSpecIds: Record<number, ItemSpec> = {};
 
 // Can't directly get gold/lumber cost off an item, so... :(
-const registerItem = ( { name, gold, lumber = 0, id }: {name: string; gold: number; lumber?: number; id: number} ): void => {
+const registerItem = ( { name, gold, lumber = 0, id }: { name: string; gold: number; lumber?: number; id: number } ): void => {
 
 	const itemSpec = { name, gold, lumber, id };
 	itemSpecs.push( itemSpec );
@@ -40,12 +40,11 @@ const hasInventoryAndControlled = Condition( (): boolean =>
 	// is a unit we control
 	(
 		GetOwningPlayer( GetFilterUnit() ) === GetTriggerPlayer() ||
-		// todo: test this
 		GetPlayerAlliance( GetOwningPlayer( GetFilterUnit() ), GetTriggerPlayer(), ALLIANCE_SHARED_ADVANCED_CONTROL )
 	),
 );
 
-const buyAction = ( { item }: {item: string} ): void => {
+const buyAction = ( { item }: { item: string } ): void => {
 
 	// Preconditions
 	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) return;
@@ -79,7 +78,7 @@ const buyAction = ( { item }: {item: string} ): void => {
 
 const sellAction = (
 	{ slot1, slot2, slot3, slot4, slot5, slot6 }:
-	{slot1: string; slot2?: string; slot3?: string; slot4?: string; slot5?: string; slot6?: string},
+		{ slot1: string; slot2?: string; slot3?: string; slot4?: string; slot5?: string; slot6?: string },
 ): void => {
 
 	// Preconditions
@@ -112,24 +111,25 @@ const sellAction = (
 };
 
 // ===========================================================================
+registerCommand( {
+	command: "buy",
+	alias: "-b",
+	args: [ { name: "item", type: "string" } ],
+	fn: buyAction,
+} );
+
+registerCommand( {
+	command: "sell",
+	alias: "-s",
+	args: [
+		{ name: "slot1", type: "string" },
+		// todo: fix this?
+		// { name: "slot2", type: "number", requred: false },
+	],
+	fn: sellAction,
+} );
+
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	registerCommand( {
-		command: "buy",
-		alias: "-b",
-		args: [ { name: "item", type: "string" } ],
-		fn: buyAction,
-	} );
-
-	registerCommand( {
-		command: "sell",
-		alias: "-s",
-		args: [
-			{ name: "slot1", type: "string" },
-			// { name: "slot2", type: "number", requred: false },
-		],
-		fn: sellAction,
-	} );
 
 	registerItem( { name: "supergolem", gold: 350, id: FourCC( "I001" ) } );
 	registerItem( { name: "stalker", gold: 100, id: FourCC( "fgfh" ) } );

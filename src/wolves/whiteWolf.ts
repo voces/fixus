@@ -1,10 +1,10 @@
 
-import { WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE, wws, s__wolf_wwtype, wolves } from "shared";
+import { wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
-const s__wolf_wwitem = FourCC( "I003" );
+const WHITE_WOLF_ITEM_TYPE = FourCC( "I003" );
 
 // ===========================================================================
 // Trigger: wolfWhiteWolf
@@ -13,50 +13,44 @@ const s__wolf_wwitem = FourCC( "I003" );
 // todo: test whether hitting level 10 breaks this
 const Trig_wolfWhiteWolf_Actions = (): void => {
 
-	let x: number;
-	let y: number;
-	let f: number;
-	let p: player;
-	let original: unit;
-	let ww: unit;
-
-	if ( GetItemTypeId( GetManipulatedItem() ) === s__wolf_wwitem ) {
+	if ( GetItemTypeId( GetManipulatedItem() ) === WHITE_WOLF_ITEM_TYPE ) {
 
 		RemoveItem( GetManipulatedItem() );
-		original = GetTriggerUnit();
-		x = GetUnitX( original );
-		y = GetUnitY( original );
-		f = GetUnitFacing( original );
-		p = GetOwningPlayer( original );
+		let original = GetTriggerUnit();
+		let x = GetUnitX( original );
+		let y = GetUnitY( original );
+		let f = GetUnitFacing( original );
+		const p = GetOwningPlayer( original );
+		const pId = GetPlayerId( p );
 
-		if ( GetUnitTypeId( original ) === WOLF_TYPE || GetUnitTypeId( original ) === BLACK_WOLF_TYPE || GetUnitTypeId( original ) === IMBA_WOLF_TYPE ) {
+		if ( IsUnitType( GetTriggerUnit(), UNIT_TYPE_HERO ) ) {
 
 			// Freeze wolf unit
 			PauseUnit( original, true );
 			SetUnitOwner( original, Player( PLAYER_NEUTRAL_PASSIVE ), false );
 			SetUnitX( original, - 6144 );
 			SetUnitY( original, - 6656 );
-			wws[ GetPlayerId( p ) ] = original;
+			wws[ pId ] = original;
 
 			// Create the White Wolf
-			ww = CreateUnit( p, s__wolf_wwtype, x, y, f );
-			wolves[ GetPlayerId( p ) ] = ww;
+			const ww = CreateUnit( p, WHITE_WOLF_TYPE, x, y, f );
+			wolves[ pId ] = ww;
 			SelectUnitForPlayerSingle( ww, p );
 
 			// Start the timer
 			// todo: should be nullable
-			TimerStart( wwTimer[ GetPlayerId( p ) ], 60, false, () => { /* do nothing */ } );
-			TimerDialogSetTitle( wwTimerDialog[ GetPlayerId( p ) ], "Changing in..." );
+			TimerStart( wwTimer[ pId ], 60, false, () => { /* do nothing */ } );
+			TimerDialogSetTitle( wwTimerDialog[ pId ], "Changing in..." );
 
 			if ( GetLocalPlayer() === p )
-				TimerDialogDisplay( wwTimerDialog[ GetPlayerId( p ) ], true );
+				TimerDialogDisplay( wwTimerDialog[ pId ], true );
 
 			TriggerSleepAction( 60 );
 
 			// Clear the timer
 
 			if ( GetLocalPlayer() === p )
-				TimerDialogDisplay( wwTimerDialog[ GetPlayerId( p ) ], false );
+				TimerDialogDisplay( wwTimerDialog[ pId ], false );
 
 			// Remove the white wolf
 			x = GetUnitX( ww );
@@ -65,7 +59,8 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 			RemoveUnit( ww );
 
 			// Restore the wolf unit
-			wolves[ GetPlayerId( p ) ] = original;
+			original = wws[ pId ];
+			wolves[ pId ] = original;
 			PauseUnit( original, false );
 			SetUnitOwner( original, p, false );
 			SetUnitPosition( original, x, y );
@@ -74,7 +69,7 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 		} else {
 
 			RemoveUnit( original );
-			ww = CreateUnit( p, s__wolf_wwtype, x, y, f );
+			const ww = CreateUnit( p, WHITE_WOLF_TYPE, x, y, f );
 			UnitApplyTimedLife( ww, FourCC( "BTLF" ), 150 );
 			SelectUnitForPlayerSingle( ww, p );
 
@@ -87,18 +82,11 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	let i = 0;
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
 	TriggerAddAction( t, Trig_wolfWhiteWolf_Actions );
 
-	while ( true ) {
-
-		if ( i === 12 ) break;
-		wwTimer[ i ] = CreateTimer();
-		wwTimerDialog[ i ] = CreateTimerDialog( wwTimer[ i ] );
-		i = i + 1;
-
-	}
+	fillArrayFn( bj_MAX_PLAYERS, () => CreateTimer(), wwTimer );
+	fillArrayFn( bj_MAX_PLAYERS, i => CreateTimerDialog( wwTimer[ i ] ), wwTimerDialog );
 
 } );

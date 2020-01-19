@@ -1,5 +1,4 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { registerCommand } from "util/commands";
 
 // ===========================================================================
@@ -15,12 +14,9 @@ const action = ( { angle }: {angle: number} ): void => {
 };
 
 // ===========================================================================
-// todo: can I create and register triggers outside this hook?
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
-	registerCommand( {
-		command: "angle",
-		alias: "a",
-		args: [ { name: "angle", type: "number" } ],
-		fn: action,
-	} ),
-);
+registerCommand( {
+	command: "angle",
+	alias: "a",
+	args: [ { name: "angle", type: "number" } ],
+	fn: action,
+} );

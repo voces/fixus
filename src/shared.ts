@@ -23,9 +23,8 @@ export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
 type GAME_STATES = "init" | "start" | "play";
 
-export const fillArray = <T>( size: number, value: T ): Array<T> => {
+export const fillArray = <T>( size: number, value: T, arr: Array<T> = [] ): Array<T> => {
 
-	const arr = [];
 	for ( let i = 0; i < size; i ++ )
 		arr.push( value );
 
@@ -60,7 +59,7 @@ export const WISP_TYPE = FourCC( "eC01" );
 
 export const BLACK_WOLF_TYPE = FourCC( "E002" );
 export const IMBA_WOLF_TYPE = FourCC( "E000" );
-export const s__wolf_wwtype = FourCC( "eC16" );
+export const WHITE_WOLF_TYPE = FourCC( "eC16" );
 export const SHEEP_TYPE = FourCC( "uC04" );
 export const WOLF_TYPE = FourCC( "EC03" );
 export const CLOAK_TYPE = FourCC( "clfm" );

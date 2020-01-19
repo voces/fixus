@@ -14,8 +14,6 @@ const HIDDEN_SAVING_FARM_TYPE = FourCC( "otbk" );
 const BETTER_SAING_FARM_TYPE = FourCC( "h009" );
 const SUPER_SAVING_FARM_TYPE = FourCC( "h00A" );
 
-// todo: test this
-
 // ===========================================================================
 // Trigger: miscGoldTick
 // ===========================================================================

@@ -1,5 +1,4 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { color } from "shared";
 import { registerCommand } from "util/commands";
 
@@ -24,11 +23,9 @@ const action = ( { player }: {player: player} ): void => {
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
-	registerCommand( {
-		command: "control",
-		alias: "c",
-		args: [ { name: "player", type: "player" } ],
-		fn: action,
-	} ),
-);
+registerCommand( {
+	command: "control",
+	alias: "c",
+	args: [ { name: "player", type: "player" } ],
+	fn: action,
+} );

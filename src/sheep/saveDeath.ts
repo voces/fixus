@@ -18,7 +18,7 @@ import {
 	WOLF_TYPE,
 	SHEEP_TYPE,
 	wisps,
-	s__wolf_wwtype,
+	WHITE_WOLF_TYPE,
 	wws,
 	CLOAK_TYPE,
 	grimEffect,
@@ -136,7 +136,7 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 
 	if ( saveskills[ killingPlayerId ] === 10 || saveskills[ killingPlayerId ] === 25 ) {
 
-		if ( GetUnitTypeId( wolves[ killingPlayerId ] ) !== s__wolf_wwtype ) {
+		if ( GetUnitTypeId( wolves[ killingPlayerId ] ) !== WHITE_WOLF_TYPE ) {
 
 			killingUnit = replaceUnit( wolves[ killingPlayerId ], getWolfType( killingPlayer ) );
 			wolves[ killingPlayerId ] = killingUnit;

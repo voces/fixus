@@ -1,5 +1,4 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { withTempGroup } from "util/temp";
 import { registerCommand } from "util/commands";
 
@@ -31,10 +30,8 @@ const action = ( { angle }: {angle: string} ): void => {
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void =>
-	registerCommand( {
-		command: "face",
-		args: [ { name: "angle", type: "string" } ],
-		fn: action,
-	} ),
-);
+registerCommand( {
+	command: "face",
+	args: [ { name: "angle", type: "string" } ],
+	fn: action,
+} );
