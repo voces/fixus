@@ -36,6 +36,7 @@
     "war3tstlhelper": "^1.0.1"
   },
   "dependencies": {
+    "@voces/w3api": "^1.0.0",
     "w3ts": "^1.0.6"
   },
   "watch": {

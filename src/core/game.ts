@@ -84,7 +84,7 @@ const initToStart = (): void => {
 
 	gameState( "start" );
 	// todo: should be nullable
-	TimerStart( myTimer, 20, false, () => { /* do nothing */ } );
+	TimerStart( myTimer, 5, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( myTimerDialog, "Wolves in..." );
 	TimerDialogDisplay( myTimerDialog, true );
 	reloadMultiboard();

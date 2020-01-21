@@ -5,23 +5,17 @@ import {
 	goldFactor,
 	DOLLY_TYPE,
 } from "shared";
-import { withTempGroup } from "util/temp";
+import { withPlayerUnits } from "util/temp";
 // todo: test this
 const DOLLY_SPEED_AURA = FourCC( "Aasl" );
 
-const filterDolly = (): boolean => GetUnitTypeId( GetFilterUnit() ) === DOLLY_TYPE;
+const filterDolly = Condition( (): boolean => GetUnitTypeId( GetFilterUnit() ) === DOLLY_TYPE );
 
 const increaseMovementSpeed = (): void => {
 
 	DisplayTimedText( 15, "Five minutes remaining! Movement speed increased by 25%!" );
 
-	const dolly = withTempGroup( g => {
-
-		GroupEnumUnitsOfPlayer( g, Player( PLAYER_NEUTRAL_PASSIVE ), Condition( filterDolly ) );
-		return FirstOfGroup( g );
-
-	} );
-
+	const dolly = withPlayerUnits( Player( PLAYER_NEUTRAL_PASSIVE ), FirstOfGroup, filterDolly );
 	if ( dolly === null ) return;
 
 	UnitAddAbility( dolly, DOLLY_SPEED_AURA );
@@ -44,8 +38,8 @@ const action = (): void =>
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
-	// 3 (sheep delay) + 20 (shepherd delay) + 1200 (20 minutes)
-	TriggerRegisterTimerEventSingle( t, 1223 );
+	// 3 (sheep delay) + 5 (shepherd delay) + 1200 (20 minutes)
+	TriggerRegisterTimerEventSingle( t, 1208 );
 	TriggerAddAction( t, action );
 
 } );

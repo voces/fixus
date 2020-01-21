@@ -17,7 +17,6 @@ import { isPlayingPlayer } from "util/player";
 // Trigger: miscLeaves
 // ===========================================================================
 
-// todo: test this
 const isSameTeam = ( a: player, b: player ): boolean =>
 	IsPlayerInForce( a, wolfTeam ) === IsPlayerInForce( b, wolfTeam );
 

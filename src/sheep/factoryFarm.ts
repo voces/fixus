@@ -3,36 +3,36 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { saveskills } from "shared";
 
 // globals from FactoryFarm:
-const FactoryFarm__factoryFarmTimer = CreateTimer();
-let FactoryFarm__factoryFarmSheep: unit;
-const FactoryFarm__factoryFarms = CreateGroup();
-const FactoryFarm__factoryFarmData = InitHashtable();
-const FactoryFarm__factoryFarmsTemp = CreateGroup();
-let FactoryFarm__factoryFarmBuilds: number;
+const factoryFarmTiemr = CreateTimer();
+let factoryFarmDummySheep: unit;
+const factoryFarms = CreateGroup();
+const factoryFarmData = InitHashtable();
+const factoryFarmsTemp = CreateGroup();
+let factoryFarmBuilds: number;
 // endglobals from FactoryFarm
 
-const s__FactoryFarm__data_factoryFarmType = FourCC( "h00C" );
+const FACTORY_FARM_TYPE = FourCC( "h00C" );
 const s__FactoryFarm__data_typeIndex = 0;
 const s__FactoryFarm__data_spiralIndex = 1;
 const s__FactoryFarm__data_waitBetweenTicks = 2.5;
 const s__FactoryFarm__data_waitBetweenBuilds = 0.1;
 const s__FactoryFarm__data_selectFarmType = FourCC( "A00M" );
 
-const s__sheep_farmType = FourCC( "hhou" );
-const s__sheep_blackFarmType = FourCC( "h004" );
-const s__sheep_silverFarmType = FourCC( "h001" );
-const s__sheep_goldenFarmType = FourCC( "h000" );
-const s__sheep_hardFarmType = FourCC( "hC06" );
-const s__sheep_tinyFarmType = FourCC( "hC07" );
+const FARM_TYPE = FourCC( "hhou" );
+const BLACK_FARM_TYPE = FourCC( "h004" );
+const SILVER_FARM_TYPE = FourCC( "h001" );
+const GOLDEN_FARM_TYPE = FourCC( "h000" );
+const HARD_FARM_TYPE = FourCC( "hC06" );
+const TINY_FARM_TYPE = FourCC( "hC07" );
 
 // library FactoryFarm:
 
 // todo: SpiralX/Y are broken on bottom right, jumps strangely
-const FactoryFarm__SpiralX = ( n: number ): number => {
+const spiralX = ( n: number ): number => {
 
-	const k = Math.ceil( ( SquareRoot( n ) - 1 ) / 2 );
+	const k = Math.ceil( ( n ** 0.5 - 1 ) / 2 );
 	let t = 2 * k + 1;
-	let m = Pow( t, 2 );
+	let m = t ** 2;
 	t = t - 1;
 
 	if ( n >= m - t ) return k - ( m - n );
@@ -46,33 +46,20 @@ const FactoryFarm__SpiralX = ( n: number ): number => {
 
 };
 
-const FactoryFarm__SpiralY = ( n: number ): number => {
+const spiralY = ( n: number ): number => {
 
-	const k = Math.ceil( ( SquareRoot( n ) - 1 ) / 2 );
+	const k = Math.ceil( ( n ** 0.5 - 1 ) / 2 );
 	let t = 2 * k + 1;
-	let m = Pow( t, 2 );
+	let m = t ** 2;
 	t = t - 1;
 
-	if ( n >= m - t )
+	if ( n >= m - t ) return - k;
+	else m = m - t;
 
-		return - k;
+	if ( n >= m - t ) return - k + ( m - n );
+	else m = m - t;
 
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return - k + ( m - n );
-
-	else
-
-		m = m - t;
-
-	if ( n >= m - t )
-
-		return k;
-
+	if ( n >= m - t ) return k;
 	return k - ( m - n - t );
 
 };
@@ -81,31 +68,24 @@ let FactoryFarmStart: () => void = () => { /* do nothing */ };
 
 const FactoryFarm__FactoryFarmEnd = (): void => {
 
-	let wait = s__FactoryFarm__data_waitBetweenTicks - FactoryFarm__factoryFarmBuilds * s__FactoryFarm__data_waitBetweenBuilds;
+	let wait = s__FactoryFarm__data_waitBetweenTicks - factoryFarmBuilds * s__FactoryFarm__data_waitBetweenBuilds;
 
 	// Return sheep to unowned
-	SetUnitOwner( FactoryFarm__factoryFarmSheep, Player( PLAYER_NEUTRAL_PASSIVE ), false );
+	SetUnitOwner( factoryFarmDummySheep, Player( PLAYER_NEUTRAL_PASSIVE ), false );
 
 	// Invoke next run
 
 	if ( wait < s__FactoryFarm__data_waitBetweenBuilds )
-
 		wait = s__FactoryFarm__data_waitBetweenBuilds;
 
-	TimerStart( FactoryFarm__factoryFarmTimer, wait, false, FactoryFarmStart );
+	TimerStart( factoryFarmTiemr, wait, false, FactoryFarmStart );
 
 };
 
 const FactoryFarm__FarmSize = ( farmType: number ): number => {
 
-	if ( farmType === s__sheep_hardFarmType )
-
-		return 320;
-
-	else if ( farmType === s__sheep_tinyFarmType )
-
-		return 128;
-
+	if ( farmType === HARD_FARM_TYPE ) return 320;
+	else if ( farmType === TINY_FARM_TYPE ) return 128;
 	return 192;
 
 };
@@ -114,7 +94,7 @@ const FactoryFarm__SpiralSize = ( size: number ): number => R2I( Pow( Math.floor
 
 const FactoryFarm__FactoryFarmTick = (): void => {
 
-	const u = FirstOfGroup( FactoryFarm__factoryFarmsTemp );
+	const u = FirstOfGroup( factoryFarmsTemp );
 	let farmType: number;
 	let spiralIndex: number;
 	let farmSize: number;
@@ -130,42 +110,41 @@ const FactoryFarm__FactoryFarmTick = (): void => {
 
 	if ( UnitAlive( u ) ) {
 
-		farmType = LoadInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_typeIndex );
+		farmType = LoadInteger( factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_typeIndex );
 		farmSize = FactoryFarm__FarmSize( farmType );
 
 		// Get next location
-		spiralIndex = LoadInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex ) + 1;
+		spiralIndex = LoadInteger( factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex ) + 1;
 
 		if ( spiralIndex > FactoryFarm__SpiralSize( farmSize ) )
-
 			spiralIndex = 2;
 
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex, spiralIndex );
+		SaveInteger( factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex, spiralIndex );
 
-		x = GetUnitX( u ) + Math.round( FactoryFarm__SpiralX( spiralIndex ) ) * farmSize;
-		y = GetUnitY( u ) + Math.round( FactoryFarm__SpiralY( spiralIndex ) ) * farmSize;
+		x = GetUnitX( u ) + Math.round( spiralX( spiralIndex ) ) * farmSize;
+		y = GetUnitY( u ) + Math.round( spiralY( spiralIndex ) ) * farmSize;
 
 		// Build the farm
-		SetUnitX( FactoryFarm__factoryFarmSheep, x );
-		SetUnitY( FactoryFarm__factoryFarmSheep, y );
+		SetUnitX( factoryFarmDummySheep, x );
+		SetUnitY( factoryFarmDummySheep, y );
 
-		SetUnitOwner( FactoryFarm__factoryFarmSheep, GetOwningPlayer( u ), false );
-		IssueBuildOrderById( FactoryFarm__factoryFarmSheep, farmType, x, y );
+		SetUnitOwner( factoryFarmDummySheep, GetOwningPlayer( u ), false );
+		IssueBuildOrderById( factoryFarmDummySheep, farmType, x, y );
 
-		FactoryFarm__factoryFarmBuilds = FactoryFarm__factoryFarmBuilds + 1;
+		factoryFarmBuilds = factoryFarmBuilds + 1;
 
 	}
 
-	GroupRemoveUnit( FactoryFarm__factoryFarmsTemp, u );
+	GroupRemoveUnit( factoryFarmsTemp, u );
 
-	TimerStart( FactoryFarm__factoryFarmTimer, s__FactoryFarm__data_waitBetweenBuilds, false, FactoryFarm__FactoryFarmTick );
+	TimerStart( factoryFarmTiemr, s__FactoryFarm__data_waitBetweenBuilds, false, FactoryFarm__FactoryFarmTick );
 
 };
 
 FactoryFarmStart = (): void => {
 
-	FactoryFarm__factoryFarmBuilds = 0;
-	BlzGroupAddGroupFast( FactoryFarm__factoryFarms, FactoryFarm__factoryFarmsTemp );
+	factoryFarmBuilds = 0;
+	BlzGroupAddGroupFast( factoryFarms, factoryFarmsTemp );
 
 	FactoryFarm__FactoryFarmTick();
 
@@ -175,19 +154,10 @@ const FactoryFarm__GetBaseFarm = ( u: unit ): number => {
 
 	const playerId = GetPlayerId( GetOwningPlayer( u ) );
 
-	if ( saveskills[ playerId ] >= 25 )
-
-		return s__sheep_goldenFarmType;
-
-	else if ( saveskills[ playerId ] >= 15 )
-
-		return s__sheep_silverFarmType;
-
-	else if ( saveskills[ playerId ] >= 10 )
-
-		return s__sheep_blackFarmType;
-
-	return s__sheep_farmType;
+	if ( saveskills[ playerId ] >= 25 ) return GOLDEN_FARM_TYPE;
+	else if ( saveskills[ playerId ] >= 15 ) return SILVER_FARM_TYPE;
+	else if ( saveskills[ playerId ] >= 10 ) return BLACK_FARM_TYPE;
+	return FARM_TYPE;
 
 };
 
@@ -195,11 +165,11 @@ const FactoryFarm__FinishConstruction = (): void => {
 
 	const u = GetTriggerUnit();
 
-	if ( GetUnitTypeId( u ) === s__FactoryFarm__data_factoryFarmType ) {
+	if ( GetUnitTypeId( u ) === FACTORY_FARM_TYPE ) {
 
-		GroupAddUnit( FactoryFarm__factoryFarms, u );
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_typeIndex, FactoryFarm__GetBaseFarm( u ) );
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex, 1 );
+		GroupAddUnit( factoryFarms, u );
+		SaveInteger( factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_typeIndex, FactoryFarm__GetBaseFarm( u ) );
+		SaveInteger( factoryFarmData, GetHandleId( u ), s__FactoryFarm__data_spiralIndex, 1 );
 
 	}
 
@@ -209,7 +179,7 @@ const FactoryFarm__SelectFarm = (): void => {
 
 	if ( GetSpellAbilityId() === s__FactoryFarm__data_selectFarmType )
 
-		SaveInteger( FactoryFarm__factoryFarmData, GetHandleId( GetTriggerUnit() ), s__FactoryFarm__data_typeIndex, GetUnitTypeId( GetSpellTargetUnit() ) );
+		SaveInteger( factoryFarmData, GetHandleId( GetTriggerUnit() ), s__FactoryFarm__data_typeIndex, GetUnitTypeId( GetSpellTargetUnit() ) );
 
 };
 
@@ -223,9 +193,9 @@ const FactoryFarm__Init = (): void => {
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
 	TriggerAddAction( t, FactoryFarm__SelectFarm );
 
-	FactoryFarm__factoryFarmSheep = CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), FourCC( "u002" ), 0, 0, 270 );
+	factoryFarmDummySheep = CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), FourCC( "u002" ), 0, 0, 270 );
 
-	TimerStart( FactoryFarm__factoryFarmTimer, s__FactoryFarm__data_waitBetweenTicks, false, FactoryFarmStart );
+	TimerStart( factoryFarmTiemr, s__FactoryFarm__data_waitBetweenTicks, false, FactoryFarmStart );
 
 };
 

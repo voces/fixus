@@ -1,12 +1,13 @@
 
-import { TriggerRegisterPlayerChatEventAll } from "shared";
+import { TriggerRegisterPlayerChatEventAll } from "../shared";
+import { log } from "./log";
 
 export const registerCommand = <T>(
 	{ command, alias, args = [], fn }:
 	{
 		command: string;
 		alias?: string;
-		args: Array<{
+		args?: Array<{
 			name: string;
 			required?: boolean;
 			// todo: add a function type, allowing the user to define their own transformer
@@ -39,37 +40,64 @@ export const registerCommand = <T>(
 
 	TriggerAddAction( t, () => {
 
-		const str = GetEventPlayerChatString();
-		const words = str.split( " " );
+		try {
 
-		// with args, make sure the trigger leads
-		if ( triggerWords.indexOf( words[ 0 ].slice( 1 ) ) === - 1 ) return;
+			const str = GetEventPlayerChatString();
 
-		// Build our args object
-		const argsObject: T = Object.fromEntries( args.map( ( { name, type }, i ) => {
+			// with args, make sure the trigger leads
+			const triggerWord = triggerWords.find( triggerWord => str.indexOf( triggerWord ) === 1 ); // we do 1 to skip the -
+			if ( ! triggerWord ) return;
+			const offset = triggerWord.split( " " ).length;
 
-			const word = words[ i + 1 ];
-			if ( type )
-				switch ( type ) {
+			const words = str.split( " " );
 
-					case "number": return [ name, S2R( word ) ];
-					case "player": {
+			// Build our args object
+			let argsObject: T;
+			try {
 
-						const playerId = S2I( word ) - 1;
-						// todo: provide user feedback
-						if ( playerId < 0 || playerId > bj_MAX_PLAYERS )
-							throw new Error( "invalid player id" );
-						return [ name, Player( playerId ) ];
+				argsObject = Object.fromEntries( args.map( ( { name, type }, i ) => {
 
-					}
+					const word = words[ i + offset ];
+					if ( word === "" || word === undefined ) return [ name, undefined ];
+					if ( type )
+						switch ( type ) {
 
-				}
+							case "number": return [ name, S2R( word ) ];
+							case "player": {
 
-			return [ name, word ];
+								const playerId = S2I( word ) - 1;
+								// todo: provide user feedback
+								if ( playerId < 0 || playerId > bj_MAX_PLAYERS ) {
 
-		} ) );
+									DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Invalid player number. Use 1-24." );
+									throw "invalid-player";
 
-		fn( argsObject, words );
+								}
+
+								return [ name, Player( playerId ) ];
+
+							}
+
+						}
+
+					return [ name, word ];
+
+				} ) );
+
+			} catch ( err ) {
+
+				if ( err === "invalid-player" ) return;
+				throw err;
+
+			}
+
+			fn( argsObject, [ words.slice( 0, offset ).join( " " ), ...words.slice( offset ) ] );
+
+		} catch ( err ) {
+
+			log( err );
+
+		}
 
 	} );
 

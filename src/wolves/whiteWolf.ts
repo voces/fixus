@@ -10,7 +10,6 @@ const WHITE_WOLF_ITEM_TYPE = FourCC( "I003" );
 // Trigger: wolfWhiteWolf
 // ===========================================================================
 
-// todo: test whether hitting level 10 breaks this
 const Trig_wolfWhiteWolf_Actions = (): void => {
 
 	if ( GetItemTypeId( GetManipulatedItem() ) === WHITE_WOLF_ITEM_TYPE ) {

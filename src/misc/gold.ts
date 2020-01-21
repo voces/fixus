@@ -20,6 +20,8 @@ const action = ( { player: receiver, amount = Infinity }: {player: player; amoun
 	if ( amount > playerGold || amount <= 0 )
 		amount = playerGold;
 
+	if ( amount === 0 ) return;
+
 	const amountSt = I2S( amount );
 	displayToPlayer( receiver, `${colorizedName( GetTriggerPlayer() )} gave you ${amountSt} gold.` );
 	displayToPlayer( GetTriggerPlayer(), `${amountSt} gold given to ${colorizedName( receiver )}` );

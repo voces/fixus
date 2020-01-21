@@ -1,5 +1,4 @@
 
-// todo: remove empty imports if used by other files
 import "core/game";
 import "core/init";
 import "misc/angle";

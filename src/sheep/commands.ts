@@ -1,7 +1,8 @@
 
-import { color, wolfTeam, TriggerRegisterPlayerChatEventAll } from "shared";
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { wolfTeam } from "shared";
 import { forEachPlayerUnit } from "util/temp";
+import { colorizedName } from "util/player";
+import { registerCommand } from "util/commands";
 
 // ===========================================================================
 // Trigger: sheepCommands
@@ -14,6 +15,20 @@ const cheapStructureFilter = Condition( () =>
 
 const structureFilter = Condition( () =>IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
 
+registerCommand( { command: "destroy", alias: "d", fn: (): void => {
+
+	if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) return;
+	forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, cheapStructureFilter );
+
+} } );
+
+registerCommand( { command: "destroy all", alias: "dall", fn: (): void => {
+
+	if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) return;
+	return forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, structureFilter );
+
+} } );
+
 const getController = (): player => {
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
@@ -25,43 +40,25 @@ const getController = (): player => {
 
 };
 
-const Trig_sheepCommands_Actions = (): void => {
+registerCommand( { command: "wolf gold", fn: (): void => {
 
-	if ( GetEventPlayerChatString() === "-d" )
-		return forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, cheapStructureFilter );
+	if ( getController() !== GetTriggerPlayer() ) return;
 
-	else if ( GetEventPlayerChatString() === "-dall" )
-		return forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, structureFilter );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " gave the shepherds 100 gold!" );
 
-	if ( getController() === GetTriggerPlayer() )
-		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-			if ( GetEventPlayerChatString() === "-wolf gold" ) {
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+			AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, 100 );
 
-				DisplayTextToPlayer( Player( i ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r gave the shepherds 100 gold!" );
+} } );
 
-				if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-					SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + 100 );
+registerCommand( { command: "destroy all farms", fn: (): void => {
 
-			} else if ( GetEventPlayerChatString() === "-destroy all farms" ) {
+	if ( getController() !== GetTriggerPlayer() ) return;
 
-				DisplayTextToPlayer( Player( i ), 0, 0, color[ i ] + GetPlayerName( GetTriggerPlayer() ) + "|r has destroyed all the farms!" );
-				forEachPlayerUnit( Player( i ), RemoveUnit, cheapStructureFilter );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " has destroyed all the farms!" );
 
-			}
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		forEachPlayerUnit( Player( i ), RemoveUnit, cheapStructureFilter );
 
-};
-
-// ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	const t = CreateTrigger();
-	// todo: register these as commands
-	TriggerRegisterPlayerChatEventAll( t, "-wolf gold", true );
-	TriggerRegisterPlayerChatEventAll( t, "-destroy all farms", true );
-	TriggerRegisterPlayerChatEventAll( t, "-d", true );
-	TriggerRegisterPlayerChatEventAll( t, "-dall", true );
-	TriggerRegisterPlayerChatEventAll( t, "-d on", true );
-	TriggerRegisterPlayerChatEventAll( t, "-d off", true );
-	TriggerAddAction( t, Trig_sheepCommands_Actions );
-
-} );
+} } );
