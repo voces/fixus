@@ -10,7 +10,8 @@
     "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.map.json && node bin/operations build",
     "dev": "npm-watch",
     "build:defs": "node bin/operations gen-defs",
-    "jest": "jest"
+    "jest": "jest",
+    "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.8.3",

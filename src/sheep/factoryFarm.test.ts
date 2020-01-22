@@ -1,42 +1,6 @@
 
-import * as w3api from "w3api/dist/api/index";
-Object.assign( globalThis, w3api );
-
-const spiralX = ( n: number ): number => {
-
-	const k = Math.ceil( ( SquareRoot( n ) - 1 ) / 2 );
-	let t = 2 * k + 1;
-	let m = Pow( t, 2 );
-	t = t - 1;
-
-	if ( n >= m - t ) return k - ( m - n );
-	else m = m - t;
-
-	if ( n >= m - t ) return - k;
-	else m = m - t;
-
-	if ( n >= m - t ) return - k + ( m - n );
-	return k;
-
-};
-
-const spiralY = ( n: number ): number => {
-
-	const k = Math.ceil( ( SquareRoot( n ) - 1 ) / 2 );
-	let t = 2 * k + 1;
-	let m = Pow( t, 2 );
-	t = t - 1;
-
-	if ( n >= m - t ) return - k;
-	else m = m - t;
-
-	if ( n >= m - t ) return - k + ( m - n );
-	else m = m - t;
-
-	if ( n >= m - t ) return k;
-	return k - ( m - n - t );
-
-};
+import "../test/w3api";
+import { spiralX, spiralY } from "./factoryFarm";
 
 const coords = ( n: number ): {x: number; y: number} => ( { x: spiralX( n ), y: spiralY( n ) } );
 

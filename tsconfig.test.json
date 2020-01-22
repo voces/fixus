@@ -4,7 +4,7 @@
 		"baseUrl": "src",
 		"allowJs": false,
 		"target": "es6",
-		"lib": [ "es2020", "dom" ],
+		"lib": [ "es2020" ],
 		"moduleResolution": "classic",
 		"strict": true,
 		"noImplicitAny": true,

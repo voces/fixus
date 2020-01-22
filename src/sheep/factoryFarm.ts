@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { saveskills } from "shared";
+import { saveskills } from "../shared";
 
 const factoryFarmTimer = CreateTimer();
 let factoryFarmDummySheep: unit;
@@ -26,7 +26,7 @@ type FactoryFarmData = {
 }
 const factoryFarmData: WeakMap<unit, FactoryFarmData> = new WeakMap();
 
-const spiralX = ( n: number ): number => {
+export const spiralX = ( n: number ): number => {
 
 	const k = Math.ceil( ( n ** 0.5 - 1 ) / 2 );
 	let t = 2 * k + 1;
@@ -44,7 +44,7 @@ const spiralX = ( n: number ): number => {
 
 };
 
-const spiralY = ( n: number ): number => {
+export const spiralY = ( n: number ): number => {
 
 	const k = Math.ceil( ( n ** 0.5 - 1 ) / 2 );
 	let t = 2 * k + 1;
