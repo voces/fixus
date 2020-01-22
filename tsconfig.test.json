@@ -20,8 +20,7 @@
 			]
 		},
 		"esModuleInterop": true,
-		// "plugins": [{"transform": "@zerollup/ts-transform-paths"}],
-	"types": [
+		"types": [
 			"@types/jest",
 			"lua-types/core/coroutine",
 			"lua-types/core/global",
@@ -39,16 +38,6 @@
 			"war3-types/core/polyfill"
 		]
 	},
-	"include": [
-		"src"
-	],
-	// "exclude": ["src/**/*.test.ts"],
-	"tstl": {
-		"luaTarget": "5.3",
-		"noHeader": true,
-		"luaLibImport": "require",
-		"noImplicitSelf": true,
-		"luaBundle": "dist/tstl_output.lua",
-		"luaBundleEntry": "./src/index.ts"
-	}
+	"include": ["src"],
+	"exclude": []
 }

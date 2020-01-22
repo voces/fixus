@@ -7,7 +7,7 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "npm run build && node bin/operations run",
-    "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.json && node bin/operations build",
+    "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.map.json && node bin/operations build",
     "dev": "npm-watch",
     "build:defs": "node bin/operations gen-defs",
     "jest": "jest"

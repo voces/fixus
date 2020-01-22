@@ -22,7 +22,6 @@
 		"esModuleInterop": true,
 		"plugins": [{"transform": "ts-transformer-imports"}],
 		"types": [
-			"@types/jest",
 			"lua-types/core/coroutine",
 			"lua-types/core/global",
 			"lua-types/core/math",
@@ -42,7 +41,9 @@
 	"include": [
 		"src"
 	],
-	"exclude": [],
+	"exclude": [
+		"src/**/*.test.ts"
+	],
 	"tstl": {
 		"luaTarget": "5.3",
 		"noHeader": true,
