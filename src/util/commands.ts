@@ -2,19 +2,21 @@
 import { TriggerRegisterPlayerChatEventAll } from "../shared";
 import { log } from "./log";
 
+type Arg = {
+	name: string;
+	required?: boolean;
+	// todo: add a function type, allowing the user to define their own transformer
+	type?: "number"
+		| "string"
+		| "player";
+}
+
 export const registerCommand = <T>(
 	{ command, alias, args = [], fn }:
 	{
 		command: string;
 		alias?: string;
-		args?: Array<{
-			name: string;
-			required?: boolean;
-			// todo: add a function type, allowing the user to define their own transformer
-			type?: "number"
-				| "string"
-				| "player";
-		}>;
+		args?: Array<Arg>;
 		fn: ( this: void, args: T, words: Array<string> ) => void;
 	},
 ): void => {
@@ -66,7 +68,6 @@ export const registerCommand = <T>(
 							case "player": {
 
 								const playerId = S2I( word ) - 1;
-								// todo: provide user feedback
 								if ( playerId < 0 || playerId > bj_MAX_PLAYERS ) {
 
 									DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Invalid player number. Use 1-24." );

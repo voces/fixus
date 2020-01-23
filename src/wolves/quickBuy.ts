@@ -78,7 +78,7 @@ const buyAction = ( { item }: { item: string } ): void => {
 
 const sellAction = (
 	{ slot1, slot2, slot3, slot4, slot5, slot6 }:
-		{ slot1: string; slot2?: string; slot3?: string; slot4?: string; slot5?: string; slot6?: string },
+		{ slot1: string; slot2?: number; slot3?: number; slot4?: number; slot5?: number; slot6?: number },
 ): void => {
 
 	// Preconditions
@@ -91,7 +91,7 @@ const sellAction = (
 	// Get the slot
 	const sellSlots = slot1 === "all" ?
 		[ 0, 1, 2, 3, 4, 5 ] :
-		[ slot1, slot2, slot3, slot4, slot5, slot6 ].filter( s => s && s.length > 0 ).map( s => S2I( s || "0" ) - 1 );
+		[ S2I( slot1 ), slot2, slot3, slot4, slot5, slot6 ].filter( v => typeof v === "number" ).map( v => v as number - 1 );
 
 	// Sell items
 	sellSlots.forEach( slot => {
@@ -113,18 +113,22 @@ const sellAction = (
 // ===========================================================================
 registerCommand( {
 	command: "buy",
-	alias: "-b",
+	alias: "b",
 	args: [ { name: "item", type: "string" } ],
 	fn: buyAction,
 } );
 
 registerCommand( {
 	command: "sell",
-	alias: "-s",
+	alias: "s",
 	args: [
 		{ name: "slot1", type: "string" },
 		// todo: fix this?
-		// { name: "slot2", type: "number", requred: false },
+		{ name: "slot2", type: "number", required: false },
+		{ name: "slot3", type: "number", required: false },
+		{ name: "slot4", type: "number", required: false },
+		{ name: "slot5", type: "number", required: false },
+		{ name: "slot6", type: "number", required: false },
 	],
 	fn: sellAction,
 } );

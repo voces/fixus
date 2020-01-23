@@ -6,7 +6,7 @@ import {
 	DOLLY_TYPE,
 } from "shared";
 import { withPlayerUnits } from "util/temp";
-// todo: test this
+
 const DOLLY_SPEED_AURA = FourCC( "Aasl" );
 
 const filterDolly = Condition( (): boolean => GetUnitTypeId( GetFilterUnit() ) === DOLLY_TYPE );
@@ -38,8 +38,8 @@ const action = (): void =>
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
-	// 3 (sheep delay) + 5 (shepherd delay) + 1200 (20 minutes)
-	TriggerRegisterTimerEventSingle( t, 1208 );
+	// 3 (sheep delay) + 20 (shepherd delay) + 1200 (20 minutes)
+	TriggerRegisterTimerEventSingle( t, 1223 );
 	TriggerAddAction( t, action );
 
 } );
