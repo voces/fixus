@@ -17,15 +17,15 @@ const structureFilter = Condition( () =>IsUnitType( GetFilterUnit(), UNIT_TYPE_S
 
 registerCommand( { command: "destroy", alias: "d", fn: (): void => {
 
-	if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) return;
-	forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, cheapStructureFilter );
+	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
+		forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, cheapStructureFilter );
 
 } } );
 
 registerCommand( { command: "destroy all", alias: "dall", fn: (): void => {
 
-	if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) return;
-	return forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, structureFilter );
+	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
+		forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, structureFilter );
 
 } } );
 

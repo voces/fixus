@@ -5,11 +5,8 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 // Trigger: sheepFarmSelfDestruct
 // ===========================================================================
 
-const Trig_sheepFarmSelfDestruct_Actions = (): void => {
-
+const Trig_sheepFarmSelfDestruct_Actions = (): void =>
 	KillUnit( GetTriggerUnit() );
-
-};
 
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
@@ -19,4 +16,3 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	TriggerAddAction( t, Trig_sheepFarmSelfDestruct_Actions );
 
 } );
-

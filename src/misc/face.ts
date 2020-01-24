@@ -1,5 +1,5 @@
 
-import { withTempGroup } from "util/temp";
+import { forEachSelectedUnit } from "util/temp";
 import { registerCommand } from "util/commands";
 
 // ===========================================================================
@@ -11,19 +11,13 @@ const action = ( { angle }: {angle: string} ): void => {
 	const adjustment = angle[ 0 ] === "+" ? 1 : angle[ 0 ] === "-" ? - 1 : 0;
 	const actualAngle = S2R( adjustment === 0 ? angle : angle.slice( 1 ) );
 
-	withTempGroup( g => {
+	forEachSelectedUnit( GetTriggerPlayer(), u => {
 
-		GroupEnumUnitsSelected( g, GetTriggerPlayer(), null );
-		ForGroup( g, () => {
+		const facing = adjustment !== 0 ?
+			GetUnitFacing( u ) + adjustment * actualAngle :
+			actualAngle;
 
-			const u = GetEnumUnit();
-			const facing = adjustment !== 0 ?
-				GetUnitFacing( u ) + adjustment * actualAngle :
-				actualAngle;
-
-			SetUnitFacing( u, facing );
-
-		} );
+		SetUnitFacing( u, facing );
 
 	} );
 

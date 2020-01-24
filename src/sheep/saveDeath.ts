@@ -1,27 +1,27 @@
 
 import {
+	BLACK_WOLF_TYPE,
+	CLOAK_TYPE,
+	color,
+	countHere,
+	endGame,
+	goldFactor,
+	grimEffect,
+	IMBA_WOLF_TYPE,
 	InStr,
 	saveskills,
-	goldFactor,
-	sheepTeam,
-	color,
-	wispTeam,
-	WISP_TYPE,
-	wolves,
-	countHere,
-	wolfTeam,
-	SmallText,
-	sheeps,
-	endGame,
-	BLACK_WOLF_TYPE,
-	IMBA_WOLF_TYPE,
-	WOLF_TYPE,
 	SHEEP_TYPE,
-	wisps,
+	sheeps,
+	sheepTeam,
+	SmallText,
 	WHITE_WOLF_TYPE,
+	WISP_TYPE,
+	wisps,
+	wispTeam,
+	WOLF_TYPE,
+	wolfTeam,
+	wolves,
 	wws,
-	CLOAK_TYPE,
-	grimEffect,
 } from "shared";
 import {
 	Specialization_GetLevel,
@@ -33,6 +33,7 @@ import { ScoutPhoenixUpgrade_onSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
+import { colorizedName } from "util/player";
 
 const BLACK_SHEEP_TYPE = FourCC( "uC02" );
 const SILVER_SHEEP_TYPE = FourCC( "u000" );
@@ -118,7 +119,8 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	// Handle dying sheep
 	const bounty = GetSheepBounty( killedUnit ) * goldFactor();
 	ForceRemovePlayer( sheepTeam, killedPlayer );
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, color[ killedPlayerId ] + GetPlayerName( killedPlayer ) + "|r has been " + color[ 13 ] + "killed|r by " + color[ GetPlayerId( killingPlayer ) ] + GetPlayerName( killingPlayer ) + "|r!" );
+
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( killedPlayer )} has been ${color[ 13 ]}killed|r by ${colorizedName( killingPlayer )}!` );
 	forEachPlayerUnit( killedPlayer, RemoveUnit );
 	Specialization_onDeath( killedUnit );
 
@@ -193,7 +195,7 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 	// Handle dying wisp
 	ForceRemovePlayer( wispTeam, savedPlayer );
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, color[ savedPlayerId ] + GetPlayerName( savedPlayer ) + "|r has been " + color[ 12 ] + "saved|r by " + color[ GetPlayerId( savingPlayer ) ] + GetPlayerName( savingPlayer ) + "|r!" );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( savedPlayer )} has been ${color[ 12 ]}saved|r by ${colorizedName( savingPlayer )}!` );
 
 	// Move to sheep
 	ForceAddPlayer( sheepTeam, savedPlayer );

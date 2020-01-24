@@ -2,12 +2,12 @@
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
 	countHere,
+	DisplayTimedText,
 	goldFactor,
 	myTimer,
 	myTimerDialog,
 	sheepTeam,
 	wolfTeam,
-	DisplayTimedText,
 } from "shared";
 import { board } from "misc/multiboard";
 

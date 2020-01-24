@@ -1,6 +1,6 @@
 
-import { color } from "shared";
 import { registerCommand } from "util/commands";
+import { colorizedName } from "util/player";
 
 // ===========================================================================
 // Trigger: miscUncontrol
@@ -14,11 +14,9 @@ const action = ( { player }: {player: player} ): void => {
 	)
 		return;
 
-	const playerId = GetPlayerId( player );
-
 	// Remove control
 	SetPlayerAllianceStateBJ( GetTriggerPlayer(), player, bj_ALLIANCE_ALLIED_VISION );
-	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Control taken from " + color[ playerId ] + GetPlayerName( player ) + "|r." );
+	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, `Control taken from ${colorizedName( player )}.` );
 
 };
 

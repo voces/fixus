@@ -27,10 +27,8 @@ const updateMultiboardRow = (
 	mbi = MultiboardGetItem( board(), index, 1 );
 	if ( value2 ) MultiboardSetItemValue( mbi, value2 );
 
-	if ( icon === null )
-		MultiboardSetItemStyle( mbi, true, false );
-	else
-		MultiboardSetItemIcon( mbi, icon );
+	if ( icon === null ) MultiboardSetItemStyle( mbi, true, false );
+	else MultiboardSetItemIcon( mbi, icon );
 
 	MultiboardReleaseItem( mbi );
 
@@ -38,32 +36,17 @@ const updateMultiboardRow = (
 
 const getSheepIcon = ( i: number ): string => {
 
-	if ( saveskills[ i ] >= 25 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNMaskOfDeath.blp";
-
-	else if ( saveskills[ i ] >= 15 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNDruidOfTheClaw.blp";
-
-	else if ( saveskills[ i ] >= 10 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNSheep.blp";
-
+	if ( saveskills[ i ] >= 25 ) return "ReplaceableTextures\\CommandButtons\\BTNMaskOfDeath.blp";
+	else if ( saveskills[ i ] >= 15 ) return "ReplaceableTextures\\CommandButtons\\BTNDruidOfTheClaw.blp";
+	else if ( saveskills[ i ] >= 10 ) return "ReplaceableTextures\\CommandButtons\\BTNSheep.blp";
 	return "ReplaceableTextures\\CommandButtons\\BTNPolymorph.blp";
 
 };
 
 const getWolfIcon = ( i: number ): string => {
 
-	if ( saveskills[ i ] >= 25 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNDoomGuard.blp";
-
-	else if ( saveskills[ i ] >= 10 )
-
-		return "ReplaceableTextures\\CommandButtons\\BTNDireWolf.blp";
-
+	if ( saveskills[ i ] >= 25 ) return "ReplaceableTextures\\CommandButtons\\BTNDoomGuard.blp";
+	else if ( saveskills[ i ] >= 10 ) return "ReplaceableTextures\\CommandButtons\\BTNDireWolf.blp";
 	return "ReplaceableTextures\\CommandButtons\\BTNTimberWolf.blp";
 
 };

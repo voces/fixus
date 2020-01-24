@@ -22,13 +22,10 @@ const action = ( { zoom = 0 }: {zoom: number} ): void => {
 
 	if ( zoom <= 0 ) zoom = 1650;
 
-	while ( zoom <= 400 )
-		zoom *= 10;
+	while ( zoom <= 400 ) zoom *= 10;
 
-	if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
-		wolfZoom[ playerId ] = zoom;
-	else
-		sheepZoom[ playerId ] = zoom;
+	if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) wolfZoom[ playerId ] = zoom;
+	else sheepZoom[ playerId ] = zoom;
 
 	if ( GetLocalPlayer() === GetTriggerPlayer() ) {
 

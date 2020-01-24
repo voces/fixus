@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
-const s__sheep_xability = FourCC( "A00D" );
+const DESTROY_LAST_FARM_ABILITY_TYPE = FourCC( "A00D" );
 
 // ===========================================================================
 // Trigger: sheepDestroyLastFarm
@@ -9,7 +9,7 @@ const s__sheep_xability = FourCC( "A00D" );
 
 const Trig_sheepDestroyLastFarm_Actions = (): void => {
 
-	if ( GetSpellAbilityId() === s__sheep_xability )
+	if ( GetSpellAbilityId() === DESTROY_LAST_FARM_ABILITY_TYPE )
 		KillUnit( GetBuilding( GetOwningPlayer( GetTriggerUnit() ) ) );
 
 };

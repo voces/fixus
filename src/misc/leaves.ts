@@ -1,7 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
-	color,
 	wolfTeam,
 	countHere,
 	sheepTeam,
@@ -11,7 +10,7 @@ import {
 	TriggerRegisterPlayerEventAll,
 } from "shared";
 import { reloadMultiboard } from "./multiboard";
-import { isPlayingPlayer } from "util/player";
+import { isPlayingPlayer, colorizedName } from "util/player";
 
 // ===========================================================================
 // Trigger: miscLeaves
@@ -36,7 +35,7 @@ const Trig_miscLeaves_Actions = (): void => {
 		if ( IsPlayerInForce( Player( i ), f ) ) {
 
 			SetPlayerAllianceStateBJ( GetTriggerPlayer(), Player( i ), bj_ALLIANCE_ALLIED_ADVUNITS );
-			DisplayTextToPlayer( Player( i ), 0, 0, color[ GetPlayerId( GetTriggerPlayer() ) ] + GetPlayerName( GetTriggerPlayer() ) + "|r gave you " + I2S( gold ) + " gold." );
+			DisplayTextToPlayer( Player( i ), 0, 0, `${colorizedName( GetTriggerPlayer() )} gave you ${I2S( gold )} gold.` );
 			SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + gold );
 
 		}

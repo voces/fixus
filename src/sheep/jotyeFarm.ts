@@ -1,18 +1,21 @@
 import { WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
-const s__wolf_golemtype = FourCC( "ewsp" );
-const s__wolf_stalkertype = FourCC( "nfel" );
+const GOLEM_UNIT_TYPE = FourCC( "ewsp" );
+const STALKER_UNIT_TYPE = FourCC( "nfel" );
+const JOTYE_BUFF_TYPE = FourCC( "BHab" );
 
 // ===========================================================================
 // Trigger: sheepJotyeFarm
 // ===========================================================================
 
 // Can probably just use the aura targets property instead of checking type...
-const sheepJotyeFarm_isProperType = ( u: unit ): boolean => {
+const isEffectedByJotyeFarm = ( u: unit ): boolean => {
 
 	const unitType = GetUnitTypeId( u );
-	return unitType === WOLF_TYPE || unitType === BLACK_WOLF_TYPE || unitType === IMBA_WOLF_TYPE || unitType === s__wolf_golemtype || unitType === s__wolf_stalkertype;
+	return unitType === WOLF_TYPE || unitType === BLACK_WOLF_TYPE ||
+		unitType === IMBA_WOLF_TYPE || unitType === GOLEM_UNIT_TYPE ||
+		unitType === STALKER_UNIT_TYPE;
 
 };
 
@@ -20,13 +23,16 @@ const Trig_sheepJotyeFarm_Actions = (): void => {
 
 	const u = GetTriggerUnit();
 
-	if ( sheepJotyeFarm_isProperType( u ) && GetUnitAbilityLevel( u, FourCC( "BHab" ) ) > 0 ) {
+	if ( ! isEffectedByJotyeFarm( u ) || GetUnitAbilityLevel( u, JOTYE_BUFF_TYPE ) <= 0 ) return;
 
-		DisableTrigger( GetTriggeringTrigger() );
-		IssuePointOrderById( u, GetIssuedOrderId(), GetUnitX( u ) + ( GetUnitX( u ) - GetOrderPointX() ), GetUnitY( u ) + ( GetUnitY( u ) - GetOrderPointY() ) );
-		EnableTrigger( GetTriggeringTrigger() );
-
-	}
+	DisableTrigger( GetTriggeringTrigger() );
+	IssuePointOrderById(
+		u,
+		GetIssuedOrderId(),
+		GetUnitX( u ) + ( GetUnitX( u ) - GetOrderPointX() ),
+		GetUnitY( u ) + ( GetUnitY( u ) - GetOrderPointY() ),
+	);
+	EnableTrigger( GetTriggeringTrigger() );
 
 };
 

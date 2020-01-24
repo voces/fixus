@@ -1,19 +1,19 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
-	gameState,
-	sheepTeam,
-	sheeps,
-	wolfTeam,
-	wolves,
 	countHere,
 	endGame,
+	gameState,
+	grimEffect,
 	myTimer,
 	myTimerDialog,
 	SHEEP_TYPE,
-	WOLF_TYPE,
-	grimEffect,
+	sheeps,
+	sheepTeam,
 	wispTeam,
+	WOLF_TYPE,
+	wolfTeam,
+	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
 

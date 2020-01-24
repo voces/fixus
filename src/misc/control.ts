@@ -1,6 +1,6 @@
 
-import { color } from "shared";
 import { registerCommand } from "util/commands";
+import { colorizedName } from "util/player";
 
 // ===========================================================================
 // Trigger: miscControl
@@ -14,11 +14,9 @@ const action = ( { player }: {player: player} ): void => {
 	)
 		return;
 
-	const playerId = GetPlayerId( player );
-
 	// Grant control
 	SetPlayerAllianceStateBJ( GetTriggerPlayer(), player, bj_ALLIANCE_ALLIED_ADVUNITS );
-	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, `Control given to ${color[ playerId ]}${GetPlayerName( player )}|r.` );
+	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, `Control given to ${colorizedName( player )}.` );
 
 };
 

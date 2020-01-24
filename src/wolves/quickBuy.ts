@@ -123,7 +123,6 @@ registerCommand( {
 	alias: "s",
 	args: [
 		{ name: "slot1", type: "string" },
-		// todo: fix this?
 		{ name: "slot2", type: "number", required: false },
 		{ name: "slot3", type: "number", required: false },
 		{ name: "slot4", type: "number", required: false },
