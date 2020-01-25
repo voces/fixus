@@ -62,6 +62,7 @@ export const spiralY = ( n: number ): number => {
 
 };
 
+// This is redefined
 let factoryFarmStart: () => void = () => { /* do nothing */ };
 
 const factoryFarmEnd = (): void => {
