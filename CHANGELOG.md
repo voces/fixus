@@ -1,10 +1,19 @@
 # Version 8
-## Refactory
-- Covnerted to TypeScript
+## Refactors
+- Converted to TypeScript
+
+# Version 7d
+## Bug Fixes
+- Can no longer gold allies gold you don't have
+
+# Version 7c
+## Features
+- Sheep now spawn on the edges of the map
+- Wolves spawn at the same time of sheep.
 
 # Version 7b
-- Bug fixes
-	- Copious Blood no longer gives insane HP
+## Bug fixes
+- Copious Blood no longer gives insane HP
 
 # Version 7
 ## Balance
@@ -50,21 +59,20 @@
 - Added -buy commands to items
 - Dagger is no longer actively used
 ## Bug fixes
-	-destroy all farms no longer removes shops
-	(Unverified) Wolf no longer disappears due to WW
+-destroy all farms no longer removes shops
 ## Refactors
-	- Cloak of Flames no longer scans for units with cloak and instead uses a managed group
-	- Dragon Fire is only active after cast and auto deactivates
-	- Wait to remove dying units increased (2 -> 5 seconds)
+- Cloak of Flames no longer scans for units with cloak and instead uses a managed group
+- Dragon Fire is only active after cast and auto deactivates
+- Wait to remove dying units increased (2 -> 5 seconds)
 	
-[0]: Where S is the nu mber of sheep (and wisps) and W is the number of wolves, we use to do
+0. Where S is the nu mber of sheep (and wisps) and W is the number of wolves, we use to do
 	 S/W*12.5 for the killer and S/W*10 for allies. Now we determine the total bounty via
 	 100 + typeBounty[2] + level*10 + bountyOfFarms/2. We then give allies
 	 floor(bounty/(W+0.5)) each and the remaining to the killer.
-[1]: Increased level 1 bounty from 25 to 100; changed Sheep from level 4 to 1, Black from
+1. Increased level 1 bounty from 25 to 100; changed Sheep from level 4 to 1, Black from
 	 level 4 to 2, Silver from level 3 to 4, and left Golden at level 4. Sheep level also
 	 increases with save count (relating to Specialization).
-[2]: Black = 25, Silver = 50, Golden = 100.
+2. Black = 25, Silver = 50, Golden = 100.
 
 # Version 6
 - Dragon Glass/Fire
@@ -248,7 +256,6 @@
 - Fixed buy/sell glitch involving illusions
 - Decreased Divine Shield Cooldown (+5 duration, respectful to level)
 - Decreased Sheep Stalker Range (40 -> 32)
-
 
 # Version 1.11
 - Made all content RoC-friendly

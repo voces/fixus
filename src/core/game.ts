@@ -30,6 +30,8 @@ const starterItemMap: Record<number, number> = {
 	4: FOUR_WOLF_ITEM_TYPE,
 };
 
+const initialSpawns: Array<{x: number; y: number}> = [];
+
 // ===========================================================================
 // Trigger: coreGame
 // ===========================================================================
@@ -64,13 +66,13 @@ const initToStart = (): void => {
 
 		if ( ! IsPlayerInForce( Player( i ), sheepTeam ) || GetPlayerSlotState( Player( i ) ) !== PLAYER_SLOT_STATE_PLAYING ) continue;
 
-		sheeps[ i ] = CreateUnit( Player( i ), SHEEP_TYPE, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
+		sheeps[ i ] = CreateUnit( Player( i ), SHEEP_TYPE, initialSpawns[ i ].x, initialSpawns[ i ].y, 270 );
 
 		if ( GetLocalPlayer() === Player( i ) ) {
 
 			ClearSelection();
 			SelectUnit( sheeps[ i ], true );
-			PanCameraToTimed( GetStartLocationX( i ), GetStartLocationY( i ), 0 );
+			PanCameraToTimed( initialSpawns[ i ].x, initialSpawns[ i ].y, 0 );
 
 		}
 
@@ -84,7 +86,7 @@ const initToStart = (): void => {
 
 	gameState( "start" );
 	// todo: should be nullable
-	TimerStart( myTimer, 20, false, () => { /* do nothing */ } );
+	TimerStart( myTimer, 10, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( myTimerDialog, "Wolves in..." );
 	TimerDialogDisplay( myTimerDialog, true );
 	reloadMultiboard();
@@ -134,7 +136,7 @@ const action = (): void => {
 
 		case "init": return initToStart();
 		case "start": return startToPlay();
-		case "play": return endGame( 0 );
+		case "play": return endGame( "sheep" );
 
 	}
 
@@ -146,5 +148,54 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	const t = CreateTrigger();
 	TriggerRegisterTimerExpireEvent( t, myTimer );
 	TriggerAddAction( t, action );
+
+	const SHEEP_SIZE_OFFSET = 100;
+	const MAX_X = GetRectMaxX( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
+	const MAX_Y = GetRectMaxY( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
+	const MIN_X = GetRectMinX( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET + 440; // :( constant seems off
+	const MIN_Y = GetRectMinY( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET;
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
+
+		if ( ! IsPlayerInForce( Player( i ), sheepTeam ) ) continue;
+
+		while ( ! initialSpawns[ i ] ) {
+
+			const randomDistanceFromEdge = GetRandomInt( 0, 15 ) * 64;
+			const edge = GetRandomInt( 1, 4 );
+			let x, y;
+			if ( edge === 1 ) {
+
+				x = MAX_X - randomDistanceFromEdge;
+				y = GetRandomReal( MIN_Y, MAX_Y );
+
+			} else if ( edge === 2 ) {
+
+				x = MIN_X + randomDistanceFromEdge;
+				y = GetRandomReal( MIN_Y, MAX_Y );
+
+			} else if ( edge === 3 ) {
+
+				x = GetRandomReal( MIN_X, MAX_X );
+				y = MIN_Y + randomDistanceFromEdge;
+
+			} else {
+
+				x = GetRandomReal( MIN_X, MAX_X );
+				y = MAX_Y - randomDistanceFromEdge;
+
+			}
+
+			if ( IsTerrainPathable( x, y, PATHING_TYPE_BUILDABILITY ) &&
+					IsTerrainPathable( x, y, PATHING_TYPE_WALKABILITY ) ) {
+
+				initialSpawns[ i ] = { x, y };
+				PanCameraToTimed( x, y, 0 );
+
+			}
+
+		}
+
+	}
 
 } );

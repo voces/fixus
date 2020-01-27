@@ -38,8 +38,8 @@ const action = (): void =>
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
-	// 3 (sheep delay) + 20 (shepherd delay) + 1200 (20 minutes)
-	TriggerRegisterTimerEventSingle( t, 1223 );
+	// 3 (sheep delay) + 10 (shepherd delay) + 1200 (20 minutes)
+	TriggerRegisterTimerEventSingle( t, 1213 );
 	TriggerAddAction( t, action );
 
 } );

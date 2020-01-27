@@ -303,7 +303,7 @@ const action = (): void => {
 		reloadMultiboard();
 
 		if ( countHere( sheepTeam ) === 0 )
-			endGame( 2 );
+			endGame( "wolves" );
 
 	}
 

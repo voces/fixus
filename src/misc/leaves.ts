@@ -53,10 +53,10 @@ const Trig_miscLeaves_Actions = (): void => {
 
 	// End game if last
 	if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) && countHere( sheepTeam ) === 1 )
-		endGame( 2 );
+		endGame( "wolves" );
 
 	else if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) && countHere( wolfTeam ) === 1 )
-		endGame( 0 );
+		endGame( "sheep" );
 
 };
 

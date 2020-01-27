@@ -117,13 +117,10 @@ export const DisplayTimedText = ( duration: number, message: string ): void => {
 let gameEnded = false;
 const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
 // Ends the game, awarding wins/loses and other W3MMD data
-export const endGame = ( winner: number ): void => {
+export const endGame = ( winner: "sheep" | "wolves" ): void => {
 
-	let i = 0;
-
-	if ( gameEnded )
-
-		return;
+	// Don't run these actions again
+	if ( gameEnded ) return;
 
 	gameEnded = true;
 	TimerDialogDisplay( myTimerDialog, false );
@@ -133,12 +130,9 @@ export const endGame = ( winner: number ): void => {
 	TimerDialogSetTitle( myTimerDialog, "Ending in..." );
 	TimerDialogDisplay( myTimerDialog, true );
 
-	if ( winner < 1 )
-
-		while ( true ) {
-
-			if ( i === 12 ) break;
-
+	if ( winner === "sheep" )
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			// todo: save the wisps!
 			if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
 
 				SetUnitInvulnerable( sheeps[ i ], true );
@@ -148,44 +142,18 @@ export const endGame = ( winner: number ): void => {
 
 			}
 
-			i = i + 1;
-
-		}
-
 	TriggerSleepAction( 15 );
 
 	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-	i = 0;
 
-	while ( true ) {
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		if ( IsPlayerInForce( Player( i ), wolfTeam ) )
 
-		if ( i === 12 ) break;
+			if ( winner === "wolves" ) CustomVictoryBJ( Player( i ), true, true );
+			else CustomDefeatBJ( Player( i ), defeatString );
 
-		if ( IsPlayerInForce( Player( i ), sheepTeam ) )
-
-			if ( winner < 1 ) {
-
-				CustomVictoryBJ( Player( i ), true, true );
-
-			} else {
-
-				CustomDefeatBJ( Player( i ), defeatString );
-
-			}
-
-		else
-
-		if ( winner > 1 )
-
-			CustomVictoryBJ( Player( i ), true, true );
-
-		else
-
-			CustomDefeatBJ( Player( i ), defeatString );
-
-		i = i + 1;
-
-	}
+		else if ( winner === "sheep" ) CustomVictoryBJ( Player( i ), true, true );
+		else CustomDefeatBJ( Player( i ), defeatString );
 
 };
 
