@@ -15,7 +15,6 @@ type ItemSpec = {
 }
 
 const itemSpecs: Array<ItemSpec> = [];
-const itemSpecsNames: Record<string, ItemSpec> = {};
 const itemSpecIds: Record<number, ItemSpec> = {};
 
 // Can't directly get gold/lumber cost off an item, so... :(
@@ -23,7 +22,6 @@ const registerItem = ( { name, gold, lumber = 0, id }: { name: string; gold: num
 
 	const itemSpec = { name, gold, lumber, id };
 	itemSpecs.push( itemSpec );
-	itemSpecsNames[ itemSpec.name ] = itemSpec;
 	itemSpecIds[ itemSpec.id ] = itemSpec;
 
 };
@@ -54,7 +52,7 @@ const buyAction = ( { item }: { item: string } ): void => {
 		wolves[ GetPlayerId( GetTriggerPlayer() ) ];
 
 	// Get and buy the item
-	const itemSpec = itemSpecsNames[ item ];
+	const itemSpec = itemSpecs.find( spec => spec.name.startsWith( item ) );
 	if ( ! itemSpec ) return;
 
 	const goldCost = Math.floor( itemSpec.gold * quickBuyTax );
@@ -134,34 +132,34 @@ registerCommand( {
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	registerItem( { name: "supergolem", gold: 350, id: FourCC( "I001" ) } );
-	registerItem( { name: "stalker", gold: 100, id: FourCC( "fgfh" ) } );
-	registerItem( { name: "golem", gold: 100, id: FourCC( "fgrg" ) } );
-	registerItem( { name: "speed", gold: 25, id: FourCC( "pspd" ) } );
-	registerItem( { name: "invis", gold: 35, id: FourCC( "pinv" ) } );
-	registerItem( { name: "mana", gold: 20, id: FourCC( "pman" ) } );
-	registerItem( { name: "cheese", gold: 0, lumber: 2, id: FourCC( "I003" ) } );
-	registerItem( { name: "50", gold: 350, id: FourCC( "I002" ) } );
-	registerItem( { name: "sabre", gold: 300, id: FourCC( "I000" ) } );
-	registerItem( { name: "21", gold: 126, id: FourCC( "ratf" ) } );
 	registerItem( { name: "12", gold: 60, id: FourCC( "ratc" ) } );
-	registerItem( { name: "dagger", gold: 67, id: FourCC( "mcou" ) } );
-	registerItem( { name: "cloak", gold: 250, id: FourCC( "clfm" ) } );
-	registerItem( { name: "neck", gold: 150, id: FourCC( "nspi" ) } );
-	registerItem( { name: "boots", gold: 70, id: FourCC( "bspd" ) } );
-	registerItem( { name: "gem", gold: 125, id: FourCC( "gemt" ) } );
-	registerItem( { name: "orb", gold: 300, id: FourCC( "ofir" ) } );
-	registerItem( { name: "scope", gold: 30, id: FourCC( "tels" ) } );
-	registerItem( { name: "invul", gold: 25, id: FourCC( "pnvu" ) } );
+	registerItem( { name: "21", gold: 126, id: FourCC( "ratf" ) } );
+	registerItem( { name: "50", gold: 350, id: FourCC( "I002" ) } );
 	registerItem( { name: "6", gold: 18, id: FourCC( "rat6" ) } );
-	registerItem( { name: "gloves", gold: 80, id: FourCC( "gcel" ) } );
 	registerItem( { name: "9", gold: 36, id: FourCC( "rat9" ) } );
+	registerItem( { name: "boots", gold: 70, id: FourCC( "bspd" ) } );
+	registerItem( { name: "cheese", gold: 0, lumber: 2, id: FourCC( "I003" ) } );
+	registerItem( { name: "cloak", gold: 250, id: FourCC( "clfm" ) } );
+	registerItem( { name: "dragon", gold: 400, lumber: 2, id: FourCC( "I004" ) } );
+	registerItem( { name: "dagger", gold: 67, id: FourCC( "mcou" ) } );
+	registerItem( { name: "golem", gold: 100, id: FourCC( "fgrg" ) } );
+	registerItem( { name: "gloves", gold: 80, id: FourCC( "gcel" ) } );
+	registerItem( { name: "gem", gold: 125, id: FourCC( "gemt" ) } );
+	registerItem( { name: "health", gold: 50, id: FourCC( "hlst" ) } );
+	registerItem( { name: "invis", gold: 35, id: FourCC( "pinv" ) } );
+	registerItem( { name: "invul", gold: 25, id: FourCC( "pnvu" ) } );
+	registerItem( { name: "mana", gold: 20, id: FourCC( "pman" ) } );
+	registerItem( { name: "mines", gold: 150, id: FourCC( "gobm" ) } );
+	registerItem( { name: "neck", gold: 150, id: FourCC( "nspi" ) } );
+	registerItem( { name: "negation", gold: 50, id: FourCC( "I005" ) } );
+	registerItem( { name: "orb", gold: 300, id: FourCC( "ofir" ) } );
+	registerItem( { name: "power", gold: 200, id: FourCC( "tkno" ) } );
+	registerItem( { name: "speed", gold: 25, id: FourCC( "pspd" ) } );
+	registerItem( { name: "sabre", gold: 300, id: FourCC( "I000" ) } );
+	registerItem( { name: "scope", gold: 30, id: FourCC( "tels" ) } );
 	registerItem( { name: "shadow", gold: 100, id: FourCC( "clsd" ) } );
 	registerItem( { name: "siege", gold: 150, id: FourCC( "tfar" ) } );
-	registerItem( { name: "dragon", gold: 400, lumber: 2, id: FourCC( "I004" ) } );
-	registerItem( { name: "mines", gold: 150, id: FourCC( "gobm" ) } );
-	registerItem( { name: "negation", gold: 50, id: FourCC( "I005" ) } );
-	registerItem( { name: "power", gold: 200, id: FourCC( "tkno" ) } );
-	registerItem( { name: "health", gold: 50, id: FourCC( "hlst" ) } );
+	registerItem( { name: "stalker", gold: 100, id: FourCC( "fgfh" ) } );
+	registerItem( { name: "supergolem", gold: 350, id: FourCC( "I001" ) } );
 
 } );

@@ -2,15 +2,6 @@ gg_rct_Pen = nil
 function InitGlobals()
 end
 
-function CreateUnitsForPlayer0()
-    local p = Player(0)
-    local u
-    local unitID
-    local t
-    local life
-    u = CreateUnit(p, FourCC("u002"), -4659.0, 3352.2, 313.999)
-end
-
 function CreateNeutralPassiveBuildings()
     local p = Player(PLAYER_NEUTRAL_PASSIVE)
     local u
@@ -36,7 +27,6 @@ function CreatePlayerBuildings()
 end
 
 function CreatePlayerUnits()
-    CreateUnitsForPlayer0()
 end
 
 function CreateAllUnits()

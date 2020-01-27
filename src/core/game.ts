@@ -186,11 +186,12 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 			}
 
-			if ( IsTerrainPathable( x, y, PATHING_TYPE_BUILDABILITY ) &&
-					IsTerrainPathable( x, y, PATHING_TYPE_WALKABILITY ) ) {
+			if ( ! IsTerrainPathable( x, y, PATHING_TYPE_BUILDABILITY ) &&
+				! IsTerrainPathable( x, y, PATHING_TYPE_WALKABILITY ) ) {
 
 				initialSpawns[ i ] = { x, y };
-				PanCameraToTimed( x, y, 0 );
+				if ( GetLocalPlayer() === Player( i ) )
+					PanCameraToTimed( x, y, 0 );
 
 			}
 
