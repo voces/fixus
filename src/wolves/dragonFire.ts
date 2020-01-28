@@ -1,59 +1,40 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { WORLD_BOUNDS, wolves } from "shared";
+import { wolves } from "shared";
+import { forEachUnit } from "util/temp";
 
-// globals from DragonFire:
-let DragonFire__burnWolfId = 7;
-let DragonFire__emptyCount: number;
-const DragonFire__spreadFire = CreateTrigger();
-const DragonFire__burnUnits = CreateTrigger();
-// endglobals from DragonFire
+// todo: test this
 
-const s__DragonFire__data_dragonGlass = FourCC( "A00H" );
-const s__DragonFire__data_dragonFireBuff = FourCC( "B000" );
-const s__DragonFire__data_dragonFireAbility = FourCC( "A00N" );
+let burnWolfId = 7;
+let emptyTicks: number;
+const spreadFireTrigger = CreateTrigger();
+const burnUnitsTrigger = CreateTrigger();
 
-// library DragonFire:
+const DRAGON_GLASS_ITEM_TYPE = FourCC( "A00H" );
+const DRAGON_FIRE_BUFF_TYPE = FourCC( "B000" );
+const DRAGON_FIRE_ABILITY_TYPE = FourCC( "A00N" );
 
-const DragonFire__NeedsFireAbility = (): boolean => GetUnitAbilityLevel( GetFilterUnit(), s__DragonFire__data_dragonFireBuff ) > 0 && BlzGetUnitAbility( GetFilterUnit(), s__DragonFire__data_dragonFireAbility ) === null && IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE );
+const needsFireAbilityFilter = Condition( () =>
+	GetUnitAbilityLevel( GetFilterUnit(), DRAGON_FIRE_BUFF_TYPE ) > 0 &&
+	BlzGetUnitAbility( GetFilterUnit(), DRAGON_FIRE_ABILITY_TYPE ) === null &&
+	IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ),
+);
 
-const DragonFire__SpreadFire = (): void => {
+const spreadFire = (): void => forEachUnit(
+	u => UnitAddAbility( u, DRAGON_FIRE_ABILITY_TYPE ),
+	needsFireAbilityFilter,
+);
 
-	const g = CreateGroup();
-	let u: unit;
-	GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( DragonFire__NeedsFireAbility ) );
-
-	while ( true ) {
-
-		u = FirstOfGroup( g );
-		if ( u === null ) break;
-		UnitAddAbility( u, s__DragonFire__data_dragonFireAbility );
-		GroupRemoveUnit( g, u );
-
-	}
-
-	DestroyGroup( g );
-
-};
-
-const DragonFire__NextWolfId = ( current: number ): number => {
+const nextWolfId = ( current: number ): number => {
 
 	let tries = 5;
 
-	while ( true ) {
+	while ( tries -- ) {
 
-		if ( tries === 0 ) break;
 		current = current + 1;
 
-		if ( current === 12 )
-
-			current = 8;
-
-		if ( wolves[ current ] !== null )
-
-			return current;
-
-		tries = tries - 1;
+		if ( current === 12 ) current = 8;
+		if ( wolves[ current ] !== null ) return current;
 
 	}
 
@@ -61,60 +42,54 @@ const DragonFire__NextWolfId = ( current: number ): number => {
 
 };
 
-const DragonFire__BurningUnits = (): boolean => GetUnitAbilityLevel( GetFilterUnit(), s__DragonFire__data_dragonFireBuff ) > 0;
+const burningUnitsFilter = Condition(
+	() => GetUnitAbilityLevel( GetFilterUnit(), DRAGON_FIRE_BUFF_TYPE ) > 0,
+);
 
-const DragonFire__BurnUnits = (): void => {
+const burnUnits = (): void => {
 
-	const g = CreateGroup();
-	let u: unit;
-	let damage: number;
 	let isEmpty = true;
 
-	GroupEnumUnitsInRect( g, WORLD_BOUNDS(), Condition( DragonFire__BurningUnits ) );
+	forEachUnit( u => {
 
-	while ( true ) {
-
-		u = FirstOfGroup( g );
-		if ( u === null ) break;
 		isEmpty = false;
-		DragonFire__burnWolfId = DragonFire__NextWolfId( DragonFire__burnWolfId );
-		damage = R2I( BlzGetUnitMaxHP( u ) * 0.01 );
+		burnWolfId = nextWolfId( burnWolfId );
+		const damage = Math.max( R2I( BlzGetUnitMaxHP( u ) * 0.01 ), 1 );
 
-		if ( damage < 1 )
+		UnitDamageTarget(
+			wolves[ burnWolfId ],
+			u,
+			damage,
+			true,
+			false,
+			ATTACK_TYPE_MAGIC,
+			DAMAGE_TYPE_FIRE, WEAPON_TYPE_WHOKNOWS,
+		);
 
-			damage = 1;
-
-		UnitDamageTarget( wolves[ DragonFire__burnWolfId ], u, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_FIRE, WEAPON_TYPE_WHOKNOWS );
-		GroupRemoveUnit( g, u );
-
-	}
+	}, burningUnitsFilter );
 
 	if ( isEmpty ) {
 
-		DragonFire__emptyCount = DragonFire__emptyCount + 1;
+		emptyTicks ++;
 
-		if ( DragonFire__emptyCount > 3 ) {
+		if ( emptyTicks > 3 ) {
 
-			DisableTrigger( DragonFire__spreadFire );
-			DisableTrigger( DragonFire__burnUnits );
+			DisableTrigger( spreadFireTrigger );
+			DisableTrigger( burnUnitsTrigger );
 
 		}
 
-	} else
-
-		DragonFire__emptyCount = 0;
-
-	DestroyGroup( g );
+	} else emptyTicks = 0;
 
 };
 
-const DragonFire__OnSpellCast = (): void => {
+const onSpellCast = (): void => {
 
-	if ( GetSpellAbilityId() === s__DragonFire__data_dragonGlass ) {
+	if ( GetSpellAbilityId() === DRAGON_GLASS_ITEM_TYPE ) {
 
-		DragonFire__emptyCount = 0;
-		EnableTrigger( DragonFire__spreadFire );
-		EnableTrigger( DragonFire__burnUnits );
+		emptyTicks = 0;
+		EnableTrigger( spreadFireTrigger );
+		EnableTrigger( burnUnitsTrigger );
 
 	}
 
@@ -124,17 +99,14 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	TriggerAddAction( t, DragonFire__OnSpellCast );
+	TriggerAddAction( t, onSpellCast );
 
-	TriggerRegisterTimerEvent( DragonFire__spreadFire, 10, true );
-	TriggerAddAction( DragonFire__spreadFire, DragonFire__SpreadFire );
-	DisableTrigger( DragonFire__spreadFire );
+	TriggerRegisterTimerEvent( spreadFireTrigger, 10, true );
+	TriggerAddAction( spreadFireTrigger, spreadFire );
+	DisableTrigger( spreadFireTrigger );
 
-	TriggerRegisterTimerEvent( DragonFire__burnUnits, 1, true );
-	TriggerAddAction( DragonFire__burnUnits, DragonFire__BurnUnits );
-	DisableTrigger( DragonFire__burnUnits );
+	TriggerRegisterTimerEvent( burnUnitsTrigger, 1, true );
+	TriggerAddAction( burnUnitsTrigger, burnUnits );
+	DisableTrigger( burnUnitsTrigger );
 
 } );
-
-// library DragonFire ends
-

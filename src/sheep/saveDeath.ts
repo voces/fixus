@@ -8,7 +8,6 @@ import {
 	goldFactor,
 	grimEffect,
 	IMBA_WOLF_TYPE,
-	InStr,
 	saveskills,
 	SHEEP_TYPE,
 	sheeps,
@@ -261,12 +260,8 @@ const onWispTK = ( wispUnit: unit ): void => {
 	wisps[ wispPlayerId ] = CreateUnit( wispPlayer, WISP_TYPE, - 256, - 832, 270 );
 	SetUnitPathing( wisps[ wispPlayerId ], false );
 
-	if ( InStr( GetPlayerName( wispPlayer ), "Grim" ) >= 0 ) {
-
-		AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", wisps[ wispPlayerId ], "origin" );
-		AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", wisps[ wispPlayerId ], "origin" );
-
-	}
+	if ( GetPlayerName( wispPlayer ).indexOf( "Grim" ) >= 0 )
+		grimEffect( wisps[ wispPlayerId ] );
 
 };
 
