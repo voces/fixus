@@ -41,7 +41,12 @@ export const fillArrayFn = <T>( size: number, fn: ( index: number ) => T, arr: A
 
 };
 
-export const color: Array<string> = [];
+export const color = [
+	"|CFFFF0303", "|CFF0042FF", "|CFF1CE6B9", "|CFF540081",
+	"|CFFFFFF01", "|CFFFE8A0E", "|CFF20C000", "|CFFE55BB0",
+	"|CFF959697", "|CFF7EBFF1", "|CFF106246", "|CFF4E2A04",
+	"|CFF3F81F8", "|CFFC00040", "|CFFD9D919",
+];
 export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetterFunc( "init" as GAME_STATES );
 export const goldFactor: ( newFactory?: number ) => number = getterSetterFunc( 1 );
 export const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
@@ -54,7 +59,6 @@ export const sheepTeam = CreateForce();
 export const wispTeam = CreateForce();
 export const wolfTeam = CreateForce();
 export const wolves: Array<unit> = [];
-export const WORLD_BOUNDS: ( newRect?: rect ) => rect = getterSetterFunc();
 export const WISP_TYPE = FourCC( "eC01" );
 
 export const BLACK_WOLF_TYPE = FourCC( "E002" );
@@ -157,144 +161,6 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 
 };
 
-// Returns the index in which string part is found in string whole
-export const InStr = ( whole: string, part: string ): number => {
-
-	let index = 0;
-
-	while ( true ) {
-
-		if ( StringLength( whole ) - index < StringLength( part ) ) break;
-
-		if ( SubString( whole, index, StringLength( part ) + index ) === part )
-
-			return index;
-
-		index = index + 1;
-
-	}
-
-	return - 1;
-
-};
-
-export const myArg: Array<string | null> = [];
-export let myArgCount = 0;
-// Splits a string into arguments around string c. If bb true, first argument is ignored.
-export const Split = ( s: string, c: string, bb: boolean ): void => {
-
-	let i = 0;
-	let n = 0;
-
-	while ( true ) {
-
-		if ( i === myArgCount ) break;
-		myArg[ i ] = null;
-		i = i + 1;
-
-	}
-
-	i = 0;
-
-	if ( bb )
-
-		while ( true ) {
-
-			if ( SubString( s, 0, 1 ) === c ) break;
-			s = SubString( s, 1, StringLength( s ) );
-
-		}
-
-	s = SubString( s, 1, StringLength( s ) );
-
-	while ( true ) {
-
-		if ( s === null ) break;
-		i = 0;
-
-		while ( true ) {
-
-			if ( SubString( s, i, i + 1 ) === c || SubString( s, i, i + 1 ) === null ) break;
-			i = i + 1;
-
-		}
-
-		myArg[ n ] = SubString( s, 0, i );
-		s = SubString( s, i + 1, StringLength( s ) );
-		n = n + 1;
-
-	}
-
-	myArgCount = n;
-
-};
-
-let si__splitarray_I = 0;
-let si__splitarray_F = 0;
-export const s__splitarray: Array<string> = [];
-const si__splitarray_V: Array<number> = [];
-
-// Generated allocator of splitarray
-const s__splitarray__allocate = (): number => {
-
-	let _this = si__splitarray_F;
-
-	if ( _this !== 0 )
-
-		si__splitarray_F = si__splitarray_V[ _this ];
-
-	else {
-
-		si__splitarray_I = si__splitarray_I + 4;
-		_this = si__splitarray_I;
-
-	}
-
-	if ( _this > 8187 )
-
-		return 0;
-
-	si__splitarray_V[ _this ] = - 1;
-	return _this;
-
-};
-
-// processed :type splitarray extends string array[4]
-export const Split2 = ( str: string, separator: string ): number => {
-
-	let i = 0;
-	let n = 0;
-	let last = 0;
-	const separatorLength = StringLength( separator );
-	const strLength = StringLength( str );
-	const targetLength = strLength - separatorLength;
-	const substrings = s__splitarray__allocate();
-
-	while ( true ) {
-
-		if ( i >= targetLength || n >= 4 ) break;
-
-		if ( SubString( str, i, i + separatorLength ) === separator ) {
-
-			s__splitarray[ substrings + n ] = SubString( str, last, i );
-			n = n + 1;
-			i = i + separatorLength;
-			last = i;
-
-		}
-
-		i = i + 1;
-
-	}
-
-	if ( last < strLength && n < 4 )
-
-		s__splitarray[ substrings + n ] = SubString( str, last, strLength );
-
-	return substrings;
-
-};
-
 export const TriggerRegisterPlayerChatEventAll = ( t: trigger, s: string, match: boolean ): void => {
 
 	let i = 0;
@@ -376,27 +242,7 @@ export const grimEffect = ( u: unit ): void => {
 
 addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
-	WORLD_BOUNDS( GetWorldBounds() );
 	SetMapFlag( MAP_SHARED_ADVANCED_CONTROL, true );
-
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		saveskills[ i ] = 0;
-
-	color[ 0 ] = "|CFFFF0303";
-	color[ 1 ] = "|CFF0042FF";
-	color[ 2 ] = "|CFF1CE6B9";
-	color[ 3 ] = "|CFF540081";
-	color[ 4 ] = "|CFFFFFF01";
-	color[ 5 ] = "|CFFFE8A0E";
-	color[ 6 ] = "|CFF20C000";
-	color[ 7 ] = "|CFFE55BB0";
-	color[ 8 ] = "|CFF959697";
-	color[ 9 ] = "|CFF7EBFF1";
-	color[ 10 ] = "|CFF106246";
-	color[ 11 ] = "|CFF4E2A04";
-	color[ 12 ] = "|CFF3F81F8";
-	color[ 13 ] = "|CFFC00040";
-	color[ 14 ] = "|CFFD9D919";
 
 	ForceEnumAllies( sheepTeam, Player( 0 ), Condition( isHere ) );
 	ForceEnumAllies( wolfTeam, Player( 11 ), Condition( isHere ) );
