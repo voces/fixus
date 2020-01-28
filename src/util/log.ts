@@ -5,8 +5,7 @@ import { colorize } from "./colorize";
 const isArray = ( v: any ): boolean => {
 
 	if ( typeof v !== "object" ) return false;
-	let i = 0;
-	return Object.keys( v ).every( ( v, index ) => typeof v === "number" && index === i ++ );
+	return Object.keys( v ).every( ( v, index ) => parseInt( v ) === index );
 
 };
 
@@ -27,10 +26,10 @@ const termToString = ( v: any ): string => {
 
 	}
 
-	if ( typeof v === "object" && v )
+	if ( typeof v === "object" )
 		return `{ ${Object.entries( v ).map( ( [ key, value ] ) => `${key}: ${termToString( value )}` ).join( ", " )} }`;
 
-	return `[${typeof v}]`;
+	return `[${typeof v }]`;
 
 };
 

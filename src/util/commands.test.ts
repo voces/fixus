@@ -6,7 +6,6 @@ import { simulateChat } from "w3api/dist/PlayerClass";
 
 it( "arg-less", () => gameContext.withTemp( () => {
 
-	SetPlayers( 1 );
 	const fn = jest.fn();
 	registerCommand( { command: "test", alias: "t", fn } );
 	simulateChat( Player( 0 ), "-test" );
@@ -19,7 +18,6 @@ describe( "player arg", () => {
 
 	it( "works", () => gameContext.withTemp( () => {
 
-		SetPlayers( 2 );
 		const fn = jest.fn();
 		registerCommand( {
 			command: "test",
@@ -37,7 +35,6 @@ describe( "player arg", () => {
 
 	it( "ignores invalid players", () => gameContext.withTemp( () => {
 
-		SetPlayers( 2 );
 		const fn = jest.fn();
 		registerCommand( {
 			command: "test",
@@ -51,5 +48,33 @@ describe( "player arg", () => {
 		expect( fn ).not.toHaveBeenCalled();
 
 	} ) );
+
+} );
+
+it( "number arg", () => {
+
+	const fn = jest.fn();
+	registerCommand( {
+		command: "test",
+		args: [ { name: "amount", type: "number" } ],
+		fn,
+	} );
+	simulateChat( Player( 0 ), "-test 12.7" );
+
+	expect( fn ).toHaveBeenCalledWith( { amount: 12.7 }, [ "-test", "12.7" ] );
+
+} );
+
+it( "string arg", () => {
+
+	const fn = jest.fn();
+	registerCommand( {
+		command: "test",
+		args: [ { name: "amount", type: "string" } ],
+		fn,
+	} );
+	simulateChat( Player( 0 ), "-test 12.7" );
+
+	expect( fn ).toHaveBeenCalledWith( { amount: "12.7" }, [ "-test", "12.7" ] );
 
 } );
