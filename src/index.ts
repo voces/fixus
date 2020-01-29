@@ -17,7 +17,6 @@ import "misc/zoom";
 import "misc/dollyMove";
 import "sheep/factoryFarm";
 import "sheep/farmSelfDestruct";
-import "sheep/specialization";
 import "sheep/saveDeath";
 import "sheep/wispLeave";
 import "sheep/commands";

@@ -58,6 +58,9 @@ const shareControlWithAllies = ( player: player ): void => {
 
 };
 
+/**
+ * Spawns sheep
+ */
 const initToStart = (): void => {
 
 	TimerDialogDisplay( myTimerDialog, false );
@@ -93,6 +96,9 @@ const initToStart = (): void => {
 
 };
 
+/**
+ * Spawns wolves
+ */
 const startToPlay = (): void => {
 
 	TimerDialogDisplay( myTimerDialog, false );
