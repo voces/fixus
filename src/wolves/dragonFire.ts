@@ -1,13 +1,13 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
-import { wolves } from "shared";
-import { forEachUnit } from "util/temp";
+import { wolves } from "../shared";
+import { forEachUnit } from "../util/temp";
 
 let burnWolfId = 7;
 let emptyTicks: number;
 const spreadFireTrigger = CreateTrigger();
 const burnUnitsTrigger = CreateTrigger();
-const units = CreateGroup(); // group for actual units that can move
+export const units = CreateGroup(); // group for actual units that can move
 const burningStructures = CreateGroup(); // group of structures that are burning
 
 const DRAGON_GLASS_ITEM_TYPE = FourCC( "A00H" );
@@ -129,7 +129,7 @@ const onSpellCast = (): void => {
 
 };
 
-const onUnitCrated = (): boolean => {
+const onUnitCreated = (): boolean => {
 
 	if ( ! IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) )
 		GroupAddUnit( units, GetFilterUnit() );
@@ -138,7 +138,7 @@ const onUnitCrated = (): boolean => {
 
 };
 
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+export const main = (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
@@ -152,10 +152,12 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	TriggerAddAction( burnUnitsTrigger, burnUnits );
 	DisableTrigger( burnUnitsTrigger );
 
-	const r = GetEntireMapRect();
+	const r = GetWorldBounds();
 	const re = CreateRegion();
 	RegionAddRect( re, r );
 	RemoveRect( r );
-	TriggerRegisterEnterRegion( CreateTrigger(), re, Filter( onUnitCrated ) );
+	TriggerRegisterEnterRegion( CreateTrigger(), re, Filter( onUnitCreated ) );
 
-} );
+};
+
+addScriptHook( W3TS_HOOK.MAIN_AFTER, main );
