@@ -1,6 +1,7 @@
 
 import { TriggerRegisterPlayerChatEventAll } from "../shared";
 import { log } from "./log";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 type Arg = {
 	name: string;
@@ -11,7 +12,17 @@ type Arg = {
 		| "player";
 }
 
-export const registerCommand = <T>(
+type Command<T> = {
+	command: string;
+	alias?: string;
+	args?: Array<Arg>;
+	fn: ( this: void, args: T, words: Array<string> ) => void;
+}
+
+let ready = false;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const pendingRegistrations: Command<any>[] = [];
+const _registerCommand = <T>(
 	{ command, alias, args = [], fn }:
 	{
 		command: string;
@@ -103,3 +114,19 @@ export const registerCommand = <T>(
 	} );
 
 };
+
+export const registerCommand = <T>( command: Command<T> ): void => {
+
+	if ( ready ) return _registerCommand( command );
+	pendingRegistrations.push( command );
+
+};
+
+export const main = (): void => {
+
+	ready = true;
+	pendingRegistrations.forEach( r => _registerCommand( r ) );
+
+};
+
+addScriptHook( W3TS_HOOK.MAIN_AFTER, main );

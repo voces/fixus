@@ -2,10 +2,10 @@
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { saveskills } from "../shared";
 
-const factoryFarmTimer = CreateTimer();
+let factoryFarmTimer: timer;
 let factoryFarmDummySheep: unit;
-const factoryFarms = CreateGroup();
-const factoryFarmsTemp = CreateGroup();
+let factoryFarms: group;
+let factoryFarmsTemp: group;
 let factoryFarmBuilds: number;
 
 const FACTORY_FARM_TYPE = FourCC( "h00C" );
@@ -178,7 +178,10 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
 	TriggerAddAction( t, onSelectFarm );
 
+	factoryFarmTimer = CreateTimer();
 	factoryFarmDummySheep = CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), FourCC( "u002" ), 0, 0, 270 );
+	factoryFarms = CreateGroup();
+	factoryFarmsTemp = CreateGroup();
 
 	TimerStart( factoryFarmTimer, WAIT_BETWEEN_TICKS, false, factoryFarmStart );
 

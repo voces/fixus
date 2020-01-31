@@ -1,1 +1,1 @@
-declare let gg_rct_Pen: rect;
+declare var gg_rct_Pen: rect;

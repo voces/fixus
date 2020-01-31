@@ -49,11 +49,11 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	const zooms = ( s__File_readAndClose( s__File_open( "fixus/zooms.txt" ) ) || "" ).split( " " );
 	const playerId = GetPlayerId( GetLocalPlayer() );
 
-	sheepZoom[ playerId ] = S2R( zooms[ 0 ] );
+	sheepZoom[ playerId ] = S2R( zooms[ 0 ] || "" );
 	if ( sheepZoom[ playerId ] === 0 )
 		sheepZoom[ playerId ] = 1650;
 
-	wolfZoom[ playerId ] = S2R( zooms[ 1 ] );
+	wolfZoom[ playerId ] = S2R( zooms[ 1 ] || "" );
 	if ( wolfZoom[ playerId ] === 0 )
 		wolfZoom[ playerId ] = 1650;
 

@@ -23,7 +23,7 @@ export const AbilityRangePreload = ( start: number, end: number ): void => {
 
 addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
-	preloadUnit = CreateUnit( Player( 15 ), PRELOAD_UNIT_TYPE, 0, 0, 0 );
+	preloadUnit = CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), PRELOAD_UNIT_TYPE, 0, 0, 0 );
 	UnitApplyTimedLife( preloadUnit, 0, 0.001 );
 	ShowUnit( preloadUnit, false );
 	UnitAddAbility( preloadUnit, FourCC( "Aloc" ) );

@@ -1,3 +1,4 @@
+
 import { WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
