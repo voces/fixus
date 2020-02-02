@@ -1,6 +1,8 @@
 # Version 8
 ## Refactors
 - Converted to TypeScript
+- Dragon Fire made ~10x more efficient
+- Added commands and changelog to quests menu
 
 # Version 7d
 ## Bug Fixes
@@ -331,7 +333,7 @@
 - Added the battleship.
 
 # Version 1.7
--buy no longer turns shepherds black
+- buy no longer turns shepherds black
 - Killing shepherds now only get +25 gold rather than 10 * sheep
 - Added some Clan StH spam
 - Hopefully fixed some desyncs

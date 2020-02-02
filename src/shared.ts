@@ -251,6 +251,6 @@ addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	AbilityRangePreload( FourCC( "A001" ), FourCC( "A00P" ) );
+	AbilityRangePreload( FourCC( "A001" ), FourCC( "A00Q" ) );
 
 } );

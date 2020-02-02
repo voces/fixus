@@ -16,6 +16,8 @@ const action = ( { angle }: {angle: number} ): void => {
 // ===========================================================================
 registerCommand( {
 	command: "angle",
+	category: "misc",
+	description: "Sets the camera to the passed angle.",
 	alias: "a",
 	args: [ { name: "angle", type: "number" } ],
 	fn: action,

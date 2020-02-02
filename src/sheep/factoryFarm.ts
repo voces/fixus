@@ -24,7 +24,8 @@ type FactoryFarmData = {
 	buildIndex: number;
 	buildType: number;
 }
-const factoryFarmData: WeakMap<unit, FactoryFarmData> = new WeakMap();
+// todo: is Map leaky here?
+const factoryFarmData: Map<unit, FactoryFarmData> = new Map();
 
 export const spiralX = ( n: number ): number => {
 
@@ -164,7 +165,13 @@ const onFinishConstruction = (): void => {
 const onSelectFarm = (): void => {
 
 	if ( GetSpellAbilityId() === SELECT_FARM_TYPE )
-		factoryFarmData.set( GetTriggerUnit(), { ...factoryFarmData.get( GetTriggerUnit() ) as FactoryFarmData, buildType: GetUnitTypeId( GetSpellTargetUnit() ) } );
+		factoryFarmData.set(
+			GetTriggerUnit(),
+			{
+				...factoryFarmData.get( GetTriggerUnit() ) as FactoryFarmData,
+				buildType: GetUnitTypeId( GetSpellTargetUnit() ),
+			},
+		);
 
 };
 

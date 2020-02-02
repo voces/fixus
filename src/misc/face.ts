@@ -26,6 +26,8 @@ const action = ( { angle }: {angle: string} ): void => {
 // ===========================================================================
 registerCommand( {
 	command: "face",
+	category: "misc",
+	description: "Makes selected units turn towards the passed angle.",
 	args: [ { name: "angle", type: "string" } ],
 	fn: action,
 } );

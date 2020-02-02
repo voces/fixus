@@ -3,7 +3,7 @@ import { TriggerRegisterPlayerChatEventAll } from "../shared";
 import { log } from "./log";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
-type Arg = {
+export type Arg = {
 	name: string;
 	required?: boolean;
 	// todo: add a function type, allowing the user to define their own transformer
@@ -12,16 +12,18 @@ type Arg = {
 		| "player";
 }
 
-type Command<T> = {
+export type Command<T> = {
 	command: string;
+	category: "sheep" | "wolf" | "host" | "misc";
 	alias?: string;
+	description: string;
 	args?: Array<Arg>;
 	fn: ( this: void, args: T, words: Array<string> ) => void;
 }
 
 let ready = false;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const pendingRegistrations: Command<any>[] = [];
+export const commands: Command<any>[] = [];
 const _registerCommand = <T>(
 	{ command, alias, args = [], fn }:
 	{
@@ -117,15 +119,16 @@ const _registerCommand = <T>(
 
 export const registerCommand = <T>( command: Command<T> ): void => {
 
+	commands.push( command );
+
 	if ( ready ) return _registerCommand( command );
-	pendingRegistrations.push( command );
 
 };
 
 export const main = (): void => {
 
 	ready = true;
-	pendingRegistrations.forEach( r => _registerCommand( r ) );
+	commands.forEach( r => _registerCommand( r ) );
 
 };
 

@@ -39,7 +39,9 @@ const action = ( { zoom = 0 }: {zoom: number} ): void => {
 // ===========================================================================
 registerCommand( {
 	command: "zoom",
+	category: "misc",
 	alias: "z",
+	description: "Sets the camera zoom to the passed amount.",
 	args: [ { name: "zoom", type: "number", required: false } ],
 	fn: action,
 } );

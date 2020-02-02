@@ -24,6 +24,8 @@ const action = ( { player }: {player: player} ): void => {
 
 registerCommand( {
 	command: "uncontrol",
+	category: "misc",
+	description: "Takes away control of your units from the passed player.",
 	alias: "uc",
 	args: [ { name: "player", type: "player" } ],
 	fn: action,

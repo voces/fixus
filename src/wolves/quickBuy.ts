@@ -111,14 +111,18 @@ const sellAction = (
 // ===========================================================================
 registerCommand( {
 	command: "buy",
+	category: "wolf",
 	alias: "b",
+	description: "Remotely buys the passed item for 150% the shop cost. Check item descriptions for specific item buy commands.",
 	args: [ { name: "item", type: "string" } ],
 	fn: buyAction,
 } );
 
 registerCommand( {
 	command: "sell",
+	category: "wolf",
 	alias: "s",
+	description: "Remote sells the item in the passed slot(s) for 50% the shop cost.",
 	args: [
 		{ name: "slot1", type: "string" },
 		{ name: "slot2", type: "number", required: false },

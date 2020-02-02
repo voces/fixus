@@ -4,7 +4,7 @@
 		"baseUrl": "src",
 		"allowJs": false,
 		"target": "es6",
-		"lib": [ "es2020" ],
+		"lib": [ "es2020", "dom" ],
 		"moduleResolution": "classic",
 		"strict": true,
 		"noImplicitAny": true,
@@ -23,6 +23,8 @@
 		"plugins": [{"transform": "ts-transformer-imports"}],
 		"types": [
 			"@types/jest",
+			"@types/node",
+			"@types/marked",
 			"lua-types/core/coroutine",
 			"lua-types/core/global",
 			"lua-types/core/math",
@@ -39,9 +41,7 @@
 			"war3-types/core/polyfill"
 		]
 	},
-	"include": [
-		"src"
-	],
+	"include": ["src", "bin"],
 	"exclude": [],
 	"tstl": {
 		"luaTarget": "5.3",

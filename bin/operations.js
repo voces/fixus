@@ -1,85 +1,111 @@
-const fs = require("fs-extra");
-const War3TSTLHelper = require("war3tstlhelper");
-const execFile = require("child_process").execFile;
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const fs = require( "fs-extra" );
+const War3TSTLHelper = require( "war3tstlhelper" );
+const execFile = require( "child_process" ).execFile;
 const cwd = process.cwd();
-const luamin = require('luamin');
+const luamin = require( "luamin" );
 
 // Parse configuration
 let config = {};
 try {
-  config = JSON.parse(fs.readFileSync("config.json"));
-} catch (e) {
-  return console.error(e);
+
+	config = JSON.parse( fs.readFileSync( "config.json" ) );
+
+} catch ( e ) {
+
+	return console.error( e );
+
 }
 
 // Handle the operation
-const operation = process.argv[2];
+const operation = process.argv[ 2 ];
 
-switch (operation) {
-  case "build":
-    const tsLua = "./dist/tstl_output.lua";
+switch ( operation ) {
 
-    if (!fs.existsSync(tsLua)) {
-      return console.error(`Could not find "${tsLua}"`);
-    }
+	case "build": {
 
-    console.log(`Building "${config.mapFolder}"...`);
-    fs.copy(`./maps/${config.mapFolder}`, `./dist/${config.mapFolder}`, function (err) {
-      if (err) {
-        return console.error(err);
-      }
+		const tsLua = "./dist/tstl_output.lua";
 
-      // Merge the TSTL output with war3map.lua
-      const mapLua = `./dist/${config.mapFolder}/war3map.lua`;
+		if ( ! fs.existsSync( tsLua ) )
+			return console.error( `Could not find "${tsLua}"` );
 
-      if (!fs.existsSync(mapLua)) {
-        return console.error(`Could not find "${mapLua}"`);
-      }
+		console.log( `Building "${config.mapFolder}"...` );
+		fs.copy( `./maps/${config.mapFolder}`, `./dist/${config.mapFolder}`, err => {
 
-      try {
-        let contents = fs.readFileSync(mapLua) + fs.readFileSync(tsLua);
-        if (config.minifyScript) {
-          console.log(`Minifying script...`);
-          contents = luamin.minify(contents.toString());
-        }
-        fs.writeFileSync(mapLua, contents);
-      } catch (err) {
-        return console.error(err);
-      }
+			if ( err )
+				return console.error( err );
 
-      console.log(`Completed!`);
-    });
+			// Merge the TSTL output with war3map.lua
+			const mapLua = `./dist/${config.mapFolder}/war3map.lua`;
 
-    break;
+			if ( ! fs.existsSync( mapLua ) )
+				return console.error( `Could not find "${mapLua}"` );
 
-  case "run":
-    const filename = `${cwd.replace("/mnt/c/", "C://")}/dist/${config.mapFolder}`;
+			try {
 
-    console.log(`Launching map "${filename.replace(/\\/g, "/")}"...`);
+				let contents = fs.readFileSync( mapLua ) + fs.readFileSync( tsLua );
+				if ( config.minifyScript ) {
 
-    execFile(config.gameExecutable, ["-loadfile", filename, ...config.launchArgs], (err, stdout, stderr) => {
-      if (err) {
-        if (err.code === 'ENOENT') {
-          return console.error(`No such file or directory "${config.gameExecutable}". Make sure gameExecutable is configured properly in config.json.`);
-        }
-      }
-    });
+					console.log( "Minifying script..." );
+					contents = luamin.minify( contents.toString() );
 
-    break;
-  case "gen-defs":
-    // Create definitions file for generated globals
-    const luaFile = `./maps/${config.mapFolder}/war3map.lua`;
+				}
+				fs.writeFileSync( mapLua, contents );
 
-    try {
-      const contents = fs.readFileSync(luaFile, "utf8");
-      const parser = new War3TSTLHelper(contents);
-      const result = parser.genTSDefinitions();
-      fs.writeFileSync("src/war3map.d.ts", result);
-    } catch (err) {
-      console.log(err);
-      console.log(`There was an error generating the definition file for '${luaFile}'`);
-      return;
-    }
+			} catch ( err ) {
 
-    break;
+				return console.error( err );
+
+			}
+
+			console.log( "Completed!" );
+
+		} );
+
+		break;
+
+	} case "run": {
+
+		const filename = `${cwd.replace( "/mnt/c/", "C://" )}/dist/${config.mapFolder}`;
+
+		console.log( `Launching map "${filename.replace( /\\/g, "/" )}"...` );
+
+		execFile( config.gameExecutable, [ "-loadfile", filename, ...config.launchArgs ], err => {
+
+			if ( err )
+				if ( err.code === "ENOENT" ) {
+
+					return console.error( `No such file or directory "${config.gameExecutable}". Make sure gameExecutable is configured properly in config.json.` );
+
+				}
+
+		} );
+
+		break;
+
+	} case "gen-defs": {
+
+		// Create definitions file for generated globals
+		const luaFile = `./maps/${config.mapFolder}/war3map.lua`;
+
+		try {
+
+			const contents = fs.readFileSync( luaFile, "utf8" );
+			const parser = new War3TSTLHelper( contents );
+			const result = parser.genTSDefinitions();
+			fs.writeFileSync( "src/war3map.d.ts", result );
+
+		} catch ( err ) {
+
+			console.log( err );
+			console.log( `There was an error generating the definition file for '${luaFile}'` );
+			return;
+
+		}
+
+		break;
+
+	}
+
 }

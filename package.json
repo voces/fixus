@@ -6,16 +6,18 @@
   "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
-    "test": "npm run build && node bin/operations run",
+    "build:changelog": "ts-node bin/changelog.ts",
+    "build:defs": "node bin/operations gen-defs",
     "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.map.json && node bin/operations build",
     "dev": "npm-watch",
-    "build:defs": "node bin/operations gen-defs",
+    "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "jest": "jest",
-    "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
+    "test": "npm run build && node bin/operations run"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.8.3",
     "@types/jest": "^24.0.25",
+    "@types/marked": "^0.7.2",
     "@types/node": "^12.0.2",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
@@ -28,6 +30,7 @@
     "jest": "^24.9.0",
     "lua-types": "^2.6.1",
     "luamin": "^1.0.4",
+    "marked": "^0.8.0",
     "npm-watch": "^0.6.0",
     "recast": "^0.18.5",
     "ts-jest": "^24.2.0",

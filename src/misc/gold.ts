@@ -33,6 +33,8 @@ const action = ( { player: receiver, amount = Infinity }: {player: player; amoun
 // ===========================================================================
 registerCommand( {
 	command: "gold",
+	category: "misc",
+	description: "Gives the passed player some of your gold. If no gold argument is passed, gives them all of your gold.",
 	alias: "g",
 	args: [
 		{ name: "player", type: "player" },

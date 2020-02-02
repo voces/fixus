@@ -10,43 +10,81 @@ import {
 	wolfTeam,
 } from "shared";
 import { board } from "misc/multiboard";
+import { changelog } from "misc/changelog";
+import { commands, Command, Arg } from "util/commands";
 
 // ===========================================================================
 // Trigger: coreInit
 // ===========================================================================
 
+const argHelp = ( arg: Arg ): string =>
+	arg.required === undefined || arg.required ? `<${arg.name}>` : `[${arg.name}]`;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const commandHelp = ( command: Command<any> ): string =>
+	[
+		"-" + command.command,
+		command.args ? " " + command.args.map( arg => argHelp( arg ) ).join( " " ) : "",
+		command.alias ? ` (alias -${command.alias})` : "",
+		"\n" + command.description,
+	].join( "" );
+
 const action = (): void => {
 
-	let q = CreateQuest();
-	QuestSetTitle( q, "Ultimate Sheep Tag Fixus" );
-	QuestSetDescription( q, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-	QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNAcorn.blp" );
-	let qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Fixus by |CFF959697Chakra|r" );
-	qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Ultimate Sheep Tag using |CFF959697Chakra|r's Sheep Tag Template file." );
+	{
 
-	q = CreateQuest();
-	QuestSetTitle( q, "Sheep" );
-	QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNSheep.blp" );
-	QuestSetRequired( q, false );
-	qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Either last 25 minutes or until all wolves leave to win." );
-	qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Build farms to survive." );
-	qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Save dead sheep to last." );
+		const filteredCommands = commands.filter( c => c.category === "misc" );
+		const q = CreateQuest();
+		QuestSetTitle( q, "Commands" );
+		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNWarEagle.blp" );
+		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
-	q = CreateQuest();
-	QuestSetTitle( q, "Wolves" );
-	QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNRaider.blp" );
-	QuestSetRequired( q, false );
-	qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Either kill all sheep or wait until all sheep leave to win." );
-	qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Buy items to kill sheep." );
-	qi = QuestCreateItem( q );
-	QuestItemSetDescription( qi, "Camp the middle to avoid killed sheep to be revived." );
+	}
+
+	{
+
+		const filteredCommands = commands.filter( c => c.category === "sheep" );
+		const q = CreateQuest();
+		QuestSetTitle( q, "Sheep Commands" );
+		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNSheep.blp" );
+		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
+
+	}
+
+	{
+
+		const filteredCommands = commands.filter( c => c.category === "wolf" );
+		const q = CreateQuest();
+		QuestSetTitle( q, "Wolf Commands" );
+		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNRaider.blp" );
+		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
+
+	}
+
+	{
+
+		const filteredCommands = commands.filter( c => c.category === "host" );
+		const q = CreateQuest();
+		QuestSetTitle( q, "Host Commands" );
+		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNHeroPaladin.blp" );
+		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
+
+	}
+
+	changelog.forEach( quest => {
+
+		const lines = quest.content.split( "\n" );
+		for ( let i = 0; i < lines.length; i += 32 ) {
+
+			const q = CreateQuest();
+			QuestSetTitle( q, quest.title + ( i === 0 ? "" : " (cont.)" ) );
+			QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNBansheeMaster.blp" );
+			QuestSetRequired( q, false );
+			QuestSetDescription( q, lines.slice( i, i + 32 ).join( "\n" ) );
+
+		}
+
+	} );
 
 	DisplayTimedText( 3, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
 

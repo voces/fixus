@@ -23,6 +23,8 @@ const action = ( { player }: {player: player} ): void => {
 // ===========================================================================
 registerCommand( {
 	command: "control",
+	category: "misc",
+	description: "Grants the passed player control of your units.",
 	alias: "c",
 	args: [ { name: "player", type: "player" } ],
 	fn: action,

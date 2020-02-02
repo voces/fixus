@@ -15,19 +15,31 @@ const cheapStructureFilter = Condition( () =>
 
 const structureFilter = Condition( () =>IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
 
-registerCommand( { command: "destroy", alias: "d", fn: (): void => {
+registerCommand( {
+	command: "destroy",
+	category: "sheep",
+	description: "Destroys all of your farms that have a bounty less than 5.",
+	alias: "d",
+	fn: (): void => {
 
-	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
-		forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, cheapStructureFilter );
+		if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
+			forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, cheapStructureFilter );
 
-} } );
+	},
+} );
 
-registerCommand( { command: "destroy all", alias: "dall", fn: (): void => {
+registerCommand( {
+	command: "destroy all",
+	category: "sheep",
+	description: "Destroys all of your farms.",
+	alias: "dall",
+	fn: (): void => {
 
-	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
-		forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, structureFilter );
+		if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) )
+			forEachPlayerUnit( GetTriggerPlayer(), RemoveUnit, structureFilter );
 
-} } );
+	},
+} );
 
 const getController = (): player => {
 
@@ -40,25 +52,35 @@ const getController = (): player => {
 
 };
 
-registerCommand( { command: "wolf gold", fn: (): void => {
+registerCommand( {
+	command: "wolf gold",
+	category: "host",
+	description: "Gives each wolf 100 gold.",
+	fn: (): void => {
 
-	if ( getController() !== GetTriggerPlayer() ) return;
+		if ( getController() !== GetTriggerPlayer() ) return;
 
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " gave the shepherds 100 gold!" );
+		DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " gave the shepherds 100 gold!" );
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-			AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, 100 );
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+				AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, 100 );
 
-} } );
+	},
+} );
 
-registerCommand( { command: "destroy all farms", fn: (): void => {
+registerCommand( {
+	command: "destroy all farms",
+	category: "host",
+	description: "Destroys all farms that have a bounty less than 5.",
+	fn: (): void => {
 
-	if ( getController() !== GetTriggerPlayer() ) return;
+		if ( getController() !== GetTriggerPlayer() ) return;
 
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " has destroyed all the farms!" );
+		DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " has destroyed all the farms!" );
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		forEachPlayerUnit( Player( i ), RemoveUnit, cheapStructureFilter );
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			forEachPlayerUnit( Player( i ), RemoveUnit, cheapStructureFilter );
 
-} } );
+	},
+} );
