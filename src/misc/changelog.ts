@@ -1,4 +1,6 @@
 
+// DO NOT MODIFY DIRECTLY. Execute `npm run build:changelog` instead.
+
 export const changelog = [
 	{ title: "Version 8", content: [
 		"Refactors",

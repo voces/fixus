@@ -8,10 +8,10 @@ function CreateNeutralPassiveBuildings()
     local unitID
     local t
     local life
-    u = CreateUnit(p, FourCC("nC12"), -4608.0, 4096.0, 270.000)
-    u = CreateUnit(p, FourCC("ngme"), -4992.0, 3712.0, 270.000)
-    u = CreateUnit(p, FourCC("ngme"), 4864.0, -5504.0, 270.000)
-    u = CreateUnit(p, FourCC("nC12"), 5248.0, -5504.0, 270.000)
+    u = BlzCreateUnitWithSkin(p, FourCC("nC12"), -4608.0, 4096.0, 270.000, FourCC("nC12"))
+    u = BlzCreateUnitWithSkin(p, FourCC("ngme"), -4992.0, 3712.0, 270.000, FourCC("ngme"))
+    u = BlzCreateUnitWithSkin(p, FourCC("ngme"), 4864.0, -5504.0, 270.000, FourCC("ngme"))
+    u = BlzCreateUnitWithSkin(p, FourCC("nC12"), 5248.0, -5504.0, 270.000, FourCC("nC12"))
 end
 
 function CreateNeutralPassive()
@@ -20,7 +20,7 @@ function CreateNeutralPassive()
     local unitID
     local t
     local life
-    u = CreateUnit(p, FourCC("nshf"), -258.8, -849.1, 198.530)
+    u = BlzCreateUnitWithSkin(p, FourCC("nshf"), -258.8, -849.1, 198.530, FourCC("nshf"))
 end
 
 function CreatePlayerBuildings()

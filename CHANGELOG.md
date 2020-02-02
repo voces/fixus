@@ -1,8 +1,14 @@
 # Version 8
+## Balance
+- Fixed reduction of Harden (30 -> 20 seconds)
+
+## Features
+- Added commands and changelog to quests menu
+- Sheep (Factory) no longer shows up on the minimap
+- 
 ## Refactors
 - Converted to TypeScript
 - Dragon Fire made ~10x more efficient
-- Added commands and changelog to quests menu
 
 # Version 7d
 ## Bug Fixes

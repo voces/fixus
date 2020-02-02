@@ -21,9 +21,10 @@ const s__File_filename: Array<string> = [];
 const s__File_buffer: Array<string | null> = [];
 // // let s__File_ReadEnabled: boolean;
 
-// library FileIO:
-
-export const s__File_open = ( filename: string ): number => {
+/**
+ * Opens a file and returns a number that acts as an index for other functions
+ */
+export const openFile = ( filename: string ): number => {
 
 	let _this = s__File_List[ 0 ];
 
@@ -41,43 +42,46 @@ export const s__File_open = ( filename: string ): number => {
 
 };
 
-// // This is used to detect invalid characters which aren't supported in preload files.
+/**
+ * Writes to a file index the passed contents
+ */
+export const writeFile = ( _this: number, contents: string, writeOnly = false ): number => {
 
-export const s__File_write = ( _this: number, contents: string ): number => {
-
-	let i = 0;
-	let c = 0;
 	let len = StringLength( contents );
-	let lev = 0;
-	const prefix = "-";
-	let chunk: string;
 
 	s__File_buffer[ _this ] = null;
 
 	// Check if the string is empty. If null, the contents will be cleared.
-
-	if ( contents === "" )
-
-		len = len + 1;
+	if ( contents === "" ) len = len + 1;
 
 	// Begin to generate the file
 	PreloadGenClear();
 	PreloadGenStart();
 
-	while ( true ) {
+	if ( writeOnly )
 
-		if ( i >= len ) break;
+		for ( let i = 0; i < len; i += s__File_PreloadLimit ) {
 
-		lev = 0;
+			const chunk = SubString( contents, i, i + s__File_PreloadLimit );
+			Preload( chunk );
 
-		chunk = SubString( contents, i, i + s__File_PreloadLimit );
-		Preload( "\" )\ncall BlzSetAbilityTooltip(" + I2S( s__File_AbilityList[ c ] ) + ", \"" + prefix + chunk + "\", " + I2S( lev ) + ")\n//" );
-		i = i + s__File_PreloadLimit;
-		c = c + 1;
+		}
+
+	else {
+
+		const prefix = "-";
+
+		for ( let i = 0, c = 0; i < len; i += s__File_PreloadLimit, c ++ ) {
+
+			const chunk = SubString( contents, i, i + s__File_PreloadLimit );
+			Preload( "\" )\ncall BlzSetAbilityTooltip(" + I2S( s__File_AbilityList[ c ] ) + ", \"" + prefix + chunk + "\", 0)\n//" );
+
+		}
+
+		Preload( "\" )\nendfunction\nfunction a takes nothing returns nothing\n //" );
 
 	}
 
-	Preload( "\" )\nendfunction\nfunction a takes nothing returns nothing\n //" );
 	PreloadGenEnd( s__File_filename[ _this ] );
 
 	return _this;
@@ -159,11 +163,11 @@ const s__File_readPreload = ( _this: number ): string | null => {
 
 };
 
-export const s__File_close = ( _this: number ): void => {
+export const closeFile = ( _this: number ): void => {
 
 	if ( s__File_buffer[ _this ] !== null ) {
 
-		s__File_write( _this, ( s__File_readPreload( _this ) || "" ) + s__File_buffer[ _this ] );
+		writeFile( _this, ( s__File_readPreload( _this ) || "" ) + s__File_buffer[ _this ] );
 		s__File_buffer[ _this ] = null;
 
 	}
@@ -178,25 +182,19 @@ const s__File_readEx = ( _this: number, close: boolean ): string | null => {
 	let output = s__File_readPreload( _this );
 	const buf = s__File_buffer[ _this ];
 
-	if ( close )
+	if ( close ) closeFile( _this );
 
-		s__File_close( _this );
+	if ( output === null ) return buf;
 
-	if ( output === null )
-
-		return buf;
-
-	if ( buf !== null )
-
-		output = output + buf;
+	if ( buf !== null ) output = output + buf;
 
 	return output;
 
 };
 
-export const s__File_readAndClose = ( _this: number ): string | null => s__File_readEx( _this, true );
+export const readAndCloseFile = ( _this: number ): string | null =>
+	s__File_readEx( _this, true );
 
-// Implemented from module FileIO__FileInit:
 addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
 	// We can't use a single ability with multiple levels because
@@ -213,12 +211,5 @@ addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 	s__File_AbilityList[ 8 ] = FourCC( "Afbt" );
 	s__File_AbilityList[ 9 ] = FourCC( "Afbk" );
 
-	// Backwards compatability check
-
-	// Read check
-	// s__File_ReadEnabled = s__File_readAndClose( s__File_write( s__File_open( "FileTester.pld" ), "FileIO_" ) ) === "FileIO_";
-
 } );
-
-// library FileIO ends
 

@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { wolfTeam } from "shared";
-import { s__File_close, s__File_write, s__File_open, s__File_readAndClose } from "./fileIO";
+import { closeFile, writeFile, openFile, readAndCloseFile } from "./fileIO";
 import { registerCommand } from "util/commands";
 
 const sheepZoom: Array<number> = [];
@@ -30,7 +30,7 @@ const action = ( { zoom = 0 }: {zoom: number} ): void => {
 	if ( GetLocalPlayer() === GetTriggerPlayer() ) {
 
 		SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, zoom, 0 );
-		s__File_close( s__File_write( s__File_open( "fixus/zooms.txt" ), R2S( sheepZoom[ playerId ] ) + " " + R2S( wolfZoom[ playerId ] ) ) );
+		closeFile( writeFile( openFile( "fixus/zooms.txt" ), R2S( sheepZoom[ playerId ] ) + " " + R2S( wolfZoom[ playerId ] ) ) );
 
 	}
 
@@ -48,7 +48,7 @@ registerCommand( {
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	const zooms = ( s__File_readAndClose( s__File_open( "fixus/zooms.txt" ) ) || "" ).split( " " );
+	const zooms = ( readAndCloseFile( openFile( "fixus/zooms.txt" ) ) || "" ).split( " " );
 	const playerId = GetPlayerId( GetLocalPlayer() );
 
 	sheepZoom[ playerId ] = S2R( zooms[ 0 ] || "" );

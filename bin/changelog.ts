@@ -39,7 +39,9 @@ fs.readFile( "CHANGELOG.md", { encoding: "utf-8" } ).then( ( data: string ): voi
 
 		}
 
-	const code = "\nexport const changelog = [\n" +
+	const code =
+		"\n// DO NOT MODIFY DIRECTLY. Execute `npm run build:changelog` instead.\n\n" +
+		"export const changelog = [\n" +
 		versions.map( v => `\t{ title: "${v.title}", content: [\n${v.content.map( c => `\t\t"${c}",` ).join( "\n" )}` + "\n\t].join( \"\\n\" ) },\n" ).join( "" ) +
 		"];\n";
 
