@@ -6,13 +6,7 @@ let preloadUnit: unit;
 
 export const AbilityRangePreload = ( start: number, end: number ): void => {
 
-	if ( end > start ) {
-
-		const swap = start;
-		start = end;
-		end = swap;
-
-	}
+	if ( end < start ) [ start, end ] = [ end, start ];
 
 	for ( let i = start; i <= end; i ++ )
 		UnitAddAbility( preloadUnit, i );
