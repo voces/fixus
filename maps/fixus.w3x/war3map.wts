@@ -15,7 +15,6 @@ STRING 40
 
 STRING 41
 {
-Fixus by |CFF959697Chakra|r
 Discord: http://tiny.cc/sheeptag
 }
 
@@ -125,12 +124,6 @@ STRING 1399
 Aura Farm
 }
 
-STRING 1400
-// Units: hlum (Aura Farm), Tip (Tooltip - Basic)
-{
-Build |cffffcc00A|rura Farm
-}
-
 STRING 1401
 // Units: hlum (Aura Farm), Hotkey (Hotkey)
 {
@@ -141,12 +134,6 @@ STRING 1403
 // Units: ohun (Saving Farm), Name (Name)
 {
 Saving Farm
-}
-
-STRING 1404
-// Units: ohun (Saving Farm), Tip (Tooltip - Basic)
-{
-Build Saving Farm (|cffffcc00C|r)
 }
 
 STRING 1406
@@ -221,12 +208,6 @@ STRING 1422
 Destroy
 }
 
-STRING 1423
-// Units: nC13 (Destroy), Tip (Tooltip - Basic)
-{
-|cffffcc00D|restroy
-}
-
 STRING 1424
 // Units: nC13 (Destroy), Hotkey (Hotkey)
 {
@@ -287,12 +268,6 @@ STRING 1433
 W
 }
 
-STRING 1435
-// Units: hC07 (Tiny Farm), Tip (Tooltip - Basic)
-{
-Build |cffffcc00T|riny Farm
-}
-
 STRING 1436
 // Units: hC07 (Tiny Farm), Ubertip (Tooltip - Extended)
 {
@@ -327,12 +302,6 @@ STRING 1442
 // Units: n000 (Stack Farm), Name (Name)
 {
 Stack Farm
-}
-
-STRING 1443
-// Units: n000 (Stack Farm), Tip (Tooltip - Basic)
-{
-Build |cffffcc00S|rtack Farm
 }
 
 STRING 1444
@@ -401,12 +370,6 @@ STRING 1457
 Silver Farm
 }
 
-STRING 1458
-// Units: h001 (Silver Farm), Tip (Tooltip - Basic)
-{
-Build Silver Farm |cffffcc00(F)|r
-}
-
 STRING 1459
 // Units: h001 (Silver Farm), Ubertip (Tooltip - Extended)
 {
@@ -443,12 +406,6 @@ STRING 1465
 W
 }
 
-STRING 1466
-// Units: h003 (Stun Farm), Tip (Tooltip - Basic)
-{
-Build Stun Farm (|cffffcc00W|r)
-}
-
 STRING 1467
 // Units: h003 (Stun Farm), Ubertip (Tooltip - Extended)
 {
@@ -461,12 +418,6 @@ STRING 1470
 Black Farm
 }
 
-STRING 1471
-// Units: h004 (Black Farm), Tip (Tooltip - Basic)
-{
-Build Black |cffffcc00F|rarm
-}
-
 STRING 1472
 // Units: h004 (Black Farm), Ubertip (Tooltip - Extended)
 {
@@ -477,12 +428,6 @@ STRING 1473
 // Units: h005 (Sentry Farm), Name (Name)
 {
 Sentry Farm
-}
-
-STRING 1474
-// Units: h005 (Sentry Farm), Tip (Tooltip - Basic)
-{
-Build S|cffffcc00e|rntry Farm
 }
 
 STRING 1475
@@ -628,34 +573,10 @@ STRING 1526
 Saving Farm is very, very fragile but it gets 1 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
 }
 
-STRING 1527
-// Units: hbar (Upgraded Farm), Tip (Tooltip - Basic)
-{
-Build Up|cffffcc00g|rraded Farm
-}
-
-STRING 1528
-// Units: hC06 (Hard Farm), Tip (Tooltip - Basic)
-{
-Build Ha|cffffcc00r|rd Farm
-}
-
 STRING 1529
 // Units: hC06 (Hard Farm), Ubertip (Tooltip - Extended)
 {
 As the Farm, but 4 times bigger and 4 times more resistant. Very effective when used well.
-}
-
-STRING 1532
-// Units: hctw (Frost Farm), Tip (Tooltip - Basic)
-{
-Build Frost Farm - |cffffcc00G|r
-}
-
-STRING 1533
-// Units: e001 (Magic Farm), Tip (Tooltip - Basic)
-{
-Build Magic Farm - |cffffcc00Z|r
 }
 
 STRING 1534
@@ -667,12 +588,6 @@ Z
 STRING 1542
 {
 Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 1547
-// Abilities: A001 (Sentry Ward), Tip (Tooltip - Normal)
-{
-Sentry |cffffcc00W|rard
 }
 
 STRING 1548
@@ -717,12 +632,6 @@ STRING 1564
 Gem
 }
 
-STRING 1565
-// Units: h002 (Invisible Farm), Tip (Tooltip - Basic)
-{
-Build Invisible Farm (|cffffcc00X|r)
-}
-
 STRING 1566
 // Units: h006 (Jotye Farm), Ubertip (Tooltip - Extended)
 {
@@ -739,12 +648,6 @@ STRING 1572
 // Units: h006 (Jotye Farm), Hotkey (Hotkey)
 {
 V
-}
-
-STRING 1573
-// Units: h006 (Jotye Farm), Tip (Tooltip - Basic)
-{
-Build Jotye Farm (|cffffcc00V|r)
 }
 
 STRING 1577
@@ -789,12 +692,6 @@ STRING 1586
 Silver Farm
 }
 
-STRING 1587
-// Units: h007 (Silver Farm), Tip (Tooltip - Basic)
-{
-Build Silver Farm |cffffcc00(X)|r
-}
-
 STRING 1588
 // Units: h007 (Silver Farm), Ubertip (Tooltip - Extended)
 {
@@ -805,12 +702,6 @@ STRING 1589
 // Units: h007 (Silver Farm), EditorSuffix (Name - Editor Suffix)
 {
 (GoldenSheep)
-}
-
-STRING 1591
-// Units: h000 (Golden Farm), Tip (Tooltip - Basic)
-{
-Build Golden Farm |cffffcc00(F)|r
 }
 
 STRING 1592
@@ -843,12 +734,6 @@ STRING 1603
 T
 }
 
-STRING 1604
-// Units: h008 (Power Tower), Tip (Tooltip - Basic)
-{
-Upgrade to Power Tower (|cffffcc00T|r)
-}
-
 STRING 1605
 // Units: h008 (Power Tower), Ubertip (Tooltip - Extended)
 {
@@ -872,12 +757,6 @@ STRING 1615
 Better Saving Farm
 }
 
-STRING 1616
-// Units: h009 (Better Saving Farm), Tip (Tooltip - Basic)
-{
-Upgrade to Better Saving Farm (|cffffcc00C|r)
-}
-
 STRING 1617
 // Units: h009 (Better Saving Farm), Ubertip (Tooltip - Extended)
 {
@@ -894,12 +773,6 @@ STRING 1619
 // Units: h00A (Super Saving Farm), Name (Name)
 {
 Super Saving Farm
-}
-
-STRING 1620
-// Units: h00A (Super Saving Farm), Tip (Tooltip - Basic)
-{
-Upgrade to Super Saving Farm (|cffffcc00C|r)
 }
 
 STRING 1621
@@ -962,12 +835,6 @@ STRING 1649
 Saving Farm
 }
 
-STRING 1650
-// Units: otbk (Saving Farm), Tip (Tooltip - Basic)
-{
-Build Saving Farm (|cffffcc00C|r)
-}
-
 STRING 1651
 // Units: otbk (Saving Farm), Ubertip (Tooltip - Extended)
 {
@@ -1004,12 +871,6 @@ STRING 1658
 Increases the size of Saving Farms so they look like normal Farms.|nDoes not effect upgraded Saving Farms.
 }
 
-STRING 1660
-// Upgrades: Robk (Berserker Upgrade), Tip (Tooltip)
-{
-Research |cffffcc00H|ridden Saving Farms
-}
-
 STRING 1661
 // Upgrades: Rhan (Animal War Training), effect1 (Effect 1)
 {
@@ -1024,18 +885,6 @@ Discord: http://tiny.cc/sheeptag
 STRING 1663
 {
 Discord: http://tiny.cc/sheeptag
-}
-
-STRING 1667
-// Upgrades: Rusm (Skeletal Mastery), Name (Name)
-{
-|cffffcc00U|rnholy Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1668
-// Upgrades: Rusm (Skeletal Mastery), Name (Name)
-{
-|cffffcc00U|rnholy Aura - [|cffffcc00Level 3|r]
 }
 
 STRING 1672
@@ -1054,18 +903,6 @@ STRING 1674
 // Abilities: ACua (Unholy Aura), Ubertip (Tooltip - Normal - Extended)
 {
 Increases nearby friendly units' life regeneration rate by <ACua,DataB1,%>%.
-}
-
-STRING 1675
-// Upgrades: Rusm (Skeletal Mastery), Tip (Tooltip)
-{
-Research |cffffcc00U|rnholy Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1676
-// Upgrades: Rusm (Skeletal Mastery), Tip (Tooltip)
-{
-Research |cffffcc00U|rnholy Aura - [|cffffcc00Level 3|r]
 }
 
 STRING 1677
@@ -1134,18 +971,6 @@ STRING 1687
 U
 }
 
-STRING 1690
-// Upgrades: R000 (Skeletal Mastery), Tip (Tooltip)
-{
-Research |cffffcc00E|rndurance Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1691
-// Upgrades: R000 (Skeletal Mastery), Tip (Tooltip)
-{
-Research |cffffcc00E|rndurance Aura - [|cffffcc00Level 3|r]
-}
-
 STRING 1694
 // Items: tfar (Siege Tower), Hotkey (Hotkey)
 {
@@ -1182,18 +1007,6 @@ STRING 1700
 Gives <ACav,DataA3> additional armor to nearby friendly units.
 }
 
-STRING 1702
-// Upgrades: R001 (Skeletal Mastery), Tip (Tooltip)
-{
-Research De|cffffcc00v|rotion Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1703
-// Upgrades: R001 (Skeletal Mastery), Tip (Tooltip)
-{
-Research De|cffffcc00v|rotion Aura - [|cffffcc00Level 3|r]
-}
-
 STRING 1706
 // Abilities: A008 (Engineer), Hotkey (Hotkey - Normal)
 {
@@ -1228,30 +1041,6 @@ STRING 1712
 // Upgrades: R000 (Skeletal Mastery), Ubertip (Tooltip - Extended)
 {
 Increases nearby friendly units' movement speed by <SCae,DataA3,%>%.
-}
-
-STRING 1719
-// Upgrades: R000 (Skeletal Mastery), Name (Name)
-{
-|cffffcc00E|rndurance Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1720
-// Upgrades: R000 (Skeletal Mastery), Name (Name)
-{
-|cffffcc00E|rndurance Aura - [|cffffcc00Level 3|r]
-}
-
-STRING 1721
-// Upgrades: R001 (Skeletal Mastery), Name (Name)
-{
-De|cffffcc00v|rotion Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1722
-// Upgrades: R001 (Skeletal Mastery), Name (Name)
-{
-De|cffffcc00v|rotion Aura - [|cffffcc00Level 3|r]
 }
 
 STRING 1723
@@ -1296,22 +1085,10 @@ STRING 1731
 Deals <Asdg,DataB1> damage to nearby structures.
 }
 
-STRING 1732
-// Units: etol (Golem Totem), Tip (Tooltip - Basic)
-{
-Become |cffffcc00G|rolem Totem
-}
-
 STRING 1734
 // Units: h00C (Factory Farm), Name (Name)
 {
 Factory Farm
-}
-
-STRING 1735
-// Units: h00C (Factory Farm), Tip (Tooltip - Basic)
-{
-Build Factory Farm (|cffffcc00D|r)
 }
 
 STRING 1737
@@ -1392,24 +1169,6 @@ STRING 1772
 Increases Rock Golem damage by <ACac,DataA1,%>%.
 }
 
-STRING 1773
-// Upgrades: R002 (Skeletal Mastery), Name (Name)
-{
-|cffffcc00C|rommand Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1774
-// Upgrades: R002 (Skeletal Mastery), Tip (Tooltip)
-{
-Research |cffffcc00C|rommand Aura - [|cffffcc00Level 2|r]
-}
-
-STRING 1775
-// Upgrades: R002 (Skeletal Mastery), Tip (Tooltip)
-{
-Research |cffffcc00C|rommand Aura - [|cffffcc00Level 3|r]
-}
-
 STRING 1776
 // Upgrades: R002 (Skeletal Mastery), Ubertip (Tooltip - Extended)
 {
@@ -1426,12 +1185,6 @@ STRING 1778
 // Upgrades: R000 (Skeletal Mastery), Hotkey (Hotkey)
 {
 E
-}
-
-STRING 1780
-// Upgrades: R002 (Skeletal Mastery), Name (Name)
-{
-|cffffcc00C|rommand Aura - [|cffffcc00Level 3|r]
 }
 
 STRING 1781
@@ -1590,12 +1343,6 @@ STRING 1830
 Reflects <A005,DataA1,%>% of an enemy unit's attack damage back to it.
 }
 
-STRING 1831
-// Units: h00D (Strong Farm), Tip (Tooltip - Basic)
-{
-Upgrade to |cffffcc00S|rtrong Farm
-}
-
 STRING 1835
 // Units: h00E (Barricaded Farm), Ubertip (Tooltip - Extended)
 {
@@ -1606,12 +1353,6 @@ STRING 1836
 // Units: h00E (Barricaded Farm), Name (Name)
 {
 Barricaded Farm
-}
-
-STRING 1837
-// Units: h00E (Barricaded Farm), Tip (Tooltip - Basic)
-{
-Upgrade to |cffffcc00B|rarricaded Farm
 }
 
 STRING 1839
@@ -1656,34 +1397,16 @@ STRING 1848
 F
 }
 
-STRING 1850
-// Abilities: A007 (Flash), Tip (Tooltip - Normal)
-{
-|cffffcc00F|rlash
-}
-
 STRING 1853
 // Abilities: A008 (Engineer), Name (Name)
 {
 Engineer
 }
 
-STRING 1856
-// Abilities: A008 (Engineer), Tip (Tooltip - Normal)
-{
-|cffffcc00E|rngineer
-}
-
 STRING 1859
-// Abilities: A00C (Hulk), Name (Name)
-{
-Hulk
-}
-
-STRING 1860
 // Abilities: A00C (Hulk), Tip (Tooltip - Normal)
 {
-|cffffcc00H|rulk
+Hulk
 }
 
 STRING 1861
@@ -1710,22 +1433,10 @@ STRING 1866
 A
 }
 
-STRING 1867
-// Abilities: A00E (Attacker), Tip (Tooltip - Normal)
-{
-|cffffcc00A|rttacker
-}
-
 STRING 1870
 // Upgrades: Robk (Berserker Upgrade), Hotkey (Hotkey)
 {
 H
-}
-
-STRING 1871
-// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
-{
-E
 }
 
 STRING 1872
@@ -2400,156 +2111,6 @@ STRING 2096
 (Engineer)
 }
 
-STRING 2097
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 1|r]
-}
-
-STRING 2098
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 2|r]
-}
-
-STRING 2099
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 3|r]
-}
-
-STRING 2100
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 4|r]
-}
-
-STRING 2101
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 5|r]
-}
-
-STRING 2102
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 6|r]
-}
-
-STRING 2103
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 7|r]
-}
-
-STRING 2104
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 8|r]
-}
-
-STRING 2105
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 9|r]
-}
-
-STRING 2106
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 10|r]
-}
-
-STRING 2107
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 11|r]
-}
-
-STRING 2108
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 12|r]
-}
-
-STRING 2109
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 13|r]
-}
-
-STRING 2110
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 14|r]
-}
-
-STRING 2111
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 15|r]
-}
-
-STRING 2112
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 16|r]
-}
-
-STRING 2113
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 17|r]
-}
-
-STRING 2114
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 18|r]
-}
-
-STRING 2115
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 19|r]
-}
-
-STRING 2116
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 20|r]
-}
-
-STRING 2117
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 21|r]
-}
-
-STRING 2118
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 22|r]
-}
-
-STRING 2119
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 23|r]
-}
-
-STRING 2120
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 24|r]
-}
-
-STRING 2121
-// Abilities: A00G (Harden), Tip (Tooltip - Normal)
-{
-Harde|cffffcc00n|r - [|cffffcc00Level 25|r]
-}
-
 STRING 2173
 // Abilities: A00G (Harden), Ubertip (Tooltip - Normal - Extended)
 {
@@ -2868,300 +2429,6 @@ STRING 2225
 Copious Blood - [|cffffcc00Level 25|r]
 }
 
-STRING 2251
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 1|r] (|cffffcc00N|r)
-}
-
-STRING 2252
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 2|r] (|cffffcc00N|r)
-}
-
-STRING 2253
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 3|r] (|cffffcc00N|r)
-}
-
-STRING 2254
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 4|r] (|cffffcc00N|r)
-}
-
-STRING 2255
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 5|r] (|cffffcc00N|r)
-}
-
-STRING 2256
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 6|r] (|cffffcc00N|r)
-}
-
-STRING 2257
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 7|r] (|cffffcc00N|r)
-}
-
-STRING 2258
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 8|r] (|cffffcc00N|r)
-}
-
-STRING 2259
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 9|r] (|cffffcc00N|r)
-}
-
-STRING 2260
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 10|r] (|cffffcc00N|r)
-}
-
-STRING 2261
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 11|r] (|cffffcc00N|r)
-}
-
-STRING 2262
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 12|r] (|cffffcc00N|r)
-}
-
-STRING 2263
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 13|r] (|cffffcc00N|r)
-}
-
-STRING 2264
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 14|r] (|cffffcc00N|r)
-}
-
-STRING 2265
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 15|r] (|cffffcc00N|r)
-}
-
-STRING 2266
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 16|r] (|cffffcc00N|r)
-}
-
-STRING 2267
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 17|r] (|cffffcc00N|r)
-}
-
-STRING 2268
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 18|r] (|cffffcc00N|r)
-}
-
-STRING 2269
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 19|r] (|cffffcc00N|r)
-}
-
-STRING 2270
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 20|r] (|cffffcc00N|r)
-}
-
-STRING 2271
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 21|r] (|cffffcc00N|r)
-}
-
-STRING 2272
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 22|r] (|cffffcc00N|r)
-}
-
-STRING 2273
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 23|r] (|cffffcc00N|r)
-}
-
-STRING 2274
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 24|r] (|cffffcc00N|r)
-}
-
-STRING 2275
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
-{
-Activate Avatar - [|cffffcc00Level 25|r] (|cffffcc00N|r)
-}
-
-STRING 2301
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2302
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2303
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2304
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2305
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2306
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2307
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2308
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2309
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2310
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2311
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2312
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2313
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2314
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2315
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2316
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2317
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2318
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2319
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2320
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2321
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2322
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2323
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
-STRING 2324
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate A|cffffcc00v|ratar
-}
-
 STRING 2325
 // Abilities: A00I (Avatar), Hotkey (Hotkey - Normal)
 {
@@ -3172,156 +2439,6 @@ STRING 2326
 // Abilities: A00J (Entangling Roots), Hotkey (Hotkey - Normal)
 {
 N
-}
-
-STRING 2327
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 1|r]
-}
-
-STRING 2331
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 2|r]
-}
-
-STRING 2332
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 3|r]
-}
-
-STRING 2333
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 4|r]
-}
-
-STRING 2334
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 5|r]
-}
-
-STRING 2335
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 6|r]
-}
-
-STRING 2336
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 7|r]
-}
-
-STRING 2337
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 8|r]
-}
-
-STRING 2338
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 9|r]
-}
-
-STRING 2339
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 10|r]
-}
-
-STRING 2340
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 11|r]
-}
-
-STRING 2341
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 12|r]
-}
-
-STRING 2342
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 13|r]
-}
-
-STRING 2343
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 14|r]
-}
-
-STRING 2344
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 15|r]
-}
-
-STRING 2345
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 16|r]
-}
-
-STRING 2346
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 17|r]
-}
-
-STRING 2347
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 18|r]
-}
-
-STRING 2348
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 19|r]
-}
-
-STRING 2349
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 20|r]
-}
-
-STRING 2350
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 21|r]
-}
-
-STRING 2351
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 22|r]
-}
-
-STRING 2352
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 23|r]
-}
-
-STRING 2353
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 24|r]
-}
-
-STRING 2354
-// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
-{
-E|cffffcc00n|rtangling Roots - [|cffffcc00Level 25|r]
 }
 
 STRING 2377
@@ -8466,162 +7583,6 @@ STRING 4066
 Heals a target friendly non-mechanical wounded unit for <A004,DataA1> hit points.
 }
 
-STRING 4092
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 4|r]
-}
-
-STRING 4093
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 5|r]
-}
-
-STRING 4094
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 6|r]
-}
-
-STRING 4095
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 7|r]
-}
-
-STRING 4096
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 8|r]
-}
-
-STRING 4097
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 9|r]
-}
-
-STRING 4098
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 10|r]
-}
-
-STRING 4099
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 11|r]
-}
-
-STRING 4100
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 12|r]
-}
-
-STRING 4101
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 13|r]
-}
-
-STRING 4102
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 14|r]
-}
-
-STRING 4103
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 15|r]
-}
-
-STRING 4104
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 16|r]
-}
-
-STRING 4105
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 17|r]
-}
-
-STRING 4106
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 18|r]
-}
-
-STRING 4107
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 19|r]
-}
-
-STRING 4108
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 20|r]
-}
-
-STRING 4109
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 21|r]
-}
-
-STRING 4110
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 22|r]
-}
-
-STRING 4111
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 23|r]
-}
-
-STRING 4112
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 24|r]
-}
-
-STRING 4113
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 25|r]
-}
-
-STRING 4114
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 1|r]
-}
-
-STRING 4115
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 2|r]
-}
-
-STRING 4116
-// Abilities: A00A (Blink), Tip (Tooltip - Normal)
-{
-Bli|cffffcc00n|rk - [|cffffcc00Level 3|r]
-}
-
-STRING 4168
-// Abilities: A006 (Specialize), Tip (Tooltip - Normal)
-{
-Sp|cffffcc00e|rcialize
-}
-
 STRING 4221
 // Items: I004 (Dragon Glass), Name (Name)
 {
@@ -8740,18 +7701,6 @@ STRING 4260
 // Upgrades: R004 (Berserker Upgrade), Name (Name)
 {
 Phoenix Scouts
-}
-
-STRING 4262
-// Upgrades: R004 (Berserker Upgrade), Tip (Tooltip)
-{
-Research Ph|cffffcc00o|renix Scouts
-}
-
-STRING 4263
-// Upgrades: R004 (Berserker Upgrade), Hotkey (Hotkey)
-{
-H
 }
 
 STRING 4264
@@ -9186,12 +8135,6 @@ STRING 4348
 Drenches the Piiri Tower's ammo in burning oil, causing them to light the ground on fire and burn structures.
 }
 
-STRING 4349
-// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
-{
-E
-}
-
 STRING 4350
 // Units: h00I (Piiri Tower), Tip (Tooltip - Basic)
 {
@@ -9269,12 +8212,6 @@ STRING 4386
 Selects the type of farm the Factory Farm produces.
 }
 
-STRING 4387
-// Abilities: A00M (Select Farm), Tip (Tooltip - Normal)
-{
-|cffffcc00S|relect Farm
-}
-
 STRING 4388
 // Abilities: A00M (Select Farm), Hotkey (Hotkey - Normal)
 {
@@ -9282,7 +8219,7 @@ S
 }
 
 STRING 4389
-// Abilities: A00M (Select Farm), Name (Name)
+// Abilities: A00M (Select Farm), Tip (Tooltip - Normal)
 {
 Select Farm
 }
@@ -9303,12 +8240,6 @@ STRING 4392
 // Abilities: A00D (Destroy Farm), Name (Name)
 {
 Destroy Farm
-}
-
-STRING 4393
-// Abilities: A00D (Destroy Farm), Tip (Tooltip - Normal)
-{
-Destory Farm (|cffffcc00X|r)
 }
 
 STRING 4394
@@ -9528,5 +8459,1037 @@ STRING 4433
 STRING 4435
 {
 Fixus 8
+}
+
+STRING 4436
+// Units: hctw (Frost Farm), Tip (Tooltip - Basic)
+{
+Build Frost Farm
+}
+
+STRING 4437
+// Units: hbar (Upgraded Farm), Tip (Tooltip - Basic)
+{
+Build Upgraded Farm
+}
+
+STRING 4438
+// Units: hlum (Aura Farm), Tip (Tooltip - Basic)
+{
+Build Aura Farm
+}
+
+STRING 4439
+// Units: ohun (Saving Farm), Tip (Tooltip - Basic)
+{
+Build Saving Farm
+}
+
+STRING 4440
+// Units: otbk (Saving Farm), Tip (Tooltip - Basic)
+{
+Build Saving Farm
+}
+
+STRING 4441
+// Units: etol (Golem Totem), Tip (Tooltip - Basic)
+{
+Become Golem Totem
+}
+
+STRING 4442
+// Units: hC06 (Hard Farm), Tip (Tooltip - Basic)
+{
+Build Hard Farm
+}
+
+STRING 4443
+// Units: nC13 (Destroy), Tip (Tooltip - Basic)
+{
+Destroy
+}
+
+STRING 4444
+// Units: hC07 (Tiny Farm), Tip (Tooltip - Basic)
+{
+Build Tiny Farm
+}
+
+STRING 4445
+// Units: e001 (Magic Farm), Tip (Tooltip - Basic)
+{
+Build Magic Farm
+}
+
+STRING 4446
+// Units: n000 (Stack Farm), Tip (Tooltip - Basic)
+{
+Build Stack Farm
+}
+
+STRING 4447
+// Units: h000 (Golden Farm), Tip (Tooltip - Basic)
+{
+Build Golden Farm
+}
+
+STRING 4448
+// Units: h001 (Silver Farm), Tip (Tooltip - Basic)
+{
+Build Silver Farm
+}
+
+STRING 4449
+// Units: h002 (Invisible Farm), Tip (Tooltip - Basic)
+{
+Build Invisible Farm
+}
+
+STRING 4450
+// Units: h003 (Stun Farm), Tip (Tooltip - Basic)
+{
+Build Stun Farm
+}
+
+STRING 4451
+// Units: h004 (Black Farm), Tip (Tooltip - Basic)
+{
+Build Black Farm
+}
+
+STRING 4452
+// Units: h005 (Sentry Farm), Tip (Tooltip - Basic)
+{
+Build Sentry Farm
+}
+
+STRING 4453
+// Units: h006 (Jotye Farm), Tip (Tooltip - Basic)
+{
+Build Jotye Farm
+}
+
+STRING 4454
+// Units: h007 (Silver Farm), Tip (Tooltip - Basic)
+{
+Build Silver Farm
+}
+
+STRING 4455
+// Units: h008 (Power Tower), Tip (Tooltip - Basic)
+{
+Upgrade to Power Tower
+}
+
+STRING 4456
+// Units: h009 (Better Saving Farm), Tip (Tooltip - Basic)
+{
+Upgrade to Better Saving Farm
+}
+
+STRING 4457
+// Units: h00A (Super Saving Farm), Tip (Tooltip - Basic)
+{
+Upgrade to Super Saving Farm
+}
+
+STRING 4458
+// Units: h00C (Factory Farm), Tip (Tooltip - Basic)
+{
+Build Factory Farm
+}
+
+STRING 4459
+// Units: h00D (Strong Farm), Tip (Tooltip - Basic)
+{
+Upgrade to Strong Farm
+}
+
+STRING 4460
+// Units: h00E (Barricaded Farm), Tip (Tooltip - Basic)
+{
+Upgrade to Barricaded Farm
+}
+
+STRING 4461
+// Abilities: A001 (Sentry Ward), Tip (Tooltip - Normal)
+{
+Sentry Ward
+}
+
+STRING 4462
+// Abilities: A00D (Destroy Farm), Tip (Tooltip - Normal)
+{
+Destory Farm
+}
+
+STRING 4463
+// Abilities: A006 (Specialize), Tip (Tooltip - Normal)
+{
+Specialize
+}
+
+STRING 4464
+// Abilities: A007 (Flash), Tip (Tooltip - Normal)
+{
+Flash
+}
+
+STRING 4465
+// Abilities: A008 (Engineer), Tip (Tooltip - Normal)
+{
+Engineer
+}
+
+STRING 4466
+// Abilities: A00E (Attacker), Tip (Tooltip - Normal)
+{
+Attacker
+}
+
+STRING 4467
+// Abilities: A00C (Hulk), Name (Name)
+{
+Hulk
+}
+
+STRING 4468
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 4|r]
+}
+
+STRING 4469
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 5|r]
+}
+
+STRING 4470
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 6|r]
+}
+
+STRING 4471
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 7|r]
+}
+
+STRING 4472
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 8|r]
+}
+
+STRING 4473
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 9|r]
+}
+
+STRING 4474
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 10|r]
+}
+
+STRING 4475
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 11|r]
+}
+
+STRING 4476
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 12|r]
+}
+
+STRING 4477
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 13|r]
+}
+
+STRING 4478
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 14|r]
+}
+
+STRING 4479
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 15|r]
+}
+
+STRING 4480
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 16|r]
+}
+
+STRING 4481
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 17|r]
+}
+
+STRING 4482
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 18|r]
+}
+
+STRING 4483
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 19|r]
+}
+
+STRING 4484
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 20|r]
+}
+
+STRING 4485
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 21|r]
+}
+
+STRING 4486
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 22|r]
+}
+
+STRING 4487
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 23|r]
+}
+
+STRING 4488
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 24|r]
+}
+
+STRING 4489
+// Abilities: A00A (Blink), Tip (Tooltip - Normal)
+{
+Blink - [|cffffcc00Level 25|r]
+}
+
+STRING 4490
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 1|r]
+}
+
+STRING 4491
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 2|r]
+}
+
+STRING 4492
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 3|r]
+}
+
+STRING 4493
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 4|r]
+}
+
+STRING 4494
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 5|r]
+}
+
+STRING 4495
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 6|r]
+}
+
+STRING 4496
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 7|r]
+}
+
+STRING 4497
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 8|r]
+}
+
+STRING 4498
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 9|r]
+}
+
+STRING 4499
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 10|r]
+}
+
+STRING 4500
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 11|r]
+}
+
+STRING 4501
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 12|r]
+}
+
+STRING 4502
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 13|r]
+}
+
+STRING 4503
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 14|r]
+}
+
+STRING 4504
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 15|r]
+}
+
+STRING 4505
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 16|r]
+}
+
+STRING 4506
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 17|r]
+}
+
+STRING 4507
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 18|r]
+}
+
+STRING 4508
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 19|r]
+}
+
+STRING 4509
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 20|r]
+}
+
+STRING 4510
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 21|r]
+}
+
+STRING 4511
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 22|r]
+}
+
+STRING 4512
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 23|r]
+}
+
+STRING 4513
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 24|r]
+}
+
+STRING 4514
+// Abilities: A00G (Harden), Tip (Tooltip - Normal)
+{
+Harden - [|cffffcc00Level 25|r]
+}
+
+STRING 4515
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 2|r]
+}
+
+STRING 4516
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 3|r]
+}
+
+STRING 4517
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 4|r]
+}
+
+STRING 4518
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 5|r]
+}
+
+STRING 4519
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 6|r]
+}
+
+STRING 4520
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 7|r]
+}
+
+STRING 4521
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 8|r]
+}
+
+STRING 4522
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 9|r]
+}
+
+STRING 4523
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 10|r]
+}
+
+STRING 4524
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 11|r]
+}
+
+STRING 4525
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 12|r]
+}
+
+STRING 4526
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 13|r]
+}
+
+STRING 4527
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 14|r]
+}
+
+STRING 4528
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 15|r]
+}
+
+STRING 4529
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 16|r]
+}
+
+STRING 4530
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 17|r]
+}
+
+STRING 4531
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 18|r]
+}
+
+STRING 4532
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 19|r]
+}
+
+STRING 4533
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 20|r]
+}
+
+STRING 4534
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 21|r]
+}
+
+STRING 4535
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 22|r]
+}
+
+STRING 4536
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 23|r]
+}
+
+STRING 4537
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 24|r]
+}
+
+STRING 4538
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 25|r]
+}
+
+STRING 4539
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4540
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4541
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4542
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4543
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4544
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4545
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4546
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4547
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4548
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4549
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4550
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4551
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4552
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4553
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4554
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4555
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4556
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4557
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4558
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4559
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4560
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4561
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4562
+// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
+{
+Deactivate Avatar
+}
+
+STRING 4563
+// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+{
+Activate Avatar - [|cffffcc00Level 1|r]
+}
+
+STRING 4564
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 4|r]
+}
+
+STRING 4565
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 5|r]
+}
+
+STRING 4566
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 6|r]
+}
+
+STRING 4567
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 7|r]
+}
+
+STRING 4568
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 8|r]
+}
+
+STRING 4569
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 9|r]
+}
+
+STRING 4570
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 10|r]
+}
+
+STRING 4571
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 11|r]
+}
+
+STRING 4572
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 12|r]
+}
+
+STRING 4573
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 13|r]
+}
+
+STRING 4574
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 14|r]
+}
+
+STRING 4575
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 15|r]
+}
+
+STRING 4576
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 16|r]
+}
+
+STRING 4577
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 17|r]
+}
+
+STRING 4578
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 18|r]
+}
+
+STRING 4579
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 19|r]
+}
+
+STRING 4580
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 20|r]
+}
+
+STRING 4581
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 21|r]
+}
+
+STRING 4582
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 22|r]
+}
+
+STRING 4583
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 23|r]
+}
+
+STRING 4584
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 24|r]
+}
+
+STRING 4585
+// Abilities: A00J (Entangling Roots), Tip (Tooltip - Normal)
+{
+Entangling Roots - [|cffffcc00Level 25|r]
+}
+
+STRING 4586
+// Abilities: A00M (Select Farm), Name (Name)
+{
+Select Farm
+}
+
+STRING 4587
+// Upgrades: R000 (Skeletal Mastery), Name (Name)
+{
+Endurance Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4588
+// Upgrades: R000 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Endurance Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4589
+// Upgrades: R000 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Endurance Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4590
+// Upgrades: R000 (Skeletal Mastery), Name (Name)
+{
+Endurance Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4591
+// Upgrades: R001 (Skeletal Mastery), Name (Name)
+{
+Devotion Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4592
+// Upgrades: R001 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Devotion Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4593
+// Upgrades: R001 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Devotion Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4594
+// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 4595
+// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 4596
+// Upgrades: R001 (Skeletal Mastery), Name (Name)
+{
+Devotion Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4597
+// Upgrades: R002 (Skeletal Mastery), Name (Name)
+{
+Command Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4598
+// Upgrades: R002 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Command Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4599
+// Upgrades: R002 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Command Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4600
+// Upgrades: R002 (Skeletal Mastery), Name (Name)
+{
+Command Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4601
+// Upgrades: R004 (Berserker Upgrade), Tip (Tooltip)
+{
+Research Phoenix Scouts
+}
+
+STRING 4602
+// Upgrades: R004 (Berserker Upgrade), Hotkey (Hotkey)
+{
+O
+}
+
+STRING 4603
+// Upgrades: Robk (Berserker Upgrade), Tip (Tooltip)
+{
+Research Hidden Saving Farms
+}
+
+STRING 4604
+// Upgrades: Rusm (Skeletal Mastery), Name (Name)
+{
+Unholy Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4605
+// Upgrades: Rusm (Skeletal Mastery), Tip (Tooltip)
+{
+Research Unholy Aura - [|cffffcc00Level 2|r]
+}
+
+STRING 4606
+// Upgrades: Rusm (Skeletal Mastery), Tip (Tooltip)
+{
+Research Unholy Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4607
+// Upgrades: Rusm (Skeletal Mastery), Name (Name)
+{
+Unholy Aura - [|cffffcc00Level 3|r]
 }
 

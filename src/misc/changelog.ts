@@ -3,10 +3,18 @@
 
 export const changelog = [
 	{ title: "Version 8", content: [
+		"Balance",
+		"• Fixed reduction of Harden (30 -> 20 seconds)",
+		"• Reduced sheep death farm bounty (50% -> 40%)",
+		"• Increased Mana Burn amount (50 -> 100 mana/damage) ",
+		"Features",
+		"• Added commands and changelog to quests menu",
+		"• Sheep (Factory) no longer shows up on the minimap",
+		"• Added \"Jefferson\" to sparkle units",
+		"• Cleaned up hotkeys, both tooltips and for grid",
 		"Refactors",
 		"• Converted to TypeScript",
 		"• Dragon Fire made ~10x more efficient",
-		"• Added commands and changelog to quests menu",
 	].join( "\n" ) },
 	{ title: "Version 7d", content: [
 		"Bug Fixes",

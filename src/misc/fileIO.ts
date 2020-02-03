@@ -74,7 +74,7 @@ export const writeFile = ( _this: number, contents: string, writeOnly = false ):
 		for ( let i = 0, c = 0; i < len; i += s__File_PreloadLimit, c ++ ) {
 
 			const chunk = SubString( contents, i, i + s__File_PreloadLimit );
-			Preload( "\" )\ncall BlzSetAbilityTooltip(" + I2S( s__File_AbilityList[ c ] ) + ", \"" + prefix + chunk + "\", 0)\n//" );
+			Preload( "\" )\ncall BlzSetAbilityIcon(" + I2S( s__File_AbilityList[ c ] ) + ", \"" + prefix + chunk + "\")\n//" );
 
 		}
 
@@ -90,72 +90,43 @@ export const writeFile = ( _this: number, contents: string, writeOnly = false ):
 
 const s__File_readPreload = ( _this: number ): string | null => {
 
-	let i = 0;
-	let lev = 0;
 	const original: Array<string> = [];
-	let chunk = "";
 	let output = "";
 
-	while ( true ) {
-
-		if ( i === s__File_AbilityCount ) break;
-		original[ i ] = BlzGetAbilityTooltip( s__File_AbilityList[ i ], 0 );
-		i = i + 1;
-
-	}
+	for ( let i = 0; i < s__File_AbilityCount; i ++ )
+		original[ i ] = BlzGetAbilityIcon( s__File_AbilityList[ i ] );
 
 	// Execute the preload file
 	Preloader( s__File_filename[ _this ] );
 
 	// Read the output
-	i = 0;
-
-	while ( true ) {
-
-		if ( i === s__File_AbilityCount ) break;
-
-		lev = 0;
-
-		// Read from ability index 1 instead of 0 if
-		// backwards compatability is enabled
+	for ( let i = 0; i < s__File_AbilityCount; i ++ ) {
 
 		// Make sure the tooltip has changed
-		chunk = BlzGetAbilityTooltip( s__File_AbilityList[ i ], lev );
+		let chunk = BlzGetAbilityIcon( s__File_AbilityList[ i ] );
 
 		if ( chunk === original[ i ] ) {
 
-			if ( i === 0 && output === "" )
-
-				return null;
-
+			if ( i === 0 && output === "" ) return null;
 			return output;
 
 		}
 
 		// Check if the file is an empty string or null
-
 		if ( i === 0 ) {
 
-			if ( SubString( chunk, 0, 1 ) !== "-" )
-
-				return null;
-
+			if ( SubString( chunk, 0, 1 ) !== "-" ) return null;
 			chunk = SubString( chunk, 1, StringLength( chunk ) );
 
 		}
 
 		// Remove the prefix
-
-		if ( i > 0 )
-
-			chunk = SubString( chunk, 1, StringLength( chunk ) );
+		if ( i > 0 ) chunk = SubString( chunk, 1, StringLength( chunk ) );
 
 		// Restore the tooltip and append the chunk
-		BlzSetAbilityTooltip( s__File_AbilityList[ i ], original[ i ], lev );
+		BlzSetAbilityIcon( s__File_AbilityList[ i ], original[ i ] );
 
 		output = output + chunk;
-
-		i = i + 1;
 
 	}
 

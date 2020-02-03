@@ -6,7 +6,6 @@ import {
 	countHere,
 	endGame,
 	goldFactor,
-	grimEffect,
 	IMBA_WOLF_TYPE,
 	saveskills,
 	SHEEP_TYPE,
@@ -63,7 +62,6 @@ const replaceUnit = ( u: unit, newType: number ): unit => {
 
 	// Create a new one
 	u = CreateUnit( p, newType, x, y, f );
-	if ( GetPlayerName( p ).indexOf( "Grim" ) >= 0 ) grimEffect( u );
 	SelectUnitForPlayerSingle( u, p );
 
 	// Copy hero props
@@ -99,7 +97,7 @@ const GetSheepBounty = ( dyingUnit: unit ): number => {
 	// farm bonus
 	bounty = reducePlayerUnits(
 		GetOwningPlayer( dyingUnit ),
-		( bounty, u ) => bounty + I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) ) / 2,
+		( bounty, u ) => bounty + I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) ) * 0.4,
 		bounty,
 		isStructureFilter,
 	);
@@ -128,9 +126,6 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	killedUnit = CreateUnit( killedPlayer, WISP_TYPE, - 256, - 832, 270 );
 	wisps[ killedPlayerId ] = killedUnit;
 	SetUnitPathing( killedUnit, false );
-
-	if ( GetPlayerName( killedPlayer ).indexOf( "Grim" ) >= 0 )
-		grimEffect( killedUnit );
 
 	// Increase wolf kills and upgrade
 	saveskills[ killingPlayerId ] = saveskills[ killingPlayerId ] + 1;
@@ -220,9 +215,6 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 	}
 
-	if ( GetPlayerName( Player( i ) ).indexOf( "Grim" ) >= 0 )
-		grimEffect( savedUnit );
-
 	// Increase saves and upgrade
 	saveskills[ savingPlayerId ] = saveskills[ savingPlayerId ] + 1;
 	Specialization_onSave( savingUnit );
@@ -232,9 +224,6 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 		savingUnit = replaceUnit( savingUnit, getSheepType( savingPlayer ) );
 		sheeps[ savingPlayerId ] = savingUnit;
 		SelectUnitForPlayerSingle( savingUnit, savingPlayer );
-
-		if ( GetPlayerName( Player( i ) ).indexOf( "Grim" ) >= 0 )
-			grimEffect( savedUnit );
 
 		Specialization_onSpawn( savingUnit );
 
@@ -259,9 +248,6 @@ const onWispTK = ( wispUnit: unit ): void => {
 	const wispPlayerId = GetPlayerId( wispPlayer );
 	wisps[ wispPlayerId ] = CreateUnit( wispPlayer, WISP_TYPE, - 256, - 832, 270 );
 	SetUnitPathing( wisps[ wispPlayerId ], false );
-
-	if ( GetPlayerName( wispPlayer ).indexOf( "Grim" ) >= 0 )
-		grimEffect( wisps[ wispPlayerId ] );
 
 };
 

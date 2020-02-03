@@ -3,6 +3,7 @@ import "core/game";
 import "core/init";
 import "egg/dolly";
 import "egg/gem";
+import "egg/sparkles";
 import "misc/angle";
 import "misc/clean";
 import "misc/control";

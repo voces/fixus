@@ -233,13 +233,6 @@ export const SmallText = ( amount: number, u: unit, cc: number, x: number, y: nu
 
 };
 
-export const grimEffect = ( u: unit ): void => {
-
-	AddSpecialEffectTarget( "Objects\\Spawnmodels\\Undead\\UndeadDissipate\\UndeadDissipate.mdl", u, "origin" );
-	AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", u, "origin" );
-
-};
-
 addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 
 	SetMapFlag( MAP_SHARED_ADVANCED_CONTROL, true );

@@ -4,7 +4,6 @@ import {
 	countHere,
 	endGame,
 	gameState,
-	grimEffect,
 	myTimer,
 	myTimerDialog,
 	SHEEP_TYPE,
@@ -79,9 +78,6 @@ const initToStart = (): void => {
 
 		}
 
-		if ( GetPlayerName( Player( i ) ).indexOf( "Grim" ) >= 0 )
-			grimEffect( sheeps[ i ] );
-
 		if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_COMPUTER )
 			shareControlWithAllies( Player( i ) );
 
@@ -111,9 +107,6 @@ const startToPlay = (): void => {
 		wolves[ i ] = CreateUnit( Player( i ), WOLF_TYPE, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
 		UnitAddItem( wolves[ i ], CreateItem( STARTER_ITEM_TYPE, GetStartLocationX( i ), GetStartLocationY( i ) ) );
 		UnitAddItem( wolves[ i ], CreateItem( starterItem, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-
-		if ( GetPlayerName( Player( i ) ).indexOf( "Grim" ) >= 0 )
-			grimEffect( wolves[ i ] );
 
 		if ( GetLocalPlayer() === Player( i ) ) {
 
