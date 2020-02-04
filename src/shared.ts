@@ -3,6 +3,8 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { AbilityRangePreload } from "./misc/abilityPreload";
+import { mmd } from "./lib/mmd";
+import { MMDFlag } from "./lib/w3mmd";
 
 export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
@@ -133,6 +135,15 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 	TimerStart( myTimer, 15, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( myTimerDialog, "Ending in..." );
 	TimerDialogDisplay( myTimerDialog, true );
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+
+			if ( winner === "wolves" ) mmd.flagPlayer( Player( i ), MMDFlag.winner );
+			else mmd.flagPlayer( Player( i ), MMDFlag.loser );
+
+		else if ( winner === "sheep" ) mmd.flagPlayer( Player( i ), MMDFlag.winner );
+		else mmd.flagPlayer( Player( i ), MMDFlag.loser );
 
 	if ( winner === "sheep" )
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
