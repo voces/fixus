@@ -1,9 +1,12 @@
+
 /**
  * The Map Meta Data Library (TypeScript)
  * Version: v0.10
  * Last Modified: Sept 19, 2019
  * Author Chain: Strilanc, Promises
  */
+
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 export enum MMDGoal {
 	None,
@@ -70,7 +73,6 @@ export class Queue<T> {
 
 export class EventQueue {
 
-	private ticker: trigger;
 	private readonly maxEventsPerTick: number = 2;
 	private highPriority: Queue<() => boolean> = new Queue<() => boolean>();
 	private medPriority: Queue<() => boolean> = new Queue<() => boolean>();
@@ -79,11 +81,11 @@ export class EventQueue {
 
 	constructor() {
 
-		this.ticker = CreateTrigger();
-		TriggerRegisterTimerEventPeriodic( this.ticker, 0.10 );
-		TriggerAddAction( this.ticker, () => {
+		addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-			this.HandleTick();
+			const ticker = CreateTrigger();
+			TriggerRegisterTimerEventPeriodic( ticker, 0.10 );
+			TriggerAddAction( ticker, () => this.HandleTick() );
 
 		} );
 
@@ -162,7 +164,7 @@ class MMDNode {
 		this.mmd = mmd;
 		this._message = message;
 		this._key = key.toString();
-		this._timeout = mmd.GetTime() + 7.0 + GetRandomReal( 0, 2 + 0.1 * GetPlayerId( GetTriggerPlayer() ) );
+		this._timeout = mmd.GetTime() + 7.0 + GetRandomReal( 0, 2 + 0.1 * GetPlayerId( GetLocalPlayer() ) );
 		this._checksum = mmd.PoorHash( this._message, key );
 
 	}
@@ -206,7 +208,7 @@ class MMDNode {
 export class MMD {
 
 	private readonly FILENAME: string = "MMD.Dat";
-	private readonly clock: timer = CreateTimer();
+	private clock: timer | undefined;
 	private readonly CURRENT_VERSION: number = 2;
 	private readonly MINIMUM_PARSER_VERSION: number = 2;
 	private readonly ESCAPED_CHARS: string = " \\";
@@ -223,14 +225,21 @@ export class MMD {
 
 	constructor() {
 
-		const t: trigger = CreateTrigger();
-		TriggerRegisterTimerEvent( t, 0, false );
-		TriggerAddAction( t, () => this.init() );
+		addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+
+			const t: trigger = CreateTrigger();
+			TriggerRegisterTimerEvent( t, 0, false );
+			TriggerAddAction( t, () => this.init() );
+
+			this.clock = CreateTimer();
+			TimerStart( this.clock, 999999999, false, () => { /* do nothing */ } );
+
+		} );
+
 		this.eventQueue = new EventQueue();
 
 		FlushGameCache( InitGameCache( this.FILENAME ) );
 		this._gameCache = InitGameCache( this.FILENAME );
-		TimerStart( this.clock, 999999999, false, () => { /* do nothing */ } );
 
 	}
 
@@ -247,9 +256,13 @@ export class MMD {
 
 				}
 
-		const t: trigger = CreateTrigger();
-		TriggerAddAction( t, () => this.tick() );
-		TriggerRegisterTimerEvent( t, 0.37, true );
+		addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+
+			const t: trigger = CreateTrigger();
+			TriggerAddAction( t, () => this.tick() );
+			TriggerRegisterTimerEvent( t, 0.37, true );
+
+		} );
 
 	}
 
@@ -372,6 +385,8 @@ export class MMD {
 	}
 
 	public GetTime(): number {
+
+		if ( ! this.clock ) return 0;
 
 		return TimerGetElapsed( this.clock );
 
