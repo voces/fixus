@@ -8,7 +8,6 @@ import "misc/angle";
 import "misc/clean";
 import "misc/control";
 import "misc/dollyMove";
-import "misc/elo";
 import "misc/face";
 import "misc/fiveMinuteAction";
 import "misc/friendlyAttack";

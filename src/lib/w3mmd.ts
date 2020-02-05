@@ -367,7 +367,7 @@ export class MMD {
 
 				}
 
-		return pickFlags[ GetPlayerId( GetTriggerPlayer() ) ];
+		return pickFlags[ GetPlayerId( GetLocalPlayer() ) ];
 
 	}
 
