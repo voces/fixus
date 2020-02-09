@@ -33,3 +33,5 @@ import "wolves/quickBuy";
 import "wolves/scoutPhoenixUpgrade";
 import "wolves/ward";
 import "wolves/whiteWolf";
+
+import "lib/w3mmd";
