@@ -25,6 +25,7 @@ import "sheep/farmSelfDestruct";
 import "sheep/jotyeFarm";
 import "sheep/saveDeath";
 import "sheep/wispLeave";
+import "stats/mmd";
 import "util/todo";
 import "wolves/cloakOfFlames";
 import "wolves/dragonFire";
@@ -33,5 +34,3 @@ import "wolves/quickBuy";
 import "wolves/scoutPhoenixUpgrade";
 import "wolves/ward";
 import "wolves/whiteWolf";
-
-import "lib/w3mmd";
