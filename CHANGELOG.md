@@ -1,7 +1,12 @@
+# Version 9
+## Balance
+- Decreased Avatar damage buff (50 -> 5 damage/level)
+- Decreased charges on Goblin Land Mines (3 -> 2)
+
 # Version 8
 ## Balance
 - Fixed reduction of Harden (30 -> 20 seconds)
-- Reduced sheep death farm bounty (50% -> 40%)
+- Decreased sheep death farm bounty (50% -> 40%)
 - Increased Mana Burn amount (50 -> 100 mana/damage)
 
 ## Features
@@ -35,15 +40,15 @@
 		- No longer grant XP
 		- Shadow matches Farm
 	- Stun/Power Farms can no longer target sheep
-	- Reduced Farm bounty (2 -> 1 gold)
+	- Decreased Farm bounty (2 -> 1 gold)
 	- Increased Strong Farm gold (48 -> 60 gold)
 - Specialities
-	- Reduced Copious Blood HP/level (20 -> 15)
+	- Decreased Copious Blood HP/level (20 -> 15)
 	- Avatar
-		- Reduced HP/level (50 -> 25)
-		- Reduced duration (10 -> 5 seconds)
-	- Reduced Harden duration (30 -> 20 seconds)
-	- Reduced Stack Farm build time (3 -> 2 seconds)
+		- Decreased HP/level (50 -> 25)
+		- Decreased duration (10 -> 5 seconds)
+	- Decreased Harden duration (30 -> 20 seconds)
+	- Decreased Stack Farm build time (3 -> 2 seconds)
 - Abilities
 	- Decreased size of Phoenixes (1 -> 0.65 scale)
 	- Increased duration of Far Sight (8 -> 20 seconds)
@@ -123,10 +128,10 @@
 - Increased Phoenix (Level 2) movement speed (320 -> 340)
 - Decreased Phoenix (Level 3) HP (2250 -> 2000)
 - Increased Phoenix (Level 3) movement speed (320 -> 360)
-- Reduced Healing Farm armor (5 -> 0)
-- Reduced Healing Farm HP (200 -> 120)
+- Decreased Healing Farm armor (5 -> 0)
+- Decreased Healing Farm HP (200 -> 120)
 - Increased Healing Farm cost (25 -> 100 gold)
-- Reduced Magic Farm armor (5 -> 0)
+- Decreased Magic Farm armor (5 -> 0)
 - Fixed player leave logic
 - Fixed various commands to not misfire (-sell/-buy/-z)
 - Removed -d on/off
@@ -166,12 +171,12 @@
 - Fixed experience on attacked farms; no longer shared
 	- Stun Farm (35 -> 25 experience)
 - Increase sheep headstart timer (15 -> 20 seconds)
-- Reduced iStick night sight radius (1600 -> 1400)
-- Reduced iStick True Sight radius (1200 -> 1000)
+- Decreased iStick night sight radius (1600 -> 1400)
+- Decreased iStick True Sight radius (1200 -> 1000)
 
 # Version 3
 - Fixed upgraded Endurance and Unholy auras effecting enemies
-- Reduced end game timer (60 -> 15 seconds)
+- Decreased end game timer (60 -> 15 seconds)
 - Hidden Saving Farms
 	- Added gold cost to upgrade (100 gold)
 	- Fixed ground texture so they are hidden
@@ -194,7 +199,7 @@
 	- Added Super Saving Farm bounty (15)
 	- Removed bounty for killing allied shepherds
 - Doom Guard
-	- Required kill count reduced (50 -> 25)
+	- Required kill count Decreased (50 -> 25)
 	- Mirror Image replaced with Rain of Fire
 	- Added War Stomp
 - Added Tameyoshi to proper wolf names
@@ -251,9 +256,9 @@
 	- +12: 60
 	- +21: 126
 	- +50: 350
-- Reduced Sheep Stalker damage (56 -> 23-25)
+- Decreased Sheep Stalker damage (56 -> 23-25)
 - Increased movement speed of Rock Golem (330 -> 340)
-- Reduced Sheep Stalker movement speed (425 -> 420)
+- Decreased Sheep Stalker movement speed (425 -> 420)
 - Doubled Mirror Image duration (60 -> 120)
 - Increased Mirror Image split Distance
 	- Level 2: (128 -> 192)
@@ -274,7 +279,7 @@
 - Made all content RoC-friendly
 - Nerfed Battleship
 	- Changed to Doom Guard (RoC/TFT reasons)
-	- Reduced range to 64
+	- Decreased range to 64
 	- Increased movement speed to match Black
 	- No longer flying
 - Necklace changed to Spell Immunity
