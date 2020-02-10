@@ -1,5 +1,5 @@
 
-import { MMD__init, MMD__DefineEvent, MMD__LogEvent } from "./w3mmd";
+import { MMD__DefineEvent, MMD__LogEvent } from "./w3mmd";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const logKill = ( killingUnit: unit, dyingUnit: unit ): void =>
@@ -21,8 +21,6 @@ const logItem = ( event: "picked up" | "dropped"| "used" | "pawned" | "sell", it
 	);
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	MMD__init();
 
 	let t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );

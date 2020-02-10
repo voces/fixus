@@ -1,90 +1,69 @@
 
-// globals from MMD:
-export const LIBRARY_MMD = true;
-export const MMD_GOAL_NONE = 101;
-export const MMD_GOAL_HIGH = 102;
-export const MMD_GOAL_LOW = 103;
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 
-export const MMD_TYPE_STRING = 101;
-export const MMD_TYPE_REAL = 102;
-export const MMD_TYPE_INT = 103;
+const MMD_GOAL_NONE = 101;
+const MMD_GOAL_HIGH = 102;
+const MMD_GOAL_LOW = 103;
 
-export const MMD_OP_ADD = 101;
-export const MMD_OP_SUB = 102;
-export const MMD_OP_SET = 103;
+const MMD_TYPE_STRING = 101;
+const MMD_TYPE_REAL = 102;
+const MMD_TYPE_INT = 103;
 
-export const MMD_SUGGEST_NONE = 101;
-export const MMD_SUGGEST_TRACK = 102;
-export const MMD_SUGGEST_LEADERBOARD = 103;
+const MMD_OP_ADD = 101;
+const MMD_OP_SUB = 102;
+const MMD_OP_SET = 103;
 
-export const MMD_FLAG_DRAWER = 101;
-export const MMD_FLAG_LOSER = 102;
-export const MMD_FLAG_WINNER = 103;
-export const MMD_FLAG_LEAVER = 104;
-export const MMD_FLAG_PRACTICING = 105;
-export const MMD__SHOW_DEBUG_MESSAGES = false;
+const MMD_SUGGEST_NONE = 101;
+const MMD_SUGGEST_TRACK = 102;
+const MMD_SUGGEST_LEADERBOARD = 103;
 
-export const MMD__chars = "bj_MAX3456789_-+= \\!@#$^&*()/?>.<,;:'\"{}[]|`~";
-export const MMD__num_chars = StringLength( MMD__chars );
-export const MMD__flags: Array<string> = [];
-export const MMD__goals: Array<string> = [];
-export const MMD__ops: Array<string> = [];
-export const MMD__types: Array<string> = [];
-export const MMD__suggestions: Array<string> = [];
-export let MMD__initialized = false;
+const MMD_FLAG_DRAWER = 101;
+const MMD_FLAG_LOSER = 102;
+const MMD_FLAG_WINNER = 103;
+const MMD_FLAG_LEAVER = 104;
+const MMD_FLAG_PRACTICING = 105;
 
-export let MMD__gc: gamecache;
-export const MMD__ESCAPED_CHARS = " \\";
+const MMD__chars = "bj_MAX3456789_-+= \\!@#$^&*()/?>.<,;:'\"{}[]|`~";
+const MMD__num_chars = StringLength( MMD__chars );
+const MMD__flags: Array<string> = [];
+const MMD__goals: Array<string> = [];
+const MMD__ops: Array<string> = [];
+const MMD__types: Array<string> = [];
+const MMD__suggestions: Array<string> = [];
+let MMD__initialized = false;
 
-export const MMD__CURRENT_VERSION = 1;
-export const MMD__MINIMUM_PARSER_VERSION = 1;
-export const MMD__FILENAME = "MMD.Dat";
-export const MMD__M_KEY_VAL = "val:";
-export const MMD__M_KEY_CHK = "chk:";
-export const MMD__NUM_SENDERS_NAIVE = 1;
-export const MMD__NUM_SENDERS_SAFE = 3;
-export let MMD__num_senders = MMD__NUM_SENDERS_NAIVE;
-export let MMD__num_msg = 0;
+let MMD__gc: gamecache;
+const MMD__ESCAPED_CHARS = " \\";
 
-export const MMD__clock = CreateTimer();
-export const MMD__q_msg: Array<string> = [];
-export const MMD__q_time: Array<number> = [];
-export const MMD__q_index: Array<number> = [];
-export let MMD__q_head = 0;
-export let MMD__q_tail = 0;
-// endglobals from MMD
+const MMD__CURRENT_VERSION = 1;
+const MMD__MINIMUM_PARSER_VERSION = 1;
+const MMD__FILENAME = "MMD.Dat";
+const MMD__M_KEY_VAL = "val:";
+const MMD__M_KEY_CHK = "chk:";
+const MMD__NUM_SENDERS_NAIVE = 1;
+const MMD__NUM_SENDERS_SAFE = 3;
+let MMD__num_senders = MMD__NUM_SENDERS_NAIVE;
+let MMD__num_msg = 0;
 
-// JASSHelper struct globals:
-export const si__MMD__QueueNode = 1;
-export let si__MMD__QueueNode_F = 0;
-export let si__MMD__QueueNode_I = 0;
-export const si__MMD__QueueNode_V: Array<number> = [];
-export const s__MMD__QueueNode_timeout: Array<number> = [];
-export const s__MMD__QueueNode_msg: Array<string | null> = [];
-export const s__MMD__QueueNode_checksum: Array<number> = [];
-export const s__MMD__QueueNode_key: Array<string | null> = [];
-export const s__MMD__QueueNode_next: Array<number> = [];
-export let st__MMD__QueueNode_onDestroy: trigger;
-export let f__arg__this: number;
+const MMD__clock = CreateTimer();
+let MMD__q_head = 0;
+let MMD__q_tail = 0;
 
-// Generated method caller for MMD__QueueNode.onDestroy
-export const sc__MMD__QueueNode_onDestroy = ( _this: number ): void => {
-
-	FlushStoredInteger( MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[ _this ], s__MMD__QueueNode_msg[ _this ] || "" );
-	FlushStoredInteger( MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[ _this ], s__MMD__QueueNode_key[ _this ] || "" );
-	s__MMD__QueueNode_msg[ _this ] = null;
-	s__MMD__QueueNode_key[ _this ] = null;
-	s__MMD__QueueNode_next[ _this ] = 0;
-
-};
+let si__MMD__QueueNode_F = 0;
+let si__MMD__QueueNode_I = 0;
+const si__MMD__QueueNode_V: Array<number> = [];
+const s__MMD__QueueNode_timeout: Array<number> = [];
+const s__MMD__QueueNode_msg: Array<string | null> = [];
+const s__MMD__QueueNode_checksum: Array<number> = [];
+const s__MMD__QueueNode_key: Array<string | null> = [];
+const s__MMD__QueueNode_next: Array<number> = [];
 
 // Generated allocator of MMD__QueueNode
-export const s__MMD__QueueNode__allocate = (): number => {
+const s__MMD__QueueNode__allocate = (): number => {
 
 	let _this = si__MMD__QueueNode_F;
 
 	if ( _this !== 0 )
-
 		si__MMD__QueueNode_F = si__MMD__QueueNode_V[ _this ];
 
 	else {
@@ -94,9 +73,7 @@ export const s__MMD__QueueNode__allocate = (): number => {
 
 	}
 
-	if ( _this > 8190 )
-
-		return 0;
+	if ( _this > 8190 ) return 0;
 
 	s__MMD__QueueNode_next[ _this ] = 0;
 	si__MMD__QueueNode_V[ _this ] = - 1;
@@ -104,47 +81,23 @@ export const s__MMD__QueueNode__allocate = (): number => {
 
 };
 
-// Generated destructor of MMD__QueueNode
-export const sc__MMD__QueueNode_deallocate = ( _this: number ): void => {
-
-	if ( _this === null )
-
-		return;
-
-	else if ( si__MMD__QueueNode_V[ _this ] !== - 1 )
-
-		return;
-
-	f__arg__this = _this;
-	TriggerEvaluate( st__MMD__QueueNode_onDestroy );
-	si__MMD__QueueNode_V[ _this ] = si__MMD__QueueNode_F;
-	si__MMD__QueueNode_F = _this;
-
-};
-
-// library MMD:
-
-// /////////////////////////////////////////////////////////////
-// / Private variables and constants
-// /////////////////////////////////////////////////////////////
-
-// /////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 // / Private functions
-// /////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
-// /Triggered when tampering is detected. Increases the number of safeguards against tampering.
-export const MMD_RaiseGuard = ( reason: string ): void => {
+// Triggered when tampering is detected. Increases the number of safeguards against tampering.
+const MMD_RaiseGuard = ( reason: string ): void => {
 
 	print( reason );
 	MMD__num_senders = MMD__NUM_SENDERS_SAFE;
 
 };
 
-// /Returns seconds elapsed in game time
-export const MMD__time = (): number => TimerGetElapsed( MMD__clock );
+// Returns seconds elapsed in game time
+const MMD__time = (): number => TimerGetElapsed( MMD__clock );
 
-// /Initializes the char-to-int conversion
-export const MMD__prepC2I = (): void => {
+// Initializes the char-to-int conversion
+const MMD__prepC2I = (): void => {
 
 	let i = 0;
 	let id: string;
@@ -155,7 +108,6 @@ export const MMD__prepC2I = (): void => {
 		id = SubString( MMD__chars, i, i + 1 );
 
 		if ( id === StringCase( id, true ) )
-
 			id = id + "U";
 
 		StoreInteger( MMD__gc, "c2i", id, i );
@@ -165,14 +117,13 @@ export const MMD__prepC2I = (): void => {
 
 };
 
-// /Converts a character to an integer
-export const MMD__C2I = ( c: string ): number => {
+// Converts a character to an integer
+const MMD__C2I = ( c: string ): number => {
 
 	let i: number;
 	let id = c;
 
 	if ( id === StringCase( id, true ) )
-
 		id = id + "U";
 
 	i = GetStoredInteger( MMD__gc, "c2i", id );
@@ -204,8 +155,8 @@ export const MMD__C2I = ( c: string ): number => {
 
 };
 
-// /Computes a weak hash value, hopefully secure enough for our purposes
-export const MMD__poor_hash = ( s: string, seed: number ): number => {
+// Computes a weak hash value, hopefully secure enough for our purposes
+const MMD__poor_hash = ( s: string, seed: number ): number => {
 
 	const n = StringLength( s );
 	let m = n + seed;
@@ -223,8 +174,8 @@ export const MMD__poor_hash = ( s: string, seed: number ): number => {
 
 };
 
-// /Stores previously sent messages for tamper detection purposes
-export const s__MMD__QueueNode_create = ( id: number, msg: string ): number => {
+// Stores previously sent messages for tamper detection purposes
+const s__MMD__QueueNode_create = ( id: number, msg: string ): number => {
 
 	const _this = s__MMD__QueueNode__allocate();
 	s__MMD__QueueNode_timeout[ _this ] = MMD__time() + 7 + GetRandomReal( 0, 2 + 0.1 * GetPlayerId( GetLocalPlayer() ) );
@@ -235,7 +186,7 @@ export const s__MMD__QueueNode_create = ( id: number, msg: string ): number => {
 
 };
 
-export const s__MMD__QueueNode_onDestroy = ( _this: number ): void => {
+const s__MMD__QueueNode_onDestroy = ( _this: number ): void => {
 
 	FlushStoredInteger( MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[ _this ], s__MMD__QueueNode_msg[ _this ] || "" );
 	FlushStoredInteger( MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[ _this ], s__MMD__QueueNode_key[ _this ] || "" );
@@ -246,15 +197,10 @@ export const s__MMD__QueueNode_onDestroy = ( _this: number ): void => {
 };
 
 // Generated destructor of MMD__QueueNode
-export const s__MMD__QueueNode_deallocate = ( _this: number ): void => {
+const s__MMD__QueueNode_deallocate = ( _this: number ): void => {
 
-	if ( _this === null )
-
-		return;
-
-	else if ( si__MMD__QueueNode_V[ _this ] !== - 1 )
-
-		return;
+	if ( _this === null ) return;
+	if ( si__MMD__QueueNode_V[ _this ] !== - 1 ) return;
 
 	s__MMD__QueueNode_onDestroy( _this );
 	si__MMD__QueueNode_V[ _this ] = si__MMD__QueueNode_F;
@@ -262,7 +208,7 @@ export const s__MMD__QueueNode_deallocate = ( _this: number ): void => {
 
 };
 
-export const s__MMD__QueueNode_send = ( _this: number ): void => {
+const s__MMD__QueueNode_send = ( _this: number ): void => {
 
 	StoreInteger( MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[ _this ], s__MMD__QueueNode_msg[ _this ] || "", s__MMD__QueueNode_checksum[ _this ] );
 	StoreInteger( MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[ _this ], s__MMD__QueueNode_key[ _this ] || "", s__MMD__QueueNode_checksum[ _this ] );
@@ -271,8 +217,8 @@ export const s__MMD__QueueNode_send = ( _this: number ): void => {
 
 };
 
-// /Returns true for a fixed size uniform random subset of players in the game
-export const MMD__isEmitter = (): boolean => {
+// Returns true for a fixed size uniform random subset of players in the game
+const MMD__isEmitter = (): boolean => {
 
 	let i = 0;
 	let n = 0;
@@ -317,8 +263,8 @@ export const MMD__isEmitter = (): boolean => {
 
 };
 
-// /Places meta-data in the replay and in network traffic
-export const MMD__emit = ( message: string ): void => {
+// Places meta-data in the replay and in network traffic
+const MMD__emit = ( message: string ): void => {
 
 	if ( ! MMD__initialized ) {
 
@@ -330,13 +276,8 @@ export const MMD__emit = ( message: string ): void => {
 	// remember sent messages for tamper check
 	const q = s__MMD__QueueNode_create( MMD__num_msg, message );
 
-	if ( MMD__q_head === 0 )
-
-		MMD__q_head = q;
-
-	else
-
-		s__MMD__QueueNode_next[ MMD__q_tail ] = q;
+	if ( MMD__q_head === 0 ) MMD__q_head = q;
+	else s__MMD__QueueNode_next[ MMD__q_tail ] = q;
 
 	MMD__q_tail = q;
 
@@ -344,13 +285,12 @@ export const MMD__emit = ( message: string ): void => {
 	MMD__num_msg = MMD__num_msg + 1;
 
 	if ( MMD__isEmitter() )
-
 		s__MMD__QueueNode_send( q );
 
 };
 
-// /Performs tamper checks
-export const MMD__tick = (): void => {
+// Performs tamper checks
+const MMD__tick = (): void => {
 
 	let q: number;
 	let i: number;
@@ -391,7 +331,6 @@ export const MMD__tick = (): void => {
 	}
 
 	if ( MMD__q_head === 0 )
-
 		MMD__q_tail = 0;
 
 	// check for future message tampering
@@ -409,38 +348,26 @@ export const MMD__tick = (): void => {
 
 };
 
-// /Replaces control characters with escape sequences
+// Replaces control characters with escape sequences
 export const MMD__pack = ( value: string ): string => {
 
-	let j: number;
-	let i = 0;
 	let result = "";
-	let c: string;
 
-	while ( true ) {
+	for ( let i = 0; i < value.length; i ++ ) {
 
-		if ( i >= StringLength( value ) ) break;
-		c = SubString( value, i, i + 1 );
-		j = 0;
+		let c = value[ i ];
 
-		while ( true ) {
+		for ( let j = 0; j < MMD__ESCAPED_CHARS.length; j ++ )
 
-			if ( j >= StringLength( MMD__ESCAPED_CHARS ) ) break;
 			// escape control characters
-
-			if ( c === SubString( MMD__ESCAPED_CHARS, j, j + 1 ) ) {
+			if ( c === MMD__ESCAPED_CHARS[ j ] ) {
 
 				c = "\\" + c;
 				if ( true ) break;
 
 			}
 
-			j = j + 1;
-
-		}
-
 		result = result + c;
-		i = i + 1;
 
 	}
 
@@ -448,42 +375,39 @@ export const MMD__pack = ( value: string ): string => {
 
 };
 
-// /Updates the value of a defined variable for a given player
-export const MMD__update_value = ( name: string, p: player, op: string, value: string, val_type: number ): void => {
+// Updates the value of a defined variable for a given player
+const MMD__update_value = ( name: string, p: player, op: string, value: string, val_type: number ): void => {
 
 	const id = GetPlayerId( p );
 
 	if ( p === null || id < 0 || id >= bj_MAX_PLAYERS )
-
 		BJDebugMsg( "MMD Set Error: Invalid player. Must be P1 to P24." );
 
 	else if ( val_type !== GetStoredInteger( MMD__gc, "types", name ) )
-
 		BJDebugMsg( "MMD Set Error: Updated value of undefined variable or used value of incorrect type." );
 
 	else if ( StringLength( op ) === 0 )
-
 		BJDebugMsg( "MMD Set Error: Unrecognized operation type." );
 
 	else if ( StringLength( name ) > 50 )
-
 		BJDebugMsg( "MMD Set Error: Variable name is too long." );
 
 	else if ( StringLength( name ) === 0 )
-
 		BJDebugMsg( "MMD Set Error: Variable name is empty." );
 
 	else
-
 		MMD__emit( "VarP " + I2S( id ) + " " + MMD__pack( name ) + " " + op + " " + value );
 
 };
 
-// /Defines an event's arguments and format
+///////////////////////////////////////////////////////////////
+// / Public functions
+///////////////////////////////////////////////////////////////
+
+// Defines an event's arguments and format
 export const MMD__DefineEvent = ( name: string, format: string, ...args: string[] ): void => {
 
 	if ( GetStoredInteger( MMD__gc, "events", name ) !== 0 )
-
 		BJDebugMsg( "MMD DefEvent Error: Event redefined." );
 
 	else {
@@ -495,24 +419,18 @@ export const MMD__DefineEvent = ( name: string, format: string, ...args: string[
 
 };
 
-// /Places an event in the meta-data
+// Places an event in the meta-data
 export const MMD__LogEvent = ( name: string, ...args: string[] ): void => {
 
 	if ( GetStoredInteger( MMD__gc, "events", name ) !== args.length + 1 )
-
 		BJDebugMsg( `MMD LogEvent Error: Event not defined or defined with different # of args. Expected ${GetStoredInteger( MMD__gc, "events", name )}, got ${args.length + 1}` );
 
 	else
-
 		MMD__emit( "Event " + MMD__pack( name ) + " " + args.map( arg => MMD__pack( arg ) ).join( " " ) );
 
 };
 
-// /////////////////////////////////////////////////////////////
-// / Public functions
-// /////////////////////////////////////////////////////////////
-
-// /Sets a player flag like "win_on_leave"
+// Sets a player flag like "win_on_leave"
 export const MMD_FlagPlayer = ( p: player, flag_type: number ): void => {
 
 	const flag = MMD__flags[ flag_type ];
@@ -529,7 +447,7 @@ export const MMD_FlagPlayer = ( p: player, flag_type: number ): void => {
 
 };
 
-// /Defines a variable to store things in
+// Defines a variable to store things in
 export const MMD_DefineValue = ( name: string, value_type: number, goal_type: number, suggestion_type: number ): void => {
 
 	const goal = MMD__goals[ goal_type ];
@@ -566,21 +484,15 @@ export const MMD_DefineValue = ( name: string, value_type: number, goal_type: nu
 
 };
 
-// /Updates the value of an integer variable
-export const MMD_UpdateValueInt = ( name: string, p: player, op: number, value: number ): void => {
-
+// Updates the value of an integer variable
+export const MMD_UpdateValueInt = ( name: string, p: player, op: number, value: number ): void =>
 	MMD__update_value( name, p, MMD__ops[ op ], I2S( value ), MMD_TYPE_INT );
 
-};
-
-// /Updates the value of a real variable
-export const MMD_UpdateValueReal = ( name: string, p: player, op: number, value: number ): void => {
-
+// Updates the value of a real variable
+export const MMD_UpdateValueReal = ( name: string, p: player, op: number, value: number ): void =>
 	MMD__update_value( name, p, MMD__ops[ op ], R2S( value ), MMD_TYPE_REAL );
 
-};
-
-// /Updates the value of a string variable
+// Updates the value of a string variable
 export const MMD_UpdateValueString = ( name: string, p: player, value: string ): void => {
 
 	const q = "\"";
@@ -588,38 +500,27 @@ export const MMD_UpdateValueString = ( name: string, p: player, value: string ):
 
 };
 
-// /Emits meta-data which parsers will ignore unless they are customized to understand it
+// Emits meta-data which parsers will ignore unless they are customized to understand it
 export const MMD_LogCustom = ( unique_identifier: string, data: string ): void => {
 
 	MMD__emit( "custom " + MMD__pack( unique_identifier ) + " " + MMD__pack( data ) );
 
 };
 
-// /////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 // / Initialization
-// /////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
-// /Emits initialization data
-export const MMD__init2 = (): void => {
+// Emits initialization data
+const MMD__init2 = (): void => {
 
-	let i: number;
 	MMD__initialized = true;
 
 	MMD__emit( "init version " + I2S( MMD__MINIMUM_PARSER_VERSION ) + " " + I2S( MMD__CURRENT_VERSION ) );
 
-	i = 0;
-
-	while ( true ) {
-
-		if ( i >= bj_MAX_PLAYERS ) break;
-
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_USER && GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING )
-
 			MMD__emit( "init pid " + I2S( i ) + " " + MMD__pack( GetPlayerName( Player( i ) ) ) );
-
-		i = i + 1;
-
-	}
 
 	const t = CreateTrigger();
 	TriggerAddAction( t, MMD__tick );
@@ -627,8 +528,8 @@ export const MMD__init2 = (): void => {
 
 };
 
-// /Places init2 on a timer, initializes game cache, and translates constants
-export const MMD__init = (): void => {
+// Places init2 on a timer, initializes game cache, and translates constants
+const MMD__init = (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 0, false );
@@ -663,4 +564,4 @@ export const MMD__init = (): void => {
 
 };
 
-// library MMD ends
+addScriptHook( W3TS_HOOK.MAIN_AFTER, MMD__init );
