@@ -3,8 +3,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { AbilityRangePreload } from "./misc/abilityPreload";
-import { MMD_FlagPlayer, MMD_FLAG_WINNER, MMD_FLAG_LOSER } from "./stats/w3mmd";
-import { log } from "./util/log";
 
 export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
@@ -52,8 +50,6 @@ export const color = [
 export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetterFunc( "init" as GAME_STATES );
 export const goldFactor: ( newFactory?: number ) => number = getterSetterFunc( 1 );
 export const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
-export const myTimer = CreateTimer();
-export const myTimerDialog = CreateTimerDialog( myTimer );
 export const saveskills: Array<number> = fillArray( bj_MAX_PLAYERS, 0 );
 export const wws: Array<unit> = [];
 export const sheeps: Array<unit> = [];
@@ -117,70 +113,6 @@ export const DisplayTimedText = ( duration: number, message: string ): void => {
 		i = i + 1;
 
 	}
-
-};
-
-let gameEnded = false;
-const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
-// Ends the game, awarding wins/loses and other W3MMD data
-export const endGame = ( winner: "sheep" | "wolves" ): void => {
-
-	// Don't run these actions again
-	if ( gameEnded ) return;
-
-	gameEnded = true;
-	TimerDialogDisplay( myTimerDialog, false );
-	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-	// todo: this should be nullable
-	TimerStart( myTimer, 15, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( myTimerDialog, "Ending in..." );
-	TimerDialogDisplay( myTimerDialog, true );
-
-	try {
-
-		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-			if (
-				GetPlayerController( Player( i ) ) === MAP_CONTROL_USER &&
-				[ PLAYER_SLOT_STATE_PLAYING, PLAYER_SLOT_STATE_LEFT ].includes( GetPlayerSlotState( Player( i ) ) )
-			)
-				if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-
-					if ( winner === "wolves" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
-					else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
-
-				else if ( winner === "sheep" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
-				else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
-
-	} catch ( err ) {
-
-		log( err );
-
-	}
-
-	if ( winner === "sheep" )
-		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-			// todo: save the wisps!
-			if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
-
-				SetUnitInvulnerable( sheeps[ i ], true );
-				BlzSetUnitBaseDamage( sheeps[ i ], 4999, 0 );
-				SetUnitMoveSpeed( sheeps[ i ], 522 );
-				BlzSetUnitRealField( sheeps[ i ], UNIT_RF_SIGHT_RADIUS, 5000 );
-
-			}
-
-	PolledWait( 15 );
-
-	DisplayTimedText( 120, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
-
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-
-			if ( winner === "wolves" ) CustomVictoryBJ( Player( i ), true, true );
-			else CustomDefeatBJ( Player( i ), defeatString );
-
-		else if ( winner === "sheep" ) CustomVictoryBJ( Player( i ), true, true );
-		else CustomDefeatBJ( Player( i ), defeatString );
 
 };
 

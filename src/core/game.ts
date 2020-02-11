@@ -2,10 +2,7 @@
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
 	countHere,
-	endGame,
 	gameState,
-	myTimer,
-	myTimerDialog,
 	SHEEP_TYPE,
 	sheeps,
 	sheepTeam,
@@ -15,6 +12,12 @@ import {
 	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
+import { MMD_FlagPlayer, MMD_FLAG_WINNER, MMD_FLAG_LOSER } from "../stats/w3mmd";
+import { log } from "../util/log";
+
+let gameTimer: timer;
+let gameTimerDialog: timerdialog;
+let desynced = false;
 
 const STARTER_ITEM_TYPE = FourCC( "mcou" ); // everyone gets this
 const ONE_WOLF_ITEM_TYPE = FourCC( "ratf" );
@@ -34,6 +37,75 @@ const initialSpawns: Array<{x: number; y: number}> = [];
 // ===========================================================================
 // Trigger: coreGame
 // ===========================================================================
+
+export const flagDesync = (): void => {
+
+	desynced = true;
+
+};
+
+let gameEnded = false;
+const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
+// Ends the game, awarding wins/loses and other W3MMD data
+export const endGame = ( winner: "sheep" | "wolves" ): void => {
+
+	// Don't run these actions again
+	if ( gameEnded ) return;
+
+	gameEnded = true;
+
+	TimerDialogDisplay( gameTimerDialog, false );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
+	TimerStart( gameTimer, 15, false, () => { /* do nothing */ } );
+	TimerDialogSetTitle( gameTimerDialog, "Ending in..." );
+	TimerDialogDisplay( gameTimerDialog, true );
+
+	try {
+
+		if ( ! desynced )
+			for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+				if (
+					GetPlayerController( Player( i ) ) === MAP_CONTROL_USER &&
+				[ PLAYER_SLOT_STATE_PLAYING, PLAYER_SLOT_STATE_LEFT ].includes( GetPlayerSlotState( Player( i ) ) )
+				)
+					if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+
+						if ( winner === "wolves" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
+						else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
+
+					else if ( winner === "sheep" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
+					else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
+
+	} catch ( err ) {
+
+		log( err );
+
+	}
+
+	if ( winner === "sheep" )
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			// todo: save the wisps!
+			if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
+
+				SetUnitInvulnerable( sheeps[ i ], true );
+				BlzSetUnitBaseDamage( sheeps[ i ], 4999, 0 );
+				SetUnitMoveSpeed( sheeps[ i ], 522 );
+				BlzSetUnitRealField( sheeps[ i ], UNIT_RF_SIGHT_RADIUS, 5000 );
+
+			}
+
+	PolledWait( 15 );
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+
+			if ( winner === "wolves" ) CustomVictoryBJ( Player( i ), true, true );
+			else CustomDefeatBJ( Player( i ), defeatString );
+
+		else if ( winner === "sheep" ) CustomVictoryBJ( Player( i ), true, true );
+		else CustomDefeatBJ( Player( i ), defeatString );
+
+};
 
 const shareControlWithAllies = ( player: player ): void => {
 
@@ -62,7 +134,7 @@ const shareControlWithAllies = ( player: player ): void => {
  */
 const initToStart = (): void => {
 
-	TimerDialogDisplay( myTimerDialog, false );
+	TimerDialogDisplay( gameTimerDialog, false );
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
@@ -85,9 +157,9 @@ const initToStart = (): void => {
 
 	gameState( "start" );
 	// todo: should be nullable
-	TimerStart( myTimer, 10, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( myTimerDialog, "Wolves in..." );
-	TimerDialogDisplay( myTimerDialog, true );
+	TimerStart( gameTimer, 10, false, () => { /* do nothing */ } );
+	TimerDialogSetTitle( gameTimerDialog, "Wolves in..." );
+	TimerDialogDisplay( gameTimerDialog, true );
 	reloadMultiboard();
 
 };
@@ -97,7 +169,7 @@ const initToStart = (): void => {
  */
 const startToPlay = (): void => {
 
-	TimerDialogDisplay( myTimerDialog, false );
+	TimerDialogDisplay( gameTimerDialog, false );
 
 	const starterItem = starterItemMap[ countHere( wolfTeam ) ];
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
@@ -123,9 +195,9 @@ const startToPlay = (): void => {
 
 	gameState( "play" );
 	// should be nullable
-	TimerStart( myTimer, 1500, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( myTimerDialog, "Sheep win in..." );
-	TimerDialogDisplay( myTimerDialog, true );
+	TimerStart( gameTimer, 1500, false, () => { /* do nothing */ } );
+	TimerDialogSetTitle( gameTimerDialog, "Sheep win in..." );
+	TimerDialogDisplay( gameTimerDialog, true );
 
 };
 
@@ -145,7 +217,7 @@ const action = (): void => {
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
-	TriggerRegisterTimerExpireEvent( t, myTimer );
+	TriggerRegisterTimerExpireEvent( t, gameTimer );
 	TriggerAddAction( t, action );
 
 	const SHEEP_SIZE_OFFSET = 100;
@@ -153,6 +225,12 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	const MAX_Y = GetRectMaxY( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
 	const MIN_X = GetRectMinX( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET + 440; // :( constant seems off
 	const MIN_Y = GetRectMinY( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET;
+
+	gameTimer = CreateTimer();
+	gameTimerDialog = CreateTimerDialog( gameTimer );
+	TimerStart( gameTimer, 3, false, () => { /* do nothing */ } );
+	TimerDialogSetTitle( gameTimerDialog, "Starting in..." );
+	TimerDialogDisplay( gameTimerDialog, true );
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
