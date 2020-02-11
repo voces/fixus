@@ -178,7 +178,7 @@ const MMD__poor_hash = ( s: string, seed: number ): number => {
 const s__MMD__QueueNode_create = ( id: number, msg: string ): number => {
 
 	const _this = s__MMD__QueueNode__allocate();
-	s__MMD__QueueNode_timeout[ _this ] = MMD__time() + 7 + GetRandomReal( 0, 2 + 0.1 * GetPlayerId( GetLocalPlayer() ) );
+	s__MMD__QueueNode_timeout[ _this ] = MMD__time() + 7 + GetRandomReal( 0, 2 );
 	s__MMD__QueueNode_msg[ _this ] = msg;
 	s__MMD__QueueNode_checksum[ _this ] = MMD__poor_hash( s__MMD__QueueNode_msg[ _this ] || "", id );
 	s__MMD__QueueNode_key[ _this ] = I2S( id );
