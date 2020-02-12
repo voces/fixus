@@ -6,11 +6,13 @@ import {
 	sheepTeam,
 	wispTeam,
 	mainUnit,
-	endGame,
 	TriggerRegisterPlayerEventAll,
 } from "shared";
 import { reloadMultiboard } from "./multiboard";
 import { isPlayingPlayer, colorizedName } from "util/player";
+import { endGame, flagDesync } from "../core/game";
+
+let lastLeave = 0;
 
 // ===========================================================================
 // Trigger: miscLeaves
@@ -50,6 +52,12 @@ const Trig_miscLeaves_Actions = (): void => {
 	// Remove main unit if sheep or wisp
 	if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) || IsPlayerInForce( GetTriggerPlayer(), wispTeam ) )
 		RemoveUnit( mainUnit( GetTriggerPlayer() ) );
+
+	// desync detection
+	const time = TimerGetElapsed( bj_gameStartedTimer );
+	if ( time + 1 <= lastLeave )
+		flagDesync();
+	lastLeave = time;
 
 	// End game if last
 	if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) && countHere( sheepTeam ) === 1 )

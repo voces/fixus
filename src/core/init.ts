@@ -4,8 +4,6 @@ import {
 	countHere,
 	DisplayTimedText,
 	goldFactor,
-	myTimer,
-	myTimerDialog,
 	sheepTeam,
 	wolfTeam,
 } from "shared";
@@ -92,10 +90,6 @@ const action = (): void => {
 	if ( countHere( wolfTeam ) === 0 || countHere( sheepTeam ) === 0 )
 		goldFactor( 1000 );
 
-	// todo: should be nullable
-	TimerStart( myTimer, 3, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( myTimerDialog, "Starting in..." );
-	TimerDialogDisplay( myTimerDialog, true );
 	board( CreateMultiboard() );
 
 };

@@ -4,7 +4,6 @@ import {
 	CLOAK_TYPE,
 	color,
 	countHere,
-	endGame,
 	goldFactor,
 	IMBA_WOLF_TYPE,
 	saveskills,
@@ -32,6 +31,7 @@ import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
+import { endGame } from "../core/game";
 
 const BLACK_SHEEP_TYPE = FourCC( "uC02" );
 const SILVER_SHEEP_TYPE = FourCC( "u000" );
