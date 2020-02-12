@@ -5,7 +5,7 @@ Sheep
 
 STRING 39
 {
-Ultimate Sheep Tag Fixus 8
+Ultimate Sheep Tag Fixus 9
 }
 
 STRING 40
@@ -79,11 +79,6 @@ Shepherd 4
 }
 
 STRING 1221
-{
-|cff000000Ultimate Sheep Tag Evolution
-}
-
-STRING 1222
 {
 Ultimate Sheep Tag Fixus
 }
@@ -8456,11 +8451,6 @@ STRING 4433
 (Unused)
 }
 
-STRING 4435
-{
-Fixus 8
-}
-
 STRING 4436
 // Units: hctw (Frost Farm), Tip (Tooltip - Basic)
 {
@@ -8615,12 +8605,6 @@ STRING 4461
 // Abilities: A001 (Sentry Ward), Tip (Tooltip - Normal)
 {
 Sentry Ward
-}
-
-STRING 4462
-// Abilities: A00D (Destroy Farm), Tip (Tooltip - Normal)
-{
-Destory Farm
 }
 
 STRING 4463
@@ -9491,5 +9475,16 @@ STRING 4607
 // Upgrades: Rusm (Skeletal Mastery), Name (Name)
 {
 Unholy Aura - [|cffffcc00Level 3|r]
+}
+
+STRING 4608
+// Abilities: A00D (Destroy Farm), Tip (Tooltip - Normal)
+{
+Destroy Farm
+}
+
+STRING 4609
+{
+Fixus 9
 }
 

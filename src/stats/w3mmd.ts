@@ -413,7 +413,8 @@ export const MMD__DefineEvent = ( name: string, format: string, ...args: string[
 	else {
 
 		StoreInteger( MMD__gc, "events", name, args.length + 1 );
-		MMD__emit( "DefEvent " + MMD__pack( name ) + " " + I2S( args.length ) + " " + args.map( arg => MMD__pack( arg ) ).join( " " ) + MMD__pack( format ) );
+		const eventArgs = args.map( arg => MMD__pack( arg ) ).join( " " );
+		MMD__emit( `DefEvent ${MMD__pack( name )} ${I2S( args.length )}${ args.length ? ` ${eventArgs}` : "" } ${MMD__pack( format )}` );
 
 	}
 
@@ -425,8 +426,12 @@ export const MMD__LogEvent = ( name: string, ...args: string[] ): void => {
 	if ( GetStoredInteger( MMD__gc, "events", name ) !== args.length + 1 )
 		BJDebugMsg( `MMD LogEvent Error: Event not defined or defined with different # of args. Expected ${GetStoredInteger( MMD__gc, "events", name )}, got ${args.length + 1}` );
 
-	else
-		MMD__emit( "Event " + MMD__pack( name ) + " " + args.map( arg => MMD__pack( arg ) ).join( " " ) );
+	else {
+
+		const eventArgs = args.map( arg => MMD__pack( arg ) ).join( " " );
+		MMD__emit( `Event ${MMD__pack( name )}${args.length ? ` ${eventArgs}` : ""}` );
+
+	}
 
 };
 

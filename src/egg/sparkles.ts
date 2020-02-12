@@ -16,7 +16,8 @@ const onUnitCreated = (): boolean => {
 
 		AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", u, "origin" );
 
-	}
+	}/* else if ( playerName.indexOf( "hawkys" ) >= 0 )
+		AddSpecialEffectTarget( "Doodads\\Ruins\\Plants\\Ruins_Flower\\Ruins_Flower2.mdl", u, "head" );*/
 
 	return false;
 

@@ -12,12 +12,13 @@ import {
 	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { MMD_FlagPlayer, MMD_FLAG_WINNER, MMD_FLAG_LOSER } from "../stats/w3mmd";
+import { MMD_FlagPlayer, MMD_FLAG_WINNER, MMD_FLAG_LOSER, MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { log } from "../util/log";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
 let desynced = false;
+let gameEnded = false;
 
 const STARTER_ITEM_TYPE = FourCC( "mcou" ); // everyone gets this
 const ONE_WOLF_ITEM_TYPE = FourCC( "ratf" );
@@ -40,11 +41,15 @@ const initialSpawns: Array<{x: number; y: number}> = [];
 
 export const flagDesync = (): void => {
 
+	if ( desynced || gameEnded ) return;
+
+	MMD__DefineEvent( "desync", "There was a desync" );
+	MMD__LogEvent( "desync" );
+
 	desynced = true;
 
 };
 
-let gameEnded = false;
 const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
 // Ends the game, awarding wins/loses and other W3MMD data
 export const endGame = ( winner: "sheep" | "wolves" ): void => {
@@ -216,9 +221,23 @@ const action = (): void => {
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
+	gameTimer = CreateTimer();
+
 	const t = CreateTrigger();
 	TriggerRegisterTimerExpireEvent( t, gameTimer );
-	TriggerAddAction( t, action );
+	TriggerAddAction( t, () => {
+
+		try {
+
+			action();
+
+		} catch ( err ) {
+
+			log( err );
+
+		}
+
+	} );
 
 	const SHEEP_SIZE_OFFSET = 100;
 	const MAX_X = GetRectMaxX( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
@@ -226,7 +245,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	const MIN_X = GetRectMinX( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET + 440; // :( constant seems off
 	const MIN_Y = GetRectMinY( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET;
 
-	gameTimer = CreateTimer();
 	gameTimerDialog = CreateTimerDialog( gameTimer );
 	TimerStart( gameTimer, 3, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( gameTimerDialog, "Starting in..." );

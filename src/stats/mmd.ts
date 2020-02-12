@@ -5,18 +5,18 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 const logKill = ( killingUnit: unit, dyingUnit: unit ): void =>
 	MMD__LogEvent(
 		"kill",
-		GetUnitName( killingUnit ),
-		GetUnitName( dyingUnit ),
-		I2S( GetPlayerId( GetOwningPlayer( killingUnit ) ) ),
-		I2S( GetPlayerId( GetOwningPlayer( dyingUnit ) ) ),
+		I2S( GetUnitTypeId( killingUnit ) ),
+		I2S( GetUnitTypeId( dyingUnit ) ),
+		GetPlayerName( GetOwningPlayer( killingUnit ) ),
+		GetPlayerName( GetOwningPlayer( dyingUnit ) ),
 	);
 
 const logItem = ( event: "picked up" | "dropped"| "used" | "pawned" | "sell", item: item, unit: unit ): void =>
 	MMD__LogEvent(
 		"item",
-		GetItemName( item ),
-		I2S( GetPlayerId( GetOwningPlayer( unit ) ) ),
-		GetUnitName( unit ),
+		I2S( GetItemTypeId( item ) ),
+		GetPlayerName( GetOwningPlayer( unit ) ),
+		I2S( GetUnitTypeId( unit ) ),
 		event,
 	);
 

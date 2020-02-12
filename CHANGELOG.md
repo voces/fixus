@@ -3,6 +3,13 @@
 - Decreased Avatar damage buff (50 -> 5 damage/level)
 - Decreased charges on Goblin Land Mines (3 -> 2)
 
+## Bug Fixes
+- Fixed copy errors
+
+## Refactors
+- Jotye Farm ignores unit types and just works off buff
+- Replaced all TriggerSleepActions with PolledWaits
+
 # Version 8
 ## Balance
 - Fixed reduction of Harden (30 -> 20 seconds)
