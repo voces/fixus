@@ -44,7 +44,7 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 			if ( GetLocalPlayer() === p )
 				TimerDialogDisplay( wwTimerDialog[ pId ], true );
 
-			TriggerSleepAction( 60 );
+			PolledWait( 60 );
 
 			// Clear the timer
 

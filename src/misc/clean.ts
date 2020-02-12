@@ -9,7 +9,7 @@ const action = (): void => {
 
 	if ( IsUnitType( GetTriggerUnit(), UNIT_TYPE_HERO ) !== false ) return;
 
-	TriggerSleepAction( 5 );
+	PolledWait( 5 );
 	RemoveUnit( GetTriggerUnit() );
 
 };

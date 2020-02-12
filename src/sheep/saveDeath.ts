@@ -237,7 +237,7 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 const onWolfDeath = ( wolfUnit: unit ): void => {
 
-	TriggerSleepAction( 5 );
+	PolledWait( 5 );
 	ReviveHero( wolfUnit, - 256, - 832, true );
 
 };
