@@ -2,12 +2,16 @@
 // DO NOT MODIFY DIRECTLY. Execute `npm run build:changelog` instead.
 
 export const changelog = [
-	{ title: "Version 9", content: [
+	{ title: "Version 8a", content: [
 		"Balance",
 		"• Decreased Avatar damage buff (50 -> 5 damage/level)",
 		"• Decreased charges on Goblin Land Mines (3 -> 2)",
+		"Features",
+		"• \"Hawkys\" now has a mushroom on his head",
+		"• New minimap image",
 		"Bug Fixes",
 		"• Fixed copy errors",
+		"• Attempt at fixing desyncs on sheep death",
 		"Refactors",
 		"• Jotye Farm ignores unit types and just works off buff",
 		"• Replaced all TriggerSleepActions with PolledWaits",

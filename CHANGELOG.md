@@ -1,10 +1,15 @@
-# Version 9
+# Version 8a
 ## Balance
 - Decreased Avatar damage buff (50 -> 5 damage/level)
 - Decreased charges on Goblin Land Mines (3 -> 2)
 
+## Features
+- "Hawkys" now has a mushroom on his head
+- New minimap image
+
 ## Bug Fixes
 - Fixed copy errors
+- Attempt at fixing desyncs on sheep death
 
 ## Refactors
 - Jotye Farm ignores unit types and just works off buff
