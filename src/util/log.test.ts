@@ -1,7 +1,7 @@
 
 import "../test/w3api";
 import { log } from "./log";
-import { getGame } from "w3api/dist";
+import { getGame } from "w3api/dist/Game";
 
 it( "smoke", () => {
 
