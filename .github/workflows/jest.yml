@@ -1,6 +1,9 @@
 name: jest
 
-on: [push]
+on:
+  push:
+    paths:
+      - '**.ts'
 
 jobs:
   build:
