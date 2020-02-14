@@ -2,7 +2,7 @@
 import fs from "fs";
 import "../test/w3api";
 import { main, units } from "./dragonFire";
-import { getGame } from "w3api/dist/Game";
+import { getGame } from "w3api";
 
 it( "smoke", () => {
 
