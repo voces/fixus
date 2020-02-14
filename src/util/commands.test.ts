@@ -1,8 +1,7 @@
 
 import "../test/w3api";
-import { gameContext } from "w3api/dist/contexts";
+import { gameContext, simulateChat } from "w3api";
 import { registerCommand, main } from "./commands";
-import { simulateChat } from "w3api/dist/PlayerClass";
 
 const defaultArgs: {
 	command: string;

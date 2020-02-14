@@ -1,6 +1,6 @@
 
 import { MMD__DefineEvent, MMD__LogEvent } from "./w3mmd";
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 const logKill = ( killingUnit: unit, dyingUnit: unit ): void =>
 	MMD__LogEvent(

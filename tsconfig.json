@@ -16,7 +16,8 @@
 				"../node_modules/*/src/index",
 				"../node_modules/*/lib/index",
 				"../node_modules/*/index",
-				"../node_modules/*/dist/index"
+				"../node_modules/*/dist/index",
+				"../node_modules/w3api/*"
 			]
 		},
 		"esModuleInterop": true,
