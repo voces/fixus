@@ -15,7 +15,8 @@ let katama = true;
 
 const Trig_eggDolly_Actions = (): void => {
 
-	const playerId = GetPlayerId( GetTriggerPlayer() );
+	const player = GetTriggerPlayer();
+	const playerId = GetPlayerId( player );
 	dollyClick[ playerId ] ++;
 
 	if ( dollyClick[ playerId ] > 10 ) {
@@ -37,9 +38,9 @@ const Trig_eggDolly_Actions = (): void => {
 		}
 
 		KillUnit( GetTriggerUnit() );
-		DisplayTimedTextToPlayer( GetTriggerPlayer(), 0, 0, 5, "You killed Dolly! You've been placed in time out!" );
+		DisplayTimedTextToPlayer( player, 0, 0, 5, "You killed Dolly! You've been placed in time out!" );
 
-		if ( GetTriggerPlayer() === GetLocalPlayer() ) {
+		if ( player === GetLocalPlayer() ) {
 
 			TimerDialogDisplay( dollyTimerDialog[ playerId ], true );
 			EnableUserControl( false );
@@ -51,7 +52,7 @@ const Trig_eggDolly_Actions = (): void => {
 
 		PolledWait( 5 );
 
-		if ( GetTriggerPlayer() === GetLocalPlayer() ) {
+		if ( player === GetLocalPlayer() ) {
 
 			EnableUserControl( true );
 			TimerDialogDisplay( dollyTimerDialog[ playerId ], false );

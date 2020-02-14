@@ -7,10 +7,12 @@ import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const action = (): void => {
 
-	if ( IsUnitType( GetTriggerUnit(), UNIT_TYPE_HERO ) !== false ) return;
+	const u = GetTriggerUnit();
+
+	if ( IsUnitType( u, UNIT_TYPE_HERO ) !== false ) return;
 
 	PolledWait( 5 );
-	RemoveUnit( GetTriggerUnit() );
+	RemoveUnit( u );
 
 };
 
