@@ -1,6 +1,6 @@
 
 import { color } from "shared";
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 const gemActivated: Map<player, boolean> = new Map();
 const GEM_TYPE = FourCC( "gemt" );

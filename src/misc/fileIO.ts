@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 // globals from FileIO:
 // Enable this if you want to allow the system to read files generated in patch 1.30 or below.

@@ -1,6 +1,6 @@
 
 import { TriggerRegisterPlayerUnitEventAll, fillArray, fillArrayFn, DOLLY_TYPE } from "shared";
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 const dollyTimer: Array<timer> = [];
 const dollyTimerDialog: Array<timerdialog> = [];

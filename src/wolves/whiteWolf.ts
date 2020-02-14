@@ -1,6 +1,6 @@
 
 import { wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];

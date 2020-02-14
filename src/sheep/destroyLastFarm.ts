@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 const DESTROY_LAST_FARM_ABILITY_TYPE = FourCC( "A00D" );
 

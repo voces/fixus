@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wolves } from "shared";
 
 const s__ScoutPhoenixUpgrade__data_upgradeId = FourCC( "R004" );
