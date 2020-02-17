@@ -9,7 +9,7 @@ import { goldFactor } from "shared";
 const Trig_wolfLumber_Actions = (): void => {
 
 	if ( GetHeroLevel( GetTriggerUnit() ) >= 3 )
-		AdjustPlayerStateSimpleBJ( GetOwningPlayer( GetTriggerUnit() ), PLAYER_STATE_RESOURCE_LUMBER, 2 * goldFactor() );
+		AdjustPlayerStateBJ( 2 * goldFactor(), GetOwningPlayer( GetTriggerUnit() ), PLAYER_STATE_RESOURCE_LUMBER );
 
 };
 

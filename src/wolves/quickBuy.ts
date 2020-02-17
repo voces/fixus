@@ -156,7 +156,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	registerItem( { name: "mines", gold: 150, id: FourCC( "gobm" ) } );
 	registerItem( { name: "neck", gold: 150, id: FourCC( "nspi" ) } );
 	registerItem( { name: "negation", gold: 50, id: FourCC( "I005" ) } );
-	registerItem( { name: "orb", gold: 300, id: FourCC( "ofir" ) } );
+	registerItem( { name: "orb", gold: 350, id: FourCC( "ofir" ) } );
 	registerItem( { name: "power", gold: 200, id: FourCC( "tkno" ) } );
 	registerItem( { name: "speed", gold: 25, id: FourCC( "pspd" ) } );
 	registerItem( { name: "sabre", gold: 300, id: FourCC( "I000" ) } );

@@ -16,7 +16,7 @@ STRING 40
 STRING 41
 {
 Join the Sheep Tag Discord for more games and stats!
-https://discord.gg/sYYEUN
+https://discord.gg/Y4dHvwX
 }
 
 STRING 42
@@ -8184,18 +8184,6 @@ STRING 4374
 Increases the Intelligence of the Hero by 4 when worn.
 }
 
-STRING 4379
-// Items: I004 (Dragon Glass), Description (Description)
-{
-A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures.|nDeals 1% damage per second.
-}
-
-STRING 4381
-// Abilities: A00N (Dragon Fire), Ubertip (Tooltip - Normal - Extended)
-{
-This structure has under the effect of Dragon Fire; it will burn forever and spread Dragon Fire to nearby structures.|nDeals 1% damage per second.|n|cffff0000Destroy structures to stop the spread!|r
-}
-
 STRING 4382
 // Items: ofir (Orb of Fire), Description (Description)
 {
@@ -8295,12 +8283,6 @@ STRING 4407
 // Items: clfm (Cloak of Flames), Ubertip (Tooltip - Extended)
 {
 Engulfs the Hero in fire which deals 15 damage per second to nearby enemy land units.|nEach additional Cloak of Flames increases the area of effect and damage.|n-buy cloak
-}
-
-STRING 4408
-// Items: clsd (Cloak of Shadows), Ubertip (Tooltip - Extended)
-{
-Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero moves, attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy shadow
 }
 
 STRING 4409
@@ -8403,12 +8385,6 @@ STRING 4425
 // Items: I002 (Claws of Attack +50), Ubertip (Tooltip - Extended)
 {
 Increases the attack damage of the Hero by 50 when worn.|n-buy 50
-}
-
-STRING 4426
-// Items: I004 (Dragon Glass), Ubertip (Tooltip - Extended)
-{
-A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 1% damage per second.|n-buy dragon
 }
 
 STRING 4427
@@ -9487,5 +9463,51 @@ Destroy Farm
 STRING 4610
 {
 Fixus 8a
+}
+
+STRING 4611
+// Items: I004 (Dragon Glass), Ubertip (Tooltip - Extended)
+{
+A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.|n-buy dragon
+}
+
+STRING 4612
+// Items: I004 (Dragon Glass), Description (Description)
+{
+A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.|n-buy dragon
+}
+
+STRING 4613
+// Abilities: A00N (Dragon Fire), Ubertip (Tooltip - Normal - Extended)
+{
+This structure has under the effect of Dragon Fire; it will burn forever and spread Dragon Fire to nearby structures.|nDeals 3.25% damage per second.|n|cffff0000Destroy structures to stop the spread!|r
+}
+
+STRING 4614
+{
+Commands
+}
+
+STRING 4615
+{
+Change log
+}
+
+STRING 4616
+// Items: clsd (Cloak of Shadows), Ubertip (Tooltip - Extended)
+{
+Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy shadow
+}
+
+STRING 4617
+// Items: sorf (Shadow Orb Fragment), Description (Description)
+{
+A fragment of the Shadow Orb. Increases attack damage by one.|nStackable.
+}
+
+STRING 4618
+// Items: sorf (Shadow Orb Fragment), Ubertip (Tooltip - Extended)
+{
+A fragment of the Shadow Orb. Increases attack damage by one.|nStackable.
 }
 

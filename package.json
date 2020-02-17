@@ -12,7 +12,7 @@
     "dev": "npm-watch",
     "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "jest": "jest",
-    "test": "npm run build && node bin/operations run"
+	"test": "npm run build && node bin/operations run"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.8.4",
@@ -32,7 +32,7 @@
     "marked": ">=0.8.0",
     "npm-watch": ">=0.6.0",
     "ts-jest": "^25.2.0",
-    "ts-node": ">=8.6.2",
+    "ts-node": "^8.6.2",
     "ts-transformer-imports": ">=0.4.3",
     "typescript-to-lua": ">=0.31.0",
     "w3api": "^1.2.3",

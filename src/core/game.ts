@@ -93,7 +93,7 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 			if ( IsPlayerInForce( Player( i ), sheepTeam ) ) {
 
 				SetUnitInvulnerable( sheeps[ i ], true );
-				BlzSetUnitBaseDamage( sheeps[ i ], 4999, 0 );
+				BlzSetUnitBaseDamage( sheeps[ i ], 9999, 0 );
 				SetUnitMoveSpeed( sheeps[ i ], 522 );
 				BlzSetUnitRealField( sheeps[ i ], UNIT_RF_SIGHT_RADIUS, 5000 );
 
