@@ -97,7 +97,13 @@ const GetSheepBounty = ( dyingUnit: unit ): number => {
 	// farm bonus
 	bounty = reducePlayerUnits(
 		GetOwningPlayer( dyingUnit ),
-		( bounty, u ) => bounty + I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) ) * 0.4,
+		( bounty, u ) => {
+
+			const unitBounty = I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) );
+			if ( unitBounty >= 5 ) return bounty + unitBounty * 0.75;
+			return bounty;
+
+		},
 		bounty,
 		isStructureFilter,
 	);
@@ -158,12 +164,12 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 
 			if ( Player( i ) === killingPlayer ) {
 
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + killerBounty );
+				AdjustPlayerStateBJ( killerBounty, Player( i ), PLAYER_STATE_RESOURCE_GOLD );
 				SmallText( killerBounty, wolves[ i ], 14, 0, 0 );
 
 			} else {
 
-				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + allyBounty );
+				AdjustPlayerStateBJ( allyBounty, Player( i ), PLAYER_STATE_RESOURCE_GOLD );
 				SmallText( allyBounty, wolves[ i ], 14, 0, 0 );
 
 			}
@@ -230,7 +236,7 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 	}
 
 	// Bounty
-	SetPlayerState( savingPlayer, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( savingPlayer, PLAYER_STATE_RESOURCE_GOLD ) + 100 * goldFactor() );
+	AdjustPlayerStateBJ( 100 * goldFactor(), savingPlayer, PLAYER_STATE_RESOURCE_GOLD );
 	SmallText( 100 * goldFactor(), savingUnit, 14, 0, 0 );
 
 };

@@ -2,6 +2,31 @@
 // DO NOT MODIFY DIRECTLY. Execute `npm run build:changelog` instead.
 
 export const changelog = [
+	{ title: "Version 9", content: [
+		"Balance",
+		"• Wisp",
+		"  - Decreased initial mana (300 -> 200)",
+		"  - Increased mana regeneration (1 -> 1.5)",
+		"• Increased base sheep damage",
+		"  - Normal (120 -> 150)",
+		"  - Black (120 -> 200)",
+		"  - Silver (120 -> 250)",
+		"  - Golden (120 -> 300)",
+		"• Bounty changes",
+		"  - Increased farm bounty (1 -> 1.5)",
+		"  - Increased sheep death farm bounty (40% -> 75%)",
+		"  - Limited sheep death farm bounty to farms that grant 5+ gold",
+		"• Item changes",
+		"  - Increased Dragon Fire damage (1 -> 3.25%)",
+		"  - Increased cost of Orb of Fire (300 -> 350 gold)",
+		"  - Cloak of Shadows grants invisibility while moving",
+		"Features",
+		"• Gold/lumber properly tracked on leaderboard",
+		"• Sheep are buffed even more when winning",
+		"Bug fixes",
+		"• Hidden Saving Farms have correct scaling (1.15 -> 1)",
+		"• Fixed Discord link",
+	].join( "\n" ) },
 	{ title: "Version 8a", content: [
 		"Balance",
 		"• Decreased Avatar damage buff (50 -> 5 damage/level)",
@@ -9,7 +34,7 @@ export const changelog = [
 		"Features",
 		"• \"Hawkys\" now has a mushroom on his head",
 		"• New minimap image",
-		"Bug Fixes",
+		"Bug fixes",
 		"• Fixed copy errors",
 		"• Attempt at fixing desyncs on sheep death",
 		"Refactors",
@@ -32,7 +57,7 @@ export const changelog = [
 		"• Dragon Fire made ~10x more efficient",
 	].join( "\n" ) },
 	{ title: "Version 7d", content: [
-		"Bug Fixes",
+		"Bug fixes",
 		"• Can no longer gold allies gold you don't have",
 	].join( "\n" ) },
 	{ title: "Version 7c", content: [

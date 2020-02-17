@@ -1,6 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { saveskills } from "../shared";
+import { log } from "util/log";
 
 let factoryFarmTimer: timer;
 let factoryFarmDummySheep: unit;
@@ -68,14 +69,23 @@ let factoryFarmStart: () => void = () => { /* do nothing */ };
 
 const factoryFarmEnd = (): void => {
 
-	let wait = WAIT_BETWEEN_TICKS - factoryFarmBuilds * WAIT_BETWEEN_BUILDS;
+	try {
 
-	// Return sheep to unowned
-	SetUnitOwner( factoryFarmDummySheep, Player( PLAYER_NEUTRAL_PASSIVE ), false );
+		let wait = WAIT_BETWEEN_TICKS - factoryFarmBuilds * WAIT_BETWEEN_BUILDS;
 
-	// Invoke next run
-	if ( wait < WAIT_BETWEEN_BUILDS ) wait = WAIT_BETWEEN_BUILDS;
-	TimerStart( factoryFarmTimer, wait, false, factoryFarmStart );
+		// Return sheep to unowned
+		SetUnitOwner( factoryFarmDummySheep, Player( PLAYER_NEUTRAL_PASSIVE ), false );
+
+		// Invoke next run
+		if ( wait < WAIT_BETWEEN_BUILDS ) wait = WAIT_BETWEEN_BUILDS;
+		TimerStart( factoryFarmTimer, wait, false, factoryFarmStart );
+
+	} catch ( err ) {
+
+		log( err );
+		TimerStart( factoryFarmTimer, WAIT_BETWEEN_TICKS, false, factoryFarmStart );
+
+	}
 
 };
 
@@ -91,41 +101,49 @@ const getSpiralSize = ( size: number ): number => R2I( Pow( Math.floor( 640 / si
 
 const factoryFarmTick = (): void => {
 
-	const u = FirstOfGroup( factoryFarmsTemp );
+	try {
 
-	if ( u === null ) {
+		const u = FirstOfGroup( factoryFarmsTemp );
 
-		factoryFarmEnd();
-		return;
+		if ( u === null ) {
+
+			factoryFarmEnd();
+			return;
+
+		}
+
+		if ( UnitAlive( u ) ) {
+
+			const factoryData = factoryFarmData.get( u ) as FactoryFarmData;
+			const buildType = factoryData.buildType;
+			const farmSize = getFarmSize( buildType );
+
+			// Get next location
+			let buildIndex = factoryData.buildIndex + 1;
+			if ( buildIndex > getSpiralSize( farmSize ) ) buildIndex = 2;
+			factoryFarmData.set( u, { ...factoryData, buildIndex } );
+
+			const x = GetUnitX( u ) + Math.round( spiralX( buildIndex ) ) * farmSize;
+			const y = GetUnitY( u ) + Math.round( spiralY( buildIndex ) ) * farmSize;
+
+			// Build the farm
+			SetUnitX( factoryFarmDummySheep, x );
+			SetUnitY( factoryFarmDummySheep, y );
+
+			SetUnitOwner( factoryFarmDummySheep, GetOwningPlayer( u ), false );
+			IssueBuildOrderById( factoryFarmDummySheep, buildType, x, y );
+
+			factoryFarmBuilds = factoryFarmBuilds + 1;
+
+		}
+
+		GroupRemoveUnit( factoryFarmsTemp, u );
+
+	} catch ( err ) {
+
+		log( err );
 
 	}
-
-	if ( UnitAlive( u ) ) {
-
-		const factoryData = factoryFarmData.get( u ) as FactoryFarmData;
-		const buildType = factoryData.buildType;
-		const farmSize = getFarmSize( buildType );
-
-		// Get next location
-		let buildIndex = factoryData.buildIndex + 1;
-		if ( buildIndex > getSpiralSize( farmSize ) ) buildIndex = 2;
-		factoryFarmData.set( u, { ...factoryData, buildIndex } );
-
-		const x = GetUnitX( u ) + Math.round( spiralX( buildIndex ) ) * farmSize;
-		const y = GetUnitY( u ) + Math.round( spiralY( buildIndex ) ) * farmSize;
-
-		// Build the farm
-		SetUnitX( factoryFarmDummySheep, x );
-		SetUnitY( factoryFarmDummySheep, y );
-
-		SetUnitOwner( factoryFarmDummySheep, GetOwningPlayer( u ), false );
-		IssueBuildOrderById( factoryFarmDummySheep, buildType, x, y );
-
-		factoryFarmBuilds = factoryFarmBuilds + 1;
-
-	}
-
-	GroupRemoveUnit( factoryFarmsTemp, u );
 
 	TimerStart( factoryFarmTimer, WAIT_BETWEEN_BUILDS, false, factoryFarmTick );
 

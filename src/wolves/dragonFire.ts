@@ -59,7 +59,7 @@ const nextWolfId = ( current: number ): number => {
 const burnUnit = ( u: unit ): void => {
 
 	burnWolfId = nextWolfId( burnWolfId );
-	const damage = Math.max( R2I( BlzGetUnitMaxHP( u ) * 0.01 ), 1 );
+	const damage = Math.max( R2I( BlzGetUnitMaxHP( u ) * 0.0325 ), 1 );
 
 	UnitDamageTarget(
 		wolves[ burnWolfId ],

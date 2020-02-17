@@ -28,7 +28,7 @@ const Trig_miscGoldTick_Actions = (): void => {
 		// Give sheep their simple gold tick
 		if ( IsPlayerInForce( player, sheepTeam ) ) {
 
-			AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, goldFactor() );
+			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
 			continue;
 
 		}
@@ -77,10 +77,10 @@ const Trig_miscSavingTick_Actions = (): void => {
 
 			if ( saveskills[ i ] >= 25 ) amount *= 2;
 
-			AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, amount );
+			AdjustPlayerStateBJ( amount, player, PLAYER_STATE_RESOURCE_GOLD );
 
 		} else if ( GetPlayerController( player ) !== MAP_CONTROL_NONE )
-			AdjustPlayerStateSimpleBJ( player, PLAYER_STATE_RESOURCE_GOLD, goldFactor() );
+			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
 
 	}
 

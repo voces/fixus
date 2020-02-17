@@ -1,6 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { goldFactor, SmallText, mainUnit } from "shared";
+import { goldFactor, SmallText, mainUnit, fillArrayFn } from "shared";
 
 // ===========================================================================
 // Trigger: miscKillReturn
@@ -8,7 +8,11 @@ import { goldFactor, SmallText, mainUnit } from "shared";
 
 const Trig_miscKillReturn_Actions = (): void => {
 
-	const gold = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) * goldFactor();
+	const goldBase = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_BASE );
+	const goldDice = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_NUMBER_OF_DICE );
+	const goldSides = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_SIDES_PER_DIE );
+	const gold = ( goldBase + fillArrayFn( goldDice, () => Math.ceil( Math.random() * goldSides ) ).reduce( ( sum, v ) => sum + v, 0 ) ) * goldFactor();
+
 	const xp = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_LUMBER_BOUNTY_AWARDED_BASE ) * goldFactor();
 
 	if ( GetKillingUnit() === null || IsUnitAlly( GetKillingUnit(), GetOwningPlayer( GetTriggerUnit() ) ) )
@@ -16,7 +20,7 @@ const Trig_miscKillReturn_Actions = (): void => {
 
 	if ( gold > 0 ) {
 
-		AdjustPlayerStateSimpleBJ( GetOwningPlayer( GetKillingUnit() ), PLAYER_STATE_RESOURCE_GOLD, gold );
+		AdjustPlayerStateBJ( gold, GetOwningPlayer( GetKillingUnit() ), PLAYER_STATE_RESOURCE_GOLD );
 		SmallText( gold, GetTriggerUnit(), 14, 0, 0 );
 
 	}
