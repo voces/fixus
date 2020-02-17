@@ -18,7 +18,7 @@ This is a TypeScript map. This means that while object editing, terraining, and 
 
 In order to build `dist/fixus.w3x`, run `npm run build`. If you want to test solo (as Red), you can also run `npm run test`.
 
-To distribute the map, you must build an actual `.w3x` file. I typically do this by opening `dist/fixus.w3x` in the World Editor (via dragging the folder over it) and Saving as. This will generate a file without source code, though, so you must re-import `dist/fixus.w3x/war3map.lua` by using an [MPQ Editor](http://www.zezula.net/en/mpq/download.html).
+To distribute the map, you must build an actual `.w3x` file. I typically do this by opening `dist/fixus.w3x` in the World Editor (via dragging the folder over it) and Saving as. This will generate a file without source code, though, so you must re-import `dist/fixus.w3x/war3map.lua` by using an [MPQ Editor](http://www.zezula.net/en/mpq/download.html). To use a custom minimap image, also import `dist/fixus.w3x/war3mapMap.blp`.
 
 ## Contributing
 Anyone is welcome to contribute; just open a pull request and I'll review it. I strongly recommend joining the Discord, though, and discussing ideas first before doing any work! Please make sure tests are passing by running `npm run jest`.
