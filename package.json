@@ -12,7 +12,7 @@
     "dev": "npm-watch",
     "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "jest": "jest",
-	"test": "npm run build && node bin/operations run"
+    "test": "npm run build && node bin/operations run"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.8.4",

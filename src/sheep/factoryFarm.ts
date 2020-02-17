@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { saveskills } from "../shared";
-import { log } from "util/log";
+import { log } from "../util/log";
 
 let factoryFarmTimer: timer;
 let factoryFarmDummySheep: unit;
