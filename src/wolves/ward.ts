@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
-export const WARD_TYPE = FourCC( "n001" );
+const WARD_TYPE = FourCC( "n001" );
 const WARD_ABILITY_TYPE = FourCC( "A001" );
 
 // ===========================================================================

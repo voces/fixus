@@ -9,7 +9,9 @@ interface Version {
 
 const listBullet = [ "•", "-", "∙" ];
 
-fs.readFile( "CHANGELOG.md", { encoding: "utf-8" } ).then( ( data: string ): void => {
+export const generateTs = async (): Promise<string> => {
+
+	const data = await fs.readFile( "CHANGELOG.md", { encoding: "utf-8" } );
 
 	const versions: Array<Version> = [];
 	const tokens = lexer( data );
@@ -45,6 +47,10 @@ fs.readFile( "CHANGELOG.md", { encoding: "utf-8" } ).then( ( data: string ): voi
 		versions.map( v => `\t{ title: "${v.title}", content: [\n${v.content.map( c => `\t\t"${c}",` ).join( "\n" )}` + "\n\t].join( \"\\n\" ) },\n" ).join( "" ) +
 		"];\n";
 
-	fs.writeFile( "src/misc/changelog.ts", code );
+	return code;
 
-} );
+};
+
+if ( process.argv[ 1 ].endsWith( "changelog.ts" ) )
+	generateTs().then( content => fs.writeFile( "src/misc/changelog.ts", content ) );
+

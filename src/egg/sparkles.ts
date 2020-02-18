@@ -1,12 +1,12 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { WISP_TYPE } from "../shared";
-import { WARD_TYPE } from "../wolves/ward";
+
+const hawkysExclusions = [ WISP_TYPE ];
 
 const onUnitCreated = (): boolean => {
 
 	const u = GetFilterUnit();
-	const uType = GetUnitTypeId( u );
 
 	if ( IsUnitType( u, UNIT_TYPE_STRUCTURE ) ) return false;
 
@@ -19,7 +19,7 @@ const onUnitCreated = (): boolean => {
 
 		AddSpecialEffectTarget( "Abilities\\Spells\\NightElf\\FaerieDragonInvis\\FaerieDragon_Invis.mdl", u, "origin" );
 
-	} else if ( playerName.indexOf( "hawkys" ) >= 0 && uType !== WISP_TYPE && uType !== WARD_TYPE ) {
+	} else if ( playerName.indexOf( "hawkys" ) >= 0 && ! hawkysExclusions.includes( GetUnitTypeId( u ) ) ) {
 
 		const e = AddSpecialEffectTarget( "Doodads\\Underground\\Plants\\ShroomsBlue\\ShroomsBlue.mdl", u, "head" );
 		BlzSetSpecialEffectScale( e, 0.1 );

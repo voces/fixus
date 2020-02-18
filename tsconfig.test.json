@@ -38,6 +38,6 @@
 			"war3-types/core/polyfill"
 		]
 	},
-	"include": ["src"],
+	"include": ["src", "bin"],
 	"exclude": []
 }

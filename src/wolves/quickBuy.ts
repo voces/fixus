@@ -2,7 +2,7 @@
 import { wolfTeam, wolves } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { registerCommand } from "util/commands";
-import { withSelectedUnits } from "util/temp";
+import { withSelectedUnits, forEachPlayerUnit } from "util/temp";
 
 const quickBuyTax = 1.5;
 const quickSellTax = 0.5;
@@ -165,5 +165,24 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	registerItem( { name: "siege", gold: 150, id: FourCC( "tfar" ) } );
 	registerItem( { name: "stalker", gold: 100, id: FourCC( "fgfh" ) } );
 	registerItem( { name: "supergolem", gold: 350, id: FourCC( "I001" ) } );
+
+	// todo: test this
+	forEachPlayerUnit(
+		Player( PLAYER_NEUTRAL_AGGRESSIVE ),
+		unit => {
+
+			for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+				if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+					SetFogStateRadius(
+						Player( i ),
+						FOG_OF_WAR_VISIBLE,
+						GetUnitX( unit ),
+						GetUnitY( unit ),
+						64,
+						true,
+					);
+
+		},
+	);
 
 } );
