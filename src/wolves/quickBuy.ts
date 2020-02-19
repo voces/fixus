@@ -168,7 +168,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	// todo: test this
 	forEachPlayerUnit(
-		Player( PLAYER_NEUTRAL_AGGRESSIVE ),
+		Player( PLAYER_NEUTRAL_PASSIVE ),
 		unit => {
 
 			for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
