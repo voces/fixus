@@ -1,21 +1,21 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
-const MMD_GOAL_NONE = 101;
-const MMD_GOAL_HIGH = 102;
-const MMD_GOAL_LOW = 103;
+export const MMD_GOAL_NONE = 101;
+export const MMD_GOAL_HIGH = 102;
+export const MMD_GOAL_LOW = 103;
 
-const MMD_TYPE_STRING = 101;
-const MMD_TYPE_REAL = 102;
-const MMD_TYPE_INT = 103;
+export const MMD_TYPE_STRING = 101;
+export const MMD_TYPE_REAL = 102;
+export const MMD_TYPE_INT = 103;
 
-const MMD_OP_ADD = 101;
-const MMD_OP_SUB = 102;
-const MMD_OP_SET = 103;
+export const MMD_OP_ADD = 101;
+export const MMD_OP_SUB = 102;
+export const MMD_OP_SET = 103;
 
-const MMD_SUGGEST_NONE = 101;
-const MMD_SUGGEST_TRACK = 102;
-const MMD_SUGGEST_LEADERBOARD = 103;
+export const MMD_SUGGEST_NONE = 101;
+export const MMD_SUGGEST_TRACK = 102;
+export const MMD_SUGGEST_LEADERBOARD = 103;
 
 const MMD_FLAG_DRAWER = 101;
 export const MMD_FLAG_LOSER = 102;

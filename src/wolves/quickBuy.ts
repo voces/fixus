@@ -173,16 +173,20 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 			for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 				if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-					SetFogStateRadius(
-						Player( i ),
-						FOG_OF_WAR_VISIBLE,
-						GetUnitX( unit ),
-						GetUnitY( unit ),
-						64,
-						true,
+					FogModifierStart(
+						CreateFogModifierRadius(
+							Player( i ),
+							FOG_OF_WAR_VISIBLE,
+							GetUnitX( unit ),
+							GetUnitY( unit ),
+							128,
+							true,
+							false,
+						),
 					);
 
 		},
+		Filter( () => IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) ),
 	);
 
 } );

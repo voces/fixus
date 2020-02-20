@@ -2,7 +2,11 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { WISP_TYPE } from "../shared";
 
-const hawkysExclusions = [ WISP_TYPE ];
+const PHOENIX1_TYPE = FourCC( "h00F" );
+const PHOENIX2_TYPE = FourCC( "h00G" );
+const PHOENIX3_TYPE = FourCC( "h00H" );
+
+const hawkysExclusions = [ WISP_TYPE, PHOENIX1_TYPE, PHOENIX2_TYPE, PHOENIX3_TYPE ];
 
 const onUnitCreated = (): boolean => {
 

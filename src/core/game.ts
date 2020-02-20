@@ -12,8 +12,9 @@ import {
 	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { MMD_FlagPlayer, MMD_FLAG_WINNER, MMD_FLAG_LOSER, MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
+import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { log } from "../util/log";
+import { endGameStats } from "../stats/mmd";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -65,27 +66,7 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 	TimerDialogSetTitle( gameTimerDialog, "Ending in..." );
 	TimerDialogDisplay( gameTimerDialog, true );
 
-	try {
-
-		if ( ! desynced )
-			for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-				if (
-					GetPlayerController( Player( i ) ) === MAP_CONTROL_USER &&
-				[ PLAYER_SLOT_STATE_PLAYING, PLAYER_SLOT_STATE_LEFT ].includes( GetPlayerSlotState( Player( i ) ) )
-				)
-					if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-
-						if ( winner === "wolves" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
-						else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
-
-					else if ( winner === "sheep" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
-					else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
-
-	} catch ( err ) {
-
-		log( err );
-
-	}
+	endGameStats( winner, desynced );
 
 	if ( winner === "sheep" )
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
