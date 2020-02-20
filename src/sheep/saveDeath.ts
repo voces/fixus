@@ -36,10 +36,18 @@ import { endGame } from "../core/game";
 const BLACK_SHEEP_TYPE = FourCC( "uC02" );
 const SILVER_SHEEP_TYPE = FourCC( "u000" );
 const GOLD_SHEEP_TYPE = FourCC( "u001" );
+const sheepTypes = [ SHEEP_TYPE, BLACK_SHEEP_TYPE, SILVER_SHEEP_TYPE, GOLD_SHEEP_TYPE ];
+const wolfTypes = [ WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE ];
 
 // ===========================================================================
 // Trigger: sheepSaveDeath
 // ===========================================================================
+
+export const isUnitSheep = ( unit: unit ): boolean =>
+	sheepTypes.includes( GetUnitTypeId( unit ) );
+
+export const isUnitWolf = ( unit: unit ): boolean =>
+	wolfTypes.includes( GetUnitTypeId( unit ) );
 
 const isStructureFilter = Filter( (): boolean => IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
 
@@ -263,7 +271,7 @@ const action = (): void => {
 
 	// Sheep death
 
-	if ( GetUnitTypeId( GetTriggerUnit() ) === SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === BLACK_SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === SILVER_SHEEP_TYPE || GetUnitTypeId( GetTriggerUnit() ) === GOLD_SHEEP_TYPE ) {
+	if ( isUnitSheep( GetTriggerUnit() ) ) {
 
 		onSheepDeath( GetTriggerUnit(), GetKillingUnit() );
 		relevantDeath = true;
@@ -281,7 +289,7 @@ const action = (): void => {
 
 	// Wolf death
 
-	else if ( GetUnitTypeId( GetTriggerUnit() ) === WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === BLACK_WOLF_TYPE || GetUnitTypeId( GetTriggerUnit() ) === IMBA_WOLF_TYPE )
+	else if ( isUnitWolf( GetTriggerUnit() ) )
 
 		onWolfDeath( GetTriggerUnit() );
 
