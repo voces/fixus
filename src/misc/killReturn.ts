@@ -15,7 +15,7 @@ const Trig_miscKillReturn_Actions = (): void => {
 
 	const xp = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_LUMBER_BOUNTY_AWARDED_BASE ) * goldFactor();
 
-	if ( GetKillingUnit() === null || IsUnitAlly( GetKillingUnit(), GetOwningPlayer( GetTriggerUnit() ) ) )
+	if ( GetKillingUnit() == null || IsUnitAlly( GetKillingUnit(), GetOwningPlayer( GetTriggerUnit() ) ) )
 		return;
 
 	if ( gold > 0 ) {

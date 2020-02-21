@@ -16,7 +16,7 @@ const DRAGON_FIRE_ABILITY_TYPE = FourCC( "A00N" );
 
 const needsFireAbilityFilter = Condition( () =>
 	GetUnitAbilityLevel( GetFilterUnit(), DRAGON_FIRE_BUFF_TYPE ) > 0 &&
-	BlzGetUnitAbility( GetFilterUnit(), DRAGON_FIRE_ABILITY_TYPE ) === null &&
+	BlzGetUnitAbility( GetFilterUnit(), DRAGON_FIRE_ABILITY_TYPE ) == null &&
 	IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ),
 );
 
@@ -45,7 +45,7 @@ const nextWolfId = ( current: number ): number => {
 		current = current + 1;
 
 		if ( current === 12 ) current = 8;
-		if ( wolves[ current ] !== null ) return current;
+		if ( wolves[ current ] != null ) return current;
 
 	}
 

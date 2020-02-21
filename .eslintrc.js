@@ -10,6 +10,9 @@ module.exports = {
 	rules: {
 		"no-undef": 0,
 		"@typescript-eslint/camelcase": 0,
+		"eqeqeq": ["error", "always", {"null": "never"}],
+		"no-unused-vars": 0,
+		"@typescript-eslint/no-unused-vars": 2
 		// "@typescript-eslint/strict-boolean-expressions": 2
 	},
 };

@@ -199,7 +199,7 @@ const s__MMD__QueueNode_onDestroy = ( _this: number ): void => {
 // Generated destructor of MMD__QueueNode
 const s__MMD__QueueNode_deallocate = ( _this: number ): void => {
 
-	if ( _this === null ) return;
+	if ( _this == null ) return;
 	if ( si__MMD__QueueNode_V[ _this ] !== - 1 ) return;
 
 	s__MMD__QueueNode_onDestroy( _this );
@@ -380,7 +380,7 @@ const MMD__update_value = ( name: string, p: player, op: string, value: string, 
 
 	const id = GetPlayerId( p );
 
-	if ( p === null || id < 0 || id >= bj_MAX_PLAYERS )
+	if ( p == null || id < 0 || id >= bj_MAX_PLAYERS )
 		BJDebugMsg( "MMD Set Error: Invalid player. Must be P1 to P24." );
 
 	else if ( val_type !== GetStoredInteger( MMD__gc, "types", name ) )
@@ -441,7 +441,7 @@ export const MMD_FlagPlayer = ( p: player, flag_type: number ): void => {
 	const flag = MMD__flags[ flag_type ];
 	const id = GetPlayerId( p );
 
-	if ( p === null || id < 0 || id >= bj_MAX_PLAYERS )
+	if ( p == null || id < 0 || id >= bj_MAX_PLAYERS )
 		BJDebugMsg( "MMD Flag Error: Invalid player. Must be P1 to P24." );
 
 	else if ( StringLength( flag ) === 0 )
@@ -459,13 +459,13 @@ export const MMD_DefineValue = ( name: string, value_type: number, goal_type: nu
 	const vtype = MMD__types[ value_type ];
 	const stype = MMD__suggestions[ suggestion_type ];
 
-	if ( goal === null )
+	if ( goal == null )
 		BJDebugMsg( "MMD Def Error: Unrecognized goal type." );
 
-	else if ( vtype === null )
+	else if ( vtype == null )
 		BJDebugMsg( "MMD Def Error: Unrecognized value type." );
 
-	else if ( stype === null )
+	else if ( stype == null )
 		BJDebugMsg( "Stats Def Error: Unrecognized suggestion type." );
 
 	else if ( StringLength( name ) > 32 )

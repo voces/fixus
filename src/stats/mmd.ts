@@ -8,9 +8,11 @@ import {
 	MMD_FlagPlayer,
 	MMD_GOAL_HIGH,
 	MMD_GOAL_LOW,
+	MMD_GOAL_NONE,
 	MMD_OP_SET,
 	MMD_SUGGEST_NONE,
 	MMD_TYPE_INT,
+	MMD_TYPE_STRING,
 	MMD_UpdateValueInt,
 } from "./w3mmd";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
@@ -156,6 +158,8 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 		MMD_DefineValue( "sheep deaths", MMD_TYPE_INT, MMD_GOAL_LOW, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "sheep gold", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "units killed", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
+		MMD_DefineValue( "max level", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
+		MMD_DefineValue( "specialization", MMD_TYPE_STRING, MMD_GOAL_NONE, MMD_SUGGEST_NONE );
 
 		// wolves
 		MMD_DefineValue( "wolf lumber", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );

@@ -16,7 +16,7 @@ const increaseMovementSpeed = (): void => {
 	DisplayTimedText( 15, "Five minutes remaining! Movement speed increased by 25%!" );
 
 	const dolly = withPlayerUnits( Player( PLAYER_NEUTRAL_PASSIVE ), FirstOfGroup, filterDolly );
-	if ( dolly === null ) return;
+	if ( dolly == null ) return;
 
 	UnitAddAbility( dolly, DOLLY_SPEED_AURA );
 

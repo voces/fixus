@@ -136,7 +136,7 @@ const s__File_readPreload = ( _this: number ): string | null => {
 
 export const closeFile = ( _this: number ): void => {
 
-	if ( s__File_buffer[ _this ] !== null ) {
+	if ( s__File_buffer[ _this ] != null ) {
 
 		writeFile( _this, ( s__File_readPreload( _this ) || "" ) + s__File_buffer[ _this ] );
 		s__File_buffer[ _this ] = null;
@@ -155,9 +155,9 @@ const s__File_readEx = ( _this: number, close: boolean ): string | null => {
 
 	if ( close ) closeFile( _this );
 
-	if ( output === null ) return buf;
+	if ( output == null ) return buf;
 
-	if ( buf !== null ) output = output + buf;
+	if ( buf != null ) output = output + buf;
 
 	return output;
 

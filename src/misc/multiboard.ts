@@ -27,7 +27,7 @@ const updateMultiboardRow = (
 	mbi = MultiboardGetItem( board(), index, 1 );
 	if ( value2 ) MultiboardSetItemValue( mbi, value2 );
 
-	if ( icon === null ) MultiboardSetItemStyle( mbi, true, false );
+	if ( icon == null ) MultiboardSetItemStyle( mbi, true, false );
 	else MultiboardSetItemIcon( mbi, icon );
 
 	MultiboardReleaseItem( mbi );
