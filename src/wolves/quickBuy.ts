@@ -94,10 +94,10 @@ const sellAction = (
 	// Sell items
 	sellSlots.forEach( slot => {
 
-		if ( slot < 0 || slot >= bj_MAX_INVENTORY || UnitItemInSlot( u, slot ) === null ) return;
+		if ( slot < 0 || slot >= bj_MAX_INVENTORY || UnitItemInSlot( u, slot ) == null ) return;
 
 		const itemSpec = itemSpecIds[ GetItemTypeId( UnitItemInSlot( u, slot ) ) ];
-		if ( itemSpec === null ) return;
+		if ( itemSpec == null ) return;
 
 		RemoveItem( UnitItemInSlot( u, slot ) );
 		// should gold go to the owner or trigger player?

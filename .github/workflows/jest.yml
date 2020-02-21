@@ -15,4 +15,4 @@ jobs:
     - name: Runs tests
       run: |
         npm i
-        npm run jest
+        npm test

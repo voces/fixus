@@ -105,7 +105,7 @@ const factoryFarmTick = (): void => {
 
 		const u = FirstOfGroup( factoryFarmsTemp );
 
-		if ( u === null ) {
+		if ( u == null ) {
 
 			factoryFarmEnd();
 			return;

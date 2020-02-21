@@ -11,8 +11,9 @@
     "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.map.json && node bin/operations build",
     "dev": "npm-watch",
     "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "jest": "jest",
-    "test": "npm run build && node bin/operations run"
+    "pretest": "eslint . --ext .ts",
+    "start": "npm run build && node bin/operations run",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.8.4",
