@@ -1,4 +1,4 @@
-name: jest
+name: test
 
 on:
   push:
@@ -15,4 +15,4 @@ jobs:
     - name: Runs tests
       run: |
         npm i
-        npm run jest
+        npm test
