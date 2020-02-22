@@ -21,7 +21,7 @@
 ## Features
 - Gold/lumber properly tracked on leaderboard
 - Sheep are buffed even more when winning
-- Shops are not visible to wolves
+- Shops are now visible to wolves
 
 ## Bug fixes
 - Hidden Saving Farms have correct scaling (1.15 -> 1)
