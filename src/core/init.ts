@@ -3,7 +3,6 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
 	countHereReal,
 	DisplayTimedText,
-	goldFactor,
 	sheepTeam,
 	wolfTeam,
 } from "shared";
@@ -95,9 +94,6 @@ const action = (): void => {
 		solo = true;
 
 		DisplayTimedText( 5, "Solo commands enabled." );
-
-		// lots of gold
-		goldFactor( 1000 );
 
 		const filteredCommands = commands.filter( c => c.category === "solo" );
 		const q = CreateQuest();

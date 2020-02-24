@@ -63,3 +63,6 @@ export const withTempForce = <T>( fn: ( force: force ) => T ): T => {
 	return result;
 
 };
+
+export const forEachPlayer = <T>( fn: ( player: player ) => void ): void =>
+	withTempForce( f => ForForce( f, () => fn( GetEnumPlayer() ) ) );

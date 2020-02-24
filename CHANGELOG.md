@@ -18,6 +18,11 @@
   - Increased Dragon Fire damage (1 -> 3.25%)
   - Increased cost of Orb of Fire (300 -> 350 gold)
   - Cloak of Shadows grants invisibility while moving
+- Ability changes
+  - Decreased size of Owl Scouts (1.2 -> 1 scale)
+  - Increased damage buff of Command Aura
+    - Level 2 (75% -> 100%)
+    - Level 3 (100% -> 150%)
 
 ## Features
 - Gold/lumber properly tracked on leaderboard
