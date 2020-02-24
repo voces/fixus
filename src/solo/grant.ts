@@ -2,7 +2,6 @@
 import { registerCommand } from "util/commands";
 import { isSolo } from "core/init";
 import { forEachPlayer } from "util/temp";
-import { log } from "util/log";
 
 // ===========================================================================
 registerCommand( {
@@ -19,7 +18,6 @@ registerCommand( {
 
 		forEachPlayer( p => {
 
-			log( "forEachPlayer cb", GetPlayerId( p ) );
 			AdjustPlayerStateBJ( goldAmount, p, PLAYER_STATE_RESOURCE_GOLD );
 
 		} );

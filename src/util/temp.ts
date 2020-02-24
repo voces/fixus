@@ -64,5 +64,9 @@ export const withTempForce = <T>( fn: ( force: force ) => T ): T => {
 
 };
 
-export const forEachPlayer = <T>( fn: ( player: player ) => void ): void =>
-	withTempForce( f => ForForce( f, () => fn( GetEnumPlayer() ) ) );
+export const forEachPlayer = ( fn: ( player: player ) => void ): void => {
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		fn( Player( i ) );
+
+};

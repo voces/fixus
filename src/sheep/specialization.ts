@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { fillArrayFn } from "../shared";
-import { log } from "../util/log";
+import { emitLog } from "../util/emitLog";
 
 type SpecializationData = {
 	learn: number;
@@ -115,7 +115,7 @@ const setSpecialization = (): void => {
 
 		}
 
-	log( "Unknown specialization", spellId );
+	emitLog( "Unknown specialization", spellId );
 
 };
 
@@ -158,7 +158,9 @@ export const Specialization_onSave = ( u: unit ): void => {
 
 	const i = GetPlayerId( GetOwningPlayer( u ) );
 
-	if ( ++ playerSpecializations[ i ].level > playerSpecializations[ i ].maxLevel )
+	playerSpecializations[ i ].level ++;
+
+	if ( playerSpecializations[ i ].level > playerSpecializations[ i ].maxLevel )
 		playerSpecializations[ i ].maxLevel = playerSpecializations[ i ].level;
 
 	Specialization_onSpawn( u );

@@ -13,9 +13,9 @@ import {
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
 import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
-import { log } from "../util/log";
 import { endGameStats } from "../stats/mmd";
 import { isSolo } from "./init";
+import { emitLog } from "../util/emitLog";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -225,7 +225,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 		} catch ( err ) {
 
-			log( err );
+			emitLog( "gameTimer expired", err );
 
 		}
 

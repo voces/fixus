@@ -23,12 +23,20 @@
   - Increased damage buff of Command Aura
     - Level 2 (75% -> 100%)
     - Level 3 (100% -> 150%)
+- Added 30% tax on gold transfers
 
 ## Features
 - Gold/lumber properly tracked on leaderboard
 - Sheep are buffed even more when winning
 - Shops are now visible to wolves
-- Added solo mode
+- Added solo mode (when one team is empty of real players)
+  - Gray wolf will always spawn
+  - Command -owner [X] changes selected units owner to X
+  - Command -grant gold [X] gives everyone X gold
+  - Command -grant lumber [X] gives everyone X lumber
+  - Right-clicking 12 farms or more away, ordered units are teleported
+- Can no longer give resources via Allies menu
+- Added -lumber (-l) command
 
 ## Bug fixes
 - Hidden Saving Farms have correct scaling (1.15 -> 1)
@@ -45,7 +53,7 @@
 
 ## Bug fixes
 - Fixed copy errors
-- Attempt at fixing desyncs on sheep death
+- Fixed desyncs on sheep death
 
 ## Refactors
 - Jotye Farm ignores unit types and just works off buff

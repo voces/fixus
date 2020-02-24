@@ -1,6 +1,6 @@
 
 import { TriggerRegisterPlayerChatEventAll } from "../shared";
-import { log } from "./log";
+import { emitLog } from "./emitLog";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 export type Arg = {
@@ -109,7 +109,7 @@ const _registerCommand = <T>(
 
 		} catch ( err ) {
 
-			log( err );
+			emitLog( err );
 
 		}
 

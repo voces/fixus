@@ -11,7 +11,7 @@ import {
 import { reloadMultiboard } from "./multiboard";
 import { isPlayingPlayer, colorizedName } from "util/player";
 import { endGame, flagDesync } from "../core/game";
-import { log } from "../util/log";
+import { emitLog } from "../util/emitLog";
 
 let lastLeave = 0;
 
@@ -70,7 +70,7 @@ const Trig_miscLeaves_Actions = (): void => {
 
 	} catch ( err ) {
 
-		log( err );
+		emitLog( "leaves", err );
 
 	}
 

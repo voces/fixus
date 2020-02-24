@@ -10,7 +10,7 @@ const isArray = ( v: any ): boolean => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const termToString = ( v: any ): string => {
+export const termToString = ( v: any ): string => {
 
 	if ( typeof v === "string" ) return colorize.string( `"${v}"` );
 	if ( typeof v === "number" ) return colorize.number( v );

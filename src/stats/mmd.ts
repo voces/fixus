@@ -23,7 +23,7 @@ import {
 	saveskills,
 	wolfTeam,
 } from "../shared";
-import { log } from "../util/log";
+import { emitLog } from "../util/emitLog";
 import { playerSpecializations } from "../sheep/specialization";
 
 const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
@@ -105,7 +105,7 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 	} catch ( err ) {
 
-		log( err );
+		emitLog( err );
 
 	}
 

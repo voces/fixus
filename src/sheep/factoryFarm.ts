@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { saveskills } from "../shared";
-import { log } from "../util/log";
+import { emitLog } from "../util/emitLog";
 
 let factoryFarmTimer: timer;
 let factoryFarmDummySheep: unit;
@@ -82,7 +82,7 @@ const factoryFarmEnd = (): void => {
 
 	} catch ( err ) {
 
-		log( err );
+		emitLog( "factoryFarmEnd", err );
 		TimerStart( factoryFarmTimer, WAIT_BETWEEN_TICKS, false, factoryFarmStart );
 
 	}
@@ -141,7 +141,7 @@ const factoryFarmTick = (): void => {
 
 	} catch ( err ) {
 
-		log( err );
+		emitLog( "factoryFarmTick", err );
 
 	}
 
