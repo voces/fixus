@@ -100,7 +100,7 @@ const GetSheepBounty = ( dyingUnit: unit ): number => {
 		( bounty, u ) => {
 
 			const unitBounty = I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) );
-			if ( unitBounty >= 5 ) return bounty + unitBounty * 0.75;
+			if ( unitBounty >= 5 ) return bounty + unitBounty * 0.6;
 			return bounty;
 
 		},

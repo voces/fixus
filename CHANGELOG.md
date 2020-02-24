@@ -11,8 +11,9 @@
   - Golden (120 -> 300)
 - Bounty changes
   - Increased farm bounty (1 -> 1.5)
-  - Increased sheep death farm bounty (40% -> 75%)
+  - Increased sheep death farm bounty (40% -> 60%)
   - Limited sheep death farm bounty to farms that grant 5+ gold
+  - Increased passive wolf income (4 -> gold per 3 seconds)
 - Item changes
   - Increased Dragon Fire damage (1 -> 3.25%)
   - Increased cost of Orb of Fire (300 -> 350 gold)
@@ -22,6 +23,7 @@
 - Gold/lumber properly tracked on leaderboard
 - Sheep are buffed even more when winning
 - Shops are now visible to wolves
+- Added solo mode
 
 ## Bug fixes
 - Hidden Saving Farms have correct scaling (1.15 -> 1)
