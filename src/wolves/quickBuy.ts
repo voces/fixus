@@ -3,6 +3,7 @@ import { wolfTeam, wolves } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { registerCommand } from "util/commands";
 import { withSelectedUnits, forEachPlayerUnit } from "util/temp";
+import { isSolo } from "core/init";
 
 const quickBuyTax = 1.5;
 const quickSellTax = 0.5;
@@ -45,7 +46,7 @@ const hasInventoryAndControlled = Condition( (): boolean =>
 const buyAction = ( { item }: { item: string } ): void => {
 
 	// Preconditions
-	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) return;
+	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) && ! isSolo() ) return;
 
 	// Find unit to give the item to
 	const u = withSelectedUnits( GetTriggerPlayer(), ( g: group ) => FirstOfGroup( g ), hasInventoryAndControlled ) ||
@@ -80,7 +81,7 @@ const sellAction = (
 ): void => {
 
 	// Preconditions
-	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) ) return;
+	if ( ! IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) && ! isSolo() ) return;
 
 	// Find unit to sell the item on
 	const u = withSelectedUnits( GetTriggerPlayer(), ( g: group ) => FirstOfGroup( g ), hasInventoryAndControlled ) ||

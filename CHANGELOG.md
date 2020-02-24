@@ -11,17 +11,24 @@
   - Golden (120 -> 300)
 - Bounty changes
   - Increased farm bounty (1 -> 1.5)
-  - Increased sheep death farm bounty (40% -> 75%)
+  - Increased sheep death farm bounty (40% -> 60%)
   - Limited sheep death farm bounty to farms that grant 5+ gold
+  - Increased passive wolf income (4 -> gold per 3 seconds)
 - Item changes
   - Increased Dragon Fire damage (1 -> 3.25%)
   - Increased cost of Orb of Fire (300 -> 350 gold)
   - Cloak of Shadows grants invisibility while moving
+- Ability changes
+  - Decreased size of Owl Scouts (1.2 -> 1 scale)
+  - Increased damage buff of Command Aura
+    - Level 2 (75% -> 100%)
+    - Level 3 (100% -> 150%)
 
 ## Features
 - Gold/lumber properly tracked on leaderboard
 - Sheep are buffed even more when winning
-- Shops are not visible to wolves
+- Shops are now visible to wolves
+- Added solo mode
 
 ## Bug fixes
 - Hidden Saving Farms have correct scaling (1.15 -> 1)

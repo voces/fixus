@@ -1,15 +1,20 @@
 
 import {
+	BLACK_SHEEP_TYPE,
 	BLACK_WOLF_TYPE,
 	CLOAK_TYPE,
 	color,
 	countHere,
+	GOLD_SHEEP_TYPE,
 	goldFactor,
 	IMBA_WOLF_TYPE,
+	isUnitSheep,
+	isUnitWolf,
 	saveskills,
 	SHEEP_TYPE,
 	sheeps,
 	sheepTeam,
+	SILVER_SHEEP_TYPE,
 	SmallText,
 	WHITE_WOLF_TYPE,
 	WISP_TYPE,
@@ -33,21 +38,8 @@ import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
 import { endGame } from "../core/game";
 
-const BLACK_SHEEP_TYPE = FourCC( "uC02" );
-const SILVER_SHEEP_TYPE = FourCC( "u000" );
-const GOLD_SHEEP_TYPE = FourCC( "u001" );
-const sheepTypes = [ SHEEP_TYPE, BLACK_SHEEP_TYPE, SILVER_SHEEP_TYPE, GOLD_SHEEP_TYPE ];
-const wolfTypes = [ WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE ];
-
-// ===========================================================================
 // Trigger: sheepSaveDeath
 // ===========================================================================
-
-export const isUnitSheep = ( unit: unit ): boolean =>
-	sheepTypes.includes( GetUnitTypeId( unit ) );
-
-export const isUnitWolf = ( unit: unit ): boolean =>
-	wolfTypes.includes( GetUnitTypeId( unit ) );
 
 const isStructureFilter = Filter( (): boolean => IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
 
@@ -108,7 +100,7 @@ const GetSheepBounty = ( dyingUnit: unit ): number => {
 		( bounty, u ) => {
 
 			const unitBounty = I2R( BlzGetUnitIntegerField( u, UNIT_IF_GOLD_BOUNTY_AWARDED_BASE ) );
-			if ( unitBounty >= 5 ) return bounty + unitBounty * 0.75;
+			if ( unitBounty >= 5 ) return bounty + unitBounty * 0.6;
 			return bounty;
 
 		},
@@ -270,7 +262,6 @@ const action = (): void => {
 	let relevantDeath = false;
 
 	// Sheep death
-
 	if ( isUnitSheep( GetTriggerUnit() ) ) {
 
 		onSheepDeath( GetTriggerUnit(), GetKillingUnit() );
@@ -288,7 +279,6 @@ const action = (): void => {
 		} else onWispTK( GetTriggerUnit() );
 
 	// Wolf death
-
 	else if ( isUnitWolf( GetTriggerUnit() ) )
 
 		onWolfDeath( GetTriggerUnit() );

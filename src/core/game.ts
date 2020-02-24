@@ -15,6 +15,7 @@ import { reloadMultiboard } from "misc/multiboard";
 import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { log } from "../util/log";
 import { endGameStats } from "../stats/mmd";
+import { isSolo } from "./init";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -160,11 +161,21 @@ const startToPlay = (): void => {
 	const starterItem = starterItemMap[ countHere( wolfTeam ) ];
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
-		if ( ! IsPlayerInForce( Player( i ), wolfTeam ) || GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_EMPTY ) continue;
+		if (
+			(
+				// they aren't a wolf player
+				! IsPlayerInForce( Player( i ), wolfTeam ) ||
+				// they're not here
+				GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_EMPTY
+			) &&
+			// and we're not debugging
+			( ! isSolo() || i !== 8 )
+		) continue;
 
 		wolves[ i ] = CreateUnit( Player( i ), WOLF_TYPE, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
 		UnitAddItem( wolves[ i ], CreateItem( STARTER_ITEM_TYPE, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-		UnitAddItem( wolves[ i ], CreateItem( starterItem, GetStartLocationX( i ), GetStartLocationY( i ) ) );
+		if ( starterItem != null ) // null if solo
+			UnitAddItem( wolves[ i ], CreateItem( starterItem, GetStartLocationX( i ), GetStartLocationY( i ) ) );
 
 		if ( GetLocalPlayer() === Player( i ) ) {
 

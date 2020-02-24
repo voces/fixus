@@ -14,7 +14,7 @@ export type Arg = {
 
 export type Command<T> = {
 	command: string;
-	category: "sheep" | "wolf" | "host" | "misc" | "hidden";
+	category: "sheep" | "wolf" | "host" | "misc" | "hidden" | "solo";
 	alias?: string;
 	description: string;
 	args?: Array<Arg>;

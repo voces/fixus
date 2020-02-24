@@ -1,9 +1,8 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
-	countHere,
+	countHereReal,
 	DisplayTimedText,
-	goldFactor,
 	sheepTeam,
 	wolfTeam,
 } from "shared";
@@ -14,6 +13,9 @@ import { commands, Command, Arg } from "util/commands";
 // ===========================================================================
 // Trigger: coreInit
 // ===========================================================================
+
+let solo = false;
+export const isSolo = (): boolean => solo;
 
 const argHelp = ( arg: Arg ): string =>
 	arg.required === undefined || arg.required ? `<${arg.name}>` : `[${arg.name}]`;
@@ -87,8 +89,19 @@ const action = (): void => {
 	DisplayTimedText( 3, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
 
 	// debug mode
-	if ( countHere( wolfTeam ) === 0 || countHere( sheepTeam ) === 0 )
-		goldFactor( 1000 );
+	if ( countHereReal( wolfTeam ) === 0 || countHereReal( sheepTeam ) === 0 ) {
+
+		solo = true;
+
+		DisplayTimedText( 5, "Solo commands enabled." );
+
+		const filteredCommands = commands.filter( c => c.category === "solo" );
+		const q = CreateQuest();
+		QuestSetTitle( q, "Solo Commands" );
+		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNHeroPaladin.blp" );
+		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
+
+	}
 
 	board( CreateMultiboard() );
 

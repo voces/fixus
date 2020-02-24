@@ -11,6 +11,7 @@ import {
 import { reloadMultiboard } from "./multiboard";
 import { isPlayingPlayer, colorizedName } from "util/player";
 import { endGame, flagDesync } from "../core/game";
+import { log } from "../util/log";
 
 let lastLeave = 0;
 
@@ -23,48 +24,55 @@ const isSameTeam = ( a: player, b: player ): boolean =>
 
 const Trig_miscLeaves_Actions = (): void => {
 
-	let i = 0;
-	const f = CreateForce();
+	try {
 
-	for ( i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( isSameTeam( GetTriggerPlayer(), Player( i ) ) && isPlayingPlayer( Player( i ) ) && GetTriggerPlayer() !== Player( i ) )
-			ForceAddPlayer( f, Player( i ) );
+		// Remove main unit if sheep or wisp
+		if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) || IsPlayerInForce( GetTriggerPlayer(), wispTeam ) )
+			RemoveUnit( mainUnit( GetTriggerPlayer() ) );
 
-	// Divy out resources
-	const gold = GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) / Math.max( countHere( f ), 1 );
+		// Update name
+		SetPlayerName( GetTriggerPlayer(), "|r" + GetPlayerName( GetTriggerPlayer() ) );
+		reloadMultiboard();
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( IsPlayerInForce( Player( i ), f ) ) {
+		const f = CreateForce();
 
-			SetPlayerAllianceStateBJ( GetTriggerPlayer(), Player( i ), bj_ALLIANCE_ALLIED_ADVUNITS );
-			DisplayTextToPlayer( Player( i ), 0, 0, `${colorizedName( GetTriggerPlayer() )} gave you ${I2S( gold )} gold.` );
-			SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + gold );
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			if ( isSameTeam( GetTriggerPlayer(), Player( i ) ) && isPlayingPlayer( Player( i ) ) && GetTriggerPlayer() !== Player( i ) )
+				ForceAddPlayer( f, Player( i ) );
 
-		}
+		// Divy out resources
+		const gold = GetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD ) / Math.max( countHere( f ), 1 );
 
-	SetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, 0 );
-	DestroyForce( f );
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			if ( IsPlayerInForce( Player( i ), f ) ) {
 
-	// Update name
-	SetPlayerName( GetTriggerPlayer(), "|r" + GetPlayerName( GetTriggerPlayer() ) );
-	reloadMultiboard();
+				SetPlayerAllianceStateBJ( GetTriggerPlayer(), Player( i ), bj_ALLIANCE_ALLIED_ADVUNITS );
+				DisplayTextToPlayer( Player( i ), 0, 0, `${colorizedName( GetTriggerPlayer() )} gave you ${I2S( gold )} gold.` );
+				SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + gold );
 
-	// Remove main unit if sheep or wisp
-	if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) || IsPlayerInForce( GetTriggerPlayer(), wispTeam ) )
-		RemoveUnit( mainUnit( GetTriggerPlayer() ) );
+			}
 
-	// desync detection
-	const time = TimerGetElapsed( bj_gameStartedTimer );
-	if ( time + 1 <= lastLeave )
-		flagDesync();
-	lastLeave = time;
+		SetPlayerState( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, 0 );
+		DestroyForce( f );
 
-	// End game if last
-	if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) && countHere( sheepTeam ) === 1 )
-		endGame( "wolves" );
+		// desync detection
+		const time = TimerGetElapsed( bj_gameStartedTimer );
+		if ( time + 1 <= lastLeave )
+			flagDesync();
+		lastLeave = time;
 
-	else if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) && countHere( wolfTeam ) === 1 )
-		endGame( "sheep" );
+		// End game if last
+		if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) && countHere( sheepTeam ) === 1 )
+			endGame( "wolves" );
+
+		else if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) && countHere( wolfTeam ) === 1 )
+			endGame( "sheep" );
+
+	} catch ( err ) {
+
+		log( err );
+
+	}
 
 };
 

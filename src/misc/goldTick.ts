@@ -6,6 +6,7 @@ import {
 	countHereReal,
 	wolfTeam,
 	saveskills,
+	wispTeam,
 } from "shared";
 import { isPlayingPlayer, hasLeft, isComputer } from "util/player";
 
@@ -26,7 +27,7 @@ const Trig_miscGoldTick_Actions = (): void => {
 		const player = Player( i );
 
 		// Give sheep their simple gold tick
-		if ( IsPlayerInForce( player, sheepTeam ) ) {
+		if ( IsPlayerInForce( player, sheepTeam ) && GetPlayerController( player ) !== MAP_CONTROL_NONE ) {
 
 			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
 			continue;
@@ -64,6 +65,7 @@ const Trig_miscSavingTick_Actions = (): void => {
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
 		const player = Player( i );
+		if ( GetPlayerController( player ) === MAP_CONTROL_NONE ) continue;
 
 		// This might change if we let wolves get saving farms
 		if ( IsPlayerInForce( player, sheepTeam ) ) {
@@ -79,7 +81,20 @@ const Trig_miscSavingTick_Actions = (): void => {
 
 			AdjustPlayerStateBJ( amount, player, PLAYER_STATE_RESOURCE_GOLD );
 
-		} else if ( GetPlayerController( player ) !== MAP_CONTROL_NONE )
+		} else if ( IsPlayerInForce( player, wispTeam ) )
+			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
+
+	}
+
+};
+
+const wolfTickActions = (): void => {
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
+
+		const player = Player( i );
+
+		if ( IsPlayerInForce( player, wolfTeam ) )
 			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
 
 	}
@@ -96,5 +111,9 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 4, true );
 	TriggerAddAction( t, Trig_miscSavingTick_Actions );
+
+	t = CreateTrigger();
+	TriggerRegisterTimerEvent( t, 3, true );
+	TriggerAddAction( t, wolfTickActions );
 
 } );

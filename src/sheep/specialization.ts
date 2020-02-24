@@ -36,8 +36,14 @@ const specializations: Record<string, SpecializationData> = {
 
 const specializationLearnAbilities = Object.values( specializations ).map( s => s.learn );
 
-const playerSpecializations: {level: number; specialization: SpecializationData | null}[] =
-	fillArrayFn( bj_MAX_PLAYERS, () => ( { level: 0, specialization: null } ) );
+type PlayerSpecialization = {
+	level: number;
+	maxLevel: number;
+	specialization: SpecializationData | null;
+}
+
+export const playerSpecializations: PlayerSpecialization[] =
+	fillArrayFn( bj_MAX_PLAYERS, () => ( { level: 0, maxLevel: 0, specialization: null } ) );
 
 const SPELLBOOK_ABILITY_TYPE = FourCC( "A006" );
 
@@ -113,7 +119,9 @@ const setSpecialization = (): void => {
 
 };
 
-const isSpecializationAbility = (): boolean => specializationLearnAbilities.includes( GetSpellAbilityId() );
+const isSpecializationAbilityCondition = Condition(
+	(): boolean => specializationLearnAbilities.includes( GetSpellAbilityId() ),
+);
 
 const startConstruction = (): void => {
 
@@ -149,7 +157,9 @@ export const Specialization_onSpawn = ( u: unit ): void => {
 export const Specialization_onSave = ( u: unit ): void => {
 
 	const i = GetPlayerId( GetOwningPlayer( u ) );
-	playerSpecializations[ i ].level ++;
+
+	if ( ++ playerSpecializations[ i ].level > playerSpecializations[ i ].maxLevel )
+		playerSpecializations[ i ].maxLevel = playerSpecializations[ i ].level;
 
 	Specialization_onSpawn( u );
 
@@ -169,7 +179,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	let t = CreateTrigger();
 
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	TriggerAddCondition( t, Condition( isSpecializationAbility ) );
+	TriggerAddCondition( t, isSpecializationAbilityCondition );
 	TriggerAddAction( t, setSpecialization );
 
 	t = CreateTrigger();

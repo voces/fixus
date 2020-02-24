@@ -35,7 +35,7 @@
     "ts-jest": "^25.2.0",
     "ts-node": "^8.6.2",
     "ts-transformer-imports": ">=0.4.3",
-    "typescript-to-lua": ">=0.31.0",
+    "typescript-to-lua": "^0.31.0",
     "w3api": "^1.2.3",
     "war3-types": ">=1.0.1",
     "war3tstlhelper": ">=1.0.1"
