@@ -161,13 +161,15 @@ export const TriggerRegisterPlayerUnitEventAll = ( t: trigger, p: playeruniteven
 // Grabs the player's main unit
 export const mainUnit = ( p: player ): unit => {
 
-	if ( GetPlayerId( p ) > 6 )
-		return wolves[ GetPlayerId( p ) ];
+	const playerId = GetPlayerId( p );
+
+	if ( IsPlayerInForce( p, wolfTeam ) )
+		return wolves[ playerId ];
 
 	if ( IsPlayerInForce( p, sheepTeam ) )
-		return sheeps[ GetPlayerId( p ) ];
+		return sheeps[ playerId ];
 
-	return wisps[ GetPlayerId( p ) ];
+	return wisps[ playerId ];
 
 };
 
@@ -196,6 +198,19 @@ addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 	ForceEnumAllies( wolfTeam, Player( 11 ), Condition( isHere ) );
 
 } );
+
+export const BLACK_SHEEP_TYPE = FourCC( "uC02" );
+export const SILVER_SHEEP_TYPE = FourCC( "u000" );
+export const GOLD_SHEEP_TYPE = FourCC( "u001" );
+
+const sheepTypes = [ SHEEP_TYPE, BLACK_SHEEP_TYPE, SILVER_SHEEP_TYPE, GOLD_SHEEP_TYPE ];
+const wolfTypes = [ WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE ];
+
+export const isUnitSheep = ( unit: unit ): boolean =>
+	sheepTypes.includes( GetUnitTypeId( unit ) );
+
+export const isUnitWolf = ( unit: unit ): boolean =>
+	wolfTypes.includes( GetUnitTypeId( unit ) );
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 

@@ -25,6 +25,7 @@ import "sheep/farmSelfDestruct";
 import "sheep/jotyeFarm";
 import "sheep/saveDeath";
 import "sheep/wispLeave";
+import "solo/owner";
 import "stats/mmd";
 import "util/todo";
 import "wolves/cloakOfFlames";

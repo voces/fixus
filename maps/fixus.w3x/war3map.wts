@@ -5,7 +5,7 @@ Sheep
 
 STRING 39
 {
-Ultimate Sheep Tag Fixus 8a
+Ultimate Sheep Tag Fixus 9
 }
 
 STRING 40
@@ -9460,11 +9460,6 @@ STRING 4608
 Destroy Farm
 }
 
-STRING 4610
-{
-Fixus 8a
-}
-
 STRING 4611
 // Items: I004 (Dragon Glass), Ubertip (Tooltip - Extended)
 {
@@ -9499,15 +9494,8 @@ STRING 4616
 Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy shadow
 }
 
-STRING 4617
-// Items: sorf (Shadow Orb Fragment), Description (Description)
+STRING 4619
 {
-A fragment of the Shadow Orb. Increases attack damage by one.|nStackable.
-}
-
-STRING 4618
-// Items: sorf (Shadow Orb Fragment), Ubertip (Tooltip - Extended)
-{
-A fragment of the Shadow Orb. Increases attack damage by one.|nStackable.
+Fixus 9
 }
 
