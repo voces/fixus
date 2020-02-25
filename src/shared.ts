@@ -173,6 +173,20 @@ export const mainUnit = ( p: player ): unit => {
 
 };
 
+export const wolfUnit = ( p: player ): unit => {
+
+	if ( ! IsPlayerInForce( p, wolfTeam ) ) throw new Error( "used wolfUnit on non-wolf" );
+
+	const playerId = GetPlayerId( p );
+	const wolf = wolves[ playerId ];
+
+	if ( GetUnitTypeId( wolf ) === WHITE_WOLF_TYPE )
+		return wws[ playerId ];
+
+	return wolf;
+
+};
+
 export const SmallText = ( amount: number, u: unit, cc: number, x: number, y: number ): void => {
 
 	if ( GetUnitAbilityLevel( u, FourCC( "Alv1" ) ) <= 0 && IsVisibleToPlayer( GetUnitX( u ), GetUnitY( u ), GetLocalPlayer() ) ) {
