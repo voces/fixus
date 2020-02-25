@@ -2,7 +2,7 @@
 
 The classic Warcraft 3 map.
 
-[![jest](https://github.com/voces/fixus/workflows/jest/badge.svg)](https://github.com/voces/fixus/actions?query=workflow%3Ajest)
+[![test](https://github.com/voces/fixus/workflows/test/badge.svg)](https://github.com/voces/fixus/actions?query=workflow%3Atest)
 [![Discord](https://img.shields.io/discord/232301193718661121)](https://discord.gg/Y4dHvwX)
 
 [Change log](CHANGELOG.md)
