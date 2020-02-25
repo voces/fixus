@@ -98,7 +98,7 @@ const action = (): void => {
 		const filteredCommands = commands.filter( c => c.category === "solo" );
 		const q = CreateQuest();
 		QuestSetTitle( q, "Solo Commands" );
-		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNHeroPaladin.blp" );
+		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNDwarfCar.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
 	}

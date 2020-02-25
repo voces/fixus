@@ -2,6 +2,7 @@
 import { registerCommand } from "util/commands";
 import { isSolo } from "core/init";
 import { forEachPlayer } from "util/temp";
+import { log } from "util/log";
 
 // ===========================================================================
 registerCommand( {
@@ -9,8 +10,10 @@ registerCommand( {
 	category: "solo",
 	description: "Gives everyone some gold.",
 	alias: "gg",
-	args: [ { name: "amount", type: "number", required: false } ],
+	args: [ { name: "amount", type: "number", required: true } ],
 	fn: ( { gold }: {gold: number | null} ): void => {
+
+		log( "gold", gold );
 
 		if ( ! isSolo() ) return;
 

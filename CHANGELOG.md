@@ -24,6 +24,9 @@
     - Level 2 (75% -> 100%)
     - Level 3 (100% -> 150%)
 - Added 30% tax on gold transfers
+- Added Pity XP: wolves get an increasing amount of XP if they get no kills
+  - 50 XP after three minutes
+  - +25 of previous value every following minute
 
 ## Features
 - Gold/lumber properly tracked on leaderboard

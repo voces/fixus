@@ -31,6 +31,7 @@ import {
 	Specialization_onSave,
 	Specialization_onSpawn,
 } from "./specialization";
+import { onSheepDeath as pityXpOnSheepDeath } from "../wolves/pityXp";
 import { ScoutPhoenixUpgrade_onSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
@@ -126,6 +127,7 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( killedPlayer )} has been ${color[ 13 ]}killed|r by ${colorizedName( killingPlayer )}!` );
 	forEachPlayerUnit( killedPlayer, RemoveUnit );
 	Specialization_onDeath( killedUnit );
+	pityXpOnSheepDeath();
 
 	// Move to wisps
 	ForceAddPlayer( wispTeam, killedPlayer );
