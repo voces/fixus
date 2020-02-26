@@ -1,5 +1,4 @@
 
-import fs from "fs";
 import "../test/w3api";
 import { getGame } from "w3api";
 import { main, units, nextWolfId } from "./dragonFire";
@@ -18,10 +17,6 @@ jest.mock(
 
 it( "smoke", () => {
 
-	getGame().loadData( {
-		w3u: fs.readFileSync( "maps/fixus.w3x/war3map.w3u" ),
-		wts: fs.readFileSync( "maps/fixus.w3x/war3map.wts" ),
-	} );
 	main();
 	CreateUnit( Player( 0 ), FourCC( "hhou" ), 0, 0, 270 );
 	CreateUnit( Player( 0 ), FourCC( "hhou" ), 0, 192, 270 );
