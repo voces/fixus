@@ -1,26 +1,37 @@
 
 import { registerCommand } from "util/commands";
-import { isSolo } from "core/init";
+import { isSandbox } from "core/init";
 import { forEachSelectedUnit } from "util/temp";
 
 // ===========================================================================
 // Trigger: miscControl
 // ===========================================================================
 
+const prevOwner: Record<number, player> = {};
+
 const action = ( { player }: {player: player | null} ): void => {
 
-	if ( ! isSolo() ) return;
+	if ( ! isSandbox() ) return;
 
-	const newOwner = player || GetTriggerPlayer();
+	forEachSelectedUnit( GetTriggerPlayer(), u => {
 
-	forEachSelectedUnit( GetTriggerPlayer(), u => SetUnitOwner( u, newOwner, false ) );
+		const newOwner = player ||
+			( GetOwningPlayer( u ) === GetTriggerPlayer() ?
+				prevOwner[ GetHandleId( u ) ] :
+				GetTriggerPlayer() );
+
+		prevOwner[ GetHandleId( u ) ] = GetOwningPlayer( u );
+
+		SetUnitOwner( u, newOwner, false );
+
+	} );
 
 };
 
 // ===========================================================================
 registerCommand( {
 	command: "owner",
-	category: "solo",
+	category: "sandbox",
 	description: "Sets the selected units' owner to the passed player.",
 	alias: "o",
 	args: [ { name: "player", type: "player", required: false } ],

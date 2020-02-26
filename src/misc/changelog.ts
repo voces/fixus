@@ -34,7 +34,7 @@ export const changelog = [
 		"• Gold/lumber properly tracked on leaderboard",
 		"• Sheep are buffed even more when winning",
 		"• Shops are now visible to wolves",
-		"• Added solo mode (when one team is empty of real players)",
+		"• Added sandbox mode (when one team is empty of real players)",
 		"  - Gray wolf will always spawn",
 		"  - Command -owner [X] changes selected units owner to X",
 		"  - Command -grant gold [X] gives everyone X gold",

@@ -25,7 +25,7 @@ type FactoryFarmData = {
 	buildIndex: number;
 	buildType: number;
 }
-// todo: is Map leaky here?
+
 const factoryFarmData: Map<unit, FactoryFarmData> = new Map();
 
 export const spiralX = ( n: number ): number => {

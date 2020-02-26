@@ -14,8 +14,8 @@ import { commands, Command, Arg } from "util/commands";
 // Trigger: coreInit
 // ===========================================================================
 
-let solo = false;
-export const isSolo = (): boolean => solo;
+let sandbox = false;
+export const isSandbox = (): boolean => sandbox;
 
 const argHelp = ( arg: Arg ): string =>
 	arg.required === undefined || arg.required ? `<${arg.name}>` : `[${arg.name}]`;
@@ -91,13 +91,13 @@ const action = (): void => {
 	// debug mode
 	if ( countHereReal( wolfTeam ) === 0 || countHereReal( sheepTeam ) === 0 ) {
 
-		solo = true;
+		sandbox = true;
 
-		DisplayTimedText( 5, "Solo commands enabled." );
+		DisplayTimedText( 5, "Sandbox commands enabled." );
 
-		const filteredCommands = commands.filter( c => c.category === "solo" );
+		const filteredCommands = commands.filter( c => c.category === "sandbox" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Solo Commands" );
+		QuestSetTitle( q, "Sandbox Commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNDwarfCar.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 

@@ -1,12 +1,12 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { isSolo } from "core/init";
+import { isSandbox } from "core/init";
 
-// todo: test this
 const blinkMove = (): void => {
 
 	const u = GetTriggerUnit();
 
+	// smart
 	if ( GetIssuedOrderId() !== 851971 ) return;
 
 	const x1 = GetUnitX( u );
@@ -31,7 +31,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	TriggerRegisterTimerEvent( t, 0.25, false );
 	TriggerAddAction( t, () => {
 
-		if ( ! isSolo() ) return;
+		if ( ! isSandbox() ) return;
 
 		const t = CreateTrigger();
 		TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER );

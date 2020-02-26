@@ -24,6 +24,7 @@ PickupItemRange=196.0
 ReactionDelay=0.0
 StrHitPointBonus=500.0
 StrRegenBonus=0.25
-TradingIncLarge=10
+TradingIncLarge=0
+TradingIncSmall=0
 UpkeepUsage=10000,10000,10000,10000,10000,10000,10000,10000
 

@@ -26,6 +26,7 @@ import {
 } from "../shared";
 import { emitLog } from "../util/emitLog";
 import { playerSpecializations } from "../sheep/specialization";
+import { isSandbox } from "../core/init";
 
 const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
 const structuresKilled = fillArray( bj_MAX_PLAYERS, 0 );
@@ -94,7 +95,7 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 				}
 
-				if ( ! desynced )
+				if ( ! desynced && ! isSandbox() )
 					if ( IsPlayerInForce( Player( i ), wolfTeam ) )
 
 						if ( winner === "wolves" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );

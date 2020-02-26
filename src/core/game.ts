@@ -14,7 +14,7 @@ import {
 import { reloadMultiboard } from "misc/multiboard";
 import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
-import { isSolo } from "./init";
+import { isSandbox } from "./init";
 import { emitLog } from "../util/emitLog";
 
 let gameTimer: timer;
@@ -169,12 +169,12 @@ const startToPlay = (): void => {
 				GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_EMPTY
 			) &&
 			// and we're not debugging
-			( ! isSolo() || i !== 8 )
+			( ! isSandbox() || i !== 8 )
 		) continue;
 
 		wolves[ i ] = CreateUnit( Player( i ), WOLF_TYPE, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
 		UnitAddItem( wolves[ i ], CreateItem( STARTER_ITEM_TYPE, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-		if ( starterItem != null ) // null if solo
+		if ( starterItem != null ) // null if sandbox
 			UnitAddItem( wolves[ i ], CreateItem( starterItem, GetStartLocationX( i ), GetStartLocationY( i ) ) );
 
 		if ( GetLocalPlayer() === Player( i ) ) {

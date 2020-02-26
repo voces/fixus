@@ -1,18 +1,18 @@
 
 import { registerCommand } from "util/commands";
-import { isSolo } from "core/init";
+import { isSandbox } from "core/init";
 import { forEachPlayer } from "util/temp";
 
 // ===========================================================================
 registerCommand( {
 	command: "grant gold",
-	category: "solo",
+	category: "sandbox",
 	description: "Gives everyone some gold.",
 	alias: "gg",
 	args: [ { name: "amount", type: "number", required: false } ],
 	fn: ( { amount }: {amount: number | null} ): void => {
 
-		if ( ! isSolo() ) return;
+		if ( ! isSandbox() ) return;
 
 		const goldAmount = amount || 1000;
 
@@ -23,13 +23,13 @@ registerCommand( {
 
 registerCommand( {
 	command: "grant lumber",
-	category: "solo",
+	category: "sandbox",
 	description: "Gives everyone some lumber.",
 	alias: "gl",
 	args: [ { name: "amount", type: "number", required: false } ],
 	fn: ( { amount }: {amount: number | null} ): void => {
 
-		if ( ! isSolo() ) return;
+		if ( ! isSandbox() ) return;
 
 		const lumberAmount = amount || 6;
 

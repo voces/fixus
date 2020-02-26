@@ -6,7 +6,6 @@ import { registerCommand } from "util/commands";
 // Trigger: miscGold
 // ===========================================================================
 
-// todo: test this
 const action = ( { player: receiver, amount = Infinity }: {player: player; amount?: number} ): void => {
 
 	if (
@@ -33,7 +32,7 @@ const action = ( { player: receiver, amount = Infinity }: {player: player; amoun
 
 	const amountSt = I2S( amount );
 	displayToPlayer( receiver, `${colorizedName( GetTriggerPlayer() )} gave you ${amountSt} gold.` );
-	displayToPlayer( GetTriggerPlayer(), `${amountSt} gold given to ${colorizedName( receiver )} (${I2S( tax )} exclusive tax)` );
+	displayToPlayer( GetTriggerPlayer(), `${amountSt} gold given to ${colorizedName( receiver )} (+${I2S( tax )} tax)` );
 	AdjustPlayerStateSimpleBJ( receiver, PLAYER_STATE_RESOURCE_GOLD, amount );
 	AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, - amount - tax );
 
