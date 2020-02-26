@@ -7,8 +7,7 @@ const blinkMove = (): void => {
 
 	const u = GetTriggerUnit();
 
-	// todo: get order id for smart
-	// if ( GetIssuedOrderId() !== 7 ) return;
+	if ( GetIssuedOrderId() !== 851971 ) return;
 
 	const x1 = GetUnitX( u );
 	const y1 = GetUnitY( u );

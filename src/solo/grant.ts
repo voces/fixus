@@ -2,7 +2,6 @@
 import { registerCommand } from "util/commands";
 import { isSolo } from "core/init";
 import { forEachPlayer } from "util/temp";
-import { log } from "util/log";
 
 // ===========================================================================
 registerCommand( {
@@ -10,20 +9,14 @@ registerCommand( {
 	category: "solo",
 	description: "Gives everyone some gold.",
 	alias: "gg",
-	args: [ { name: "amount", type: "number", required: true } ],
-	fn: ( { gold }: {gold: number | null} ): void => {
-
-		log( "gold", gold );
+	args: [ { name: "amount", type: "number", required: false } ],
+	fn: ( { amount }: {amount: number | null} ): void => {
 
 		if ( ! isSolo() ) return;
 
-		const goldAmount = gold || 1000;
+		const goldAmount = amount || 1000;
 
-		forEachPlayer( p => {
-
-			AdjustPlayerStateBJ( goldAmount, p, PLAYER_STATE_RESOURCE_GOLD );
-
-		} );
+		forEachPlayer( p => AdjustPlayerStateBJ( goldAmount, p, PLAYER_STATE_RESOURCE_GOLD ) );
 
 	},
 } );
@@ -34,11 +27,11 @@ registerCommand( {
 	description: "Gives everyone some lumber.",
 	alias: "gl",
 	args: [ { name: "amount", type: "number", required: false } ],
-	fn: ( { lumber }: {lumber: number | null} ): void => {
+	fn: ( { amount }: {amount: number | null} ): void => {
 
 		if ( ! isSolo() ) return;
 
-		const lumberAmount = lumber || 1000;
+		const lumberAmount = amount || 6;
 
 		forEachPlayer( p => AdjustPlayerStateBJ( lumberAmount, p, PLAYER_STATE_RESOURCE_LUMBER ) );
 

@@ -5,7 +5,7 @@ import { colorize } from "./colorize";
 const isArray = ( v: any ): boolean => {
 
 	if ( typeof v !== "object" ) return false;
-	return Object.keys( v ).every( ( v, index ) => S2I( v ) === index );
+	return Object.keys( v ).every( ( v, index ) => S2I( v ) === index + 1 );
 
 };
 

@@ -12,7 +12,9 @@ module.exports = {
 		"@typescript-eslint/camelcase": 0,
 		"eqeqeq": ["error", "always", {"null": "never"}],
 		"no-unused-vars": 0,
-		"@typescript-eslint/no-unused-vars": 2
+		"@typescript-eslint/no-unused-vars": 2,
+		"no-extra-parens": 0,
+		"@typescript-eslint/no-extra-parens": ["error"]
 		// "@typescript-eslint/strict-boolean-expressions": 2
 	},
 };
