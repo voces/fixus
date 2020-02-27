@@ -1,5 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { spawnCoin } from "../misc/coins";
 
 const DESTROY_LAST_FARM_ABILITY_TYPE = FourCC( "A00D" );
 
@@ -9,8 +10,11 @@ const DESTROY_LAST_FARM_ABILITY_TYPE = FourCC( "A00D" );
 
 const destroyLastFarmAction = (): void => {
 
-	if ( GetSpellAbilityId() === DESTROY_LAST_FARM_ABILITY_TYPE )
-		KillUnit( GetBuilding( GetOwningPlayer( GetTriggerUnit() ) ) );
+	if ( GetSpellAbilityId() !== DESTROY_LAST_FARM_ABILITY_TYPE ) return;
+
+	const farm = GetBuilding( GetOwningPlayer( GetTriggerUnit() ) );
+	KillUnit( farm );
+	spawnCoin( farm );
 
 };
 

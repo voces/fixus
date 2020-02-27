@@ -62,7 +62,7 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 	gameEnded = true;
 
 	TimerDialogDisplay( gameTimerDialog, false );
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, "Fixus by |CFF959697Chakra|r\nJoin the community at http://tiny.cc/sheeptag\nUpload replays to https://wc3stats.com/upload" );
 	TimerStart( gameTimer, 15, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( gameTimerDialog, "Ending in..." );
 	TimerDialogDisplay( gameTimerDialog, true );

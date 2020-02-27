@@ -1,4 +1,8 @@
 
+# Version 10
+## Balance
+- When a sheep destroys their own farms, gold coins are left behind equal to half the bounty of the farm
+
 # Version 9
 ## Balance
 - Wisp
@@ -39,6 +43,7 @@
   - Right-clicking 12 farms or more away, ordered units are teleported
 - Can no longer give resources via Allies menu
 - Added -lumber (-l) command
+- Added w3mmd variables: farms built/destroyed, sheep kills/saves/deaths, levels, specializations, gold
 
 ## Bug fixes
 - Hidden Saving Farms have correct scaling (1.15 -> 1)

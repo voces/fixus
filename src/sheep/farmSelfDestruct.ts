@@ -1,12 +1,17 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { spawnCoin } from "../misc/coins";
 
 // ===========================================================================
 // Trigger: sheepFarmSelfDestruct
 // ===========================================================================
 
-const Trig_sheepFarmSelfDestruct_Actions = (): void =>
+const Trig_sheepFarmSelfDestruct_Actions = (): void => {
+
 	KillUnit( GetTriggerUnit() );
+	spawnCoin( GetTriggerUnit() );
+
+};
 
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {

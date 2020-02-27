@@ -53,6 +53,16 @@ export const withSelectedUnits = <T>( player: player, fn: ( group: group ) => T,
 export const forEachSelectedUnit = <T>( player: player, fn: ( unit: unit ) => T, filter?: boolexpr ): void =>
 	withSelectedUnits( player, g => ForGroup( g, () => fn( GetEnumUnit() ) ), filter );
 
+export const withUnitsInRange = <T>( x: number, y: number, radius: number, fn: ( group: group ) => T, filter?: boolexpr ): T => {
+
+	const g = CreateGroup();
+	GroupEnumUnitsInRange( g, x, y, radius, filter || null );
+	const result = fn( g );
+	DestroyGroup( g );
+	return result;
+
+};
+
 // Forces
 
 export const withTempForce = <T>( fn: ( force: force ) => T ): T => {

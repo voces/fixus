@@ -5,7 +5,7 @@ Sheep
 
 STRING 39
 {
-Ultimate Sheep Tag Fixus 9
+Ultimate Sheep Tag Fixus 10
 }
 
 STRING 40
@@ -15,8 +15,8 @@ STRING 40
 
 STRING 41
 {
-Join the Sheep Tag Discord for more games and stats!
-https://discord.gg/Y4dHvwX
+Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
+To track your stats and Elo, upload your replays. https://wc3stats.com/upload
 }
 
 STRING 42
@@ -9494,8 +9494,14 @@ STRING 4616
 Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy shadow
 }
 
-STRING 4619
+STRING 4620
 {
-Fixus 9
+Fixus 10
+}
+
+STRING 4621
+// Items: gold (Gold Coins), Ubertip (Tooltip - Extended)
+{
+Gives gold to the player when used.
 }
 
