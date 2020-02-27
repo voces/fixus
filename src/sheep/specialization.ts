@@ -36,6 +36,9 @@ const specializations: Record<string, SpecializationData> = {
 
 const specializationLearnAbilities = Object.values( specializations ).map( s => s.learn );
 
+export const specializationNames: Map<SpecializationData, string> = new Map();
+Object.entries( specializations ).map( ( [ k, v ] ) => specializationNames.set( v, k ) );
+
 type PlayerSpecialization = {
 	level: number;
 	maxLevel: number;

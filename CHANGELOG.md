@@ -4,11 +4,6 @@
 - Wisp
   - Decreased initial mana (300 -> 200)
   - Increased mana regeneration (1 -> 1.5)
-- Increased base sheep damage
-  - Normal (120 -> 150)
-  - Black (120 -> 200)
-  - Silver (120 -> 250)
-  - Golden (120 -> 300)
 - Bounty changes
   - Increased farm bounty (1 -> 1.5)
   - Increased sheep death farm bounty (40% -> 60%)
@@ -23,6 +18,10 @@
   - Increased damage buff of Command Aura
     - Level 2 (75% -> 100%)
     - Level 3 (100% -> 150%)
+  - Removed Phoenix Spell Immunity
+  - Adjusted Phoenix health
+    - Level 1 (1000 -> 750)
+    - Level 3 (2000 -> 2250)
 - Added 30% tax on gold transfers
 - Added Pity XP: wolves get an increasing amount of XP if they get no kills
   - 50 XP after three minutes

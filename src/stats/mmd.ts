@@ -14,6 +14,7 @@ import {
 	MMD_TYPE_INT,
 	MMD_TYPE_STRING,
 	MMD_UpdateValueInt,
+	MMD_UpdateValueString,
 } from "./w3mmd";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
@@ -25,7 +26,7 @@ import {
 	wolfUnit,
 } from "../shared";
 import { emitLog } from "../util/emitLog";
-import { playerSpecializations } from "../sheep/specialization";
+import { playerSpecializations, specializationNames } from "../sheep/specialization";
 import { isSandbox } from "../core/init";
 
 const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
@@ -35,7 +36,8 @@ const deaths = fillArray( bj_MAX_PLAYERS, 0 );
 
 const logKill = ( killingUnit: unit, dyingUnit: unit ): void => {
 
-	unitsKilled[ GetPlayerId( GetOwningPlayer( killingUnit ) ) ] ++;
+	if ( killingUnit != null && IsUnitEnemy( killingUnit, GetOwningPlayer( dyingUnit ) ) )
+		unitsKilled[ GetPlayerId( GetOwningPlayer( killingUnit ) ) ] ++;
 
 	if ( isUnitSheep( dyingUnit ) || isUnitWolf( dyingUnit ) )
 		deaths[ GetPlayerId( GetOwningPlayer( dyingUnit ) ) ] ++;
@@ -70,28 +72,27 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 				[ PLAYER_SLOT_STATE_PLAYING, PLAYER_SLOT_STATE_LEFT ].includes( GetPlayerSlotState( Player( i ) ) )
 			) {
 
-				// wolf values
 				if ( IsPlayerInForce( Player( i ), wolfTeam ) ) {
 
+					// wolf values
 					MMD_UpdateValueInt( "farms killed", Player( i ), MMD_OP_SET, structuresKilled[ i ] );
-					MMD_UpdateValueInt( "wolf deaths", Player( i ), MMD_OP_SET, saveskills[ i ] );
+					MMD_UpdateValueInt( "wolf deaths", Player( i ), MMD_OP_SET, deaths[ i ] );
 					MMD_UpdateValueInt( "wolf gold", Player( i ), MMD_OP_SET, GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
-					MMD_UpdateValueInt( "wolf kills", Player( i ), MMD_OP_SET, saveskills[ i ] );
+					MMD_UpdateValueInt( "sheep killed", Player( i ), MMD_OP_SET, saveskills[ i ] );
 					MMD_UpdateValueInt( "wolf level", Player( i ), MMD_OP_SET, GetHeroLevel( wolfUnit( Player( i ) ) ) );
-					MMD_UpdateValueInt( "wolf lumber", Player( i ), MMD_OP_SET, GetPlayerState( Player( i ), PLAYER_STATE_LUMBER_GATHERED ) );
-
-					// sheep values
 
 				} else {
 
+					// sheep values
 					MMD_UpdateValueInt( "farms built", Player( i ), MMD_OP_SET, structuresBuilt[ i ] );
 					MMD_UpdateValueInt( "saves", Player( i ), MMD_OP_SET, saveskills[ i ] );
-					MMD_UpdateValueInt( "sheep deaths", Player( i ), MMD_OP_SET, saveskills[ i ] );
+					MMD_UpdateValueInt( "sheep deaths", Player( i ), MMD_OP_SET, deaths[ i ] );
 					MMD_UpdateValueInt( "sheep gold", Player( i ), MMD_OP_SET, GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
 					MMD_UpdateValueInt( "sheep max level", Player( i ), MMD_OP_SET, playerSpecializations[ i ].maxLevel );
-					if ( playerSpecializations[ i ].specialization != null )
-						MMD_UpdateValueInt( "sheep specialization", Player( i ), MMD_OP_SET, GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
-					MMD_UpdateValueInt( "sheep units killed", Player( i ), MMD_OP_SET, unitsKilled[ i ] );
+					const playerSpecialization = playerSpecializations[ i ].specialization;
+					if ( playerSpecialization != null )
+						MMD_UpdateValueString( "sheep specialization", Player( i ), specializationNames.get( playerSpecialization ) || "unknown" );
+					MMD_UpdateValueInt( "units killed as sheep", Player( i ), MMD_OP_SET, unitsKilled[ i ] );
 
 				}
 
@@ -170,15 +171,14 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 		MMD_DefineValue( "sheep gold", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "sheep max level", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "sheep specialization", MMD_TYPE_STRING, MMD_GOAL_NONE, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "sheep units killed", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
+		MMD_DefineValue( "units killed as sheep", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 
 		// wolves
 		MMD_DefineValue( "farms killed", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "wolf deaths", MMD_TYPE_INT, MMD_GOAL_LOW, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "wolf gold", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "wolf kills", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
+		MMD_DefineValue( "sheep killed", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "wolf level", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "wolf lumber", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 
 	} );
 
