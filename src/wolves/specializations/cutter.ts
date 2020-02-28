@@ -1,4 +1,4 @@
-import { Trait, TraitClass, EventType } from "./traits";
+import { Trait, TraitClass, EventType, UnitType, PassiveType } from "./types";
 
 const cutterTraits: Trait[] = [
   {
@@ -11,7 +11,8 @@ const cutterTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        passive: PassiveType.ATTACK_SPEED_20
       }
     ]
   },
@@ -24,8 +25,11 @@ const cutterTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.UNIT_MODIFIER,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        modify: (unit: unit): void => {
+          BlzSetUnitBaseDamage(BlzGetUnitBaseDamage(unit) + 18);
+        }
       }
     ]
   },
@@ -39,7 +43,8 @@ const cutterTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        passive: PassiveType.ATTACK_DAMAGE_15_PERCENT
       }
     ]
   },
@@ -53,7 +58,8 @@ const cutterTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        passive: PassiveType.ATTACK_SPILL_OVER_25_PERCENT
       }
     ]
   },
@@ -67,7 +73,8 @@ const cutterTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        passive: PassiveType.ATTACK_SPEED_40
       }
     ]
   },
@@ -80,8 +87,11 @@ const cutterTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.DAMAGED_UNIT_MODIFIER,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        modify: (unit: unit): void => {
+          BlzSetUnitArmor(BlzGetUnitArmor(unit) - 10);
+        }
       }
     ]
   }

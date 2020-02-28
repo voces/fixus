@@ -1,4 +1,11 @@
-import { Trait, TraitClass, EventType } from "./traits";
+import {
+  Trait,
+  TraitClass,
+  EventType,
+  UnitType,
+  PassiveType,
+  ActiveType
+} from "./types";
 
 const scoutTraits: Trait[] = [
   {
@@ -10,8 +17,11 @@ const scoutTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.UNIT_MODIFIER,
+        units: [UnitType.GOLEM],
+        modify: (unit: unit): void => {
+          BlzSetUnitBaseDamage(BlzGetUnitBaseDamage(unit) + 15);
+        }
       }
     ]
   },
@@ -25,7 +35,8 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.GOLEM],
+        passive: PassiveType.ONE_SLOT_BACK_PACK
       }
     ]
   },
@@ -38,8 +49,9 @@ const scoutTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.ACTIVE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.SUMMON_WOLVES
       }
     ]
   },
@@ -52,8 +64,11 @@ const scoutTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.UNIT_MODIFIER,
+        units: [UnitType.GOLEM],
+        modify: (unit: unit): void => {
+          BlzUnitCancelTimedLife(unit);
+        }
       }
     ]
   },
@@ -67,7 +82,9 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.GOLEM],
+        order: 1,
+        passive: PassiveType.SIX_SLOT_BACK_PACK
       }
     ]
   },
@@ -80,8 +97,11 @@ const scoutTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.UNIT_MODIFIER,
+        units: [UnitType.STALKER],
+        modify: (unit: unit): void => {
+          SetUnitMoveSpeed(unit, 522);
+        }
       }
     ]
   }

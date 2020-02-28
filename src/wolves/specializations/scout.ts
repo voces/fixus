@@ -1,4 +1,11 @@
-import { Trait, TraitClass, EventType } from "./traits";
+import {
+  Trait,
+  TraitClass,
+  EventType,
+  UnitType,
+  ActiveType,
+  PassiveType
+} from "./types";
 
 const scoutTraits: Trait[] = [
   {
@@ -10,8 +17,14 @@ const scoutTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.ACTIVE_REPLACE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        replacements: [
+          {
+            target: ActiveType.WARD,
+            replacement: ActiveType.WARD_UNOBSTRUCTED
+          }
+        ]
       }
     ]
   },
@@ -25,7 +38,13 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.ACTIVE_REPLACE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        replacements: [
+          {
+            target: ActiveType.SCOUT,
+            replacement: ActiveType.SCOUT_LONGER
+          }
+        ]
       }
     ]
   },
@@ -39,7 +58,8 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        passive: PassiveType.SCOUT_CLASS_MOVEMENT_SPEED_BONUS
       }
     ]
   },
@@ -53,7 +73,8 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.SCOUT],
+        passive: PassiveType.SCOUT_MOVEMENT_SPEED_SLOW_AURA
       }
     ]
   },
@@ -67,7 +88,8 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.ACTIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.OMNISCIENCE
       }
     ]
   },
@@ -81,7 +103,8 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.ACTIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.WARD_OF_POWER
       }
     ]
   }

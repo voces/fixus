@@ -1,4 +1,4 @@
-import { Trait, TraitClass, EventType } from "./traits";
+import { Trait, TraitClass, EventType, ActiveType, UnitType } from "./types";
 
 const IllusionistTraits: Trait[] = [
   {
@@ -10,8 +10,14 @@ const IllusionistTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.MIRROR_IMAGE_ACTIVE_REPLACE,
-        behavior: (): void => {}
+        type: EventType.ACTIVE_REPLACE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        replacements: [
+          {
+            target: ActiveType.MIRROR_IMAGE,
+            replacement: ActiveType.MIRROR_IMAGE_0_MANA
+          }
+        ]
       }
     ]
   },
@@ -22,10 +28,16 @@ const IllusionistTraits: Trait[] = [
     name: "Mirror images do damage",
     icon: "",
     description: "",
-    event: [
+    events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.ACTIVE_REPLACE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        replacements: [
+          {
+            target: ActiveType.MIRROR_IMAGE,
+            replacement: ActiveType.MIRROR_IMAGE_DAMAGE
+          }
+        ]
       }
     ]
   },
@@ -35,12 +47,10 @@ const IllusionistTraits: Trait[] = [
     option: 1,
     name: "Cloaks work on images",
     icon: "",
-    description:
-      "(active) aoe skill 30 second cooldown charms savings farms in the area hit.",
-    event: [
+    description: "",
+    events: [
       {
-        type: EventType.PASSIVE,
-        behavior: (): void => {}
+        type: EventType.CLOAKS_ON_MIRROR_IMAGES
       }
     ]
   },
@@ -51,10 +61,24 @@ const IllusionistTraits: Trait[] = [
     name: "mirror image 200% more jump distance",
     icon: "",
     description: "",
-    event: [
+    events: [
       {
-        type: EventType.MIRROR_IMAGE_ACTIVE_REPLACE,
-        behavior: (): void => {}
+        type: EventType.ACTIVE_REPLACE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        replacements: [
+          {
+            target: ActiveType.MIRROR_IMAGE,
+            replacement: ActiveType.MIRROR_IMAGE_JUMP_DISTANCE
+          },
+          {
+            target: ActiveType.MIRROR_IMAGE_DAMAGE,
+            replacement: ActiveType.MIRROR_IMAGE_DAMAGE_JUMP_DISTANCE
+          },
+          {
+            target: ActiveType.MIRROR_IMAGE_0_MANA,
+            replacement: ActiveType.MIRROR_IMAGE_0_MANA_JUMP_DISTANCE
+          }
+        ]
       }
     ]
   },
@@ -66,10 +90,11 @@ const IllusionistTraits: Trait[] = [
     icon: "",
     description:
       "The bounty that you earn is funded by the corresponding sheeps bank. (Steals Gold)",
-    event: [
+    events: [
       {
         type: EventType.ACTIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.SWAP_IMAGE
       }
     ]
   },
@@ -80,10 +105,11 @@ const IllusionistTraits: Trait[] = [
     name: "Spawn image skill (1000 range channeling)",
     icon: "",
     description: "",
-    event: [
+    events: [
       {
         type: EventType.ACTIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.SPAWN_IMAGE
       }
     ]
   }

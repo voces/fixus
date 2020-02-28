@@ -1,4 +1,4 @@
-import { Trait, TraitClass, EventType } from "./traits";
+import { Trait, TraitClass, EventType, ActiveType, UnitType } from "./types";
 
 const hoarderTraits: Trait[] = [
   {
@@ -11,7 +11,9 @@ const hoarderTraits: Trait[] = [
     events: [
       {
         type: EventType.BOUNTY_MODIFIER,
-        behavior: (): void => {}
+        modify: (bounty: number): number => {
+          return bounty + 1;
+        }
       }
     ]
   },
@@ -22,10 +24,12 @@ const hoarderTraits: Trait[] = [
     name: "Tax Free golding to allies",
     icon: "",
     description: "",
-    event: [
+    events: [
       {
-        type: EventType.GOLD_SHARE_MODIFIER,
-        behavior: (): void => {}
+        type: EventType.TAX_MODIFIER,
+        modify: (pretax: number, _posttax: number): number => {
+          return pretax;
+        }
       }
     ]
   },
@@ -37,10 +41,11 @@ const hoarderTraits: Trait[] = [
     icon: "",
     description:
       "(active) aoe skill 30 second cooldown charms savings farms in the area hit.",
-    event: [
+    events: [
       {
         type: EventType.ACTIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF],
+        active: ActiveType.CHARM_FARMS
       }
     ]
   },
@@ -51,10 +56,12 @@ const hoarderTraits: Trait[] = [
     name: "+2 gold per farm kill",
     icon: "",
     description: "",
-    event: [
+    events: [
       {
         type: EventType.BOUNTY_MODIFIER,
-        behavior: (): void => {}
+        modify: (bounty: number): number => {
+          return bounty + 2;
+        }
       }
     ]
   },
@@ -66,11 +73,21 @@ const hoarderTraits: Trait[] = [
     icon: "",
     description:
       "The bounty that you earn is funded by the corresponding sheeps bank. (Steals Gold)",
-    event: [
+    events: [
       {
         type: EventType.BOUNTY_SIDE_EFFECT,
-        order: 2,
-        behavior: (): void => {}
+        modify: (
+          bountyAmount: number,
+          targetPlayer: player,
+          receivingPlayer: player
+        ): void => {
+          SetPlayerState(
+            targetPlayer,
+            PLAYER_STATE_RESOURCE_GOLD,
+            GetPlayerState(targetPlayer, PLAYER_STATE_RESOURCE_GOLD) -
+              bountyAmount
+          );
+        }
       }
     ]
   },
@@ -81,15 +98,19 @@ const hoarderTraits: Trait[] = [
     name: "1.5x all income",
     icon: "",
     description: "",
-    event: [
+    events: [
       {
         type: EventType.BOUNTY_MODIFIER,
         order: 3,
-        behavior: (): void => {}
+        modify: (bounty: number): number => {
+          return bounty * 1.5;
+        }
       },
       {
         type: EventType.INCOME_MODIFIER,
-        behavior: (): void => {}
+        modify: (income: number): number => {
+          return income * 1.5;
+        }
       }
     ]
   }

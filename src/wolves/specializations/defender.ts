@@ -1,17 +1,25 @@
-import { Trait, TraitClass, EventType } from "./traits";
+import {
+  Trait,
+  TraitClass,
+  EventType,
+  ActiveType,
+  UnitType,
+  PassiveType
+} from "./types";
 
 const scoutTraits: Trait[] = [
   {
     class: TraitClass.DEFENDER,
     tier: 1,
     option: 1,
-    name: "Phase Shift 5s / Brilliance Aura",
+    name: "Phase Shift",
     icon: "",
     description: "",
     events: [
       {
-        type: EventType.PASSIVE, // perhaps active of phase shift
-        behavior: (): void => {}
+        type: EventType.ACTIVE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.PHASE_SHIFT
       }
     ]
   },
@@ -25,7 +33,13 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.ACTIVE_REPLACE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        replacements: [
+          {
+            target: ActiveType.DIVINE_SHIELD,
+            replacement: ActiveType.DIVINE_SHIELD_10
+          }
+        ]
       }
     ]
   },
@@ -38,8 +52,22 @@ const scoutTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.ACTIVE,
-        behavior: (): void => {}
+        type: EventType.ACTIVE_REPLACE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        replacements: [
+          {
+            target: ActiveType.DIVINE_SHIELD,
+            replacement: ActiveType.DIVINE_SHIELD_10
+          },
+          {
+            target: ActiveType.DIVINE_SHIELD_10,
+            replacement: ActiveType.DIVINE_SHIELD_10_REFLECT
+          },
+          {
+            target: ActiveType.DIVINE_SHIELD,
+            replacement: ActiveType.DIVINE_SHIELD_REFLECT
+          }
+        ]
       }
     ]
   },
@@ -52,8 +80,9 @@ const scoutTraits: Trait[] = [
     description: "",
     events: [
       {
-        type: EventType.ACTIVE_REPLACE,
-        behavior: (): void => {}
+        type: EventType.ACTIVE,
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.SILENCE
       }
     ]
   },
@@ -67,7 +96,8 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.PASSIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        passive: PassiveType.MANA_DEGEN
       }
     ]
   },
@@ -81,7 +111,8 @@ const scoutTraits: Trait[] = [
     events: [
       {
         type: EventType.ACTIVE,
-        behavior: (): void => {}
+        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        active: ActiveType.DOOM
       }
     ]
   }

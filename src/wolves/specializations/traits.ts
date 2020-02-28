@@ -1,88 +1,59 @@
-export enum TraitClass {
-  DEFENDER,
-  CUTTER,
-  HOARDER,
-  SCOUT,
-  CREEP_MEISTER,
-  ILLUSIONIST
+import { Trait, StoredTrait, EventType, EVENT } from "./types";
+import cutterTraits from "./cutter";
+import hoarderTraits from "./hoarder";
+import scoutTraits from "./scout";
+import illusionistTraits from "./illusionist";
+import defenderTraits from "./defender";
+import creepMeisterTraits from "./creepMeister";
+import { applyInstantEvents, orderedEvents, applyInstantEvent } from "./events";
+
+import { addStoredTrait, getStoredTraits } from "./store";
+export const traits: Trait[] = [
+  ...cutterTraits,
+  ...hoarderTraits,
+  ...scoutTraits,
+  ...illusionistTraits,
+  ...defenderTraits,
+  ...creepMeisterTraits
+];
+
+function convertToTrait(storedTrait: StoredTrait) {
+  return traits.find(trait => {
+    storedTrait.option === trait.option &&
+      storedTrait.class === trait.class &&
+      storedTrait.tier === trait.tier;
+  });
 }
 
-export enum EventType {
-  PASSIVE,
-  ACTIVE,
-  ACTIVE_REPLACE,
-  MIRROR_IMAGE_ACTIVE_REPLACE,
-  BOUNTY_MODIFIER,
-  BOUNTY_SIDE_EFFECT,
-  INCOME_MODIFIER
+function applyTraitEvents(trait: Trait, player: player): void {
+  applyInstantEvents(trait.events, player);
 }
 
-interface EventDefinition {
-  type: EventType;
-  behavior(): void;
-  order?: number; // nulls execute first
+function getPlayerEvents(player: player) {
+  const storedTraits: StoredTrait[] = getStoredTraits(player);
+  return orderedEvents(
+    storedTraits
+      .map(convertToTrait)
+      .map(trait => trait && trait.events)
+      .flat()
+  );
 }
 
-interface BountyModifier extends EventDefinition {
-  type: EventType.BOUNTY_MODIFIER;
-  behavior(): void;
+function getPlayerEventsByType(player: player, eventType: EventType): EVENT[] {
+  return getPlayerEvents(player).filter(
+    event => event && event.type === eventType
+  );
 }
 
-interface BountySideEffect extends EventDefinition {
-  type: EventType.BOUNTY_SIDE_EFFECT;
-  behavior(): void;
+function applyAllPlayerEvents(player: player) {
+  getPlayerEvents(player).forEach(applyInstantEvent);
 }
 
-interface IncomeModifier extends EventDefinition {
-  type: EventType.INCOME_MODIFIER;
-  behavior(): void;
-}
+export function learn(player: player, storedTrait: StoredTrait): void {
+  addStoredTrait(player, storedTrait);
 
-interface Passive extends EventDefinition {
-  type: EventType.PASSIVE;
-  behavior(): void;
-}
-
-interface Active extends EventDefinition {
-  type: EventType.ACTIVE;
-  behavior(): void;
-}
-
-interface ActiveReplace extends EventDefinition {
-  type: EventType.ACTIVE_REPLACE;
-  behavior(): void;
-}
-
-interface MirrorImageActiveReplace extends EventDefinition {
-  type: EventType.ACTIVE_REPLACE;
-  behavior(): void;
-}
-
-export type EVENT =
-  | Passive
-  | Active
-  | BountyModifier
-  | IncomeModifier
-  | ActiveReplace
-  | BountySideEffect
-  | MirrorImageActiveReplace;
-
-export interface Trait {
-  class: TraitClass;
-  tier: number;
-  icon: string;
-  option: number;
-  name: string;
-  description: string;
-  events: EVENT[];
-}
-
-export interface StoredTrait {
-  class: TraitClass;
-  tier: number;
-  option: number;
-}
-
-export interface TraitStorage {
-  [key: string]: StoredTrait[];
+  const trait = convertToTrait(storedTrait);
+  if (trait) {
+    applyTraitEvents(trait, player);
+  }
 }
