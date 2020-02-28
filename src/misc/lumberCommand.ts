@@ -19,9 +19,8 @@ const action = ( { player: receiver, amount = Infinity }: {player: player; amoun
 
 	if ( amount === 0 ) return;
 
-	const amountSt = I2S( amount );
-	displayToPlayer( receiver, `${colorizedName( GetTriggerPlayer() )} gave you ${amountSt} lumber.` );
-	displayToPlayer( GetTriggerPlayer(), `${amountSt} lumber given to ${colorizedName( receiver )}` );
+	displayToPlayer( receiver, `${colorizedName( GetTriggerPlayer() )} gave you ${amount} lumber.` );
+	displayToPlayer( GetTriggerPlayer(), `${amount} lumber given to ${colorizedName( receiver )}` );
 	AdjustPlayerStateSimpleBJ( receiver, PLAYER_STATE_RESOURCE_LUMBER, amount );
 	AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, - amount );
 

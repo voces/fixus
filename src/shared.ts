@@ -194,7 +194,7 @@ export const SmallText = ( amount: number, u: unit, cc: number, x: number, y: nu
 		const tt = CreateTextTag();
 		SetTextTagPermanent( tt, false );
 		SetTextTagPos( tt, GetUnitX( u ) + x, GetUnitY( u ) + y, 25 );
-		SetTextTagText( tt, color[ cc ] + "+" + I2S( amount ), 0.0276 );
+		SetTextTagText( tt, `${color[ cc ]}+${amount}`, 0.0276 );
 		SetTextTagColor( tt, 217, 217, 25, 0 );
 		SetTextTagFadepoint( tt, 0 );
 		SetTextTagVelocity( tt, 0, 0.027734375 );

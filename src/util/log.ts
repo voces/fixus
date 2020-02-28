@@ -12,11 +12,11 @@ const isArray = ( v: any ): boolean => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const termToString = ( v: any ): string => {
+export const termToString = ( v: any, color = true ): string => {
 
-	if ( typeof v === "string" ) return colorize.string( `"${v}"` );
-	if ( typeof v === "number" ) return colorize.number( v );
-	if ( typeof v === "boolean" ) return colorize.boolean( v );
+	if ( typeof v === "string" ) return color ? colorize.string( `"${v}"` ) : v;
+	if ( typeof v === "number" ) return color ? colorize.number( v ) : v.toString();
+	if ( typeof v === "boolean" ) return color ? colorize.boolean( v ) : v.toString();
 
 	if ( isArray( v ) ) {
 

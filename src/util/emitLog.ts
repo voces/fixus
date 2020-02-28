@@ -6,7 +6,7 @@ import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const emitLog = ( key: string, ...args: Array<any> ): void => {
 
-	const message = args.map( v => termToString( v ) ).join( " " );
+	const message = args.map( v => termToString( v, false ) ).join( " " );
 	MMD__LogEvent( "log", key, message );
 
 };

@@ -2,6 +2,7 @@
 import { registerCommand } from "util/commands";
 import { isSandbox } from "core/init";
 import { forEachPlayer } from "util/temp";
+import { log } from "util/log";
 
 // ===========================================================================
 registerCommand( {

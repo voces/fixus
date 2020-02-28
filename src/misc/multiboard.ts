@@ -72,7 +72,7 @@ export const reloadMultiboard = (): void => {
 	// sheep
 	updateMultiboardRow(
 		index,
-		color[ 12 ] + "Sheep: " + I2S( countHere( sheepTeam ) ),
+		`${color[ 12 ]}Sheep: ${countHere( sheepTeam )}`,
 		null,
 		"Saves",
 	);
@@ -85,7 +85,7 @@ export const reloadMultiboard = (): void => {
 				index,
 				color[ i ] + GetPlayerName( Player( i ) ),
 				getSheepIcon( i ),
-				I2S( saveskills[ i ] ),
+				saveskills[ i ].toString(),
 			);
 			index = index + 1;
 
@@ -97,7 +97,7 @@ export const reloadMultiboard = (): void => {
 	// Wisps
 	updateMultiboardRow(
 		index,
-		color[ 12 ] + "Wisps: " + I2S( countHere( wispTeam ) ),
+		`${color[ 12 ]}Wisps: ${countHere( wispTeam )}`,
 		null,
 		"Saves",
 	);
@@ -110,7 +110,7 @@ export const reloadMultiboard = (): void => {
 				index,
 				color[ i ] + GetPlayerName( Player( i ) ),
 				"ReplaceableTextures\\CommandButtons\\BTNWisp.blp",
-				I2S( saveskills[ i ] ),
+				saveskills[ i ].toString(),
 			);
 			index = index + 1;
 
@@ -122,7 +122,7 @@ export const reloadMultiboard = (): void => {
 	// Wolves
 	updateMultiboardRow(
 		index,
-		color[ 13 ] + "Wolves: " + I2S( countHere( wolfTeam ) ),
+		`${color[ 13 ]}Wolves: ${countHere( wolfTeam )}`,
 		null,
 		"Kills",
 	);
@@ -135,7 +135,7 @@ export const reloadMultiboard = (): void => {
 				index,
 				color[ i ] + GetPlayerName( Player( i ) ),
 				getWolfIcon( i ),
-				I2S( saveskills[ i ] ),
+				saveskills[ i ].toString(),
 			);
 			index = index + 1;
 
