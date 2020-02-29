@@ -147,7 +147,6 @@ export type EVENT =
   | BountySideEffect
   | UnitModifier
   | TaxModifier
-  | FarmModifier
   | CloaksOnMirrorImages
   | DamagedUnitModifier;
 

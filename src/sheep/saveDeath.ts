@@ -177,8 +177,8 @@ const onSheepDeath = (killedUnit: unit, killingUnit: unit): void => {
   }
 
   // Gold bounty
-  let allyBounty = R2I(bounty / (I2R(countHere(wolfTeam)) + 0.5));
-  let killerBounty = R2I(bounty - allyBounty * (countHere(wolfTeam) - 1));
+  const allyBounty = R2I(bounty / (I2R(countHere(wolfTeam)) + 0.5));
+  const killerBounty = R2I(bounty - allyBounty * (countHere(wolfTeam) - 1));
 
   for (let i = 0; i < bj_MAX_PLAYERS; i++)
     if (
