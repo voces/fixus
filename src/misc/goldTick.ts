@@ -1,119 +1,110 @@
-
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { applyIncomeModifications } from "../wolves/specializations/index";
 import {
-	sheepTeam,
-	goldFactor,
-	countHereReal,
-	wolfTeam,
-	saveskills,
-	wispTeam,
+  sheepTeam,
+  goldFactor,
+  countHereReal,
+  wolfTeam,
+  saveskills,
+  wispTeam
 } from "shared";
 import { isPlayingPlayer, hasLeft, isComputer } from "util/player";
 
-const SAVING_FARM_TYPE = FourCC( "ohun" );
-const HIDDEN_SAVING_FARM_TYPE = FourCC( "otbk" );
-const BETTER_SAING_FARM_TYPE = FourCC( "h009" );
-const SUPER_SAVING_FARM_TYPE = FourCC( "h00A" );
+const SAVING_FARM_TYPE = FourCC("ohun");
+const HIDDEN_SAVING_FARM_TYPE = FourCC("otbk");
+const BETTER_SAING_FARM_TYPE = FourCC("h009");
+const SUPER_SAVING_FARM_TYPE = FourCC("h00A");
 
 // ===========================================================================
 // Trigger: miscGoldTick
 // ===========================================================================
 
 const Trig_miscGoldTick_Actions = (): void => {
+  const wolves = countHereReal(wolfTeam);
+  for (let i = 0; i < bj_MAX_PLAYERS; i++) {
+    const player = Player(i);
 
-	const wolves = countHereReal( wolfTeam );
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
+    // Give sheep their simple gold tick
+    if (
+      IsPlayerInForce(player, sheepTeam) &&
+      GetPlayerController(player) !== MAP_CONTROL_NONE
+    ) {
+      AdjustPlayerStateBJ(goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD);
+      continue;
+    }
 
-		const player = Player( i );
+    // Redistribute
+    const playerGold = GetPlayerState(player, PLAYER_STATE_RESOURCE_GOLD);
 
-		// Give sheep their simple gold tick
-		if ( IsPlayerInForce( player, sheepTeam ) && GetPlayerController( player ) !== MAP_CONTROL_NONE ) {
+    if (
+      playerGold > 0 &&
+      wolves > 0 &&
+      ModuloInteger(playerGold, wolves) === 0 &&
+      (isComputer(player) || hasLeft(player))
+    ) {
+      for (let n = 0; n < bj_MAX_PLAYERS; n++) {
+        const player2 = Player(n);
+        if (!IsPlayerAlly(player, player2) || !isPlayingPlayer(player2))
+          continue;
+        AdjustPlayerStateSimpleBJ(
+          player2,
+          PLAYER_STATE_RESOURCE_GOLD,
+          playerGold / wolves
+        );
+      }
 
-			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
-			continue;
-
-		}
-
-		// Redistribute
-		const playerGold = GetPlayerState( player, PLAYER_STATE_RESOURCE_GOLD );
-
-		if (
-			playerGold > 0 &&
-			wolves > 0 &&
-			ModuloInteger( playerGold, wolves ) === 0 &&
-			( isComputer( player ) || hasLeft( player ) )
-		) {
-
-			for ( let n = 0; n < bj_MAX_PLAYERS; n ++ ) {
-
-				const player2 = Player( n );
-				if ( ! IsPlayerAlly( player, player2 ) || ! isPlayingPlayer( player2 ) ) continue;
-				AdjustPlayerStateSimpleBJ( player2, PLAYER_STATE_RESOURCE_GOLD, playerGold / wolves );
-
-			}
-
-			SetPlayerState( player, PLAYER_STATE_RESOURCE_GOLD, 0 );
-
-		}
-
-	}
-
+      SetPlayerState(player, PLAYER_STATE_RESOURCE_GOLD, 0);
+    }
+  }
 };
 
 const Trig_miscSavingTick_Actions = (): void => {
+  for (let i = 0; i < bj_MAX_PLAYERS; i++) {
+    const player = Player(i);
+    if (GetPlayerController(player) === MAP_CONTROL_NONE) continue;
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
+    // This might change if we let wolves get saving farms
+    if (IsPlayerInForce(player, sheepTeam)) {
+      let amount =
+        goldFactor() *
+        (GetPlayerUnitTypeCount(player, SAVING_FARM_TYPE) +
+          GetPlayerUnitTypeCount(player, HIDDEN_SAVING_FARM_TYPE) +
+          2 * GetPlayerUnitTypeCount(player, BETTER_SAING_FARM_TYPE) +
+          4 * GetPlayerUnitTypeCount(player, SUPER_SAVING_FARM_TYPE));
 
-		const player = Player( i );
-		if ( GetPlayerController( player ) === MAP_CONTROL_NONE ) continue;
+      if (saveskills[i] >= 25) amount *= 2;
 
-		// This might change if we let wolves get saving farms
-		if ( IsPlayerInForce( player, sheepTeam ) ) {
-
-			let amount = goldFactor() * (
-				GetPlayerUnitTypeCount( player, SAVING_FARM_TYPE ) +
-				GetPlayerUnitTypeCount( player, HIDDEN_SAVING_FARM_TYPE ) +
-				2 * GetPlayerUnitTypeCount( player, BETTER_SAING_FARM_TYPE ) +
-				4 * GetPlayerUnitTypeCount( player, SUPER_SAVING_FARM_TYPE )
-			);
-
-			if ( saveskills[ i ] >= 25 ) amount *= 2;
-
-			AdjustPlayerStateBJ( amount, player, PLAYER_STATE_RESOURCE_GOLD );
-
-		} else if ( IsPlayerInForce( player, wispTeam ) )
-			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
-
-	}
-
+      AdjustPlayerStateBJ(amount, player, PLAYER_STATE_RESOURCE_GOLD);
+    } else if (IsPlayerInForce(player, wispTeam))
+      AdjustPlayerStateBJ(goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD);
+  }
 };
 
 const wolfTickActions = (): void => {
+  for (let i = 0; i < bj_MAX_PLAYERS; i++) {
+    const player = Player(i);
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
-
-		const player = Player( i );
-
-		if ( IsPlayerInForce( player, wolfTeam ) )
-			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
-
-	}
-
+    if (IsPlayerInForce(player, wolfTeam)) {
+      AdjustPlayerStateBJ(
+        applyIncomeModifications(player, goldFactor()),
+        player,
+        PLAYER_STATE_RESOURCE_GOLD
+      );
+    }
+  }
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+addScriptHook(W3TS_HOOK.MAIN_AFTER, (): void => {
+  let t = CreateTrigger();
+  TriggerRegisterTimerEvent(t, 2, true);
+  TriggerAddAction(t, Trig_miscGoldTick_Actions);
 
-	let t = CreateTrigger();
-	TriggerRegisterTimerEvent( t, 2, true );
-	TriggerAddAction( t, Trig_miscGoldTick_Actions );
+  t = CreateTrigger();
+  TriggerRegisterTimerEvent(t, 4, true);
+  TriggerAddAction(t, Trig_miscSavingTick_Actions);
 
-	t = CreateTrigger();
-	TriggerRegisterTimerEvent( t, 4, true );
-	TriggerAddAction( t, Trig_miscSavingTick_Actions );
-
-	t = CreateTrigger();
-	TriggerRegisterTimerEvent( t, 3, true );
-	TriggerAddAction( t, wolfTickActions );
-
-} );
+  t = CreateTrigger();
+  TriggerRegisterTimerEvent(t, 3, true);
+  TriggerAddAction(t, wolfTickActions);
+});

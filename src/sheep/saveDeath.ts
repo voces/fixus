@@ -32,7 +32,11 @@ import {
 } from "./specialization";
 import { onSheepDeath as pityXpOnSheepDeath } from "../wolves/pityXp";
 import { ScoutPhoenixUpgrade_onSpawn } from "wolves/scoutPhoenixUpgrade";
-import { applyLearnedPlayerTraitsToUnit } from "wolves/specializations/index";
+import {
+  applyLearnedPlayerTraitsToUnit,
+  applyBountyModifications,
+  applyBountySideEffects
+} from "wolves/specializations/index";
 import { reloadMultiboard } from "misc/multiboard";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
@@ -116,7 +120,13 @@ const onSheepDeath = (killedUnit: unit, killingUnit: unit): void => {
   const killingPlayerId = GetPlayerId(killingPlayer);
 
   // Handle dying sheep
-  const bounty = GetSheepBounty(killedUnit) * goldFactor();
+  const bounty = applyBountyModifications(
+    killingPlayer,
+    GetSheepBounty(killedUnit) * goldFactor()
+  );
+
+  applyBountySideEffects(killedPlayer, killingPlayer, bounty);
+
   ForceRemovePlayer(sheepTeam, killedPlayer);
 
   DisplayTextToPlayer(
@@ -167,8 +177,8 @@ const onSheepDeath = (killedUnit: unit, killingUnit: unit): void => {
   }
 
   // Gold bounty
-  const allyBounty = R2I(bounty / (I2R(countHere(wolfTeam)) + 0.5));
-  const killerBounty = R2I(bounty - allyBounty * (countHere(wolfTeam) - 1));
+  let allyBounty = R2I(bounty / (I2R(countHere(wolfTeam)) + 0.5));
+  let killerBounty = R2I(bounty - allyBounty * (countHere(wolfTeam) - 1));
 
   for (let i = 0; i < bj_MAX_PLAYERS; i++)
     if (

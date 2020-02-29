@@ -3,7 +3,13 @@ import {
   applyLearnedPlayerTraitsToUnit,
   getPlayerEventsByType
 } from "./traits";
-import { EventType, DamagedUnitModifier } from "./types";
+import {
+  EventType,
+  DamagedUnitModifier,
+  IncomeModifier,
+  BountyModifier,
+  BountySideEffect
+} from "./types";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 addScriptHook(W3TS_HOOK.MAIN_AFTER, (): void => {
@@ -44,4 +50,47 @@ addScriptHook(W3TS_HOOK.MAIN_AFTER, (): void => {
   });
 });
 
-export { learn, applyLearnedPlayerTraitsToUnit, getPlayerEventsByType };
+function applyIncomeModifications(player: player, gold: number): number {
+  let modifiedGold = gold;
+  getPlayerEventsByType(player, EventType.INCOME_MODIFIER).forEach(
+    (event: IncomeModifier) => {
+      modifiedGold = event.modify(modifiedGold);
+    }
+  );
+  return modifiedGold;
+}
+
+function applyBountyModifications(player: player, gold: number): number {
+  let modifiedGold = gold;
+  getPlayerEventsByType(player, EventType.BOUNTY_MODIFIER).forEach(
+    (event: BountyModifier) => {
+      modifiedGold = event.modify(modifiedGold);
+    }
+  );
+  return modifiedGold;
+}
+
+function applyBountySideEffects(
+  killedPlayer: player,
+  killingPlayer: player,
+  bounty: number
+): void {
+  getPlayerEventsByType(killingPlayer, EventType.BOUNTY_SIDE_EFFECT).forEach(
+    (event: BountySideEffect) => {
+      event.modify(bounty, killedPlayer, killingPlayer);
+    }
+  );
+}
+
+function applyCloaksOnMirrorImages(player: player): boolean {
+  return getPlayerEventsByType(player, EventType.BOUNTY_SIDE_EFFECT).length > 0;
+}
+
+export {
+  learn,
+  applyLearnedPlayerTraitsToUnit,
+  applyBountyModifications,
+  applyIncomeModifications,
+  applyBountySideEffects,
+  applyCloaksOnMirrorImages
+};
