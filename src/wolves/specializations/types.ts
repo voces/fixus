@@ -1,3 +1,5 @@
+import { BLACK_WOLF_TYPE, IMBA_WOLF_TYPE, WOLF_TYPE } from "src/shared";
+
 export enum TraitClass {
   DEFENDER,
   CUTTER,
@@ -61,13 +63,13 @@ export enum ActiveType {
 type AbilityType = PassiveType | ActiveType;
 
 export enum UnitType {
-  WOLF,
-  BLACK_WOLF,
-  DEMON_WOLF,
-  SCOUT,
-  PHONEIX,
-  STALKER,
-  GOLEM
+  WOLF = WOLF_TYPE,
+  BLACK_WOLF = BLACK_WOLF_TYPE,
+  DEMON_WOLF = IMBA_WOLF_TYPE,
+  SCOUT = FourCC(""),
+  PHONEIX = FourCC(""),
+  STALKER = FourCC(""),
+  GOLEM = FourCC("")
 }
 
 interface EventDefinition {
