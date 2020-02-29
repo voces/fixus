@@ -16,7 +16,6 @@ export enum EventType {
   BOUNTY_SIDE_EFFECT,
   INCOME_MODIFIER,
   UNIT_MODIFIER,
-  FARM_MODIFIER,
   DAMAGED_UNIT_MODIFIER,
   CLOAKS_ON_MIRROR_IMAGES
 }
@@ -81,26 +80,21 @@ interface SkillReplacement {
   replacement: AbilityType;
 }
 
-interface BountyModifier extends EventDefinition {
+export interface BountyModifier extends EventDefinition {
   type: EventType.BOUNTY_MODIFIER;
   modify(bounty: number): number;
 }
 
-interface CloaksOnMirrorImages extends EventDefinition {
+export interface CloaksOnMirrorImages extends EventDefinition {
   type: EventType.CLOAKS_ON_MIRROR_IMAGES;
 }
 
-interface FarmModifier extends EventDefinition {
-  type: EventType.FARM_MODIFIER;
-  modify(unit: unit): void;
-}
-
-interface TaxModifier extends EventDefinition {
+export interface TaxModifier extends EventDefinition {
   type: EventType.TAX_MODIFIER;
   modify(preTax: number, postTax: number): number;
 }
 
-interface BountySideEffect extends EventDefinition {
+export interface BountySideEffect extends EventDefinition {
   type: EventType.BOUNTY_SIDE_EFFECT;
   modify(
     bountyAmount: number,
@@ -109,36 +103,36 @@ interface BountySideEffect extends EventDefinition {
   ): void;
 }
 
-interface IncomeModifier extends EventDefinition {
+export interface IncomeModifier extends EventDefinition {
   type: EventType.INCOME_MODIFIER;
   modify(income: number): number;
 }
 
-interface UnitModifier extends EventDefinition {
+export interface UnitModifier extends EventDefinition {
   type: EventType.UNIT_MODIFIER;
   units: UnitType[];
   modify(unit: unit): void;
 }
 
-interface DamagedUnitModifier extends EventDefinition {
+export interface DamagedUnitModifier extends EventDefinition {
   type: EventType.DAMAGED_UNIT_MODIFIER;
-  units: UnitType[];
+  source_units: UnitType[];
   modify(unit: unit): void;
 }
 
-interface Passive extends EventDefinition {
+export interface Passive extends EventDefinition {
   type: EventType.PASSIVE;
   units: UnitType[];
   passive: PassiveType;
 }
 
-interface Active extends EventDefinition {
+export interface Active extends EventDefinition {
   type: EventType.ACTIVE;
   units: UnitType[];
   active: ActiveType;
 }
 
-interface ActiveReplace extends EventDefinition {
+export interface ActiveReplace extends EventDefinition {
   type: EventType.ACTIVE_REPLACE;
   units: UnitType[];
   replacements: SkillReplacement[]; // array of tuples

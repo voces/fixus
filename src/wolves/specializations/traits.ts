@@ -5,9 +5,14 @@ import scoutTraits from "./scout";
 import illusionistTraits from "./illusionist";
 import defenderTraits from "./defender";
 import creepMeisterTraits from "./creepMeister";
-import { applyInstantEvents, orderedEvents, applyInstantEvent } from "./events";
+import {
+  applyEventsToAllPlayerUnits,
+  orderedEvents,
+  applyEventsToUnit
+} from "./events";
 
 import { addStoredTrait, getStoredTraits } from "./store";
+
 export const traits: Trait[] = [
   ...cutterTraits,
   ...hoarderTraits,
@@ -25,8 +30,8 @@ function convertToTrait(storedTrait: StoredTrait) {
   });
 }
 
-function applyTraitEvents(trait: Trait, player: player): void {
-  applyInstantEvents(trait.events, player);
+function applyTraitToAllUnits(trait: Trait, player: player): void {
+  applyEventsToAllPlayerUnits(trait.events, player);
 }
 
 function getPlayerEvents(player: player) {
@@ -39,21 +44,45 @@ function getPlayerEvents(player: player) {
   );
 }
 
-function getPlayerEventsByType(player: player, eventType: EventType): EVENT[] {
+/**
+ * Find events of a type for a player, helpful for
+ * traits that are applied elsewhere (non-instant)
+ * @param player
+ * @param eventType
+ */
+export function getPlayerEventsByType(
+  player: player,
+  eventType: EventType
+): EVENT[] {
   return getPlayerEvents(player).filter(
     event => event && event.type === eventType
   );
 }
 
-function applyAllPlayerEvents(player: player) {
-  getPlayerEvents(player).forEach(applyInstantEvent);
-}
-
+/**
+ * Stores a trait and applies nescessary trait behaviors
+ * @param player
+ * @param storedTrait
+ */
 export function learn(player: player, storedTrait: StoredTrait): void {
   addStoredTrait(player, storedTrait);
 
   const trait = convertToTrait(storedTrait);
   if (trait) {
-    applyTraitEvents(trait, player);
+    applyTraitToAllUnits(trait, player);
   }
+}
+
+/**
+ * Applies events to a unit helpful for when
+ * new unit spawns or is created.
+ * @param player
+ * @param storedTrait
+ */
+export function applyLearnedPlayerTraitsToUnit(
+  player: player,
+  unit: unit
+): void {
+  const events: EVENT[] = getPlayerEvents(player);
+  applyEventsToUnit(events, unit);
 }

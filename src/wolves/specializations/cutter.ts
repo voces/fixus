@@ -28,7 +28,7 @@ const cutterTraits: Trait[] = [
         type: EventType.UNIT_MODIFIER,
         units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
         modify: (unit: unit): void => {
-          BlzSetUnitBaseDamage(BlzGetUnitBaseDamage(unit) + 18);
+          BlzSetUnitBaseDamage(unit, BlzGetUnitBaseDamage(unit, 0) + 18, 0);
         }
       }
     ]
@@ -88,9 +88,9 @@ const cutterTraits: Trait[] = [
     events: [
       {
         type: EventType.DAMAGED_UNIT_MODIFIER,
-        units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
+        source_units: [UnitType.WOLF, UnitType.BLACK_WOLF, UnitType.DEMON_WOLF],
         modify: (unit: unit): void => {
-          BlzSetUnitArmor(BlzGetUnitArmor(unit) - 10);
+          BlzSetUnitArmor(unit, BlzGetUnitArmor(unit) - 10);
         }
       }
     ]
