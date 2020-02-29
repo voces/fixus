@@ -27,7 +27,7 @@ const hoarderTraits: Trait[] = [
     events: [
       {
         type: EventType.TAX_MODIFIER,
-        modify: (pretax: number, _posttax: number): number => {
+        modify: (pretax: number): number => {
           return pretax;
         }
       }
@@ -76,11 +76,7 @@ const hoarderTraits: Trait[] = [
     events: [
       {
         type: EventType.BOUNTY_SIDE_EFFECT,
-        modify: (
-          bountyAmount: number,
-          targetPlayer: player,
-          receivingPlayer: player
-        ): void => {
+        modify: (bountyAmount: number, targetPlayer: player): void => {
           SetPlayerState(
             targetPlayer,
             PLAYER_STATE_RESOURCE_GOLD,

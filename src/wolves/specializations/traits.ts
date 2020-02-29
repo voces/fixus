@@ -22,7 +22,7 @@ export const traits: Trait[] = [
   ...creepMeisterTraits
 ];
 
-function convertToTrait(storedTrait: StoredTrait) {
+function convertToTrait(storedTrait: StoredTrait): Trait | undefined {
   return traits.find(trait => {
     storedTrait.option === trait.option &&
       storedTrait.class === trait.class &&
@@ -34,7 +34,7 @@ function applyTraitToAllUnits(trait: Trait, player: player): void {
   applyEventsToAllPlayerUnits(trait.events, player);
 }
 
-function getPlayerEvents(player: player) {
+function getPlayerEvents(player: player): EVENT[] {
   const storedTraits: StoredTrait[] = getStoredTraits(player);
   return orderedEvents(
     storedTraits
@@ -47,13 +47,14 @@ function getPlayerEvents(player: player) {
 /**
  * Find events of a type for a player, helpful for
  * traits that are applied elsewhere (non-instant)
+ *
  * @param player
  * @param eventType
  */
 export function getPlayerEventsByType(
   player: player,
   eventType: EventType
-): EVENT[] {
+): any[] {
   return getPlayerEvents(player).filter(
     event => event && event.type === eventType
   );

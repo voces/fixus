@@ -40,13 +40,15 @@ addScriptHook(W3TS_HOOK.MAIN_AFTER, (): void => {
     const damagedUnit: unit = BlzGetEventDamageTarget();
     const player: player = GetOwningPlayer(unit);
 
-    getPlayerEventsByType(player, EventType.DAMAGED_UNIT_MODIFIER).forEach(
-      (event: DamagedUnitModifier) => {
-        if (event.source_units.includes(GetUnitTypeId(unit))) {
-          event.modify(damagedUnit);
-        }
-      }
+    const events: DamagedUnitModifier[] = getPlayerEventsByType(
+      player,
+      EventType.DAMAGED_UNIT_MODIFIER
     );
+    events.forEach((event: DamagedUnitModifier) => {
+      if (event.source_units.includes(GetUnitTypeId(unit))) {
+        event.modify(damagedUnit);
+      }
+    });
   });
 });
 

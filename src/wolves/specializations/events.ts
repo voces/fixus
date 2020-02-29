@@ -25,16 +25,16 @@ function playerUnits(player: player, callback: (units: group) => void): void {
   DestroyGroup(group);
 }
 
-function applyActive(unit: unit, event: Active) {
+function applyActive(unit: unit, event: Active): void {
   UnitAddAbilityBJ(event.active, unit);
 }
 
-function applyPassive(unit: unit, event: Passive) {
+function applyPassive(unit: unit, event: Passive): void {
   UnitAddAbilityBJ(event.passive, unit);
   BlzUnitHideAbility(unit, event.passive, true);
 }
 
-function applyActiveReplace(unit: unit, event: ActiveReplace) {
+function applyActiveReplace(unit: unit, event: ActiveReplace): void {
   const { target, replacement } =
     event.replacements.find(({ target }) => {
       GetUnitAbilityLevel(unit, target) > 0;
@@ -46,11 +46,11 @@ function applyActiveReplace(unit: unit, event: ActiveReplace) {
   }
 }
 
-function applyUnitModifier(unit: unit, event: UnitModifier) {
+function applyUnitModifier(unit: unit, event: UnitModifier): void {
   event.modify(unit);
 }
 
-function apply(event: EVENT, unit: unit) {
+function apply(event: EVENT, unit: unit): void {
   switch (event.type) {
     case EventType.ACTIVE: {
       if (event.units.includes(GetUnitTypeId(unit))) {

@@ -20,7 +20,7 @@ const scoutTraits: Trait[] = [
         type: EventType.UNIT_MODIFIER,
         units: [UnitType.GOLEM],
         modify: (unit: unit): void => {
-          BlzSetUnitBaseDamage(BlzGetUnitBaseDamage(unit) + 15);
+          BlzSetUnitBaseDamage(unit, BlzGetUnitBaseDamage(unit, 0) + 15, 0);
         }
       }
     ]
