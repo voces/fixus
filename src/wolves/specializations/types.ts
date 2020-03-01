@@ -171,3 +171,14 @@ export interface StoredTrait {
 export interface SpecializationStorage {
   [key: string]: StoredTrait[];
 }
+
+interface MenuState {
+  page: number;
+}
+export interface MenuStorage {
+  [key: string]: MenuState;
+}
+
+export interface LevelStorage {
+  [key: string]: number;
+}
