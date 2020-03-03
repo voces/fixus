@@ -3,7 +3,6 @@ import { wolfTeam } from "shared";
 import { forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
 import { registerCommand } from "util/commands";
-import { log } from "util/log";
 
 // ===========================================================================
 // Trigger: sheepCommands
