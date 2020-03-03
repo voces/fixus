@@ -15,7 +15,7 @@ import {
 import { reloadMultiboard } from "misc/multiboard";
 import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
-import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
+import { wrappedTriggerAddAction } from "../util/emitLog";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;

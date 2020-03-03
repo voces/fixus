@@ -7,22 +7,13 @@ import { wolfTeam, WOLF_TYPE } from "../shared";
 
 jest.mock(
 	"../shared",
-	() => {
-
-		debugger;
-		return {
-			...jest.requireActual( "../shared" ),
-			wolves: new Proxy( [], {
-				get: ( _, prop ): boolean | null => {
-
-					debugger;
-					return typeof prop === "string" && [ "2", "5", "8", "11" ].includes( prop ) ? true : null;
-
-				},
-			} ),
-		};
-
-	},
+	() => ( {
+		...jest.requireActual( "../shared" ),
+		wolves: new Proxy( [], {
+			get: ( _, prop ): boolean | null =>
+				typeof prop === "string" && [ "2", "5", "8", "11" ].includes( prop ) ? true : null,
+		} ),
+	} ),
 );
 
 it( "smoke", () => {

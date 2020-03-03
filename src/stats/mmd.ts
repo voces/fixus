@@ -19,16 +19,16 @@ import {
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
 	fillArray,
+	isSandbox,
 	isUnitSheep,
 	isUnitWolf,
 	saveskills,
+	WISP_TYPE,
 	wolfTeam,
 	wolfUnit,
-	WISP_TYPE,
 } from "../shared";
 import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
 import { playerSpecializations, specializationNames } from "../sheep/specialization";
-import { isSandbox } from "../shared";
 
 const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
 const unitsKilled = fillArray( bj_MAX_PLAYERS, 0 );
