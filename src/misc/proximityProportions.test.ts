@@ -36,12 +36,14 @@ describe( "proximityProportions", () => {
 
 		it( "solo", () => {
 
-			expect( Array.from( proximityProportions(
+			const entries = Array.from( proximityProportions(
 				{ x: 0, y: 0 },
 				{ gold: 125, experience: 100 },
 				Player( 8 ),
-			).entries() ) )
-				.toEqual( [[ Player( 8 ), { gold: 125, experience: 100, lumber: 0 } ]] );
+			).entries() );
+
+			expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) )
+				.toEqual( [[ 8, { gold: 125, experience: 100, lumber: 0 } ]] );
 
 		} );
 
@@ -59,11 +61,10 @@ describe( "proximityProportions", () => {
 			ForceRemovePlayer( wolfTeam, Player( 9 ) );
 			RemoveUnit( wolf2 );
 
-			expect( entries )
+			expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) )
 				.toEqual( [
-					// floating points make player 8 an epsilon further, so gold is ~62.4999 etc
-					[ Player( 8 ), { gold: 62, experience: 50, lumber: 0 } ],
-					[ Player( 9 ), { gold: 63, experience: 50, lumber: 0 } ],
+					[ 8, { gold: 63, experience: 50, lumber: 0 } ],
+					[ 9, { gold: 62, experience: 50, lumber: 0 } ],
 				] );
 
 		} );
@@ -92,10 +93,10 @@ describe( "proximityProportions", () => {
 
 			expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) )
 				.toEqual( [
-					[ 8, { gold: 45, experience: 36, lumber: 0 } ], // old : 35.2%
-					[ 9, { gold: 37, experience: 29, lumber: 0 } ], // old : 21.6%
-					[ 10, { gold: 25, experience: 21, lumber: 0 } ], // old: 21.6%
-					[ 11, { gold: 18, experience: 14, lumber: 0 } ], // old: 21.6%
+					[ 8, { gold: 48, experience: 38, lumber: 0 } ], // old : 35.2%
+					[ 9, { gold: 37, experience: 30, lumber: 0 } ], // old : 21.6%
+					[ 10, { gold: 24, experience: 20, lumber: 0 } ], // old: 21.6%
+					[ 11, { gold: 16, experience: 12, lumber: 0 } ], // old: 21.6%
 				] );
 
 		} );

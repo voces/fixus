@@ -115,8 +115,8 @@ const wolfProximityProportions = (
 
 		const proportion = reducePlayerUnits( p, ( max, unit ) => {
 
-			const distance = ( GetUnitX( unit ) - x ) ** 2 + ( GetUnitY( unit ) - y );
-			return 1 - Math.max( distance - 128, 0 ) ** DISTANCE_FACTOR / MAX_DENOM * unitFactor( unit );
+			const distanceSquared = ( GetUnitX( unit ) - x ) ** 2 + ( GetUnitY( unit ) - y ) ** 2;
+			return 1 - Math.max( distanceSquared - 128, 0 ) ** DISTANCE_FACTOR / MAX_DENOM * unitFactor( unit );
 
 		}, 0 );
 
