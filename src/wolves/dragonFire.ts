@@ -2,8 +2,9 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wolves } from "../shared";
 import { forEachUnit } from "../util/temp";
+import { wrappedTriggerAddAction } from "../util/emitLog";
 
-let burnWolfId = 7;
+let burnWolfId = 2;
 let emptyTicks: number;
 const spreadFireTrigger = CreateTrigger();
 const burnUnitsTrigger = CreateTrigger();
@@ -36,20 +37,20 @@ const spreadFire = (): void => forEachUnit(
 /**
  * We cycle through wolves for each damage event
  */
-const nextWolfId = ( current: number ): number => {
+export const nextWolfId = ( current: number ): number => {
 
-	let tries = 5;
+	let tries = 12;
 
 	while ( tries -- ) {
 
 		current = current + 1;
 
-		if ( current === 12 ) current = 8;
+		if ( current === 12 ) current = 0;
 		if ( wolves[ current ] != null ) return current;
 
 	}
 
-	return 8;
+	return 1.5;
 
 };
 
@@ -142,14 +143,14 @@ export const main = (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	TriggerAddAction( t, onSpellCast );
+	wrappedTriggerAddAction( t, "dragon fire cast", onSpellCast );
 
 	TriggerRegisterTimerEvent( spreadFireTrigger, 10, true );
-	TriggerAddAction( spreadFireTrigger, spreadFire );
+	wrappedTriggerAddAction( spreadFireTrigger, "dragon fire spread", spreadFire );
 	DisableTrigger( spreadFireTrigger );
 
 	TriggerRegisterTimerEvent( burnUnitsTrigger, 1, true );
-	TriggerAddAction( burnUnitsTrigger, burnUnits );
+	wrappedTriggerAddAction( burnUnitsTrigger, "dragon fire burn", burnUnits );
 	DisableTrigger( burnUnitsTrigger );
 
 	const r = GetWorldBounds();

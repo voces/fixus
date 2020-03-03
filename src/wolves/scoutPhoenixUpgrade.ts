@@ -1,43 +1,36 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wolves } from "shared";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
-const s__ScoutPhoenixUpgrade__data_upgradeId = FourCC( "R004" );
-const s__ScoutPhoenixUpgrade__data_abilityId = FourCC( "A00B" );
+const RESEARCH_TYPE = FourCC( "R004" );
+const ABILITY_TYPE = FourCC( "A00B" );
 
-// library ScoutPhoenixUpgrade:
+const enablePhoenix = ( u: unit ): void => {
 
-const ScoutPhoenixUpgrade__EnablePhoenix = ( u: unit ): void => {
-
-	UnitAddAbilityBJ( s__ScoutPhoenixUpgrade__data_abilityId, u );
-	BlzUnitHideAbility( u, s__ScoutPhoenixUpgrade__data_abilityId, true );
-
-};
-
-const ScoutPhoenixUpgrade__OnResearch = (): void => {
-
-	if ( GetResearched() === s__ScoutPhoenixUpgrade__data_upgradeId )
-
-		ScoutPhoenixUpgrade__EnablePhoenix( wolves[ GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) ) ] );
+	UnitAddAbilityBJ( ABILITY_TYPE, u );
+	BlzUnitHideAbility( u, ABILITY_TYPE, true );
 
 };
 
-const ScoutPhoenixUpgrade__Init = (): void => {
+const onResearch = (): void => {
+
+	if ( GetResearched() === RESEARCH_TYPE )
+		enablePhoenix( wolves[ GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) ) ] );
+
+};
+
+export const onSpawn = ( u: unit ): void => {
+
+	if ( GetPlayerTechResearched( GetOwningPlayer( u ), RESEARCH_TYPE, true ) )
+		enablePhoenix( u );
+
+};
+
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_RESEARCH_FINISH );
-	TriggerAddAction( t, ScoutPhoenixUpgrade__OnResearch );
+	wrappedTriggerAddAction( t, "phoenix research", onResearch );
 
-};
-
-export const ScoutPhoenixUpgrade_onSpawn = ( u: unit ): void => {
-
-	if ( GetPlayerTechResearched( GetOwningPlayer( u ), s__ScoutPhoenixUpgrade__data_upgradeId, true ) )
-
-		ScoutPhoenixUpgrade__EnablePhoenix( u );
-
-};
-
-// library ScoutPhoenixUpgrade ends
-
-addScriptHook( W3TS_HOOK.MAIN_AFTER, ScoutPhoenixUpgrade__Init );
+} );

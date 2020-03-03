@@ -5,6 +5,18 @@ export const changelog = [
 	{ title: "Version 10", content: [
 		"Balance",
 		"• When a sheep destroys their own farms, gold coins are left behind equal to half the bounty of the farm",
+		"• Decreased duration of White Wolf on Rock Golems (150 -> 120 seconds)",
+		"• Increased Sentry Farm's Detector radius (1000 -> 1150)",
+		"• Buffed Health Stone",
+		"  - Increases base Health by 10,000",
+		"  - Increased health restored on use (5,000 -> 25,000)",
+		"• Removed Super Stone Token from shops and quick buy",
+		"• Added Wooden Shield item",
+		"• Added a level 2 to backpack research for Rock Golems",
+		"Features",
+		"• Wolf gold command now accepts an argument for how much gold",
+		"Refactors",
+		"• Wrapped all TriggerAddAction calls with logging",
 	].join( "\n" ) },
 	{ title: "Version 9", content: [
 		"Balance",

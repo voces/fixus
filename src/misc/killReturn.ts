@@ -1,6 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { goldFactor, SmallText, mainUnit, fillArrayFn } from "shared";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 // ===========================================================================
 // Trigger: miscKillReturn
@@ -39,6 +40,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );
-	TriggerAddAction( t, Trig_miscKillReturn_Actions );
+	wrappedTriggerAddAction( t, "kill return", Trig_miscKillReturn_Actions );
 
 } );

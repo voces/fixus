@@ -1,6 +1,7 @@
 
 import { wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
@@ -69,7 +70,7 @@ const Trig_wolfWhiteWolf_Actions = (): void => {
 
 			RemoveUnit( original );
 			const ww = CreateUnit( p, WHITE_WOLF_TYPE, x, y, f );
-			UnitApplyTimedLife( ww, FourCC( "BTLF" ), 150 );
+			UnitApplyTimedLife( ww, FourCC( "BTLF" ), 120 );
 			SelectUnitForPlayerSingle( ww, p );
 
 		}
@@ -83,7 +84,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
-	TriggerAddAction( t, Trig_wolfWhiteWolf_Actions );
+	wrappedTriggerAddAction( t, "white wolf pickup", Trig_wolfWhiteWolf_Actions );
 
 	fillArrayFn( bj_MAX_PLAYERS, () => CreateTimer(), wwTimer );
 	fillArrayFn( bj_MAX_PLAYERS, i => CreateTimerDialog( wwTimer[ i ] ), wwTimerDialog );

@@ -19,16 +19,16 @@ import {
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
 	fillArray,
+	isSandbox,
 	isUnitSheep,
 	isUnitWolf,
 	saveskills,
+	WISP_TYPE,
 	wolfTeam,
 	wolfUnit,
-	WISP_TYPE,
 } from "../shared";
-import { emitLog } from "../util/emitLog";
+import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
 import { playerSpecializations, specializationNames } from "../sheep/specialization";
-import { isSandbox } from "../core/init";
 
 const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
 const unitsKilled = fillArray( bj_MAX_PLAYERS, 0 );
@@ -92,7 +92,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	let t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );
-	TriggerAddAction( t, (): void => {
+	wrappedTriggerAddAction( t, "mmd death", (): void => {
 
 		// ignore deaths that don't have a killer
 		if (
@@ -142,7 +142,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
-	TriggerAddAction( t, (): void => MMD__LogEvent(
+	wrappedTriggerAddAction( t, "mmd acquire", (): void => MMD__LogEvent(
 		"acquire",
 		GetPlayerName( GetOwningPlayer( GetTriggerUnit() ) ),
 		GetItemName( GetManipulatedItem() ) ),
@@ -150,7 +150,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 0, false );
-	TriggerAddAction( t, () => {
+	wrappedTriggerAddAction( t, "mmd delay init", () => {
 
 		MMD__DefineEvent( "acquire", "{0} acquired {1}", "player", "item" );
 		MMD__DefineEvent( "kill", "{0} killed {1}", "killer", "killed" );
@@ -177,7 +177,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_START );
-	TriggerAddAction( t, (): void => {
+	wrappedTriggerAddAction( t, "mmd construct", (): void => {
 
 		const playerIndex = GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) );
 		structuresBuilt[ playerIndex ] ++;

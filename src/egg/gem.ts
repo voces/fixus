@@ -1,6 +1,7 @@
 
 import { color } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const gemActivated: Map<player, boolean> = new Map();
 const GEM_TYPE = FourCC( "gemt" );
@@ -30,6 +31,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_USE_ITEM );
-	TriggerAddAction( t, Trig_eggGem_Actions );
+	wrappedTriggerAddAction( t, "gem click", Trig_eggGem_Actions );
 
 } );
