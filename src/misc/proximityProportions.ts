@@ -13,11 +13,7 @@ type Amount = {
     experience?: number;
 }
 
-type Proportion = Amount & {
-    proportion: number;
-}
-
-const DISTANCE_FACTOR = 1 / 8;
+const DISTANCE_FACTOR = 1 / 9;
 
 // the maximum diagonal distance
 // todo: figure this out
