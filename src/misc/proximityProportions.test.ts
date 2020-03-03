@@ -74,6 +74,8 @@ describe( "proximityProportions", () => {
 			const wolf2 = CreateUnit( Player( 9 ), WOLF_TYPE, 1024, 1024, 270 );
 			ForceAddPlayer( wolfTeam, Player( 10 ) );
 			const wolf3 = CreateUnit( Player( 10 ), WOLF_TYPE, 4096, 4096, 270 );
+			ForceAddPlayer( wolfTeam, Player( 11 ) );
+			const wolf4 = CreateUnit( Player( 11 ), WOLF_TYPE, 8192, 8192, 270 );
 
 			const entries = Array.from( proximityProportions(
 				{ x: 0, y: 0 },
@@ -85,12 +87,15 @@ describe( "proximityProportions", () => {
 			RemoveUnit( wolf2 );
 			ForceRemovePlayer( wolfTeam, Player( 10 ) );
 			RemoveUnit( wolf3 );
+			ForceRemovePlayer( wolfTeam, Player( 11 ) );
+			RemoveUnit( wolf4 );
 
-			expect( entries )
+			expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) )
 				.toEqual( [
-					[ Player( 8 ), { gold: 52, experience: 42, lumber: 0 } ],
-					[ Player( 9 ), { gold: 43, experience: 34, lumber: 0 } ],
-					[ Player( 10 ), { gold: 30, experience: 24, lumber: 0 } ],
+					[ 8, { gold: 45, experience: 36, lumber: 0 } ], // old : 35.2%
+					[ 9, { gold: 37, experience: 29, lumber: 0 } ], // old : 21.6%
+					[ 10, { gold: 25, experience: 21, lumber: 0 } ], // old: 21.6%
+					[ 11, { gold: 18, experience: 14, lumber: 0 } ], // old: 21.6%
 				] );
 
 		} );
