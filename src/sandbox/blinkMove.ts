@@ -1,6 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { isSandbox } from "core/init";
+import { isSandbox } from "shared";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const blinkMove = (): void => {
 
@@ -29,13 +30,13 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 0.25, false );
-	TriggerAddAction( t, () => {
+	wrappedTriggerAddAction( t, "blink move delay init", () => {
 
 		if ( ! isSandbox() ) return;
 
 		const t = CreateTrigger();
 		TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER );
-		TriggerAddAction( t, blinkMove );
+		wrappedTriggerAddAction( t, "blink move smart", blinkMove );
 
 	} );
 

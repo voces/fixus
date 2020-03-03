@@ -67,6 +67,7 @@ export const WOLF_TYPE = FourCC( "EC03" );
 export const CLOAK_TYPE = FourCC( "clfm" );
 export const DOLLY_TYPE = FourCC( "nshf" );
 export const wisps: Array<unit> = [];
+export const isSandbox = getterSetterFunc( false );
 
 let someInteger: number;
 

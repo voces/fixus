@@ -3,6 +3,7 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
 	countHere,
 	gameState,
+	isSandbox,
 	SHEEP_TYPE,
 	sheeps,
 	sheepTeam,
@@ -14,8 +15,7 @@ import {
 import { reloadMultiboard } from "misc/multiboard";
 import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
-import { isSandbox } from "./init";
-import { emitLog } from "../util/emitLog";
+import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -154,6 +154,7 @@ const initToStart = (): void => {
 /**
  * Spawns wolves
  */
+let sandboxedWolfSpawned = false;
 const startToPlay = (): void => {
 
 	TimerDialogDisplay( gameTimerDialog, false );
@@ -167,10 +168,12 @@ const startToPlay = (): void => {
 				! IsPlayerInForce( Player( i ), wolfTeam ) ||
 				// they're not here
 				GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_EMPTY
-			) &&
-			// and we're not debugging
-			( ! isSandbox() || i !== 8 )
+			) && (
+				// and we're not debugging
+				! isSandbox() || sandboxedWolfSpawned || i !== 2
+			)
 		) continue;
+		sandboxedWolfSpawned = true;
 
 		wolves[ i ] = CreateUnit( Player( i ), WOLF_TYPE, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
 		UnitAddItem( wolves[ i ], CreateItem( STARTER_ITEM_TYPE, GetStartLocationX( i ), GetStartLocationY( i ) ) );
@@ -217,19 +220,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterTimerExpireEvent( t, gameTimer );
-	TriggerAddAction( t, () => {
-
-		try {
-
-			action();
-
-		} catch ( err ) {
-
-			emitLog( "gameTimer expired", err );
-
-		}
-
-	} );
+	wrappedTriggerAddAction( t, "gameTimer expired", action );
 
 	const SHEEP_SIZE_OFFSET = 100;
 	const MAX_X = GetRectMaxX( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;

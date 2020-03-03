@@ -3,6 +3,7 @@ import { wolfTeam } from "shared";
 import { forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
 import { registerCommand } from "util/commands";
+import { log } from "util/log";
 
 // ===========================================================================
 // Trigger: sheepCommands
@@ -55,16 +56,24 @@ const getController = (): player => {
 registerCommand( {
 	command: "wolf gold",
 	category: "host",
-	description: "Gives each wolf 100 gold.",
-	fn: (): void => {
+	description: "Gives each wolf X gold.",
+	alias: "wg",
+	args: [ { name: "amount", type: "number", required: false } ],
+	fn: ( { amount }: {amount?: number} ): void => {
+
+		log( "start" );
 
 		if ( getController() !== GetTriggerPlayer() ) return;
 
-		DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " gave the shepherds 100 gold!" );
+		amount = amount || 100;
+
+		DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( GetTriggerPlayer() )} gave the shepherds ${amount} gold!` );
 
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 			if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-				AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, 100 );
+				AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, amount );
+
+		log( "done" );
 
 	},
 } );

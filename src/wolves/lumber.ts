@@ -1,6 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { goldFactor } from "shared";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 // ===========================================================================
 // Trigger: wolfLumber
@@ -18,6 +19,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_HERO_LEVEL );
-	TriggerAddAction( t, Trig_wolfLumber_Actions );
+	wrappedTriggerAddAction( t, "lumber hero level", Trig_wolfLumber_Actions );
 
 } );

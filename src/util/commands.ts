@@ -1,6 +1,6 @@
 
 import { TriggerRegisterPlayerChatEventAll } from "../shared";
-import { emitLog } from "./emitLog";
+import { emitLog, wrappedTriggerAddAction } from "./emitLog";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
 export type Arg = {
@@ -53,65 +53,57 @@ const _registerCommand = <T>(
 			args.length === 0,
 		) );
 
-	TriggerAddAction( t, () => {
+	wrappedTriggerAddAction( t, `command ${command}`, () => {
 
+		const str = GetEventPlayerChatString();
+
+		// with args, make sure the trigger leads
+		const triggerWord = triggerWords.find( triggerWord => str.indexOf( triggerWord ) === 1 ); // we do 1 to skip the -
+		if ( ! triggerWord ) return;
+		const offset = triggerWord.split( " " ).length;
+
+		const words = str.split( " " );
+
+		// Build our args object
+		let argsObject: T;
 		try {
 
-			const str = GetEventPlayerChatString();
+			argsObject = Object.fromEntries( args.map( ( { name, type }, i ) => {
 
-			// with args, make sure the trigger leads
-			const triggerWord = triggerWords.find( triggerWord => str.indexOf( triggerWord ) === 1 ); // we do 1 to skip the -
-			if ( ! triggerWord ) return;
-			const offset = triggerWord.split( " " ).length;
+				const word = words[ i + offset ];
+				if ( word === "" || word === undefined ) return [ name, undefined ];
+				if ( type )
+					switch ( type ) {
 
-			const words = str.split( " " );
+						case "number": return [ name, tonumber( word ) ];
+						case "player": {
 
-			// Build our args object
-			let argsObject: T;
-			try {
+							const playerId = S2I( word ) - 1;
+							if ( playerId < 0 || playerId > bj_MAX_PLAYERS ) {
 
-				argsObject = Object.fromEntries( args.map( ( { name, type }, i ) => {
-
-					const word = words[ i + offset ];
-					if ( word === "" || word === undefined ) return [ name, undefined ];
-					if ( type )
-						switch ( type ) {
-
-							case "number": return [ name, S2R( word ) ];
-							case "player": {
-
-								const playerId = S2I( word ) - 1;
-								if ( playerId < 0 || playerId > bj_MAX_PLAYERS ) {
-
-									DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Invalid player number. Use 1-24." );
-									throw "invalid-player";
-
-								}
-
-								return [ name, Player( playerId ) ];
+								DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Invalid player number. Use 1-24." );
+								throw "invalid-player";
 
 							}
 
+							return [ name, Player( playerId ) ];
+
 						}
 
-					return [ name, word ];
+					}
 
-				} ) );
+				return [ name, word ];
 
-			} catch ( err ) {
-
-				if ( err === "invalid-player" ) return;
-				throw err;
-
-			}
-
-			fn( argsObject, [ words.slice( 0, offset ).join( " " ), ...words.slice( offset ) ] );
+			} ) );
 
 		} catch ( err ) {
 
-			emitLog( err );
+			if ( err === "invalid-player" ) return;
+			throw err;
 
 		}
+
+		fn( argsObject, [ words.slice( 0, offset ).join( " " ), ...words.slice( offset ) ] );
 
 	} );
 

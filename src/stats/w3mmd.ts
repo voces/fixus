@@ -1,5 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 export const MMD_GOAL_NONE = 101;
 export const MMD_GOAL_HIGH = 102;

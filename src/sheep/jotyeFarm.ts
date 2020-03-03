@@ -1,5 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const JOTYE_BUFF_TYPE = FourCC( "BHab" );
 
@@ -29,6 +30,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER );
-	TriggerAddAction( t, Trig_sheepJotyeFarm_Actions );
+	wrappedTriggerAddAction( t, "jotye", Trig_sheepJotyeFarm_Actions );
 
 } );
