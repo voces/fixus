@@ -61,8 +61,6 @@ registerCommand( {
 	args: [ { name: "amount", type: "number", required: false } ],
 	fn: ( { amount }: {amount?: number} ): void => {
 
-		log( "start" );
-
 		if ( getController() !== GetTriggerPlayer() ) return;
 
 		amount = amount || 100;
@@ -72,8 +70,6 @@ registerCommand( {
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 			if ( IsPlayerInForce( Player( i ), wolfTeam ) )
 				AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, amount );
-
-		log( "done" );
 
 	},
 } );
