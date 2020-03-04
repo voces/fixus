@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`proximityProportions sheep with 1 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 100,
+      "lumber": 0,
+    },
+  ],
+]
+`;
+
+exports[`proximityProportions sheep with 2 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 52,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    1,
+    Object {
+      "experience": 0,
+      "gold": 49,
+      "lumber": 0,
+    },
+  ],
+]
+`;
+
+exports[`proximityProportions sheep with 3 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 37,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    1,
+    Object {
+      "experience": 0,
+      "gold": 35,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    3,
+    Object {
+      "experience": 0,
+      "gold": 30,
+      "lumber": 0,
+    },
+  ],
+]
+`;
+
+exports[`proximityProportions sheep with 4 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 29,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    1,
+    Object {
+      "experience": 0,
+      "gold": 27,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    3,
+    Object {
+      "experience": 0,
+      "gold": 23,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    4,
+    Object {
+      "experience": 0,
+      "gold": 21,
+      "lumber": 0,
+    },
+  ],
+]
+`;
+
+exports[`proximityProportions sheep with 5 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 25,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    1,
+    Object {
+      "experience": 0,
+      "gold": 23,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    3,
+    Object {
+      "experience": 0,
+      "gold": 19,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    4,
+    Object {
+      "experience": 0,
+      "gold": 18,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    6,
+    Object {
+      "experience": 0,
+      "gold": 15,
+      "lumber": 0,
+    },
+  ],
+]
+`;
+
+exports[`proximityProportions sheep with 6 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 22,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    1,
+    Object {
+      "experience": 0,
+      "gold": 21,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    3,
+    Object {
+      "experience": 0,
+      "gold": 18,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    4,
+    Object {
+      "experience": 0,
+      "gold": 16,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    6,
+    Object {
+      "experience": 0,
+      "gold": 13,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    7,
+    Object {
+      "experience": 0,
+      "gold": 11,
+      "lumber": 0,
+    },
+  ],
+]
+`;
+
+exports[`proximityProportions sheep with 7 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 21,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    1,
+    Object {
+      "experience": 0,
+      "gold": 20,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    3,
+    Object {
+      "experience": 0,
+      "gold": 17,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    4,
+    Object {
+      "experience": 0,
+      "gold": 15,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    6,
+    Object {
+      "experience": 0,
+      "gold": 12,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    7,
+    Object {
+      "experience": 0,
+      "gold": 10,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    9,
+    Object {
+      "experience": 0,
+      "gold": 6,
+      "lumber": 0,
+    },
+  ],
+]
+`;
+
+exports[`proximityProportions sheep with 8 sheep 1`] = `
+Array [
+  Array [
+    0,
+    Object {
+      "experience": 0,
+      "gold": 20,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    1,
+    Object {
+      "experience": 0,
+      "gold": 19,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    3,
+    Object {
+      "experience": 0,
+      "gold": 16,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    4,
+    Object {
+      "experience": 0,
+      "gold": 14,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    6,
+    Object {
+      "experience": 0,
+      "gold": 11,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    7,
+    Object {
+      "experience": 0,
+      "gold": 10,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    9,
+    Object {
+      "experience": 0,
+      "gold": 7,
+      "lumber": 0,
+    },
+  ],
+  Array [
+    10,
+    Object {
+      "experience": 0,
+      "gold": 5,
+      "lumber": 0,
+    },
+  ],
+]
+`;
