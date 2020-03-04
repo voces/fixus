@@ -1,6 +1,16 @@
 
-import { wolfTeam, WOLF_TYPE, BLACK_WOLF_TYPE, IMBA_WOLF_TYPE, sheepTeam, sheeps } from "../shared";
+import {
+	BLACK_WOLF_TYPE,
+	IMBA_WOLF_TYPE,
+	sheeps,
+	sheepTeam,
+	WOLF_TYPE,
+	wolfTeam,
+} from "../shared";
 import { forEachPlayer, reducePlayerUnits } from "../util/temp";
+
+export const GOLEM_TYPE = FourCC( "ewsp" );
+const STALKER_TYPE = FourCC( "nfel" );
 
 type Point = {
     x: number;
@@ -13,19 +23,20 @@ type Amount = {
     experience?: number;
 }
 
-const DISTANCE_FACTOR = 1 / 9;
+const WIDTH = 5376 * 2;
 
-// the maximum diagonal distance
-// todo: figure this out
-const MAX = 32768;
-const MAX_DENOM = ( MAX ** 2 - 128 ) ** DISTANCE_FACTOR;
+const SHEEP_DISTANCE_FACTOR = 1 / 27;
+const SHEEP_DENOM = ( WIDTH ** 2 * 2 - 128 ) ** SHEEP_DISTANCE_FACTOR;
+
+const WOLF_DISTANCE_FACTOR = 1 / 9;
+const WOLF_DENOM = ( WIDTH ** 2 * 2 - 128 ) ** WOLF_DISTANCE_FACTOR;
 
 const UNIT_FACTORS: Record<number, number> = {
 	[ WOLF_TYPE ]: 1,
 	[ BLACK_WOLF_TYPE ]: 1,
 	[ IMBA_WOLF_TYPE ]: 1,
-	// [ GOLEM_TYPE ]: 0.5,
-	// [ STALKER_TYPE ]: 0.5,
+	[ GOLEM_TYPE ]: 0.5,
+	[ STALKER_TYPE ]: 0.5,
 };
 const unitFactor = ( unit: unit ): number => {
 
@@ -60,8 +71,8 @@ const sheepProximityProportions = (
 
 		if ( ! IsPlayerInForce( p, sheepTeam ) ) return;
 
-		const distance = ( GetUnitX( sheeps[ GetPlayerId( p ) ] ) - x ) ** 2 + ( GetUnitY( sheeps[ GetPlayerId( p ) ] ) - y );
-		const proportion = 1 - Math.max( distance - 128, 0 ) ** DISTANCE_FACTOR / MAX_DENOM;
+		const distanceSquared = ( GetUnitX( sheeps[ GetPlayerId( p ) ] ) - x ) ** 2 + ( GetUnitY( sheeps[ GetPlayerId( p ) ] ) - y ) ** 2;
+		const proportion = 1 - Math.max( distanceSquared - 128, 0 ) ** SHEEP_DISTANCE_FACTOR / SHEEP_DENOM;
 
 		proportions.push( proportion );
 		players.push( p );
@@ -116,7 +127,9 @@ const wolfProximityProportions = (
 		const proportion = reducePlayerUnits( p, ( max, unit ) => {
 
 			const distanceSquared = ( GetUnitX( unit ) - x ) ** 2 + ( GetUnitY( unit ) - y ) ** 2;
-			return 1 - Math.max( distanceSquared - 128, 0 ) ** DISTANCE_FACTOR / MAX_DENOM * unitFactor( unit );
+			const proportion = ( 1 - Math.max( distanceSquared - 128, 0 ) ** WOLF_DISTANCE_FACTOR / WOLF_DENOM ) * unitFactor( unit );
+			if ( proportion > max )	return proportion;
+			return max;
 
 		}, 0 );
 

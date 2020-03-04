@@ -1,7 +1,7 @@
 
 import "../test/w3api";
-import { normalize, proximityProportions } from "./proximityProportions";
-import { wolfTeam, WOLF_TYPE } from "../shared";
+import { normalize, proximityProportions, GOLEM_TYPE } from "./proximityProportions";
+import { wolfTeam, WOLF_TYPE, sheepTeam, sheeps, SHEEP_TYPE } from "../shared";
 
 describe( "normalize", () => {
 
@@ -21,7 +21,47 @@ describe( "normalize", () => {
 
 describe( "proximityProportions", () => {
 
-	// describe( "sheep", () => {} );
+	describe( "sheep", () => {
+
+		const withTempSheep = ( arr: number[], fn: ( () => void ) ): void => {
+
+			const oldSheep: unit[] = [];
+			debugger;
+			arr.forEach( pId => {
+
+				oldSheep[ pId ] = sheeps[ pId ];
+				ForceAddPlayer( sheepTeam, Player( pId ) );
+				sheeps[ pId ] = CreateUnit( Player( pId ), SHEEP_TYPE, 64 * 1.5 ** pId, 64 * 1.5 ** pId, 270 );
+
+			} );
+
+			fn();
+
+			arr.forEach( pId => {
+
+				RemoveUnit( sheeps[ pId ] );
+				sheeps[ pId ] = oldSheep[ pId ];
+
+			} );
+
+		};
+
+		const sheepPlayerIds = [ 0, 1, 3, 4, 6, 7, 9, 10 ];
+
+		for ( let i = 0; i < sheepPlayerIds.length; i ++ )
+			it( `with ${i + 1} sheep`, () => withTempSheep( sheepPlayerIds.slice( 0, i + 1 ), () => {
+
+				const entries = Array.from( proximityProportions(
+					{ x: 0, y: 0 },
+					{ gold: 100 },
+					Player( 0 ),
+				).entries() );
+
+				expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) ).toMatchSnapshot();
+
+			} ) );
+
+	} );
 
 	describe( "wolves", () => {
 
@@ -76,7 +116,7 @@ describe( "proximityProportions", () => {
 			ForceAddPlayer( wolfTeam, Player( 10 ) );
 			const wolf3 = CreateUnit( Player( 10 ), WOLF_TYPE, 4096, 4096, 270 );
 			ForceAddPlayer( wolfTeam, Player( 11 ) );
-			const wolf4 = CreateUnit( Player( 11 ), WOLF_TYPE, 8192, 8192, 270 );
+			const golem = CreateUnit( Player( 11 ), GOLEM_TYPE, 1024, 1024, 270 );
 
 			const entries = Array.from( proximityProportions(
 				{ x: 0, y: 0 },
@@ -89,14 +129,14 @@ describe( "proximityProportions", () => {
 			ForceRemovePlayer( wolfTeam, Player( 10 ) );
 			RemoveUnit( wolf3 );
 			ForceRemovePlayer( wolfTeam, Player( 11 ) );
-			RemoveUnit( wolf4 );
+			RemoveUnit( golem );
 
 			expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) )
 				.toEqual( [
-					[ 8, { gold: 48, experience: 38, lumber: 0 } ], // old : 35.2%
+					[ 8, { gold: 52, experience: 41, lumber: 0 } ], // old : 35.2%
 					[ 9, { gold: 37, experience: 30, lumber: 0 } ], // old : 21.6%
-					[ 10, { gold: 24, experience: 20, lumber: 0 } ], // old: 21.6%
-					[ 11, { gold: 16, experience: 12, lumber: 0 } ], // old: 21.6%
+					[ 10, { gold: 17, experience: 14, lumber: 0 } ], // old: 21.6%
+					[ 11, { gold: 19, experience: 15, lumber: 0 } ], // old: 21.6%
 				] );
 
 		} );
