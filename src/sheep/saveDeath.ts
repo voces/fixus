@@ -15,13 +15,11 @@ import {
 	sheeps,
 	sheepTeam,
 	SILVER_SHEEP_TYPE,
-	SmallText,
 	WHITE_WOLF_TYPE,
 	WISP_TYPE,
 	wisps,
 	wispTeam,
 	WOLF_TYPE,
-	wolfTeam,
 	wolves,
 	wws,
 } from "shared";
@@ -39,6 +37,7 @@ import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
 import { endGame } from "../core/game";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { awardBounty } from "misc/proximityProportions";
 
 // Trigger: sheepSaveDeath
 // ===========================================================================
@@ -129,6 +128,8 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	forEachPlayerUnit( killedPlayer, RemoveUnit );
 	Specialization_onDeath( killedUnit );
 	pityXpOnSheepDeath();
+	const x = GetUnitX( killedUnit );
+	const y = GetUnitX( killedUnit );
 
 	// Move to wisps
 	ForceAddPlayer( wispTeam, killedPlayer );
@@ -160,23 +161,11 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	}
 
 	// Gold bounty
-	const allyBounty = R2I( bounty / ( I2R( countHere( wolfTeam ) ) + 0.5 ) );
-	const killerBounty = R2I( bounty - allyBounty * ( countHere( wolfTeam ) - 1 ) );
-
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING && IsPlayerInForce( Player( i ), wolfTeam ) )
-
-			if ( Player( i ) === killingPlayer ) {
-
-				AdjustPlayerStateBJ( killerBounty, Player( i ), PLAYER_STATE_RESOURCE_GOLD );
-				SmallText( killerBounty, wolves[ i ], 14, 0, 0 );
-
-			} else {
-
-				AdjustPlayerStateBJ( allyBounty, Player( i ), PLAYER_STATE_RESOURCE_GOLD );
-				SmallText( allyBounty, wolves[ i ], 14, 0, 0 );
-
-			}
+	awardBounty(
+		{ x, y },
+		{ gold: bounty, experience: 100 + Specialization_GetLevel( killedUnit ) * 25 },
+		killingPlayer,
+	);
 
 };
 
@@ -200,6 +189,8 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 	// Handle dying wisp
 	ForceRemovePlayer( wispTeam, savedPlayer );
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( savedPlayer )} has been ${color[ 12 ]}saved|r by ${colorizedName( savingPlayer )}!` );
+	const xWisp = GetUnitX( savedUnit );
+	const yWisp = GetUnitX( savedUnit );
 
 	// Move to sheep
 	ForceAddPlayer( sheepTeam, savedPlayer );
@@ -239,9 +230,12 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 	}
 
-	// Bounty
-	AdjustPlayerStateBJ( 100 * goldFactor(), savingPlayer, PLAYER_STATE_RESOURCE_GOLD );
-	SmallText( 100 * goldFactor(), savingUnit, 14, 0, 0 );
+	// Gold bounty
+	awardBounty(
+		{ x: xWisp, y: yWisp },
+		{ gold: 100 * goldFactor() },
+		savingPlayer,
+	);
 
 };
 
@@ -274,7 +268,6 @@ const action = (): void => {
 		// Spirit death (save)
 
 	} else if ( GetUnitTypeId( GetTriggerUnit() ) === WISP_TYPE )
-
 		if ( GetUnitTypeId( GetKillingUnit() ) !== WISP_TYPE ) {
 
 			onSheepSave( GetTriggerUnit(), GetKillingUnit() );
@@ -284,7 +277,6 @@ const action = (): void => {
 
 	// Wolf death
 	else if ( isUnitWolf( GetTriggerUnit() ) )
-
 		onWolfDeath( GetTriggerUnit() );
 
 	if ( relevantDeath ) {

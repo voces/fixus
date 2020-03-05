@@ -26,7 +26,6 @@ describe( "proximityProportions", () => {
 		const withTempSheep = ( arr: number[], fn: ( () => void ) ): void => {
 
 			const oldSheep: unit[] = [];
-			debugger;
 			arr.forEach( pId => {
 
 				oldSheep[ pId ] = sheeps[ pId ];
@@ -133,10 +132,10 @@ describe( "proximityProportions", () => {
 
 			expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) )
 				.toEqual( [
-					[ 8, { gold: 52, experience: 41, lumber: 0 } ], // old : 35.2%
-					[ 9, { gold: 37, experience: 30, lumber: 0 } ], // old : 21.6%
-					[ 10, { gold: 17, experience: 14, lumber: 0 } ], // old: 21.6%
-					[ 11, { gold: 19, experience: 15, lumber: 0 } ], // old: 21.6%
+					[ 8, { gold: 48, experience: 38, lumber: 0 } ], // old : 35.2%
+					[ 9, { gold: 35, experience: 28, lumber: 0 } ], // old : 21.6%
+					[ 10, { gold: 16, experience: 13, lumber: 0 } ], // old: 21.6%
+					[ 11, { gold: 26, experience: 21, lumber: 0 } ], // old: 21.6%
 				] );
 
 		} );
