@@ -13,6 +13,7 @@
 
 ## Features
 - Wolf gold command now accepts an argument for how much gold
+- All bounties are now proximity based
 
 ## Refactors
 - Wrapped all TriggerAddAction calls with logging

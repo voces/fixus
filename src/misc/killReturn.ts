@@ -1,7 +1,8 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { goldFactor, SmallText, mainUnit, fillArrayFn } from "shared";
+import { goldFactor, fillArrayFn } from "shared";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { awardBounty } from "./proximityProportions";
 
 // ===========================================================================
 // Trigger: miscKillReturn
@@ -17,21 +18,14 @@ const Trig_miscKillReturn_Actions = (): void => {
 	const goldSides = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_GOLD_BOUNTY_AWARDED_SIDES_PER_DIE );
 	const gold = ( goldBase + fillArrayFn( goldDice, () => Math.ceil( Math.random() * goldSides ) ).reduce( ( sum, v ) => sum + v, 0 ) ) * goldFactor();
 
-	const xp = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_LUMBER_BOUNTY_AWARDED_BASE ) * goldFactor();
+	const experience = BlzGetUnitIntegerField( GetTriggerUnit(), UNIT_IF_LUMBER_BOUNTY_AWARDED_BASE ) * goldFactor();
 
-	if ( gold > 0 ) {
-
-		AdjustPlayerStateBJ( gold, GetOwningPlayer( GetKillingUnit() ), PLAYER_STATE_RESOURCE_GOLD );
-		SmallText( gold, GetTriggerUnit(), 14, 0, 0 );
-
-	}
-
-	if ( xp > 0 ) {
-
-		AddHeroXP( mainUnit( GetOwningPlayer( GetKillingUnit() ) ), xp, true );
-		SmallText( xp, GetTriggerUnit(), 3, 16, - 64 );
-
-	}
+	// Gold bounty
+	awardBounty(
+		{ x: GetUnitX( GetTriggerUnit() ), y: GetUnitY( GetTriggerUnit() ) },
+		{ gold, experience },
+		GetOwningPlayer( GetKillingUnit() ),
+	);
 
 };
 
