@@ -80,3 +80,15 @@ export const forEachPlayer = ( fn: ( player: player ) => void ): void => {
 		fn( Player( i ) );
 
 };
+
+export const setTimeout = ( timeout: number, fn: () => void ): void => {
+
+	const t = CreateTimer();
+	TimerStart( t, timeout, false, () => {
+
+		DestroyTimer( t );
+		fn();
+
+	} );
+
+};
