@@ -7,7 +7,8 @@ const isArray = ( v: any ): boolean => {
 	if ( typeof v !== "object" ) return false;
 
 	// Lua uses 1 as the starter index
-	return Object.keys( v ).every( ( v, index ) => S2I( v ) === index + 1 || S2I( v ) === index );
+	return Object.keys( v ).every( ( v, index ) => S2I( v ) === index + 1 || S2I( v ) === index ) &&
+		( v[ 0 ] !== undefined || v[ 1 ] !== undefined );
 
 };
 

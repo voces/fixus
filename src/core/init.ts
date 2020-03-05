@@ -3,19 +3,18 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
 	countHereReal,
 	DisplayTimedText,
+	isSandbox,
 	sheepTeam,
 	wolfTeam,
 } from "shared";
 import { board } from "misc/multiboard";
 import { changelog } from "misc/changelog";
 import { commands, Command, Arg } from "util/commands";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 // ===========================================================================
 // Trigger: coreInit
 // ===========================================================================
-
-let sandbox = false;
-export const isSandbox = (): boolean => sandbox;
 
 const argHelp = ( arg: Arg ): string =>
 	arg.required === undefined || arg.required ? `<${arg.name}>` : `[${arg.name}]`;
@@ -91,7 +90,7 @@ const action = (): void => {
 	// debug mode
 	if ( countHereReal( wolfTeam ) === 0 || countHereReal( sheepTeam ) === 0 ) {
 
-		sandbox = true;
+		isSandbox( true );
 
 		DisplayTimedText( 5, "Sandbox commands enabled." );
 
@@ -112,6 +111,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 0.01, false );
-	TriggerAddAction( t, action );
+	wrappedTriggerAddAction( t, "init", action );
 
 } );

@@ -2,6 +2,7 @@
 import { fillArrayFn, goldFactor, SmallText } from "../shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { withUnitsInRange } from "util/temp";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const FACTOR = 0.5;
 const THRESHOLD = 3;
@@ -38,7 +39,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 0.5, true );
-	TriggerAddAction( t, () => {
+	wrappedTriggerAddAction( t, "coins tick", () => {
 
 		time += 0.5;
 

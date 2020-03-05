@@ -9,6 +9,7 @@ import {
 	wispTeam,
 } from "shared";
 import { isPlayingPlayer, hasLeft, isComputer } from "util/player";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const SAVING_FARM_TYPE = FourCC( "ohun" );
 const HIDDEN_SAVING_FARM_TYPE = FourCC( "otbk" );
@@ -106,14 +107,14 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	let t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 2, true );
-	TriggerAddAction( t, Trig_miscGoldTick_Actions );
+	wrappedTriggerAddAction( t, "gold tick - 2", Trig_miscGoldTick_Actions );
 
 	t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 4, true );
-	TriggerAddAction( t, Trig_miscSavingTick_Actions );
+	wrappedTriggerAddAction( t, "gold tick - 4", Trig_miscSavingTick_Actions );
 
 	t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 3, true );
-	TriggerAddAction( t, wolfTickActions );
+	wrappedTriggerAddAction( t, "gold tick - 3", wolfTickActions );
 
 } );

@@ -1,9 +1,8 @@
 
-import { wolfTeam, wolves } from "shared";
+import { wolfTeam, wolves, isSandbox } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { registerCommand } from "util/commands";
 import { withSelectedUnits, forEachPlayerUnit } from "util/temp";
-import { isSandbox } from "core/init";
 
 const quickBuyTax = 1.5;
 const quickSellTax = 0.5;
@@ -166,7 +165,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	registerItem( { name: "shadow", gold: 100, id: FourCC( "clsd" ) } );
 	registerItem( { name: "siege", gold: 150, id: FourCC( "tfar" ) } );
 	registerItem( { name: "stalker", gold: 100, id: FourCC( "fgfh" ) } );
-	registerItem( { name: "supergolem", gold: 350, id: FourCC( "I001" ) } );
+	registerItem( { name: "shield", gold: 80, id: FourCC( "arsh" ) } );
 
 	// todo: test this
 	forEachPlayerUnit(

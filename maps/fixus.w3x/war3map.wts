@@ -515,24 +515,6 @@ STRING 1511
 Boosts attack damage by 30.
 }
 
-STRING 1514
-// Items: I001 (Super Stone Token), Name (Name)
-{
-Super Stone Token
-}
-
-STRING 1515
-// Items: I001 (Super Stone Token), Description (Description)
-{
-Summons 3 Rock Golems.
-}
-
-STRING 1516
-// Items: I001 (Super Stone Token), Tip (Tooltip - Basic)
-{
-Purchase Super Stone Token
-}
-
 STRING 1518
 // Items: I003 (White Wolf), Name (Name)
 {
@@ -734,11 +716,6 @@ STRING 1605
 // Units: h008 (Power Tower), Ubertip (Tooltip - Extended)
 {
 SupA damage!
-}
-
-STRING 1611
-{
-Sheep 8 
 }
 
 STRING 1614
@@ -1205,12 +1182,6 @@ STRING 1792
 // Abilities: Asdg (Kaboom!), Unhotkey (Hotkey - Turn Off)
 {
 A
-}
-
-STRING 1793
-// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
-{
-(Rock Golems)
 }
 
 STRING 1794
@@ -8321,12 +8292,6 @@ STRING 4414
 Increases the attack speed of the Hero by <A003,DataA1,%>% when worn.|n-buy gloves
 }
 
-STRING 4415
-// Items: hlst (Health Stone), Ubertip (Tooltip - Extended)
-{
-Increases the life regeneration rate of the Hero by <Arll,DataA1> hit points per second when worn. Can be consumed for <AIh2,DataA1> health.|n-buy health
-}
-
 STRING 4416
 // Items: tels (Goblin Night Scope), Ubertip (Tooltip - Extended)
 {
@@ -8367,12 +8332,6 @@ STRING 4422
 // Items: I000 (Anti's Light Sabre +30), Ubertip (Tooltip - Extended)
 {
 When worn, increases the attack damage of the Hero by 30, attack speed by 15%, and grants a frost effect on hit units.|n-buy sabre
-}
-
-STRING 4423
-// Items: I001 (Super Stone Token), Ubertip (Tooltip - Extended)
-{
-Summons 3 Rock Golems to fight for you.|n-buy supergolem
 }
 
 STRING 4424
@@ -9503,5 +9462,232 @@ STRING 4621
 // Items: gold (Gold Coins), Ubertip (Tooltip - Extended)
 {
 Gives gold to the player when used.
+}
+
+STRING 4622
+{
+Sheep 8
+}
+
+STRING 4624
+// Abilities: Agyv (True Sight), EditorSuffix (Editor Suffix)
+{
+(Sheep)
+}
+
+STRING 4625
+// Abilities: Adt1 (Detector), EditorSuffix (Editor Suffix)
+{
+(iStick)
+}
+
+STRING 4626
+// Abilities: A00R (Detector), Tip (Tooltip - Normal)
+{
+Detector
+}
+
+STRING 4627
+// Abilities: A00R (Detector), Ubertip (Tooltip - Normal - Extended)
+{
+Reveals nearby invisible units.
+}
+
+STRING 4628
+// Abilities: A00R (Detector), EditorSuffix (Editor Suffix)
+{
+(Sentry Farm)
+}
+
+STRING 4629
+// Items: hlst (Health Stone), Ubertip (Tooltip - Extended)
+{
+Increases the life of the Hero by <A00S,DataA1> and life regeneration by <Arll,DataA1> hit points per second when worn. Can be consumed for <AIh2,DataA1> health.|n-buy health
+}
+
+STRING 4630
+// Abilities: A00S (Item Life Bonus), EditorSuffix (Editor Suffix)
+{
+(Health Stone)
+}
+
+STRING 4631
+// Items: arsh (Wooden Shield), Name (Name)
+{
+Wooden Shield
+}
+
+STRING 4632
+// Items: arsh (Wooden Shield), Tip (Tooltip - Basic)
+{
+Purchase Wooden Shield
+}
+
+STRING 4634
+// Items: arsh (Wooden Shield), Description (Description)
+{
+Increases armor.
+}
+
+STRING 4635
+// Abilities: A00T (Item Armor Bonus), EditorSuffix (Editor Suffix)
+{
+(Wooden Shield)
+}
+
+STRING 4636
+// Items: arsh (Wooden Shield), Ubertip (Tooltip - Extended)
+{
+Increases the Hero's armor by <A00T,DataA1> when worn.|n-buy armor
+}
+
+STRING 4637
+// Abilities: Aien (Unit Inventory), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
+}
+
+STRING 4638
+// Abilities: Aien (Unit Inventory), Tip (Tooltip - Normal)
+{
+Unit Inventory
+}
+
+STRING 4639
+// Abilities: Aien (Unit Inventory), Tip (Tooltip - Normal)
+{
+Unit Inventory
+}
+
+STRING 4640
+// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
+}
+
+STRING 4641
+// Upgrades: Repm (Backpack), Name (Name)
+{
+Backpack - [|cffffcc00Level 2|r]
+}
+
+STRING 4642
+// Upgrades: Repm (Backpack), Tip (Tooltip)
+{
+Research Backpack - [|cffffcc00Level 2|r]
+}
+
+STRING 4643
+// Upgrades: Repm (Backpack), Tip (Tooltip)
+{
+Research Backpack - [|cffffcc00Level 3|r]
+}
+
+STRING 4644
+// Upgrades: Repm (Backpack), Ubertip (Tooltip - Extended)
+{
+Gives Rock Golems the ability to carry two items.
+}
+
+STRING 4645
+// Upgrades: Repm (Backpack), Ubertip (Tooltip - Extended)
+{
+Gives Rock Golems the ability to carry three items.
+}
+
+STRING 4646
+// Upgrades: Repm (Backpack), Hotkey (Hotkey)
+{
+B
+}
+
+STRING 4647
+// Upgrades: Repm (Backpack), Hotkey (Hotkey)
+{
+B
+}
+
+STRING 4648
+// Upgrades: Repm (Backpack), Name (Name)
+{
+Backpack - [|cffffcc00Level 3|r]
+}
+
+STRING 4649
+// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
+}
+
+STRING 4650
+// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
+}
+
+STRING 4651
+// Upgrades: Repm (Backpack), effect1 (Effect 1)
+{
+rlev
+}
+
+STRING 4652
+// Upgrades: R005 (Skeletal Mastery), Name (Name)
+{
+Backpack - [|cffffcc00Level 2|r]
+}
+
+STRING 4653
+// Upgrades: R005 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Backpack - [|cffffcc00Level 2|r]
+}
+
+STRING 4654
+// Upgrades: R005 (Skeletal Mastery), Tip (Tooltip)
+{
+Research Backpack - [|cffffcc00Level 3|r]
+}
+
+STRING 4655
+// Upgrades: R005 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Gives Rock Golems the ability to carry two items.
+}
+
+STRING 4656
+// Upgrades: R005 (Skeletal Mastery), Ubertip (Tooltip - Extended)
+{
+Gives Rock Golems the ability to carry three items.
+}
+
+STRING 4657
+// Upgrades: R005 (Skeletal Mastery), Hotkey (Hotkey)
+{
+B
+}
+
+STRING 4658
+// Upgrades: R005 (Skeletal Mastery), Hotkey (Hotkey)
+{
+B
+}
+
+STRING 4659
+// Upgrades: R005 (Skeletal Mastery), Name (Name)
+{
+Backpack - [|cffffcc00Level 3|r]
+}
+
+STRING 4660
+// Upgrades: R005 (Skeletal Mastery), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
+}
+
+STRING 4661
+// Upgrades: R005 (Skeletal Mastery), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
 }
 

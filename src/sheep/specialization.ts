@@ -1,7 +1,7 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { fillArrayFn } from "../shared";
-import { emitLog } from "../util/emitLog";
+import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
 
 type SpecializationData = {
 	learn: number;
@@ -185,10 +185,10 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
 	TriggerAddCondition( t, isSpecializationAbilityCondition );
-	TriggerAddAction( t, setSpecialization );
+	wrappedTriggerAddAction( t, "sheep specialization set", setSpecialization );
 
 	t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_START );
-	TriggerAddAction( t, startConstruction );
+	wrappedTriggerAddAction( t, "sheep specialization construct", startConstruction );
 
 } );

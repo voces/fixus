@@ -6,6 +6,7 @@ import {
 	DOLLY_TYPE,
 } from "shared";
 import { withPlayerUnits } from "util/temp";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const DOLLY_SPEED_AURA = FourCC( "Aasl" );
 
@@ -40,6 +41,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	const t = CreateTrigger();
 	// 3 (sheep delay) + 10 (shepherd delay) + 1200 (20 minutes)
 	TriggerRegisterTimerEventSingle( t, 1213 );
-	TriggerAddAction( t, action );
+	wrappedTriggerAddAction( t, "five minute action", action );
 
 } );

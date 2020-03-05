@@ -1,6 +1,7 @@
 
 import { TriggerRegisterPlayerUnitEventAll, fillArray, fillArrayFn, DOLLY_TYPE } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const dollyTimer: Array<timer> = [];
 const dollyTimerDialog: Array<timerdialog> = [];
@@ -79,11 +80,11 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	let t = CreateTrigger();
 	TriggerRegisterPlayerUnitEventAll( t, EVENT_PLAYER_UNIT_SELECTED, Condition( Trig_eggDolly_isDolly ) );
-	TriggerAddAction( t, Trig_eggDolly_Actions );
+	wrappedTriggerAddAction( t, "dolly select", Trig_eggDolly_Actions );
 
 	t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 1, true );
-	TriggerAddAction( t, Trig_eggDolly_Tick );
+	wrappedTriggerAddAction( t, "dolly tick", Trig_eggDolly_Tick );
 
 	fillArrayFn( bj_MAX_PLAYERS, () => CreateTimer(), dollyTimer );
 	fillArrayFn( bj_MAX_PLAYERS, i => CreateTimerDialog( dollyTimer[ i ] ), dollyTimerDialog );

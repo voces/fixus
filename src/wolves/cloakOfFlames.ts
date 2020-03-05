@@ -2,6 +2,7 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { CLOAK_TYPE } from "shared";
 import { withTempGroup } from "util/temp";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 const cloakHolders = CreateGroup();
 
@@ -83,14 +84,14 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	let t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
-	TriggerAddAction( t, onPickupItem );
+	wrappedTriggerAddAction( t, "cloak pickup", onPickupItem );
 
 	t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DROP_ITEM );
-	TriggerAddAction( t, onDropItem );
+	wrappedTriggerAddAction( t, "cloak drop", onDropItem );
 
 	t = CreateTrigger();
 	TriggerRegisterTimerEvent( t, 1, true );
-	TriggerAddAction( t, tick );
+	wrappedTriggerAddAction( t, "cloak tick", tick );
 
 } );

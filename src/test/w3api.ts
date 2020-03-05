@@ -9,3 +9,6 @@ getGame().loadData( {
 	w3u: fs.readFileSync( "maps/fixus.w3x/war3map.w3u" ),
 	wts: fs.readFileSync( "maps/fixus.w3x/war3map.wts" ),
 } );
+
+// Lua polyfills
+globalThis.tonumber = parseFloat;
