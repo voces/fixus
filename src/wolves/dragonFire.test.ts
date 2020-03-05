@@ -1,6 +1,5 @@
 
 import "../test/w3api";
-import { getGame } from "w3api";
 import { main, units, nextWolfId } from "./dragonFire";
 import { wolfTeam, WOLF_TYPE } from "../shared";
 
