@@ -13,7 +13,6 @@ import {
 	wolfUnit,
 } from "../shared";
 import { forEachPlayer, reducePlayerUnits } from "../util/temp";
-import { log } from "util/log";
 
 export const GOLEM_TYPE = FourCC( "ewsp" );
 const STALKER_TYPE = FourCC( "nfel" );
@@ -189,14 +188,6 @@ const wolfProximityProportions = (
 
 			const distanceSquared = ( GetUnitX( unit ) - x ) ** 2 + ( GetUnitY( unit ) - y ) ** 2;
 			const proportion = ( 1 - Math.max( distanceSquared - 128, 0 ) ** WOLF_DISTANCE_FACTOR / WOLF_DENOM ) * unitFactor( unit );
-			log( GetUnitName( unit ), GetPlayerName( p ), {
-				origin: { x, y },
-				unit: { x: GetUnitX( unit ), y: GetUnitY( unit ) },
-				xDelta: GetUnitX( unit ) - x,
-				yDelta: GetUnitY( unit ) - y,
-				distanceSquared,
-				proportion,
-			} );
 			if ( proportion > max )	return proportion;
 			return max;
 
