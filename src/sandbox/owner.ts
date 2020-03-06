@@ -3,10 +3,6 @@ import { registerCommand } from "util/commands";
 import { isSandbox } from "shared";
 import { forEachSelectedUnit } from "util/temp";
 
-// ===========================================================================
-// Trigger: miscControl
-// ===========================================================================
-
 const prevOwner: Record<number, player> = {};
 
 const action = ( { player }: {player: player | null} ): void => {
