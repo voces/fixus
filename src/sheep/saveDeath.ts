@@ -53,7 +53,7 @@ const replaceUnit = ( u: unit, newType: number ): unit => {
 	const p = GetOwningPlayer( u );
 
 	// Copy hero props
-	const l = GetUnitLevel( u );
+	const xp = GetHeroXP( u );
 	const it: Array<number> = [];
 	for ( let i = 0; i < bj_MAX_INVENTORY; i ++ )
 		it[ i ] = GetItemTypeId( UnitItemInSlot( u, i ) );
@@ -66,7 +66,7 @@ const replaceUnit = ( u: unit, newType: number ): unit => {
 	SelectUnitForPlayerSingle( u, p );
 
 	// Copy hero props
-	SetHeroLevel( u, l, false );
+	SetHeroXP( u, xp, false );
 	for ( let i = 0; i < bj_MAX_INVENTORY; i ++ )
 		UnitAddItem( u, CreateItem( it[ i ], x, y ) );
 
@@ -186,11 +186,16 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 	const savingPlayerId = GetPlayerId( savingPlayer );
 	let i = 0;
 
+	// Gold bounty
+	awardBounty(
+		{ x: GetUnitX( savedUnit ), y: GetUnitX( savedUnit ) },
+		{ gold: 100 * goldFactor() },
+		savingPlayer,
+	);
+
 	// Handle dying wisp
 	ForceRemovePlayer( wispTeam, savedPlayer );
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( savedPlayer )} has been ${color[ 12 ]}saved|r by ${colorizedName( savingPlayer )}!` );
-	const xWisp = GetUnitX( savedUnit );
-	const yWisp = GetUnitX( savedUnit );
 
 	// Move to sheep
 	ForceAddPlayer( sheepTeam, savedPlayer );
@@ -229,13 +234,6 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 		Specialization_onSpawn( savingUnit );
 
 	}
-
-	// Gold bounty
-	awardBounty(
-		{ x: xWisp, y: yWisp },
-		{ gold: 100 * goldFactor() },
-		savingPlayer,
-	);
 
 };
 

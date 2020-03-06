@@ -2,6 +2,7 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { fillArrayFn } from "../shared";
 import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
+import { setTimeout } from "../util/temp";
 
 type SpecializationData = {
 	learn: number;
@@ -149,10 +150,17 @@ export const Specialization_onSpawn = ( u: unit ): void => {
 		playerSpecialization.level >= 1 &&
 		playerSpecialization.specialization == null &&
 		BlzGetUnitAbility( u, SPELLBOOK_ABILITY_TYPE ) == null
-	)
-		UnitAddAbility( u, SPELLBOOK_ABILITY_TYPE );
+	) {
 
-	else if ( playerSpecialization.specialization != null )
+		UnitAddAbility( u, SPELLBOOK_ABILITY_TYPE );
+		setTimeout( 30, () => {
+
+			if ( u && UnitAlive( u ) && BlzGetUnitAbility( u, SPELLBOOK_ABILITY_TYPE ) != null )
+				DisplayTextToPlayer( GetOwningPlayer( u ), 0, 0, "You've saved someone! You can specialize by clicking the spellbook icon." );
+
+		} );
+
+	} else if ( playerSpecialization.specialization != null )
 		updateUnit( u );
 
 };

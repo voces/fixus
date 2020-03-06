@@ -169,7 +169,7 @@ const startToPlay = (): void => {
 				// they're not here
 				GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_EMPTY
 			) && (
-				// and we're not debugging
+				// and we're not in a sandbox
 				! isSandbox() || sandboxedWolfSpawned || i !== 2
 			)
 		) continue;

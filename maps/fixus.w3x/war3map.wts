@@ -1,90 +1,4 @@
-﻿STRING 13
-{
-Sheep
-}
-
-STRING 39
-{
-Ultimate Sheep Tag Fixus 10
-}
-
-STRING 40
-{
-8v4
-}
-
-STRING 41
-{
-Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
-To track your stats and Elo, upload your replays. https://wc3stats.com/upload
-}
-
-STRING 42
-{
-Chakra
-}
-
-STRING 308
-{
-Sheep 1
-}
-
-STRING 309
-{
-Sheep 2
-}
-
-STRING 310
-{
-Sheep 3
-}
-
-STRING 311
-{
-Sheep 4
-}
-
-STRING 312
-{
-Sheep 5
-}
-
-STRING 313
-{
-Sheep 6
-}
-
-STRING 314
-{
-Sheep 7
-}
-
-STRING 883
-{
-Shepherd 1
-}
-
-STRING 884
-{
-Shepherd 2
-}
-
-STRING 885
-{
-Shepherd 3
-}
-
-STRING 886
-{
-Shepherd 4
-}
-
-STRING 1221
-{
-Ultimate Sheep Tag Fixus
-}
-
-STRING 1389
+﻿STRING 1389
 // Units: ngme (Weapon Merchant), Name (Name)
 {
 Weapon Merchant
@@ -163,7 +77,6 @@ These little wisps are the remains of sheep who were cruelly and harshly slaught
 }
 
 STRING 1411
-// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
@@ -480,11 +393,6 @@ STRING 1495
 X
 }
 
-STRING 1499
-{
-You can't kill a fellow sheep. -_-
-}
-
 STRING 1500
 // Items: ratf (Claws of Attack +21), Name (Name)
 {
@@ -561,11 +469,6 @@ STRING 1534
 // Units: e001 (Magic Farm), Hotkey (Hotkey)
 {
 Z
-}
-
-STRING 1542
-{
-Yooz bee uhn disgreysd too shahkruh!
 }
 
 STRING 1548
@@ -850,16 +753,6 @@ STRING 1661
 raud
 }
 
-STRING 1662
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 1663
-{
-Discord: http://tiny.cc/sheeptag
-}
-
 STRING 1672
 // Abilities: ACua (Unholy Aura), Ubertip (Tooltip - Normal - Extended)
 {
@@ -1065,7 +958,7 @@ Factory Farm
 }
 
 STRING 1737
-// Units: u002 (Sheep), Name (Name)
+// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
@@ -8132,11 +8025,6 @@ STRING 4354
 |cff00ff00Dolly Speed Aura|r
 }
 
-STRING 4360
-{
-Wolves
-}
-
 STRING 4364
 // Abilities: A00Q (True Sight), EditorSuffix (Editor Suffix)
 {
@@ -8213,11 +8101,6 @@ STRING 4397
 // Abilities: Arll (Item Life Regeneration), EditorSuffix (Editor Suffix)
 {
 (Health Stone)
-}
-
-STRING 4400
-{
-Lumber is granted for reaching level 3 and each level thereafter.
 }
 
 STRING 4402
@@ -8374,11 +8257,6 @@ STRING 4431
 // Items: I000 (Anti's Light Sabre +30), Tip (Tooltip - Basic)
 {
 Purchase Anti's Light Sabre +30
-}
-
-STRING 4432
-{
-Kill things to get gold faster.
 }
 
 STRING 4433
@@ -9437,36 +9315,16 @@ STRING 4613
 This structure has under the effect of Dragon Fire; it will burn forever and spread Dragon Fire to nearby structures.|nDeals 3.25% damage per second.|n|cffff0000Destroy structures to stop the spread!|r
 }
 
-STRING 4614
-{
-Commands
-}
-
-STRING 4615
-{
-Change log
-}
-
 STRING 4616
 // Items: clsd (Cloak of Shadows), Ubertip (Tooltip - Extended)
 {
 Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy shadow
 }
 
-STRING 4620
-{
-Fixus 10
-}
-
 STRING 4621
 // Items: gold (Gold Coins), Ubertip (Tooltip - Extended)
 {
 Gives gold to the player when used.
-}
-
-STRING 4622
-{
-Sheep 8
 }
 
 STRING 4624
@@ -9689,5 +9547,142 @@ STRING 4661
 // Upgrades: R005 (Skeletal Mastery), EditorSuffix (Editor Suffix)
 {
 (Rock Golem)
+}
+
+STRING 4662
+{
+Ultimate Sheep Tag Fixus 10
+}
+
+STRING 4663
+{
+8v4
+}
+
+STRING 4664
+{
+Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
+To track your stats and rating, upload your replays. https://wc3stats.com/upload
+}
+
+STRING 4665
+{
+Chakra
+}
+
+STRING 4666
+{
+Sheep 1
+}
+
+STRING 4667
+{
+Sheep 2
+}
+
+STRING 4668
+{
+Wolf 1
+}
+
+STRING 4669
+{
+Sheep 3
+}
+
+STRING 4670
+{
+Sheep 4
+}
+
+STRING 4671
+{
+Wolf 2
+}
+
+STRING 4672
+{
+Sheep 5
+}
+
+STRING 4673
+{
+Sheep 6
+}
+
+STRING 4674
+{
+Wolf 3
+}
+
+STRING 4675
+{
+Sheep 7
+}
+
+STRING 4676
+{
+Sheep 8
+}
+
+STRING 4677
+{
+Wolf 4
+}
+
+STRING 4678
+{
+Wolves
+}
+
+STRING 4679
+// Units: u002 (Sheep), Name (Name)
+{
+Sheep
+}
+
+STRING 4680
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4681
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4682
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4683
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4684
+{
+Commands
+}
+
+STRING 4685
+{
+Change log
+}
+
+STRING 4686
+{
+Kill things to get gold faster.
+}
+
+STRING 4687
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4688
+{
+Fixus 10
 }
 

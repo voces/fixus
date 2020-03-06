@@ -16,10 +16,14 @@ const blinkMove = (): void => {
 	const y2 = GetOrderPointY();
 
 	// 1536 (12 farms) squared
-	if ( ( x2 - x1 ) ** 2 + ( y2 - y1 ) ** 2 > 2359296 ) {
+	const distanceSquared = ( x2 - x1 ) ** 2 + ( y2 - y1 ) ** 2;
+	if ( distanceSquared > 2359296 ) {
 
-		SetUnitX( u, x2 );
-		SetUnitY( u, y2 );
+		const distance = Math.sqrt( distanceSquared ) - 8;
+		const angle = Math.atan2( y2 - y1, x2 - x1 );
+
+		SetUnitX( u, x1 + distance * Math.cos( angle ) );
+		SetUnitY( u, y1 + distance * Math.sin( angle ) );
 
 	}
 
