@@ -50,6 +50,10 @@ const openings: Record<string, string> = {
 
 const stack: string[] = [];
 
+/**
+ * Parses a JSON string. Can return many values: array, object, number, string,
+ * boolean, null, undefined, etc.
+ */
 let parse = ( string: string ): Value => string;
 
 const parseArray = ( string: string ): Value[] => {
@@ -108,9 +112,12 @@ const parseObj = ( string: string ): {[key: string]: Value} => {
 		} else if ( valueStr[ i ] === "\\ " )
 			stack.push( "\\ " );
 
-		if ( stack[ stack.length - 1 ] === valueStr[ i ] && stack[ stack.length - 1 ] !== "\"" ||
-		stack[ stack.length - 1 ] === valueStr[ i ] && valueStr[ i ] === "\"" )
+		if (
+			stack[ stack.length - 1 ] === valueStr[ i ] && stack[ stack.length - 1 ] !== "\"" ||
+			stack[ stack.length - 1 ] === valueStr[ i ] && valueStr[ i ] === "\""
+		)
 			stack.pop();
+
 		else if ( openings[ valueStr[ i ] ] && stack[ stack.length - 1 ] !== "\"" )
 			stack.push( openings[ valueStr[ i ] ] );
 
@@ -123,6 +130,7 @@ const parseObj = ( string: string ): {[key: string]: Value} => {
 				start = i + 1;
 
 			}
+
 			if ( valueStr[ i ] === "," || i === valueStr.length ) {
 
 				val = parse( valueStr.slice( start, i ) );
