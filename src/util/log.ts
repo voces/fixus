@@ -13,6 +13,14 @@ const isArray = ( v: any ): boolean => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+const userdataType = ( userdata: Record<string, any> ): string => {
+
+	const typeString = userdata.toString();
+	return typeString.slice( 0, typeString.indexOf( ":" ) );
+
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const termToString = ( v: any, color = true ): string => {
 
 	if ( typeof v === "string" ) return color ? colorize.string( `"${v}"` ) : v;
@@ -32,7 +40,15 @@ export const termToString = ( v: any, color = true ): string => {
 	if ( typeof v === "object" )
 		return `{ ${Object.entries( v ).map( ( [ key, value ] ) => `${key}: ${termToString( value )}` ).join( ", " )} }`;
 
-	return `[${typeof v }]`;
+	const type = userdataType( v );
+
+	switch ( type ) {
+
+		case "player": return `Player ${termToString( { id: GetPlayerId( v ), name: GetPlayerName( v ) } )}`;
+		case "unit": return `Unit ${termToString( { name: GetUnitName( v ), owner: GetOwningPlayer( v ) } )}`;
+		default: return `[${type}]`;
+
+	}
 
 };
 
