@@ -3,8 +3,9 @@
 const fs = require( "fs-extra" );
 const War3TSTLHelper = require( "war3tstlhelper" );
 const execFile = require( "child_process" ).execFile;
-const cwd = process.cwd();
 const luamin = require( "luamin" );
+const cwd = process.cwd();
+const gameExecutable = process.env.WAR3_PATH;
 
 // Parse configuration
 let config = {};
@@ -68,15 +69,25 @@ switch ( operation ) {
 	} case "run": {
 
 		const filename = `${cwd.replace( "/mnt/c/", "C://" )}/dist/${config.mapFolder}`;
+		// const filename = "\"C:\\Users\\kvong\\Documents\\Warcraft III\\Maps\\Download\\Ultimate Sheep Tag Fixus 9.w3x\"";
 
 		console.log( `Launching map "${filename.replace( /\\/g, "/" )}"...` );
+		// console.log( config.gameExecutable, "-loadfile", filename, ...config.launchArgs );
 
-		execFile( config.gameExecutable, [ "-loadfile", filename, ...config.launchArgs ], err => {
+		if ( ! gameExecutable ) {
+
+			// Add-Content -Path $Profile.CurrentUserAllHosts -Value '$Env:WAR3_PATH = C:\Program Files (x86)/Warcraft III/x86_64/Warcraft III.exe'
+			console.error( new Error( "Environmental variable 'WAR3_PATH' is unset. You should set it to the path of your WarCraft 3 executable." ) );
+			process.exit( 1 );
+
+		}
+
+		execFile( gameExecutable, [ "-loadfile", filename, ...config.launchArgs ], err => {
 
 			if ( err )
 				if ( err.code === "ENOENT" ) {
 
-					return console.error( `No such file or directory "${config.gameExecutable}". Make sure gameExecutable is configured properly in config.json.` );
+					return console.error( `No such file or directory "${gameExecutable}". Make sure gameExecutable is configured properly in config.json.` );
 
 				}
 
