@@ -69,7 +69,6 @@ switch ( operation ) {
 	} case "run": {
 
 		const filename = `${cwd.replace( "/mnt/c/", "C://" )}/dist/${config.mapFolder}`;
-		// const filename = "\"C:\\Users\\kvong\\Documents\\Warcraft III\\Maps\\Download\\Ultimate Sheep Tag Fixus 9.w3x\"";
 
 		console.log( `Launching map "${filename.replace( /\\/g, "/" )}"...` );
 		// console.log( config.gameExecutable, "-loadfile", filename, ...config.launchArgs );
