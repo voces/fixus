@@ -71,11 +71,9 @@ switch ( operation ) {
 		const filename = `${cwd.replace( "/mnt/c/", "C://" )}/dist/${config.mapFolder}`;
 
 		console.log( `Launching map "${filename.replace( /\\/g, "/" )}"...` );
-		// console.log( config.gameExecutable, "-loadfile", filename, ...config.launchArgs );
 
 		if ( ! gameExecutable ) {
 
-			// Add-Content -Path $Profile.CurrentUserAllHosts -Value '$Env:WAR3_PATH = C:\Program Files (x86)/Warcraft III/x86_64/Warcraft III.exe'
 			console.error( new Error( "Environmental variable 'WAR3_PATH' is unset. You should set it to the path of your WarCraft 3 executable." ) );
 			process.exit( 1 );
 

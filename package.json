@@ -13,8 +13,8 @@
     "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "jest": "jest",
     "pretest": "eslint . --ext .ts",
-    "start": "npm run build && node bin/operations run",
     "run": "node bin/operations run",
+    "start": "npm run build && node bin/operations run",
     "test": "npm run jest"
   },
   "devDependencies": {
