@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
-		"outDir": ".",
+		"outDir": "dist/js",
 		"baseUrl": "src",
-		"allowJs": false,
+		"allowJs": true,
 		"target": "es6",
 		"lib": [ "es2020", "dom" ],
 		"moduleResolution": "classic",
@@ -40,16 +40,10 @@
 			"war3-types/core/blizzard",
 			"war3-types/core/commonai",
 			"war3-types/core/polyfill"
-		]
+		],
+		"noEmit": true,
+		"skipLibCheck": true
 	},
 	"include": ["src", "bin"],
-	"exclude": [],
-	"tstl": {
-		"luaTarget": "5.3",
-		"noHeader": true,
-		"luaLibImport": "require",
-		"noImplicitSelf": true,
-		"luaBundle": "dist/tstl_output.lua",
-		"luaBundleEntry": "./src/index.ts"
-	}
+	"exclude": ["node_modules"]
 }

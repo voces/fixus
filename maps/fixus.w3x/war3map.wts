@@ -76,11 +76,6 @@ STRING 1410
 These little wisps are the remains of sheep who were cruelly and harshly slaughtered by the orcish shepards. They have lost all of their furryness.
 }
 
-STRING 1411
-{
-Sheep
-}
-
 STRING 1412
 // Units: uC04 (Sheep), Ubertip (Tooltip - Extended)
 {
@@ -958,7 +953,6 @@ Factory Farm
 }
 
 STRING 1737
-// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
@@ -8187,12 +8181,6 @@ STRING 4417
 Increases the movement speed of the Hero by <AIsp,DataA1,%>% for <AIsp,Dur1> seconds.|n-buy speed
 }
 
-STRING 4418
-// Items: nspi (Necklace of Spell Immunity), Ubertip (Tooltip - Extended)
-{
-Renders the Hero invulnerable to magic.|n-buy neck
-}
-
 STRING 4419
 // Items: ofir (Orb of Fire), Ubertip (Tooltip - Extended)
 {
@@ -9549,140 +9537,176 @@ STRING 4661
 (Rock Golem)
 }
 
-STRING 4662
-{
-Ultimate Sheep Tag Fixus 10
-}
-
-STRING 4663
-{
-8v4
-}
-
-STRING 4664
-{
-Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
-To track your stats and rating, upload your replays. https://wc3stats.com/upload
-}
-
-STRING 4665
-{
-Chakra
-}
-
-STRING 4666
-{
-Sheep 1
-}
-
-STRING 4667
-{
-Sheep 2
-}
-
-STRING 4668
-{
-Wolf 1
-}
-
-STRING 4669
-{
-Sheep 3
-}
-
-STRING 4670
-{
-Sheep 4
-}
-
-STRING 4671
-{
-Wolf 2
-}
-
-STRING 4672
-{
-Sheep 5
-}
-
-STRING 4673
-{
-Sheep 6
-}
-
-STRING 4674
-{
-Wolf 3
-}
-
-STRING 4675
-{
-Sheep 7
-}
-
-STRING 4676
-{
-Sheep 8
-}
-
-STRING 4677
-{
-Wolf 4
-}
-
-STRING 4678
-{
-Wolves
-}
-
 STRING 4679
-// Units: u002 (Sheep), Name (Name)
+// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
 
 STRING 4680
+// Items: nspi (Spell Shield Necklace), Ubertip (Tooltip - Extended)
 {
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4681
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4682
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 4683
-{
-Discord: http://tiny.cc/sheeptag
+Passively blocks a negative spell that an enemy casts on the Hero once every <ANss,Cool1> seconds.|nWhen used, dispels all nearby magic effects.|n-buy neck
 }
 
 STRING 4684
 {
-Commands
+Ultimate Sheep Tag Fixus 10
 }
 
 STRING 4685
 {
-Change log
+8v4
 }
 
 STRING 4686
 {
-Kill things to get gold faster.
+Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
+To track your stats and rating, upload your replays. https://wc3stats.com/upload
 }
 
 STRING 4687
 {
-Lumber is granted for reaching level 3 and each level thereafter.
+Chakra
 }
 
 STRING 4688
 {
+Sheep 1
+}
+
+STRING 4689
+{
+Sheep 2
+}
+
+STRING 4690
+{
+Wolf 1
+}
+
+STRING 4691
+{
+Sheep 3
+}
+
+STRING 4692
+{
+Sheep 4
+}
+
+STRING 4693
+{
+Wolf 2
+}
+
+STRING 4694
+{
+Sheep 5
+}
+
+STRING 4695
+{
+Sheep 6
+}
+
+STRING 4696
+{
+Wolf 3
+}
+
+STRING 4697
+{
+Sheep 7
+}
+
+STRING 4698
+{
+Sheep 8
+}
+
+STRING 4699
+{
+Wolf 4
+}
+
+STRING 4700
+{
+Wolves
+}
+
+STRING 4701
+// Units: u002 (Sheep), Name (Name)
+{
+Sheep
+}
+
+STRING 4702
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4703
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4704
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4705
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4706
+{
+Commands
+}
+
+STRING 4707
+{
+Change log
+}
+
+STRING 4708
+{
+Kill things to get gold faster.
+}
+
+STRING 4709
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4710
+{
 Fixus 10
+}
+
+STRING 4711
+// Items: nspi (Spell Shield Necklace), Name (Name)
+{
+Spell Shield Necklace
+}
+
+STRING 4712
+// Items: nspi (Spell Shield Necklace), Tip (Tooltip - Basic)
+{
+Purchase Spell Shield Necklace
+}
+
+STRING 4714
+// Abilities: ANss (Spell Shield), EditorSuffix (Editor Suffix)
+{
+(Necklace)
+}
+
+STRING 4715
+// Abilities: AIdv (Item Divine Shield (Necklace)), Name (Name)
+{
+Item Divine Shield (Necklace)
 }
 

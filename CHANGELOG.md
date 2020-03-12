@@ -10,6 +10,9 @@
 - Removed Super Stone Token from shops and quick buy
 - Added Wooden Shield item
 - Added a level 2 to backpack research for Rock Golems
+- Necklace of Spell Immunity replaced with Spell Shield Necklace
+  - Blocks one spell every second
+  - Has a 1-second Divine Shield, removing buffs
 
 ## Features
 - Wolf gold command now accepts an argument for how much gold

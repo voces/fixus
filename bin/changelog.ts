@@ -51,6 +51,7 @@ export const generateTs = async (): Promise<string> => {
 
 };
 
+// write to a file if being invoked directly
 if ( process.argv[ 1 ].endsWith( "changelog.ts" ) )
 	generateTs().then( content => fs.writeFile( "src/misc/changelog.ts", content ) );
 
