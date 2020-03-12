@@ -1,5 +1,5 @@
 
-import { color } from "shared";
+import { color } from "../shared";
 
 export const colorizedName = ( player: player ): string => {
 

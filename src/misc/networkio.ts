@@ -6,7 +6,7 @@ import { wrappedTriggerAddAction } from "../util/emitLog";
 import { forEachPlayer } from "../util/temp";
 import { isPlayingPlayer } from "../util/player";
 // import { log } from "../util/log";
-import { TriggerRegisterPlayerEventAll } from "shared";
+import { TriggerRegisterPlayerEventAll } from "../shared";
 
 type Options = {headers?: Record<string, string>; body?: string}
 type Request = {
