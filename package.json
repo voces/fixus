@@ -11,7 +11,7 @@
     "build:defs": "node bin/operations gen-defs",
     "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.map.json && node bin/operations build",
     "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "jest": "jest",
+    "jest": "jest --silent",
     "pretest": "eslint . --ext .ts",
     "run": "node bin/operations run",
     "start": "npm run build && node bin/operations run",

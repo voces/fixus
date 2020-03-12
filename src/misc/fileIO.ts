@@ -183,4 +183,3 @@ addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 	s__File_AbilityList[ 9 ] = FourCC( "Afbk" );
 
 } );
-
