@@ -5,7 +5,6 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { forEachPlayer } from "../util/temp";
 import { isPlayingPlayer } from "../util/player";
-// import { log } from "../util/log";
 import { TriggerRegisterPlayerEventAll } from "../shared";
 
 type Options = {headers?: Record<string, string>; body?: string}
@@ -55,10 +54,8 @@ const writeFile = ( path: string, contents: string ): void => {
 const checkForResponse = ( request: Request ): void => {
 
 	const path = `networkio/responses/${request.requestId}-${request.tries ++}.txt`;
-	// log( "checking response", path );
 	const response = readAndCloseFile( openFile( path ) );
 
-	// log( response, response );
 	// No response; try again if we have attempts remaining
 	if ( response == null && request.tries < MAX_TRIES )
 		return TimerStart(
@@ -71,7 +68,6 @@ const checkForResponse = ( request: Request ): void => {
 	// We have something!
 
 	// Command to clear the request and response files.
-	// log( "clearing request" );
 	writeFile( `networkio/requests/${request.requestId}.txt`, stringify( { url: "proxy://clear" } ) );
 
 	// Hack because tstl injects nil as the first param since `callback` is on
@@ -79,12 +75,9 @@ const checkForResponse = ( request: Request ): void => {
 	// value twice.
 
 	const stringifiedResponse = response == null ? "null" : response;
-	// log( { stringifiedResponse } );
 
 	const parts = Math.ceil( stringifiedResponse.length / 240 );
 	for ( let i = 0, n = 0; n < stringifiedResponse.length; i ++, n += 240 )
-
-		// log( "sending sync", { i, chunk: stringifiedResponse.slice( n, n + 240 ) } );
 		BlzSendSyncData( "networkio", `${request.requestId}-${i + 1}/${parts}-${stringifiedResponse.slice( n, n + 240 )}` );
 
 };
@@ -129,17 +122,13 @@ export const fetch = (
 
 	activeRequests[ request.requestId ] = request;
 
-	// log( "fetcher", fetcher );
-
 	if ( GetLocalPlayer() !== fetcher ) return;
 
-	// log( "writingFile" );
 	writeFile(
 		`networkio/requests/${request.requestId}.txt`,
 		stringify( { url, ...options } ),
 	);
 
-	// log( "startingTimer" );
 	TimerStart(
 		request.timer,
 		calcInterval( request.tries ),
@@ -185,22 +174,19 @@ export const parseSyncData = ( syncData: string ): {requestId: number; chunk: nu
 
 const onSync = (): void => {
 
-	// log( "onSync" );
 	const { requestId, chunk, totalChunks, data } = parseSyncData( BlzGetTriggerSyncData() );
-	// log( { requestId, chunk, totalChunks, data } );
 
 	const request = activeRequests[ requestId ];
 	request.response += data;
 
 	if ( chunk !== totalChunks ) return;
 
-	// log( "finished sync", request.response );
 	DestroyTimer( request.timer );
 
 	const response = parse( request.response );
 	const callback = request.callback.bind( response );
 	delete activeRequests[ requestId ];
-	// log( "invoking callback" );
+
 	callback( response );
 
 };
@@ -235,7 +221,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 				if ( version == null ) return;
 
 				networkedPlayers.push( p );
-				// log( "networked player detected", p );
 
 			} );
 

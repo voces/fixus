@@ -1,5 +1,5 @@
 
-import { log } from "../util/log";
+import { emitLog } from "../util/emitLog";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isArray = ( v: any ): boolean => {
@@ -154,17 +154,17 @@ parse = ( string: string ): Value => {
 	try {
 
 		if ( string[ 0 ] === "\"" ) return string.slice( 1, string.length - 1 );
-		if ( string[ 0 ] === "t" ) return true;
-		if ( string[ 0 ] === "f" ) return false;
-		if ( string[ 0 ] === "u" ) return undefined;
-		if ( string[ 0 ] === "n" ) return null;
+		if ( string === "true" ) return true;
+		if ( string === "false" ) return false;
+		if ( string === "undefined" ) return undefined;
+		if ( string === "null" ) return null;
 		if ( numbers.includes( string[ 0 ] ) ) return tonumber( string );
 		if ( string[ 0 ] === "[" ) return parseArray( string );
 		if ( string[ 0 ] === "{" ) return parseObj( string );
 
 	} catch ( err ) {
 
-		log( err );
+		emitLog( "json parse error", err );
 
 	}
 
