@@ -19,7 +19,7 @@ if ( ! mpqEditor ) {
 
 fs.readFile( "./maps/fixus.w3x/war3map.wts", { encoding: "utf-8" } ).then( async contents => {
 
-	const match = contents.match( /Fixus (\d+)/ );
+	const match = contents.match( /Fixus (\d+\w?)/ );
 	if ( ! match ) {
 
 		console.error( new Error( "Could not version in war3map.wts" ) );
