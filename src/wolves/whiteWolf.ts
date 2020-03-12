@@ -79,7 +79,7 @@ const onUnitPickupItem = (): void => {
 	const unitSummonedAtTime = summonTimes.get( original ) || timeOfWW;
 	const unitSummonedDuration = timeOfWW - unitSummonedAtTime;
 	const unitSummonedRemaining = 300 - unitSummonedDuration;
-	const wwDuration = 75 + unitSummonedRemaining * 0.25;
+	const wwDuration = 65 + unitSummonedRemaining * 0.2;
 
 	RemoveUnit( original );
 	const ww = CreateUnit( p, WHITE_WOLF_TYPE, x, y, f );
