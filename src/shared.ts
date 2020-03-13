@@ -145,17 +145,10 @@ export const TriggerRegisterPlayerEventAll = ( t: trigger, e: playerevent ): voi
 
 };
 
-export const TriggerRegisterPlayerUnitEventAll = ( t: trigger, p: playerunitevent, b: boolexpr ): void => {
+export const TriggerRegisterPlayerUnitEventAll = ( t: trigger, p: playerunitevent, b: boolexpr | null ): void => {
 
-	let i = 0;
-
-	while ( true ) {
-
-		if ( i === bj_MAX_PLAYERS ) break;
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		TriggerRegisterPlayerUnitEvent( t, Player( i ), p, b );
-		i = i + 1;
-
-	}
 
 };
 

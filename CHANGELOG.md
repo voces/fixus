@@ -2,7 +2,7 @@
 # Version 10
 ## Balance
 - When a sheep destroys their own farms, gold coins are left behind equal to half the bounty of the farm
-- Decreased duration of White Wolf on Rock Golems (150 -> 120 seconds)
+- Decreased duration of White Wolf on summoned units (150 -> 65 seconds + 20% of remaining summon duration)
 - Increased Sentry Farm's Detector radius (1000 -> 1150)
 - Buffed Health Stone
   - Increases base Health by 10,000
