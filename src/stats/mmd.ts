@@ -82,7 +82,7 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 	} catch ( err ) {
 
-		emitLog( err );
+		emitLog( "endGameStats", err );
 
 	}
 

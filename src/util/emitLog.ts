@@ -5,11 +5,12 @@ import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { isSandbox } from "../shared";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const emitLog = ( key: string, ...args: Array<any> ): void => {
+export const emitLog = ( key: string, arg: string, ...args: Array<any> ): void => {
 
-	const message = args.map( v => termToString( v, false ) ).join( " " );
+	const allArgs = [ arg, ...args ];
+	const message = allArgs.map( v => termToString( v, false ) ).join( " " );
 	MMD__LogEvent( "log", key, message );
-	if ( isSandbox() ) log( key, ...args );
+	if ( isSandbox() ) log( key, ...allArgs );
 
 };
 
