@@ -6,7 +6,7 @@
  */
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { wrappedTriggerAddAction } from "util/emitLog";
+import { wrappedTriggerAddAction } from "./util/emitLog";
 
 const spellCastCallbacks: Array<{key: string; callback: () => void}> = [];
 export const onSpellCast = ( key: string, callback: () => void ): void => {

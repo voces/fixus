@@ -15,7 +15,6 @@ import { reloadMultiboard } from "misc/multiboard";
 import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
 import { wrappedTriggerAddAction } from "../util/emitLog";
-import { log } from "util/log";
 import { addQuickShop } from "wolves/quickShops";
 
 let gameTimer: timer;

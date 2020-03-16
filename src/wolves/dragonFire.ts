@@ -3,7 +3,7 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wolves } from "../shared";
 import { forEachUnit } from "../util/temp";
 import { wrappedTriggerAddAction } from "../util/emitLog";
-import { onSpellCast, onCreated } from "event";
+import { onSpellCast, onCreated } from "../event";
 
 let burnWolfId = 2;
 let emptyTicks: number;

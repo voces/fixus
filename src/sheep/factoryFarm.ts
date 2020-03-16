@@ -2,7 +2,7 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { saveskills } from "../shared";
 import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
-import { onSpellCast } from "event";
+import { onSpellCast } from "../event";
 
 let factoryFarmTimer: timer;
 let factoryFarmDummySheep: unit;
