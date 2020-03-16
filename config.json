@@ -1,6 +1,6 @@
 {
   "mapFolder": "fixus.w3x",
-  "minifyScript": true,
+  "minifyScript": false,
   "launchArgs": [
     "-launch",
     "-windowmode",

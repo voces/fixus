@@ -13,7 +13,7 @@ export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 			value = newValue;
 
 		if ( value === undefined )
-			throw new Error( "variable left undefined" );
+			throw "variable left undefined";
 
 		return value;
 
@@ -176,7 +176,7 @@ export const mainUnit = ( p: player ): unit => {
 
 export const wolfUnit = ( p: player ): unit => {
 
-	if ( ! IsPlayerInForce( p, wolfTeam ) ) throw new Error( "used wolfUnit on non-wolf" );
+	if ( ! IsPlayerInForce( p, wolfTeam ) ) throw "used wolfUnit on non-wolf";
 
 	const playerId = GetPlayerId( p );
 	const wolf = wolves[ playerId ];

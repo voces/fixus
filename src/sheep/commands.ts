@@ -48,7 +48,7 @@ const getController = (): player => {
 			return Player( i );
 
 	// this can't happen
-	throw new Error( "No players!" );
+	throw "No players!";
 
 };
 

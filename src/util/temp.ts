@@ -81,10 +81,10 @@ export const forEachPlayer = ( fn: ( player: player ) => void ): void => {
 
 };
 
-export const setTimeout = ( timeout: number, fn: () => void ): void => {
+export const timeout = ( seconds: number, fn: () => void ): void => {
 
 	const t = CreateTimer();
-	TimerStart( t, timeout, false, () => {
+	TimerStart( t, seconds, false, () => {
 
 		DestroyTimer( t );
 		fn();

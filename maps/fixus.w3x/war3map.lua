@@ -2,18 +2,6 @@ gg_rct_Pen = nil
 function InitGlobals()
 end
 
-function CreateNeutralPassiveBuildings()
-    local p = Player(PLAYER_NEUTRAL_PASSIVE)
-    local u
-    local unitID
-    local t
-    local life
-    u = BlzCreateUnitWithSkin(p, FourCC("nC12"), -4608.0, 4096.0, 270.000, FourCC("nC12"))
-    u = BlzCreateUnitWithSkin(p, FourCC("ngme"), -4992.0, 3712.0, 270.000, FourCC("ngme"))
-    u = BlzCreateUnitWithSkin(p, FourCC("ngme"), 4864.0, -5504.0, 270.000, FourCC("ngme"))
-    u = BlzCreateUnitWithSkin(p, FourCC("nC12"), 5248.0, -5504.0, 270.000, FourCC("nC12"))
-end
-
 function CreateNeutralPassive()
     local p = Player(PLAYER_NEUTRAL_PASSIVE)
     local u
@@ -30,7 +18,6 @@ function CreatePlayerUnits()
 end
 
 function CreateAllUnits()
-    CreateNeutralPassiveBuildings()
     CreatePlayerBuildings()
     CreateNeutralPassive()
     CreatePlayerUnits()
@@ -296,8 +283,8 @@ function main()
 end
 
 function config()
-    SetMapName("TRIGSTR_4684")
-    SetMapDescription("TRIGSTR_4686")
+    SetMapName("TRIGSTR_4773")
+    SetMapDescription("TRIGSTR_4775")
     SetPlayers(12)
     SetTeams(12)
     SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)

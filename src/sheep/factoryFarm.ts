@@ -2,6 +2,7 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { saveskills } from "../shared";
 import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
+import { onSpellCast } from "event";
 
 let factoryFarmTimer: timer;
 let factoryFarmDummySheep: unit;
@@ -195,13 +196,11 @@ const onSelectFarm = (): void => {
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	let t = CreateTrigger();
+	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_FINISH );
 	wrappedTriggerAddAction( t, "factory finish construction", onFinishConstruction );
 
-	t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	wrappedTriggerAddAction( t, "factory farm select", onSelectFarm );
+	onSpellCast( "factory", onSelectFarm );
 
 	factoryFarmTimer = CreateTimer();
 	factoryFarmDummySheep = CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), FourCC( "u002" ), 0, 0, 270 );

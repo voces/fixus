@@ -29,6 +29,7 @@ import {
 } from "../shared";
 import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
 import { playerSpecializations, specializationNames } from "../sheep/specialization";
+import { onDeath } from "event";
 
 const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
 const unitsKilled = fillArray( bj_MAX_PLAYERS, 0 );
@@ -90,9 +91,7 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	let t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );
-	wrappedTriggerAddAction( t, "mmd death", (): void => {
+	onDeath( "mmd death", (): void => {
 
 		// ignore deaths that don't have a killer
 		if (
@@ -140,7 +139,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	} );
 
-	t = CreateTrigger();
+	let t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
 	wrappedTriggerAddAction( t, "mmd acquire", (): void => MMD__LogEvent(
 		"acquire",

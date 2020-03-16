@@ -32,12 +32,11 @@ import {
 import { onSheepDeath as pityXpOnSheepDeath } from "../wolves/pityXp";
 import { onSpawn as phoenixOnSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { reducePlayerUnits, forEachPlayerUnit } from "util/temp";
+import { reducePlayerUnits, forEachPlayerUnit, timeout } from "util/temp";
 import { colorizedName } from "util/player";
 import { endGame } from "../core/game";
-import { wrappedTriggerAddAction } from "util/emitLog";
 import { awardBounty } from "misc/proximityProportions";
+import { onDeath } from "../event";
 
 // Trigger: sheepSaveDeath
 // ===========================================================================
@@ -237,12 +236,9 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 };
 
-const onWolfDeath = ( wolfUnit: unit ): void => {
-
-	PolledWait( 5 );
-	ReviveHero( wolfUnit, - 256, - 832, true );
-
-};
+const onWolfDeath = ( wolfUnit: unit ): void =>
+	timeout( 5, () =>
+		ReviveHero( wolfUnit, - 256, - 832, true ) );
 
 const onWispTK = ( wispUnit: unit ): void => {
 
@@ -253,29 +249,32 @@ const onWispTK = ( wispUnit: unit ): void => {
 
 };
 
-const action = (): void => {
+onDeath( "saveDeath", (): void => {
+
+	const dyingUnit = GetDyingUnit();
+	const killingUnit = GetKillingUnit();
 
 	let relevantDeath = false;
 
 	// Sheep death
-	if ( isUnitSheep( GetTriggerUnit() ) ) {
+	if ( isUnitSheep( dyingUnit ) ) {
 
-		onSheepDeath( GetTriggerUnit(), GetKillingUnit() );
+		onSheepDeath( dyingUnit, killingUnit );
 		relevantDeath = true;
 
 		// Spirit death (save)
 
-	} else if ( GetUnitTypeId( GetTriggerUnit() ) === WISP_TYPE )
-		if ( GetUnitTypeId( GetKillingUnit() ) !== WISP_TYPE ) {
+	} else if ( GetUnitTypeId( dyingUnit ) === WISP_TYPE )
+		if ( GetUnitTypeId( killingUnit ) !== WISP_TYPE ) {
 
-			onSheepSave( GetTriggerUnit(), GetKillingUnit() );
+			onSheepSave( dyingUnit, killingUnit );
 			relevantDeath = true;
 
-		} else onWispTK( GetTriggerUnit() );
+		} else onWispTK( dyingUnit );
 
 	// Wolf death
-	else if ( isUnitWolf( GetTriggerUnit() ) )
-		onWolfDeath( GetTriggerUnit() );
+	else if ( isUnitWolf( dyingUnit ) )
+		onWolfDeath( dyingUnit );
 
 	if ( relevantDeath ) {
 
@@ -285,14 +284,5 @@ const action = (): void => {
 			endGame( "wolves" );
 
 	}
-
-};
-
-// ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );
-	wrappedTriggerAddAction( t, "save death", action );
 
 } );
