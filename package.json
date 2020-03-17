@@ -44,7 +44,7 @@
     "war3tstlhelper": ">=1.0.1"
   },
   "dependencies": {
-    "@voces/w3ts": "^1.0.6"
+    "@voces/w3ts": "^1.0.7"
   },
   "watch": {
     "build:defs": {

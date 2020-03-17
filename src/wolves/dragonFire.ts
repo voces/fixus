@@ -131,12 +131,10 @@ const onCastDragonFire = (): void => {
 
 };
 
-const onUnitCreated = (): boolean => {
+const onUnitCreated = (): void => {
 
-	if ( ! IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) )
-		GroupAddUnit( units, GetFilterUnit() );
-
-	return false;
+	if ( ! IsUnitType( GetTriggerUnit(), UNIT_TYPE_STRUCTURE ) )
+		GroupAddUnit( units, GetTriggerUnit() );
 
 };
 
