@@ -2,7 +2,8 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { fillArrayFn } from "../shared";
 import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
-import { setTimeout } from "../util/temp";
+import { timeout } from "../util/temp";
+import { onSpellCast } from "event";
 
 type SpecializationData = {
 	learn: number;
@@ -97,14 +98,19 @@ const updateUnit = ( u: unit ): void => {
 
 };
 
-const setSpecialization = (): void => {
+const onSetSpecialization = (): void => {
 
-	const playerId = GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) );
 	const spellId = GetSpellAbilityId();
 
+	if ( ! specializationLearnAbilities.includes( GetSpellAbilityId() ) ) return;
+
+	const unit = GetTriggerUnit();
+	const playerId = GetPlayerId( GetOwningPlayer( unit ) );
+
 	// Close and remove the spellbook
-	ForceUICancelBJ( GetOwningPlayer( GetTriggerUnit() ) );
-	UnitRemoveAbilityBJ( SPELLBOOK_ABILITY_TYPE, GetTriggerUnit() );
+	ForceUICancelBJ( GetOwningPlayer( unit ) );
+	BlzUnitHideAbility( unit, SPELLBOOK_ABILITY_TYPE, true );
+	timeout( 0, () => UnitRemoveAbility( unit, SPELLBOOK_ABILITY_TYPE ) );
 
 	// Set specialization and update unit
 
@@ -113,7 +119,7 @@ const setSpecialization = (): void => {
 		if ( specialization.learn === spellId ) {
 
 			playerSpecializations[ playerId ].specialization = specialization;
-			updateUnit( GetTriggerUnit() );
+			updateUnit( unit );
 
 			return;
 
@@ -123,11 +129,7 @@ const setSpecialization = (): void => {
 
 };
 
-const isSpecializationAbilityCondition = Condition(
-	(): boolean => specializationLearnAbilities.includes( GetSpellAbilityId() ),
-);
-
-const startConstruction = (): void => {
+const onStartConstruction = (): void => {
 
 	const playerIndex = GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) );
 	const specialization = playerSpecializations[ playerIndex ];
@@ -153,7 +155,7 @@ export const Specialization_onSpawn = ( u: unit ): void => {
 	) {
 
 		UnitAddAbility( u, SPELLBOOK_ABILITY_TYPE );
-		setTimeout( 30, () => {
+		timeout( 30, () => {
 
 			if ( u && UnitAlive( u ) && BlzGetUnitAbility( u, SPELLBOOK_ABILITY_TYPE ) != null )
 				DisplayTextToPlayer( GetOwningPlayer( u ), 0, 0, "You've saved someone! You can specialize by clicking the spellbook icon." );
@@ -189,14 +191,10 @@ export const Specialization_GetLevel = ( u: unit ): number =>
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	let t = CreateTrigger();
+	onSpellCast( "sheep specialization", onSetSpecialization );
 
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	TriggerAddCondition( t, isSpecializationAbilityCondition );
-	wrappedTriggerAddAction( t, "sheep specialization set", setSpecialization );
-
-	t = CreateTrigger();
+	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_START );
-	wrappedTriggerAddAction( t, "sheep specialization construct", startConstruction );
+	wrappedTriggerAddAction( t, "sheep specialization construct", onStartConstruction );
 
 } );

@@ -1,8 +1,7 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { goldFactor, fillArrayFn } from "shared";
-import { wrappedTriggerAddAction } from "util/emitLog";
 import { awardBounty } from "./proximityProportions";
+import { onDeath } from "event";
 
 // ===========================================================================
 // Trigger: miscKillReturn
@@ -30,10 +29,4 @@ const Trig_miscKillReturn_Actions = (): void => {
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DEATH );
-	wrappedTriggerAddAction( t, "kill return", Trig_miscKillReturn_Actions );
-
-} );
+onDeath( "kill return", Trig_miscKillReturn_Actions );

@@ -37,8 +37,11 @@ export const termToString = ( v: any, color = true ): string => {
 
 	}
 
-	if ( typeof v === "object" )
+	if ( typeof v === "object" && v != null )
 		return `{ ${Object.entries( v ).map( ( [ key, value ] ) => `${key}: ${termToString( value )}` ).join( ", " )} }`;
+
+	if ( v === undefined ) return color ? colorize.boolean( "undefined" ) : "undefined";
+	if ( v == null ) return color ? colorize.boolean( "null" ) : "null";
 
 	const type = userdataType( v );
 
@@ -46,7 +49,7 @@ export const termToString = ( v: any, color = true ): string => {
 
 		case "player": return `Player ${termToString( { id: GetPlayerId( v ), name: GetPlayerName( v ) } )}`;
 		case "unit": return `Unit ${termToString( { name: GetUnitName( v ), owner: GetOwningPlayer( v ) } )}`;
-		default: return `[${type}]`;
+		default: return `[${type}(${GetHandleId( v )})]`;
 
 	}
 

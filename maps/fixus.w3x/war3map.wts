@@ -1,10 +1,4 @@
-﻿STRING 1389
-// Units: ngme (Weapon Merchant), Name (Name)
-{
-Weapon Merchant
-}
-
-STRING 1391
+﻿STRING 1391
 // Units: hctw (Frost Farm), Name (Name)
 {
 Frost Farm
@@ -371,7 +365,7 @@ Places a little eye on stick somewhere to keep watch for you.
 }
 
 STRING 1483
-// Abilities: A001 (Sentry Ward), Hotkey (Hotkey - Normal)
+// Items: rat9 (Claws of Attack +9), Hotkey (Hotkey)
 {
 W
 }
@@ -383,7 +377,7 @@ X
 }
 
 STRING 1495
-// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
+// Items: nspi (Spell Shield Necklace), Hotkey (Hotkey)
 {
 X
 }
@@ -587,7 +581,7 @@ Katama
 }
 
 STRING 1593
-// Items: mcou (Dagger), Hotkey (Hotkey)
+// Items: ratc (Claws of Attack +12), Hotkey (Hotkey)
 {
 E
 }
@@ -674,12 +668,6 @@ STRING 1625
 // Items: I002 (Claws of Attack +50), Tip (Tooltip - Basic)
 {
 Purchase Claws of Attack +50
-}
-
-STRING 1631
-// Units: nC12 (Blue Item Merchant), Name (Name)
-{
-Blue Item Merchant
 }
 
 STRING 1641
@@ -833,13 +821,13 @@ U
 }
 
 STRING 1694
-// Items: tfar (Siege Tower), Hotkey (Hotkey)
+// Items: fgfh (Spiked Collar), Hotkey (Hotkey)
 {
 E
 }
 
 STRING 1695
-// Abilities: A006 (Specialize), Hotkey (Hotkey - Normal)
+// Items: arsh (Wooden Shield), Hotkey (Hotkey)
 {
 E
 }
@@ -869,13 +857,13 @@ Gives <ACav,DataA3> additional armor to nearby friendly units.
 }
 
 STRING 1706
-// Abilities: A008 (Engineer), Hotkey (Hotkey - Normal)
+// Abilities: A006 (Specialize), Hotkey (Hotkey - Normal)
 {
 E
 }
 
 STRING 1707
-// Upgrades: R000 (Skeletal Mastery), Hotkey (Hotkey)
+// Abilities: A008 (Engineer), Hotkey (Hotkey - Normal)
 {
 E
 }
@@ -950,11 +938,6 @@ STRING 1734
 // Units: h00C (Factory Farm), Name (Name)
 {
 Factory Farm
-}
-
-STRING 1737
-{
-Sheep
 }
 
 STRING 1738
@@ -1060,13 +1043,13 @@ K|cffffcc00a|rboom!
 }
 
 STRING 1791
-// Abilities: Asdg (Kaboom!), Hotkey (Hotkey - Normal)
+// Items: tfar (Siege Tower), Hotkey (Hotkey)
 {
 A
 }
 
 STRING 1792
-// Abilities: Asdg (Kaboom!), Unhotkey (Hotkey - Turn Off)
+// Items: I002 (Claws of Attack +50), Hotkey (Hotkey)
 {
 A
 }
@@ -1240,13 +1223,13 @@ Flash
 }
 
 STRING 1847
-// Abilities: A007 (Flash), Researchhotkey (Hotkey - Learn)
+// Items: pinv (Potion of Invisibility), Hotkey (Hotkey)
 {
 F
 }
 
 STRING 1848
-// Abilities: A007 (Flash), Hotkey (Hotkey - Normal)
+// Items: clsd (Cloak of Shadows), Hotkey (Hotkey)
 {
 F
 }
@@ -1282,7 +1265,7 @@ Attacker
 }
 
 STRING 1866
-// Abilities: A00E (Attacker), Hotkey (Hotkey - Normal)
+// Items: I005 (Charm of Mana Negation), Hotkey (Hotkey)
 {
 A
 }
@@ -7522,7 +7505,7 @@ Purchase Charm of Mana Negation
 }
 
 STRING 4252
-// Items: I005 (Charm of Mana Negation), Description (Description)
+// Items: I005 (Charm of Mana Negation), Ubertip (Tooltip - Extended)
 {
 Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
 }
@@ -7977,12 +7960,6 @@ STRING 4344
 Piiri Tower
 }
 
-STRING 4346
-// Items: tfar (Siege Tower), Tip (Tooltip - Basic)
-{
-Purchase Si|cffffcc00e|rge Tower
-}
-
 STRING 4348
 // Abilities: Abof (Burning Oil), Ubertip (Tooltip - Normal - Extended)
 {
@@ -8050,7 +8027,7 @@ Selects the type of farm the Factory Farm produces.
 }
 
 STRING 4388
-// Abilities: A00M (Select Farm), Hotkey (Hotkey - Normal)
+// Items: mcou (Dagger), Hotkey (Hotkey)
 {
 S
 }
@@ -8100,145 +8077,145 @@ STRING 4397
 STRING 4402
 // Items: ratf (Claws of Attack +21), Ubertip (Tooltip - Extended)
 {
-Increases the attack damage of the Hero by 21 when worn.|n-buy 21
+Increases the attack damage of the Hero by 21 when worn.
 }
 
 STRING 4403
 // Items: rat9 (Claws of Attack +9), Ubertip (Tooltip - Extended)
 {
-Increases the attack damage of the Hero by 9 when worn.|n-buy 9
+Increases the attack damage of the Hero by 9 when worn.
 }
 
 STRING 4404
 // Items: gemt (Gem of True Seeing), Ubertip (Tooltip - Extended)
 {
-Allows the Hero to detect hidden or invisible units in the Hero's line of sight when carried.|n-buy gem
+Allows the Hero to detect hidden or invisible units in the Hero's line of sight when carried.
 }
 
 STRING 4405
 // Items: bspd (Boots of Speed), Ubertip (Tooltip - Extended)
 {
-Increases the movement speed of the Hero when worn.|n-buy boots
+Increases the movement speed of the Hero when worn.
 }
 
 STRING 4406
 // Items: pnvu (Potion of Invulnerability), Ubertip (Tooltip - Extended)
 {
-Makes the Hero invulnerable to damage for <AIvu,Dur1> seconds when used. An invulnerable Hero may not be the target of spells or effects.|n-buy invul
+Makes the Hero invulnerable to damage for <AIvu,Dur1> seconds when used. An invulnerable Hero may not be the target of spells or effects.
 }
 
 STRING 4407
 // Items: clfm (Cloak of Flames), Ubertip (Tooltip - Extended)
 {
-Engulfs the Hero in fire which deals 15 damage per second to nearby enemy land units.|nEach additional Cloak of Flames increases the area of effect and damage.|n-buy cloak
+Engulfs the Hero in fire which deals 15 damage per second to nearby enemy land units.|nEach additional Cloak of Flames increases the area of effect and damage.
 }
 
 STRING 4409
 // Items: ratc (Claws of Attack +12), Ubertip (Tooltip - Extended)
 {
-Increases the attack damage of the Hero by 12 when worn.|n-buy 12
+Increases the attack damage of the Hero by 12 when worn.
 }
 
 STRING 4410
 // Items: rat6 (Claws of Attack +6), Ubertip (Tooltip - Extended)
 {
-Increases the attack damage of the Hero by 6 when worn.|n-buy 6
+Increases the attack damage of the Hero by 6 when worn.
 }
 
 STRING 4411
 // Items: fgrg (Stone Token), Ubertip (Tooltip - Extended)
 {
-Summons a Rock Golem to fight for you. |nLasts <AIfr,Dur1> seconds.|n-buy golem
+Summons a Rock Golem to fight for you. |nLasts <AIfr,Dur1> seconds.
 }
 
 STRING 4412
 // Items: fgfh (Spiked Collar), Ubertip (Tooltip - Extended)
 {
-Summons a Fel Stalker to fight for you. |nLasts <AIfh,Dur1> seconds.|n-buy stalker
+Summons a Fel Stalker to fight for you. |nLasts <AIfh,Dur1> seconds.
 }
 
 STRING 4413
 // Items: mcou (Dagger), Ubertip (Tooltip - Extended)
 {
-Increases the Intelligence of the Hero by 4 when worn. Useful to sell for some gold.|n-buy dagger
+Increases the Intelligence of the Hero by 4 when worn. Useful to sell for some gold.
 }
 
 STRING 4414
 // Items: gcel (Gloves of Haste), Ubertip (Tooltip - Extended)
 {
-Increases the attack speed of the Hero by <A003,DataA1,%>% when worn.|n-buy gloves
+Increases the attack speed of the Hero by <A003,DataA1,%>% when worn.
 }
 
 STRING 4416
 // Items: tels (Goblin Night Scope), Ubertip (Tooltip - Extended)
 {
-Provides an increase to the Hero's line of sight radius at night when carried.|n-buy scope
+Provides an increase to the Hero's line of sight radius at night when carried.
 }
 
 STRING 4417
 // Items: pspd (Potion of Speed), Ubertip (Tooltip - Extended)
 {
-Increases the movement speed of the Hero by <AIsp,DataA1,%>% for <AIsp,Dur1> seconds.|n-buy speed
+Increases the movement speed of the Hero by <AIsp,DataA1,%>% for <AIsp,Dur1> seconds.
 }
 
 STRING 4419
 // Items: ofir (Orb of Fire), Ubertip (Tooltip - Extended)
 {
-Adds 16 bonus fire damage to the attack of a Hero when carried. The Hero's attacks also become ranged when attacking air and do 15 splash damage to nearby enemy units.|rDoes not stack.|n-buy orb
+Adds 16 bonus fire damage to the attack of a Hero when carried. The Hero's attacks also become ranged when attacking air and do 15 splash damage to nearby enemy units.|rDoes not stack.
 }
 
 STRING 4420
 // Items: tfar (Siege Tower), Ubertip (Tooltip - Extended)
 {
-Creates a Siege Tower at a target location. Good for destroying bases. Can be upgraded to Piiri Tower.|n-buy siege
+Creates a Siege Tower at a target location. Good for destroying bases. Can be upgraded to Piiri Tower.
 }
 
 STRING 4421
 // Items: gobm (Goblin Land Mines), Ubertip (Tooltip - Extended)
 {
-Places a hidden land mine at a target point. Enemy units that move near the land mine will activate the mine, destroying the mine and causing area of effect damage to nearby units.|nContains <gobm,uses> charges.|n-buy mines
+Places a hidden land mine at a target point. Enemy units that move near the land mine will activate the mine, destroying the mine and causing area of effect damage to nearby units.|nContains <gobm,uses> charges.
 }
 
 STRING 4422
 // Items: I000 (Anti's Light Sabre +30), Ubertip (Tooltip - Extended)
 {
-When worn, increases the attack damage of the Hero by 30, attack speed by 15%, and grants a frost effect on hit units.|n-buy sabre
+When worn, increases the attack damage of the Hero by 30, attack speed by 15%, and grants a frost effect on hit units.
 }
 
 STRING 4424
 // Items: I003 (White Wolf), Ubertip (Tooltip - Extended)
 {
-Call upon the White Wolfs spirit to assist you in killing other sheep.|n-buy cheese
+Call upon the White Wolfs spirit to assist you in killing other sheep.
 }
 
 STRING 4425
 // Items: I002 (Claws of Attack +50), Ubertip (Tooltip - Extended)
 {
-Increases the attack damage of the Hero by 50 when worn.|n-buy 50
+Increases the attack damage of the Hero by 50 when worn.
 }
 
 STRING 4427
-// Items: I005 (Charm of Mana Negation), Ubertip (Tooltip - Extended)
+// Items: I005 (Charm of Mana Negation), Description (Description)
 {
-Decreases nearby units mana regeneration by <A00O,DataA1,%>%.|n-buy negation
+Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
 }
 
 STRING 4428
 // Items: pinv (Potion of Invisibility), Ubertip (Tooltip - Extended)
 {
-|cff87ceebNon-Combat Consumable|r|nRenders the Hero invisible for <AIv1,Dur1> seconds when used. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy invis
+|cff87ceebNon-Combat Consumable|r|nRenders the Hero invisible for <AIv1,Dur1> seconds when used. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.
 }
 
 STRING 4429
 // Items: pman (Potion of Mana), Ubertip (Tooltip - Extended)
 {
-Restores <AIm1,DataA1> mana when used.|n-buy mana
+Restores <AIm1,DataA1> mana when used.
 }
 
 STRING 4430
 // Items: tkno (Tome of Power), Ubertip (Tooltip - Extended)
 {
-Increases the level of the Hero by <AIlm,DataA1> when used. Can be used to gain lumber.|n-buy power
+Increases the level of the Hero by <AIlm,DataA1> when used. Can be used to gain lumber.
 }
 
 STRING 4431
@@ -9196,7 +9173,7 @@ Research Devotion Aura - [|cffffcc00Level 3|r]
 }
 
 STRING 4594
-// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
+// Abilities: A00U (Next), Hotkey (Hotkey - Normal)
 {
 V
 }
@@ -9288,13 +9265,13 @@ Destroy Farm
 STRING 4611
 // Items: I004 (Dragon Glass), Ubertip (Tooltip - Extended)
 {
-A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.|n-buy dragon
+A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.
 }
 
 STRING 4612
 // Items: I004 (Dragon Glass), Description (Description)
 {
-A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.|n-buy dragon
+A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.
 }
 
 STRING 4613
@@ -9306,7 +9283,7 @@ This structure has under the effect of Dragon Fire; it will burn forever and spr
 STRING 4616
 // Items: clsd (Cloak of Shadows), Ubertip (Tooltip - Extended)
 {
-Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.|n-buy shadow
+Provides the Hero with invisibility when worn. An invisible Hero is untargetable by the enemy unless detected. If the Hero attacks, uses an ability, or casts a spell, the invisibility effect is lost.
 }
 
 STRING 4621
@@ -9348,7 +9325,7 @@ STRING 4628
 STRING 4629
 // Items: hlst (Health Stone), Ubertip (Tooltip - Extended)
 {
-Increases the life of the Hero by <A00S,DataA1> and life regeneration by <Arll,DataA1> hit points per second when worn. Can be consumed for <AIh2,DataA1> health.|n-buy health
+Increases the life of the Hero by <A00S,DataA1> and life regeneration by <Arll,DataA1> hit points per second when worn. Can be consumed for <AIh2,DataA1> health.
 }
 
 STRING 4630
@@ -9384,7 +9361,7 @@ STRING 4635
 STRING 4636
 // Items: arsh (Wooden Shield), Ubertip (Tooltip - Extended)
 {
-Increases the Hero's armor by <A00T,DataA1> when worn.|n-buy armor
+Increases the Hero's armor by <A00T,DataA1> when worn.
 }
 
 STRING 4637
@@ -9538,7 +9515,6 @@ STRING 4661
 }
 
 STRING 4679
-// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
@@ -9546,144 +9522,13 @@ Sheep
 STRING 4680
 // Items: nspi (Spell Shield Necklace), Ubertip (Tooltip - Extended)
 {
-Passively blocks a negative spell that an enemy casts on the Hero once every <ANss,Cool1> seconds.|nWhen used, dispels all nearby magic effects.|n-buy neck
-}
-
-STRING 4684
-{
-Ultimate Sheep Tag Fixus 10
-}
-
-STRING 4685
-{
-8v4
-}
-
-STRING 4686
-{
-Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
-To track your stats and rating, upload your replays. https://wc3stats.com/upload
-}
-
-STRING 4687
-{
-Chakra
-}
-
-STRING 4688
-{
-Sheep 1
-}
-
-STRING 4689
-{
-Sheep 2
-}
-
-STRING 4690
-{
-Wolf 1
-}
-
-STRING 4691
-{
-Sheep 3
-}
-
-STRING 4692
-{
-Sheep 4
-}
-
-STRING 4693
-{
-Wolf 2
-}
-
-STRING 4694
-{
-Sheep 5
-}
-
-STRING 4695
-{
-Sheep 6
-}
-
-STRING 4696
-{
-Wolf 3
-}
-
-STRING 4697
-{
-Sheep 7
-}
-
-STRING 4698
-{
-Sheep 8
-}
-
-STRING 4699
-{
-Wolf 4
-}
-
-STRING 4700
-{
-Wolves
+Passively blocks a negative spell that an enemy casts on the Hero once every <ANss,Cool1> seconds.|nWhen used, dispels all nearby magic effects.
 }
 
 STRING 4701
-// Units: u002 (Sheep), Name (Name)
+// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
-}
-
-STRING 4702
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4703
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4704
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 4705
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 4706
-{
-Commands
-}
-
-STRING 4707
-{
-Change log
-}
-
-STRING 4708
-{
-Kill things to get gold faster.
-}
-
-STRING 4709
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4710
-{
-Fixus 10
 }
 
 STRING 4711
@@ -9708,5 +9553,412 @@ STRING 4715
 // Abilities: AIdv (Item Divine Shield (Necklace)), Name (Name)
 {
 Item Divine Shield (Necklace)
+}
+
+STRING 4716
+// Units: nC12 (Blue Shop), Name (Name)
+{
+Blue Shop
+}
+
+STRING 4717
+// Units: n003 (Green Shop), Name (Name)
+{
+Green Shop
+}
+
+STRING 4718
+// Units: n004 (Red Shop), Name (Name)
+{
+Red Shop
+}
+
+STRING 4719
+// Items: pspd (Potion of Speed), Hotkey (Hotkey)
+{
+Q
+}
+
+STRING 4720
+// Items: rat6 (Claws of Attack +6), Hotkey (Hotkey)
+{
+Q
+}
+
+STRING 4722
+// Abilities: A00V (Quick Shops), Tip (Tooltip - Normal)
+{
+Activate Quick Shops
+}
+
+STRING 4724
+// Abilities: A00X (Quick Shops), Tip (Tooltip - Normal)
+{
+Deactivate Quick Shops
+}
+
+STRING 4726
+// Abilities: A00V (Quick Shops), Name (Name)
+{
+Quick Shops
+}
+
+STRING 4727
+// Abilities: A00X (Quick Shops), Name (Name)
+{
+Quick Shops
+}
+
+STRING 4728
+// Abilities: A00V (Quick Shops), EditorSuffix (Editor Suffix)
+{
+(Activate)
+}
+
+STRING 4731
+// Abilities: A00X (Quick Shops), EditorSuffix (Editor Suffix)
+{
+(Deactivate)
+}
+
+STRING 4732
+// Abilities: A00V (Quick Shops), Ubertip (Tooltip - Normal - Extended)
+{
+Activate Quick Shops to show shops, allowing you to buy and sell items.
+}
+
+STRING 4735
+// Items: tkno (Tome of Power), Hotkey (Hotkey)
+{
+Q
+}
+
+STRING 4739
+// Abilities: A00V (Quick Shops), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 4742
+// Abilities: A00X (Quick Shops), Ubertip (Tooltip - Normal - Extended)
+{
+Deactivate Quick Shops to show shops, allowing you to buy and sell items.
+}
+
+STRING 4743
+// Items: ratf (Claws of Attack +21), Hotkey (Hotkey)
+{
+R
+}
+
+STRING 4744
+// Items: gemt (Gem of True Seeing), Hotkey (Hotkey)
+{
+Z
+}
+
+STRING 4745
+// Items: tels (Goblin Night Scope), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 4746
+// Items: bspd (Boots of Speed), Hotkey (Hotkey)
+{
+D
+}
+
+STRING 4747
+// Items: pnvu (Potion of Invulnerability), Hotkey (Hotkey)
+{
+Z
+}
+
+STRING 4748
+// Items: clfm (Cloak of Flames), Hotkey (Hotkey)
+{
+Z
+}
+
+STRING 4749
+// Items: ofir (Orb of Fire), Hotkey (Hotkey)
+{
+D
+}
+
+STRING 4750
+// Items: pman (Potion of Mana), Hotkey (Hotkey)
+{
+D
+}
+
+STRING 4751
+// Items: fgrg (Stone Token), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 4752
+// Items: gcel (Gloves of Haste), Hotkey (Hotkey)
+{
+F
+}
+
+STRING 4753
+// Items: gobm (Goblin Land Mines), Hotkey (Hotkey)
+{
+S
+}
+
+STRING 4754
+// Items: hlst (Health Stone), Hotkey (Hotkey)
+{
+R
+}
+
+STRING 4755
+// Items: I000 (Anti's Light Sabre +30), Hotkey (Hotkey)
+{
+S
+}
+
+STRING 4756
+// Items: I003 (White Wolf), Hotkey (Hotkey)
+{
+X
+}
+
+STRING 4757
+// Items: I004 (Dragon Glass), Hotkey (Hotkey)
+{
+R
+}
+
+STRING 4758
+// Abilities: Asdg (Kaboom!), Hotkey (Hotkey - Normal)
+{
+A
+}
+
+STRING 4759
+// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
+{
+X
+}
+
+STRING 4760
+// Abilities: A001 (Sentry Ward), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 4761
+// Abilities: A007 (Flash), Researchhotkey (Hotkey - Learn)
+{
+F
+}
+
+STRING 4762
+// Abilities: A007 (Flash), Hotkey (Hotkey - Normal)
+{
+F
+}
+
+STRING 4763
+// Abilities: Asdg (Kaboom!), Unhotkey (Hotkey - Turn Off)
+{
+A
+}
+
+STRING 4764
+// Abilities: A00M (Select Farm), Hotkey (Hotkey - Normal)
+{
+S
+}
+
+STRING 4765
+// Abilities: A00X (Quick Shops), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 4766
+// Upgrades: R000 (Skeletal Mastery), Hotkey (Hotkey)
+{
+E
+}
+
+STRING 4767
+// Items: tfar (Siege Tower), Tip (Tooltip - Basic)
+{
+Purchase Siege Tower
+}
+
+STRING 4768
+// Abilities: A00E (Attacker), Hotkey (Hotkey - Normal)
+{
+A
+}
+
+STRING 4769
+// Abilities: A00U (Next), Tip (Tooltip - Normal)
+{
+Next
+}
+
+STRING 4770
+// Abilities: A00U (Next), Ubertip (Tooltip - Normal - Extended)
+{
+Selects the next shop.
+}
+
+STRING 4771
+// Abilities: A00U (Next), Name (Name)
+{
+Next
+}
+
+STRING 4772
+// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 4773
+{
+Ultimate Sheep Tag Fixus 10
+}
+
+STRING 4774
+{
+8v4
+}
+
+STRING 4775
+{
+Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
+To track your stats and rating, upload your replays. https://wc3stats.com/upload
+}
+
+STRING 4776
+{
+Chakra
+}
+
+STRING 4777
+{
+Sheep 1
+}
+
+STRING 4778
+{
+Sheep 2
+}
+
+STRING 4779
+{
+Wolf 1
+}
+
+STRING 4780
+{
+Sheep 3
+}
+
+STRING 4781
+{
+Sheep 4
+}
+
+STRING 4782
+{
+Wolf 2
+}
+
+STRING 4783
+{
+Sheep 5
+}
+
+STRING 4784
+{
+Sheep 6
+}
+
+STRING 4785
+{
+Wolf 3
+}
+
+STRING 4786
+{
+Sheep 7
+}
+
+STRING 4787
+{
+Sheep 8
+}
+
+STRING 4788
+{
+Wolf 4
+}
+
+STRING 4789
+{
+Wolves
+}
+
+STRING 4790
+// Units: u002 (Sheep), Name (Name)
+{
+Sheep
+}
+
+STRING 4791
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4792
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4793
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4794
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4795
+{
+Commands
+}
+
+STRING 4796
+{
+Change log
+}
+
+STRING 4797
+{
+Kill things to get gold faster.
+}
+
+STRING 4798
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4799
+{
+Fixus 10
 }
 

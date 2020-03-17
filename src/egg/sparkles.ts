@@ -1,6 +1,6 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { WISP_TYPE } from "../shared";
+import { onCreated } from "event";
 
 const PHOENIX1_TYPE = FourCC( "h00F" );
 const PHOENIX2_TYPE = FourCC( "h00G" );
@@ -8,11 +8,11 @@ const PHOENIX3_TYPE = FourCC( "h00H" );
 
 const hawkysExclusions = [ WISP_TYPE, PHOENIX1_TYPE, PHOENIX2_TYPE, PHOENIX3_TYPE ];
 
-const onUnitCreated = (): boolean => {
+onCreated( "sparkles", (): void => {
 
 	const u = GetFilterUnit();
 
-	if ( IsUnitType( u, UNIT_TYPE_STRUCTURE ) ) return false;
+	if ( IsUnitType( u, UNIT_TYPE_STRUCTURE ) ) return;
 
 	const playerName = GetPlayerName( GetOwningPlayer( u ) ).toLowerCase();
 
@@ -30,18 +30,4 @@ const onUnitCreated = (): boolean => {
 
 	}
 
-	return false;
-
-};
-
-export const main = (): void => {
-
-	const r = GetWorldBounds();
-	const re = CreateRegion();
-	RegionAddRect( re, r );
-	RemoveRect( r );
-	TriggerRegisterEnterRegion( CreateTrigger(), re, Filter( onUnitCreated ) );
-
-};
-
-addScriptHook( W3TS_HOOK.MAIN_AFTER, main );
+} );

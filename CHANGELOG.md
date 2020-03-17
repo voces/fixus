@@ -13,6 +13,9 @@
 - Necklace of Spell Immunity replaced with Spell Shield Necklace
   - Blocks one spell every second
   - Has a 1-second Divine Shield, removing buffs
+- Decreased Stock STart Delay of Dragon Fire (923 -> 913)
+- Replaced actual shops and -buy/-sell with Quick Shops system
+- Decreased gold cost of Potion of Invisibility (35 -> 30)
 
 ## Features
 - Wolf gold command now accepts an argument for how much gold

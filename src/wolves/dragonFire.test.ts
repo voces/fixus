@@ -1,5 +1,6 @@
 
 import "../test/w3api";
+import { executeHooksMainAfter } from "@voces/w3ts";
 import { main, units, nextWolfId } from "./dragonFire";
 import { wolfTeam, WOLF_TYPE } from "../shared";
 
@@ -16,6 +17,7 @@ jest.mock(
 
 it( "smoke", () => {
 
+	executeHooksMainAfter();
 	main();
 	CreateUnit( Player( 0 ), FourCC( "hhou" ), 0, 0, 270 );
 	CreateUnit( Player( 0 ), FourCC( "hhou" ), 0, 192, 270 );

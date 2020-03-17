@@ -7,7 +7,6 @@ import {
 	SHEEP_TYPE,
 	sheeps,
 	sheepTeam,
-	wispTeam,
 	WOLF_TYPE,
 	wolfTeam,
 	wolves,
@@ -16,6 +15,7 @@ import { reloadMultiboard } from "misc/multiboard";
 import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
 import { wrappedTriggerAddAction } from "../util/emitLog";
+import { addQuickShop } from "wolves/quickShops";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -99,20 +99,46 @@ const shareControlWithAllies = ( player: player ): void => {
 	const isWolf = IsPlayerInForce( player, wolfTeam );
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if (
-			// passed player and iterated player are wolf
-			isWolf && IsPlayerInForce( Player( i ), wolfTeam ) ||
-			// passed player and iterated player are sheep or wisp
-			! isWolf && (
-				IsPlayerInForce( Player( i ), sheepTeam ) ||
-				IsPlayerInForce( Player( i ), wispTeam )
-			)
-		) {
+		if ( isWolf === IsPlayerInForce( Player( i ), wolfTeam ) ) {
 
 			SetPlayerAlliance( player, Player( i ), ALLIANCE_SHARED_ADVANCED_CONTROL, true );
 			SetPlayerAlliance( player, Player( i ), ALLIANCE_SHARED_CONTROL, true );
 
 		}
+
+};
+
+const spawnSheep = ( index: number ): void => {
+
+	const player = Player( index );
+
+	sheeps[ index ] = CreateUnit( player, SHEEP_TYPE, initialSpawns[ index ].x, initialSpawns[ index ].y, 270 );
+	addQuickShop( sheeps[ index ] );
+
+	if ( GetLocalPlayer() === player ) {
+
+		ClearSelection();
+		SelectUnit( sheeps[ index ], true );
+		PanCameraToTimed( initialSpawns[ index ].x, initialSpawns[ index ].y, 0 );
+
+	}
+
+	if ( GetPlayerController( player ) !== MAP_CONTROL_USER || GetPlayerSlotState( player ) !== PLAYER_SLOT_STATE_PLAYING )
+		shareControlWithAllies( player );
+
+};
+
+const spawnFakeSheep = (): void => {
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
+
+		if ( IsPlayerInForce( Player( i ), wolfTeam ) || sheeps[ i ] != null ) continue;
+
+		ForceAddPlayer( sheepTeam, Player( i ) );
+		spawnSheep( i );
+		return;
+
+	}
 
 };
 
@@ -123,24 +149,18 @@ const initToStart = (): void => {
 
 	TimerDialogDisplay( gameTimerDialog, false );
 
+	let sheepSize = 0;
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
 		if ( ! IsPlayerInForce( Player( i ), sheepTeam ) || GetPlayerSlotState( Player( i ) ) !== PLAYER_SLOT_STATE_PLAYING ) continue;
 
-		sheeps[ i ] = CreateUnit( Player( i ), SHEEP_TYPE, initialSpawns[ i ].x, initialSpawns[ i ].y, 270 );
-
-		if ( GetLocalPlayer() === Player( i ) ) {
-
-			ClearSelection();
-			SelectUnit( sheeps[ i ], true );
-			PanCameraToTimed( initialSpawns[ i ].x, initialSpawns[ i ].y, 0 );
-
-		}
-
-		if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_COMPUTER )
-			shareControlWithAllies( Player( i ) );
+		sheepSize ++;
+		spawnSheep( i );
 
 	}
+
+	if ( sheepSize <= 1 && isSandbox() )
+		spawnFakeSheep();
 
 	gameState( "start" );
 	// todo: should be nullable
@@ -151,47 +171,64 @@ const initToStart = (): void => {
 
 };
 
+const spawnWolf = ( index: number, starterItem: number ): void => {
+
+	const player = Player( index );
+
+	wolves[ index ] = CreateUnit( player, WOLF_TYPE, GetStartLocationX( index ), GetStartLocationY( index ), 270 );
+	UnitAddItem( wolves[ index ], CreateItem( STARTER_ITEM_TYPE, GetStartLocationX( index ), GetStartLocationY( index ) ) );
+	UnitAddItem( wolves[ index ], CreateItem( starterItem, GetStartLocationX( index ), GetStartLocationY( index ) ) );
+	addQuickShop( wolves[ index ] );
+
+	if ( GetLocalPlayer() === player ) {
+
+		ClearSelection();
+		SelectUnit( wolves[ index ], true );
+		PanCameraToTimed( - 256, - 1024, 0 );
+
+	}
+
+	if ( GetPlayerController( player ) !== MAP_CONTROL_USER || GetPlayerSlotState( player ) !== PLAYER_SLOT_STATE_PLAYING )
+		shareControlWithAllies( player );
+
+	reloadMultiboard();
+
+};
+
+const spawnFakeWolf = (): void => {
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
+
+		if ( IsPlayerInForce( Player( i ), sheepTeam ) ) continue;
+
+		ForceAddPlayer( wolfTeam, Player( i ) );
+		spawnWolf( i, starterItemMap[ 1 ] );
+		return;
+
+	}
+
+};
+
 /**
  * Spawns wolves
  */
-let sandboxedWolfSpawned = false;
 const startToPlay = (): void => {
 
 	TimerDialogDisplay( gameTimerDialog, false );
 
 	const starterItem = starterItemMap[ countHere( wolfTeam ) ];
+	let wolfSize = 0;
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
-		if (
-			(
-				// they aren't a wolf player
-				! IsPlayerInForce( Player( i ), wolfTeam ) ||
-				// they're not here
-				GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_EMPTY
-			) && (
-				// and we're not in a sandbox
-				! isSandbox() || sandboxedWolfSpawned || i !== 2
-			)
-		) continue;
-		sandboxedWolfSpawned = true;
+		if ( ! IsPlayerInForce( Player( i ), wolfTeam ) || GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_EMPTY ) continue;
 
-		wolves[ i ] = CreateUnit( Player( i ), WOLF_TYPE, GetStartLocationX( i ), GetStartLocationY( i ), 270 );
-		UnitAddItem( wolves[ i ], CreateItem( STARTER_ITEM_TYPE, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-		if ( starterItem != null ) // null if sandbox
-			UnitAddItem( wolves[ i ], CreateItem( starterItem, GetStartLocationX( i ), GetStartLocationY( i ) ) );
-
-		if ( GetLocalPlayer() === Player( i ) ) {
-
-			ClearSelection();
-			SelectUnit( wolves[ i ], true );
-			PanCameraToTimed( - 256, - 1024, 0 );
-
-		}
-
-		if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_COMPUTER )
-			shareControlWithAllies( Player( i ) );
+		wolfSize ++;
+		spawnWolf( i, starterItem );
 
 	}
+
+	if ( wolfSize === 0 && isSandbox() )
+		spawnFakeWolf();
 
 	gameState( "play" );
 	// should be nullable
@@ -233,10 +270,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	TimerDialogSetTitle( gameTimerDialog, "Starting in..." );
 	TimerDialogDisplay( gameTimerDialog, true );
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
-
-		if ( ! IsPlayerInForce( Player( i ), sheepTeam ) ) continue;
-
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		while ( ! initialSpawns[ i ] ) {
 
 			const randomDistanceFromEdge = GetRandomInt( 0, 15 ) * 64;
@@ -274,7 +308,5 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 			}
 
 		}
-
-	}
 
 } );

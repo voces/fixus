@@ -3,6 +3,7 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wolves } from "../shared";
 import { forEachUnit } from "../util/temp";
 import { wrappedTriggerAddAction } from "../util/emitLog";
+import { onSpellCast, onCreated } from "../event";
 
 let burnWolfId = 2;
 let emptyTicks: number;
@@ -118,7 +119,7 @@ const burnUnits = (): void => {
 /**
  * Runs when we cast the item ability
  */
-const onSpellCast = (): void => {
+const onCastDragonFire = (): void => {
 
 	if ( GetSpellAbilityId() === DRAGON_GLASS_ITEM_TYPE ) {
 
@@ -130,20 +131,16 @@ const onSpellCast = (): void => {
 
 };
 
-const onUnitCreated = (): boolean => {
+const onUnitCreated = (): void => {
 
-	if ( ! IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) )
-		GroupAddUnit( units, GetFilterUnit() );
-
-	return false;
+	if ( ! IsUnitType( GetTriggerUnit(), UNIT_TYPE_STRUCTURE ) )
+		GroupAddUnit( units, GetTriggerUnit() );
 
 };
 
 export const main = (): void => {
 
-	const t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	wrappedTriggerAddAction( t, "dragon fire cast", onSpellCast );
+	onSpellCast( "dragon fire", onCastDragonFire );
 
 	TriggerRegisterTimerEvent( spreadFireTrigger, 10, true );
 	wrappedTriggerAddAction( spreadFireTrigger, "dragon fire spread", spreadFire );
@@ -153,11 +150,7 @@ export const main = (): void => {
 	wrappedTriggerAddAction( burnUnitsTrigger, "dragon fire burn", burnUnits );
 	DisableTrigger( burnUnitsTrigger );
 
-	const r = GetWorldBounds();
-	const re = CreateRegion();
-	RegionAddRect( re, r );
-	RemoveRect( r );
-	TriggerRegisterEnterRegion( CreateTrigger(), re, Filter( onUnitCreated ) );
+	onCreated( "dragon fire", onUnitCreated );
 
 };
 

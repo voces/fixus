@@ -1,6 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { wrappedTriggerAddAction } from "util/emitLog";
+import { onSpellCast } from "event";
 
 const WARD_TYPE = FourCC( "n001" );
 const WARD_ABILITY_TYPE = FourCC( "A001" );
@@ -20,10 +19,4 @@ const Trig_wolfWard_Actions = (): void => {
 };
 
 // ===========================================================================
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	const t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SPELL_CAST );
-	wrappedTriggerAddAction( t, "ward cast", Trig_wolfWard_Actions );
-
-} );
+onSpellCast( "ward", Trig_wolfWard_Actions );
