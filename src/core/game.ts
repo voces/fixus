@@ -113,7 +113,6 @@ const spawnSheep = ( index: number ): void => {
 	const player = Player( index );
 
 	sheeps[ index ] = CreateUnit( player, SHEEP_TYPE, initialSpawns[ index ].x, initialSpawns[ index ].y, 270 );
-	addQuickShop( sheeps[ index ] );
 
 	if ( GetLocalPlayer() === player ) {
 

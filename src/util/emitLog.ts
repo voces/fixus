@@ -5,7 +5,7 @@ import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { isSandbox } from "../shared";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const emitLog = ( key: string, arg: string, ...args: Array<any> ): void => {
+export const emitLog = ( key: string, arg: any, ...args: Array<any> ): void => {
 
 	const allArgs = [ arg, ...args ];
 	const message = allArgs.map( v => termToString( v, false ) ).join( " " );
