@@ -377,7 +377,7 @@ X
 }
 
 STRING 1495
-// Items: nspi (Spell Shield Necklace), Hotkey (Hotkey)
+// Items: I003 (White Wolf), Hotkey (Hotkey)
 {
 X
 }
@@ -922,12 +922,6 @@ STRING 1729
 Gives Rock Golems the ability to carry items.
 }
 
-STRING 1730
-// Abilities: Adtn (Detonate), Ubertip (Tooltip - Normal - Extended)
-{
-Destroys the Rock Golem, dispelling all magical buffs and draining <Adtn,DataA1> mana from each unit in an area around the Wisp. |n|cffffcc00Deals <Adtn,DataB1> damage to structures.|r
-}
-
 STRING 1731
 // Abilities: Asdg (Kaboom!), Ubertip (Tooltip - Normal - Extended)
 {
@@ -1265,7 +1259,7 @@ Attacker
 }
 
 STRING 1866
-// Items: I005 (Charm of Mana Negation), Hotkey (Hotkey)
+// Items: I005 (Amulet of Mana Negation), Hotkey (Hotkey)
 {
 A
 }
@@ -2111,7 +2105,7 @@ Copious Blood
 }
 
 STRING 2200
-// Abilities: A00I (Avatar), EditorSuffix (Editor Suffix)
+// Abilities: A00L (Copious Blood), EditorSuffix (Editor Suffix)
 {
 (Hulk)
 }
@@ -2267,13 +2261,13 @@ Copious Blood - [|cffffcc00Level 25|r]
 }
 
 STRING 2325
-// Abilities: A00I (Avatar), Hotkey (Hotkey - Normal)
+// Abilities: A00J (Entangling Roots), Hotkey (Hotkey - Normal)
 {
 N
 }
 
 STRING 2326
-// Abilities: A00J (Entangling Roots), Hotkey (Hotkey - Normal)
+// Abilities: A00W (Avatar), Hotkey (Hotkey - Normal)
 {
 N
 }
@@ -7258,158 +7252,8 @@ STRING 4013
 Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur25,.> seconds and heroes for <A00J,HeroDur25,.> seconds.
 }
 
-STRING 4040
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB1> bonus hit points and damage. |nLasts <A00I,Dur1> seconds.
-}
-
-STRING 4041
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB2> bonus hit points and damage. |nLasts <A00I,Dur2> seconds.
-}
-
-STRING 4042
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB3> bonus hit points and damage. |nLasts <A00I,Dur3> seconds.
-}
-
-STRING 4043
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB4> bonus hit points and damage. |nLasts <A00I,Dur4> seconds.
-}
-
-STRING 4044
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB5> bonus hit points and damage. |nLasts <A00I,Dur5> seconds.
-}
-
-STRING 4045
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB6> bonus hit points and damage. |nLasts <A00I,Dur6> seconds.
-}
-
-STRING 4046
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB7> bonus hit points and damage. |nLasts <A00I,Dur7> seconds.
-}
-
-STRING 4047
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB8> bonus hit points and damage. |nLasts <A00I,Dur8> seconds.
-}
-
-STRING 4048
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB9> bonus hit points and damage. |nLasts <A00I,Dur9> seconds.
-}
-
-STRING 4049
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB10> bonus hit points and damage. |nLasts <A00I,Dur10> seconds.
-}
-
-STRING 4050
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB11> bonus hit points and damage. |nLasts <A00I,Dur11> seconds.
-}
-
-STRING 4051
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB12> bonus hit points and damage. |nLasts <A00I,Dur12> seconds.
-}
-
-STRING 4052
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB13> bonus hit points and damage. |nLasts <A00I,Dur13> seconds.
-}
-
-STRING 4053
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB14> bonus hit points and damage. |nLasts <A00I,Dur14> seconds.
-}
-
-STRING 4054
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB15> bonus hit points and damage. |nLasts <A00I,Dur15> seconds.
-}
-
-STRING 4055
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB16> bonus hit points and damage. |nLasts <A00I,Dur16> seconds.
-}
-
-STRING 4056
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB17> bonus hit points and damage. |nLasts <A00I,Dur17> seconds.
-}
-
-STRING 4057
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB18> bonus hit points and damage. |nLasts <A00I,Dur18> seconds.
-}
-
-STRING 4058
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB19> bonus hit points and damage. |nLasts <A00I,Dur19> seconds.
-}
-
-STRING 4059
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB20> bonus hit points and damage. |nLasts <A00I,Dur20> seconds.
-}
-
-STRING 4060
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB21> bonus hit points and damage. |nLasts <A00I,Dur21> seconds.
-}
-
-STRING 4061
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB22> bonus hit points and damage. |nLasts <A00I,Dur22> seconds.
-}
-
-STRING 4062
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB23> bonus hit points and damage. |nLasts <A00I,Dur23> seconds.
-}
-
-STRING 4063
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB24> bonus hit points and damage. |nLasts <A00I,Dur24> seconds.
-}
-
-STRING 4064
-// Abilities: A00I (Avatar), Ubertip (Tooltip - Normal - Extended)
-{
-Gives your sheep <A00I,DataB25> bonus hit points and damage. |nLasts <A00I,Dur25> seconds.
-}
-
 STRING 4065
-// Abilities: A00L (Copious Blood), EditorSuffix (Editor Suffix)
+// Abilities: A00W (Avatar), EditorSuffix (Editor Suffix)
 {
 (Hulk)
 }
@@ -7492,20 +7336,8 @@ STRING 4249
 Confuses the enemy by creating an illusion. Dispels all magic from the Blademaster. |nLasts <AOmi,Dur3> seconds.|nDirect attacks deal <AOmi,DataB3,%>% damage.
 }
 
-STRING 4250
-// Items: I005 (Charm of Mana Negation), Name (Name)
-{
-Charm of Mana Negation
-}
-
-STRING 4251
-// Items: I005 (Charm of Mana Negation), Tip (Tooltip - Basic)
-{
-Purchase Charm of Mana Negation
-}
-
 STRING 4252
-// Items: I005 (Charm of Mana Negation), Ubertip (Tooltip - Extended)
+// Items: I005 (Amulet of Mana Negation), Ubertip (Tooltip - Extended)
 {
 Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
 }
@@ -7796,12 +7628,6 @@ STRING 4317
 // Abilities: A00E (Attacker), Ubertip (Tooltip - Normal - Extended)
 {
 Passive: Projectile Spit - Increases attack range by <A00K,Area1> per level.|nActive: Entangling Roots - Causes roots to burst from the ground, immobilizing and disarming a target enemy unit for <A00J,Dur1,.> seconds per level and heroes for <A00J,HeroDur1,.> seconds per level.
-}
-
-STRING 4318
-// Abilities: A00C (Hulk), Ubertip (Tooltip - Normal - Extended)
-{
-Passive: Copious Blood - Increases maximum health by <A00L,Rng1> per level.|nActive: Avatar - Gives your sheep <A00I,DataB1> bonus hit points and damage per level. |nLasts <A00I,Dur1> seconds.
 }
 
 STRING 4319
@@ -8134,12 +7960,6 @@ STRING 4412
 Summons a Fel Stalker to fight for you. |nLasts <AIfh,Dur1> seconds.
 }
 
-STRING 4413
-// Items: mcou (Dagger), Ubertip (Tooltip - Extended)
-{
-Increases the Intelligence of the Hero by 4 when worn. Useful to sell for some gold.
-}
-
 STRING 4414
 // Items: gcel (Gloves of Haste), Ubertip (Tooltip - Extended)
 {
@@ -8195,7 +8015,7 @@ Increases the attack damage of the Hero by 50 when worn.
 }
 
 STRING 4427
-// Items: I005 (Charm of Mana Negation), Description (Description)
+// Items: I005 (Amulet of Mana Negation), Description (Description)
 {
 Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
 }
@@ -8699,295 +8519,151 @@ Harden - [|cffffcc00Level 25|r]
 }
 
 STRING 4515
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 2|r]
 }
 
 STRING 4516
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 3|r]
 }
 
 STRING 4517
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 4|r]
 }
 
 STRING 4518
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 5|r]
 }
 
 STRING 4519
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 6|r]
 }
 
 STRING 4520
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 7|r]
 }
 
 STRING 4521
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 8|r]
 }
 
 STRING 4522
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 9|r]
 }
 
 STRING 4523
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 10|r]
 }
 
 STRING 4524
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 11|r]
 }
 
 STRING 4525
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 12|r]
 }
 
 STRING 4526
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 13|r]
 }
 
 STRING 4527
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 14|r]
 }
 
 STRING 4528
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 15|r]
 }
 
 STRING 4529
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 16|r]
 }
 
 STRING 4530
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 17|r]
 }
 
 STRING 4531
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 18|r]
 }
 
 STRING 4532
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 19|r]
 }
 
 STRING 4533
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 20|r]
 }
 
 STRING 4534
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 21|r]
 }
 
 STRING 4535
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 22|r]
 }
 
 STRING 4536
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 23|r]
 }
 
 STRING 4537
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 24|r]
 }
 
 STRING 4538
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 25|r]
 }
 
-STRING 4539
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4540
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4541
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4542
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4543
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4544
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4545
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4546
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4547
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4548
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4549
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4550
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4551
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4552
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4553
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4554
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4555
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4556
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4557
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4558
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4559
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4560
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4561
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
-STRING 4562
-// Abilities: A00I (Avatar), Untip (Tooltip - Turn Off)
-{
-Deactivate Avatar
-}
-
 STRING 4563
-// Abilities: A00I (Avatar), Tip (Tooltip - Normal)
+// Abilities: A00W (Avatar), Tip (Tooltip - Normal)
 {
 Activate Avatar - [|cffffcc00Level 1|r]
 }
@@ -9365,7 +9041,7 @@ Increases the Hero's armor by <A00T,DataA1> when worn.
 }
 
 STRING 4637
-// Abilities: Aien (Unit Inventory), EditorSuffix (Editor Suffix)
+// Abilities: Asdg (Kaboom!), EditorSuffix (Editor Suffix)
 {
 (Rock Golem)
 }
@@ -9383,7 +9059,7 @@ Unit Inventory
 }
 
 STRING 4640
-// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
+// Abilities: Aien (Unit Inventory), EditorSuffix (Editor Suffix)
 {
 (Rock Golem)
 }
@@ -9503,7 +9179,7 @@ Backpack - [|cffffcc00Level 3|r]
 }
 
 STRING 4660
-// Upgrades: R005 (Skeletal Mastery), EditorSuffix (Editor Suffix)
+// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
 {
 (Rock Golem)
 }
@@ -9519,40 +9195,16 @@ STRING 4679
 Sheep
 }
 
-STRING 4680
-// Items: nspi (Spell Shield Necklace), Ubertip (Tooltip - Extended)
-{
-Passively blocks a negative spell that an enemy casts on the Hero once every <ANss,Cool1> seconds.|nWhen used, dispels all nearby magic effects.
-}
-
 STRING 4701
 // Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
 
-STRING 4711
-// Items: nspi (Spell Shield Necklace), Name (Name)
-{
-Spell Shield Necklace
-}
-
-STRING 4712
-// Items: nspi (Spell Shield Necklace), Tip (Tooltip - Basic)
-{
-Purchase Spell Shield Necklace
-}
-
 STRING 4714
 // Abilities: ANss (Spell Shield), EditorSuffix (Editor Suffix)
 {
 (Necklace)
-}
-
-STRING 4715
-// Abilities: AIdv (Item Divine Shield (Necklace)), Name (Name)
-{
-Item Divine Shield (Necklace)
 }
 
 STRING 4716
@@ -9724,7 +9376,7 @@ S
 }
 
 STRING 4756
-// Items: I003 (White Wolf), Hotkey (Hotkey)
+// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
 {
 X
 }
@@ -9739,12 +9391,6 @@ STRING 4758
 // Abilities: Asdg (Kaboom!), Hotkey (Hotkey - Normal)
 {
 A
-}
-
-STRING 4759
-// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
-{
-X
 }
 
 STRING 4760
@@ -9960,5 +9606,209 @@ Lumber is granted for reaching level 3 and each level thereafter.
 STRING 4799
 {
 Fixus 10
+}
+
+STRING 4826
+// Abilities: A00C (Hulk), Ubertip (Tooltip - Normal - Extended)
+{
+Passive: Copious Blood - Increases maximum health by <A00L,Rng1> per level.|nActive: Avatar - Gives your sheep <A00W,DataA1> bonus armor. Lasts <A00I,Dur1> seconds.
+}
+
+STRING 4827
+// Abilities: A00W (Avatar), Name (Name)
+{
+Avatar
+}
+
+STRING 4828
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA1> bonus armor. |nLasts <A00W,Dur1> seconds.
+}
+
+STRING 4829
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA2> bonus armor. |nLasts <A00W,Dur2> seconds.
+}
+
+STRING 4830
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA3> bonus armor. |nLasts <A00W,Dur3> seconds.
+}
+
+STRING 4831
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA4> bonus armor. |nLasts <A00W,Dur4> seconds.
+}
+
+STRING 4832
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA5> bonus armor. |nLasts <A00W,Dur5> seconds.
+}
+
+STRING 4833
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA6> bonus armor. |nLasts <A00W,Dur6> seconds.
+}
+
+STRING 4834
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA7> bonus armor. |nLasts <A00W,Dur7> seconds.
+}
+
+STRING 4835
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA8> bonus armor. |nLasts <A00W,Dur8> seconds.
+}
+
+STRING 4836
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA9> bonus armor. |nLasts <A00W,Dur9> seconds.
+}
+
+STRING 4837
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA10> bonus armor. |nLasts <A00W,Dur10> seconds.
+}
+
+STRING 4838
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA11> bonus armor. |nLasts <A00W,Dur11> seconds.
+}
+
+STRING 4839
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA12> bonus armor. |nLasts <A00W,Dur12> seconds.
+}
+
+STRING 4840
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA13> bonus armor. |nLasts <A00W,Dur13> seconds.
+}
+
+STRING 4841
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA14> bonus armor. |nLasts <A00W,Dur14> seconds.
+}
+
+STRING 4842
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA15> bonus armor. |nLasts <A00W,Dur15> seconds.
+}
+
+STRING 4843
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA16> bonus armor. |nLasts <A00W,Dur16> seconds.
+}
+
+STRING 4844
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA17> bonus armor. |nLasts <A00W,Dur17> seconds.
+}
+
+STRING 4845
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA18> bonus armor. |nLasts <A00W,Dur18> seconds.
+}
+
+STRING 4846
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA19> bonus armor. |nLasts <A00W,Dur19> seconds.
+}
+
+STRING 4847
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA20> bonus armor. |nLasts <A00W,Dur20> seconds.
+}
+
+STRING 4848
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA21> bonus armor. |nLasts <A00W,Dur21> seconds.
+}
+
+STRING 4849
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA22> bonus armor. |nLasts <A00W,Dur22> seconds.
+}
+
+STRING 4850
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA23> bonus armor. |nLasts <A00W,Dur23> seconds.
+}
+
+STRING 4851
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA24> bonus armor. |nLasts <A00W,Dur24> seconds.
+}
+
+STRING 4852
+// Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
+{
+Gives your sheep <A00W,DataA25> bonus armor. |nLasts <A00W,Dur25> seconds.
+}
+
+STRING 4853
+// Upgrades: R005 (Skeletal Mastery), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
+}
+
+STRING 4859
+// Items: I005 (Amulet of Mana Negation), Name (Name)
+{
+Amulet of Mana Negation
+}
+
+STRING 4860
+// Items: I005 (Amulet of Mana Negation), Tip (Tooltip - Basic)
+{
+Purchase Amulet of Mana Negation
+}
+
+STRING 4861
+// Items: I001 (Charms of Spell Breaking), Name (Name)
+{
+Charms of Spell Breaking
+}
+
+STRING 4862
+// Items: I001 (Charms of Spell Breaking), Tip (Tooltip - Basic)
+{
+Purchase Charms of Spell Breaking
+}
+
+STRING 4863
+// Items: I001 (Charms of Spell Breaking), Ubertip (Tooltip - Extended)
+{
+Blocks a negative spell that an enemy casts on the Hero once per charge. Contains <I001,uses> charges.
+}
+
+STRING 4865
+// Items: mcou (Dagger), Ubertip (Tooltip - Extended)
+{
+Increases the Intelligence of the Hero by 4 when worn. Increases the Hero's rate of mana regeneration by <AIrn,DataA1,%>% when worn.|nUseful to sell for some gold.
 }
 

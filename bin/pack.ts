@@ -12,7 +12,10 @@ const cwd = process.cwd().replace( /\/mnt\/([a-z])\//, ( _, drive ) => drive.toU
 
 if ( ! mpqEditor ) {
 
-	console.error( new Error( "Environmental variable 'MPQ_EDITOR' is unset. You should set it to the path of your MPQ Editor, available at http://www.zezula.net/en/mpq/download.html" ) );
+	console.error( new Error(
+		"Environmental variable 'MPQ_EDITOR' is unset. " +
+		"You should set it to the path of your MPQ Editor, available at http://www.zezula.net/en/mpq/download.html",
+	) );
 	process.exit( 1 );
 
 }

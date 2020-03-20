@@ -1,15 +1,17 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { fillArrayFn } from "../shared";
-import { emitLog, wrappedTriggerAddAction } from "../util/emitLog";
+import { emitLog } from "../util/emitLog";
 import { timeout } from "../util/temp";
-import { onSpellCast } from "event";
+import { onSpellCast, onConstructionStart } from "event";
 
 type SpecializationData = {
 	learn: number;
 	passive: number;
 	active: number;
 	upgrade?: number;
+	customSheepLogic?: ( sheep: unit, level: number, prevLevel: number ) => void;
+	customFarmLogic?: ( farm: unit, level: number ) => void;
 }
 
 const specializations: Record<string, SpecializationData> = {
@@ -22,6 +24,8 @@ const specializations: Record<string, SpecializationData> = {
 		learn: FourCC( "A008" ),
 		passive: FourCC( "A009" ),
 		active: FourCC( "A00G" ),
+		customFarmLogic: ( farm: unit, level: number ): void =>
+			BlzSetUnitMaxHP( farm, BlzGetUnitMaxHP( farm ) + 10 * level ),
 	},
 	attacker: {
 		learn: FourCC( "A00E" ),
@@ -32,7 +36,16 @@ const specializations: Record<string, SpecializationData> = {
 	hulk: {
 		learn: FourCC( "A00C" ),
 		passive: FourCC( "A00L" ),
-		active: FourCC( "A00I" ),
+		active: FourCC( "A00W" ),
+		customSheepLogic: ( sheep: unit, level: number, prevLevel: number ): void => {
+
+			const incHP = ( level - prevLevel ) * 10;
+			BlzSetUnitMaxHP( sheep, BlzGetUnitMaxHP( sheep ) + incHP );
+			SetUnitState( sheep, UNIT_STATE_LIFE, GetUnitState( sheep, UNIT_STATE_LIFE ) + incHP );
+			const scale = 2 + level * 0.05;
+			SetUnitScale( sheep, scale, scale, scale );
+
+		},
 	},
 };
 
@@ -70,23 +83,11 @@ const updateUnit = ( u: unit ): void => {
 			UnitAddAbility( u, specialization.passive );
 			UnitAddAbility( u, specialization.active );
 
-			// todo, move this into a callback
-			if ( specialization === specializations.hulk ) {
+			if ( specialization.customSheepLogic )
+				specialization.customSheepLogic( u, effectiveLevel, 0 );
 
-				BlzSetUnitMaxHP( u, BlzGetUnitMaxHP( u ) + effectiveLevel * 15 );
-				SetUnitState( u, UNIT_STATE_LIFE, GetUnitState( u, UNIT_STATE_LIFE ) + effectiveLevel * 15 );
-
-			}
-
-		} else
-
-		// todo, move this into a callback
-		if ( specialization === specializations.hulk ) {
-
-			BlzSetUnitMaxHP( u, BlzGetUnitMaxHP( u ) + 15 );
-			SetUnitState( u, UNIT_STATE_LIFE, GetUnitState( u, UNIT_STATE_LIFE ) + 15 );
-
-		}
+		} else if ( specialization.customSheepLogic )
+			specialization.customSheepLogic( u, effectiveLevel, effectiveLevel - 1 );
 
 		SetUnitAbilityLevel( u, specialization.passive, effectiveLevel );
 		SetUnitAbilityLevel( u, specialization.active, effectiveLevel );
@@ -132,14 +133,12 @@ const onSetSpecialization = (): void => {
 const onStartConstruction = (): void => {
 
 	const playerIndex = GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) );
-	const specialization = playerSpecializations[ playerIndex ];
+	const playerSpecialization = playerSpecializations[ playerIndex ];
+	const specialization = playerSpecialization.specialization;
+	const effectiveLevel = Math.min( 25, playerSpecialization.level );
 
-	if ( specialization.specialization === specializations.engineer ) {
-
-		const effectiveLevel = Math.min( 25, specialization.level );
-		BlzSetUnitMaxHP( GetTriggerUnit(), BlzGetUnitMaxHP( GetTriggerUnit() ) + 10 * effectiveLevel );
-
-	}
+	if ( specialization && specialization.customFarmLogic )
+		specialization.customFarmLogic( GetTriggerUnit(), effectiveLevel );
 
 };
 
@@ -192,9 +191,6 @@ export const Specialization_GetLevel = ( u: unit ): number =>
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	onSpellCast( "sheep specialization", onSetSpecialization );
-
-	const t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_START );
-	wrappedTriggerAddAction( t, "sheep specialization construct", onStartConstruction );
+	onConstructionStart( "sheep specialization", onStartConstruction );
 
 } );

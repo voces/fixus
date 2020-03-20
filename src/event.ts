@@ -29,6 +29,13 @@ export const onCreated = ( key: string, callback: () => void ): void => {
 
 };
 
+const constructionStartCallbacks: Array<{key: string; callback: () => void}> = [];
+export const onConstructionStart = ( key: string, callback: () => void ): void => {
+
+	constructionStartCallbacks.push( { key, callback } );
+
+};
+
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	let t = CreateTrigger();
@@ -81,6 +88,23 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 			} catch ( err ) {
 
 				throw `${data.key} (unitCreated): ${err}`;
+
+			}
+
+	} );
+
+	t = CreateTrigger();
+	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_START );
+	wrappedTriggerAddAction( t, "constructionStart", () => {
+
+		for ( const data of constructionStartCallbacks )
+			try {
+
+				data.callback();
+
+			} catch ( err ) {
+
+				throw `${data.key} (constructionStart): ${err}`;
 
 			}
 

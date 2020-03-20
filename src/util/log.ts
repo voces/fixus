@@ -26,6 +26,7 @@ export const termToString = ( v: any, color = true ): string => {
 	if ( typeof v === "string" ) return color ? colorize.string( `"${v}"` ) : v;
 	if ( typeof v === "number" ) return color ? colorize.number( v ) : v.toString();
 	if ( typeof v === "boolean" ) return color ? colorize.boolean( v ) : v.toString();
+	if ( typeof v === "function" ) return color ? colorize.number( "[function]" ) : "[function]";
 
 	if ( isArray( v ) ) {
 
@@ -49,7 +50,18 @@ export const termToString = ( v: any, color = true ): string => {
 
 		case "player": return `Player ${termToString( { id: GetPlayerId( v ), name: GetPlayerName( v ) } )}`;
 		case "unit": return `Unit ${termToString( { name: GetUnitName( v ), owner: GetOwningPlayer( v ) } )}`;
-		default: return `[${type}(${GetHandleId( v )})]`;
+		default: {
+
+			let handleId = - 1;
+			try {
+
+				handleId = GetHandleId( v );
+
+			} catch ( err ) { /* do nothing */ }
+
+			return `[${type}(${handleId === - 1 ? "not-handle" : handleId})]`;
+
+		}
 
 	}
 

@@ -2,8 +2,8 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { timeout, forEachPlayer, withSelectedUnits, forEachPlayerUnit } from "../util/temp";
-import { fillArray } from "shared";
-import { onSpellCast, onCreated } from "event";
+import { fillArray } from "../shared";
+import { onSpellCast, onCreated, onDeath } from "../event";
 
 const offset = 120 * Math.PI / 180;
 
@@ -51,12 +51,11 @@ const onActivateQuickShops = ( unit: unit ): void => {
 
 	const { red, green, blue } = shopData;
 
-	if ( owner === GetLocalPlayer() ) {
+	ShowUnit( blue, true );
+	ShowUnit( green, true );
+	ShowUnit( red, true );
 
-		// show shops
-		ShowUnit( blue, true );
-		ShowUnit( green, true );
-		ShowUnit( red, true );
+	if ( owner === GetLocalPlayer() ) {
 
 		// select blue shop for owner
 		SelectUnit( unit, false );
@@ -163,12 +162,12 @@ const onNextShop = (): void => {
 	const shopper = shoppers.get( shop );
 	if ( ! shopper ) throw "No shopper";
 
-	if ( GetOwningPlayer( shopper ) !== GetLocalPlayer() ) return;
-
 	const data = shopperData.get( shopper );
 	if ( ! data ) throw "No shop data!";
 
 	const type = GetUnitTypeId( shop );
+
+	if ( GetOwningPlayer( shopper ) !== GetLocalPlayer() ) return;
 
 	SelectUnit( shop, false );
 
@@ -223,6 +222,8 @@ const onItemSell = (): void => {
 
 export const addQuickShop = ( unit: unit ): void => {
 
+	if ( shopperData.has( unit ) ) return;
+
 	const owner = GetOwningPlayer( unit );
 	const angle = angles[ GetPlayerId( owner ) ];
 	const x = GetUnitX( unit );
@@ -234,6 +235,18 @@ export const addQuickShop = ( unit: unit ): void => {
 	const blue = CreateUnit( neutralPassive, BLUE_SHOP, x + Math.cos( angle ) * 128, y + Math.sin( angle ) * 128, 270 );
 	const green = CreateUnit( neutralPassive, GREEN_SHOP, x + Math.cos( angle + offset ) * 128, y + Math.sin( angle + offset ) * 128, 270 );
 	const red = CreateUnit( neutralPassive, RED_SHOP, x + Math.cos( angle + offset * 2 ) * 128, y + Math.sin( angle + offset * 2 ) * 128, 270 );
+
+	if ( GetOwningPlayer( unit ) !== GetLocalPlayer() ) {
+
+		SetUnitVertexColor( blue, 0, 0, 255, 0 );
+		SetUnitVertexColor( green, 0, 255, 0, 0 );
+		SetUnitVertexColor( red, 255, 0, 0, 0 );
+
+		SetUnitScale( blue, 0, 0, 0 );
+		SetUnitScale( green, 0, 0, 0 );
+		SetUnitScale( red, 0, 0, 0 );
+
+	}
 
 	ShowUnit( blue, false );
 	ShowUnit( green, false );
@@ -248,6 +261,26 @@ export const addQuickShop = ( unit: unit ): void => {
 		green,
 		red,
 	} );
+
+};
+
+export const removeQuickShop = ( unit: unit ): void => {
+
+	const shopData = shopperData.get( unit );
+	if ( ! shopData ) return;
+
+	const { red, green, blue } = shopData;
+
+	shoppers.delete( red );
+	RemoveUnit( red );
+
+	shoppers.delete( blue );
+	RemoveUnit( blue );
+
+	shoppers.delete( green );
+	RemoveUnit( green );
+
+	shopperData.delete( unit );
 
 };
 
@@ -269,11 +302,26 @@ const onResearch = (): void => {
 
 };
 
+const onUnitDeath = (): void => {
+
+	const unit = GetTriggerUnit();
+
+	// If hero dies, hide the quick shops
+	if ( IsUnitType( unit, UNIT_TYPE_HERO ) )
+		onDeactivateQuickShops( unit );
+
+	// If non-hero dies, remove them
+	else
+		removeQuickShop( unit );
+
+};
+
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	onSpellCast( "quick shops", onQuickShops );
 	onSpellCast( "next shop", onNextShop );
-	onCreated( "quick shop", onUnitCreated );
+	onCreated( "quick shops", onUnitCreated );
+	onDeath( "quick shops", onUnitDeath );
 
 	TriggerRegisterTimerEvent( spin, 0.03, true );
 	wrappedTriggerAddAction( spin, "quick shops spin", spinShops );

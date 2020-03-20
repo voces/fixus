@@ -2,6 +2,7 @@
 import { TriggerRegisterPlayerUnitEventAll, wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { removeQuickShop } from "./quickShops";
 
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
@@ -81,6 +82,7 @@ const onUnitPickupItem = (): void => {
 	const unitSummonedRemaining = 300 - unitSummonedDuration;
 	const wwDuration = 65 + unitSummonedRemaining * 0.2;
 
+	removeQuickShop( original );
 	RemoveUnit( original );
 	const ww = CreateUnit( p, WHITE_WOLF_TYPE, x, y, f );
 	UnitApplyTimedLife( ww, FourCC( "BTLF" ), wwDuration );
