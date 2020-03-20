@@ -7,7 +7,8 @@
   "main": "src/index.ts",
   "scripts": {
     "build:changelog": "ts-node bin/changelog.ts",
-    "build:defs": "node bin/operations gen-defs",
+	"build:defs": "node bin/operations gen-defs",
+	"build:w3x": "npm run build && npm run pack",
     "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.map.json && node bin/operations build",
     "dev": "npm-watch",
     "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",

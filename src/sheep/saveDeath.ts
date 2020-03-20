@@ -37,6 +37,7 @@ import { colorizedName } from "util/player";
 import { endGame } from "../core/game";
 import { awardBounty } from "misc/proximityProportions";
 import { onDeath } from "../event";
+import { removeQuickShop } from "../wolves/quickShops";
 
 // Trigger: sheepSaveDeath
 // ===========================================================================
@@ -58,6 +59,7 @@ const replaceUnit = ( u: unit, newType: number ): unit => {
 		it[ i ] = GetItemTypeId( UnitItemInSlot( u, i ) );
 
 	// Remove it
+	removeQuickShop( u );
 	RemoveUnit( u );
 
 	// Create a new one

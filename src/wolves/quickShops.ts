@@ -2,8 +2,8 @@
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { timeout, forEachPlayer, withSelectedUnits, forEachPlayerUnit } from "../util/temp";
-import { fillArray } from "shared";
-import { onSpellCast, onCreated } from "event";
+import { fillArray } from "../shared";
+import { onSpellCast, onCreated, onDeath } from "../event";
 
 const offset = 120 * Math.PI / 180;
 
@@ -26,7 +26,6 @@ const shoppers: Map<unit, unit> = new Map();
 const angles = fillArray( bj_MAX_PLAYERS, 15 * Math.PI / 180 );
 const spin = CreateTrigger();
 const move = CreateTrigger();
-const death = CreateTrigger();
 const sleeping: Set<unit> = new Set();
 let activeShops = 0;
 
@@ -52,12 +51,11 @@ const onActivateQuickShops = ( unit: unit ): void => {
 
 	const { red, green, blue } = shopData;
 
-	if ( owner === GetLocalPlayer() ) {
+	ShowUnit( blue, true );
+	ShowUnit( green, true );
+	ShowUnit( red, true );
 
-		// show shops
-		ShowUnit( blue, true );
-		ShowUnit( green, true );
-		ShowUnit( red, true );
+	if ( owner === GetLocalPlayer() ) {
 
 		// select blue shop for owner
 		SelectUnit( unit, false );
@@ -164,12 +162,12 @@ const onNextShop = (): void => {
 	const shopper = shoppers.get( shop );
 	if ( ! shopper ) throw "No shopper";
 
-	if ( GetOwningPlayer( shopper ) !== GetLocalPlayer() ) return;
-
 	const data = shopperData.get( shopper );
 	if ( ! data ) throw "No shop data!";
 
 	const type = GetUnitTypeId( shop );
+
+	if ( GetOwningPlayer( shopper ) !== GetLocalPlayer() ) return;
 
 	SelectUnit( shop, false );
 
@@ -238,6 +236,18 @@ export const addQuickShop = ( unit: unit ): void => {
 	const green = CreateUnit( neutralPassive, GREEN_SHOP, x + Math.cos( angle + offset ) * 128, y + Math.sin( angle + offset ) * 128, 270 );
 	const red = CreateUnit( neutralPassive, RED_SHOP, x + Math.cos( angle + offset * 2 ) * 128, y + Math.sin( angle + offset * 2 ) * 128, 270 );
 
+	if ( GetOwningPlayer( unit ) !== GetLocalPlayer() ) {
+
+		SetUnitVertexColor( blue, 0, 0, 255, 0 );
+		SetUnitVertexColor( green, 0, 255, 0, 0 );
+		SetUnitVertexColor( red, 255, 0, 0, 0 );
+
+		SetUnitScale( blue, 0, 0, 0 );
+		SetUnitScale( green, 0, 0, 0 );
+		SetUnitScale( red, 0, 0, 0 );
+
+	}
+
 	ShowUnit( blue, false );
 	ShowUnit( green, false );
 	ShowUnit( red, false );
@@ -252,8 +262,25 @@ export const addQuickShop = ( unit: unit ): void => {
 		red,
 	} );
 
-	if ( ! IsUnitType( unit, UNIT_TYPE_HERO ) )
-		TriggerRegisterUnitEvent( death, unit, EVENT_UNIT_DEATH );
+};
+
+export const removeQuickShop = ( unit: unit ): void => {
+
+	const shopData = shopperData.get( unit );
+	if ( ! shopData ) return;
+
+	const { red, green, blue } = shopData;
+
+	shoppers.delete( red );
+	RemoveUnit( red );
+
+	shoppers.delete( blue );
+	RemoveUnit( blue );
+
+	shoppers.delete( green );
+	RemoveUnit( green );
+
+	shopperData.delete( unit );
 
 };
 
@@ -275,25 +302,17 @@ const onResearch = (): void => {
 
 };
 
-const onDeath = (): void => {
+const onUnitDeath = (): void => {
 
 	const unit = GetTriggerUnit();
 
-	const shopData = shopperData.get( unit );
-	if ( ! shopData ) return;
+	// If hero dies, hide the quick shops
+	if ( IsUnitType( unit, UNIT_TYPE_HERO ) )
+		onDeactivateQuickShops( unit );
 
-	const { red, green, blue } = shopData;
-
-	shoppers.delete( red );
-	RemoveUnit( red );
-
-	shoppers.delete( blue );
-	RemoveUnit( blue );
-
-	shoppers.delete( green );
-	RemoveUnit( green );
-
-	shopperData.delete( unit );
+	// If non-hero dies, remove them
+	else
+		removeQuickShop( unit );
 
 };
 
@@ -301,7 +320,8 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	onSpellCast( "quick shops", onQuickShops );
 	onSpellCast( "next shop", onNextShop );
-	onCreated( "quick shop", onUnitCreated );
+	onCreated( "quick shops", onUnitCreated );
+	onDeath( "quick shops", onUnitDeath );
 
 	TriggerRegisterTimerEvent( spin, 0.03, true );
 	wrappedTriggerAddAction( spin, "quick shops spin", spinShops );
@@ -321,7 +341,5 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_RESEARCH_FINISH );
 	wrappedTriggerAddAction( t, "quick shop research", onResearch );
-
-	TriggerAddAction( death, onDeath );
 
 } );
