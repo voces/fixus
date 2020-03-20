@@ -1,32 +1,36 @@
 
 # Version 10
-## Balance
+## Features
 - When a sheep destroys their own farms, gold coins are left behind equal to half the bounty of the farm
+- Replaced corner shops and -buy/-sell with Quick Shops system (no tax)
+- All bounties are now proximity based
+- Hulk
+  - Avatar now only grants armor
+  - Sheep increases in size with more saves
+- Added Wooden Shield item
+- Removed Super Stone Token
+- Wolf gold command now accepts an argument for how much gold
+- Charm of Mana Negation
+  - Renamed to Amulet of Mana Negation
+  - Changed icon to Absord Mana
+- Necklace of Spell Immunity replaced with Charms of Spell Breaking
+  - Costs 75 gold for 10 charms
+  - Charms are good for a single Spell Shield
+
+## Balance
+- Decreased Copious Blood HP/level (15 -> 10)
 - Decreased duration of White Wolf on summoned units (150 -> 65 seconds + 20% of remaining summon duration)
+- Added a level 2 to backpack research for Rock Golems
 - Increased Sentry Farm's Detector radius (1000 -> 1150)
+- Decreased gold cost of Potion of Invisibility (35 -> 30)
 - Buffed Health Stone
   - Increases base Health by 10,000
   - Increased health restored on use (5,000 -> 25,000)
-- Removed Super Stone Token from shops and quick buy
-- Added Wooden Shield item
-- Added a level 2 to backpack research for Rock Golems
-- Necklace of Spell Immunity replaced with Spell Shield Necklace
-  - Blocks one spell every second
-  - Has a 1-second Divine Shield, removing buffs
 - Decreased Stock Start Delay of Dragon Fire (923 -> 913)
-- Replaced corner shops and -buy/-sell with Quick Shops system
-- Decreased gold cost of Potion of Invisibility (35 -> 30)
-- Hulk
-  - Decreased Copious Blood HP/level (15 -> 10)
-  - Avatar now only grants armor
-  - Sheep increases in size with more saves
-
-## Features
-- Wolf gold command now accepts an argument for how much gold
-- All bounties are now proximity based
+- Dagger now grants 25% more mana regeneration
 
 ## Bug fixes
-- Hulk no longer causes stutters on use/end
+- Avatar no longer causes stutters on use/end
 
 ## Refactors
 - Wrapped all TriggerAddAction calls with logging

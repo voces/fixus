@@ -377,7 +377,7 @@ X
 }
 
 STRING 1495
-// Items: nspi (Spell Shield Necklace), Hotkey (Hotkey)
+// Items: I003 (White Wolf), Hotkey (Hotkey)
 {
 X
 }
@@ -922,12 +922,6 @@ STRING 1729
 Gives Rock Golems the ability to carry items.
 }
 
-STRING 1730
-// Abilities: Adtn (Detonate), Ubertip (Tooltip - Normal - Extended)
-{
-Destroys the Rock Golem, dispelling all magical buffs and draining <Adtn,DataA1> mana from each unit in an area around the Wisp. |n|cffffcc00Deals <Adtn,DataB1> damage to structures.|r
-}
-
 STRING 1731
 // Abilities: Asdg (Kaboom!), Ubertip (Tooltip - Normal - Extended)
 {
@@ -1265,7 +1259,7 @@ Attacker
 }
 
 STRING 1866
-// Items: I005 (Charm of Mana Negation), Hotkey (Hotkey)
+// Items: I005 (Amulet of Mana Negation), Hotkey (Hotkey)
 {
 A
 }
@@ -7342,20 +7336,8 @@ STRING 4249
 Confuses the enemy by creating an illusion. Dispels all magic from the Blademaster. |nLasts <AOmi,Dur3> seconds.|nDirect attacks deal <AOmi,DataB3,%>% damage.
 }
 
-STRING 4250
-// Items: I005 (Charm of Mana Negation), Name (Name)
-{
-Charm of Mana Negation
-}
-
-STRING 4251
-// Items: I005 (Charm of Mana Negation), Tip (Tooltip - Basic)
-{
-Purchase Charm of Mana Negation
-}
-
 STRING 4252
-// Items: I005 (Charm of Mana Negation), Ubertip (Tooltip - Extended)
+// Items: I005 (Amulet of Mana Negation), Ubertip (Tooltip - Extended)
 {
 Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
 }
@@ -7978,12 +7960,6 @@ STRING 4412
 Summons a Fel Stalker to fight for you. |nLasts <AIfh,Dur1> seconds.
 }
 
-STRING 4413
-// Items: mcou (Dagger), Ubertip (Tooltip - Extended)
-{
-Increases the Intelligence of the Hero by 4 when worn. Useful to sell for some gold.
-}
-
 STRING 4414
 // Items: gcel (Gloves of Haste), Ubertip (Tooltip - Extended)
 {
@@ -8039,7 +8015,7 @@ Increases the attack damage of the Hero by 50 when worn.
 }
 
 STRING 4427
-// Items: I005 (Charm of Mana Negation), Description (Description)
+// Items: I005 (Amulet of Mana Negation), Description (Description)
 {
 Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
 }
@@ -9065,7 +9041,7 @@ Increases the Hero's armor by <A00T,DataA1> when worn.
 }
 
 STRING 4637
-// Abilities: Aien (Unit Inventory), EditorSuffix (Editor Suffix)
+// Abilities: Asdg (Kaboom!), EditorSuffix (Editor Suffix)
 {
 (Rock Golem)
 }
@@ -9083,7 +9059,7 @@ Unit Inventory
 }
 
 STRING 4640
-// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
+// Abilities: Aien (Unit Inventory), EditorSuffix (Editor Suffix)
 {
 (Rock Golem)
 }
@@ -9203,7 +9179,7 @@ Backpack - [|cffffcc00Level 3|r]
 }
 
 STRING 4660
-// Upgrades: R005 (Skeletal Mastery), EditorSuffix (Editor Suffix)
+// Upgrades: Repm (Backpack), EditorSuffix (Editor Suffix)
 {
 (Rock Golem)
 }
@@ -9219,40 +9195,16 @@ STRING 4679
 Sheep
 }
 
-STRING 4680
-// Items: nspi (Spell Shield Necklace), Ubertip (Tooltip - Extended)
-{
-Passively blocks a negative spell that an enemy casts on the Hero once every <ANss,Cool1> seconds.|nWhen used, dispels all nearby magic effects.
-}
-
 STRING 4701
 // Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
 
-STRING 4711
-// Items: nspi (Spell Shield Necklace), Name (Name)
-{
-Spell Shield Necklace
-}
-
-STRING 4712
-// Items: nspi (Spell Shield Necklace), Tip (Tooltip - Basic)
-{
-Purchase Spell Shield Necklace
-}
-
 STRING 4714
 // Abilities: ANss (Spell Shield), EditorSuffix (Editor Suffix)
 {
 (Necklace)
-}
-
-STRING 4715
-// Abilities: AIdv (Item Divine Shield (Necklace)), Name (Name)
-{
-Item Divine Shield (Necklace)
 }
 
 STRING 4716
@@ -9424,7 +9376,7 @@ S
 }
 
 STRING 4756
-// Items: I003 (White Wolf), Hotkey (Hotkey)
+// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
 {
 X
 }
@@ -9439,12 +9391,6 @@ STRING 4758
 // Abilities: Asdg (Kaboom!), Hotkey (Hotkey - Normal)
 {
 A
-}
-
-STRING 4759
-// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
-{
-X
 }
 
 STRING 4760
@@ -9822,5 +9768,47 @@ STRING 4852
 // Abilities: A00W (Avatar), Ubertip (Tooltip - Normal - Extended)
 {
 Gives your sheep <A00W,DataA25> bonus armor. |nLasts <A00W,Dur25> seconds.
+}
+
+STRING 4853
+// Upgrades: R005 (Skeletal Mastery), EditorSuffix (Editor Suffix)
+{
+(Rock Golem)
+}
+
+STRING 4859
+// Items: I005 (Amulet of Mana Negation), Name (Name)
+{
+Amulet of Mana Negation
+}
+
+STRING 4860
+// Items: I005 (Amulet of Mana Negation), Tip (Tooltip - Basic)
+{
+Purchase Amulet of Mana Negation
+}
+
+STRING 4861
+// Items: I001 (Charms of Spell Breaking), Name (Name)
+{
+Charms of Spell Breaking
+}
+
+STRING 4862
+// Items: I001 (Charms of Spell Breaking), Tip (Tooltip - Basic)
+{
+Purchase Charms of Spell Breaking
+}
+
+STRING 4863
+// Items: I001 (Charms of Spell Breaking), Ubertip (Tooltip - Extended)
+{
+Blocks a negative spell that an enemy casts on the Hero once per charge. Contains <I001,uses> charges.
+}
+
+STRING 4865
+// Items: mcou (Dagger), Ubertip (Tooltip - Extended)
+{
+Increases the Intelligence of the Hero by 4 when worn. Increases the Hero's rate of mana regeneration by <AIrn,DataA1,%>% when worn.|nUseful to sell for some gold.
 }
 

@@ -26,6 +26,7 @@ const shoppers: Map<unit, unit> = new Map();
 const angles = fillArray( bj_MAX_PLAYERS, 15 * Math.PI / 180 );
 const spin = CreateTrigger();
 const move = CreateTrigger();
+const death = CreateTrigger();
 const sleeping: Set<unit> = new Set();
 let activeShops = 0;
 
@@ -223,6 +224,8 @@ const onItemSell = (): void => {
 
 export const addQuickShop = ( unit: unit ): void => {
 
+	if ( shopperData.has( unit ) ) return;
+
 	const owner = GetOwningPlayer( unit );
 	const angle = angles[ GetPlayerId( owner ) ];
 	const x = GetUnitX( unit );
@@ -249,6 +252,9 @@ export const addQuickShop = ( unit: unit ): void => {
 		red,
 	} );
 
+	if ( ! IsUnitType( unit, UNIT_TYPE_HERO ) )
+		TriggerRegisterUnitEvent( death, unit, EVENT_UNIT_DEATH );
+
 };
 
 const onUnitCreated = (): void => {
@@ -266,6 +272,28 @@ const onResearch = (): void => {
 	if ( GetResearched() !== GOLEM_INVENTORY_RESEARCH_TYPE ) return;
 
 	forEachPlayerUnit( GetTriggerPlayer(), unit => addQuickShop( unit ), onResearchFilter );
+
+};
+
+const onDeath = (): void => {
+
+	const unit = GetTriggerUnit();
+
+	const shopData = shopperData.get( unit );
+	if ( ! shopData ) return;
+
+	const { red, green, blue } = shopData;
+
+	shoppers.delete( red );
+	RemoveUnit( red );
+
+	shoppers.delete( blue );
+	RemoveUnit( blue );
+
+	shoppers.delete( green );
+	RemoveUnit( green );
+
+	shopperData.delete( unit );
 
 };
 
@@ -293,5 +321,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_RESEARCH_FINISH );
 	wrappedTriggerAddAction( t, "quick shop research", onResearch );
+
+	TriggerAddAction( death, onDeath );
 
 } );
