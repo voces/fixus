@@ -238,9 +238,9 @@ export const addQuickShop = ( unit: unit ): void => {
 
 	if ( GetOwningPlayer( unit ) !== GetLocalPlayer() ) {
 
-		SetUnitVertexColor( blue, 0, 0, 255, 0 );
-		SetUnitVertexColor( green, 0, 255, 0, 0 );
-		SetUnitVertexColor( red, 255, 0, 0, 0 );
+		SetUnitVertexColor( blue, 100, 100, 255, 0 );
+		SetUnitVertexColor( green, 150, 255, 150, 0 );
+		SetUnitVertexColor( red, 255, 200, 200, 0 );
 
 		SetUnitScale( blue, 0, 0, 0 );
 		SetUnitScale( green, 0, 0, 0 );
