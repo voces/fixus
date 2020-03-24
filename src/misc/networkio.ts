@@ -6,13 +6,18 @@ import { wrappedTriggerAddAction } from "../util/emitLog";
 import { forEachPlayer } from "../util/temp";
 import { isPlayingPlayer } from "../util/player";
 import { TriggerRegisterPlayerEventAll } from "../shared";
+import { log } from "util/log";
 
-type Options = {headers?: Record<string, string>; body?: string}
+type Options = {
+	body?: string;
+	headers?: Record<string, string>;
+	noResponse?: boolean;
+}
 type Request = {
-	callback: ( response: Value ) => void;
+	callback?: ( response: Value ) => void;
 	requestId: number;
 	response: string;
-	timer: timer;
+	timer: timer | null;
 	tries: 0;
 }
 
@@ -29,6 +34,21 @@ const calcInterval = ( tries: number ): number =>
 const activeRequests: Record<number, Request> = {};
 
 const networkedPlayers: player[] = [];
+const playerVersions: Map<player, number> = new Map();
+
+const queue: Array<[
+	string,
+	Options | null | undefined,
+	( ( response: Value ) => void ) | undefined,
+]> = [];
+let ready = false;
+
+const supportsNoResponse = ( player: player ): boolean => {
+
+	const version = playerVersions.get( player );
+	return version ? version >= 2 : false;
+
+};
 
 /**
  * Writes `contents` to `path`
@@ -58,12 +78,14 @@ const checkForResponse = ( request: Request ): void => {
 
 	// No response; try again if we have attempts remaining
 	if ( response == null && request.tries < MAX_TRIES )
-		return TimerStart(
-			request.timer,
-			calcInterval( request.tries ),
-			false,
-			() => checkForResponse( request ),
-		);
+		return request.timer ?
+			TimerStart(
+				request.timer,
+				calcInterval( request.tries ),
+				false,
+				() => checkForResponse( request ),
+			) :
+			undefined;
 
 	// We have something!
 
@@ -83,6 +105,12 @@ const checkForResponse = ( request: Request ): void => {
 };
 
 let fetcherOverride: player | null = null;
+/**
+ * Forces a player to make a fetching request instead of a random networked
+ * player.
+ * @param player Player to make the fetch request.
+ * @param callback Block of code in which the fetch override is enforced.
+ */
 const withFetcher = <T>( player: player, callback: () => T ): T => {
 
 	const oldFetcherOverride = fetcherOverride;
@@ -105,36 +133,70 @@ let requestId = 0;
  */
 export const fetch = (
 	url: string,
-	options: Options | null,
-	callback: ( response: Value ) => void,
+	options?: Options | null,
+	callback?: ( response: Value ) => void,
 ): void => {
 
-	const r = GetRandomInt( 0, networkedPlayers.length - 1 );
-	const fetcher = fetcherOverride || networkedPlayers[ r ];
+	try {
 
-	const request: Request = {
-		callback,
-		requestId: requestId ++,
-		response: "",
-		timer: CreateTimer(),
-		tries: 0,
-	};
+		if ( ! ready && url.indexOf( "proxy://" ) !== 0 ) {
 
-	activeRequests[ request.requestId ] = request;
+			log( "queueing", url );
+			queue.push( [ url, options, callback ] );
+			return;
 
-	if ( GetLocalPlayer() !== fetcher ) return;
+		}
 
-	writeFile(
-		`networkio/requests/${request.requestId}.txt`,
-		stringify( { url, ...options } ),
-	);
+		const r = GetRandomInt( 0, networkedPlayers.length - 1 );
+		const fetcher = fetcherOverride || networkedPlayers[ r ];
 
-	TimerStart(
-		request.timer,
-		calcInterval( request.tries ),
-		false,
-		() => checkForResponse( request ),
-	);
+		if ( ! callback && supportsNoResponse( fetcher ) ) {
+
+			if ( ! options ) options = {};
+			options.noResponse = true;
+
+		}
+
+		const request: Request = {
+			callback,
+			requestId: requestId ++,
+			response: "",
+			timer: options && options.noResponse ? null : CreateTimer(),
+			tries: 0,
+		};
+
+		activeRequests[ request.requestId ] = request;
+
+		if ( GetLocalPlayer() !== fetcher ) return;
+
+		log( "performing", { url, ...options } );
+
+		writeFile(
+			`networkio/requests/${request.requestId}.txt`,
+			stringify( { url, ...options } ),
+		);
+
+		if ( request.timer )
+			TimerStart(
+				request.timer,
+				calcInterval( request.tries ),
+				false,
+				() => checkForResponse( request ),
+			);
+
+	} catch ( err ) {
+
+		log( err );
+
+	}
+
+};
+
+const onReady = (): void => {
+
+	ready = true;
+	log( "ready", queue.length );
+	queue.forEach( args => fetch( ...args ) );
 
 };
 
@@ -181,13 +243,13 @@ const onSync = (): void => {
 
 	if ( chunk !== totalChunks ) return;
 
-	DestroyTimer( request.timer );
+	if ( request.timer ) DestroyTimer( request.timer );
 
 	const response = parse( request.response );
-	const callback = request.callback.bind( response );
+	const callback = request.callback ? request.callback.bind( response ) : null;
 	delete activeRequests[ requestId ];
 
-	callback( response );
+	if ( callback ) callback( response );
 
 };
 
@@ -211,20 +273,29 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	} );
 
 	// A magic function to determine which players have a proxy
+	let outstanding = 0;
 	forEachPlayer( p => {
 
 		if ( ! isPlayingPlayer( p ) ) return;
-		withFetcher( p, () => {
-
+		outstanding ++;
+		log( "checking", { outstanding } );
+		withFetcher( p, () =>
 			fetch( "proxy://version", null, version => {
 
-				if ( version == null ) return;
+				if ( version != null && typeof version === "number" ) {
 
-				networkedPlayers.push( p );
+					networkedPlayers.push( p );
+					playerVersions.set( p, version );
 
-			} );
+				}
 
-		} );
+				if ( -- outstanding === 0 )
+					onReady();
+
+				log( "done checking", { version, outstanding } );
+
+			} ),
+		);
 
 	} );
 
