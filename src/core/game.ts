@@ -17,6 +17,7 @@ import { endGameStats } from "../stats/mmd";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { addQuickShop } from "wolves/quickShops";
 import { timeout } from "../util/temp";
+import { fetch } from "misc/networkio";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -153,6 +154,8 @@ const spawnFakeSheep = (): void => {
  * Spawns sheep
  */
 const initToStart = (): void => {
+
+	fetch( "http://localhost:8080/test.txt" );
 
 	TimerDialogDisplay( gameTimerDialog, false );
 
