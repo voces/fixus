@@ -14,24 +14,35 @@ const IDEAL_SHEEP: Record<number, number> = {
 	12: 8,
 };
 
+enum Direction {
+	wolves = - 1,
+	sheep = 1,
+}
+
 export const forceTeams = (
-	targetTeam: Array<player>,
-	sourceTeam: Array<player>,
-	targetSize: number,
-	direction: - 1 | 1,
+	sheep: Array<player>,
+	wolves: Array<player>,
+	idealSheep: number,
 	history: Map<player, number>,
 ): void => {
 
-	while ( targetTeam.length < targetSize ) {
+	const [ direction, source, target, ideal ] = sheep.length > idealSheep ?
+		[ Direction.wolves, sheep, wolves, sheep.length + wolves.length - idealSheep ] :
+		[ Direction.sheep, wolves, sheep, idealSheep ];
 
-		let high = - Infinity * direction;
-		const pool = sourceTeam.reduce( ( pool, player ) => {
+	while ( target.length < ideal ) {
 
-			const playerHistory = history.get( player ) || Infinity;
+		if ( source.length === 0 )
+			throw "not enough players";
+
+		let high = Infinity * direction;
+		const pool = source.reduce( ( pool, player ) => {
+
+			const playerHistory = history.get( player ) || 0;
 			if (
 				// drafting towards wolf; get most sheep
-				direction === - 1 && playerHistory > high ||
-				direction === 1 && playerHistory < high
+				direction === Direction.sheep && playerHistory < high ||
+				direction === Direction.wolves && playerHistory > high
 			) {
 
 				high = playerHistory;
@@ -46,12 +57,12 @@ export const forceTeams = (
 
 		}, [] as Array<player> );
 
-		while ( targetTeam.length < targetSize && pool.length > 0 ) {
+		while ( target.length < ideal && pool.length > 0 ) {
 
 			const r = GetRandomInt( 0, pool.length - 1 );
 			const p = pool.splice( r, 1 )[ 0 ];
-			targetTeam.push( p );
-			sourceTeam.splice( sourceTeam.indexOf( p ), 1 );
+			target.push( p );
+			source.splice( source.indexOf( p ), 1 );
 
 		}
 
@@ -93,12 +104,11 @@ export const getTeams = (
 
 	}
 
+	// return if we're good!
 	if ( sheep.length === idealSheep ) return { sheep, wolves };
 
 	const history = new Map( entries.map( ( [ player, data ] ) => [ player, data.netPreference ] ) );
-
-	if ( sheep.length < idealSheep ) forceTeams( sheep, wolves, idealSheep, 1, history );
-	else forceTeams( wolves, sheep, idealWolves, - 1, history );
+	forceTeams( sheep, wolves, idealSheep, history );
 
 	return { sheep, wolves };
 
