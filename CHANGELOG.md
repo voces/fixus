@@ -1,4 +1,14 @@
 
+# Version 10a
+## Features
+- Swaped Potion of Speed and Stone Token in shop
+
+## Bug fixes
+- Charms of Spell Breaking properly perish when used
+- Fixed Charms of Spell Breaking hotkey (A -> X)
+- Events are now emitted when the last sheep is killed
+- Exceptions no longer occur when mirror imaging
+
 # Version 10
 ## Features
 - When a sheep destroys their own farms, gold coins are left behind equal to half the bounty of the farm

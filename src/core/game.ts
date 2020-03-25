@@ -16,6 +16,7 @@ import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { addQuickShop } from "wolves/quickShops";
+import { timeout } from "../util/temp";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -81,16 +82,18 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 
 			}
 
-	PolledWait( 15 );
+	timeout( 15, () => {
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			if ( IsPlayerInForce( Player( i ), wolfTeam ) )
 
-			if ( winner === "wolves" ) CustomVictoryBJ( Player( i ), true, true );
+				if ( winner === "wolves" ) CustomVictoryBJ( Player( i ), true, true );
+				else CustomDefeatBJ( Player( i ), defeatString );
+
+			else if ( winner === "sheep" ) CustomVictoryBJ( Player( i ), true, true );
 			else CustomDefeatBJ( Player( i ), defeatString );
 
-		else if ( winner === "sheep" ) CustomVictoryBJ( Player( i ), true, true );
-		else CustomDefeatBJ( Player( i ), defeatString );
+	} );
 
 };
 

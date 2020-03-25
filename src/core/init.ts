@@ -34,7 +34,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "misc" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Commands" );
+		QuestSetTitle( q, "Misc commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNWarEagle.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -44,7 +44,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "sheep" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Sheep Commands" );
+		QuestSetTitle( q, "Sheep commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNSheep.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -54,7 +54,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "wolf" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Wolf Commands" );
+		QuestSetTitle( q, "Wolf commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNRaider.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -64,7 +64,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "host" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Host Commands" );
+		QuestSetTitle( q, "Host commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNHeroPaladin.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -96,7 +96,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "sandbox" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Sandbox Commands" );
+		QuestSetTitle( q, "Sandbox commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNDwarfCar.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
