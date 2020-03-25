@@ -16,11 +16,11 @@ import { wrappedTriggerAddAction } from "util/emitLog";
 // Trigger: coreInit
 // ===========================================================================
 
-const argHelp = ( arg: Arg ): string =>
+export const argHelp = ( arg: Arg ): string =>
 	arg.required === undefined || arg.required ? `<${arg.name}>` : `[${arg.name}]`;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const commandHelp = ( command: Command<any> ): string =>
+export const commandHelp = ( command: Command<any> ): string =>
 	[
 		"-" + command.command,
 		command.args ? " " + command.args.map( arg => argHelp( arg ) ).join( " " ) : "",
