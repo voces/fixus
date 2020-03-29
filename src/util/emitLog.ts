@@ -10,7 +10,6 @@ export const emitLog = ( key: string, arg: any, ...args: Array<any> ): void => {
 	const allArgs = [ arg, ...args ];
 	const message = allArgs.map( v => termToString( v, false ) ).join( " " );
 	MMD__LogEvent( "log", key, message );
-	fetch()
 	if ( isSandbox() ) log( key, ...allArgs );
 
 };
