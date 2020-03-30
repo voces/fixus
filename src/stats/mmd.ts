@@ -9,6 +9,7 @@ import {
 	MMD_GOAL_HIGH,
 	MMD_GOAL_LOW,
 	MMD_GOAL_NONE,
+	MMD_LogCustom,
 	MMD_OP_SET,
 	MMD_SUGGEST_NONE,
 	MMD_TYPE_INT,
@@ -171,6 +172,10 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 		MMD_DefineValue( "wolf gold", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "sheep killed", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
 		MMD_DefineValue( "wolf level", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
+
+		// todo: don't hardcode these
+		MMD_LogCustom( "repo", "voces/fixus" );
+		MMD_LogCustom( "version", "11" );
 
 	} );
 

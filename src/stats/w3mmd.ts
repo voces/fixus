@@ -1,5 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { timeout } from "../util/temp";
 
 export const MMD_GOAL_NONE = 101;
 export const MMD_GOAL_HIGH = 102;
@@ -24,7 +25,7 @@ const MMD_FLAG_LEAVER = 104;
 const MMD_FLAG_PRACTICING = 105;
 
 const MMD__chars = "bj_MAX3456789_-+= \\!@#$^&*()/?>.<,;:'\"{}[]|`~";
-const MMD__num_chars = StringLength( MMD__chars );
+const MMD__num_chars = MMD__chars.length;
 const MMD__flags: Array<string> = [];
 const MMD__goals: Array<string> = [];
 const MMD__ops: Array<string> = [];
@@ -41,11 +42,11 @@ const MMD__FILENAME = "MMD.Dat";
 const MMD__M_KEY_VAL = "val:";
 const MMD__M_KEY_CHK = "chk:";
 const MMD__NUM_SENDERS_NAIVE = 1;
-const MMD__NUM_SENDERS_SAFE = 3;
-let MMD__num_senders = MMD__NUM_SENDERS_NAIVE;
+// const MMD__NUM_SENDERS_SAFE = 3;
+const MMD__num_senders = MMD__NUM_SENDERS_NAIVE;
 let MMD__num_msg = 0;
 
-const MMD__clock = CreateTimer();
+let MMD__clock: timer;
 let MMD__q_head = 0;
 let MMD__q_tail = 0;
 
@@ -89,7 +90,7 @@ const s__MMD__QueueNode__allocate = (): number => {
 const MMD_RaiseGuard = ( reason: string ): void => {
 
 	print( reason );
-	MMD__num_senders = MMD__NUM_SENDERS_SAFE;
+	// MMD__num_senders = MMD__NUM_SENDERS_SAFE;
 
 };
 
@@ -517,28 +518,26 @@ export const MMD_LogCustom = ( unique_identifier: string, data: string ): void =
 ///////////////////////////////////////////////////////////////
 
 // Emits initialization data
-const MMD__init2 = (): void => {
+const delayedInit = (): void => {
 
 	MMD__initialized = true;
 
-	MMD__emit( "init version " + I2S( MMD__MINIMUM_PARSER_VERSION ) + " " + I2S( MMD__CURRENT_VERSION ) );
+	// MMD__emit( "init version " + I2S( MMD__MINIMUM_PARSER_VERSION ) + " " + I2S( MMD__CURRENT_VERSION ) );
 
-	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_USER && GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING )
-			MMD__emit( "init pid " + I2S( i ) + " " + MMD__pack( GetPlayerName( Player( i ) ) ) );
+	// for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+	// 	if ( GetPlayerController( Player( i ) ) === MAP_CONTROL_USER && GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING )
+	// 		MMD__emit( "init pid " + I2S( i ) + " " + MMD__pack( GetPlayerName( Player( i ) ) ) );
 
 	const t = CreateTrigger();
-	TriggerAddAction( t, MMD__tick );
+	TriggerAddAction( t, () => MMD__tick );
 	TriggerRegisterTimerEvent( t, 0.37, true );
 
 };
 
 // Places init2 on a timer, initializes game cache, and translates constants
-const MMD__init = (): void => {
+const init = (): void => {
 
-	const t = CreateTrigger();
-	TriggerRegisterTimerEvent( t, 0, false );
-	TriggerAddAction( t, MMD__init2 );
+	timeout( 0, delayedInit );
 
 	MMD__goals[ MMD_GOAL_NONE ] = "none";
 	MMD__goals[ MMD_GOAL_HIGH ] = "high";
@@ -564,9 +563,10 @@ const MMD__init = (): void => {
 
 	FlushGameCache( InitGameCache( MMD__FILENAME ) );
 	MMD__gc = InitGameCache( MMD__FILENAME );
+	MMD__clock = CreateTimer();
 	TimerStart( MMD__clock, 999999999, false, () => { /* do nothing */ } );
 	MMD__prepC2I();
 
 };
 
-addScriptHook( W3TS_HOOK.MAIN_AFTER, MMD__init );
+addScriptHook( W3TS_HOOK.MAIN_AFTER, init );
