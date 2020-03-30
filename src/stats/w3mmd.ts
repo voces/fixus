@@ -36,8 +36,8 @@ let MMD__initialized = false;
 let MMD__gc: gamecache;
 const MMD__ESCAPED_CHARS = " \\";
 
-const MMD__CURRENT_VERSION = 1;
-const MMD__MINIMUM_PARSER_VERSION = 1;
+// const MMD__CURRENT_VERSION = 1;
+// const MMD__MINIMUM_PARSER_VERSION = 1;
 const MMD__FILENAME = "MMD.Dat";
 const MMD__M_KEY_VAL = "val:";
 const MMD__M_KEY_CHK = "chk:";

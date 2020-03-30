@@ -2,7 +2,6 @@
 import { log, termToString } from "./log";
 import { defineEvent } from "../stats/w3mmd2";
 import { isSandbox } from "../shared";
-import { timeout } from "./temp";
 
 export const logEvent = defineEvent( "log", "${0}: {1}", "key", "message" );
 

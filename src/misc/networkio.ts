@@ -6,7 +6,7 @@ import { wrappedTriggerAddAction } from "../util/emitLog";
 import { forEachPlayer } from "../util/temp";
 import { isPlayingPlayer } from "../util/player";
 import { TriggerRegisterPlayerEventAll } from "../shared";
-import { log } from "util/log";
+import { log } from "../util/log";
 
 type Options = {
 	body?: string;

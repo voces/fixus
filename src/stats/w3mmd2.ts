@@ -51,6 +51,7 @@ const pack = ( value: string ): string => {
  */
 const emit = ( message: string ): void => {
 
+	// We block and queue messages if init hasn't finished yet
 	if ( ! message.startsWith( "init" ) && ! ready ) {
 
 		queue.push( message );
@@ -60,9 +61,10 @@ const emit = ( message: string ): void => {
 
 	const thisMessageId = messageId ++;
 
+	// grab a player to emit the message
 	let emitter: player | null = null;
-
-	while ( emitter == null ) {
+	let remainingTries = 1000;
+	while ( emitter == null && remainingTries -- > 0 ) {
 
 		const testPlayer = Player( GetRandomInt( 0, bj_MAX_PLAYERS ) );
 
@@ -73,10 +75,10 @@ const emit = ( message: string ): void => {
 			emitter = testPlayer;
 
 	}
-
 	if ( ! emitter )
 		throw "w3mmd: could not find an emitter";
 
+	// only the emitter should emit 😃
 	if ( emitter === GetLocalPlayer() ) {
 
 		StoreInteger( cache, "val:" + thisMessageId, message, thisMessageId + message.length );
@@ -97,9 +99,7 @@ export const setPlayerFlag = ( player: player, flag: "drawer" | "loser" | "winne
 
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface FixedLengthArray<T extends any, L extends number> extends Array<T> {
-    0: T;
+interface FixedLengthArray<T, L extends number> extends Array<T> {
 	length: L;
 }
 
@@ -121,7 +121,7 @@ export const defineEvent = <L extends number>(
 
 	const packedName = pack( name );
 	const packedArgs = args.map( arg => pack( arg ) ).join( " " );
-	emit( `DefEvent ${packedName} ${args.length}${args.length > 0 ? ` ${packedArgs}` : ""}` );
+	emit( `DefEvent ${packedName} ${args.length}${args.length > 0 ? ` ${packedArgs}` : ""} ${format}` );
 
 	return ( ...args: FixedLengthArray<string, L> ): void => {
 

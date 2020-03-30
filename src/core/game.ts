@@ -12,7 +12,7 @@ import {
 	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
+import { defineEvent } from "../stats/w3mmd2";
 import { endGameStats } from "../stats/mmd";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { addQuickShop } from "wolves/quickShops";
@@ -46,8 +46,7 @@ export const flagDesync = (): void => {
 
 	if ( desynced || gameEnded ) return;
 
-	MMD__DefineEvent( "desync", "There was a desync" );
-	MMD__LogEvent( "desync" );
+	defineEvent( "desync", "There was a desync" );
 
 	desynced = true;
 
