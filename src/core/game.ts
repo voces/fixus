@@ -48,7 +48,7 @@ export const flagDesync = (): void => {
 
 	if ( desynced || gameEnded ) return;
 
-	defineEvent( "desync", "There was a desync" );
+	defineEvent( "desync", "There was a desync" )();
 
 	desynced = true;
 
