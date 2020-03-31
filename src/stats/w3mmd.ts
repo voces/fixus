@@ -1,6 +1,5 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { timeout } from "../util/temp";
 
 const ESCAPED_CHARS = " \\";
 const OPERATION_MAP = {
@@ -208,7 +207,10 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	FlushGameCache( InitGameCache( "MMD.dat" ) );
 	cache = InitGameCache( "MMD.dat" );
 
-	timeout( 0, () => {
+	const t = CreateTimer();
+	TimerStart( t, 0, false, () => {
+
+		DestroyTimer( t );
 
 		emit( "init version 1 1" );
 
