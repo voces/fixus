@@ -9,15 +9,28 @@ import {
 } from "shared";
 import { board } from "misc/multiboard";
 import { changelog } from "misc/changelog";
-import { commands, Command, Arg } from "util/commands";
+import { commands, Command, Arg, isArgRequired } from "util/commands";
 import { wrappedTriggerAddAction } from "util/emitLog";
 
 // ===========================================================================
 // Trigger: coreInit
 // ===========================================================================
 
-export const argHelp = ( arg: Arg ): string =>
-	arg.required === undefined || arg.required ? `<${arg.name}>` : `[${arg.name}]`;
+export const argHelp = ( arg: Arg<string | number> ): string => {
+
+	const defaultValue = arg.default;
+	const defaultStringified = defaultValue !== undefined ?
+		typeof defaultValue === "string" ?
+			defaultValue :
+			typeof defaultValue === "number" ?
+				defaultValue.toString() : undefined
+		: undefined;
+
+	const defaultPart = defaultStringified === undefined ? "" : `=${defaultStringified}`;
+
+	return isArgRequired( arg ) ? `<${arg.name}>` : `[${arg.name}${defaultPart}]`;
+
+};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const commandHelp = ( command: Command<any> ): string =>

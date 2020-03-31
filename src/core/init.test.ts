@@ -56,4 +56,18 @@ describe( "commandHelp", () => {
 		} ) ).toEqual( "-command <arg1> <arg2> [arg3]\nsome help info" ),
 	);
 
+	it( "with defaults", () =>
+		expect( commandHelp( {
+			category: "misc",
+			command: "command",
+			description: "some help info",
+			fn: () => { /* do nothing */ },
+			args: [
+				{ name: "arg1" },
+				{ name: "arg2", default: 7 },
+				{ name: "arg3", default: "help", required: false },
+			],
+		} ) ).toEqual( "-command <arg1> [arg2=7] [arg3=help]\nsome help info" ),
+	);
+
 } );
