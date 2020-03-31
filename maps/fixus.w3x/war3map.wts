@@ -935,19 +935,19 @@ Factory Farm
 }
 
 STRING 1738
-// Units: u002 (Sheep), Ubertip (Tooltip - Extended)
+// Units: u002 (), Ubertip (Tooltip - Extended)
 {
 This is a SHEEP!
 }
 
 STRING 1739
-// Units: u002 (Sheep), Tip (Tooltip - Basic)
+// Units: u002 (), Tip (Tooltip - Basic)
 {
 Baaahhh Bahhh!!
 }
 
 STRING 1740
-// Units: u002 (Sheep), Description (Description)
+// Units: u002 (), Description (Description)
 {
 These furry creatures are fun to slaughter!
 }
@@ -971,7 +971,7 @@ Dolly has blessed you with swiftness.
 }
 
 STRING 1765
-// Units: u002 (Sheep), EditorSuffix (Name - Editor Suffix)
+// Units: u002 (), EditorSuffix (Name - Editor Suffix)
 {
 (Factory)
 }
@@ -9190,11 +9190,6 @@ STRING 4661
 (Rock Golem)
 }
 
-STRING 4701
-{
-Sheep
-}
-
 STRING 4714
 // Abilities: ANss (Spell Shield), EditorSuffix (Editor Suffix)
 {
@@ -9466,7 +9461,6 @@ V
 }
 
 STRING 4790
-// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
@@ -9677,7 +9671,7 @@ Increases the Intelligence of the Hero by 4 when worn. Increases the Hero's rate
 
 STRING 4866
 {
-Ultimate Sheep Tag Fixus 10a
+Ultimate Sheep Tag Fixus 11
 }
 
 STRING 4867
@@ -9688,7 +9682,7 @@ STRING 4867
 STRING 4868
 {
 Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
-To track your stats and rating, upload your replays. https://wc3stats.com/upload
+To track your stats and rating, upload your replays to https://wc3stats.com/upload
 }
 
 STRING 4869
@@ -9757,24 +9751,24 @@ Wolf 4
 }
 
 STRING 4882
-{
-Wolves
-}
-
-STRING 4883
-// Units: u002 (Sheep), Name (Name)
+// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
 
-STRING 4884
+STRING 4883
 {
 You can't kill a fellow sheep. -_-
 }
 
-STRING 4885
+STRING 4884
 {
 Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4885
+{
+Discord: http://tiny.cc/sheeptag
 }
 
 STRING 4886
@@ -9784,27 +9778,26 @@ Discord: http://tiny.cc/sheeptag
 
 STRING 4887
 {
-Discord: http://tiny.cc/sheeptag
+Commands
 }
 
 STRING 4888
 {
-Commands
+Change log
 }
 
 STRING 4889
 {
-Change log
+Kill things to get gold faster.
 }
 
 STRING 4890
 {
-Fixus 10a
+Lumber is granted for reaching level 3 and each level thereafter.
 }
 
 STRING 4891
-// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
 {
-X
+Fixus 11
 }
 

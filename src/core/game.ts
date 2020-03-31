@@ -12,7 +12,7 @@ import {
 	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { MMD__DefineEvent, MMD__LogEvent } from "../stats/w3mmd";
+import { defineEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { addQuickShop } from "wolves/quickShops";
@@ -42,12 +42,13 @@ const initialSpawns: Array<{x: number; y: number}> = [];
 // Trigger: coreGame
 // ===========================================================================
 
+export const isGameEnded = (): boolean => gameEnded;
+
 export const flagDesync = (): void => {
 
 	if ( desynced || gameEnded ) return;
 
-	MMD__DefineEvent( "desync", "There was a desync" );
-	MMD__LogEvent( "desync" );
+	defineEvent( "desync", "There was a desync" )();
 
 	desynced = true;
 
@@ -63,7 +64,11 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 	gameEnded = true;
 
 	TimerDialogDisplay( gameTimerDialog, false );
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, "Fixus by |CFF959697Chakra|r\nJoin the community at http://tiny.cc/sheeptag\nUpload replays to https://wc3stats.com/upload" );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, [
+		"Fixus by |CFF959697Chakra|r",
+		"Join the community at http://tiny.cc/sheeptag",
+		"Upload replays to https://wc3stats.com/upload",
+	].join( "\n" ) );
 	TimerStart( gameTimer, 15, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( gameTimerDialog, "Ending in..." );
 	TimerDialogDisplay( gameTimerDialog, true );

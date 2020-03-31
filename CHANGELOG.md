@@ -1,4 +1,11 @@
 
+# Version 11
+## Features
+- Added "leaver" and "practicing" player flags
+
+## Refactors
+- Rewrote w3mmd, aiming for less desyncs + type safety
+
 # Version 10a
 ## Features
 - Swaped Potion of Speed and Stone Token in shop
