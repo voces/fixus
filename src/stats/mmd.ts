@@ -82,7 +82,10 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 				}
 
-				if ( ! desynced && ! isSandbox() )
+				if ( isSandbox() )
+					setPlayerFlag( Player( i ), "practicing" );
+
+				else if ( ! desynced )
 					if ( IsPlayerInForce( Player( i ), wolfTeam ) )
 
 						if ( winner === "wolves" ) setPlayerFlag( Player( i ), "winner" );

@@ -42,6 +42,8 @@ const initialSpawns: Array<{x: number; y: number}> = [];
 // Trigger: coreGame
 // ===========================================================================
 
+export const isGameEnded = (): boolean => gameEnded;
+
 export const flagDesync = (): void => {
 
 	if ( desynced || gameEnded ) return;
@@ -62,7 +64,11 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 	gameEnded = true;
 
 	TimerDialogDisplay( gameTimerDialog, false );
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, "Fixus by |CFF959697Chakra|r\nJoin the community at http://tiny.cc/sheeptag\nUpload replays to https://wc3stats.com/upload" );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, [
+		"Fixus by |CFF959697Chakra|r",
+		"Join the community at http://tiny.cc/sheeptag",
+		"Upload replays to https://wc3stats.com/upload",
+	].join( "\n" ) );
 	TimerStart( gameTimer, 15, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( gameTimerDialog, "Ending in..." );
 	TimerDialogDisplay( gameTimerDialog, true );
