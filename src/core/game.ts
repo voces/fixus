@@ -12,7 +12,7 @@ import {
 	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { defineEvent } from "../stats/w3mmd2";
+import { defineEvent } from "../stats/w3mmd";
 import { endGameStats } from "../stats/mmd";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { addQuickShop } from "wolves/quickShops";

@@ -29,7 +29,6 @@ import "sheep/jotyeFarm";
 import "sheep/saveDeath";
 import "sheep/wispLeave";
 import "stats/mmd";
-import "stats/w3mmd2";
 import "util/todo";
 import "wolves/cloakOfFlames";
 import "wolves/dragonFire";

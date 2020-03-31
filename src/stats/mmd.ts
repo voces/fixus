@@ -1,22 +1,5 @@
 
-import {
-	MMD__DefineEvent,
-	MMD__LogEvent,
-	MMD_DefineValue,
-	MMD_FLAG_LOSER,
-	MMD_FLAG_WINNER,
-	MMD_FlagPlayer,
-	MMD_GOAL_HIGH,
-	MMD_GOAL_LOW,
-	MMD_GOAL_NONE,
-	MMD_LogCustom,
-	MMD_OP_SET,
-	MMD_SUGGEST_NONE,
-	MMD_TYPE_INT,
-	MMD_TYPE_STRING,
-	MMD_UpdateValueInt,
-	MMD_UpdateValueString,
-} from "./w3mmd";
+import { defineEvent, defineNumberValue, defineStringValue, setPlayerFlag, emitCustom } from "./w3mmd";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
 	fillArray,
@@ -36,6 +19,34 @@ const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
 const unitsKilled = fillArray( bj_MAX_PLAYERS, 0 );
 const deaths = fillArray( bj_MAX_PLAYERS, 0 );
 
+// events
+const logAcquire = defineEvent( "acquire", "{0} acquired {1}", "player", "item" );
+const logKill = defineEvent( "kill", "{0} killed {1}", "killer", "killed" );
+const logDeath = defineEvent( "death", "{0} killed by {1}", "killed", "killer" );
+const logSave = defineEvent( "save", "{0} saved {1}", "sheep", "wisp" );
+
+// values
+
+// sheep
+const updateFarmsBuilt = defineNumberValue( "farms built", "int", "high", "none" );
+const updateSaves = defineNumberValue( "saves", "int", "high", "none" );
+const updateSheepDeaths = defineNumberValue( "sheep deaths", "int", "low", "none" );
+const updateSheepGold = defineNumberValue( "sheep gold", "int", "high", "none" );
+const updateSheepMaxLevel = defineNumberValue( "sheep max level", "int", "high", "none" );
+const updateSheepSpecialization = defineStringValue( "sheep specialization", "none" );
+const updateUnitsKilledAsSheep = defineNumberValue( "units killed as sheep", "int", "high", "none" );
+
+// wolves
+const updateFarmsKilled = defineNumberValue( "farms killed", "int", "high", "none" );
+const updateWolfDeaths = defineNumberValue( "wolf deaths", "int", "low", "none" );
+const updateWolfGold = defineNumberValue( "wolf gold", "int", "high", "none" );
+const updateSheepKilled = defineNumberValue( "sheep killed", "int", "high", "none" );
+const updateWolfLevel = defineNumberValue( "wolf level", "int", "high", "none" );
+
+// todo: don't hardcode these
+emitCustom( "repo", "voces/fixus" );
+emitCustom( "version", "11" );
+
 export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): void => {
 
 	try {
@@ -50,35 +61,35 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 				if ( IsPlayerInForce( Player( i ), wolfTeam ) ) {
 
 					// wolf values
-					MMD_UpdateValueInt( "farms killed", Player( i ), MMD_OP_SET, unitsKilled[ i ] );
-					MMD_UpdateValueInt( "wolf deaths", Player( i ), MMD_OP_SET, deaths[ i ] );
-					MMD_UpdateValueInt( "wolf gold", Player( i ), MMD_OP_SET, GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
-					MMD_UpdateValueInt( "sheep killed", Player( i ), MMD_OP_SET, saveskills[ i ] );
-					MMD_UpdateValueInt( "wolf level", Player( i ), MMD_OP_SET, GetHeroLevel( wolfUnit( Player( i ) ) ) );
+					updateFarmsKilled( Player( i ), "set", unitsKilled[ i ] );
+					updateWolfDeaths( Player( i ), "set", deaths[ i ] );
+					updateWolfGold( Player( i ), "set", GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
+					updateSheepKilled( Player( i ), "set", saveskills[ i ] );
+					updateWolfLevel( Player( i ), "set", GetHeroLevel( wolfUnit( Player( i ) ) ) );
 
 				} else {
 
 					// sheep values
-					MMD_UpdateValueInt( "farms built", Player( i ), MMD_OP_SET, structuresBuilt[ i ] );
-					MMD_UpdateValueInt( "saves", Player( i ), MMD_OP_SET, saveskills[ i ] );
-					MMD_UpdateValueInt( "sheep deaths", Player( i ), MMD_OP_SET, deaths[ i ] );
-					MMD_UpdateValueInt( "sheep gold", Player( i ), MMD_OP_SET, GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
-					MMD_UpdateValueInt( "sheep max level", Player( i ), MMD_OP_SET, playerSpecializations[ i ].maxLevel );
+					updateFarmsBuilt( Player( i ), "set", structuresBuilt[ i ] );
+					updateSaves( Player( i ), "set", saveskills[ i ] );
+					updateSheepDeaths( Player( i ), "set", deaths[ i ] );
+					updateSheepGold( Player( i ), "set", GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
+					updateSheepMaxLevel( Player( i ), "set", playerSpecializations[ i ].maxLevel );
 					const playerSpecialization = playerSpecializations[ i ].specialization;
 					if ( playerSpecialization != null )
-						MMD_UpdateValueString( "sheep specialization", Player( i ), specializationNames.get( playerSpecialization ) || "unknown" );
-					MMD_UpdateValueInt( "units killed as sheep", Player( i ), MMD_OP_SET, unitsKilled[ i ] );
+						updateSheepSpecialization( Player( i ), specializationNames.get( playerSpecialization ) || "unknown" );
+					updateUnitsKilledAsSheep( Player( i ), "set", unitsKilled[ i ] );
 
 				}
 
 				if ( ! desynced && ! isSandbox() )
 					if ( IsPlayerInForce( Player( i ), wolfTeam ) )
 
-						if ( winner === "wolves" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
-						else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
+						if ( winner === "wolves" ) setPlayerFlag( Player( i ), "winner" );
+						else setPlayerFlag( Player( i ), "loser" );
 
-					else if ( winner === "sheep" ) MMD_FlagPlayer( Player( i ), MMD_FLAG_WINNER );
-					else MMD_FlagPlayer( Player( i ), MMD_FLAG_LOSER );
+					else if ( winner === "sheep" ) setPlayerFlag( Player( i ), "winner" );
+					else setPlayerFlag( Player( i ), "loser" );
 
 			}
 
@@ -105,8 +116,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 		if ( IsUnitAlly( GetKillingUnit(), GetOwningPlayer( GetDyingUnit() ) ) ) {
 
 			if ( GetUnitTypeId( GetDyingUnit() ) === WISP_TYPE )
-				MMD__LogEvent(
-					"save",
+				logSave(
 					GetPlayerName( GetOwningPlayer( GetKillingUnit() ) ),
 					GetPlayerName( GetOwningPlayer( GetDyingUnit() ) ),
 				);
@@ -120,13 +130,11 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 			deaths[ GetPlayerId( GetOwningPlayer( GetDyingUnit() ) ) ] ++;
 			// we emit two events for parsable graphs
-			MMD__LogEvent(
-				"kill",
+			logKill(
 				GetPlayerName( GetOwningPlayer( GetKillingUnit() ) ),
 				GetPlayerName( GetOwningPlayer( GetDyingUnit() ) ),
 			);
-			MMD__LogEvent(
-				"death",
+			logDeath(
 				GetPlayerName( GetOwningPlayer( GetDyingUnit() ) ),
 				GetPlayerName( GetOwningPlayer( GetKillingUnit() ) ),
 			);
@@ -140,44 +148,13 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	} );
 
-	let t = CreateTrigger();
+	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
-	wrappedTriggerAddAction( t, "mmd acquire", (): void => MMD__LogEvent(
-		"acquire",
-		GetPlayerName( GetOwningPlayer( GetTriggerUnit() ) ),
-		GetItemName( GetManipulatedItem() ) ),
-	);
-
-	t = CreateTrigger();
-	TriggerRegisterTimerEvent( t, 0, false );
-	wrappedTriggerAddAction( t, "mmd delay init", () => {
-
-		MMD__DefineEvent( "acquire", "{0} acquired {1}", "player", "item" );
-		MMD__DefineEvent( "kill", "{0} killed {1}", "killer", "killed" );
-		MMD__DefineEvent( "death", "{0} killed by {1}", "killed", "killer" );
-		MMD__DefineEvent( "save", "{0} saved {1}", "sheep", "wisp" );
-
-		// sheep
-		MMD_DefineValue( "farms built", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "saves", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "sheep deaths", MMD_TYPE_INT, MMD_GOAL_LOW, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "sheep gold", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "sheep max level", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "sheep specialization", MMD_TYPE_STRING, MMD_GOAL_NONE, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "units killed as sheep", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-
-		// wolves
-		MMD_DefineValue( "farms killed", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "wolf deaths", MMD_TYPE_INT, MMD_GOAL_LOW, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "wolf gold", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "sheep killed", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-		MMD_DefineValue( "wolf level", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_NONE );
-
-		// todo: don't hardcode these
-		MMD_LogCustom( "repo", "voces/fixus" );
-		MMD_LogCustom( "version", "11" );
-
-	} );
+	wrappedTriggerAddAction( t, "mmd acquire", (): void =>
+		logAcquire(
+			GetPlayerName( GetOwningPlayer( GetTriggerUnit() ) ),
+			GetItemName( GetManipulatedItem() ),
+		) );
 
 	onConstructionStart( "mmd", (): void => {
 
