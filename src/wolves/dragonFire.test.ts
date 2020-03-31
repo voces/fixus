@@ -17,6 +17,9 @@ jest.mock(
 
 it( "smoke", () => {
 
+	SetPlayerController( Player( 0 ), MAP_CONTROL_USER );
+	Player( 0 ).slotState = PLAYER_SLOT_STATE_PLAYING;
+
 	executeHooksMainAfter();
 	main();
 	CreateUnit( Player( 0 ), FourCC( "hhou" ), 0, 0, 270 );
