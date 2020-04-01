@@ -2,7 +2,6 @@
 // This file should not import anything from this repo except libs
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { AbilityRangePreload } from "./misc/abilityPreload";
 
 export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
@@ -219,9 +218,3 @@ export const isUnitSheep = ( unit: unit ): boolean =>
 
 export const isUnitWolf = ( unit: unit ): boolean =>
 	wolfTypes.includes( GetUnitTypeId( unit ) );
-
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	AbilityRangePreload( FourCC( "A001" ), FourCC( "A00Q" ) );
-
-} );

@@ -4,7 +4,7 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 const PRELOAD_UNIT_TYPE = FourCC( "zsmc" );
 let preloadUnit: unit;
 
-export const AbilityRangePreload = ( start: number, end: number ): void => {
+const preloadAbilitityRange = ( start: number, end: number ): void => {
 
 	if ( end < start ) [ start, end ] = [ end, start ];
 
@@ -21,5 +21,7 @@ addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 	UnitApplyTimedLife( preloadUnit, 0, 0.001 );
 	ShowUnit( preloadUnit, false );
 	UnitAddAbility( preloadUnit, FourCC( "Aloc" ) );
+
+	preloadAbilitityRange( FourCC( "A001" ), FourCC( "A00U" ) );
 
 } );

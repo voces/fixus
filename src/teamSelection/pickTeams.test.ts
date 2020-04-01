@@ -1,6 +1,6 @@
 
 import "../test/w3api";
-import { forceTeams, getTeams } from "./teamSelection";
+import { forceTeams, getTeams } from "./pickTeams";
 
 const increasingSort = ( a: number, b: number ): number => a - b;
 
