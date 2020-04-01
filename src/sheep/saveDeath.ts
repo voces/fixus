@@ -283,7 +283,7 @@ onDeath( "saveDeath", (): void => {
 		reloadMultiboard();
 
 		if ( countHere( sheepTeam ) === 0 )
-			endGame( "wolves" );
+			timeout( 0.125, () => endGame( "wolves" ) );
 
 	}
 

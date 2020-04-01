@@ -92,7 +92,11 @@ const onUnitPickupItem = (): void => {
 
 const onUnitSummon = (): void => {
 
-	summonTimes.set( GetSummonedUnit(), TimerGetElapsed( gameTimer ) );
+	// When Mirror Image is used, this gets called n+1 times, where the +1 has
+	// no summoned unit
+	const summonedUnit = GetSummonedUnit();
+	if ( summonedUnit != null )
+		summonTimes.set( summonedUnit, TimerGetElapsed( gameTimer ) );
 
 };
 

@@ -283,8 +283,8 @@ function main()
 end
 
 function config()
-    SetMapName("TRIGSTR_4773")
-    SetMapDescription("TRIGSTR_4775")
+    SetMapName("TRIGSTR_4866")
+    SetMapDescription("TRIGSTR_4868")
     SetPlayers(12)
     SetTeams(12)
     SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)

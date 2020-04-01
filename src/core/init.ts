@@ -9,18 +9,31 @@ import {
 } from "shared";
 import { board } from "misc/multiboard";
 import { changelog } from "misc/changelog";
-import { commands, Command, Arg } from "util/commands";
+import { commands, Command, Arg, isArgRequired } from "util/commands";
 import { wrappedTriggerAddAction } from "util/emitLog";
 
 // ===========================================================================
 // Trigger: coreInit
 // ===========================================================================
 
-const argHelp = ( arg: Arg ): string =>
-	arg.required === undefined || arg.required ? `<${arg.name}>` : `[${arg.name}]`;
+export const argHelp = ( arg: Arg<string | number> ): string => {
+
+	const defaultValue = arg.default;
+	const defaultStringified = defaultValue !== undefined ?
+		typeof defaultValue === "string" ?
+			defaultValue :
+			typeof defaultValue === "number" ?
+				defaultValue.toString() : undefined
+		: undefined;
+
+	const defaultPart = defaultStringified === undefined ? "" : `=${defaultStringified}`;
+
+	return isArgRequired( arg ) ? `<${arg.name}>` : `[${arg.name}${defaultPart}]`;
+
+};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const commandHelp = ( command: Command<any> ): string =>
+export const commandHelp = ( command: Command<any> ): string =>
 	[
 		"-" + command.command,
 		command.args ? " " + command.args.map( arg => argHelp( arg ) ).join( " " ) : "",
@@ -34,7 +47,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "misc" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Commands" );
+		QuestSetTitle( q, "Misc commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNWarEagle.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -44,7 +57,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "sheep" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Sheep Commands" );
+		QuestSetTitle( q, "Sheep commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNSheep.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -54,7 +67,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "wolf" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Wolf Commands" );
+		QuestSetTitle( q, "Wolf commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNRaider.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -64,7 +77,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "host" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Host Commands" );
+		QuestSetTitle( q, "Host commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNHeroPaladin.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 
@@ -96,7 +109,7 @@ const action = (): void => {
 
 		const filteredCommands = commands.filter( c => c.category === "sandbox" );
 		const q = CreateQuest();
-		QuestSetTitle( q, "Sandbox Commands" );
+		QuestSetTitle( q, "Sandbox commands" );
 		QuestSetIconPath( q, "ReplaceableTextures\\CommandButtons\\BTNDwarfCar.blp" );
 		QuestSetDescription( q, filteredCommands.map( c => commandHelp( c ) ).join( "\n\n" ) );
 

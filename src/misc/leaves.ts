@@ -10,8 +10,9 @@ import {
 } from "shared";
 import { reloadMultiboard } from "./multiboard";
 import { isPlayingPlayer, colorizedName } from "util/player";
-import { endGame, flagDesync } from "../core/game";
+import { endGame, flagDesync, isGameEnded } from "../core/game";
 import { wrappedTriggerAddAction } from "../util/emitLog";
+import { setPlayerFlag } from "../stats/w3mmd";
 
 let lastLeave = 0;
 
@@ -65,6 +66,9 @@ const Trig_miscLeaves_Actions = (): void => {
 
 	else if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) && countHere( wolfTeam ) === 1 )
 		endGame( "sheep" );
+
+	else if ( ! isGameEnded() )
+		setPlayerFlag( GetTriggerPlayer(), "leaver" );
 
 };
 

@@ -935,19 +935,19 @@ Factory Farm
 }
 
 STRING 1738
-// Units: u002 (Sheep), Ubertip (Tooltip - Extended)
+// Units: u002 (), Ubertip (Tooltip - Extended)
 {
 This is a SHEEP!
 }
 
 STRING 1739
-// Units: u002 (Sheep), Tip (Tooltip - Basic)
+// Units: u002 (), Tip (Tooltip - Basic)
 {
 Baaahhh Bahhh!!
 }
 
 STRING 1740
-// Units: u002 (Sheep), Description (Description)
+// Units: u002 (), Description (Description)
 {
 These furry creatures are fun to slaughter!
 }
@@ -971,7 +971,7 @@ Dolly has blessed you with swiftness.
 }
 
 STRING 1765
-// Units: u002 (Sheep), EditorSuffix (Name - Editor Suffix)
+// Units: u002 (), EditorSuffix (Name - Editor Suffix)
 {
 (Factory)
 }
@@ -9190,17 +9190,6 @@ STRING 4661
 (Rock Golem)
 }
 
-STRING 4679
-{
-Sheep
-}
-
-STRING 4701
-// Units: uC04 (Sheep), Name (Name)
-{
-Sheep
-}
-
 STRING 4714
 // Abilities: ANss (Spell Shield), EditorSuffix (Editor Suffix)
 {
@@ -9226,13 +9215,13 @@ Red Shop
 }
 
 STRING 4719
-// Items: pspd (Potion of Speed), Hotkey (Hotkey)
+// Items: rat6 (Claws of Attack +6), Hotkey (Hotkey)
 {
 Q
 }
 
 STRING 4720
-// Items: rat6 (Claws of Attack +6), Hotkey (Hotkey)
+// Items: fgrg (Stone Token), Hotkey (Hotkey)
 {
 Q
 }
@@ -9346,7 +9335,7 @@ D
 }
 
 STRING 4751
-// Items: fgrg (Stone Token), Hotkey (Hotkey)
+// Items: pspd (Potion of Speed), Hotkey (Hotkey)
 {
 W
 }
@@ -9376,7 +9365,7 @@ S
 }
 
 STRING 4756
-// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
+// Items: I001 (Charms of Spell Breaking), Hotkey (Hotkey)
 {
 X
 }
@@ -9471,141 +9460,9 @@ STRING 4772
 V
 }
 
-STRING 4773
-{
-Ultimate Sheep Tag Fixus 10
-}
-
-STRING 4774
-{
-8v4
-}
-
-STRING 4775
-{
-Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
-To track your stats and rating, upload your replays. https://wc3stats.com/upload
-}
-
-STRING 4776
-{
-Chakra
-}
-
-STRING 4777
-{
-Sheep 1
-}
-
-STRING 4778
-{
-Sheep 2
-}
-
-STRING 4779
-{
-Wolf 1
-}
-
-STRING 4780
-{
-Sheep 3
-}
-
-STRING 4781
-{
-Sheep 4
-}
-
-STRING 4782
-{
-Wolf 2
-}
-
-STRING 4783
-{
-Sheep 5
-}
-
-STRING 4784
-{
-Sheep 6
-}
-
-STRING 4785
-{
-Wolf 3
-}
-
-STRING 4786
-{
-Sheep 7
-}
-
-STRING 4787
-{
-Sheep 8
-}
-
-STRING 4788
-{
-Wolf 4
-}
-
-STRING 4789
-{
-Wolves
-}
-
 STRING 4790
-// Units: u002 (Sheep), Name (Name)
 {
 Sheep
-}
-
-STRING 4791
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4792
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4793
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 4794
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 4795
-{
-Commands
-}
-
-STRING 4796
-{
-Change log
-}
-
-STRING 4797
-{
-Kill things to get gold faster.
-}
-
-STRING 4798
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4799
-{
-Fixus 10
 }
 
 STRING 4826
@@ -9810,5 +9667,137 @@ STRING 4865
 // Items: mcou (Dagger), Ubertip (Tooltip - Extended)
 {
 Increases the Intelligence of the Hero by 4 when worn. Increases the Hero's rate of mana regeneration by <AIrn,DataA1,%>% when worn.|nUseful to sell for some gold.
+}
+
+STRING 4866
+{
+Ultimate Sheep Tag Fixus 11
+}
+
+STRING 4867
+{
+8v4
+}
+
+STRING 4868
+{
+Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
+To track your stats and rating, upload your replays to https://wc3stats.com/upload
+}
+
+STRING 4869
+{
+Chakra
+}
+
+STRING 4870
+{
+Sheep 1
+}
+
+STRING 4871
+{
+Sheep 2
+}
+
+STRING 4872
+{
+Wolf 1
+}
+
+STRING 4873
+{
+Sheep 3
+}
+
+STRING 4874
+{
+Sheep 4
+}
+
+STRING 4875
+{
+Wolf 2
+}
+
+STRING 4876
+{
+Sheep 5
+}
+
+STRING 4877
+{
+Sheep 6
+}
+
+STRING 4878
+{
+Wolf 3
+}
+
+STRING 4879
+{
+Sheep 7
+}
+
+STRING 4880
+{
+Sheep 8
+}
+
+STRING 4881
+{
+Wolf 4
+}
+
+STRING 4882
+// Units: uC04 (Sheep), Name (Name)
+{
+Sheep
+}
+
+STRING 4883
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4884
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4885
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4886
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4887
+{
+Commands
+}
+
+STRING 4888
+{
+Change log
+}
+
+STRING 4889
+{
+Kill things to get gold faster.
+}
+
+STRING 4890
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4891
+{
+Fixus 11
 }
 

@@ -2,6 +2,22 @@
 // DO NOT MODIFY DIRECTLY. Execute `npm run build:changelog` instead.
 
 export const changelog = [
+	{ title: "Version 11", content: [
+		"Features",
+		"• Default values are shown in command help",
+		"• Added \"leaver\" and \"practicing\" player flags",
+		"Refactors",
+		"• Rewrote w3mmd, aiming for less desyncs + type safety",
+	].join( "\n" ) },
+	{ title: "Version 10a", content: [
+		"Features",
+		"• Swaped Potion of Speed and Stone Token in shop",
+		"Bug fixes",
+		"• Charms of Spell Breaking properly perish when used",
+		"• Fixed Charms of Spell Breaking hotkey (A -> X)",
+		"• Events are now emitted when the last sheep is killed",
+		"• Exceptions no longer occur when mirror imaging",
+	].join( "\n" ) },
 	{ title: "Version 10", content: [
 		"Features",
 		"• When a sheep destroys their own farms, gold coins are left behind equal to half the bounty of the farm",
