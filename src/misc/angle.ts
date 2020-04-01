@@ -19,6 +19,6 @@ registerCommand( {
 	category: "misc",
 	description: "Sets the camera to the passed angle.",
 	alias: "a",
-	args: [ { name: "angle", type: "number" } ],
+	args: [ { name: "angle", type: "number", default: 304 } ],
 	fn: action,
 } );

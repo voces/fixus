@@ -44,7 +44,7 @@ describe( "player arg", () => {
 
 	} ) );
 
-	it( "ignores invalid players", () => gameContext.withTemp( () => {
+	it( "rejects invalid players", () => gameContext.withTemp( () => {
 
 		const fn = jest.fn();
 		registerCommand( {
@@ -62,30 +62,66 @@ describe( "player arg", () => {
 
 } );
 
-it( "number arg", () => {
+describe( "number arg", () => {
 
-	const fn = jest.fn();
-	registerCommand( {
-		...defaultArgs,
-		args: [ { name: "amount", type: "number" } ],
-		fn,
+	it( "works", () => {
+
+		const fn = jest.fn();
+		registerCommand( {
+			...defaultArgs,
+			args: [ { name: "amount", type: "number" } ],
+			fn,
+		} );
+		simulateChat( Player( 0 ), "-test 12.7" );
+
+		expect( fn ).toHaveBeenCalledWith( { amount: 12.7 }, [ "-test", "12.7" ] );
+
 	} );
-	simulateChat( Player( 0 ), "-test 12.7" );
 
-	expect( fn ).toHaveBeenCalledWith( { amount: 12.7 }, [ "-test", "12.7" ] );
+	it( "with default value", () => {
+
+		const fn = jest.fn();
+		registerCommand( {
+			...defaultArgs,
+			args: [ { name: "amount", type: "number", default: 12.7 } ],
+			fn,
+		} );
+		simulateChat( Player( 0 ), "-test" );
+
+		expect( fn ).toHaveBeenCalledWith( { amount: 12.7 }, [ "-test" ] );
+
+	} );
 
 } );
 
-it( "string arg", () => {
+describe( "string arg", () => {
 
-	const fn = jest.fn();
-	registerCommand( {
-		...defaultArgs,
-		args: [ { name: "amount", type: "string" } ],
-		fn,
+	it( "works", () => {
+
+		const fn = jest.fn();
+		registerCommand( {
+			...defaultArgs,
+			args: [ { name: "amount", type: "string" } ],
+			fn,
+		} );
+		simulateChat( Player( 0 ), "-test 12.7" );
+
+		expect( fn ).toHaveBeenCalledWith( { amount: "12.7" }, [ "-test", "12.7" ] );
+
 	} );
-	simulateChat( Player( 0 ), "-test 12.7" );
 
-	expect( fn ).toHaveBeenCalledWith( { amount: "12.7" }, [ "-test", "12.7" ] );
+	it( "with default value", () => {
+
+		const fn = jest.fn();
+		registerCommand( {
+			...defaultArgs,
+			args: [ { name: "amount", type: "string", default: "12.7" } ],
+			fn,
+		} );
+		simulateChat( Player( 0 ), "-test" );
+
+		expect( fn ).toHaveBeenCalledWith( { amount: "12.7" }, [ "-test" ] );
+
+	} );
 
 } );

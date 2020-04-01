@@ -4,6 +4,7 @@
 export const changelog = [
 	{ title: "Version 11", content: [
 		"Features",
+		"• Default values are shown in command help",
 		"• Added \"leaver\" and \"practicing\" player flags",
 		"Refactors",
 		"• Rewrote w3mmd, aiming for less desyncs + type safety",

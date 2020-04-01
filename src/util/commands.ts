@@ -3,23 +3,36 @@ import { TriggerRegisterPlayerChatEventAll } from "../shared";
 import { wrappedTriggerAddAction } from "./emitLog";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
-export type Arg = {
-	name: string;
-	required?: boolean;
-	// todo: add a function type, allowing the user to define their own transformer
-	type?: "number"
-		| "string"
-		| "player";
-}
+export type Arg<T extends string | number> =
+	{
+		name: string;
+		required?: boolean;
+		default?: never;
+		// todo: add a function type, allowing the user to define their own transformer
+		type?: "number"
+			| "string"
+			| "player";
+	} | {
+		name: string;
+		required?: false;
+		default?: T;
+		// todo: add a function type, allowing the user to define their own transformer
+		type?: "number"
+			| "string"
+			| "player";
+	};
 
 export type Command<T> = {
 	command: string;
 	category: "sheep" | "wolf" | "host" | "misc" | "hidden" | "sandbox";
 	alias?: string;
 	description: string;
-	args?: Array<Arg>;
+	args?: Array<Arg<string | number>>;
 	fn: ( this: void, args: T, words: Array<string> ) => void;
 }
+
+export const isArgRequired = <T extends string | number>( arg: Arg<T> ): boolean =>
+	( arg.required === undefined || arg.required ) && arg.default === undefined;
 
 let ready = false;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,7 +42,7 @@ const _registerCommand = <T>(
 	{
 		command: string;
 		alias?: string;
-		args?: Array<Arg>;
+		args?: Array<Arg<string | number>>;
 		fn: ( this: void, args: T, words: Array<string> ) => void;
 	},
 ): void => {
@@ -38,8 +51,7 @@ const _registerCommand = <T>(
 
 	let requiredArgs = 0;
 	for ( ;
-		requiredArgs < args.length &&
-			( args[ requiredArgs ].required || args[ requiredArgs ].required === undefined );
+		requiredArgs < args.length && isArgRequired( args[ requiredArgs ] );
 		requiredArgs ++
 	) { /* do nothing */ }
 	const triggerWords = [ command ];
@@ -68,10 +80,10 @@ const _registerCommand = <T>(
 		let argsObject: T;
 		try {
 
-			argsObject = Object.fromEntries( args.map( ( { name, type }, i ) => {
+			argsObject = Object.fromEntries( args.map( ( { name, type, default: defualtValue }, i ) => {
 
 				const word = words[ i + offset ];
-				if ( word === "" || word === undefined ) return [ name, undefined ];
+				if ( word === "" || word === undefined ) return [ name, defualtValue ];
 				if ( type )
 					switch ( type ) {
 
