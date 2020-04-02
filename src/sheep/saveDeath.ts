@@ -34,7 +34,7 @@ import { onSpawn as phoenixOnSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
 import { reducePlayerUnits, forEachPlayerUnit, timeout } from "util/temp";
 import { colorizedName } from "util/player";
-import { endGame } from "../core/game";
+import { endGame } from "../core/game/index";
 import { awardBounty } from "misc/proximityProportions";
 import { onDeath } from "../event";
 import { removeQuickShop } from "../wolves/quickShops";

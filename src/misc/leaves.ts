@@ -10,7 +10,7 @@ import {
 } from "shared";
 import { reloadMultiboard } from "./multiboard";
 import { isPlayingPlayer, colorizedName } from "util/player";
-import { endGame, flagDesync, isGameEnded } from "../core/game";
+import { endGame, flagDesync, isGameEnded } from "../core/game/index";
 import { wrappedTriggerAddAction } from "../util/emitLog";
 import { setPlayerFlag } from "../stats/w3mmd";
 

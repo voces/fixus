@@ -12,12 +12,12 @@ import {
 	wolves,
 } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { defineEvent } from "../stats/w3mmd";
-import { endGameStats } from "../stats/mmd";
-import { wrappedTriggerAddAction } from "../util/emitLog";
+import { defineEvent } from "../../stats/w3mmd";
+import { endGameStats } from "../../stats/mmd";
+import { wrappedTriggerAddAction } from "../../util/emitLog";
 import { addQuickShop } from "wolves/quickShops";
-import { timeout } from "../util/temp";
-import { fetch } from "misc/networkio";
+import { timeout } from "../../util/temp";
+import { selectTeams } from "./teamSelection";
 
 let gameTimer: timer;
 let gameTimerDialog: timerdialog;
@@ -39,6 +39,8 @@ const starterItemMap: Record<number, number> = {
 
 const initialSpawns: Array<{x: number; y: number}> = [];
 
+export type TransitionInformation = {remaining: number; title: string}
+
 // ===========================================================================
 // Trigger: coreGame
 // ===========================================================================
@@ -57,22 +59,18 @@ export const flagDesync = (): void => {
 
 const defeatString = "Yooz bee uhn disgreysd too shahkruh!";
 // Ends the game, awarding wins/loses and other W3MMD data
-export const endGame = ( winner: "sheep" | "wolves" ): void => {
+export const endGame = ( winner: "sheep" | "wolves" ): TransitionInformation => {
 
 	// Don't run these actions again
-	if ( gameEnded ) return;
+	if ( gameEnded ) return { remaining: 15, title: "Ending in..." };
 
 	gameEnded = true;
 
-	TimerDialogDisplay( gameTimerDialog, false );
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, [
 		"Fixus by |CFF959697Chakra|r",
 		"Join the community at http://tiny.cc/sheeptag",
 		"Upload replays to https://wc3stats.com/upload",
 	].join( "\n" ) );
-	TimerStart( gameTimer, 15, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( gameTimerDialog, "Ending in..." );
-	TimerDialogDisplay( gameTimerDialog, true );
 
 	endGameStats( winner, desynced );
 
@@ -100,6 +98,8 @@ export const endGame = ( winner: "sheep" | "wolves" ): void => {
 			else CustomDefeatBJ( Player( i ), defeatString );
 
 	} );
+
+	return { remaining: 15, title: "Ending in..." };
 
 };
 
@@ -153,9 +153,7 @@ const spawnFakeSheep = (): void => {
 /**
  * Spawns sheep
  */
-const initToStart = (): void => {
-
-	fetch( "http://localhost:8080/test.txt" );
+const teamSelectionToStart = (): TransitionInformation => {
 
 	TimerDialogDisplay( gameTimerDialog, false );
 
@@ -172,12 +170,10 @@ const initToStart = (): void => {
 	if ( sheepSize <= 1 && isSandbox() )
 		spawnFakeSheep();
 
-	gameState( "start" );
-	// todo: should be nullable
-	TimerStart( gameTimer, 10, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( gameTimerDialog, "Wolves in..." );
-	TimerDialogDisplay( gameTimerDialog, true );
 	reloadMultiboard();
+
+	gameState( "start" );
+	return { remaining: 10, title: "Wolves in..." };
 
 };
 
@@ -222,7 +218,7 @@ const spawnFakeWolf = (): void => {
 /**
  * Spawns wolves
  */
-const startToPlay = (): void => {
+const startToPlay = (): TransitionInformation => {
 
 	TimerDialogDisplay( gameTimerDialog, false );
 
@@ -241,20 +237,26 @@ const startToPlay = (): void => {
 		spawnFakeWolf();
 
 	gameState( "play" );
-	// should be nullable
-	TimerStart( gameTimer, 1500, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( gameTimerDialog, "Sheep win in..." );
+	return { remaining: 1500, title: "Sheep win in..." };
+
+};
+
+const updateGameTimer = ( { remaining, title }: TransitionInformation ): void => {
+
+	TimerStart( gameTimer, remaining, false, () => { /* do nothing */ } );
+	TimerDialogSetTitle( gameTimerDialog, title );
 	TimerDialogDisplay( gameTimerDialog, true );
 
 };
 
-const action = (): void => {
+export const transitionGame = (): void => {
 
 	switch ( gameState() ) {
 
-		case "init": return initToStart();
-		case "start": return startToPlay();
-		case "play": return endGame( "sheep" );
+		case "init": return updateGameTimer( selectTeams() );
+		case "team-selection": return updateGameTimer( teamSelectionToStart() );
+		case "start": return updateGameTimer( startToPlay() );
+		case "play": return updateGameTimer( endGame( "sheep" ) );
 
 	}
 
@@ -267,7 +269,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterTimerExpireEvent( t, gameTimer );
-	wrappedTriggerAddAction( t, "gameTimer expired", action );
+	wrappedTriggerAddAction( t, "gameTimer expired", transitionGame );
 
 	const SHEEP_SIZE_OFFSET = 100;
 	const MAX_X = GetRectMaxX( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
@@ -275,10 +277,8 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	const MIN_X = GetRectMinX( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET + 440; // :( constant seems off
 	const MIN_Y = GetRectMinY( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET;
 
+	timeout( 0.25, transitionGame );
 	gameTimerDialog = CreateTimerDialog( gameTimer );
-	TimerStart( gameTimer, 3, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( gameTimerDialog, "Starting in..." );
-	TimerDialogDisplay( gameTimerDialog, true );
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		while ( ! initialSpawns[ i ] ) {

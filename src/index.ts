@@ -1,5 +1,5 @@
 
-import "core/game";
+import "core/game/index";
 import "core/init";
 import "egg/dolly";
 import "egg/gem";

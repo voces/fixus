@@ -20,7 +20,7 @@ export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
 };
 
-type GAME_STATES = "init" | "start" | "play";
+type GAME_STATES = "init" | "start" | "play" | "team-selection";
 
 export const fillArray = <T>( size: number, value: T, arr: Array<T> = [] ): Array<T> => {
 
