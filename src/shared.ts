@@ -20,8 +20,6 @@ export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 
 };
 
-type GAME_STATES = "init" | "start" | "play" | "team-selection";
-
 export const fillArray = <T>( size: number, value: T, arr: Array<T> = [] ): Array<T> => {
 
 	for ( let i = 0; i < size; i ++ )
@@ -46,7 +44,7 @@ export const color = [
 	"|CFF959697", "|CFF7EBFF1", "|CFF106246", "|CFF4E2A04",
 	"|CFF3F81F8", "|CFFC00040", "|CFFD9D919",
 ];
-export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetterFunc( "init" as GAME_STATES );
+
 export const goldFactor: ( newFactory?: number ) => number = getterSetterFunc( 1 );
 export const isHere = (): boolean => GetPlayerSlotState( GetFilterPlayer() ) === PLAYER_SLOT_STATE_PLAYING;
 export const saveskills: Array<number> = fillArray( bj_MAX_PLAYERS, 0 );

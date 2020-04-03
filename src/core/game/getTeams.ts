@@ -74,7 +74,7 @@ export const getTeams = (
 	playerPreferences: Map<player, {preference: "sheep" | "wolf" | "none"; netPreference: number}>,
 ): {sheep: Array<player>; wolves: Array<player>} => {
 
-	const entries = Array.from( playerPreferences.entries() );
+	const entries = [ ...playerPreferences.entries() ];
 	const playerCount = entries.length;
 
 	const idealSheep = IDEAL_SHEEP[ playerCount ];

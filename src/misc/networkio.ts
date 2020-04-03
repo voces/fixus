@@ -2,11 +2,10 @@
 import { stringify, parse, Value } from "./json";
 import { readAndCloseFile, openFile } from "./fileIO";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { wrappedTriggerAddAction } from "../util/emitLog";
+import { wrappedTriggerAddAction, emitLog } from "../util/emitLog";
 import { forEachPlayer } from "../util/temp";
 import { isPlayingPlayer } from "../util/player";
-import { TriggerRegisterPlayerEventAll } from "../shared";
-import { log } from "../util/log";
+import { TriggerRegisterPlayerEventAll } from "shared";
 
 type Options = {
 	body?: string;
@@ -77,15 +76,19 @@ const checkForResponse = ( request: Request ): void => {
 	const response = readAndCloseFile( openFile( path ) );
 
 	// No response; try again if we have attempts remaining
-	if ( response == null && request.tries < MAX_TRIES )
-		return request.timer ?
-			TimerStart(
-				request.timer,
-				calcInterval( request.tries ),
-				false,
-				() => checkForResponse( request ),
-			) :
-			undefined;
+	if ( response == null && request.tries < MAX_TRIES ) {
+
+		const timer = request.timer;
+		if ( ! timer ) throw `missing timer on request ${request.requestId}`;
+
+		return TimerStart(
+			timer,
+			calcInterval( request.tries ),
+			false,
+			() => checkForResponse( request ),
+		);
+
+	}
 
 	// We have something!
 
@@ -137,65 +140,60 @@ export const fetch = (
 	callback?: ( response: Value ) => void,
 ): void => {
 
-	try {
+	if ( ! ready && url.indexOf( "proxy://" ) !== 0 ) {
 
-		if ( ! ready && url.indexOf( "proxy://" ) !== 0 ) {
-
-			log( "queueing", url );
-			queue.push( [ url, options, callback ] );
-			return;
-
-		}
-
-		const r = GetRandomInt( 0, networkedPlayers.length - 1 );
-		const fetcher = fetcherOverride || networkedPlayers[ r ];
-
-		if ( ! callback && supportsNoResponse( fetcher ) ) {
-
-			if ( ! options ) options = {};
-			options.noResponse = true;
-
-		}
-
-		const request: Request = {
-			callback,
-			requestId: requestId ++,
-			response: "",
-			timer: options && options.noResponse ? null : CreateTimer(),
-			tries: 0,
-		};
-
-		activeRequests[ request.requestId ] = request;
-
-		if ( GetLocalPlayer() !== fetcher ) return;
-
-		log( "performing", { url, ...options } );
-
-		writeFile(
-			`networkio/requests/${request.requestId}.txt`,
-			stringify( { url, ...options } ),
-		);
-
-		if ( request.timer )
-			TimerStart(
-				request.timer,
-				calcInterval( request.tries ),
-				false,
-				() => checkForResponse( request ),
-			);
-
-	} catch ( err ) {
-
-		log( err );
+		queue.push( [ url, options, callback ] );
+		return;
 
 	}
+
+	if ( networkedPlayers.length === 0 && url.indexOf( "proxy://" ) !== 0 ) {
+
+		if ( callback ) callback( null );
+		return;
+
+	}
+
+	const r = GetRandomInt( 0, networkedPlayers.length - 1 );
+	const fetcher = fetcherOverride || networkedPlayers[ r ];
+
+	if ( ! callback && supportsNoResponse( fetcher ) ) {
+
+		if ( ! options ) options = {};
+		options.noResponse = true;
+
+	}
+
+	const request: Request = {
+		callback,
+		requestId: requestId ++,
+		response: "",
+		timer: options && options.noResponse ? null : CreateTimer(),
+		tries: 0,
+	};
+
+	activeRequests[ request.requestId ] = request;
+
+	if ( GetLocalPlayer() !== fetcher ) return;
+
+	writeFile(
+		`networkio/requests/${request.requestId}.txt`,
+		stringify( { url, ...options } ),
+	);
+
+	if ( request.timer )
+		TimerStart(
+			request.timer,
+			calcInterval( request.tries ),
+			false,
+			() => checkForResponse( request ),
+		);
 
 };
 
 const onReady = (): void => {
 
 	ready = true;
-	log( "ready", queue.length );
 	queue.forEach( args => fetch( ...args ) );
 
 };
@@ -249,7 +247,15 @@ const onSync = (): void => {
 	const callback = request.callback ? request.callback.bind( response ) : null;
 	delete activeRequests[ requestId ];
 
-	if ( callback ) callback( response );
+	if ( callback ) try {
+
+		callback( response );
+
+	} catch ( err ) {
+
+		emitLog( `networkio sync request=${requestId}`, err );
+
+	}
 
 };
 
@@ -278,7 +284,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 		if ( ! isPlayingPlayer( p ) ) return;
 		outstanding ++;
-		log( "checking", { outstanding } );
 		withFetcher( p, () =>
 			fetch( "proxy://version", null, version => {
 
@@ -291,8 +296,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 				if ( -- outstanding === 0 )
 					onReady();
-
-				log( "done checking", { version, outstanding } );
 
 			} ),
 		);

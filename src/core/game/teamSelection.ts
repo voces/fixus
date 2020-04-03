@@ -3,11 +3,12 @@ import { W3TS_HOOK, addScriptHook } from "@voces/w3ts";
 import { forEachPlayer } from "util/temp";
 import { fetch } from "misc/networkio";
 import { getTeams } from "./getTeams";
-import { sheepTeam, wolfTeam, gameState } from "shared";
+import { sheepTeam, wolfTeam } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { transitionGame, TransitionInformation } from "./index";
+import { transitionGame, TransitionInformation, gameState, transitions } from "./common";
 import { Value } from "misc/json";
 import { log } from "util/log";
+import { isPlayingPlayer, isComputer } from "util/player";
 
 let preferenceDialog: dialog;
 const dialogButtonMap: Map<button, "sheep" | "wolf" | "none"> = new Map();
@@ -20,6 +21,8 @@ const finalizeTeams = (): void => {
 
 	const { sheep, wolves } = getTeams( preferences );
 
+	log( "finalizeTeams", { sheep, wolves } );
+
 	sheep.forEach( p => ForceAddPlayer( sheepTeam, p ) );
 	wolves.forEach( p => ForceAddPlayer( wolfTeam, p ) );
 
@@ -30,6 +33,8 @@ const finalizeTeams = (): void => {
 };
 
 const onDialogSelection = (): void => {
+
+	log( "onDialogSelection" );
 
 	const player = GetTriggerPlayer();
 
@@ -47,13 +52,15 @@ const onDialogSelection = (): void => {
 	if ( remainingDialogs === 0 && fetchedBiases )
 		finalizeTeams();
 
+	log( "check", { remainingDialogs, fetchedBiases } );
+
 };
 
 const onFetchBiases = ( result: Value ): void => {
 
 	fetchedBiases = true;
 
-	log( result );
+	log( "onFetchBiases", result );
 
 	if ( result && typeof result === "object" )
 
@@ -75,21 +82,27 @@ const onFetchBiases = ( result: Value ): void => {
 
 		} );
 
+	log( "check", { remainingDialogs, fetchedBiases } );
+
 	if ( remainingDialogs === 0 && fetchedBiases )
 		finalizeTeams();
 
 };
 
-export const selectTeams = (): TransitionInformation => {
+const selectTeams = (): TransitionInformation => {
 
 	preferences = new Map();
 
 	fetch( "http://localhost:8080/test.txt", null, onFetchBiases );
 	forEachPlayer( p => {
 
+		if ( isComputer( p ) || isPlayingPlayer( p ) )
+			preferences.set( p, { preference: "none", netPreference: 0 } );
+
+		if ( ! isPlayingPlayer( p ) ) return;
+
 		DialogDisplay( p, preferenceDialog, true );
 		remainingDialogs ++;
-		preferences.set( p, { preference: "none", netPreference: 0 } );
 
 	} );
 
@@ -97,6 +110,7 @@ export const selectTeams = (): TransitionInformation => {
 	return { remaining: 15, title: "Picking teams..." };
 
 };
+transitions[ "init" ] = selectTeams;
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 

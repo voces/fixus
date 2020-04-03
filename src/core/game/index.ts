@@ -1,8 +1,13 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { reloadMultiboard } from "misc/multiboard";
+import { defineEvent } from "../../stats/w3mmd";
+import { endGameStats } from "../../stats/mmd";
+import { addQuickShop } from "wolves/quickShops";
+import { timeout } from "../../util/temp";
+import { TransitionInformation, transitions, gameState } from "./common";
 import {
 	countHere,
-	gameState,
 	isSandbox,
 	SHEEP_TYPE,
 	sheeps,
@@ -11,16 +16,8 @@ import {
 	wolfTeam,
 	wolves,
 } from "shared";
-import { reloadMultiboard } from "misc/multiboard";
-import { defineEvent } from "../../stats/w3mmd";
-import { endGameStats } from "../../stats/mmd";
-import { wrappedTriggerAddAction } from "../../util/emitLog";
-import { addQuickShop } from "wolves/quickShops";
-import { timeout } from "../../util/temp";
-import { selectTeams } from "./teamSelection";
+import "./teamSelection";
 
-let gameTimer: timer;
-let gameTimerDialog: timerdialog;
 let desynced = false;
 let gameEnded = false;
 
@@ -38,8 +35,6 @@ const starterItemMap: Record<number, number> = {
 };
 
 const initialSpawns: Array<{x: number; y: number}> = [];
-
-export type TransitionInformation = {remaining: number; title: string}
 
 // ===========================================================================
 // Trigger: coreGame
@@ -102,6 +97,7 @@ export const endGame = ( winner: "sheep" | "wolves" ): TransitionInformation => 
 	return { remaining: 15, title: "Ending in..." };
 
 };
+transitions[ "play" ] = (): TransitionInformation => endGame( "sheep" );
 
 const shareControlWithAllies = ( player: player ): void => {
 
@@ -153,9 +149,7 @@ const spawnFakeSheep = (): void => {
 /**
  * Spawns sheep
  */
-const teamSelectionToStart = (): TransitionInformation => {
-
-	TimerDialogDisplay( gameTimerDialog, false );
+const sheepStart = (): TransitionInformation => {
 
 	let sheepSize = 0;
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
@@ -176,6 +170,7 @@ const teamSelectionToStart = (): TransitionInformation => {
 	return { remaining: 10, title: "Wolves in..." };
 
 };
+transitions[ "team-selection" ] = sheepStart;
 
 const spawnWolf = ( index: number, starterItem: number ): void => {
 
@@ -218,9 +213,7 @@ const spawnFakeWolf = (): void => {
 /**
  * Spawns wolves
  */
-const startToPlay = (): TransitionInformation => {
-
-	TimerDialogDisplay( gameTimerDialog, false );
+const wolfStart = (): TransitionInformation => {
 
 	const starterItem = starterItemMap[ countHere( wolfTeam ) ];
 	let wolfSize = 0;
@@ -240,45 +233,16 @@ const startToPlay = (): TransitionInformation => {
 	return { remaining: 1500, title: "Sheep win in..." };
 
 };
-
-const updateGameTimer = ( { remaining, title }: TransitionInformation ): void => {
-
-	TimerStart( gameTimer, remaining, false, () => { /* do nothing */ } );
-	TimerDialogSetTitle( gameTimerDialog, title );
-	TimerDialogDisplay( gameTimerDialog, true );
-
-};
-
-export const transitionGame = (): void => {
-
-	switch ( gameState() ) {
-
-		case "init": return updateGameTimer( selectTeams() );
-		case "team-selection": return updateGameTimer( teamSelectionToStart() );
-		case "start": return updateGameTimer( startToPlay() );
-		case "play": return updateGameTimer( endGame( "sheep" ) );
-
-	}
-
-};
+transitions[ "start" ] = wolfStart;
 
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	gameTimer = CreateTimer();
-
-	const t = CreateTrigger();
-	TriggerRegisterTimerExpireEvent( t, gameTimer );
-	wrappedTriggerAddAction( t, "gameTimer expired", transitionGame );
 
 	const SHEEP_SIZE_OFFSET = 100;
 	const MAX_X = GetRectMaxX( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
 	const MAX_Y = GetRectMaxY( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
 	const MIN_X = GetRectMinX( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET + 440; // :( constant seems off
 	const MIN_Y = GetRectMinY( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET;
-
-	timeout( 0.25, transitionGame );
-	gameTimerDialog = CreateTimerDialog( gameTimer );
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		while ( ! initialSpawns[ i ] ) {
