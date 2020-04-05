@@ -16,11 +16,12 @@
 				"../node_modules/*/dist/index",
 				"../node_modules/*/index",
 				"../node_modules/*/lib/index",
+				"../node_modules/*",
 				"../node_modules/*/src/index"
 			]
 		},
 		"esModuleInterop": true,
-		"plugins": [{"transform": "ts-transformer-imports"}],
+		"plugins": [{"transform": "war3-transformer"}],
 		"types": [
 			"lua-types/core/coroutine",
 			"lua-types/core/global",
@@ -35,7 +36,9 @@
 			"war3-types/core/common",
 			"war3-types/core/blizzard",
 			"war3-types/core/commonai",
-			"war3-types/core/polyfill"
+			"war3-types/core/polyfill",
+			"war3-types/special/w3ts",
+			"mdx-m3-viewer/src/types"
 		]
 	},
 	"include": [

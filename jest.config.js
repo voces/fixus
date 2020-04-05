@@ -8,6 +8,6 @@ module.exports = {
 		"^.+\\.js$": "babel-jest",
 	},
 	testEnvironment: "node",
-	testRegex: "(/(src|bin)/.*\\.test)\\.ts$",
+	testRegex: "(/(src|scripts)/.*\\.test)\\.ts$",
 	transformIgnorePatterns: [],
 };
