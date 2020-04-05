@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '**.ts'
+      - 'package.json'
 
 jobs:
   build:
