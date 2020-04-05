@@ -9460,11 +9460,6 @@ STRING 4772
 V
 }
 
-STRING 4790
-{
-Sheep
-}
-
 STRING 4826
 // Abilities: A00C (Hulk), Ubertip (Tooltip - Normal - Extended)
 {
@@ -9669,87 +9664,6 @@ STRING 4865
 Increases the Intelligence of the Hero by 4 when worn. Increases the Hero's rate of mana regeneration by <AIrn,DataA1,%>% when worn.|nUseful to sell for some gold.
 }
 
-STRING 4866
-{
-Ultimate Sheep Tag Fixus 11
-}
-
-STRING 4867
-{
-8v4
-}
-
-STRING 4868
-{
-Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
-To track your stats and rating, upload your replays to https://wc3stats.com/upload
-}
-
-STRING 4869
-{
-Chakra
-}
-
-STRING 4870
-{
-Sheep 1
-}
-
-STRING 4871
-{
-Sheep 2
-}
-
-STRING 4872
-{
-Wolf 1
-}
-
-STRING 4873
-{
-Sheep 3
-}
-
-STRING 4874
-{
-Sheep 4
-}
-
-STRING 4875
-{
-Wolf 2
-}
-
-STRING 4876
-{
-Sheep 5
-}
-
-STRING 4877
-{
-Sheep 6
-}
-
-STRING 4878
-{
-Wolf 3
-}
-
-STRING 4879
-{
-Sheep 7
-}
-
-STRING 4880
-{
-Sheep 8
-}
-
-STRING 4881
-{
-Wolf 4
-}
-
 STRING 4882
 // Units: uC04 (Sheep), Name (Name)
 {
@@ -9758,46 +9672,138 @@ Sheep
 
 STRING 4883
 {
-You can't kill a fellow sheep. -_-
+Ultimate Sheep Tag Fixus 11
 }
 
 STRING 4884
 {
-Yooz bee uhn disgreysd too shahkruh!
+12
 }
 
 STRING 4885
 {
-Discord: http://tiny.cc/sheeptag
+Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
+To track your stats and rating, upload your replays to https://wc3stats.com/upload
 }
 
 STRING 4886
 {
-Discord: http://tiny.cc/sheeptag
+Chakra
 }
 
 STRING 4887
 {
-Commands
+Player 1
 }
 
 STRING 4888
 {
-Change log
+Player 2
 }
 
 STRING 4889
 {
-Kill things to get gold faster.
+Player 3
 }
 
 STRING 4890
 {
-Lumber is granted for reaching level 3 and each level thereafter.
+Player 4
 }
 
 STRING 4891
 {
+Player 5
+}
+
+STRING 4892
+{
+Player 6
+}
+
+STRING 4893
+{
+Player 7
+}
+
+STRING 4894
+{
+Player 8
+}
+
+STRING 4895
+{
+Player 9
+}
+
+STRING 4896
+{
+Player 10
+}
+
+STRING 4897
+{
+Player 11
+}
+
+STRING 4898
+{
+Player 12
+}
+
+STRING 4899
+{
+Force 1
+}
+
+STRING 4900
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4901
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4902
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4903
+{
+Discord: http://tiny.cc/sheeptag
+}
+
+STRING 4904
+{
+Commands
+}
+
+STRING 4905
+{
+Change log
+}
+
+STRING 4906
+{
+Kill things to get gold faster.
+}
+
+STRING 4907
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4908
+{
 Fixus 11
+}
+
+STRING 4909
+// Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
+{
+X
 }
 

@@ -4,7 +4,7 @@
 		"baseUrl": "src",
 		"allowJs": true,
 		"target": "es6",
-		"lib": [ "es2020", "dom" ],
+		"lib": [ "es2019", "es2020", "dom" ],
 		"moduleResolution": "classic",
 		"strict": true,
 		"noImplicitAny": true,
@@ -13,11 +13,10 @@
 		"strictNullChecks": true,
 		"paths": {
 			"*": [
-				"../node_modules/*/src/index",
-				"../node_modules/*/lib/index",
-				"../node_modules/*/index",
 				"../node_modules/*/dist/index",
-				"../node_modules/w3api/*"
+				"../node_modules/*/index",
+				"../node_modules/*/lib/index",
+				"../node_modules/*/src/index"
 			]
 		},
 		"esModuleInterop": true,

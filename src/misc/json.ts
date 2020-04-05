@@ -12,10 +12,23 @@ const isArray = ( v: any ): boolean => {
 
 };
 
+const escapeString = ( str: string ): string => {
+
+	let s = "";
+
+	for ( let i = 0; i < str.length; i ++ )
+		if ( str[ i ] === "\\" ) s += "\\\\";
+		else if ( str[ i ] === "\"" ) s += "\\\"";
+		else s += str[ i ];
+
+	return s;
+
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const stringify = ( v: any ): string => {
 
-	if ( typeof v === "string" ) return `"${v}"`;
+	if ( typeof v === "string" ) return `"${escapeString( v )}"`;
 	if ( typeof v === "number" ) return v.toString();
 	if ( typeof v === "boolean" ) return v.toString();
 
@@ -25,17 +38,17 @@ export const stringify = ( v: any ): string => {
 		const arr = v as Array<any>;
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		return `[ ${arr.map( ( v: any ) => stringify( v ) ).join( ", " )} ]`;
+		return `[${arr.map( ( v: any ) => stringify( v ) ).join( "," )}]`;
 
 	}
 
 	if ( typeof v === "object" && v != null )
-		return `{ ${Object.entries( v ).map( ( [ key, value ] ) => `"${key}": ${stringify( value )}` ).join( ", " )} }`;
+		return `{${Object.entries( v ).map( ( [ key, value ] ) => `"${escapeString( key )}":${stringify( value )}` ).join( "," )}}`;
 
 	if ( v === undefined ) return "undefined";
 	if ( v == null ) return "null";
 
-	return `[${typeof v }]`;
+	return `["${typeof v }"]`;
 
 };
 
@@ -147,13 +160,26 @@ const parseObj = ( string: string ): {[key: string]: Value} => {
 
 };
 
+const unescapeString = ( str: string ): string => {
+
+	let s = "";
+
+	for ( let i = 0; i < str.length; i ++ )
+		if ( str[ i ] === "\\" && str[ i + 1 ] === "\"" ) s += "\"", i ++;
+		else if ( str[ i ] === "\\" && str[ i + 1 ] === "\\" ) s += "\\", i ++;
+		else s += str[ i ];
+
+	return s;
+
+};
+
 parse = ( string: string ): Value => {
 
 	string = string.trim();
 
 	try {
 
-		if ( string[ 0 ] === "\"" ) return string.slice( 1, string.length - 1 );
+		if ( string[ 0 ] === "\"" ) return unescapeString( string.slice( 1, string.length - 1 ) );
 		if ( string === "true" ) return true;
 		if ( string === "false" ) return false;
 		if ( string === "undefined" ) return undefined;

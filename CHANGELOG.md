@@ -1,6 +1,7 @@
 
 # Version 11
 ## Features
+- Teams are picked in game
 - Default values are shown in command help
 - Added "leaver" and "practicing" player flags
 

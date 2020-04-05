@@ -39,7 +39,7 @@
     "ts-node": "^8.7.0",
     "ts-transformer-imports": "^0.4.3",
     "typescript-to-lua": "^0.32.0",
-    "w3api": "^1.5.1",
+    "w3api": "^2.0.0",
     "war3-types": ">=1.0.1",
     "war3tstlhelper": ">=1.0.1"
   },

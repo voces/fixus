@@ -261,7 +261,7 @@ export const awardBounty = (
 		if ( bounty.gold && bounty.gold > 0 ) {
 
 			AdjustPlayerStateBJ( bounty.gold, player, PLAYER_STATE_RESOURCE_GOLD );
-			SmallText( bounty.gold, mainUnit( player ), 14, offsets * 16, offsets * - 64 );
+			SmallText( bounty.gold, mainUnit( player ), "gold", offsets * 16, offsets * - 64 );
 			offsets ++;
 
 		}
@@ -273,7 +273,7 @@ export const awardBounty = (
 			if ( ! unit ) return;
 
 			AddHeroXP( unit, bounty.experience, true );
-			SmallText( bounty.experience, unit, 3, offsets * 16, offsets * - 64 );
+			SmallText( bounty.experience, unit, "purple", offsets * 16, offsets * - 64 );
 			offsets ++;
 
 		}
@@ -285,7 +285,7 @@ export const awardBounty = (
 			if ( ! unit ) return;
 
 			AddHeroXP( unit, bounty.lumber, true );
-			SmallText( bounty.lumber, unit, 10, offsets * 16, offsets * - 64 );
+			SmallText( bounty.lumber, unit, "darkgreen", offsets * 16, offsets * - 64 );
 			offsets ++;
 
 		}

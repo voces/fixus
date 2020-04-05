@@ -12,6 +12,15 @@ describe( "string", () => {
 	testRoundTrip( "simple string", "abc" );
 	testRoundTrip( "escaped string", "And he said, \"Hello, World!\"" );
 
+	it( "actual escaped string", () => {
+
+		expect( stringify( "\\\"" ) ).toEqual( "\"\\\\\\\"\"" );
+		expect( stringify( stringify( "\\\"" ) ) ).toEqual( "\"\\\"\\\\\\\\\\\\\\\"\\\"\"" );
+
+		expect( parse( "\"\\\\\\\"\"" ) ).toEqual( "\\\"" );
+
+	} );
+
 } );
 
 testRoundTrip( "number", 123.456 );
@@ -45,7 +54,7 @@ describe( "array", () => {
 
 	it( "empty array parse", () => expect( parse( "[]" ) ).toEqual( [] ) );
 	// Lua can't tell the difference between an empty object and an empty array
-	it( "empty array stringify", () => expect( stringify( [] ) ).toEqual( "{  }" ) );
+	it( "empty array stringify", () => expect( stringify( [] ) ).toEqual( "{}" ) );
 	testRoundTrip( "simple array", [ 3, 4, "a" ] );
 	testRoundTrip( "complex array", [[ 1, [ 2 ]], [ 3 ], 4 ] );
 	it( "crazy white space", () => expect( parse( `

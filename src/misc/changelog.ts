@@ -4,6 +4,7 @@
 export const changelog = [
 	{ title: "Version 11", content: [
 		"Features",
+		"• Teams are picked in game",
 		"• Default values are shown in command help",
 		"• Added \"leaver\" and \"practicing\" player flags",
 		"Refactors",
