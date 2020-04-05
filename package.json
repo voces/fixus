@@ -1,50 +1,50 @@
 {
   "name": "fixus",
   "version": "1.0.0",
-  "description": "",
   "author": "verit",
   "license": "MIT",
-  "main": "src/index.ts",
   "scripts": {
-    "build:changelog": "ts-node bin/changelog.ts",
-    "build:defs": "node bin/operations gen-defs",
-    "build:w3x": "npm run build && npm run pack",
-    "build": "echo Transpiling TypeScript to Lua... && tstl -p tsconfig.map.json && node bin/operations build",
+    "build:changelog": "ts-node scripts/changelog.ts",
+    "build:defs": "ts-node scripts/dev",
+    "build": "ts-node --ignore \"node_modules/(?!mdx-m3-viewer).*\" scripts/build.ts",
     "dev": "npm-watch",
     "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "jest": "jest --silent",
-    "pack": "ts-node bin/pack.ts",
-    "pretest": "eslint . --ext .ts",
-    "run": "node bin/operations run",
-    "start": "npm run build && node bin/operations run",
+    "lint": "eslint . --ext .ts",
+    "pretest": "npm run lint",
+    "start": "ts-node scripts/start.ts",
     "test": "npm run jest"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.8.7",
+    "@types/fs-extra": "^8.1.0",
     "@types/jest": "^25.1.4",
     "@types/marked": "^0.7.3",
     "@types/node": "^13.9.2",
+    "@types/pako": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
-    "eslint": "^6.8.0",
     "eslint-config-mdcs": ">=4.2.3",
     "eslint-config-verit": ">=1.0.3",
+    "eslint": "^6.8.0",
     "fs-extra": "^9.0.0",
     "jest": "^25.1.0",
     "lua-types": ">=2.6.1",
-    "luamin": ">=1.0.4",
     "marked": "^0.8.1",
+    "mdx-m3-viewer": "^5.0.0-beta.21",
     "npm-watch": "^0.6.0",
     "ts-jest": "^25.2.1",
-    "ts-node": "^8.7.0",
+    "ts-node": "^8.8.2",
     "ts-transformer-imports": "^0.4.3",
     "typescript-to-lua": "^0.32.0",
     "w3api": "^2.0.0",
-    "war3-types": ">=1.0.1",
-    "war3tstlhelper": ">=1.0.1"
+    "war3-transformer": "^1.0.1",
+    "war3-types": "^1.0.2",
+    "war3tstlhelper": ">=1.0.1",
+    "winston": "^3.2.1"
   },
   "dependencies": {
-    "@voces/w3ts": "^1.0.7"
+    "@voces/w3ts": "^2.1.1"
   },
   "watch": {
     "build:defs": {
@@ -54,5 +54,6 @@
       "extensions": "lua",
       "legacyWatch": true
     }
-  }
+  },
+  "private": true
 }
