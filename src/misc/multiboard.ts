@@ -4,11 +4,11 @@ import {
 	saveskills,
 	sheepTeam,
 	wolfTeam,
-	color,
 	wispTeam,
 	countHere,
 } from "shared";
 import { colorizedName } from "util/player";
+import { colorize } from "util/colorize";
 
 export const board: ( newBoard?: multiboard ) => multiboard = getterSetterFunc();
 
@@ -73,7 +73,7 @@ export const reloadMultiboard = (): void => {
 	// sheep
 	updateMultiboardRow(
 		index,
-		`${color.sheepblue}Sheep: ${countHere( sheepTeam )}`,
+		colorize.sheepblue( `Sheep: ${countHere( sheepTeam )}` ),
 		null,
 		"Saves",
 	);
@@ -98,7 +98,7 @@ export const reloadMultiboard = (): void => {
 	// Wisps
 	updateMultiboardRow(
 		index,
-		`${color.sheepblue}Wisps: ${countHere( wispTeam )}`,
+		colorize.sheepblue( `Wisps: ${countHere( wispTeam )}` ),
 		null,
 		"Saves",
 	);
@@ -123,7 +123,7 @@ export const reloadMultiboard = (): void => {
 	// Wolves
 	updateMultiboardRow(
 		index,
-		`${color.wolfred}Wolves: ${countHere( wolfTeam )}`,
+		colorize.wolfred( `Wolves: ${countHere( wolfTeam )}` ),
 		null,
 		"Kills",
 	);

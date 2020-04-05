@@ -3,7 +3,6 @@ import {
 	BLACK_SHEEP_TYPE,
 	BLACK_WOLF_TYPE,
 	CLOAK_TYPE,
-	color,
 	GOLD_SHEEP_TYPE,
 	goldFactor,
 	IMBA_WOLF_TYPE,
@@ -37,6 +36,7 @@ import { awardBounty } from "misc/proximityProportions";
 import { onDeath } from "../event";
 import { removeQuickShop } from "../wolves/quickShops";
 import { endGame } from "core/game/end";
+import { colorize } from "util/colorize";
 
 // Trigger: sheepSaveDeath
 // ===========================================================================
@@ -125,7 +125,7 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	const bounty = GetSheepBounty( killedUnit ) * goldFactor();
 	ForceRemovePlayer( sheepTeam, killedPlayer );
 
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( killedPlayer )} has been ${color.wolfred}killed|r by ${colorizedName( killingPlayer )}!` );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( killedPlayer )} has been ${colorize.wolfred( "killed" )} by ${colorizedName( killingPlayer )}!` );
 	forEachPlayerUnit( killedPlayer, RemoveUnit );
 	Specialization_onDeath( killedUnit );
 	pityXpOnSheepDeath();
@@ -196,7 +196,7 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 	// Handle dying wisp
 	ForceRemovePlayer( wispTeam, savedPlayer );
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( savedPlayer )} has been ${color.sheepblue}saved|r by ${colorizedName( savingPlayer )}!` );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( savedPlayer )} has been ${colorize.sheepblue( "saved" )} by ${colorizedName( savingPlayer )}!` );
 
 	// Move to sheep
 	ForceAddPlayer( sheepTeam, savedPlayer );

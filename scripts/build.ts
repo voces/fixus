@@ -60,8 +60,6 @@ const createMapFromDir = ( output: string, dir: string ): void=> {
 
 };
 
-logger.info( "Creating w3x archive..." );
-
 const config = loadJsonFile( "config.json" );
 const result = compileMap( config );
 
@@ -71,6 +69,8 @@ if ( ! result ) {
 	process.exit( 1 );
 
 }
+
+logger.info( "Creating w3x archive..." );
 
 const contents = fs.readFileSync(
 	`dist/${config.mapFolder}/war3map.wts`,

@@ -1,7 +1,7 @@
 
-import { color } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { colorize } from "util/colorize";
 
 const gemActivated: Map<player, boolean> = new Map();
 const GEM_TYPE = FourCC( "gemt" );
@@ -22,7 +22,7 @@ const Trig_eggGem_Actions = (): void => {
 		if ( GetRandomInt( 0, 9 ) === 0 ) message = "Perfect gem activated.";
 		else message = "Gem activated.";
 
-	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color.purple + message );
+	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, colorize.purple( message ) );
 
 };
 

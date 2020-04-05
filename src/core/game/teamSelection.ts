@@ -9,6 +9,7 @@ import { transitionGame, TransitionInformation, gameState, transitionsFrom } fro
 import { Value } from "misc/json";
 import { isPlayingPlayer, isComputer } from "util/player";
 import { defineStringValue } from "stats/w3mmd";
+import { colorize } from "util/colorize";
 
 let preferenceDialog: dialog;
 const dialogButtonMap: Map<button, "sheep" | "wolf" | "none"> = new Map();
@@ -137,17 +138,17 @@ const selectTeams = (): TransitionInformation => {
 		DialogSetMessage( preferenceDialog, "Team preference" );
 
 		dialogButtonMap.set(
-			DialogAddButton( preferenceDialog, "No preference", "N".charCodeAt( 0 ) ),
+			DialogAddButton( preferenceDialog, `${colorize.white( "N" )}${colorize.gold( "o preference" )}`, "N".charCodeAt( 0 ) ),
 			"none",
 		);
 
 		dialogButtonMap.set(
-			DialogAddButton( preferenceDialog, "Sheep", "S".charCodeAt( 0 ) ),
+			DialogAddButton( preferenceDialog, `${colorize.white( "S" )}${colorize.gold( "heep" )}`, "S".charCodeAt( 0 ) ),
 			"sheep",
 		);
 
 		dialogButtonMap.set(
-			DialogAddButton( preferenceDialog, "Wolf", "W".charCodeAt( 0 ) ),
+			DialogAddButton( preferenceDialog, `${colorize.white( "W" )}${colorize.gold( "olf" )}`, "W".charCodeAt( 0 ) ),
 			"wolf",
 		);
 
