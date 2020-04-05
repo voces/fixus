@@ -8,6 +8,7 @@ import {
 	wispTeam,
 	countHere,
 } from "shared";
+import { colorizedName } from "util/player";
 
 export const board: ( newBoard?: multiboard ) => multiboard = getterSetterFunc();
 
@@ -72,7 +73,7 @@ export const reloadMultiboard = (): void => {
 	// sheep
 	updateMultiboardRow(
 		index,
-		`${color[ 12 ]}Sheep: ${countHere( sheepTeam )}`,
+		`${color.sheepblue}Sheep: ${countHere( sheepTeam )}`,
 		null,
 		"Saves",
 	);
@@ -83,7 +84,7 @@ export const reloadMultiboard = (): void => {
 
 			updateMultiboardRow(
 				index,
-				color[ i ] + GetPlayerName( Player( i ) ),
+				colorizedName( Player( i ) ),
 				getSheepIcon( i ),
 				saveskills[ i ].toString(),
 			);
@@ -97,7 +98,7 @@ export const reloadMultiboard = (): void => {
 	// Wisps
 	updateMultiboardRow(
 		index,
-		`${color[ 12 ]}Wisps: ${countHere( wispTeam )}`,
+		`${color.sheepblue}Wisps: ${countHere( wispTeam )}`,
 		null,
 		"Saves",
 	);
@@ -108,7 +109,7 @@ export const reloadMultiboard = (): void => {
 
 			updateMultiboardRow(
 				index,
-				color[ i ] + GetPlayerName( Player( i ) ),
+				colorizedName( Player( i ) ),
 				"ReplaceableTextures\\CommandButtons\\BTNWisp.blp",
 				saveskills[ i ].toString(),
 			);
@@ -122,7 +123,7 @@ export const reloadMultiboard = (): void => {
 	// Wolves
 	updateMultiboardRow(
 		index,
-		`${color[ 13 ]}Wolves: ${countHere( wolfTeam )}`,
+		`${color.wolfred}Wolves: ${countHere( wolfTeam )}`,
 		null,
 		"Kills",
 	);
@@ -133,7 +134,7 @@ export const reloadMultiboard = (): void => {
 
 			updateMultiboardRow(
 				index,
-				color[ i ] + GetPlayerName( Player( i ) ),
+				colorizedName( Player( i ) ),
 				getWolfIcon( i ),
 				saveskills[ i ].toString(),
 			);

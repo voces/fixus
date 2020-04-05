@@ -1,12 +1,8 @@
 
-import { color } from "../shared";
+import { playerColorToColor, color } from "shared";
 
-export const colorizedName = ( player: player ): string => {
-
-	const id = GetPlayerId( player );
-	return `${color[ id ]}${GetPlayerName( player )}|r`;
-
-};
+export const colorizedName = ( player: player ): string =>
+	`${color[ playerColorToColor( GetPlayerColor( player ) ) ]}${GetPlayerName( player )}|r`;
 
 export const displayToPlayer = ( player: player, message: string ): void =>
 	DisplayTextToPlayer( player, 0, 0, message );

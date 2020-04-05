@@ -54,7 +54,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 			if ( collector != null ) {
 
 				AdjustPlayerStateBJ( coin.gold, GetOwningPlayer( collector ), PLAYER_STATE_RESOURCE_GOLD );
-				SmallText( coin.gold, collector, 14, 0, 0 );
+				SmallText( coin.gold, collector, "gold", 0, 0 );
 				RemoveItem( coin.item );
 				coins.delete( coin );
 

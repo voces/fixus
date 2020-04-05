@@ -1,16 +1,12 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import {
-	countHereReal,
-	DisplayTimedText,
-	isSandbox,
-	sheepTeam,
-	wolfTeam,
-} from "shared";
+import { DisplayTimedText, isSandbox } from "shared";
 import { board } from "misc/multiboard";
 import { changelog } from "misc/changelog";
 import { commands, Command, Arg, isArgRequired } from "util/commands";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { forEachPlayer } from "util/temp";
+import { isPlayingPlayer } from "util/player";
 
 // ===========================================================================
 // Trigger: coreInit
@@ -101,7 +97,13 @@ const action = (): void => {
 	DisplayTimedText( 3, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
 
 	// debug mode
-	if ( countHereReal( wolfTeam ) === 0 || countHereReal( sheepTeam ) === 0 ) {
+	let playingPlayers = 0;
+	forEachPlayer( player => {
+
+		if ( isPlayingPlayer( player ) ) playingPlayers ++;
+
+	} );
+	if ( playingPlayers === 1 ) {
 
 		isSandbox( true );
 

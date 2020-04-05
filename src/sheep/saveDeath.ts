@@ -4,7 +4,6 @@ import {
 	BLACK_WOLF_TYPE,
 	CLOAK_TYPE,
 	color,
-	countHere,
 	GOLD_SHEEP_TYPE,
 	goldFactor,
 	IMBA_WOLF_TYPE,
@@ -34,15 +33,16 @@ import { onSpawn as phoenixOnSpawn } from "wolves/scoutPhoenixUpgrade";
 import { reloadMultiboard } from "misc/multiboard";
 import { reducePlayerUnits, forEachPlayerUnit, timeout } from "util/temp";
 import { colorizedName } from "util/player";
-import { endGame } from "../core/game/index";
 import { awardBounty } from "misc/proximityProportions";
 import { onDeath } from "../event";
 import { removeQuickShop } from "../wolves/quickShops";
+import { endGame } from "core/game/end";
 
 // Trigger: sheepSaveDeath
 // ===========================================================================
 
-const isStructureFilter = Filter( (): boolean => IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
+const isStructureFilter = Filter( (): boolean =>
+	IsUnitType( GetFilterUnit(), UNIT_TYPE_STRUCTURE ) );
 
 const replaceUnit = ( u: unit, newType: number ): unit => {
 
@@ -125,7 +125,7 @@ const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	const bounty = GetSheepBounty( killedUnit ) * goldFactor();
 	ForceRemovePlayer( sheepTeam, killedPlayer );
 
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( killedPlayer )} has been ${color[ 13 ]}killed|r by ${colorizedName( killingPlayer )}!` );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( killedPlayer )} has been ${color.wolfred}killed|r by ${colorizedName( killingPlayer )}!` );
 	forEachPlayerUnit( killedPlayer, RemoveUnit );
 	Specialization_onDeath( killedUnit );
 	pityXpOnSheepDeath();
@@ -196,7 +196,7 @@ const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 	// Handle dying wisp
 	ForceRemovePlayer( wispTeam, savedPlayer );
-	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( savedPlayer )} has been ${color[ 12 ]}saved|r by ${colorizedName( savingPlayer )}!` );
+	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( savedPlayer )} has been ${color.sheepblue}saved|r by ${colorizedName( savingPlayer )}!` );
 
 	// Move to sheep
 	ForceAddPlayer( sheepTeam, savedPlayer );
@@ -282,7 +282,15 @@ onDeath( "saveDeath", (): void => {
 
 		reloadMultiboard();
 
-		if ( countHere( sheepTeam ) === 0 )
+		let allDead = true;
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+			if ( sheeps[ i ] && UnitAlive( sheeps[ i ] ) ) {
+
+				allDead = false;
+				break;
+
+			}
+		if ( allDead )
 			timeout( 0.125, () => endGame( "wolves" ) );
 
 	}

@@ -1,3 +1,4 @@
+import { isSandbox } from "shared";
 
 const IDEAL_SHEEP: Record<number, number> = {
 	1: 1,
@@ -75,6 +76,13 @@ export const getTeams = (
 ): {sheep: Array<player>; wolves: Array<player>} => {
 
 	const entries = [ ...playerPreferences.entries() ];
+
+	if ( isSandbox() )
+		return {
+			sheep: entries.filter( p => p[ 1 ].preference !== "wolf" ).map( p => p[ 0 ] ),
+			wolves: entries.filter( p => p[ 1 ].preference === "wolf" ).map( p => p[ 0 ] ),
+		};
+
 	const playerCount = entries.length;
 
 	const idealSheep = IDEAL_SHEEP[ playerCount ];

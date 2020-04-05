@@ -74,6 +74,17 @@ export const withTempForce = <T>( fn: ( force: force ) => T ): T => {
 
 };
 
+export const mapEachPlayer = <T>( fn: ( player: player ) => T ): Array<T> => {
+
+	const arr: Array<T> = [];
+
+	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		arr.push( fn( Player( i ) ) );
+
+	return arr;
+
+};
+
 export const forEachPlayer = ( fn: ( player: player ) => void ): void => {
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )

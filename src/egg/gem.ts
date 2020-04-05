@@ -22,7 +22,7 @@ const Trig_eggGem_Actions = (): void => {
 		if ( GetRandomInt( 0, 9 ) === 0 ) message = "Perfect gem activated.";
 		else message = "Gem activated.";
 
-	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color[ 3 ] + message );
+	DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, color.purple + message );
 
 };
 

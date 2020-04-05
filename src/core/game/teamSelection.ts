@@ -1,14 +1,14 @@
 
 import { W3TS_HOOK, addScriptHook } from "@voces/w3ts";
-import { forEachPlayer } from "util/temp";
+import { forEachPlayer, timeout, mapEachPlayer } from "util/temp";
 import { fetch } from "misc/networkio";
 import { getTeams } from "./getTeams";
-import { sheepTeam, wolfTeam } from "shared";
+import { sheepTeam, wolfTeam, isSandbox } from "shared";
 import { reloadMultiboard } from "misc/multiboard";
-import { transitionGame, TransitionInformation, gameState, transitions } from "./common";
+import { transitionGame, TransitionInformation, gameState, transitionsFrom } from "./common";
 import { Value } from "misc/json";
-import { log } from "util/log";
 import { isPlayingPlayer, isComputer } from "util/player";
+import { defineStringValue } from "stats/w3mmd";
 
 let preferenceDialog: dialog;
 const dialogButtonMap: Map<button, "sheep" | "wolf" | "none"> = new Map();
@@ -17,14 +17,58 @@ let fetchedBiases = false;
 let preferences: Map<player, {preference: "sheep" | "wolf" | "none"; netPreference: number}>;
 const playerNameToPlayer: Record<string, player> = {};
 
+const logPreference = defineStringValue( "preference", "none" );
+const logMode = defineStringValue( "mode", "none" );
+const logTeam = defineStringValue( "team", "none" );
+
 const finalizeTeams = (): void => {
+
+	[ ...preferences.entries() ].forEach( ( [ player, preference ] ) =>
+		logPreference( player, preference.preference ) );
 
 	const { sheep, wolves } = getTeams( preferences );
 
-	log( "finalizeTeams", { sheep, wolves } );
+	if ( isSandbox() ) {
 
-	sheep.forEach( p => ForceAddPlayer( sheepTeam, p ) );
-	wolves.forEach( p => ForceAddPlayer( wolfTeam, p ) );
+		for ( let i = 2 - sheep.length, n = 0; n < bj_MAX_PLAYERS && i > 0; n ++ )
+			if ( ! sheep.includes( Player( n ) ) && ! wolves.includes( Player( n ) ) ) {
+
+				sheep.push( Player( n ) );
+				i --;
+
+			}
+
+		if ( wolves.length === 0 )
+			for ( let n = 0; n < bj_MAX_PLAYERS; n ++ )
+				if ( ! sheep.includes( Player( n ) ) && ! wolves.includes( Player( n ) ) ) {
+
+					wolves.push( Player( n ) );
+					break;
+
+				}
+
+	}
+
+	sheep.forEach( p => {
+
+		logMode( p, "sheep" );
+		logTeam( p, "sheep" );
+		ForceAddPlayer( sheepTeam, p );
+
+	} );
+
+	wolves.forEach( p => {
+
+		logMode( p, "wolf" );
+		logTeam( p, "wolf" );
+		ForceAddPlayer( wolfTeam, p );
+
+	} );
+
+	SetForceAllianceStateBJ( sheepTeam, sheepTeam, bj_ALLIANCE_ALLIED_VISION );
+	SetForceAllianceStateBJ( sheepTeam, wolfTeam, bj_ALLIANCE_UNALLIED );
+	SetForceAllianceStateBJ( wolfTeam, sheepTeam, bj_ALLIANCE_UNALLIED );
+	SetForceAllianceStateBJ( wolfTeam, wolfTeam, bj_ALLIANCE_ALLIED_VISION );
 
 	reloadMultiboard();
 
@@ -33,8 +77,6 @@ const finalizeTeams = (): void => {
 };
 
 const onDialogSelection = (): void => {
-
-	log( "onDialogSelection" );
 
 	const player = GetTriggerPlayer();
 
@@ -52,15 +94,13 @@ const onDialogSelection = (): void => {
 	if ( remainingDialogs === 0 && fetchedBiases )
 		finalizeTeams();
 
-	log( "check", { remainingDialogs, fetchedBiases } );
-
 };
 
 const onFetchBiases = ( result: Value ): void => {
 
-	fetchedBiases = true;
+	if ( fetchedBiases ) return;
 
-	log( "onFetchBiases", result );
+	fetchedBiases = true;
 
 	if ( result && typeof result === "object" )
 
@@ -82,8 +122,6 @@ const onFetchBiases = ( result: Value ): void => {
 
 		} );
 
-	log( "check", { remainingDialogs, fetchedBiases } );
-
 	if ( remainingDialogs === 0 && fetchedBiases )
 		finalizeTeams();
 
@@ -93,7 +131,42 @@ const selectTeams = (): TransitionInformation => {
 
 	preferences = new Map();
 
-	fetch( "http://localhost:8080/test.txt", null, onFetchBiases );
+	if ( preferenceDialog == null ) {
+
+		preferenceDialog = DialogCreate();
+		DialogSetMessage( preferenceDialog, "Team preference" );
+
+		dialogButtonMap.set(
+			DialogAddButton( preferenceDialog, "No preference", "N".charCodeAt( 0 ) ),
+			"none",
+		);
+
+		dialogButtonMap.set(
+			DialogAddButton( preferenceDialog, "Sheep", "S".charCodeAt( 0 ) ),
+			"sheep",
+		);
+
+		dialogButtonMap.set(
+			DialogAddButton( preferenceDialog, "Wolf", "W".charCodeAt( 0 ) ),
+			"wolf",
+		);
+
+		const t = CreateTrigger();
+		TriggerRegisterDialogEvent( t, preferenceDialog );
+		TriggerAddAction( t, onDialogSelection );
+
+	}
+
+	const playerNames = mapEachPlayer( p => isPlayingPlayer( p ) ? GetPlayerName( p ) : null )
+		.filter( p => p != null )
+		.join( "," );
+
+	fetch(
+		`http://api.w3x.io/preferences?map=fixus&players=${playerNames}`,
+		null,
+		onFetchBiases,
+	);
+
 	forEachPlayer( p => {
 
 		if ( isComputer( p ) || isPlayingPlayer( p ) )
@@ -106,30 +179,29 @@ const selectTeams = (): TransitionInformation => {
 
 	} );
 
+	timeout( 14.75, () => {
+
+		if ( remainingDialogs > 0 || ! fetchedBiases ) {
+
+			forEachPlayer( p => DialogDisplay( p, preferenceDialog, false ) );
+			remainingDialogs = 0;
+
+			fetchedBiases = true;
+
+			finalizeTeams();
+
+		}
+
+	} );
+
 	gameState( "team-selection" );
 	return { remaining: 15, title: "Picking teams..." };
 
 };
-transitions[ "init" ] = selectTeams;
+transitionsFrom[ "init" ] = selectTeams;
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	preferenceDialog = DialogCreate();
-	DialogSetMessage( preferenceDialog, "Team preference" );
-
-	let button = DialogAddButton( preferenceDialog, "No preference", "N".charCodeAt( 0 ) );
-	dialogButtonMap.set( button, "none" );
-
-	button = DialogAddButton( preferenceDialog, "Sheep", "S".charCodeAt( 0 ) );
-	dialogButtonMap.set( button, "sheep" );
-
-	button = DialogAddButton( preferenceDialog, "Wolf", "W".charCodeAt( 0 ) );
-	dialogButtonMap.set( button, "wolf" );
-
 	forEachPlayer( p => playerNameToPlayer[ GetPlayerName( p ) ] = p );
-
-	const t = CreateTrigger();
-	TriggerRegisterDialogEvent( t, preferenceDialog );
-	TriggerAddAction( t, onDialogSelection );
 
 } );
