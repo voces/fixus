@@ -9670,140 +9670,135 @@ STRING 4882
 Sheep
 }
 
-STRING 4883
-{
-Ultimate Sheep Tag Fixus 11
-}
-
-STRING 4884
-{
-12
-}
-
-STRING 4885
-{
-Join the Sheep Tag Discord for more games! https://discord.gg/Y4dHvwX
-To track your stats and rating, upload your replays to https://wc3stats.com/upload
-}
-
-STRING 4886
-{
-Chakra
-}
-
-STRING 4887
-{
-Player 1
-}
-
-STRING 4888
-{
-Player 2
-}
-
-STRING 4889
-{
-Player 3
-}
-
-STRING 4890
-{
-Player 4
-}
-
-STRING 4891
-{
-Player 5
-}
-
-STRING 4892
-{
-Player 6
-}
-
-STRING 4893
-{
-Player 7
-}
-
-STRING 4894
-{
-Player 8
-}
-
-STRING 4895
-{
-Player 9
-}
-
-STRING 4896
-{
-Player 10
-}
-
-STRING 4897
-{
-Player 11
-}
-
-STRING 4898
-{
-Player 12
-}
-
-STRING 4899
-{
-Force 1
-}
-
-STRING 4900
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4901
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4902
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 4903
-{
-Discord: http://tiny.cc/sheeptag
-}
-
-STRING 4904
-{
-Commands
-}
-
-STRING 4905
-{
-Change log
-}
-
-STRING 4906
-{
-Kill things to get gold faster.
-}
-
-STRING 4907
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4908
-{
-Fixus 11
-}
-
 STRING 4909
 // Abilities: A00D (Destroy Farm), Hotkey (Hotkey - Normal)
 {
 X
+}
+
+STRING 4910
+{
+Ultimate Sheep Tag Fixus 11
+}
+
+STRING 4911
+{
+12
+}
+
+STRING 4912
+{
+Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
+To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
+}
+
+STRING 4913
+{
+Chakra
+}
+
+STRING 4914
+{
+Player 1
+}
+
+STRING 4915
+{
+Player 2
+}
+
+STRING 4916
+{
+Player 3
+}
+
+STRING 4917
+{
+Player 4
+}
+
+STRING 4918
+{
+Player 5
+}
+
+STRING 4919
+{
+Player 6
+}
+
+STRING 4920
+{
+Player 7
+}
+
+STRING 4921
+{
+Player 8
+}
+
+STRING 4922
+{
+Player 9
+}
+
+STRING 4923
+{
+Player 10
+}
+
+STRING 4924
+{
+Player 11
+}
+
+STRING 4925
+{
+Player 12
+}
+
+STRING 4926
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4927
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4928
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4929
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4930
+{
+Commands
+}
+
+STRING 4931
+{
+Change log
+}
+
+STRING 4932
+{
+Kill things to get gold faster.
+}
+
+STRING 4933
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4934
+{
+Fixus 11
 }
 

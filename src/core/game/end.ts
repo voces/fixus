@@ -4,6 +4,7 @@ import { TransitionInformation, updateGameTimer, transitionsFrom } from "./commo
 import { endGameStats } from "stats/mmd";
 import { sheepTeam, sheeps, wolfTeam } from "shared";
 import { timeout } from "util/temp";
+import { colorize } from "util/colorize";
 
 let desynced = false;
 let gameEnded = false;
@@ -33,9 +34,9 @@ export const endGame = ( winner: "sheep" | "wolves" ): TransitionInformation => 
 	gameEnded = true;
 
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, [
-		"Fixus by |CFF959697Chakra|r",
-		"Join the community at http://tiny.cc/sheeptag",
-		"Upload replays to https://wc3stats.com/upload",
+		`Fixus by ${colorize.gray( "Chakra" )}`,
+		`Join the community at ${colorize.sheepblue( "http://tiny.cc/sheeptag" )}`,
+		`Upload replays to ${colorize.sheepblue( "https://wc3stats.com/upload" )}`,
 	].join( "\n" ) );
 
 	endGameStats( winner, desynced );

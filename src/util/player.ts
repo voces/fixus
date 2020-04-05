@@ -1,8 +1,8 @@
 
-import { playerColorToColor, color } from "shared";
+import { colorize, playerColorToColor } from "./colorize";
 
 export const colorizedName = ( player: player ): string =>
-	`${color[ playerColorToColor( GetPlayerColor( player ) ) ]}${GetPlayerName( player )}|r`;
+	colorize[ playerColorToColor( GetPlayerColor( player ) ) ]( GetPlayerName( player ) );
 
 export const displayToPlayer = ( player: player, message: string ): void =>
 	DisplayTextToPlayer( player, 0, 0, message );

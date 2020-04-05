@@ -7,6 +7,7 @@ import { commands, Command, Arg, isArgRequired } from "util/commands";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { forEachPlayer } from "util/temp";
 import { isPlayingPlayer } from "util/player";
+import { colorize } from "util/colorize";
 
 // ===========================================================================
 // Trigger: coreInit
@@ -94,7 +95,10 @@ const action = (): void => {
 
 	} );
 
-	DisplayTimedText( 3, "Fixus by |CFF959697Chakra|r\nDiscord: http://tiny.cc/sheeptag" );
+	DisplayTimedText( 3, [
+		`Fixus by ${colorize.gray( "Chakra" )}`,
+		`Discord: ${colorize.sheepblue( "http://tiny.cc/sheeptag" )}`,
+	].join( "\n" ) );
 
 	// debug mode
 	let playingPlayers = 0;
