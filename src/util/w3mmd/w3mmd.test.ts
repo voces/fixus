@@ -1,5 +1,5 @@
 
-import "../../../test/w3api";
+import "test/w3api";
 import { pack } from "./w3mmd";
 
 describe( "pack", () => {

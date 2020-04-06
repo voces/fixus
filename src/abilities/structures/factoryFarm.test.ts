@@ -1,5 +1,5 @@
 
-import "../../../test/w3api";
+import "test/w3api";
 import { spiralX, spiralY } from "./factoryFarm";
 
 const coords = ( n: number ): {x: number; y: number} => ( { x: spiralX( n ), y: spiralY( n ) } );

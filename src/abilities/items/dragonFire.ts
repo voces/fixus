@@ -1,9 +1,9 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { forEachUnit } from "util/temp";
 import { wolves } from "shared";
-import { onSpellCast, onCreated } from "util/event";
+import { forEachUnit } from "util/temp";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { onSpellCast, onCreated } from "util/event";
 
 let burnWolfId = 2;
 let emptyTicks: number;

@@ -1,13 +1,13 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { DisplayTimedText, isSandbox } from "shared";
+import { board } from "util/multiboard";
+import { changelog } from "misc/changelog";
+import { commands, Command, Arg, isArgRequired } from "commands/registerCommand";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { forEachPlayer } from "util/temp";
 import { isPlayingPlayer } from "util/player";
 import { colorize } from "util/colorize";
-import { Arg, isArgRequired, Command, commands } from "commands/registerCommand";
-import { changelog } from "misc/changelog";
-import { board } from "util/multiboard";
 
 // ===========================================================================
 // Trigger: coreInit

@@ -1,8 +1,8 @@
 
 import { TriggerRegisterPlayerUnitEventAll, wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
-import { removeQuickShop } from "../wolves/quickShops";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { removeQuickShop } from "../wolves/quickShops";
 
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];

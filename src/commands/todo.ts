@@ -1,6 +1,6 @@
 
 import { registerCommand } from "./registerCommand";
-import { openFile, writeFile } from "util/fileIO";
+import { writeFile, openFile } from "util/fileIO";
 
 const time = os.date( "%Y-%m-%d %H-%M-%S" );
 

@@ -1,5 +1,5 @@
 
-import { spawnCoin } from "../../resources/coins";
+import { spawnCoin } from "resources/coins";
 import { onSpellCast } from "util/event";
 
 const DESTROY_LAST_FARM_ABILITY_TYPE = FourCC( "A00D" );

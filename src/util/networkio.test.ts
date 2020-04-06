@@ -1,5 +1,5 @@
 
-import "../../test/w3api";
+import "test/w3api";
 import { parseSyncData } from "./networkio";
 
 it( "parseSyncData", () => expect( parseSyncData( "512-3/6-my data blah blah blah" ) )

@@ -1,7 +1,7 @@
 
+import { registerCommand } from "commands/registerCommand";
 import { isSandbox } from "shared";
 import { forEachSelectedUnit } from "util/temp";
-import { registerCommand } from "commands/registerCommand";
 
 const prevOwner: Record<number, player> = {};
 

@@ -1,5 +1,5 @@
 
-import "../../test/w3api";
+import "test/w3api";
 import { normalize, proximityProportions, GOLEM_TYPE } from "./proximityProportions";
 import { wolfTeam, WOLF_TYPE, sheepTeam, sheeps, SHEEP_TYPE } from "shared";
 

@@ -1,5 +1,5 @@
 
-import "../../../test/w3api";
+import "test/w3api";
 import { hookedMain } from "@voces/w3ts";
 import "./abilityPreload";
 import { getGame, revFourCC } from "w3api";

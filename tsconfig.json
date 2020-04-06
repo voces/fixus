@@ -18,7 +18,8 @@
 				"../node_modules/*/lib/index",
 				"../node_modules/*",
 				"../node_modules/*/src/index"
-			]
+			],
+			"test": ["../test"]
 		},
 		"esModuleInterop": true,
 		"plugins": [{"transform": "war3-transformer"}],

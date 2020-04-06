@@ -1,15 +1,15 @@
 
 import { W3TS_HOOK, addScriptHook } from "@voces/w3ts";
 import { forEachPlayer, timeout, mapEachPlayer } from "util/temp";
+import { fetch } from "util/networkio";
 import { getTeams } from "./helpers/getTeams";
 import { sheepTeam, wolfTeam, isSandbox } from "shared";
+import { reloadMultiboard } from "util/multiboard";
 import { transitionGame, TransitionInformation, gameState, transitionsFrom } from "./common";
+import { Value } from "util/json";
 import { isPlayingPlayer, isComputer } from "util/player";
 import { defineStringValue } from "util/w3mmd/w3mmd";
 import { colorize } from "util/colorize";
-import { reloadMultiboard } from "util/multiboard";
-import { Value } from "util/json";
-import { fetch } from "util/networkio";
 
 let preferenceDialog: dialog;
 const dialogButtonMap: Map<button, "sheep" | "wolf" | "none"> = new Map();

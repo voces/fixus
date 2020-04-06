@@ -1,5 +1,5 @@
 
-import "../../test/w3api";
+import "test/w3api";
 import { argHelp, commandHelp } from "./init";
 
 describe( "argHelp", () => {

@@ -19,11 +19,11 @@ import {
 } from "shared";
 import { colorize } from "util/colorize";
 import { forEachPlayerUnit, reducePlayerUnits } from "util/temp";
-import { Specialization_onDeath, Specialization_GetLevel } from "../abilities/sheep/specialization";
+import { Specialization_onDeath, Specialization_GetLevel } from "abilities/sheep/specialization";
 import { colorizedName } from "util/player";
 import { awardBounty } from "util/proximityProportions";
 import { replaceUnit } from "./common";
-import { onSheepDeath as pityXpOnSheepDeath } from "../resources/pityXp";
+import { onSheepDeath as pityXpOnSheepDeath } from "resources/pityXp";
 import { onSpawn as phoenixOnSpawn } from "upgrades/scoutPhoenixUpgrade";
 
 const isStructureFilter = Filter( (): boolean =>

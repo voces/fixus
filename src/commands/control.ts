@@ -1,6 +1,6 @@
 
-import { colorizedName } from "util/player";
 import { registerCommand } from "./registerCommand";
+import { colorizedName } from "util/player";
 
 // ===========================================================================
 // Trigger: miscControl
