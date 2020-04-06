@@ -1,7 +1,6 @@
 
 import { removeQuickShop } from "abilities/wolves/quickShops";
 import { getDummy } from "util/dummy";
-import { log } from "util/log";
 import { timeout } from "util/temp";
 
 const BLOODLUST_ABILITY_ID = FourCC( "A00I" );

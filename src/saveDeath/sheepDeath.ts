@@ -18,7 +18,7 @@ import {
 	wws,
 } from "shared";
 import { colorize } from "util/colorize";
-import { forEachPlayerUnit, reducePlayerUnits, timeout } from "util/temp";
+import { forEachPlayerUnit, reducePlayerUnits } from "util/temp";
 import { Specialization_onDeath, Specialization_GetLevel } from "abilities/sheep/specialization";
 import { colorizedName } from "util/player";
 import { awardBounty } from "util/proximityProportions";

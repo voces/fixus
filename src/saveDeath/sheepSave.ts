@@ -15,7 +15,6 @@ import { colorizedName } from "util/player";
 import { colorize } from "util/colorize";
 import { Specialization_onSpawn, Specialization_onSave } from "abilities/sheep/specialization";
 import { replaceUnit, bloodlust } from "./common";
-import { timeout } from "util/temp";
 
 const getSheepType = ( p: player ): number => {
 
