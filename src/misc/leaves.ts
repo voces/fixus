@@ -1,18 +1,19 @@
 
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import {
-	wolfTeam,
 	countHere,
-	sheepTeam,
-	wispTeam,
 	mainUnit,
+	sheepTeam,
 	TriggerRegisterPlayerEventAll,
+	wispTeam,
+	wolfTeam,
 } from "shared";
-import { reloadMultiboard } from "./multiboard";
+import { reloadMultiboard } from "util/multiboard";
 import { isPlayingPlayer, colorizedName } from "util/player";
-import { wrappedTriggerAddAction } from "../util/emitLog";
-import { setPlayerFlag } from "../stats/w3mmd";
-import { flagDesync, endGame, isGameEnded } from "core/game/end";
+import { wrappedTriggerAddAction } from "util/emitLog";
+import { setPlayerFlag } from "util/w3mmd/w3mmd";
+import { flagDesync, endGame } from "game/states/end";
+import { gameState } from "game/states/common";
 
 let lastLeave = 0;
 
@@ -67,7 +68,7 @@ const Trig_miscLeaves_Actions = (): void => {
 	else if ( IsPlayerInForce( GetTriggerPlayer(), wolfTeam ) && countHere( wolfTeam ) === 1 )
 		endGame( "sheep" );
 
-	else if ( ! isGameEnded() )
+	else if ( gameState() !== "ended" )
 		setPlayerFlag( GetTriggerPlayer(), "leaver" );
 
 };

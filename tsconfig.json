@@ -18,7 +18,8 @@
 				"../node_modules/*/lib/index",
 				"../node_modules/*",
 				"../node_modules/*/src/index"
-			]
+			],
+			"test": ["../test"]
 		},
 		"esModuleInterop": true,
 		"plugins": [{"transform": "war3-transformer"}],
@@ -46,6 +47,6 @@
 		"noEmit": true,
 		"skipLibCheck": true
 	},
-	"include": ["src", "scripts"],
+	"include": ["src", "scripts", "test"],
 	"exclude": ["node_modules"]
 }

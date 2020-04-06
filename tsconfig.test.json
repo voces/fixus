@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outDir": ".",
+		"outDir": "dist/js",
 		"baseUrl": "src",
 		"allowJs": true,
 		"target": "es6",
@@ -18,7 +18,8 @@
 				"../node_modules/*/lib/index",
 				"../node_modules/*/src/index",
 				"../node_modules/*"
-			]
+			],
+			"test": ["../test"]
 		},
 		"esModuleInterop": true,
 		"plugins": [{"transform": "war3-transformer"}],
@@ -42,6 +43,6 @@
 			"mdx-m3-viewer/src/types"
 		]
 	},
-	"include": ["src", "scripts"],
+	"include": ["src", "scripts", "test"],
 	"exclude": []
 }

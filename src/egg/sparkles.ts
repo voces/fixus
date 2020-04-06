@@ -1,6 +1,6 @@
 
-import { WISP_TYPE } from "../shared";
-import { onCreated } from "event";
+import { WISP_TYPE } from "shared";
+import { onCreated } from "util/event";
 
 const PHOENIX1_TYPE = FourCC( "h00F" );
 const PHOENIX2_TYPE = FourCC( "h00G" );

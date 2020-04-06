@@ -1,5 +1,5 @@
 
-import { registerCommand } from "util/commands";
+import { registerCommand } from "commands/registerCommand";
 import { isSandbox } from "shared";
 import { forEachPlayer } from "util/temp";
 
