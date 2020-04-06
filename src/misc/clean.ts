@@ -1,5 +1,5 @@
 
-import { onDeath } from "event";
+import { onDeath } from "util/event";
 import { timeout } from "util/temp";
 
 // ===========================================================================

@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outDir": ".",
+		"outDir": "dist/js",
 		"baseUrl": "src",
 		"allowJs": true,
 		"target": "es6",
@@ -42,6 +42,6 @@
 			"mdx-m3-viewer/src/types"
 		]
 	},
-	"include": ["src", "scripts"],
+	"include": ["src", "scripts", "test"],
 	"exclude": []
 }
