@@ -14,7 +14,8 @@ import { awardBounty } from "util/proximityProportions";
 import { colorizedName } from "util/player";
 import { colorize } from "util/colorize";
 import { Specialization_onSpawn, Specialization_onSave } from "abilities/sheep/specialization";
-import { replaceUnit } from "./common";
+import { replaceUnit, bloodlust } from "./common";
+import { timeout } from "util/temp";
 
 const getSheepType = ( p: player ): number => {
 
@@ -80,6 +81,7 @@ export const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 		Specialization_onSpawn( savingUnit );
 
-	}
+	} else
+		bloodlust( savingUnit );
 
 };

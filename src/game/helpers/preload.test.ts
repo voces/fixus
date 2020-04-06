@@ -1,7 +1,7 @@
 
 import "test/w3api";
 import { hookedMain } from "@voces/w3ts";
-import "./abilityPreload";
+import "./preload";
 import { getGame, revFourCC } from "w3api";
 
 const unitAddAbilityMock = globalThis.UnitAddAbility = jest.fn();
@@ -38,7 +38,7 @@ it( "preloads all custom abilities", () => {
 				"\n\n" +
 				`Ability '${revFourCC( ability )}' has not been preloaded. ` +
 				"You can preload it by extending the range in " +
-				"src/misc/abilityPreload.ts",
+				"src/game/helpers/preload.ts",
 			);
 
 		}

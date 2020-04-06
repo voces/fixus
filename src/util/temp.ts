@@ -92,12 +92,14 @@ export const forEachPlayer = ( fn: ( player: player ) => void ): void => {
 
 };
 
+const timers: timer[] = [];
 export const timeout = ( seconds: number, fn: () => void ): void => {
 
-	const t = CreateTimer();
+	const t = timers.length > 0 ? timers.pop() as timer : CreateTimer();
+
 	TimerStart( t, seconds, false, () => {
 
-		DestroyTimer( t );
+		timers.push( t );
 		fn();
 
 	} );

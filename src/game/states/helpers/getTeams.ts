@@ -1,4 +1,5 @@
 import { isSandbox } from "shared";
+import { log } from "util/log";
 
 const IDEAL_SHEEP: Record<number, number> = {
 	1: 1,

@@ -13,6 +13,19 @@ const preloadAbilitityRange = ( start: number, end: number ): void => {
 
 };
 
+const preloadItemRange = ( start: number, end: number ): void => {
+
+	if ( end < start ) [ start, end ] = [ end, start ];
+
+	for ( let i = start; i <= end; i ++ ) {
+
+		const item = CreateItem( i, 0, 0 );
+		RemoveItem( item );
+
+	}
+
+};
+
 // ===========================================================================
 
 addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
@@ -23,5 +36,6 @@ addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 	UnitAddAbility( preloadUnit, FourCC( "Aloc" ) );
 
 	preloadAbilitityRange( FourCC( "A001" ), FourCC( "A00U" ) );
+	preloadItemRange( FourCC( "I001" ), FourCC( "I005" ) );
 
 } );

@@ -9699,106 +9699,52 @@ Chakra
 
 STRING 4914
 {
-Player 1
+You can't kill a fellow sheep. -_-
 }
 
 STRING 4915
 {
-Player 2
+Yooz bee uhn disgreysd too shahkruh!
 }
 
 STRING 4916
 {
-Player 3
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
 }
 
 STRING 4917
 {
-Player 4
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
 }
 
 STRING 4918
 {
-Player 5
+Commands
 }
 
 STRING 4919
 {
-Player 6
+Change log
 }
 
 STRING 4920
 {
-Player 7
+Kill things to get gold faster.
 }
 
 STRING 4921
 {
-Player 8
+Lumber is granted for reaching level 3 and each level thereafter.
 }
 
 STRING 4922
 {
-Player 9
+Fixus 11
 }
 
 STRING 4923
+// Units: dumy (Dummy), Name (Name)
 {
-Player 10
-}
-
-STRING 4924
-{
-Player 11
-}
-
-STRING 4925
-{
-Player 12
-}
-
-STRING 4926
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4927
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4928
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4929
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4930
-{
-Commands
-}
-
-STRING 4931
-{
-Change log
-}
-
-STRING 4932
-{
-Kill things to get gold faster.
-}
-
-STRING 4933
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4934
-{
-Fixus 11
+Dummy
 }
 
