@@ -5,6 +5,8 @@ import { emitLog } from "util/emitLog";
 import { timeout } from "util/temp";
 import { onSpellCast, onConstructionStart } from "util/event";
 
+const MAX_LEVEL = 25;
+
 type SpecializationData = {
 	learn: number;
 	passive: number;
@@ -74,7 +76,7 @@ const updateUnit = ( u: unit ): void => {
 	// Player hasn't picked one yet (they got another save)
 	if ( specialization == null ) return;
 
-	const effectiveLevel = Math.min( 25, level );
+	const effectiveLevel = Math.min( MAX_LEVEL, level );
 
 	if ( effectiveLevel > 0 ) {
 
@@ -86,7 +88,7 @@ const updateUnit = ( u: unit ): void => {
 			if ( specialization.customSheepLogic )
 				specialization.customSheepLogic( u, effectiveLevel, 0 );
 
-		} else if ( specialization.customSheepLogic )
+		} else if ( specialization.customSheepLogic && level <= MAX_LEVEL )
 			specialization.customSheepLogic( u, effectiveLevel, effectiveLevel - 1 );
 
 		SetUnitAbilityLevel( u, specialization.passive, effectiveLevel );
@@ -135,7 +137,7 @@ const onStartConstruction = (): void => {
 	const playerIndex = GetPlayerId( GetOwningPlayer( GetTriggerUnit() ) );
 	const playerSpecialization = playerSpecializations[ playerIndex ];
 	const specialization = playerSpecialization.specialization;
-	const effectiveLevel = Math.min( 25, playerSpecialization.level );
+	const effectiveLevel = Math.min( MAX_LEVEL, playerSpecialization.level );
 
 	if ( specialization && specialization.customFarmLogic )
 		specialization.customFarmLogic( GetTriggerUnit(), effectiveLevel );

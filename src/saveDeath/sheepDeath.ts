@@ -22,7 +22,7 @@ import { forEachPlayerUnit, reducePlayerUnits } from "util/temp";
 import { Specialization_onDeath, Specialization_GetLevel } from "abilities/sheep/specialization";
 import { colorizedName } from "util/player";
 import { awardBounty } from "util/proximityProportions";
-import { replaceUnit } from "./common";
+import { replaceUnit, bloodlust } from "./common";
 import { onSheepDeath as pityXpOnSheepDeath } from "resources/pityXp";
 import { onSpawn as phoenixOnSpawn } from "upgrades/scoutPhoenixUpgrade";
 
@@ -107,9 +107,11 @@ export const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 	// Increase wolf kills and upgrade
 	saveskills[ killingPlayerId ] = saveskills[ killingPlayerId ] + 1;
 
+	const isWhiteWolf = GetUnitTypeId( wolves[ killingPlayerId ] ) !== WHITE_WOLF_TYPE;
+
 	if ( saveskills[ killingPlayerId ] === 10 || saveskills[ killingPlayerId ] === 25 ) {
 
-		if ( GetUnitTypeId( wolves[ killingPlayerId ] ) !== WHITE_WOLF_TYPE ) {
+		if ( isWhiteWolf ) {
 
 			killingUnit = replaceUnit( wolves[ killingPlayerId ], getWolfType( killingPlayer ) );
 			wolves[ killingPlayerId ] = killingUnit;
@@ -128,7 +130,8 @@ export const onSheepDeath = ( killedUnit: unit, killingUnit: unit ): void => {
 			CreateItem( CLOAK_TYPE, GetUnitX( killingUnit ), GetUnitY( killingUnit ) ),
 		);
 
-	}
+	} else
+		bloodlust( isWhiteWolf ? wolves[ killingPlayerId ] : killingUnit );
 
 	// Gold bounty
 	awardBounty(
