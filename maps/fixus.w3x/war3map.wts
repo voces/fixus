@@ -9676,27 +9676,6 @@ STRING 4909
 X
 }
 
-STRING 4910
-{
-Ultimate Sheep Tag Fixus 11
-}
-
-STRING 4911
-{
-12
-}
-
-STRING 4912
-{
-Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
-To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
-}
-
-STRING 4913
-{
-Chakra
-}
-
 STRING 4914
 {
 You can't kill a fellow sheep. -_-
@@ -9746,5 +9725,26 @@ STRING 4923
 // Units: dumy (Dummy), Name (Name)
 {
 Dummy
+}
+
+STRING 4924
+{
+Ultimate Sheep Tag Fixus 11
+}
+
+STRING 4925
+{
+12
+}
+
+STRING 4926
+{
+Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
+To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
+}
+
+STRING 4927
+{
+Chakra
 }
 
