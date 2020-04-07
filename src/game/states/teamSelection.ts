@@ -10,6 +10,7 @@ import { Value } from "util/json";
 import { isPlayingPlayer, isComputer } from "util/player";
 import { defineStringValue } from "util/w3mmd/w3mmd";
 import { colorize } from "util/colorize";
+import { zoom } from "commands/zoom";
 
 let preferenceDialog: dialog;
 const dialogButtonMap: Map<button, "sheep" | "wolf" | "none"> = new Map();
@@ -65,6 +66,8 @@ const finalizeTeams = (): void => {
 		ForceAddPlayer( wolfTeam, p );
 
 	} );
+
+	zoom();
 
 	SetForceAllianceStateBJ( sheepTeam, sheepTeam, bj_ALLIANCE_ALLIED_VISION );
 	SetForceAllianceStateBJ( sheepTeam, wolfTeam, bj_ALLIANCE_UNALLIED );
