@@ -113,7 +113,7 @@ const onSetSpecialization = (): void => {
 	// Close and remove the spellbook
 	ForceUICancelBJ( GetOwningPlayer( unit ) );
 	BlzUnitHideAbility( unit, SPELLBOOK_ABILITY_TYPE, true );
-	timeout( 0, () => UnitRemoveAbility( unit, SPELLBOOK_ABILITY_TYPE ) );
+	timeout( "sheep specialization remove spellbook", 0, () => UnitRemoveAbility( unit, SPELLBOOK_ABILITY_TYPE ) );
 
 	// Set specialization and update unit
 
@@ -156,7 +156,7 @@ export const Specialization_onSpawn = ( u: unit ): void => {
 	) {
 
 		UnitAddAbility( u, SPELLBOOK_ABILITY_TYPE );
-		timeout( 30, () => {
+		timeout( "sheep specialization unused spellbok", 30, () => {
 
 			if ( u && UnitAlive( u ) && BlzGetUnitAbility( u, SPELLBOOK_ABILITY_TYPE ) != null )
 				DisplayTextToPlayer( GetOwningPlayer( u ), 0, 0, "You've saved someone! You can specialize by clicking the spellbook icon." );

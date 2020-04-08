@@ -46,7 +46,7 @@ const _endGame = ( winner: "sheep" | "wolves" ): void => {
 
 			}
 
-	timeout( 15, () => {
+	timeout( "end", 15, () => {
 
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 			if ( IsPlayerInForce( Player( i ), wolfTeam ) )

@@ -12,6 +12,6 @@ onDeath( "clean", () => {
 
 	if ( IsUnitType( dyingUnit, UNIT_TYPE_HERO ) !== false ) return;
 
-	timeout( 30, () => RemoveUnit( dyingUnit ) );
+	timeout( "clean", 30, () => RemoveUnit( dyingUnit ) );
 
 } );

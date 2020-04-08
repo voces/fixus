@@ -300,7 +300,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	// A magic function to determine which players have a proxy
 	let outstanding = 0;
-	timeout( 0, () => forEachPlayer( p => {
+	timeout( "networkio fetch proxy", 0, () => forEachPlayer( p => {
 
 		if ( ! isPlayingPlayer( p ) ) return;
 		outstanding ++;

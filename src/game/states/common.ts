@@ -54,7 +54,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	TriggerRegisterTimerExpireEvent( t, gameTimer );
 	wrappedTriggerAddAction( t, "gameTimer expired", transitionGame );
 
-	timeout( 0.1, transitionGame );
+	timeout( "game states init", 0.1, transitionGame );
 	gameTimerDialog = CreateTimerDialog( gameTimer );
 
 } );

@@ -59,7 +59,7 @@ export const replaceUnit = ( u: unit, newType: number ): unit => {
 		UnitAddItem( u, CreateItem( it[ i ], x, y ) );
 
 	// replacement always happens with a +level
-	timeout( 0.01, () => bloodlust( u, bloodlustLevel + 1 ) );
+	timeout( "replaceUnit", 0.01, () => bloodlust( u, bloodlustLevel + 1 ) );
 
 	return u;
 

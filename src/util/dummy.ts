@@ -11,7 +11,7 @@ export const getDummy = ( timeoutInterval = 0.25 ): unit => {
 		dummies.pop() as unit :
 		CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), DUMMY_UNIT_TYPE, 0, 0, 0 );
 
-	timeout( timeoutInterval, () => dummies.push( dummy ) );
+	timeout( "getDummy reuse", timeoutInterval, () => dummies.push( dummy ) );
 
 	return dummy;
 
