@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK, File } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK, File } from "w3ts";
 import { wolfTeam, sheepTeam, wispTeam } from "shared";
 import { registerCommand } from "./registerCommand";
 

@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { saveskills } from "shared";
 import { emitLog, wrappedTriggerAddAction } from "util/emitLog";
 import { onSpellCast } from "util/event";
@@ -25,6 +25,7 @@ const TINY_FARM_TYPE = FourCC( "hC07" );
 type FactoryFarmData = {
 	buildIndex: number;
 	buildType: number;
+	compact: boolean;
 }
 
 const factoryFarmData: Map<unit, FactoryFarmData> = new Map();
@@ -93,9 +94,9 @@ const factoryFarmEnd = (): void => {
 
 const getFarmSize = ( farmType: number ): number => {
 
-	if ( farmType === HARD_FARM_TYPE ) return 320;
-	else if ( farmType === TINY_FARM_TYPE ) return 128;
-	return 192;
+	if ( farmType === HARD_FARM_TYPE ) return 256;
+	else if ( farmType === TINY_FARM_TYPE ) return 64;
+	return 128;
 
 };
 
@@ -117,8 +118,8 @@ const factoryFarmTick = (): void => {
 		if ( UnitAlive( u ) ) {
 
 			const factoryData = factoryFarmData.get( u ) as FactoryFarmData;
-			const buildType = factoryData.buildType;
-			const farmSize = getFarmSize( buildType );
+			const { buildType, compact } = factoryData;
+			const farmSize = getFarmSize( buildType ) + ( compact ? 0 : 64 );
 
 			// Get next location
 			let buildIndex = factoryData.buildIndex + 1;
@@ -171,6 +172,12 @@ const getBaseFarm = ( u: unit ): number => {
 
 };
 
+const getDefaults = ( u: unit ): FactoryFarmData => ( {
+	buildIndex: 1,
+	buildType: lastFarmType.get( GetOwningPlayer( u ) ) || getBaseFarm( u ),
+	compact: false,
+} );
+
 const onFinishConstruction = (): void => {
 
 	const u = GetTriggerUnit();
@@ -178,10 +185,7 @@ const onFinishConstruction = (): void => {
 	if ( GetUnitTypeId( u ) !== FACTORY_FARM_TYPE ) return;
 
 	GroupAddUnit( factoryFarms, u );
-	factoryFarmData.set( u, {
-		buildIndex: 1,
-		buildType: lastFarmType.get( GetOwningPlayer( u ) ) || getBaseFarm( u ),
-	} );
+	factoryFarmData.set( u, getDefaults( u ) );
 
 };
 
@@ -196,22 +200,45 @@ const onSelectFarm = (): void => {
 	lastFarmType.set( GetOwningPlayer( triggerUnit ), unitType );
 
 	// For the current factory
-	factoryFarmData.set(
-		triggerUnit,
-		{
-			buildIndex: 1,
-			...factoryFarmData.get( triggerUnit ) as FactoryFarmData,
-			buildType: unitType,
-		},
-	);
+	factoryFarmData.set( triggerUnit, {
+		...getDefaults( triggerUnit ),
+		buildType: unitType,
+	} );
+
+};
+
+const onIssuedOrder = (): void => {
+
+	const triggerUnit = GetTriggerUnit();
+	if ( GetUnitTypeId( triggerUnit ) !== FACTORY_FARM_TYPE ) return;
+
+	const order = OrderId2String( GetIssuedOrderId() );
+
+	if ( order === "defend" )
+		factoryFarmData.set( triggerUnit, {
+			...getDefaults( triggerUnit ),
+			...factoryFarmData.get( triggerUnit ),
+			compact: true,
+		} );
+
+	else if ( order === "undefend" )
+		factoryFarmData.set( triggerUnit, {
+			...getDefaults( triggerUnit ),
+			...factoryFarmData.get( triggerUnit ),
+			compact: false,
+		} );
 
 };
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	const t = CreateTrigger();
+	let t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_CONSTRUCT_FINISH );
 	wrappedTriggerAddAction( t, "factory finish construction", onFinishConstruction );
+
+	t = CreateTrigger();
+	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_ISSUED_ORDER );
+	wrappedTriggerAddAction( t, "factory finish issued order", onIssuedOrder );
 
 	onSpellCast( "factory", onSelectFarm );
 

@@ -1,5 +1,5 @@
 
-import { W3TS_HOOK, addScriptHook } from "@voces/w3ts";
+import { W3TS_HOOK, addScriptHook } from "w3ts";
 import { forEachPlayer, timeout, mapEachPlayer } from "util/temp";
 import { fetch } from "util/networkio";
 import { getTeams } from "./helpers/getTeams";

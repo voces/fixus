@@ -44,7 +44,7 @@
     "winston": "^3.2.1"
   },
   "dependencies": {
-    "@voces/w3ts": "^2.1.0-fix.1"
+    "w3ts": "^2.1.1"
   },
   "watch": {
     "build:defs": {

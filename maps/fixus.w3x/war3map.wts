@@ -9676,51 +9676,6 @@ STRING 4909
 X
 }
 
-STRING 4914
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4915
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4916
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4917
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4918
-{
-Commands
-}
-
-STRING 4919
-{
-Change log
-}
-
-STRING 4920
-{
-Kill things to get gold faster.
-}
-
-STRING 4921
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4922
-{
-Fixus 11
-}
-
 STRING 4923
 // Units: dumy (Dummy), Name (Name)
 {
@@ -9729,22 +9684,81 @@ Dummy
 
 STRING 4924
 {
-Ultimate Sheep Tag Fixus 11
+Activate Compact Mode
 }
 
 STRING 4925
 {
-12
+Switches the Factory Farm to build farms close together.
 }
 
 STRING 4926
 {
-Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
-To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
+Deactivate Compact Mode
 }
 
 STRING 4927
 {
-Chakra
+Switches the Factory Farm to build farms with a gap.
+}
+
+STRING 4928
+// Abilities: A00Y (Immolation), EditorSuffix (Editor Suffix)
+{
+(Factory Farm)
+}
+
+STRING 4929
+// Abilities: A00Y (Immolation), Tip (Tooltip - Normal)
+{
+Activate Compact Mode
+}
+
+STRING 4930
+// Abilities: A00Y (Immolation), Ubertip (Tooltip - Normal - Extended)
+{
+Switches the Factory Farm to build farms close together.
+}
+
+STRING 4931
+// Abilities: A00Y (Immolation), Untip (Tooltip - Turn Off)
+{
+Deactivate Compact Mode
+}
+
+STRING 4932
+// Abilities: A00Y (Immolation), Unubertip (Tooltip - Turn Off - Extended)
+{
+Switches the Factory Farm to build farms with a gap.
+}
+
+STRING 4933
+// Abilities: A00Z (Defend), EditorSuffix (Editor Suffix)
+{
+(Factory Farm)
+}
+
+STRING 4934
+// Abilities: A00Z (Defend), Tip (Tooltip - Normal)
+{
+Activate Compact Mode
+}
+
+STRING 4935
+// Abilities: A00Z (Defend), Ubertip (Tooltip - Normal - Extended)
+{
+Switches the Factory Farm to build farms close together.
+}
+
+STRING 4936
+// Abilities: A00Z (Defend), Untip (Tooltip - Turn Off)
+{
+Deactivate Compact Mode
+}
+
+STRING 4937
+// Abilities: A00Z (Defend), Unubertip (Tooltip - Turn Off - Extended)
+{
+Switches the Factory Farm to build farms with a gap.
 }
 

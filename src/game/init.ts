@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { DisplayTimedText, isSandbox } from "shared";
 import { board } from "util/multiboard";
 import { changelog } from "misc/changelog";

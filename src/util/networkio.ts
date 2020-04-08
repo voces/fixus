@@ -1,7 +1,6 @@
 
 import { stringify, parse, Value } from "./json";
-import { readAndCloseFile, openFile } from "./fileIO";
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK, File } from "w3ts";
 import { wrappedTriggerAddAction, emitLog } from "util/emitLog";
 import { forEachPlayer, timeout } from "util/temp";
 import { isPlayingPlayer } from "util/player";
@@ -78,7 +77,8 @@ const checkForResponse = ( request: Request ): void => {
 	if ( request.fetcher !== GetLocalPlayer() ) return;
 
 	const path = `networkio/responses/${prefix}-${request.requestId}-${request.tries ++}.txt`;
-	const response = readAndCloseFile( openFile( path ) );
+	const rawResponse = File.read( path );
+	const response = rawResponse === "fail" ? null : rawResponse;
 
 	// No response; try again if we have attempts remaining
 	if ( response == null && request.tries < MAX_TRIES ) {
