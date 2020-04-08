@@ -57,7 +57,7 @@ onDeath( "saveDeath", (): void => {
 
 			}
 		if ( allDead )
-			timeout( 0.125, () => endGame( "wolves" ) );
+			timeout( "saveDeath end", 0.125, () => endGame( "wolves" ) );
 
 	}
 

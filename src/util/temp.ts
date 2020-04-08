@@ -1,6 +1,8 @@
 
 // Groups
 
+import { emitLog } from "./emitLog";
+
 export const withTempGroup = <T>( fn: ( group: group ) => T ): T => {
 
 	const g = CreateGroup();
@@ -93,14 +95,22 @@ export const forEachPlayer = ( fn: ( player: player ) => void ): void => {
 };
 
 const timers: timer[] = [];
-export const timeout = ( seconds: number, fn: () => void ): void => {
+export const timeout = ( key: string, seconds: number, fn: () => void ): void => {
 
 	const t = timers.length > 0 ? timers.pop() as timer : CreateTimer();
 
 	TimerStart( t, seconds, false, () => {
 
 		timers.push( t );
-		fn();
+		try {
+
+			fn();
+
+		} catch ( err ) {
+
+			emitLog( key, err );
+
+		}
 
 	} );
 

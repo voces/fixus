@@ -201,7 +201,7 @@ const selectTeams = (): TransitionInformation => {
 
 	} );
 
-	timeout( 14.75, () => {
+	timeout( "team select", 14.75, () => {
 
 		if ( remainingDialogs > 0 || ! fetchedBiases ) {
 

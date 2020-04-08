@@ -29,3 +29,22 @@ export const wrappedTriggerAddAction = ( whichTrigger: trigger, key: string, act
 		}
 
 	} );
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const wrapFunction = <A extends any[], B>( key: string, fn: ( ...args: A ) => B ): ( ( ...args: A ) => B ) =>
+	( ...args: A ): B => {
+
+		try {
+
+			return fn( ...args );
+
+		} catch ( err ) {
+
+			emitLog( key, err );
+
+		}
+
+		emitLog( "wrapFunction impossible", "this should never happen" );
+		throw "impossible";
+
+	};

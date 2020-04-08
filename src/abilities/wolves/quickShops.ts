@@ -36,7 +36,7 @@ const onActivateQuickShops = ( unit: unit ): void => {
 
 	BlzUnitHideAbility( unit, ACTIVATE_QUICK_SHOPS, true );
 	UnitAddAbility( unit, DEACTIVATE_QUICK_SHOPS );
-	timeout( 0, () => {
+	timeout( "quick shops activate", 0, () => {
 
 		sleeping.delete( unit );
 		if ( GetUnitAbilityLevel( unit, DEACTIVATE_QUICK_SHOPS ) === 0 ) return;
@@ -81,7 +81,7 @@ const onDeactivateQuickShops = ( unit: unit ): void => {
 
 	BlzUnitHideAbility( unit, DEACTIVATE_QUICK_SHOPS, true );
 	UnitAddAbility( unit, ACTIVATE_QUICK_SHOPS );
-	timeout( 0, () => {
+	timeout( "quick shops deactivate", 0, () => {
 
 		sleeping.delete( unit );
 		if ( GetUnitAbilityLevel( unit, ACTIVATE_QUICK_SHOPS ) === 0 ) return;

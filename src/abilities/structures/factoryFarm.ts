@@ -3,8 +3,8 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { saveskills } from "shared";
 import { emitLog, wrappedTriggerAddAction } from "util/emitLog";
 import { onSpellCast } from "util/event";
+import { timeout } from "util/temp";
 
-let factoryFarmTimer: timer;
 let factoryFarmDummySheep: unit;
 let factoryFarms: group;
 let factoryFarmsTemp: group;
@@ -28,6 +28,7 @@ type FactoryFarmData = {
 }
 
 const factoryFarmData: Map<unit, FactoryFarmData> = new Map();
+const lastFarmType: Map<player, number> = new Map();
 
 export const spiralX = ( n: number ): number => {
 
@@ -79,12 +80,12 @@ const factoryFarmEnd = (): void => {
 
 		// Invoke next run
 		if ( wait < WAIT_BETWEEN_BUILDS ) wait = WAIT_BETWEEN_BUILDS;
-		TimerStart( factoryFarmTimer, wait, false, factoryFarmStart );
+		timeout( "factory end", wait, factoryFarmStart );
 
 	} catch ( err ) {
 
 		emitLog( "factoryFarmEnd", err );
-		TimerStart( factoryFarmTimer, WAIT_BETWEEN_TICKS, false, factoryFarmStart );
+		timeout( "factory end errored", WAIT_BETWEEN_TICKS, factoryFarmStart );
 
 	}
 
@@ -146,7 +147,7 @@ const factoryFarmTick = (): void => {
 
 	}
 
-	TimerStart( factoryFarmTimer, WAIT_BETWEEN_BUILDS, false, factoryFarmTick );
+	timeout( "factory tick", WAIT_BETWEEN_BUILDS, factoryFarmTick );
 
 };
 
@@ -177,20 +178,32 @@ const onFinishConstruction = (): void => {
 	if ( GetUnitTypeId( u ) !== FACTORY_FARM_TYPE ) return;
 
 	GroupAddUnit( factoryFarms, u );
-	factoryFarmData.set( u, { buildIndex: 1, buildType: getBaseFarm( u ) } );
+	factoryFarmData.set( u, {
+		buildIndex: 1,
+		buildType: lastFarmType.get( GetOwningPlayer( u ) ) || getBaseFarm( u ),
+	} );
 
 };
 
 const onSelectFarm = (): void => {
 
-	if ( GetSpellAbilityId() === SELECT_FARM_TYPE )
-		factoryFarmData.set(
-			GetTriggerUnit(),
-			{
-				...factoryFarmData.get( GetTriggerUnit() ) as FactoryFarmData,
-				buildType: GetUnitTypeId( GetSpellTargetUnit() ),
-			},
-		);
+	if ( GetSpellAbilityId() !== SELECT_FARM_TYPE ) return;
+
+	const triggerUnit = GetTriggerUnit();
+	const unitType = GetUnitTypeId( GetSpellTargetUnit() );
+
+	// For future factories
+	lastFarmType.set( GetOwningPlayer( triggerUnit ), unitType );
+
+	// For the current factory
+	factoryFarmData.set(
+		triggerUnit,
+		{
+			buildIndex: 1,
+			...factoryFarmData.get( triggerUnit ) as FactoryFarmData,
+			buildType: unitType,
+		},
+	);
 
 };
 
@@ -202,11 +215,10 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	onSpellCast( "factory", onSelectFarm );
 
-	factoryFarmTimer = CreateTimer();
 	factoryFarmDummySheep = CreateUnit( Player( PLAYER_NEUTRAL_PASSIVE ), FourCC( "u002" ), 0, 0, 270 );
 	factoryFarms = CreateGroup();
 	factoryFarmsTemp = CreateGroup();
 
-	TimerStart( factoryFarmTimer, WAIT_BETWEEN_TICKS, false, factoryFarmStart );
+	timeout( "factory start", WAIT_BETWEEN_TICKS, factoryFarmStart );
 
 } );
