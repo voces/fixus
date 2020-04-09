@@ -1,5 +1,6 @@
 
 import { colorize } from "./colorize";
+import { colorizedName } from "./player";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isArray = ( v: any ): boolean => {
@@ -48,7 +49,7 @@ export const termToString = ( v: any, color = true ): string => {
 	switch ( type ) {
 
 		case "player": return `Player ${termToString( { id: GetPlayerId( v ), name: GetPlayerName( v ) } )}`;
-		case "unit": return `Unit ${termToString( { name: GetUnitName( v ), owner: GetOwningPlayer( v ) } )}`;
+		case "unit": return `Unit ${termToString( { id: GetHandleId( v ), name: GetUnitName( v ), owner: colorizedName( GetOwningPlayer( v ) ) } )}`;
 		case "force": {
 
 			const arr: player[] = [];
