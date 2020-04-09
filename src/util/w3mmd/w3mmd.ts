@@ -1,5 +1,6 @@
 
 import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { log } from "util/log";
 
 const ESCAPED_CHARS = " \\";
 const OPERATION_MAP = {
@@ -81,7 +82,8 @@ const emit = ( message: string ): void => {
 	// only the emitter should emit 😃
 	if ( emitter === GetLocalPlayer() ) {
 
-		StoreInteger( cache, "val:" + thisMessageId, message, thisMessageId + message.length );
+		log( "syncing", thisMessageId, message, thisMessageId * message.length % 127 );
+		StoreInteger( cache, "val:" + thisMessageId, message, thisMessageId * message.length % 127 );
 		SyncStoredInteger( cache, "val:" + thisMessageId, message );
 
 	}

@@ -27,7 +27,9 @@ const logSave = defineEvent( "save", "{0} saved {1}", "sheep", "wisp" );
 
 // values
 
-// sheep
+const logBonus = defineNumberValue( "bonus", "real", "none", "none" );
+
+// sheep values
 const updateFarmsBuilt = defineNumberValue( "farms built", "int", "high", "none" );
 const updateSaves = defineNumberValue( "saves", "int", "high", "none" );
 const updateSheepDeaths = defineNumberValue( "sheep deaths", "int", "low", "none" );
@@ -36,7 +38,7 @@ const updateSheepMaxLevel = defineNumberValue( "sheep max level", "int", "high",
 const updateSheepSpecialization = defineStringValue( "sheep specialization", "none" );
 const updateUnitsKilledAsSheep = defineNumberValue( "units killed as sheep", "int", "high", "none" );
 
-// wolves
+// wolf values
 const updateFarmsKilled = defineNumberValue( "farms killed", "int", "high", "none" );
 const updateWolfDeaths = defineNumberValue( "wolf deaths", "int", "low", "none" );
 const updateWolfGold = defineNumberValue( "wolf gold", "int", "high", "none" );
@@ -51,50 +53,76 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 	try {
 
-		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
+		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
+
+			const player = Player( i );
 
 			if (
-				GetPlayerController( Player( i ) ) === MAP_CONTROL_USER &&
-				[ PLAYER_SLOT_STATE_PLAYING, PLAYER_SLOT_STATE_LEFT ].includes( GetPlayerSlotState( Player( i ) ) )
+				GetPlayerController( player ) === MAP_CONTROL_USER &&
+				[ PLAYER_SLOT_STATE_PLAYING, PLAYER_SLOT_STATE_LEFT ].includes( GetPlayerSlotState( player ) )
 			) {
 
-				if ( IsPlayerInForce( Player( i ), wolfTeam ) ) {
+				if ( IsPlayerInForce( player, wolfTeam ) ) {
 
 					// wolf values
-					updateFarmsKilled( Player( i ), "set", unitsKilled[ i ] );
-					updateWolfDeaths( Player( i ), "set", deaths[ i ] );
-					updateWolfGold( Player( i ), "set", GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
-					updateSheepKilled( Player( i ), "set", saveskills[ i ] );
-					updateWolfLevel( Player( i ), "set", GetHeroLevel( wolfUnit( Player( i ) ) ) );
+					updateFarmsKilled( player, "set", unitsKilled[ i ] );
+					updateWolfDeaths( player, "set", deaths[ i ] );
+					updateWolfGold( player, "set", GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
+					updateSheepKilled( player, "set", saveskills[ i ] );
+					updateWolfLevel( player, "set", GetHeroLevel( wolfUnit( player ) ) );
 
 				} else {
 
 					// sheep values
-					updateFarmsBuilt( Player( i ), "set", structuresBuilt[ i ] );
-					updateSaves( Player( i ), "set", saveskills[ i ] );
-					updateSheepDeaths( Player( i ), "set", deaths[ i ] );
-					updateSheepGold( Player( i ), "set", GetPlayerState( Player( i ), PLAYER_STATE_GOLD_GATHERED ) );
-					updateSheepMaxLevel( Player( i ), "set", playerSpecializations[ i ].maxLevel );
+					updateFarmsBuilt( player, "set", structuresBuilt[ i ] );
+					updateSaves( player, "set", saveskills[ i ] );
+					updateSheepDeaths( player, "set", deaths[ i ] );
+					updateSheepGold( player, "set", GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
+					updateSheepMaxLevel( player, "set", playerSpecializations[ i ].maxLevel );
 					const playerSpecialization = playerSpecializations[ i ].specialization;
 					if ( playerSpecialization != null )
-						updateSheepSpecialization( Player( i ), specializationNames.get( playerSpecialization ) || "unknown" );
-					updateUnitsKilledAsSheep( Player( i ), "set", unitsKilled[ i ] );
+						updateSheepSpecialization( player, specializationNames.get( playerSpecialization ) || "unknown" );
+					updateUnitsKilledAsSheep( player, "set", unitsKilled[ i ] );
 
 				}
 
 				if ( isSandbox() )
-					setPlayerFlag( Player( i ), "practicing" );
+					setPlayerFlag( player, "practicing" );
 
 				else if ( ! desynced )
-					if ( IsPlayerInForce( Player( i ), wolfTeam ) )
+					if ( IsPlayerInForce( player, wolfTeam ) )
 
-						if ( winner === "wolves" ) setPlayerFlag( Player( i ), "winner" );
-						else setPlayerFlag( Player( i ), "loser" );
+						if ( winner === "wolves" ) {
 
-					else if ( winner === "sheep" ) setPlayerFlag( Player( i ), "winner" );
-					else setPlayerFlag( Player( i ), "loser" );
+							setPlayerFlag( player, "winner" );
+							if ( GetPlayerController( player ) === MAP_CONTROL_USER )
+								logBonus( player, "set", 1.5 - GetPlayerHandicap( player ) * 0.5 );
+
+						} else {
+
+							setPlayerFlag( player, "loser" );
+							if ( GetPlayerController( player ) === MAP_CONTROL_USER )
+								logBonus( player, "set", 0.5 + GetPlayerHandicap( player ) * 0.5 );
+
+						}
+
+					else if ( winner === "sheep" ) {
+
+						setPlayerFlag( player, "winner" );
+						if ( GetPlayerController( player ) === MAP_CONTROL_USER )
+							logBonus( player, "set", 2 - GetPlayerHandicap( player ) );
+
+					} else {
+
+						setPlayerFlag( player, "loser" );
+						if ( GetPlayerController( player ) === MAP_CONTROL_USER )
+							logBonus( player, "set", GetPlayerHandicap( player ) );
+
+					}
 
 			}
+
+		}
 
 	} catch ( err ) {
 

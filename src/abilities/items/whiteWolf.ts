@@ -1,8 +1,9 @@
 
-import { TriggerRegisterPlayerUnitEventAll, wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
+import { wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { removeQuickShop } from "../wolves/quickShops";
+import { onSummon } from "util/event";
 
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
@@ -110,12 +111,10 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	gameTimer = CreateTimer();
 	TimerStart( gameTimer, 99999999, false, () => { /* do nothing */ } );
 
-	let t = CreateTrigger();
+	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
 	wrappedTriggerAddAction( t, "white wolf pickup", onUnitPickupItem );
 
-	t = CreateTrigger();
-	TriggerRegisterPlayerUnitEventAll( t, EVENT_PLAYER_UNIT_SUMMON, null );
-	wrappedTriggerAddAction( t, "white wolf unit summon", onUnitSummon );
+	onSummon( "white wolf", onUnitSummon );
 
 } );
