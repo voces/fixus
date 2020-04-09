@@ -7366,12 +7366,6 @@ STRING 4257
 (Level 1)
 }
 
-STRING 4260
-// Upgrades: R004 (Berserker Upgrade), Name (Name)
-{
-Phoenix Scouts
-}
-
 STRING 4264
 // Abilities: A00B (Scout Upgrade), Name (Name)
 {
@@ -7454,12 +7448,6 @@ STRING 4286
 // Abilities: A00P (Phoenix), Ubertip (Tooltip - Normal - Extended)
 {
 Summons a powerful Phoenix. The Phoenix burns with such intensity that it damages itself and nearby enemy structures. When a Phoenix dies, it creates an egg that will hatch into a Phoenix|nPhoenix has 2250 maximum health.
-}
-
-STRING 4287
-// Upgrades: R004 (Berserker Upgrade), Ubertip (Tooltip - Extended)
-{
-Replaces Scouts with Phoenix Scouts. Phoenixes deal damage to structures and can be reborn.
 }
 
 STRING 4290
@@ -7946,12 +7934,6 @@ STRING 4410
 // Items: rat6 (Claws of Attack +6), Ubertip (Tooltip - Extended)
 {
 Increases the attack damage of the Hero by 6 when worn.
-}
-
-STRING 4411
-// Items: fgrg (Stone Token), Ubertip (Tooltip - Extended)
-{
-Summons a Rock Golem to fight for you. |nLasts <AIfr,Dur1> seconds.
 }
 
 STRING 4412
@@ -8890,12 +8872,6 @@ STRING 4600
 Command Aura - [|cffffcc00Level 3|r]
 }
 
-STRING 4601
-// Upgrades: R004 (Berserker Upgrade), Tip (Tooltip)
-{
-Research Phoenix Scouts
-}
-
 STRING 4602
 // Upgrades: R004 (Berserker Upgrade), Hotkey (Hotkey)
 {
@@ -9682,27 +9658,6 @@ STRING 4923
 Dummy
 }
 
-STRING 4924
-{
-Ultimate Sheep Tag Fixus 11
-}
-
-STRING 4925
-{
-24
-}
-
-STRING 4926
-{
-Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
-To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
-}
-
-STRING 4927
-{
-Chakra
-}
-
 STRING 4928
 // Abilities: A00Z (Compact Mode), EditorSuffix (Editor Suffix)
 {
@@ -9733,54 +9688,123 @@ STRING 4932
 Switches the Factory Farm to build farms with a gap.
 }
 
-STRING 4938
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4939
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4940
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4941
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4942
-{
-Commands
-}
-
-STRING 4943
-{
-Change log
-}
-
-STRING 4944
-{
-Kill things to get gold faster.
-}
-
-STRING 4945
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4946
-{
-Fixus 11
-}
-
 STRING 4947
 // Abilities: A00Z (Compact Mode), Name (Name)
 {
 Compact Mode
+}
+
+STRING 4948
+{
+Ultimate Sheep Tag Fixus 11
+}
+
+STRING 4949
+{
+12
+}
+
+STRING 4950
+{
+Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
+To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
+}
+
+STRING 4951
+{
+Chakra
+}
+
+STRING 4952
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4953
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4954
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4955
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4956
+{
+Commands
+}
+
+STRING 4957
+{
+Change log
+}
+
+STRING 4958
+{
+Kill things to get gold faster.
+}
+
+STRING 4959
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4960
+{
+Fixus 11
+}
+
+STRING 4961
+// Abilities: AEst (Scout), Researchubertip (Tooltip - Learn - Extended)
+{
+Temporarily summons an Owl Scout, which can be used to scout the map. |nCan see invisible units. |n|n|cffffcc00Level 1|r - Summons an Owl Scout for <AEst,Cost1> mana. |n|cffffcc00Level 2|r - Summons a better Owl Scout for <AEst,Cost2> mana. |n|cffffcc00Level 3|r - Summons the best Owl Scout for <AEst,Cost3> mana.|n|nScout can be upgraded to Phoenix by researching Burning Scouts on the Golem Totem. Golem Totems are built by Rock Golems, which are summoned by the Stone Token item in the blue shop.
+}
+
+STRING 4962
+// Abilities: AEst (Scout), Ubertip (Tooltip - Normal - Extended)
+{
+Summons an Owl Scout, which can be used to scout.|nCan see invisible units. |nLasts <AEst,Dur1> seconds.|n|nScout can be upgraded to Phoenix by researching Burning Scouts on the Golem Totem. Golem Totems are built by Rock Golems, which are summoned by the Stone Token item in the blue shop.
+}
+
+STRING 4963
+// Abilities: AEst (Scout), Ubertip (Tooltip - Normal - Extended)
+{
+Summons a fast Owl Scout, which can be used to scout.|nCan see invisible units. |nLasts <AEst,Dur2> seconds.|n|nScout can be upgraded to Phoenix by researching Burning Scouts on the Golem Totem. Golem Totems are built by Rock Golems, which are summoned by the Stone Token item in the blue shop.
+}
+
+STRING 4964
+// Abilities: AEst (Scout), Ubertip (Tooltip - Normal - Extended)
+{
+Summons a very fast Owl Scout, which can be used to scout.|nCan see invisible units. |nLasts <AEst,Dur3> seconds.|n|nScout can be upgraded to Phoenix by researching Burning Scouts on the Golem Totem. Golem Totems are built by Rock Golems, which are summoned by the Stone Token item in the blue shop.
+}
+
+STRING 4965
+// Upgrades: R004 (Berserker Upgrade), Name (Name)
+{
+Burning Scouts
+}
+
+STRING 4966
+// Upgrades: R004 (Berserker Upgrade), Ubertip (Tooltip - Extended)
+{
+Replaces Scouts with Phoenixes. Phoenixes deal damage to structures and can be reborn.
+}
+
+STRING 4967
+// Upgrades: R004 (Berserker Upgrade), Tip (Tooltip)
+{
+Research Burning Scouts
+}
+
+STRING 4968
+// Items: fgrg (Stone Token), Ubertip (Tooltip - Extended)
+{
+Summons a Rock Golem to fight for you. |nLasts <AIfr,Dur1> seconds. Rock Golems can turn into Golem Totems, which contains upgrades for Rock Golems and your wolf.
 }
 

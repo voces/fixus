@@ -1,12 +1,9 @@
 
 import { WISP_TYPE } from "shared";
 import { onCreated } from "util/event";
+import { PHOENIX_UNIT_TYPES } from "types";
 
-const PHOENIX1_TYPE = FourCC( "h00F" );
-const PHOENIX2_TYPE = FourCC( "h00G" );
-const PHOENIX3_TYPE = FourCC( "h00H" );
-
-const hawkysExclusions = [ WISP_TYPE, PHOENIX1_TYPE, PHOENIX2_TYPE, PHOENIX3_TYPE ];
+const hawkysExclusions = [ WISP_TYPE, ...PHOENIX_UNIT_TYPES ];
 
 onCreated( "sparkles", (): void => {
 
