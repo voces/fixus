@@ -123,7 +123,7 @@ export const defineEvent = <L extends number>(
 
 	const packedName = pack( name );
 	const packedArgs = args.map( arg => pack( arg ) ).join( " " );
-	emit( `DefEvent ${packedName} ${args.length}${args.length > 0 ? ` ${packedArgs}` : ""} ${format}` );
+	emit( `DefEvent ${packedName} ${args.length}${args.length > 0 ? ` ${packedArgs}` : ""} ${pack( format )}` );
 
 	return ( ...args: FixedLengthArray<string, L> ): void => {
 
@@ -172,10 +172,10 @@ export const defineStringValue = (
  */
 export const defineNumberValue = (
 	name: string,
-	valueType: "int" | "real",
 	goalType: "none" | "high" | "low",
 	suggestionType: "none" | "track" | "leaderboard",
-): ( ( player: player, operation: "add" | "sub" | "set", value: number ) => void ) => {
+	valueType: "int" | "real" = "int",
+): ( ( player: player, value: number, operation?: "add" | "sub" | "set" ) => void ) => {
 
 	if ( name.length > 32 ) throw `w3mmd: value name '${name}' is too long`;
 	if ( name.length === 0 ) throw "w3mmd: value name is empty";
@@ -184,7 +184,7 @@ export const defineNumberValue = (
 
 	emit( `DefVarP ${packedName} ${valueType} ${goalType} ${suggestionType}` );
 
-	return ( player: player, operation: "add" | "sub" | "set", value: number ): void => {
+	return ( player: player, value: number, operation: "add" | "sub" | "set" = "set" ): void => {
 
 		const w3mmdOperation = OPERATION_MAP[ operation ];
 		emit( `VarP ${GetPlayerId( player )} ${packedName} ${w3mmdOperation} ${value}` );

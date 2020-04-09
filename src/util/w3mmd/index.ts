@@ -25,26 +25,6 @@ const logKill = defineEvent( "kill", "{0} killed {1}", "killer", "killed" );
 const logDeath = defineEvent( "death", "{0} killed by {1}", "killed", "killer" );
 const logSave = defineEvent( "save", "{0} saved {1}", "sheep", "wisp" );
 
-// values
-
-const logBonus = defineNumberValue( "bonus", "real", "none", "none" );
-
-// sheep values
-const updateFarmsBuilt = defineNumberValue( "farms built", "int", "high", "none" );
-const updateSaves = defineNumberValue( "saves", "int", "high", "none" );
-const updateSheepDeaths = defineNumberValue( "sheep deaths", "int", "low", "none" );
-const updateSheepGold = defineNumberValue( "sheep gold", "int", "high", "none" );
-const updateSheepMaxLevel = defineNumberValue( "sheep max level", "int", "high", "none" );
-const updateSheepSpecialization = defineStringValue( "sheep specialization", "none" );
-const updateUnitsKilledAsSheep = defineNumberValue( "units killed as sheep", "int", "high", "none" );
-
-// wolf values
-const updateFarmsKilled = defineNumberValue( "farms killed", "int", "high", "none" );
-const updateWolfDeaths = defineNumberValue( "wolf deaths", "int", "low", "none" );
-const updateWolfGold = defineNumberValue( "wolf gold", "int", "high", "none" );
-const updateSheepKilled = defineNumberValue( "sheep killed", "int", "high", "none" );
-const updateWolfLevel = defineNumberValue( "wolf level", "int", "high", "none" );
-
 // todo: don't hardcode these
 emitCustom( "repo", "voces/fixus" );
 emitCustom( "version", "11" );
@@ -52,6 +32,26 @@ emitCustom( "version", "11" );
 export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): void => {
 
 	try {
+
+		// values
+
+		const logBonus = defineNumberValue( "bonus", "none", "none", "real" );
+
+		// sheep values
+		const updateFarmsBuilt = defineNumberValue( "farms built", "high", "none" );
+		const updateSaves = defineNumberValue( "saves", "high", "none" );
+		const updateSheepDeaths = defineNumberValue( "sheep deaths", "low", "none" );
+		const updateSheepGold = defineNumberValue( "sheep gold", "high", "none" );
+		const updateSheepMaxLevel = defineNumberValue( "sheep max level", "high", "none" );
+		const updateSheepSpecialization = defineStringValue( "sheep specialization", "none" );
+		const updateUnitsKilledAsSheep = defineNumberValue( "units killed as sheep", "high", "none" );
+
+		// wolf values
+		const updateFarmsKilled = defineNumberValue( "farms killed", "high", "none" );
+		const updateWolfDeaths = defineNumberValue( "wolf deaths", "low", "none" );
+		const updateWolfGold = defineNumberValue( "wolf gold", "high", "none" );
+		const updateSheepKilled = defineNumberValue( "sheep killed", "high", "none" );
+		const updateWolfLevel = defineNumberValue( "wolf level", "high", "none" );
 
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
@@ -65,24 +65,24 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 				if ( IsPlayerInForce( player, wolfTeam ) ) {
 
 					// wolf values
-					updateFarmsKilled( player, "set", unitsKilled[ i ] );
-					updateWolfDeaths( player, "set", deaths[ i ] );
-					updateWolfGold( player, "set", GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
-					updateSheepKilled( player, "set", saveskills[ i ] );
-					updateWolfLevel( player, "set", GetHeroLevel( wolfUnit( player ) ) );
+					updateFarmsKilled( player, unitsKilled[ i ] );
+					updateWolfDeaths( player, deaths[ i ] );
+					updateWolfGold( player, GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
+					updateSheepKilled( player, saveskills[ i ] );
+					updateWolfLevel( player, GetHeroLevel( wolfUnit( player ) ) );
 
 				} else {
 
 					// sheep values
-					updateFarmsBuilt( player, "set", structuresBuilt[ i ] );
-					updateSaves( player, "set", saveskills[ i ] );
-					updateSheepDeaths( player, "set", deaths[ i ] );
-					updateSheepGold( player, "set", GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
-					updateSheepMaxLevel( player, "set", playerSpecializations[ i ].maxLevel );
+					updateFarmsBuilt( player, structuresBuilt[ i ] );
+					updateSaves( player, saveskills[ i ] );
+					updateSheepDeaths( player, deaths[ i ] );
+					updateSheepGold( player, GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
+					updateSheepMaxLevel( player, playerSpecializations[ i ].maxLevel );
 					const playerSpecialization = playerSpecializations[ i ].specialization;
 					if ( playerSpecialization != null )
 						updateSheepSpecialization( player, specializationNames.get( playerSpecialization ) || "unknown" );
-					updateUnitsKilledAsSheep( player, "set", unitsKilled[ i ] );
+					updateUnitsKilledAsSheep( player, unitsKilled[ i ] );
 
 				}
 
@@ -96,13 +96,13 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 							setPlayerFlag( player, "winner" );
 							if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-								logBonus( player, "set", 1.5 - GetPlayerHandicap( player ) * 0.5 );
+								logBonus( player, 1.5 - GetPlayerHandicap( player ) * 0.5 );
 
 						} else {
 
 							setPlayerFlag( player, "loser" );
 							if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-								logBonus( player, "set", 0.5 + GetPlayerHandicap( player ) * 0.5 );
+								logBonus( player, 0.5 + GetPlayerHandicap( player ) * 0.5 );
 
 						}
 
@@ -110,13 +110,13 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 
 						setPlayerFlag( player, "winner" );
 						if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-							logBonus( player, "set", 2 - GetPlayerHandicap( player ) );
+							logBonus( player, 2 - GetPlayerHandicap( player ) );
 
 					} else {
 
 						setPlayerFlag( player, "loser" );
 						if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-							logBonus( player, "set", GetPlayerHandicap( player ) );
+							logBonus( player, GetPlayerHandicap( player ) );
 
 					}
 
