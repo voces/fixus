@@ -1,6 +1,6 @@
 
 import { defineEvent, defineNumberValue, defineStringValue, setPlayerFlag, emitCustom } from "./w3mmd";
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
 	fillArray,
 	isSandbox,

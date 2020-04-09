@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { fillArrayFn } from "shared";
 import { emitLog } from "util/emitLog";
 import { timeout } from "util/temp";

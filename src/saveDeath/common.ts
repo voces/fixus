@@ -20,7 +20,6 @@ export const bloodlust = ( target: unit, level = getBloodlustLevel( target ) + 1
 	buffLevelMap.set( target, level );
 
 	const dummy = getDummy();
-	SetUnitOwner( dummy, GetOwningPlayer( target ), false );
 	UnitAddAbility( dummy, BLOODLUST_ABILITY_ID );
 	SetUnitAbilityLevel( dummy, BLOODLUST_ABILITY_ID, level );
 	SetUnitX( dummy, GetUnitX( target ) );

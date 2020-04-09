@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { forEachPlayer } from "util/temp";
 import { wolfTeam, wolfUnit } from "shared";
 import { wrapFunction } from "util/emitLog";

@@ -26,7 +26,7 @@ const escapeString = ( str: string ): string => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const stringify = ( v: any ): string => {
+export const stringify = ( v: any ): string | undefined => {
 
 	if ( typeof v === "string" ) return `"${escapeString( v )}"`;
 	if ( typeof v === "number" ) return v.toString();
@@ -38,17 +38,25 @@ export const stringify = ( v: any ): string => {
 		const arr = v as Array<any>;
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		return `[${arr.map( ( v: any ) => stringify( v ) ).join( "," )}]`;
+		return `[${arr.map( ( v: any ) => {
+
+			const stringified = stringify( v );
+			if ( stringified === undefined ) return "null";
+			return stringified;
+
+		} ).join( "," )}]`;
 
 	}
 
 	if ( typeof v === "object" && v != null )
-		return `{${Object.entries( v ).map( ( [ key, value ] ) => `"${escapeString( key )}":${stringify( value )}` ).join( "," )}}`;
+		return `{${Object.entries( v )
+			.map( ( [ key, value ] ) => [ escapeString( key ), stringify( value ) ] )
+			.filter( ( [ , v ] ) => v !== undefined )
+			.map( ( [ key, value ] ) => `"${key}":${value}` )
+			.join( "," )}}`;
 
-	if ( v === undefined ) return "undefined";
-	if ( v == null ) return "null";
-
-	return `["${typeof v }"]`;
+	// eslint-disable-next-line eqeqeq
+	if ( v === null ) return "null";
 
 };
 
@@ -182,7 +190,6 @@ parse = ( string: string ): Value => {
 		if ( string[ 0 ] === "\"" ) return unescapeString( string.slice( 1, string.length - 1 ) );
 		if ( string === "true" ) return true;
 		if ( string === "false" ) return false;
-		if ( string === "undefined" ) return undefined;
 		if ( string === "null" ) return null;
 		if ( numbers.includes( string[ 0 ] ) ) return tonumber( string );
 		if ( string[ 0 ] === "[" ) return parseArray( string );

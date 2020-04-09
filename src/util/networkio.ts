@@ -1,7 +1,6 @@
 
 import { stringify, parse, Value } from "./json";
-import { readAndCloseFile, openFile } from "./fileIO";
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK, File } from "w3ts";
 import { wrappedTriggerAddAction, emitLog } from "util/emitLog";
 import { forEachPlayer, timeout } from "util/temp";
 import { isPlayingPlayer } from "util/player";
@@ -54,7 +53,8 @@ const supportsNoResponse = ( player: player ): boolean => {
 
 /**
  * Writes `contents` to `path`
- * @param path The path of the file to write. All files are written to %DOCUMENTS%/Warcraft III/CustomMapData
+ * @param path The path of the file to write. All files are written to
+ *             %DOCUMENTS%/Warcraft III/CustomMapData
  * @param contents The text to write to the file.
  */
 const writeFile = ( path: string, contents: string ): void => {
@@ -78,7 +78,8 @@ const checkForResponse = ( request: Request ): void => {
 	if ( request.fetcher !== GetLocalPlayer() ) return;
 
 	const path = `networkio/responses/${prefix}-${request.requestId}-${request.tries ++}.txt`;
-	const response = readAndCloseFile( openFile( path ) );
+	const rawResponse = File.read( path );
+	const response = rawResponse === "fail" ? null : rawResponse;
 
 	// No response; try again if we have attempts remaining
 	if ( response == null && request.tries < MAX_TRIES ) {
@@ -91,7 +92,10 @@ const checkForResponse = ( request: Request ): void => {
 	// We have something!
 
 	// Command to clear the request and response files.
-	writeFile( `networkio/requests/${prefix}-${request.requestId}.txt`, stringify( { url: "proxy://clear" } ) );
+	writeFile(
+		`networkio/requests/${prefix}-${request.requestId}.txt`,
+		stringify( { url: "proxy://clear" } ) || "",
+	);
 
 	// Hack because tstl injects nil as the first param since `callback` is on
 	// an object. This technically means `callback` is invoked with the same
@@ -101,7 +105,10 @@ const checkForResponse = ( request: Request ): void => {
 
 	const parts = Math.ceil( stringifiedResponse.length / 240 );
 	for ( let i = 1, n = 0; n < stringifiedResponse.length; i ++, n += 240 )
-		BlzSendSyncData( "networkio", `${request.requestId}-${i}/${parts}-${stringifiedResponse.slice( n, n + 240 )}` );
+		BlzSendSyncData(
+			"networkio",
+			`${request.requestId}-${i}/${parts}-${stringifiedResponse.slice( n, n + 240 )}`,
+		);
 
 };
 
@@ -176,7 +183,7 @@ export const fetch = (
 	if ( GetLocalPlayer() === fetcher )
 		writeFile(
 			`networkio/requests/${prefix}-${request.requestId}.txt`,
-			stringify( { url, ...options } ),
+			stringify( { url, ...options } ) || "",
 		);
 
 	if ( request.timer )
@@ -196,7 +203,12 @@ const onReady = (): void => {
 
 };
 
-export const parseSyncData = ( syncData: string ): {requestId: number; chunk: number; totalChunks: number; data: string} => {
+export const parseSyncData = ( syncData: string ): {
+	requestId: number;
+	chunk: number;
+	totalChunks: number;
+	data: string;
+} => {
 
 	let requestId = - 1;
 	let chunk = - 1;

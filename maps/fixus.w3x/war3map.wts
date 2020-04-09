@@ -9676,51 +9676,6 @@ STRING 4909
 X
 }
 
-STRING 4914
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4915
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4916
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4917
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4918
-{
-Commands
-}
-
-STRING 4919
-{
-Change log
-}
-
-STRING 4920
-{
-Kill things to get gold faster.
-}
-
-STRING 4921
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4922
-{
-Fixus 11
-}
-
 STRING 4923
 // Units: dumy (Dummy), Name (Name)
 {
@@ -9734,7 +9689,7 @@ Ultimate Sheep Tag Fixus 11
 
 STRING 4925
 {
-12
+24
 }
 
 STRING 4926
@@ -9746,5 +9701,86 @@ To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stat
 STRING 4927
 {
 Chakra
+}
+
+STRING 4928
+// Abilities: A00Z (Compact Mode), EditorSuffix (Editor Suffix)
+{
+(Factory Farm)
+}
+
+STRING 4929
+// Abilities: A00Z (Compact Mode), Tip (Tooltip - Normal)
+{
+Activate Compact Mode
+}
+
+STRING 4930
+// Abilities: A00Z (Compact Mode), Ubertip (Tooltip - Normal - Extended)
+{
+Switches the Factory Farm to build farms close together.
+}
+
+STRING 4931
+// Abilities: A00Z (Compact Mode), Untip (Tooltip - Turn Off)
+{
+Deactivate Compact Mode
+}
+
+STRING 4932
+// Abilities: A00Z (Compact Mode), Unubertip (Tooltip - Turn Off - Extended)
+{
+Switches the Factory Farm to build farms with a gap.
+}
+
+STRING 4938
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4939
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4940
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4941
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4942
+{
+Commands
+}
+
+STRING 4943
+{
+Change log
+}
+
+STRING 4944
+{
+Kill things to get gold faster.
+}
+
+STRING 4945
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4946
+{
+Fixus 11
+}
+
+STRING 4947
+// Abilities: A00Z (Compact Mode), Name (Name)
+{
+Compact Mode
 }
 

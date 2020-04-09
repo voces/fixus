@@ -2,9 +2,11 @@
 # Version 11
 ## Features
 - Teams are picked in game
+- Added Bloodlust on save or kill
+- Added Compact Mode on Factory Farms
 - Default values are shown in command help
 - Added "leaver" and "practicing" player flags
-- Added Bloodlust on save or kill
+- Added -rotation command
 
 ## Refactors
 - Rewrote w3mmd, aiming for less desyncs + type safety

@@ -38,7 +38,7 @@ const color = {
 
 export type Color = keyof typeof color;
 
-const wc3ColorMap = new Map();
+const wc3ColorMap: Map<playercolor, Color> = new Map();
 wc3ColorMap.set( PLAYER_COLOR_RED, "red" );
 wc3ColorMap.set( PLAYER_COLOR_BLUE, "blue" );
 wc3ColorMap.set( PLAYER_COLOR_CYAN, "teal" );
@@ -64,13 +64,8 @@ wc3ColorMap.set( PLAYER_COLOR_SNOW, "snow" );
 wc3ColorMap.set( PLAYER_COLOR_EMERALD, "emerald" );
 wc3ColorMap.set( PLAYER_COLOR_PEANUT, "peanut" );
 
-export const playerColorToColor = ( playerColor: playercolor ): Color => {
-
-	const color = wc3ColorMap.get( playerColor );
-	if ( ! color ) throw `unknown color ${playerColor}`;
-	return color;
-
-};
+export const playerColorToColor = ( playerColor: playercolor ): Color =>
+	wc3ColorMap.get( playerColor ) || "white";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const colorize = {} as Record<Color, ( v: any ) => string>;

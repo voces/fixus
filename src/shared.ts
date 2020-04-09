@@ -1,7 +1,7 @@
 
 // This file should not import anything from this repo except libs
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { Color, colorize } from "util/colorize";
 
 export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {

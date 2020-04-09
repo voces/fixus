@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 const PRELOAD_UNIT_TYPE = FourCC( "zsmc" );
 let preloadUnit: unit;
@@ -35,7 +35,7 @@ addScriptHook( W3TS_HOOK.MAIN_BEFORE, (): void => {
 	ShowUnit( preloadUnit, false );
 	UnitAddAbility( preloadUnit, FourCC( "Aloc" ) );
 
-	preloadAbilitityRange( FourCC( "A001" ), FourCC( "A00U" ) );
+	preloadAbilitityRange( FourCC( "A001" ), FourCC( "A00Z" ) );
 	preloadItemRange( FourCC( "I001" ), FourCC( "I005" ) );
 
 } );
