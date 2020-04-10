@@ -2,8 +2,12 @@
 import { log, termToString } from "./log";
 import { defineEvent } from "./w3mmd/w3mmd";
 import { isSandbox } from "shared";
+import { debounce } from "./debounce";
 
-export const logEvent = defineEvent( "log", "${0}: {1}", "key", "message" );
+export const logEvent = debounce(
+	{ threshold: 5, duration: 60 },
+	defineEvent( "log", "${0}: {1}", "key", "message" ),
+);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const emitLog = ( key: string, arg: any, ...args: Array<any> ): void => {

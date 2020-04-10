@@ -8,3 +8,10 @@ export const instrument = <T extends Array<any>, U>( name: string, fn: ( ...args
 	return v;
 
 };
+
+export const repeat = ( count: number, fn: () => void ): void => {
+
+	for ( let i = 0; i < count; i ++ )
+		fn();
+
+};
