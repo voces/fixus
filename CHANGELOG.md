@@ -6,7 +6,8 @@
 - Added Compact Mode on Factory Farms
 - Default values are shown in command help
 - Added "leaver" and "practicing" player flags
-- Added -rotation command
+- Added "-rotation" command
+- "-wolf gold" and "-destroy all farms" prefer host
 
 ## Refactors
 - Rewrote w3mmd, aiming for less desyncs + type safety
