@@ -1,8 +1,9 @@
 
-import { wolfTeam } from "shared";
+import { wolfTeam, sheepTeam } from "shared";
 import { forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
 import { registerCommand } from "./registerCommand";
+import { getHost } from "w3ts";
 
 // ===========================================================================
 // Trigger: sheepCommands
@@ -43,8 +44,16 @@ registerCommand( {
 
 const getController = (): player => {
 
+	const host = getHost()?.handle;
+
+	if ( host && IsPlayerInForce( host, sheepTeam ) )
+		return host;
+
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-		if ( GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING )
+		if (
+			GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING &&
+			IsPlayerInForce( Player( i ), sheepTeam )
+		)
 			return Player( i );
 
 	// this can't happen
@@ -64,7 +73,12 @@ registerCommand( {
 
 		amount = amount || 100;
 
-		DisplayTextToPlayer( GetLocalPlayer(), 0, 0, `${colorizedName( GetTriggerPlayer() )} gave the shepherds ${amount} gold!` );
+		DisplayTextToPlayer(
+			GetLocalPlayer(),
+			0,
+			0,
+			`${colorizedName( GetTriggerPlayer() )} gave the shepherds ${amount} gold!`,
+		);
 
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 			if ( IsPlayerInForce( Player( i ), wolfTeam ) )
@@ -81,7 +95,12 @@ registerCommand( {
 
 		if ( getController() !== GetTriggerPlayer() ) return;
 
-		DisplayTextToPlayer( GetLocalPlayer(), 0, 0, colorizedName( GetTriggerPlayer() ) + " has destroyed all the farms!" );
+		DisplayTextToPlayer(
+			GetLocalPlayer(),
+			0,
+			0,
+			colorizedName( GetTriggerPlayer() ) + " has destroyed all the farms!",
+		);
 
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 			forEachPlayerUnit( Player( i ), RemoveUnit, cheapStructureFilter );

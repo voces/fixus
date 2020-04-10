@@ -1,6 +1,6 @@
 
 import { wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK, getElapsedTime } from "w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { removeQuickShop } from "../wolves/quickShops";
 import { onSummon } from "util/event";
@@ -8,7 +8,6 @@ import { onSummon } from "util/event";
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
 const WHITE_WOLF_ITEM_TYPE = FourCC( "I003" );
-let gameTimer: timer;
 const summonTimes: Map<unit, number> = new Map();
 
 // ===========================================================================
@@ -77,7 +76,7 @@ const onUnitPickupItem = (): void => {
 
 	// White wolf is a summoned unit
 
-	const timeOfWW = TimerGetElapsed( gameTimer );
+	const timeOfWW = getElapsedTime();
 	const unitSummonedAtTime = summonTimes.get( original ) || timeOfWW;
 	const unitSummonedDuration = timeOfWW - unitSummonedAtTime;
 	const unitSummonedRemaining = 300 - unitSummonedDuration;
@@ -97,7 +96,7 @@ const onUnitSummon = (): void => {
 	// no summoned unit
 	const summonedUnit = GetSummonedUnit();
 	if ( summonedUnit != null )
-		summonTimes.set( summonedUnit, TimerGetElapsed( gameTimer ) );
+		summonTimes.set( summonedUnit, getElapsedTime() );
 
 };
 
@@ -106,10 +105,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	fillArrayFn( bj_MAX_PLAYERS, () => CreateTimer(), wwTimer );
 	fillArrayFn( bj_MAX_PLAYERS, i => CreateTimerDialog( wwTimer[ i ] ), wwTimerDialog );
-
-	// init a game timer.
-	gameTimer = CreateTimer();
-	TimerStart( gameTimer, 99999999, false, () => { /* do nothing */ } );
 
 	const t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );

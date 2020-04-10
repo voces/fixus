@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK, getElapsedTime } from "w3ts";
 import {
 	countHere,
 	mainUnit,
@@ -56,7 +56,7 @@ const Trig_miscLeaves_Actions = (): void => {
 	reloadMultiboard();
 
 	// desync detection
-	const time = TimerGetElapsed( bj_gameStartedTimer );
+	const time = getElapsedTime();
 	if ( time + 1 <= lastLeave )
 		flagDesync();
 	lastLeave = time;

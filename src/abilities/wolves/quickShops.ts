@@ -4,6 +4,7 @@ import { wrappedTriggerAddAction } from "util/emitLog";
 import { timeout, forEachPlayer, withSelectedUnits, forEachPlayerUnit } from "util/temp";
 import { fillArray } from "shared";
 import { onSpellCast, onCreated, onDeath } from "util/event";
+import { isRemovedUnit } from "util/unit";
 
 const offset = 120 * Math.PI / 180;
 
@@ -117,15 +118,38 @@ const onQuickShops = (): void => {
 
 };
 
+export const removeQuickShop = ( unit: unit ): void => {
+
+	const shopData = shopperData.get( unit );
+	if ( ! shopData ) return;
+
+	const { red, green, blue } = shopData;
+
+	shoppers.delete( red );
+	RemoveUnit( red );
+
+	shoppers.delete( blue );
+	RemoveUnit( blue );
+
+	shoppers.delete( green );
+	RemoveUnit( green );
+
+	shopperData.delete( unit );
+
+};
+
 const spinShops = (): void => {
 
 	for ( const [ unit, data ] of shopperData.entries() ) {
+
+		const { red, blue, green } = data;
+
+		if ( isRemovedUnit( unit ) ) removeQuickShop( unit );
 
 		const x = GetUnitX( unit );
 		const y = GetUnitY( unit );
 		const pId = GetPlayerId( GetOwningPlayer( unit ) );
 
-		const { red, blue, green } = data;
 		angles[ pId ] += 0.002;
 
 		SetUnitPosition( blue, x + Math.cos( angles[ pId ] ) * 128, y + Math.sin( angles[ pId ] ) * 128 );
@@ -140,10 +164,12 @@ const moveShops = (): void => {
 
 	for ( const [ unit, data ] of shopperData.entries() ) {
 
+		const { red, blue, green } = data;
+
+		if ( isRemovedUnit( unit ) ) removeQuickShop( unit );
+
 		const x = GetUnitX( unit );
 		const y = GetUnitY( unit );
-
-		const { red, blue, green } = data;
 
 		SetUnitPosition( blue, x, y );
 		SetUnitPosition( green, x, y );
@@ -261,26 +287,6 @@ export const addQuickShop = ( unit: unit ): void => {
 		green,
 		red,
 	} );
-
-};
-
-export const removeQuickShop = ( unit: unit ): void => {
-
-	const shopData = shopperData.get( unit );
-	if ( ! shopData ) return;
-
-	const { red, green, blue } = shopData;
-
-	shoppers.delete( red );
-	RemoveUnit( red );
-
-	shoppers.delete( blue );
-	RemoveUnit( blue );
-
-	shoppers.delete( green );
-	RemoveUnit( green );
-
-	shopperData.delete( unit );
 
 };
 
