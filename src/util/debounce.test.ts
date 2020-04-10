@@ -14,7 +14,8 @@ it( "works", () => {
 
 	getGame().tickFor( 5 );
 	repeat( 5, () => debounced( "a" ) );
+	debounced( "b" );
 
-	expect( fn ).toHaveBeenCalledTimes( 6 );
+	expect( fn ).toHaveBeenCalledTimes( 7 );
 
 } );
