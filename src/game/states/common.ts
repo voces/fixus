@@ -15,6 +15,7 @@ export const gameState: ( newState?: GAME_STATES ) => GAME_STATES = getterSetter
 
 export const updateGameTimer = ( { remaining, title }: TransitionInformation ): void => {
 
+	TimerStart( gameTimer, 5, false, () => { /* do nothing */ } );
 	PauseTimer( gameTimer );
 	TimerStart( gameTimer, remaining, false, () => { /* do nothing */ } );
 	TimerDialogSetTitle( gameTimerDialog, title );
@@ -44,6 +45,8 @@ export const shareControlWithAllies = ( player: player ): void => {
 		}
 
 };
+
+export const getRemainingTime = (): number => TimerGetRemaining( gameTimer );
 
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {

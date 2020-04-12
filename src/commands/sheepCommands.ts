@@ -4,6 +4,8 @@ import { forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
 import { registerCommand } from "./registerCommand";
 import { getHost } from "w3ts";
+import { onWolfGoldBonus } from "util/w3mmd/index";
+import { gameState } from "game/states/common";
 
 // ===========================================================================
 // Trigger: sheepCommands
@@ -71,7 +73,19 @@ registerCommand( {
 
 		if ( getController() !== GetTriggerPlayer() ) return;
 
-		amount = amount || 100;
+		if ( [ "init", "team-selection", "beat", "ended" ].includes( gameState() ) ) {
+
+			DisplayTextToPlayer(
+				GetTriggerPlayer(),
+				0,
+				0,
+				"You can only grant wolf gold when the game has started.",
+			);
+			return;
+
+		}
+
+		amount = Math.max( amount || 100, 0 );
 
 		DisplayTextToPlayer(
 			GetLocalPlayer(),
@@ -83,6 +97,8 @@ registerCommand( {
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 			if ( IsPlayerInForce( Player( i ), wolfTeam ) )
 				AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, amount );
+
+		onWolfGoldBonus( amount );
 
 	},
 } );

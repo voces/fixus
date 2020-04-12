@@ -20,8 +20,16 @@ type Request = {
 	fetcher: player;
 }
 
-// How many times we check if a response has been written.
+/**
+ * How many times we check if a response has been written.
+ */
 const MAX_TRIES = 10;
+
+/**
+ * Whether messages are prefixed with a `-`. We can determine this from the
+ * version, which should never be negative.
+ */
+let prefixed = false;
 
 /**
  * Exponential backoff algorithm.
@@ -35,13 +43,19 @@ const activeRequests: Record<number, Request> = {};
 const networkedPlayers: player[] = [];
 const playerVersions: Map<player, number> = new Map();
 
-const prefix = Math.random().toString().slice( 2 );
-
+/**
+ * A queue that builds up while we're still fetching proxy versions at the very
+ * beginning (`ready=true`).
+ */
 const queue: Array<[
 	string,
 	Options | null | undefined,
 	( ( response: Value ) => void ) | undefined,
 ]> = [];
+
+/**
+ * Whether all players have fetched their proxy versions yet.
+ */
 let ready = false;
 
 const supportsNoResponse = ( player: player ): boolean => {
@@ -77,9 +91,13 @@ const checkForResponse = ( request: Request ): void => {
 
 	if ( request.fetcher !== GetLocalPlayer() ) return;
 
-	const path = `networkio/responses/${prefix}-${request.requestId}-${request.tries ++}.txt`;
+	const path = `networkio/responses/${request.requestId}-${request.tries ++}.txt`;
 	const rawResponse = File.read( path );
-	const response = rawResponse === "fail" ? null : rawResponse;
+	const response = rawResponse === "fail" ?
+		null :
+		prefixed ?
+			rawResponse.slice( 1 ) :
+			rawResponse;
 
 	// No response; try again if we have attempts remaining
 	if ( response == null && request.tries < MAX_TRIES ) {
@@ -93,7 +111,7 @@ const checkForResponse = ( request: Request ): void => {
 
 	// Command to clear the request and response files.
 	writeFile(
-		`networkio/requests/${prefix}-${request.requestId}.txt`,
+		`networkio/requests/${request.requestId}.txt`,
 		stringify( { url: "proxy://clear" } ) || "",
 	);
 
@@ -182,7 +200,7 @@ export const fetch = (
 
 	if ( GetLocalPlayer() === fetcher )
 		writeFile(
-			`networkio/requests/${prefix}-${request.requestId}.txt`,
+			`networkio/requests/${request.requestId}.txt`,
 			stringify( { url, ...options } ) || "",
 		);
 
@@ -320,6 +338,13 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 			fetch( "proxy://version", null, version => {
 
 				if ( version != null && typeof version === "number" ) {
+
+					if ( version < 0 ) {
+
+						prefixed = true;
+						version *= - 1;
+
+					}
 
 					networkedPlayers.push( p );
 					playerVersions.set( p, version );
