@@ -6,6 +6,7 @@ import { getRemainingTime } from "game/states/common";
 jest.mock(
 	"game/states/common",
 	() => ( {
+		gameState: (): "play" => "play",
 		getRemainingTime: jest.fn(),
 	} ),
 );
@@ -54,7 +55,7 @@ describe( "onWolfGoldBonus", () => {
 		it( JSON.stringify( goldings ), () => {
 
 			let actual = 1;
-			debugger;
+
 			goldings.forEach( ( { gold, time } ) => {
 
 				( getRemainingTime as jest.Mock ).mockReturnValueOnce( 25 * 60 - time );
