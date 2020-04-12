@@ -14,6 +14,7 @@ import {
 import { emitLog, wrappedTriggerAddAction } from "util/emitLog";
 import { playerSpecializations, specializationNames } from "abilities/sheep/specialization";
 import { onDeath, onConstructionStart } from "util/event";
+import { getRemainingTime, gameState } from "game/states/common";
 
 const structuresBuilt = fillArray( bj_MAX_PLAYERS, 0 );
 const unitsKilled = fillArray( bj_MAX_PLAYERS, 0 );
@@ -28,6 +29,39 @@ const logSave = defineEvent( "save", "{0} saved {1}", "sheep", "wisp" );
 // todo: don't hardcode these
 emitCustom( "repo", "voces/fixus" );
 emitCustom( "version", "11" );
+
+let currentWolfGoldFactor = 1;
+/**
+ * Adjusts bonuses when -wolf gold is used. Algorithm weights towards more gold
+ * earlier in the game. Reset param is meant for testing.
+ * @param gold Amount of gold that was given.
+ * @param reset Boolean on whether to reset the stateful factor.
+ */
+export const onWolfGoldBonus = ( gold: number, reset?: boolean ): number => {
+
+	if ( reset ) {
+
+		currentWolfGoldFactor = 1;
+		return 1;
+
+	}
+
+	const remaining = gameState() === "play" ? getRemainingTime() : 25 * 60;
+	const denom = 16 / Math.max( remaining - 120, 0 ) ** 1.5 * 10000 * 20;
+	const maxFactor = 1 + 2500 ** 0.5 / denom;
+	const factor = gold ** 0.5 / denom;
+
+	if ( maxFactor < currentWolfGoldFactor )
+		return currentWolfGoldFactor;
+
+	if ( currentWolfGoldFactor + factor > maxFactor )
+		currentWolfGoldFactor = maxFactor;
+	else
+		currentWolfGoldFactor += factor;
+
+	return currentWolfGoldFactor;
+
+};
 
 export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): void => {
 
@@ -53,72 +87,76 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 		const updateSheepKilled = defineNumberValue( "sheep killed", "high", "none" );
 		const updateWolfLevel = defineNumberValue( "wolf level", "high", "none" );
 
+		const wolfLossBonus = currentWolfGoldFactor;
+		const sheepWinFactor = wolfLossBonus;
+		const wolfWinBonus = 1 / currentWolfGoldFactor;
+		const sheepLossFactor = wolfWinBonus;
+
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ ) {
 
 			const player = Player( i );
 
 			if (
-				GetPlayerController( player ) === MAP_CONTROL_USER &&
-				[ PLAYER_SLOT_STATE_PLAYING, PLAYER_SLOT_STATE_LEFT ].includes( GetPlayerSlotState( player ) )
-			) {
+				GetPlayerController( player ) !== MAP_CONTROL_USER ||
+				GetPlayerSlotState( player ) === PLAYER_SLOT_STATE_EMPTY
+			) continue;
 
-				if ( IsPlayerInForce( player, wolfTeam ) ) {
+			if ( IsPlayerInForce( player, wolfTeam ) ) {
 
-					// wolf values
-					updateFarmsKilled( player, unitsKilled[ i ] );
-					updateWolfDeaths( player, deaths[ i ] );
-					updateWolfGold( player, GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
-					updateSheepKilled( player, saveskills[ i ] );
-					updateWolfLevel( player, GetHeroLevel( wolfUnit( player ) ) );
+				// wolf values
+				updateFarmsKilled( player, unitsKilled[ i ] );
+				updateWolfDeaths( player, deaths[ i ] );
+				updateWolfGold( player, GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
+				updateSheepKilled( player, saveskills[ i ] );
+				updateWolfLevel( player, GetHeroLevel( wolfUnit( player ) ) );
+
+			} else {
+
+				// sheep values
+				updateFarmsBuilt( player, structuresBuilt[ i ] );
+				updateSaves( player, saveskills[ i ] );
+				updateSheepDeaths( player, deaths[ i ] );
+				updateSheepGold( player, GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
+				updateSheepMaxLevel( player, playerSpecializations[ i ].maxLevel );
+				const playerSpecialization = playerSpecializations[ i ].specialization;
+				if ( playerSpecialization != null )
+					updateSheepSpecialization( player, specializationNames.get( playerSpecialization ) || "unknown" );
+				updateUnitsKilledAsSheep( player, unitsKilled[ i ] );
+
+			}
+
+			if ( isSandbox() ) {
+
+				setPlayerFlag( player, "practicing" );
+				continue;
+
+			}
+
+			if ( desynced ) continue;
+
+			if ( IsPlayerInForce( player, wolfTeam ) )
+
+				if ( winner === "wolves" ) {
+
+					setPlayerFlag( player, "winner" );
+					logBonus( player, ( 1.5 - GetPlayerHandicap( player ) * 0.5 ) * wolfWinBonus );
 
 				} else {
 
-					// sheep values
-					updateFarmsBuilt( player, structuresBuilt[ i ] );
-					updateSaves( player, saveskills[ i ] );
-					updateSheepDeaths( player, deaths[ i ] );
-					updateSheepGold( player, GetPlayerState( player, PLAYER_STATE_GOLD_GATHERED ) );
-					updateSheepMaxLevel( player, playerSpecializations[ i ].maxLevel );
-					const playerSpecialization = playerSpecializations[ i ].specialization;
-					if ( playerSpecialization != null )
-						updateSheepSpecialization( player, specializationNames.get( playerSpecialization ) || "unknown" );
-					updateUnitsKilledAsSheep( player, unitsKilled[ i ] );
+					setPlayerFlag( player, "loser" );
+					logBonus( player, ( 0.5 + GetPlayerHandicap( player ) * 0.5 ) * wolfLossBonus );
 
 				}
 
-				if ( isSandbox() )
-					setPlayerFlag( player, "practicing" );
+			else if ( winner === "sheep" ) {
 
-				else if ( ! desynced )
-					if ( IsPlayerInForce( player, wolfTeam ) )
+				setPlayerFlag( player, "winner" );
+				logBonus( player, ( 2 - GetPlayerHandicap( player ) ) * sheepWinFactor );
 
-						if ( winner === "wolves" ) {
+			} else {
 
-							setPlayerFlag( player, "winner" );
-							if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-								logBonus( player, 1.5 - GetPlayerHandicap( player ) * 0.5 );
-
-						} else {
-
-							setPlayerFlag( player, "loser" );
-							if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-								logBonus( player, 0.5 + GetPlayerHandicap( player ) * 0.5 );
-
-						}
-
-					else if ( winner === "sheep" ) {
-
-						setPlayerFlag( player, "winner" );
-						if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-							logBonus( player, 2 - GetPlayerHandicap( player ) );
-
-					} else {
-
-						setPlayerFlag( player, "loser" );
-						if ( GetPlayerController( player ) === MAP_CONTROL_USER )
-							logBonus( player, GetPlayerHandicap( player ) );
-
-					}
+				setPlayerFlag( player, "loser" );
+				logBonus( player, GetPlayerHandicap( player ) * sheepLossFactor );
 
 			}
 

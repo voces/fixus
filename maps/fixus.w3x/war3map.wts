@@ -9694,72 +9694,6 @@ STRING 4947
 Compact Mode
 }
 
-STRING 4948
-{
-Ultimate Sheep Tag Fixus 11
-}
-
-STRING 4949
-{
-12
-}
-
-STRING 4950
-{
-Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
-To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
-}
-
-STRING 4951
-{
-Chakra
-}
-
-STRING 4952
-{
-You can't kill a fellow sheep. -_-
-}
-
-STRING 4953
-{
-Yooz bee uhn disgreysd too shahkruh!
-}
-
-STRING 4954
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4955
-{
-Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
-}
-
-STRING 4956
-{
-Commands
-}
-
-STRING 4957
-{
-Change log
-}
-
-STRING 4958
-{
-Kill things to get gold faster.
-}
-
-STRING 4959
-{
-Lumber is granted for reaching level 3 and each level thereafter.
-}
-
-STRING 4960
-{
-Fixus 11
-}
-
 STRING 4961
 // Abilities: AEst (Scout), Researchubertip (Tooltip - Learn - Extended)
 {
@@ -9806,5 +9740,71 @@ STRING 4968
 // Items: fgrg (Stone Token), Ubertip (Tooltip - Extended)
 {
 Summons a Rock Golem to fight for you. |nLasts <AIfr,Dur1> seconds. Rock Golems can turn into Golem Totems, which contains upgrades for Rock Golems and your wolf.
+}
+
+STRING 4969
+{
+Ultimate Sheep Tag Fixus 11
+}
+
+STRING 4970
+{
+12
+}
+
+STRING 4971
+{
+Join the Sheep Tag Discord for more games! |CFF3F81F8https://discord.gg/Y4dHvwX|r
+To track your stats and rating, upload your replays to |CFF3F81F8https://wc3stats.com/upload|r
+}
+
+STRING 4972
+{
+Chakra
+}
+
+STRING 4973
+{
+You can't kill a fellow sheep. -_-
+}
+
+STRING 4974
+{
+Yooz bee uhn disgreysd too shahkruh!
+}
+
+STRING 4975
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4976
+{
+Discord: |CFF3F81F8http://tiny.cc/sheeptag|r
+}
+
+STRING 4977
+{
+Commands
+}
+
+STRING 4978
+{
+Change log
+}
+
+STRING 4979
+{
+Kill things to get gold faster.
+}
+
+STRING 4980
+{
+Lumber is granted for reaching level 3 and each level thereafter.
+}
+
+STRING 4981
+{
+Fixus 11
 }
 
