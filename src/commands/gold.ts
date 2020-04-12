@@ -1,6 +1,7 @@
 
 import { colorizedName, displayToPlayer } from "util/player";
 import { registerCommand } from "./registerCommand";
+import { adjustPlayerGold } from "resources/goldPerSecond";
 
 // ===========================================================================
 // Trigger: miscGold
@@ -32,8 +33,8 @@ const action = ( { player: receiver, amount = Infinity }: {player: player; amoun
 
 	displayToPlayer( receiver, `${colorizedName( GetTriggerPlayer() )} gave you ${amount} gold.` );
 	displayToPlayer( GetTriggerPlayer(), `${amount} gold given to ${colorizedName( receiver )} (+${tax} tax)` );
-	AdjustPlayerStateSimpleBJ( receiver, PLAYER_STATE_RESOURCE_GOLD, amount );
-	AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, - amount - tax );
+	adjustPlayerGold( receiver, amount );
+	adjustPlayerGold( GetTriggerPlayer(), - amount - tax );
 
 };
 

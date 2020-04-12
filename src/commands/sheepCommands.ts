@@ -6,6 +6,7 @@ import { registerCommand } from "./registerCommand";
 import { getHost } from "w3ts";
 import { onWolfGoldBonus } from "util/w3mmd/index";
 import { gameState } from "game/states/common";
+import { adjustPlayerGold } from "resources/goldPerSecond";
 
 // ===========================================================================
 // Trigger: sheepCommands
@@ -96,7 +97,7 @@ registerCommand( {
 
 		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 			if ( IsPlayerInForce( Player( i ), wolfTeam ) )
-				AdjustPlayerStateSimpleBJ( Player( i ), PLAYER_STATE_RESOURCE_GOLD, amount );
+				adjustPlayerGold( Player( i ), amount );
 
 		onWolfGoldBonus( amount );
 

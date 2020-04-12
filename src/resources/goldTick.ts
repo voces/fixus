@@ -10,6 +10,7 @@ import {
 } from "shared";
 import { isPlayingPlayer, hasLeft, isComputer } from "util/player";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { adjustPlayerGold } from "./goldPerSecond";
 
 const SAVING_FARM_TYPE = FourCC( "ohun" );
 const HIDDEN_SAVING_FARM_TYPE = FourCC( "otbk" );
@@ -30,7 +31,7 @@ const Trig_miscGoldTick_Actions = (): void => {
 		// Give sheep their simple gold tick
 		if ( IsPlayerInForce( player, sheepTeam ) && GetPlayerController( player ) !== MAP_CONTROL_NONE ) {
 
-			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
+			adjustPlayerGold( player, goldFactor() );
 			continue;
 
 		}
@@ -49,7 +50,7 @@ const Trig_miscGoldTick_Actions = (): void => {
 
 				const player2 = Player( n );
 				if ( ! IsPlayerAlly( player, player2 ) || ! isPlayingPlayer( player2 ) ) continue;
-				AdjustPlayerStateSimpleBJ( player2, PLAYER_STATE_RESOURCE_GOLD, playerGold / wolves );
+				adjustPlayerGold( player2, playerGold / wolves );
 
 			}
 
@@ -80,10 +81,10 @@ const Trig_miscSavingTick_Actions = (): void => {
 
 			if ( saveskills[ i ] >= 25 ) amount *= 2;
 
-			AdjustPlayerStateBJ( amount, player, PLAYER_STATE_RESOURCE_GOLD );
+			adjustPlayerGold( player, amount );
 
 		} else if ( IsPlayerInForce( player, wispTeam ) )
-			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
+			adjustPlayerGold( player, goldFactor() );
 
 	}
 
@@ -96,7 +97,7 @@ const wolfTickActions = (): void => {
 		const player = Player( i );
 
 		if ( IsPlayerInForce( player, wolfTeam ) )
-			AdjustPlayerStateBJ( goldFactor(), player, PLAYER_STATE_RESOURCE_GOLD );
+			adjustPlayerGold( player, goldFactor() );
 
 	}
 

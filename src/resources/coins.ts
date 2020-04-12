@@ -3,6 +3,7 @@ import { fillArrayFn, goldFactor, SmallText } from "shared";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import { withUnitsInRange } from "util/temp";
 import { wrappedTriggerAddAction } from "util/emitLog";
+import { adjustPlayerGold } from "./goldPerSecond";
 
 const FACTOR = 0.5;
 const THRESHOLD = 3;
@@ -53,7 +54,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 			);
 			if ( collector != null ) {
 
-				AdjustPlayerStateBJ( coin.gold, GetOwningPlayer( collector ), PLAYER_STATE_RESOURCE_GOLD );
+				adjustPlayerGold( GetOwningPlayer( collector ), coin.gold );
 				SmallText( coin.gold, collector, "gold", 0, 0 );
 				RemoveItem( coin.item );
 				coins.delete( coin );

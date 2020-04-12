@@ -21,8 +21,8 @@ const action = ( { player: receiver, amount = Infinity }: {player: player; amoun
 
 	displayToPlayer( receiver, `${colorizedName( GetTriggerPlayer() )} gave you ${amount} lumber.` );
 	displayToPlayer( GetTriggerPlayer(), `${amount} lumber given to ${colorizedName( receiver )}` );
-	AdjustPlayerStateSimpleBJ( receiver, PLAYER_STATE_RESOURCE_LUMBER, amount );
-	AdjustPlayerStateSimpleBJ( GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, - amount );
+	AdjustPlayerStateBJ( amount, receiver, PLAYER_STATE_RESOURCE_LUMBER );
+	AdjustPlayerStateBJ( - amount, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER );
 
 };
 
