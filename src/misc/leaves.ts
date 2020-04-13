@@ -14,6 +14,7 @@ import { wrappedTriggerAddAction } from "util/emitLog";
 import { setPlayerFlag } from "util/w3mmd/w3mmd";
 import { flagDesync, endGame } from "game/states/end";
 import { gameState } from "game/states/common";
+import { adjustPlayerGold } from "resources/goldPerSecond";
 
 let lastLeave = 0;
 
@@ -44,7 +45,7 @@ const Trig_miscLeaves_Actions = (): void => {
 
 			SetPlayerAllianceStateBJ( GetTriggerPlayer(), Player( i ), bj_ALLIANCE_ALLIED_ADVUNITS );
 			DisplayTextToPlayer( Player( i ), 0, 0, `${colorizedName( GetTriggerPlayer() )} gave you ${gold} gold.` );
-			SetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState( Player( i ), PLAYER_STATE_RESOURCE_GOLD ) + gold );
+			adjustPlayerGold( Player( i ), gold );
 
 		}
 

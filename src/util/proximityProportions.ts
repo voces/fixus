@@ -13,6 +13,7 @@ import {
 	wolfUnit,
 } from "shared";
 import { forEachPlayer, reducePlayerUnits } from "util/temp";
+import { adjustPlayerGold } from "resources/goldPerSecond";
 
 export const GOLEM_TYPE = FourCC( "ewsp" );
 const STALKER_TYPE = FourCC( "nfel" );
@@ -260,7 +261,7 @@ export const awardBounty = (
 
 		if ( bounty.gold && bounty.gold > 0 ) {
 
-			AdjustPlayerStateBJ( bounty.gold, player, PLAYER_STATE_RESOURCE_GOLD );
+			adjustPlayerGold( player, bounty.gold );
 			SmallText( bounty.gold, mainUnit( player ), "gold", offsets * 16, offsets * - 64 );
 			offsets ++;
 

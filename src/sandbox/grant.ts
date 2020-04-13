@@ -2,6 +2,7 @@
 import { registerCommand } from "commands/registerCommand";
 import { isSandbox } from "shared";
 import { forEachPlayer } from "util/temp";
+import { adjustPlayerGold } from "resources/goldPerSecond";
 
 // ===========================================================================
 registerCommand( {
@@ -16,7 +17,7 @@ registerCommand( {
 
 		const goldAmount = amount || 1000;
 
-		forEachPlayer( p => AdjustPlayerStateBJ( goldAmount, p, PLAYER_STATE_RESOURCE_GOLD ) );
+		forEachPlayer( p => adjustPlayerGold( p, goldAmount ) );
 
 	},
 } );
