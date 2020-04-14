@@ -15,9 +15,9 @@ let lastSecond = 0;
  */
 const formatDisplay = ( number: number ): string => {
 
-	if ( number < 10 ) return ( Math.round( number * 100 ) / 100 ).toString();
-	if ( number < 100 ) return ( Math.round( number * 10 ) / 10 ).toString();
-	return Math.round( number * 1 ).toString();
+	if ( number < 10 ) return ( Math.round( number * 100 ) / 100 ).toString().slice( 0, 4 );
+	if ( number < 100 ) return ( Math.round( number * 10 ) / 10 ).toString().slice( 0, 4 );
+	return Math.round( number * 1 ).toString().slice( 0, 3 );
 
 };
 

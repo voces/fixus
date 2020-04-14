@@ -26,9 +26,46 @@ const logKill = defineEvent( "kill", "{0} killed {1}", "killer", "killed" );
 const logDeath = defineEvent( "death", "{0} killed by {1}", "killed", "killer" );
 const logSave = defineEvent( "save", "{0} saved {1}", "sheep", "wisp" );
 
-// todo: don't hardcode these
-emitCustom( "repo", "voces/fixus" );
-emitCustom( "version", "11" );
+// values
+
+const logBonus = defineNumberValue( "bonus", "none", "none", "real" );
+
+// sheep values
+const updateFarmsBuilt = defineNumberValue( "farms built", "high", "none" );
+const updateSaves = defineNumberValue( "saves", "high", "none" );
+const updateSheepDeaths = defineNumberValue( "sheep deaths", "low", "none" );
+const updateSheepGold = defineNumberValue( "sheep gold", "high", "none" );
+const updateSheepMaxLevel = defineNumberValue( "sheep max level", "high", "none" );
+const updateSheepSpecialization = defineStringValue( "sheep specialization", "none" );
+const updateUnitsKilledAsSheep = defineNumberValue( "units killed as sheep", "high", "none" );
+
+// wolf values
+const updateFarmsKilled = defineNumberValue( "farms killed", "high", "none" );
+const updateWolfDeaths = defineNumberValue( "wolf deaths", "low", "none" );
+const updateWolfGold = defineNumberValue( "wolf gold", "high", "none" );
+const updateSheepKilled = defineNumberValue( "sheep killed", "high", "none" );
+const updateWolfLevel = defineNumberValue( "wolf level", "high", "none" );
+
+const repo = compiletime( () => {
+
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	const url = require( "url" );
+	const repo = url.parse( require( "../../../package.json" ).repository.url );
+	return repo.pathname.slice( 1 ).replace( ".git", "" );
+
+} );
+const version = compiletime( () => {
+
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	const fs = require( "fs" );
+	const file = fs.readFileSync( "CHANGELOG.md", { encoding: "utf-8" } );
+	return file.split( "\n" )[ 1 ].split( " " )[ 2 ];
+
+} );
+const build = compiletime( () => new Date().toISOString() );
+emitCustom( "version", repo );
+emitCustom( "version", version );
+emitCustom( "build", build );
 
 let currentWolfGoldFactor = 1;
 /**
@@ -66,26 +103,6 @@ export const onWolfGoldBonus = ( gold: number, reset?: boolean ): number => {
 export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): void => {
 
 	try {
-
-		// values
-
-		const logBonus = defineNumberValue( "bonus", "none", "none", "real" );
-
-		// sheep values
-		const updateFarmsBuilt = defineNumberValue( "farms built", "high", "none" );
-		const updateSaves = defineNumberValue( "saves", "high", "none" );
-		const updateSheepDeaths = defineNumberValue( "sheep deaths", "low", "none" );
-		const updateSheepGold = defineNumberValue( "sheep gold", "high", "none" );
-		const updateSheepMaxLevel = defineNumberValue( "sheep max level", "high", "none" );
-		const updateSheepSpecialization = defineStringValue( "sheep specialization", "none" );
-		const updateUnitsKilledAsSheep = defineNumberValue( "units killed as sheep", "high", "none" );
-
-		// wolf values
-		const updateFarmsKilled = defineNumberValue( "farms killed", "high", "none" );
-		const updateWolfDeaths = defineNumberValue( "wolf deaths", "low", "none" );
-		const updateWolfGold = defineNumberValue( "wolf gold", "high", "none" );
-		const updateSheepKilled = defineNumberValue( "sheep killed", "high", "none" );
-		const updateWolfLevel = defineNumberValue( "wolf level", "high", "none" );
 
 		const wolfLossBonus = currentWolfGoldFactor;
 		const sheepWinFactor = wolfLossBonus;

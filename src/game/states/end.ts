@@ -7,13 +7,12 @@ import { timeout } from "util/temp";
 import { colorize } from "util/colorize";
 
 let desynced = false;
-
+const logDesync = defineEvent( "desync", "There was a desync" );
 export const flagDesync = (): void => {
 
 	if ( desynced || gameState() === "ended" ) return;
 
-	defineEvent( "desync", "There was a desync" )();
-
+	logDesync();
 	desynced = true;
 
 };
