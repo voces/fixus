@@ -55,5 +55,9 @@
       "legacyWatch": true
     }
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voces/fixus.git"
+  }
 }

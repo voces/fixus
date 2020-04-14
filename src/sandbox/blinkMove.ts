@@ -22,8 +22,18 @@ const blinkMove = (): void => {
 		const distance = Math.sqrt( distanceSquared ) - 8;
 		const angle = Math.atan2( y2 - y1, x2 - x1 );
 
-		SetUnitX( u, x1 + distance * Math.cos( angle ) );
-		SetUnitY( u, y1 + distance * Math.sin( angle ) );
+		const newX = x1 + distance * Math.cos( angle );
+		const newY = y1 + distance * Math.sin( angle );
+
+		if ( IsUnitType( u, UNIT_TYPE_STRUCTURE ) )
+			SetUnitPosition( u, newX, newY );
+
+		else {
+
+			SetUnitX( u, newX );
+			SetUnitY( u, newY );
+
+		}
 
 	}
 
