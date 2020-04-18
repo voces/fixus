@@ -9,4 +9,4 @@ import "resources/index";
 import "sandbox/index";
 import "saveDeath/index";
 import "upgrades/scoutPhoenixUpgrade";
-import "util/w3mmd/index";
+import "misc/stats";

@@ -1,5 +1,5 @@
 
-import { defineEvent, defineNumberValue, defineStringValue, setPlayerFlag, emitCustom } from "./w3mmd";
+import { defineEvent, defineNumberValue, defineStringValue, setPlayerFlag, emitCustom } from "w3ts-w3mmd";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
 	fillArray,
@@ -50,7 +50,7 @@ const repo = compiletime( () => {
 
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
 	const url = require( "url" );
-	const repo = url.parse( require( "../../../package.json" ).repository.url );
+	const repo = url.parse( require( "../../package.json" ).repository.url );
 	return repo.pathname.slice( 1 ).replace( ".git", "" );
 
 } );

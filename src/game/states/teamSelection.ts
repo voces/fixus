@@ -8,7 +8,7 @@ import { reloadMultiboard } from "util/multiboard";
 import { transitionGame, TransitionInformation, gameState, transitionsFrom } from "./common";
 import { Value } from "util/json";
 import { isPlayingPlayer, isComputer } from "util/player";
-import { defineStringValue } from "util/w3mmd/w3mmd";
+import { defineStringValue } from "w3ts-w3mmd";
 import { colorize } from "util/colorize";
 import { zoom } from "commands/zoom";
 

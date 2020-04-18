@@ -1,6 +1,6 @@
 
 import "test/w3api";
-import { onWolfGoldBonus } from "./index";
+import { onWolfGoldBonus } from "./stats";
 import { getRemainingTime } from "game/states/common";
 
 jest.mock(

@@ -1,6 +1,6 @@
 
 import { log, termToString } from "./log";
-import { defineEvent } from "./w3mmd/w3mmd";
+import { defineEvent } from "w3ts-w3mmd";
 import { isSandbox } from "shared";
 import { debounce } from "./debounce";
 
