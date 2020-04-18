@@ -38,14 +38,14 @@
     "ts-transformer-imports": "^0.4.3",
     "typescript-to-lua": "^0.32.0",
     "w3api": "^2.2.0",
-    "war3-transformer": "^1.0.1",
+    "war3-transformer": "git://github.com/cipherxof/war3-transformer.git#458fdb315fff1f55a90151110fcafe9b90cc2f23",
     "war3-types": "^1.0.2",
     "war3tstlhelper": ">=1.0.1",
     "winston": "^3.2.1"
   },
   "dependencies": {
     "w3ts": "^2.1.1",
-    "w3ts-w3mmd": "^1.0.2"
+    "w3ts-w3mmd": "^1.0.3"
   },
   "watch": {
     "build:defs": {
