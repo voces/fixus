@@ -1,5 +1,5 @@
 
-import { defineEvent, defineNumberValue, defineStringValue, setPlayerFlag, emitCustom } from "./w3mmd";
+import { defineEvent, defineNumberValue, defineStringValue, setPlayerFlag, emitCustom } from "w3ts-w3mmd";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 import {
 	fillArray,
@@ -46,26 +46,28 @@ const updateWolfGold = defineNumberValue( "wolf gold", "high", "none" );
 const updateSheepKilled = defineNumberValue( "sheep killed", "high", "none" );
 const updateWolfLevel = defineNumberValue( "wolf level", "high", "none" );
 
-const repo = compiletime( () => {
+emitCustom( "version", compiletime( () => {
 
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
 	const url = require( "url" );
-	const repo = url.parse( require( "../../../package.json" ).repository.url );
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	const fs = require( "fs" );
+
+	const file = fs.readFileSync( "package.json" );
+	const repo = url.parse( JSON.parse( file ).repository.url );
 	return repo.pathname.slice( 1 ).replace( ".git", "" );
 
-} );
-const version = compiletime( () => {
+} ) );
+emitCustom( "version", compiletime( () => {
 
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
 	const fs = require( "fs" );
+
 	const file = fs.readFileSync( "CHANGELOG.md", { encoding: "utf-8" } );
 	return file.split( "\n" )[ 1 ].split( " " )[ 2 ];
 
-} );
-const build = compiletime( () => new Date().toISOString() );
-emitCustom( "version", repo );
-emitCustom( "version", version );
-emitCustom( "build", build );
+} ) );
+emitCustom( "build", compiletime( () => new Date().toISOString() ) );
 
 let currentWolfGoldFactor = 1;
 /**

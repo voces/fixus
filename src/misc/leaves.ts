@@ -11,7 +11,7 @@ import {
 import { reloadMultiboard } from "util/multiboard";
 import { isPlayingPlayer, colorizedName } from "util/player";
 import { wrappedTriggerAddAction } from "util/emitLog";
-import { setPlayerFlag } from "util/w3mmd/w3mmd";
+import { setPlayerFlag } from "w3ts-w3mmd";
 import { flagDesync, endGame } from "game/states/end";
 import { gameState } from "game/states/common";
 import { adjustPlayerGold } from "resources/goldPerSecond";

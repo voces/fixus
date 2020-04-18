@@ -1,7 +1,7 @@
 
-import { defineEvent } from "util/w3mmd/w3mmd";
+import { defineEvent } from "w3ts-w3mmd";
 import { TransitionInformation, updateGameTimer, transitionsFrom, gameState } from "./common";
-import { endGameStats } from "util/w3mmd/index";
+import { endGameStats } from "misc/stats";
 import { sheepTeam, sheeps, wolfTeam } from "shared";
 import { timeout } from "util/temp";
 import { colorize } from "util/colorize";

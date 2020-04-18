@@ -3,7 +3,7 @@ import { wolfTeam } from "shared";
 import { forEachPlayerUnit } from "util/temp";
 import { colorizedName } from "util/player";
 import { registerCommand } from "./registerCommand";
-import { onWolfGoldBonus } from "util/w3mmd/index";
+import { onWolfGoldBonus } from "misc/stats";
 import { gameState } from "game/states/common";
 import { adjustPlayerGold } from "resources/goldPerSecond";
 import { getSheepController } from "./host";
