@@ -6,7 +6,6 @@ import { getController } from "./host";
 
 const gameSpeedMap = [
 	MAP_SPEED_SLOWEST,
-	MAP_SPEED_SLOWEST,
 	MAP_SPEED_SLOW,
 	MAP_SPEED_NORMAL,
 	MAP_SPEED_FAST,
@@ -28,7 +27,7 @@ const action = ( { speed }: {speed: number} ): void => {
 			"Non-default speeds can only be set in the first minute.",
 		);
 
-	SetGameSpeed( gameSpeedMap[ speed ] );
+	SetGameSpeed( gameSpeedMap[ speed - 1 ] );
 
 };
 
