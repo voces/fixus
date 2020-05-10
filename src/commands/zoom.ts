@@ -3,7 +3,6 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wolfTeam, sheepTeam, wispTeam } from "shared";
 import { registerCommand } from "./registerCommand";
 import { localPlayerSettings, saveLocalPlayerSettings } from "util/localPlayerSettings";
-import { log } from "util/log";
 
 // ===========================================================================
 // Trigger: miscZoom
@@ -71,7 +70,7 @@ export const zoom = ( zoom?: number ): void => {
 
 		// Update persisted value
 		if ( changed )
-			saveLocalPlayerSettings();
+			saveLocalPlayerSettings( player );
 
 	}
 
@@ -88,8 +87,6 @@ registerCommand( {
 } );
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
-
-	log( localPlayerSettings );
 
 	// Zoom to sheep zoome for now
 	SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, localPlayerSettings.zooms.sheep || 1650, 0 );

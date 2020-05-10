@@ -16,9 +16,10 @@ export const localPlayerSettings = {
 
 /**
  * Saves to disk the player settings.
- * @param player Optional player to save for. Otherwise saves for all players.
+ * @param player The player we should be performing the save for. Note passing
+ * in `GetLocalPlayer()` will save for everyone.
  */
-export const saveLocalPlayerSettings = ( player?: player ): void => {
+export const saveLocalPlayerSettings = ( player: player ): void => {
 
 	if ( player && player !== GetLocalPlayer() ) return;
 
