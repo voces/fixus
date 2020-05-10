@@ -8,6 +8,7 @@
 - Added "leaver" and "practicing" player flags
 - Added "-rotation" command
 - "-wolf gold" and "-destroy all farms" prefer host
+- Added -gps
 
 ## Refactors
 - Rewrote w3mmd, aiming for less desyncs + type safety

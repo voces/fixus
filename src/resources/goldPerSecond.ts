@@ -1,5 +1,6 @@
 
-import { Timer, addScriptHook, W3TS_HOOK, getElapsedTime } from "w3ts";
+import { Timer, addScriptHook, W3TS_HOOK, getElapsedTime } from "@voces/w3ts";
+import { localPlayerSettings, saveLocalPlayerSettings } from "util/localPlayerSettings";
 
 const BIN_RESOLUTION = 0.5;
 const WINDOW = 12;
@@ -57,6 +58,17 @@ export const adjustPlayerGold = ( player: player, goldAmount: number ): void => 
 
 };
 
+export const toggleGps = ( player: player ): void => {
+
+	// Everything here is local
+	if ( player !== GetLocalPlayer() ) return;
+
+	localPlayerSettings.showGps = ! localPlayerSettings.showGps;
+	BlzFrameSetVisible( gpsFrame, localPlayerSettings.showGps );
+	saveLocalPlayerSettings( player );
+
+};
+
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
@@ -64,6 +76,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 	gpsFrame = BlzCreateFrameByType( "TEXT", "GoldPerSecondFrame", parent, "", 0 );
 	BlzFrameSetAbsPoint( gpsFrame, FRAMEPOINT_CENTER, 0.455, 0.56125 );
 	BlzFrameSetTextColor( gpsFrame, 0xc0c231 );
+	BlzFrameSetVisible( gpsFrame, localPlayerSettings.showGps );
 
 	new Timer().start( BIN_RESOLUTION, true, updateDisplay );
 

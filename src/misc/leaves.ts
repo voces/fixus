@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK, getElapsedTime } from "w3ts";
+import { addScriptHook, W3TS_HOOK, getElapsedTime } from "@voces/w3ts";
 import {
 	countHere,
 	mainUnit,

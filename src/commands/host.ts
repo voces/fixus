@@ -1,5 +1,5 @@
 
-import { getHost } from "w3ts";
+import { getHost } from "@voces/w3ts";
 import { registerCommand } from "./registerCommand";
 import { sheepTeam } from "shared";
 import { colorizedName } from "util/player";

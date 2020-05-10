@@ -1,6 +1,6 @@
 
 import { TriggerRegisterPlayerUnitEventAll, fillArray, fillArrayFn, DOLLY_TYPE } from "shared";
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
 
 const dollyTimer: Array<timer> = [];

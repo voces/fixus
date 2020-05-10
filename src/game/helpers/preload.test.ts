@@ -1,6 +1,6 @@
 
 import "test/w3api";
-import { hookedMain } from "w3ts";
+import { hookedMain } from "@voces/w3ts";
 import "./preload";
 import { getGame, revFourCC } from "w3api";
 

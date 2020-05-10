@@ -3,6 +3,7 @@ import "./angle";
 import "./control";
 import "./face";
 import "./gold";
+import "./goldPerSecond";
 import "./host";
 import "./lumber";
 import "./rotation";
