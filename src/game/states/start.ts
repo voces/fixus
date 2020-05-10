@@ -7,6 +7,7 @@ import {
 	transitionsFrom,
 } from "./common";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+import { isComputer, isPlayingPlayer } from "util/player";
 
 const initialSpawns: Array<{x: number; y: number}> = [];
 
@@ -36,7 +37,12 @@ const sheepStart = (): TransitionInformation => {
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 
-		if ( IsPlayerInForce( Player( i ), sheepTeam ) ) spawnSheep( i );
+		if (
+			IsPlayerInForce( Player( i ), sheepTeam ) &&
+			isComputer( Player( i ) ) &&
+			isPlayingPlayer( Player( i ) )
+		)
+			spawnSheep( i );
 
 		// pan camera back to wolf spawn
 		else if ( GetLocalPlayer() === Player( i ) )

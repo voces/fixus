@@ -25,7 +25,7 @@ let lastLeave = 0;
 const isSameTeam = ( a: player, b: player ): boolean =>
 	IsPlayerInForce( a, wolfTeam ) === IsPlayerInForce( b, wolfTeam );
 
-const Trig_miscLeaves_Actions = (): void => {
+const onLeave = (): void => {
 
 	// Remove main unit if sheep or wisp
 	if ( IsPlayerInForce( GetTriggerPlayer(), sheepTeam ) || IsPlayerInForce( GetTriggerPlayer(), wispTeam ) )
@@ -79,6 +79,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterPlayerEventAll( t, EVENT_PLAYER_LEAVE );
-	wrappedTriggerAddAction( t, "leaves", Trig_miscLeaves_Actions );
+	wrappedTriggerAddAction( t, "leaves", onLeave );
 
 } );

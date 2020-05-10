@@ -3,20 +3,29 @@ import { W3TS_HOOK, addScriptHook } from "@voces/w3ts";
 import { forEachPlayer, timeout, mapEachPlayer } from "util/temp";
 import { fetch } from "util/networkio";
 import { getTeams } from "./helpers/getTeams";
-import { sheepTeam, wolfTeam, isSandbox } from "shared";
+import { sheepTeam, wolfTeam, isSandbox, TriggerRegisterPlayerEventAll } from "shared";
 import { reloadMultiboard } from "util/multiboard";
-import { transitionGame, TransitionInformation, gameState, transitionsFrom } from "./common";
+import {
+	gameState,
+	transitionGame,
+	TransitionInformation,
+	transitionsFrom,
+} from "./common";
 import { Value } from "util/json";
 import { isPlayingPlayer, isComputer } from "util/player";
 import { defineStringValue } from "w3ts-w3mmd";
 import { colorize } from "util/colorize";
 import { zoom } from "commands/zoom";
+import { wrappedTriggerAddAction } from "util/emitLog";
 
 let preferenceDialog: dialog;
 const dialogButtonMap: Map<button, "sheep" | "wolf" | "none"> = new Map();
-let remainingDialogs = 0;
+const remainingDialogs: Set<player> = new Set();
 let fetchedBiases = false;
-let preferences: Map<player, {preference: "sheep" | "wolf" | "none"; netPreference: number}>;
+let preferences: Map<
+	player,
+	{preference: "sheep" | "wolf" | "none"; netPreference: number}
+>;
 const playerNameToPlayer: Record<string, player> = {};
 
 const logPreference = defineStringValue( "preference", "none" );
@@ -32,8 +41,15 @@ const finalizeTeams = (): void => {
 
 	if ( isSandbox() ) {
 
-		for ( let i = 2 - sheep.length, n = 0; n < bj_MAX_PLAYERS && i > 0; n ++ )
-			if ( ! sheep.includes( Player( n ) ) && ! wolves.includes( Player( n ) ) ) {
+		for (
+			let i = 2 - sheep.length, n = 0;
+			n < bj_MAX_PLAYERS && i > 0;
+			n ++
+		)
+			if (
+				! sheep.includes( Player( n ) ) &&
+				! wolves.includes( Player( n ) )
+			) {
 
 				sheep.push( Player( n ) );
 				i --;
@@ -42,7 +58,10 @@ const finalizeTeams = (): void => {
 
 		if ( wolves.length === 0 )
 			for ( let n = 0; n < bj_MAX_PLAYERS; n ++ )
-				if ( ! sheep.includes( Player( n ) ) && ! wolves.includes( Player( n ) ) ) {
+				if (
+					! sheep.includes( Player( n ) ) &&
+					! wolves.includes( Player( n ) )
+				) {
 
 					wolves.push( Player( n ) );
 					break;
@@ -85,7 +104,7 @@ const onDialogSelection = (): void => {
 	const player = GetTriggerPlayer();
 
 	DialogDisplay( player, preferenceDialog, false );
-	remainingDialogs --;
+	remainingDialogs.delete( player );
 
 	const preference = dialogButtonMap.get( GetClickedButton() );
 	if ( ! preference ) throw `unexpected preference '${preference}'`;
@@ -96,7 +115,7 @@ const onDialogSelection = (): void => {
 
 	prevPreference.preference = preference;
 
-	if ( remainingDialogs === 0 && fetchedBiases )
+	if ( remainingDialogs.size === 0 && fetchedBiases )
 		finalizeTeams();
 
 };
@@ -132,8 +151,46 @@ const onFetchBiases = ( result: Value ): void => {
 
 		} );
 
-	if ( remainingDialogs === 0 && fetchedBiases )
+	if ( remainingDialogs.size === 0 && fetchedBiases )
 		finalizeTeams();
+
+};
+
+const createDialog = (): void => {
+
+	preferenceDialog = DialogCreate();
+	DialogSetMessage( preferenceDialog, "Team preference" );
+
+	dialogButtonMap.set(
+		DialogAddButton(
+			preferenceDialog,
+			`${colorize.white( "N" )}${colorize.gold( "o preference" )}`,
+			"N".charCodeAt( 0 ),
+		),
+		"none",
+	);
+
+	dialogButtonMap.set(
+		DialogAddButton(
+			preferenceDialog,
+			`${colorize.white( "S" )}${colorize.gold( "heep" )}`,
+			"S".charCodeAt( 0 ),
+		),
+		"sheep",
+	);
+
+	dialogButtonMap.set(
+		DialogAddButton(
+			preferenceDialog,
+			`${colorize.white( "W" )}${colorize.gold( "olf" )}`,
+			"W".charCodeAt( 0 ),
+		),
+		"wolf",
+	);
+
+	const t = CreateTrigger();
+	TriggerRegisterDialogEvent( t, preferenceDialog );
+	TriggerAddAction( t, onDialogSelection );
 
 };
 
@@ -141,47 +198,12 @@ const selectTeams = (): TransitionInformation => {
 
 	preferences = new Map();
 
-	if ( preferenceDialog == null ) {
+	if ( preferenceDialog == null ) createDialog();
 
-		preferenceDialog = DialogCreate();
-		DialogSetMessage( preferenceDialog, "Team preference" );
-
-		dialogButtonMap.set(
-			DialogAddButton(
-				preferenceDialog,
-				`${colorize.white( "N" )}${colorize.gold( "o preference" )}`,
-				"N".charCodeAt( 0 ),
-			),
-			"none",
-		);
-
-		dialogButtonMap.set(
-			DialogAddButton(
-				preferenceDialog,
-				`${colorize.white( "S" )}${colorize.gold( "heep" )}`,
-				"S".charCodeAt( 0 ),
-			),
-			"sheep",
-		);
-
-		dialogButtonMap.set(
-			DialogAddButton(
-				preferenceDialog,
-				`${colorize.white( "W" )}${colorize.gold( "olf" )}`,
-				"W".charCodeAt( 0 ),
-			),
-			"wolf",
-		);
-
-		const t = CreateTrigger();
-		TriggerRegisterDialogEvent( t, preferenceDialog );
-		TriggerAddAction( t, onDialogSelection );
-
-	}
-
-	const playerNames = mapEachPlayer( p => isPlayingPlayer( p ) ? GetPlayerName( p ) : null )
-		.filter( p => p != null )
-		.join( "," );
+	const playerNames =
+		mapEachPlayer( p => isPlayingPlayer( p ) ? GetPlayerName( p ) : null )
+			.filter( p => p != null )
+			.join( "," );
 
 	fetch(
 		`http://api.w3x.io/preferences?map=fixus&players=${playerNames}`,
@@ -197,16 +219,16 @@ const selectTeams = (): TransitionInformation => {
 		if ( ! isPlayingPlayer( p ) ) return;
 
 		DialogDisplay( p, preferenceDialog, true );
-		remainingDialogs ++;
+		remainingDialogs.add( p );
 
 	} );
 
 	timeout( "team select", 14.75, () => {
 
-		if ( remainingDialogs > 0 || ! fetchedBiases ) {
+		if ( remainingDialogs.size > 0 || ! fetchedBiases ) {
 
 			forEachPlayer( p => DialogDisplay( p, preferenceDialog, false ) );
-			remainingDialogs = 0;
+			remainingDialogs.clear();
 
 			fetchedBiases = true;
 
@@ -225,5 +247,21 @@ transitionsFrom[ "init" ] = selectTeams;
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	forEachPlayer( p => playerNameToPlayer[ GetPlayerName( p ) ] = p );
+
+	const t = CreateTrigger();
+	TriggerRegisterPlayerEventAll( t, EVENT_PLAYER_LEAVE );
+	wrappedTriggerAddAction( t, "teamSelection leave", () => {
+
+		if ( remainingDialogs.size === 0 && fetchedBiases ) return;
+
+		const leaver = GetTriggerPlayer();
+
+		preferences.delete( leaver );
+		remainingDialogs.delete( leaver );
+
+		if ( remainingDialogs.size === 0 && fetchedBiases )
+			finalizeTeams();
+
+	} );
 
 } );
