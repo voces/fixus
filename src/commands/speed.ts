@@ -1,5 +1,5 @@
 
-import { getElapsedTime } from "w3ts";
+import { getElapsedTime } from "@voces/w3ts";
 import { registerCommand } from "./registerCommand";
 import { isSandbox } from "shared";
 import { getController } from "./host";

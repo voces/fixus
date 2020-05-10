@@ -1,6 +1,6 @@
 
 import { wws, WHITE_WOLF_TYPE, wolves, fillArrayFn } from "shared";
-import { addScriptHook, W3TS_HOOK, getElapsedTime } from "w3ts";
+import { addScriptHook, W3TS_HOOK, getElapsedTime } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { removeQuickShop } from "../wolves/quickShops";
 import { onSummon } from "util/event";

@@ -1,6 +1,6 @@
 
 import { stringify, parse, Value } from "./json";
-import { addScriptHook, W3TS_HOOK, File } from "w3ts";
+import { addScriptHook, W3TS_HOOK, File } from "@voces/w3ts";
 import { wrappedTriggerAddAction, emitLog } from "util/emitLog";
 import { forEachPlayer, timeout } from "util/temp";
 import { isPlayingPlayer } from "util/player";
@@ -93,7 +93,7 @@ const checkForResponse = ( request: Request ): void => {
 
 	const path = `networkio/responses/${request.requestId}-${request.tries ++}.txt`;
 	const rawResponse = File.read( path );
-	const response = rawResponse === "fail" ?
+	const response = rawResponse == null ?
 		null :
 		prefixed ?
 			rawResponse.slice( 1 ) :

@@ -1,5 +1,5 @@
 
-import { getElapsedTime } from "w3ts";
+import { getElapsedTime } from "@voces/w3ts";
 
 type Timing = {
     threshold: number;

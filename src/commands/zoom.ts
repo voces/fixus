@@ -1,10 +1,9 @@
 
-import { addScriptHook, W3TS_HOOK, File } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wolfTeam, sheepTeam, wispTeam } from "shared";
 import { registerCommand } from "./registerCommand";
-
-let sheepZoom = 1650;
-let wolfZoom = 1650;
+import { localPlayerSettings, saveLocalPlayerSettings } from "util/localPlayerSettings";
+import { log } from "util/log";
 
 // ===========================================================================
 // Trigger: miscZoom
@@ -14,11 +13,11 @@ const adjustZoom = ( zoom: number ): number => {
 
 	const isWolf = IsPlayerInForce( GetLocalPlayer(), wolfTeam );
 
-	// A zoom was not passed, pull from palyer default
+	// A zoom was not passed, pull from player default
 	if ( zoom === 0 )
 		zoom = isWolf ?
-			wolfZoom :
-			sheepZoom;
+			localPlayerSettings.zooms.wolf :
+			localPlayerSettings.zooms.sheep;
 
 	// No player default, use constant default
 	if ( zoom === 0 )
@@ -52,18 +51,18 @@ export const zoom = ( zoom?: number ): void => {
 		if ( isWolf || isSheep )
 			if ( isWolf ) {
 
-				if ( wolfZoom !== zoom ) {
+				if ( localPlayerSettings.zooms.wolf !== zoom ) {
 
-					wolfZoom = zoom;
+					localPlayerSettings.zooms.wolf = zoom;
 					changed = true;
 
 				}
 
 			} else {
 
-				if ( sheepZoom !== zoom ) {
+				if ( localPlayerSettings.zooms.sheep !== zoom ) {
 
-					sheepZoom = zoom;
+					localPlayerSettings.zooms.sheep = zoom;
 					changed = true;
 
 				}
@@ -72,7 +71,7 @@ export const zoom = ( zoom?: number ): void => {
 
 		// Update persisted value
 		if ( changed )
-			File.write( "fixus/zooms.txt", `${sheepZoom} ${wolfZoom}` );
+			saveLocalPlayerSettings();
 
 	}
 
@@ -90,12 +89,9 @@ registerCommand( {
 
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
-	const zooms = File.read( "fixus/zooms.txt" ).replace( "fail", "" ).split( " " );
-
-	sheepZoom = adjustZoom( S2R( zooms[ 0 ] || "" ) );
-	wolfZoom = adjustZoom( S2R( zooms[ 1 ] || "" ) );
+	log( localPlayerSettings );
 
 	// Zoom to sheep zoome for now
-	SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, sheepZoom, 0 );
+	SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, localPlayerSettings.zooms.sheep || 1650, 0 );
 
 } );

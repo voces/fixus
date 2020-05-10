@@ -1,6 +1,6 @@
 
 import "test/w3api";
-import { executeHooksMainAfter } from "w3ts";
+import { executeHooksMainAfter } from "@voces/w3ts";
 import { main, units, nextWolfId } from "./dragonFire";
 import { wolfTeam, WOLF_TYPE } from "shared";
 

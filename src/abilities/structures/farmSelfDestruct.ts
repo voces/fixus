@@ -1,5 +1,5 @@
 
-import { addScriptHook, W3TS_HOOK } from "w3ts";
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { spawnCoin } from "resources/coins";
 import { wrappedTriggerAddAction } from "util/emitLog";
 
