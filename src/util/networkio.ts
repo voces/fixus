@@ -13,11 +13,13 @@ type Options = {
 }
 type Request = {
 	callback?: ( response: Value ) => void;
+	fetcher: player | null;
+	options: Options | null | undefined;
 	requestId: number;
 	response: string;
 	timer: timer | null;
 	tries: 0;
-	fetcher: player;
+	url: string;
 }
 
 /**
@@ -91,7 +93,8 @@ const checkForResponse = ( request: Request ): void => {
 
 	if ( request.fetcher !== GetLocalPlayer() ) return;
 
-	const path = `networkio/responses/${request.requestId}-${request.tries ++}.txt`;
+	const path =
+		`networkio/responses/${request.requestId}-${request.tries ++}.txt`;
 	const rawResponse = File.read( path );
 	const response = rawResponse == null ?
 		null :
@@ -122,11 +125,15 @@ const checkForResponse = ( request: Request ): void => {
 	const stringifiedResponse = response == null ? "null" : response;
 
 	const parts = Math.ceil( stringifiedResponse.length / 240 );
-	for ( let i = 1, n = 0; n < stringifiedResponse.length; i ++, n += 240 )
+	for ( let i = 1, n = 0; n < stringifiedResponse.length; i ++, n += 240 ) {
+
+		const content = stringifiedResponse.slice( n, n + 240 );
 		BlzSendSyncData(
 			"networkio",
-			`${request.requestId}-${i}/${parts}-${stringifiedResponse.slice( n, n + 240 )}`,
+			`${request.requestId}-${i}/${parts}-${content}`,
 		);
+
+	}
 
 };
 
@@ -147,6 +154,42 @@ const withFetcher = <T>( player: player, callback: () => T ): T => {
 
 };
 
+const getFetcher = (): player | null => {
+
+	const r = GetRandomInt( 0, networkedPlayers.length - 1 );
+	return fetcherOverride || networkedPlayers[ r ];
+
+};
+
+const makeRequest = ( request: Request ): void => {
+
+	// Immediately resolve if there is no fetcher
+	if ( ! request.fetcher ) {
+
+		if ( request.callback ) request.callback( null );
+		return;
+
+	}
+
+	// Make sure the response is empty if we're starting over
+	request.response = "";
+
+	if ( GetLocalPlayer() === request.fetcher )
+		writeFile(
+			`networkio/requests/${request.requestId}.txt`,
+			stringify( { url: request.url, ...request.options } ) || "",
+		);
+
+	if ( request.timer )
+		TimerStart(
+			request.timer,
+			calcInterval( request.tries ),
+			false,
+			() => checkForResponse( request ),
+		);
+
+};
+
 // Used for unique file naming.
 let requestId = 0;
 
@@ -163,6 +206,7 @@ export const fetch = (
 	callback?: ( response: Value ) => void,
 ): void => {
 
+	// Queue requests until we have everyone
 	if ( ! ready && url.indexOf( "proxy://" ) !== 0 ) {
 
 		queue.push( [ url, options, callback ] );
@@ -170,15 +214,15 @@ export const fetch = (
 
 	}
 
-	if ( networkedPlayers.length === 0 && url.indexOf( "proxy://" ) !== 0 ) {
+	const fetcher = getFetcher();
+
+	// No fetcher, just return null
+	if ( ! fetcher ) {
 
 		if ( callback ) callback( null );
 		return;
 
 	}
-
-	const r = GetRandomInt( 0, networkedPlayers.length - 1 );
-	const fetcher = fetcherOverride || networkedPlayers[ r ];
 
 	if ( ! callback && supportsNoResponse( fetcher ) ) {
 
@@ -189,28 +233,18 @@ export const fetch = (
 
 	const request: Request = {
 		callback,
+		fetcher,
+		options,
 		requestId: requestId ++,
 		response: "",
 		timer: options && options.noResponse ? null : CreateTimer(),
 		tries: 0,
-		fetcher,
+		url,
 	};
 
 	activeRequests[ request.requestId ] = request;
 
-	if ( GetLocalPlayer() === fetcher )
-		writeFile(
-			`networkio/requests/${request.requestId}.txt`,
-			stringify( { url, ...options } ) || "",
-		);
-
-	if ( request.timer )
-		TimerStart(
-			request.timer,
-			calcInterval( request.tries ),
-			false,
-			() => checkForResponse( request ),
-		);
+	makeRequest( request );
 
 };
 
@@ -261,19 +295,14 @@ export const parseSyncData = ( syncData: string ): {
 
 };
 
-const onSync = (): void => {
-
-	const { requestId, chunk, totalChunks, data } = parseSyncData( BlzGetTriggerSyncData() );
-
-	const request = activeRequests[ requestId ];
-	request.response += data;
-
-	if ( chunk !== totalChunks ) return;
+const completeRequest = ( request: Request ): void => {
 
 	if ( request.timer ) DestroyTimer( request.timer );
 
 	const response = parse( request.response );
-	const callback = request.callback ? request.callback.bind( response ) : null;
+	const callback = request.callback ?
+		request.callback.bind( response ) :
+		null;
 	delete activeRequests[ requestId ];
 
 	if ( callback )
@@ -286,6 +315,21 @@ const onSync = (): void => {
 			emitLog( `networkio sync request=${requestId} callback`, err );
 
 		}
+
+};
+
+const onSync = (): void => {
+
+	const { requestId, chunk, totalChunks, data } = parseSyncData(
+		BlzGetTriggerSyncData(),
+	);
+
+	const request = activeRequests[ requestId ];
+	request.response += data;
+
+	if ( chunk !== totalChunks ) return;
+
+	completeRequest( request );
 
 };
 
@@ -304,29 +348,56 @@ const onMetaSync = (): void => {
 
 };
 
+const onLeave = (): void => {
+
+	const leaver = GetTriggerPlayer();
+
+	const playerIndex = networkedPlayers.indexOf( leaver );
+	if ( playerIndex >= 0 )
+		networkedPlayers.splice( playerIndex, 1 );
+
+	Object.values( activeRequests ).forEach( request => {
+
+		if ( request.fetcher !== leaver ) return;
+
+		// proxy://version is for the specific fetcher
+		if ( request.url.startsWith( "proxy://version" ) ) {
+
+			request.response = "";
+			return completeRequest( request );
+
+		}
+
+		// Destroy the timer if it exists (we'll use a new one)
+		if ( request.timer ) DestroyTimer( request.timer );
+
+		// Pick a new fetcher and re-issue the request
+		request.fetcher = getFetcher();
+		makeRequest( request );
+
+	} );
+
+};
+
 // ===========================================================================
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	// Trigger for syncing data from the fetcher to everyone else
 	let t = CreateTrigger();
-	forEachPlayer( p => BlzTriggerRegisterPlayerSyncEvent( t, p, "networkio", false ) );
+	forEachPlayer( p =>
+		BlzTriggerRegisterPlayerSyncEvent( t, p, "networkio", false ) );
 	wrappedTriggerAddAction( t, "networkio sync", onSync );
 
 	// Trigger for syncing meta data, such as for rescheduling timers
 	t = CreateTrigger();
-	forEachPlayer( p => BlzTriggerRegisterPlayerSyncEvent( t, p, "networkio-meta", false ) );
+	forEachPlayer( p =>
+		BlzTriggerRegisterPlayerSyncEvent( t, p, "networkio-meta", false ) );
 	wrappedTriggerAddAction( t, "networkio sync meta", onMetaSync );
 
 	// Trigger for removing a player from networkedPlayers if they leave
 	t = CreateTrigger();
 	TriggerRegisterPlayerEventAll( t, EVENT_PLAYER_LEAVE );
-	wrappedTriggerAddAction( t, "networkio player leave", () => {
-
-		const playerIndex = networkedPlayers.indexOf( GetTriggerPlayer() );
-		if ( playerIndex >= 0 )
-			networkedPlayers.splice( playerIndex, 1 );
-
-	} );
+	wrappedTriggerAddAction( t, "networkio player leave", onLeave );
 
 	// A magic function to determine which players have a proxy
 	let outstanding = 0;
