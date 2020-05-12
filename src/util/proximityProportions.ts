@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-extra-parens */
 
 import {
 	BLACK_WOLF_TYPE,
@@ -42,7 +43,7 @@ const unitFactor = ( unit: unit ): number => {
 	const baseFactor = UNIT_FACTORS[ GetUnitTypeId( unit ) ];
 
 	// no entry or hardcoded 0
-	if ( baseFactor == null || baseFactor <= 0 ) return 0;
+	if ( baseFactor == null ) return 0;
 
 	// illusions give 75%
 	if ( IsUnitIllusion( unit ) ) return baseFactor * 0.75;
@@ -111,9 +112,9 @@ const sheepProximityProportions = (
 	for ( let i = 0; i < players.length; i ++ ) {
 
 		const reals = {
-			gold: amounts.gold ?? 0 * proportions[ i ] + remainders.gold,
-			lumber: amounts.lumber ?? 0 * proportions[ i ] + remainders.lumber,
-			experience: amounts.experience ?? 0 * proportions[ i ] + remainders.experience,
+			gold: ( ( amounts.gold ?? 0 ) ) * proportions[ i ] + remainders.gold,
+			lumber: ( amounts.lumber ?? 0 ) * proportions[ i ] + remainders.lumber,
+			experience: ( amounts.experience ?? 0 ) * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -170,9 +171,9 @@ const wispProximityProportions = (
 	for ( let i = 0; i < players.length; i ++ ) {
 
 		const reals = {
-			gold: amounts.gold ?? 0 * proportions[ i ] + remainders.gold,
-			lumber: amounts.lumber ?? 0 * proportions[ i ] + remainders.lumber,
-			experience: amounts.experience ?? 0 * proportions[ i ] + remainders.experience,
+			gold: ( amounts.gold ?? 0 ) * proportions[ i ] + remainders.gold,
+			lumber: ( amounts.lumber ?? 0 ) * proportions[ i ] + remainders.lumber,
+			experience: ( amounts.experience ?? 0 ) * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -239,9 +240,9 @@ const wolfProximityProportions = (
 	for ( let i = 0; i < proportions.length; i ++ ) {
 
 		const reals = {
-			gold: amounts.gold ?? 0 * proportions[ i ] + remainders.gold,
-			lumber: amounts.lumber ?? 0 * proportions[ i ] + remainders.lumber,
-			experience: amounts.experience ?? 0 * proportions[ i ] + remainders.experience,
+			gold: ( amounts.gold ?? 0 ) * proportions[ i ] + remainders.gold,
+			lumber: ( amounts.lumber ?? 0 ) * proportions[ i ] + remainders.lumber,
+			experience: ( amounts.experience ?? 0 ) * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
