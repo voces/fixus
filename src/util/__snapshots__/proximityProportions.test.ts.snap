@@ -6,7 +6,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 100,
+      "gold": 1000,
       "lumber": 0,
     },
   ],
@@ -19,7 +19,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 52,
+      "gold": 501,
       "lumber": 0,
     },
   ],
@@ -27,7 +27,7 @@ Array [
     1,
     Object {
       "experience": 0,
-      "gold": 49,
+      "gold": 498,
       "lumber": 0,
     },
   ],
@@ -40,7 +40,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 37,
+      "gold": 350,
       "lumber": 0,
     },
   ],
@@ -48,7 +48,7 @@ Array [
     1,
     Object {
       "experience": 0,
-      "gold": 35,
+      "gold": 348,
       "lumber": 0,
     },
   ],
@@ -56,7 +56,7 @@ Array [
     3,
     Object {
       "experience": 0,
-      "gold": 30,
+      "gold": 303,
       "lumber": 0,
     },
   ],
@@ -69,7 +69,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 29,
+      "gold": 279,
       "lumber": 0,
     },
   ],
@@ -77,7 +77,7 @@ Array [
     1,
     Object {
       "experience": 0,
-      "gold": 27,
+      "gold": 277,
       "lumber": 0,
     },
   ],
@@ -85,7 +85,7 @@ Array [
     3,
     Object {
       "experience": 0,
-      "gold": 23,
+      "gold": 241,
       "lumber": 0,
     },
   ],
@@ -93,7 +93,7 @@ Array [
     4,
     Object {
       "experience": 0,
-      "gold": 21,
+      "gold": 201,
       "lumber": 0,
     },
   ],
@@ -106,7 +106,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 25,
+      "gold": 253,
       "lumber": 0,
     },
   ],
@@ -114,7 +114,7 @@ Array [
     1,
     Object {
       "experience": 0,
-      "gold": 23,
+      "gold": 251,
       "lumber": 0,
     },
   ],
@@ -122,7 +122,7 @@ Array [
     3,
     Object {
       "experience": 0,
-      "gold": 19,
+      "gold": 219,
       "lumber": 0,
     },
   ],
@@ -130,7 +130,7 @@ Array [
     4,
     Object {
       "experience": 0,
-      "gold": 18,
+      "gold": 183,
       "lumber": 0,
     },
   ],
@@ -138,7 +138,7 @@ Array [
     6,
     Object {
       "experience": 0,
-      "gold": 15,
+      "gold": 92,
       "lumber": 0,
     },
   ],
@@ -151,7 +151,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 22,
+      "gold": 241,
       "lumber": 0,
     },
   ],
@@ -159,7 +159,7 @@ Array [
     1,
     Object {
       "experience": 0,
-      "gold": 21,
+      "gold": 240,
       "lumber": 0,
     },
   ],
@@ -167,7 +167,7 @@ Array [
     3,
     Object {
       "experience": 0,
-      "gold": 18,
+      "gold": 210,
       "lumber": 0,
     },
   ],
@@ -175,7 +175,7 @@ Array [
     4,
     Object {
       "experience": 0,
-      "gold": 16,
+      "gold": 175,
       "lumber": 0,
     },
   ],
@@ -183,7 +183,7 @@ Array [
     6,
     Object {
       "experience": 0,
-      "gold": 13,
+      "gold": 88,
       "lumber": 0,
     },
   ],
@@ -191,7 +191,7 @@ Array [
     7,
     Object {
       "experience": 0,
-      "gold": 11,
+      "gold": 47,
       "lumber": 0,
     },
   ],
@@ -204,7 +204,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 21,
+      "gold": 240,
       "lumber": 0,
     },
   ],
@@ -212,7 +212,7 @@ Array [
     1,
     Object {
       "experience": 0,
-      "gold": 20,
+      "gold": 239,
       "lumber": 0,
     },
   ],
@@ -220,7 +220,7 @@ Array [
     3,
     Object {
       "experience": 0,
-      "gold": 17,
+      "gold": 209,
       "lumber": 0,
     },
   ],
@@ -228,7 +228,7 @@ Array [
     4,
     Object {
       "experience": 0,
-      "gold": 15,
+      "gold": 174,
       "lumber": 0,
     },
   ],
@@ -236,7 +236,7 @@ Array [
     6,
     Object {
       "experience": 0,
-      "gold": 12,
+      "gold": 87,
       "lumber": 0,
     },
   ],
@@ -244,7 +244,7 @@ Array [
     7,
     Object {
       "experience": 0,
-      "gold": 10,
+      "gold": 47,
       "lumber": 0,
     },
   ],
@@ -252,7 +252,7 @@ Array [
     9,
     Object {
       "experience": 0,
-      "gold": 6,
+      "gold": 5,
       "lumber": 0,
     },
   ],
@@ -265,7 +265,7 @@ Array [
     0,
     Object {
       "experience": 0,
-      "gold": 20,
+      "gold": 240,
       "lumber": 0,
     },
   ],
@@ -273,7 +273,7 @@ Array [
     1,
     Object {
       "experience": 0,
-      "gold": 19,
+      "gold": 239,
       "lumber": 0,
     },
   ],
@@ -281,7 +281,7 @@ Array [
     3,
     Object {
       "experience": 0,
-      "gold": 16,
+      "gold": 209,
       "lumber": 0,
     },
   ],
@@ -289,7 +289,7 @@ Array [
     4,
     Object {
       "experience": 0,
-      "gold": 14,
+      "gold": 174,
       "lumber": 0,
     },
   ],
@@ -297,7 +297,7 @@ Array [
     6,
     Object {
       "experience": 0,
-      "gold": 11,
+      "gold": 87,
       "lumber": 0,
     },
   ],
@@ -305,7 +305,7 @@ Array [
     7,
     Object {
       "experience": 0,
-      "gold": 10,
+      "gold": 47,
       "lumber": 0,
     },
   ],
@@ -313,7 +313,7 @@ Array [
     9,
     Object {
       "experience": 0,
-      "gold": 7,
+      "gold": 5,
       "lumber": 0,
     },
   ],
@@ -321,7 +321,7 @@ Array [
     10,
     Object {
       "experience": 0,
-      "gold": 5,
+      "gold": 1,
       "lumber": 0,
     },
   ],
