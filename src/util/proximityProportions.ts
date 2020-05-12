@@ -42,7 +42,7 @@ const unitFactor = ( unit: unit ): number => {
 	const baseFactor = UNIT_FACTORS[ GetUnitTypeId( unit ) ];
 
 	// no entry or hardcoded 0
-	if ( ! baseFactor || baseFactor <= 0 ) return 0;
+	if ( baseFactor == null || baseFactor <= 0 ) return 0;
 
 	// illusions give 75%
 	if ( IsUnitIllusion( unit ) ) return baseFactor * 0.75;
@@ -111,9 +111,9 @@ const sheepProximityProportions = (
 	for ( let i = 0; i < players.length; i ++ ) {
 
 		const reals = {
-			gold: ( amounts.gold || 0 ) * proportions[ i ] + remainders.gold,
-			lumber: ( amounts.lumber || 0 ) * proportions[ i ] + remainders.lumber,
-			experience: ( amounts.experience || 0 ) * proportions[ i ] + remainders.experience,
+			gold: amounts.gold ?? 0 * proportions[ i ] + remainders.gold,
+			lumber: amounts.lumber ?? 0 * proportions[ i ] + remainders.lumber,
+			experience: amounts.experience ?? 0 * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -170,9 +170,9 @@ const wispProximityProportions = (
 	for ( let i = 0; i < players.length; i ++ ) {
 
 		const reals = {
-			gold: ( amounts.gold || 0 ) * proportions[ i ] + remainders.gold,
-			lumber: ( amounts.lumber || 0 ) * proportions[ i ] + remainders.lumber,
-			experience: ( amounts.experience || 0 ) * proportions[ i ] + remainders.experience,
+			gold: amounts.gold ?? 0 * proportions[ i ] + remainders.gold,
+			lumber: amounts.lumber ?? 0 * proportions[ i ] + remainders.lumber,
+			experience: amounts.experience ?? 0 * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -239,9 +239,9 @@ const wolfProximityProportions = (
 	for ( let i = 0; i < proportions.length; i ++ ) {
 
 		const reals = {
-			gold: ( amounts.gold || 0 ) * proportions[ i ] + remainders.gold,
-			lumber: ( amounts.lumber || 0 ) * proportions[ i ] + remainders.lumber,
-			experience: ( amounts.experience || 0 ) * proportions[ i ] + remainders.experience,
+			gold: amounts.gold ?? 0 * proportions[ i ] + remainders.gold,
+			lumber: amounts.lumber ?? 0 * proportions[ i ] + remainders.lumber,
+			experience: amounts.experience ?? 0 * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -294,7 +294,7 @@ export const awardBounty = (
 
 		let offsets = 0;
 
-		if ( bounty.gold && bounty.gold > 0 ) {
+		if ( bounty.gold != null && bounty.gold > 0 ) {
 
 			adjustPlayerGold( player, bounty.gold );
 			SmallText( bounty.gold, mainUnit( player ), "gold", offsets * 16, offsets * - 64 );
@@ -302,7 +302,7 @@ export const awardBounty = (
 
 		}
 
-		if ( bounty.experience && bounty.experience > 0 ) {
+		if ( bounty.experience != null && bounty.experience > 0 ) {
 
 			const unit = wolfUnit( player );
 
@@ -314,7 +314,7 @@ export const awardBounty = (
 
 		}
 
-		if ( bounty.lumber && bounty.lumber > 0 ) {
+		if ( bounty.lumber != null && bounty.lumber > 0 ) {
 
 			const unit = wolfUnit( player );
 

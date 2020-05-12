@@ -15,10 +15,8 @@ it( "preloads all custom abilities", () => {
 		.map( u => u.abil?.abilList )
 		.flat()
 		.filter( ( v, i, arr ) =>
-			// remove undefines
-			v &&
 			// filter to custom abilities
-			v.startsWith( "A0" ) &&
+			( v?.startsWith( "A0" ) as boolean | null ) &&
 			// remove duplicates
 			arr.indexOf( v ) === i,
 		)

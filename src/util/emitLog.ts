@@ -20,6 +20,7 @@ export const emitLog = ( key: string, arg: any, ...args: Array<any> ): void => {
 };
 
 export const wrappedTriggerAddAction = ( whichTrigger: trigger, key: string, actionFunc: () => void ): triggeraction =>
+	// eslint-disable-next-line no-restricted-globals
 	TriggerAddAction( whichTrigger, () => {
 
 		try {

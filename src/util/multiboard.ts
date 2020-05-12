@@ -20,13 +20,13 @@ const updateMultiboardRow = (
 ): void => {
 
 	let mbi = MultiboardGetItem( board(), index, 0 );
-	if ( value1 ) MultiboardSetItemValue( mbi, value1 );
+	if ( value1 != null ) MultiboardSetItemValue( mbi, value1 );
 	MultiboardSetItemWidth( mbi, 0.1 );
 	MultiboardSetItemStyle( mbi, true, false );
 	MultiboardReleaseItem( mbi );
 
 	mbi = MultiboardGetItem( board(), index, 1 );
-	if ( value2 ) MultiboardSetItemValue( mbi, value2 );
+	if ( value2 != null ) MultiboardSetItemValue( mbi, value2 );
 
 	if ( icon == null ) MultiboardSetItemStyle( mbi, true, false );
 	else MultiboardSetItemIcon( mbi, icon );

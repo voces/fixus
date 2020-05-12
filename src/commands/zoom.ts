@@ -38,7 +38,7 @@ export const zoom = ( zoom?: number ): void => {
 	const isWolf = IsPlayerInForce( player, wolfTeam );
 	const isSheep = IsPlayerInForce( player, sheepTeam ) || IsPlayerInForce( player, wispTeam );
 
-	zoom = adjustZoom( zoom || 0 );
+	zoom = adjustZoom( zoom ?? 0 );
 
 	if ( GetLocalPlayer() === player ) {
 
@@ -89,6 +89,6 @@ registerCommand( {
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	// Zoom to sheep zoome for now
-	SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, localPlayerSettings.zooms.sheep || 1650, 0 );
+	SetCameraField( CAMERA_FIELD_TARGET_DISTANCE, localPlayerSettings.zooms.sheep ?? 1650, 0 );
 
 } );

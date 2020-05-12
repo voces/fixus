@@ -67,7 +67,7 @@ registerCommand( {
 
 		}
 
-		amount = Math.max( amount || 100, 0 );
+		amount = Math.max( amount ?? 100, 0 );
 
 		DisplayTextToPlayer(
 			GetLocalPlayer(),

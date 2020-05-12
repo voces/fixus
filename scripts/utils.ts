@@ -131,7 +131,7 @@ export const processScriptIncludes = ( contents: string ): string => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const compileMap = ( config: any ): boolean => {
 
-	if ( ! config.mapFolder ) {
+	if ( config.mapFolder == null ) {
 
 		logger.error( "Could not find key \"mapFolder\" in config.json" );
 		return false;

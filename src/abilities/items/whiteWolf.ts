@@ -77,7 +77,7 @@ const onUnitPickupItem = (): void => {
 	// White wolf is a summoned unit
 
 	const timeOfWW = getElapsedTime();
-	const unitSummonedAtTime = summonTimes.get( original ) || timeOfWW;
+	const unitSummonedAtTime = summonTimes.get( original ) ?? timeOfWW;
 	const unitSummonedDuration = timeOfWW - unitSummonedAtTime;
 	const unitSummonedRemaining = 300 - unitSummonedDuration;
 	const wwDuration = 65 + unitSummonedRemaining * 0.2;

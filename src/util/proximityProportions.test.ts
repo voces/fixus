@@ -47,8 +47,18 @@ describe( "proximityProportions", () => {
 
 		const sheepPlayerIds = [ 0, 1, 3, 4, 6, 7, 9, 10 ];
 
-		for ( let i = 0; i < sheepPlayerIds.length; i ++ )
-			it( `with ${i + 1} sheep`, () => withTempSheep( sheepPlayerIds.slice( 0, i + 1 ), () => {
+		for ( let i = 0; i < sheepPlayerIds.length; i ++ ) {
+
+			const playerIds = sheepPlayerIds.slice( 0, i + 1 );
+
+			it( `with ${i + 1} sheep`, () => withTempSheep( playerIds, () => {
+
+				playerIds.forEach( i => {
+
+					SetPlayerController( Player( i ), MAP_CONTROL_USER );
+					Player( i ).slotState = PLAYER_SLOT_STATE_PLAYING;
+
+				} );
 
 				const entries = Array.from( proximityProportions(
 					{ x: 0, y: 0 },
@@ -59,6 +69,8 @@ describe( "proximityProportions", () => {
 				expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) ).toMatchSnapshot();
 
 			} ) );
+
+		}
 
 	} );
 

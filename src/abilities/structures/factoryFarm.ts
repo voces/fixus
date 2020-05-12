@@ -174,7 +174,7 @@ const getBaseFarm = ( u: unit ): number => {
 
 const getDefaults = ( u: unit ): FactoryFarmData => ( {
 	buildIndex: 1,
-	buildType: lastFarmType.get( GetOwningPlayer( u ) ) || getBaseFarm( u ),
+	buildType: lastFarmType.get( GetOwningPlayer( u ) ) ?? getBaseFarm( u ),
 	compact: false,
 } );
 

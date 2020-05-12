@@ -338,7 +338,7 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	let t = CreateTrigger();
 	forEachPlayer( p => BlzTriggerRegisterPlayerKeyEvent( t, p, OSKEY_ESCAPE, 0, true ) );
-	TriggerAddAction( t, onEscape );
+	wrappedTriggerAddAction( t, "quick shop escape", onEscape );
 
 	t = CreateTrigger();
 	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_SELL_ITEM );

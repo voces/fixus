@@ -16,14 +16,14 @@ import { colorize } from "util/colorize";
 export const argHelp = ( arg: Arg<string | number> ): string => {
 
 	const defaultValue = arg.default;
-	const defaultStringified = defaultValue !== undefined ?
+	const defaultStringified = defaultValue != null ?
 		typeof defaultValue === "string" ?
 			defaultValue :
 			typeof defaultValue === "number" ?
-				defaultValue.toString() : undefined
-		: undefined;
+				defaultValue.toString() : null
+		: null;
 
-	const defaultPart = defaultStringified === undefined ? "" : `=${defaultStringified}`;
+	const defaultPart = defaultStringified == null ? "" : `=${defaultStringified}`;
 
 	return isArgRequired( arg ) ? `<${arg.name}>` : `[${arg.name}${defaultPart}]`;
 
@@ -34,7 +34,7 @@ export const commandHelp = ( command: Command<any> ): string =>
 	[
 		"-" + command.command,
 		command.args ? " " + command.args.map( arg => argHelp( arg ) ).join( " " ) : "",
-		command.alias ? ` (alias -${command.alias})` : "",
+		command.alias != null ? ` (alias -${command.alias})` : "",
 		"\n" + command.description,
 	].join( "" );
 

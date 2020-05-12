@@ -8,7 +8,7 @@ const isArray = ( v: any ): boolean => {
 
 	// Lua uses 1 as the starter index
 	return Object.keys( v ).every( ( v, index ) => tonumber( v ) === index + 1 || tonumber( v ) === index ) &&
-		( v[ 0 ] !== undefined || v[ 1 ] !== undefined );
+		( v[ 0 ] != null || v[ 1 ] != null );
 
 };
 
@@ -41,7 +41,7 @@ export const stringify = ( v: any ): string | undefined => {
 		return `[${arr.map( ( v: any ) => {
 
 			const stringified = stringify( v );
-			if ( stringified === undefined ) return "null";
+			if ( stringified == null ) return "null";
 			return stringified;
 
 		} ).join( "," )}]`;
@@ -51,7 +51,7 @@ export const stringify = ( v: any ): string | undefined => {
 	if ( typeof v === "object" && v != null )
 		return `{${Object.entries( v )
 			.map( ( [ key, value ] ) => [ escapeString( key ), stringify( value ) ] )
-			.filter( ( [ , v ] ) => v !== undefined )
+			.filter( ( [ , v ] ) => v != null )
 			.map( ( [ key, value ] ) => `"${key}":${value}` )
 			.join( "," )}}`;
 
@@ -99,7 +99,7 @@ const parseArray = ( string: string ): Value[] => {
 		)
 			stack.pop();
 
-		else if ( openings[ valueStr[ i ] ] && stack[ stack.length - 1 ] !== "\"" )
+		else if ( openings[ valueStr[ i ] ] != null && stack[ stack.length - 1 ] !== "\"" )
 			stack.push( openings[ valueStr[ i ] ] );
 
 		if ( stack.length === 0 && valueStr[ i ] === "," || i === valueStr.length ) {
@@ -139,7 +139,7 @@ const parseObj = ( string: string ): {[key: string]: Value} => {
 		)
 			stack.pop();
 
-		else if ( openings[ valueStr[ i ] ] && stack[ stack.length - 1 ] !== "\"" )
+		else if ( openings[ valueStr[ i ] ] != null && stack[ stack.length - 1 ] !== "\"" )
 			stack.push( openings[ valueStr[ i ] ] );
 
 		if ( stack.length === 0 ) {
