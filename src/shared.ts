@@ -9,10 +9,10 @@ export const getterSetterFunc = <T>( init?: T ): ( newValue?: T ) => T => {
 	let value = init;
 	return ( newValue?: T ): T => {
 
-		if ( newValue !== undefined )
+		if ( newValue != null )
 			value = newValue;
 
-		if ( value === undefined )
+		if ( value == null )
 			throw "variable left undefined";
 
 		return value;

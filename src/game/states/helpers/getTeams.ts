@@ -39,7 +39,7 @@ export const forceTeams = (
 		let high = Infinity * direction;
 		const pool = source.reduce( ( pool, player ) => {
 
-			const playerHistory = history.get( player ) || 0;
+			const playerHistory = history.get( player ) ?? 0;
 			if (
 				// drafting towards wolf; get most sheep
 				direction === Direction.sheep && playerHistory < high ||

@@ -39,8 +39,11 @@ const sheepStart = (): TransitionInformation => {
 
 		if (
 			IsPlayerInForce( Player( i ), sheepTeam ) &&
-			isComputer( Player( i ) ) &&
-			isPlayingPlayer( Player( i ) )
+			(
+				isComputer( Player( i ) ) ||
+				isPlayingPlayer( Player( i ) )
+			)
+
 		)
 			spawnSheep( i );
 

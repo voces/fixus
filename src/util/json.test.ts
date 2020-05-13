@@ -4,7 +4,7 @@ import { stringify, parse } from "./json";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const testRoundTrip = ( name: string, value: any ): void =>
-	it( name, () => expect( parse( stringify( value ) || "" ) ).toEqual( value ) );
+	it( name, () => expect( parse( stringify( value ) ?? "" ) ).toEqual( value ) );
 
 describe( "string", () => {
 
@@ -47,7 +47,7 @@ describe( "object", () => {
 }
 	` ) ).toEqual( { a: 7, b: [ true, false, 7, []] } ) );
 	it( "non-stringifiable values are omitted", () =>
-		expect( stringify( { a: 0, b: undefined, c: (): void => { /* do nothing */ }, d: 1 } ) )
+		expect( stringify( { a: 0, c: (): void => { /* do nothing */ }, d: 1 } ) )
 			.toEqual( "{\"a\":0,\"d\":1}" ) );
 
 } );
@@ -68,8 +68,8 @@ describe( "array", () => {
 	]
 	` ) ).toEqual( [ "a", "b", "c", [ 7 ]] ) );
 	it( "non-stringifiable values are replaced with null", () =>
-		expect( stringify( [ 0, undefined, (): void => { /* do nothing */ }, 1 ] ) )
-			.toEqual( "[0,null,null,1]" ) );
+		expect( stringify( [ 0, (): void => { /* do nothing */ }, 1 ] ) )
+			.toEqual( "[0,null,1]" ) );
 
 } );
 

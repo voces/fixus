@@ -96,7 +96,7 @@ const updateUnit = ( u: unit ): void => {
 
 	}
 
-	if ( specialization.upgrade )
+	if ( specialization.upgrade != null )
 		SetPlayerTechResearched( GetOwningPlayer( u ), specialization.upgrade, effectiveLevel );
 
 };

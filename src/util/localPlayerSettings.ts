@@ -48,8 +48,8 @@ const loadOldFormat = (): Partial<typeof localPlayerSettings> | undefined => {
 
 		return {
 			zooms: {
-				sheep: S2R( oldZooms[ 0 ] || "1650" ),
-				wolf: S2R( oldZooms[ 1 ] || "1650" ),
+				sheep: S2R( oldZooms[ 0 ] ?? "1650" ),
+				wolf: S2R( oldZooms[ 1 ] ?? "1650" ),
 			},
 		};
 
@@ -63,6 +63,6 @@ addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const json = raw == null ? loadOldFormat() : parse( swapQuotes( raw ) );
 
-	if ( json ) Object.assign( localPlayerSettings, json );
+	if ( json != null ) Object.assign( localPlayerSettings, json );
 
 } );

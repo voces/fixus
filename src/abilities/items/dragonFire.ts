@@ -42,7 +42,7 @@ export const nextWolfId = ( current: number ): number => {
 
 	let tries = 12;
 
-	while ( tries -- ) {
+	while ( tries -- > 0 ) {
 
 		current = current + 1;
 

@@ -11,7 +11,7 @@ const buffLevelMap: Map<unit, number> = new Map();
 export const getBloodlustLevel = ( u: unit ): number => {
 
 	const hasBloodlust = GetUnitAbilityLevel( u, BLOODLUST_BUFF_ID ) > 0;
-	return hasBloodlust ? buffLevelMap.get( u ) || 0 : 0;
+	return hasBloodlust ? buffLevelMap.get( u ) ?? 0 : 0;
 
 };
 

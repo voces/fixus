@@ -15,7 +15,7 @@ export const withTempGroup = <T>( fn: ( group: group ) => T ): T => {
 export const forEachUnit = <T>( fn: ( unit: unit ) => void, filter?: boolexpr ): void => {
 
 	const g = CreateGroup();
-	GroupEnumUnitsInRange( g, 0, 0, 0x100000, filter || null );
+	GroupEnumUnitsInRange( g, 0, 0, 0x100000, filter ?? null );
 	ForGroup( g, () => fn( GetEnumUnit() ) );
 	DestroyGroup( g );
 
@@ -24,7 +24,7 @@ export const forEachUnit = <T>( fn: ( unit: unit ) => void, filter?: boolexpr ):
 export const withPlayerUnits = <T>( player: player, fn: ( group: group ) => T, filter?: boolexpr ): T => {
 
 	const g = CreateGroup();
-	GroupEnumUnitsOfPlayer( g, player, filter || null );
+	GroupEnumUnitsOfPlayer( g, player, filter ?? null );
 	const result = fn( g );
 	DestroyGroup( g );
 	return result;
@@ -45,7 +45,7 @@ export const reducePlayerUnits = <T>( player: player, fn: ( acc: T, unit: unit )
 export const withSelectedUnits = <T>( player: player, fn: ( group: group ) => T, filter?: boolexpr ): T => {
 
 	const g = CreateGroup();
-	GroupEnumUnitsSelected( g, player, filter || null );
+	GroupEnumUnitsSelected( g, player, filter ?? null );
 	const result = fn( g );
 	DestroyGroup( g );
 	return result;
@@ -58,7 +58,7 @@ export const forEachSelectedUnit = <T>( player: player, fn: ( unit: unit ) => T,
 export const withUnitsInRange = <T>( x: number, y: number, radius: number, fn: ( group: group ) => T, filter?: boolexpr ): T => {
 
 	const g = CreateGroup();
-	GroupEnumUnitsInRange( g, x, y, radius, filter || null );
+	GroupEnumUnitsInRange( g, x, y, radius, filter ?? null );
 	const result = fn( g );
 	DestroyGroup( g );
 	return result;

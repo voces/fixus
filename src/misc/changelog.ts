@@ -12,8 +12,11 @@ export const changelog = [
 		"• Added \"-rotation\" command",
 		"• \"-wolf gold\" and \"-destroy all farms\" prefer host",
 		"• Added -gps",
+		"Bug fixes",
+		"• Fixed a bug with calculating bounties for saves.",
 		"Refactors",
 		"• Rewrote w3mmd, aiming for less desyncs + type safety",
+		"• Switched bounty proximities to a sigmoid.",
 	].join( "\n" ) },
 	{ title: "Version 10a", content: [
 		"Features",

@@ -35,7 +35,7 @@ export const onSheepSave = ( savedUnit: unit, savingUnit: unit ): void => {
 
 	// Gold bounty
 	awardBounty(
-		{ x: GetUnitX( savedUnit ), y: GetUnitX( savedUnit ) },
+		{ x: GetUnitX( savedUnit ), y: GetUnitY( savedUnit ) },
 		{ gold: 100 * goldFactor() },
 		savingPlayer,
 	);

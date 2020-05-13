@@ -15,7 +15,7 @@ registerCommand( {
 
 		if ( ! isSandbox() ) return;
 
-		const goldAmount = amount || 1000;
+		const goldAmount = amount ?? 1000;
 
 		forEachPlayer( p => adjustPlayerGold( p, goldAmount ) );
 
@@ -32,7 +32,7 @@ registerCommand( {
 
 		if ( ! isSandbox() ) return;
 
-		const lumberAmount = amount || 6;
+		const lumberAmount = amount ?? 6;
 
 		forEachPlayer( p => AdjustPlayerStateBJ( lumberAmount, p, PLAYER_STATE_RESOURCE_LUMBER ) );
 

@@ -139,7 +139,7 @@ export const endGameStats = ( winner: "sheep" | "wolves", desynced: boolean ): v
 				updateSheepMaxLevel( player, playerSpecializations[ i ].maxLevel );
 				const playerSpecialization = playerSpecializations[ i ].specialization;
 				if ( playerSpecialization != null )
-					updateSheepSpecialization( player, specializationNames.get( playerSpecialization ) || "unknown" );
+					updateSheepSpecialization( player, specializationNames.get( playerSpecialization ) ?? "unknown" );
 				updateUnitsKilledAsSheep( player, unitsKilled[ i ] );
 
 			}

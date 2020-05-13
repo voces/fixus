@@ -107,7 +107,7 @@ const onDialogSelection = (): void => {
 	remainingDialogs.delete( player );
 
 	const preference = dialogButtonMap.get( GetClickedButton() );
-	if ( ! preference ) throw `unexpected preference '${preference}'`;
+	if ( preference == null ) throw `unexpected preference '${preference}'`;
 
 	const prevPreference = preferences.get( player );
 	if ( ! prevPreference )
@@ -126,7 +126,7 @@ const onFetchBiases = ( result: Value ): void => {
 
 	fetchedBiases = true;
 
-	if ( result && typeof result === "object" )
+	if ( result != null && typeof result === "object" )
 
 		Object.entries( result ).forEach( ( [ key, value ] ) => {
 
@@ -190,7 +190,7 @@ const createDialog = (): void => {
 
 	const t = CreateTrigger();
 	TriggerRegisterDialogEvent( t, preferenceDialog );
-	TriggerAddAction( t, onDialogSelection );
+	wrappedTriggerAddAction( t, "team selection dialog", onDialogSelection );
 
 };
 

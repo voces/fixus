@@ -9,7 +9,7 @@ const isArray = ( v: any ): boolean => {
 
 	// Lua uses 1 as the starter index
 	return Object.keys( v ).every( ( v, index ) => S2I( v ) === index + 1 || S2I( v ) === index ) &&
-		( v[ 0 ] !== undefined || v[ 1 ] !== undefined );
+		( v[ 0 ] != null || v[ 1 ] != null );
 
 };
 
@@ -28,7 +28,6 @@ export const termToString = ( v: any, color = true ): string => {
 	if ( typeof v === "number" ) return color ? colorize.number( v ) : v.toString();
 	if ( typeof v === "boolean" ) return color ? colorize.boolean( v ) : v.toString();
 	if ( typeof v === "function" ) return color ? colorize.number( "[function]" ) : "[function]";
-	if ( v === undefined ) return color ? colorize.boolean( "undefined" ) : "undefined";
 	if ( v == null ) return color ? colorize.boolean( "null" ) : "null";
 
 	if ( isArray( v ) ) {

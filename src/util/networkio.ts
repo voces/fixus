@@ -63,7 +63,7 @@ let ready = false;
 const supportsNoResponse = ( player: player ): boolean => {
 
 	const version = playerVersions.get( player );
-	return version ? version >= 2 : false;
+	return version != null ? version >= 2 : false;
 
 };
 
@@ -115,7 +115,7 @@ const checkForResponse = ( request: Request ): void => {
 	// Command to clear the request and response files.
 	writeFile(
 		`networkio/requests/${request.requestId}.txt`,
-		stringify( { url: "proxy://clear" } ) || "",
+		stringify( { url: "proxy://clear" } ) ?? "",
 	);
 
 	// Hack because tstl injects nil as the first param since `callback` is on
@@ -177,7 +177,7 @@ const makeRequest = ( request: Request ): void => {
 	if ( GetLocalPlayer() === request.fetcher )
 		writeFile(
 			`networkio/requests/${request.requestId}.txt`,
-			stringify( { url: request.url, ...request.options } ) || "",
+			stringify( { url: request.url, ...request.options } ) ?? "",
 		);
 
 	if ( request.timer )
@@ -273,12 +273,12 @@ export const parseSyncData = ( syncData: string ): {
 
 			if ( requestId === - 1 ) {
 
-				requestId = tonumber( syncData.slice( lastIndex, i ) ) || 0;
+				requestId = tonumber( syncData.slice( lastIndex, i ) ) ?? 0;
 				lastIndex = i + 1;
 
 			} else if ( totalChunks === - 1 ) {
 
-				totalChunks = tonumber( syncData.slice( lastIndex, i ) ) || 0;
+				totalChunks = tonumber( syncData.slice( lastIndex, i ) ) ?? 0;
 				data = syncData.slice( i + 1 );
 				break;
 
@@ -286,7 +286,7 @@ export const parseSyncData = ( syncData: string ): {
 
 		} else if ( syncData[ i ] === "/" ) {
 
-			chunk = tonumber( syncData.slice( lastIndex, i ) ) || 0;
+			chunk = tonumber( syncData.slice( lastIndex, i ) ) ?? 0;
 			lastIndex = i + 1;
 
 		}
@@ -335,7 +335,7 @@ const onSync = (): void => {
 
 const onMetaSync = (): void => {
 
-	const requestId = tonumber( BlzGetTriggerSyncData() ) || 0;
+	const requestId = tonumber( BlzGetTriggerSyncData() ) ?? 0;
 	const request = activeRequests[ requestId ];
 
 	if ( request.timer )

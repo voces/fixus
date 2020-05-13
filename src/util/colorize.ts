@@ -65,7 +65,7 @@ wc3ColorMap.set( PLAYER_COLOR_EMERALD, "emerald" );
 wc3ColorMap.set( PLAYER_COLOR_PEANUT, "peanut" );
 
 export const playerColorToColor = ( playerColor: playercolor ): Color =>
-	wc3ColorMap.get( playerColor ) || "white";
+	wc3ColorMap.get( playerColor ) ?? "white";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const colorize = {} as Record<Color, ( v: any ) => string>;

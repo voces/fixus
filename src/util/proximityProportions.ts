@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-extra-parens */
 
 import {
 	BLACK_WOLF_TYPE,
@@ -14,6 +15,7 @@ import {
 } from "shared";
 import { forEachPlayer, reducePlayerUnits } from "util/temp";
 import { adjustPlayerGold } from "resources/goldPerSecond";
+import { isPlayingPlayer, isComputer } from "./player";
 
 export const GOLEM_TYPE = FourCC( "ewsp" );
 const STALKER_TYPE = FourCC( "nfel" );
@@ -29,17 +31,6 @@ type Amount = {
     experience?: number;
 }
 
-const WIDTH = 5376 * 2;
-
-const SHEEP_DISTANCE_FACTOR = 1 / 27;
-const SHEEP_DENOM = ( WIDTH ** 2 * 2 - 128 ) ** SHEEP_DISTANCE_FACTOR;
-
-const WISP_DISTANCE_FACTOR = 1 / 27;
-const WISP_DENOM = ( ( WIDTH / 10 ) ** 2 * 2 - 128 ) ** WISP_DISTANCE_FACTOR;
-
-const WOLF_DISTANCE_FACTOR = 1 / 9;
-const WOLF_DENOM = ( WIDTH ** 2 * 2 - 128 ) ** WOLF_DISTANCE_FACTOR;
-
 const UNIT_FACTORS: Record<number, number> = {
 	[ WOLF_TYPE ]: 1,
 	[ BLACK_WOLF_TYPE ]: 1,
@@ -52,7 +43,7 @@ const unitFactor = ( unit: unit ): number => {
 	const baseFactor = UNIT_FACTORS[ GetUnitTypeId( unit ) ];
 
 	// no entry or hardcoded 0
-	if ( ! baseFactor || baseFactor <= 0 ) return 0;
+	if ( baseFactor == null ) return 0;
 
 	// illusions give 75%
 	if ( IsUnitIllusion( unit ) ) return baseFactor * 0.75;
@@ -61,12 +52,33 @@ const unitFactor = ( unit: unit ): number => {
 
 };
 
+/**
+ * Returns an array where all values sum to 1.
+ */
 export const normalize = ( arr: number[] ): number[] => {
 
 	const sum = arr.reduce( ( sum, v ) => sum + v, 0 );
 	return arr.map( v => v / sum );
 
 };
+
+/**
+ * Returns a sigmoid function using the passed constants.
+ * @param v Controls the impact of inflection.
+ * @param b Linear transformer on `t`.
+ * @param c Controls how far t=0 is along the curve.
+ */
+const sigmoid = ( v: number, b: number, c: number ):
+( ( t: number ) => number ) => {
+
+	const cTetrated = c ** c;
+	const k = ( cTetrated + 1 ) ** v;
+	return ( t: number ): number =>
+		k / ( cTetrated + Math.exp( b * t ) ) ** v;
+
+};
+
+const sheepSigmoid = sigmoid( 0.04, 0.03, 4 );
 
 const sheepProximityProportions = (
 	{ x, y }: Point,
@@ -78,10 +90,15 @@ const sheepProximityProportions = (
 	let proportions: number[] = [];
 	forEachPlayer( p => {
 
-		if ( ! IsPlayerInForce( p, sheepTeam ) ) return;
+		if (
+			! IsPlayerInForce( p, sheepTeam ) ||
+			! isPlayingPlayer( p ) && ! isComputer( p )
+		) return;
 
-		const distanceSquared = ( GetUnitX( sheeps[ GetPlayerId( p ) ] ) - x ) ** 2 + ( GetUnitY( sheeps[ GetPlayerId( p ) ] ) - y ) ** 2;
-		const proportion = 1 - Math.max( distanceSquared - 128, 0 ) ** SHEEP_DISTANCE_FACTOR / SHEEP_DENOM;
+		const xDelta = GetUnitX( sheeps[ GetPlayerId( p ) ] ) - x;
+		const yDelta = GetUnitY( sheeps[ GetPlayerId( p ) ] ) - y;
+		const distance = ( xDelta ** 2 + yDelta ** 2 ) ** 0.5;
+		const proportion = sheepSigmoid( distance );
 
 		proportions.push( proportion );
 		players.push( p );
@@ -95,9 +112,9 @@ const sheepProximityProportions = (
 	for ( let i = 0; i < players.length; i ++ ) {
 
 		const reals = {
-			gold: ( amounts.gold || 0 ) * proportions[ i ] + remainders.gold,
-			lumber: ( amounts.lumber || 0 ) * proportions[ i ] + remainders.lumber,
-			experience: ( amounts.experience || 0 ) * proportions[ i ] + remainders.experience,
+			gold: ( ( amounts.gold ?? 0 ) ) * proportions[ i ] + remainders.gold,
+			lumber: ( amounts.lumber ?? 0 ) * proportions[ i ] + remainders.lumber,
+			experience: ( amounts.experience ?? 0 ) * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -119,6 +136,8 @@ const sheepProximityProportions = (
 	return proportionAmounts;
 
 };
+
+const wispSigmoid = sigmoid( 0.08, 0.08, 8 );
 
 const wispProximityProportions = (
 	{ x, y }: Point,
@@ -130,10 +149,15 @@ const wispProximityProportions = (
 	let proportions: number[] = [];
 	forEachPlayer( p => {
 
-		if ( ! IsPlayerInForce( p, wispTeam ) ) return;
+		if (
+			! IsPlayerInForce( p, wispTeam ) ||
+			! isPlayingPlayer( p ) && ! isComputer( p )
+		) return;
 
-		const distanceSquared = ( GetUnitX( wisps[ GetPlayerId( p ) ] ) - x ) ** 2 + ( GetUnitY( wisps[ GetPlayerId( p ) ] ) - y ) ** 2;
-		const proportion = 1 - Math.max( distanceSquared - 128, 0 ) ** WISP_DISTANCE_FACTOR / WISP_DENOM;
+		const xDelta = GetUnitX( wisps[ GetPlayerId( p ) ] ) - x;
+		const yDelta = GetUnitY( wisps[ GetPlayerId( p ) ] ) - y;
+		const distance = ( xDelta ** 2 + yDelta ** 2 ) ** 0.5;
+		const proportion = wispSigmoid( distance );
 
 		proportions.push( proportion );
 		players.push( p );
@@ -147,9 +171,9 @@ const wispProximityProportions = (
 	for ( let i = 0; i < players.length; i ++ ) {
 
 		const reals = {
-			gold: ( amounts.gold || 0 ) * proportions[ i ] + remainders.gold,
-			lumber: ( amounts.lumber || 0 ) * proportions[ i ] + remainders.lumber,
-			experience: ( amounts.experience || 0 ) * proportions[ i ] + remainders.experience,
+			gold: ( amounts.gold ?? 0 ) * proportions[ i ] + remainders.gold,
+			lumber: ( amounts.lumber ?? 0 ) * proportions[ i ] + remainders.lumber,
+			experience: ( amounts.experience ?? 0 ) * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -172,10 +196,14 @@ const wispProximityProportions = (
 
 };
 
+const wolfSheepKillSigmoid = sigmoid( 0.01, 0.02, 4 );
+const wolfOtherKillSigmoid = sigmoid( 0.04, 0.04, 4 );
+
 // wolves shouldn't have too many units, so fine to iterate over them all
 const wolfProximityProportions = (
 	{ x, y }: Point,
 	amounts: Amount,
+	killType: "sheep" | "other" = "other",
 ): Map<player, Amount> => {
 
 	// calculate proportions, which is the max of the players' units' proportion
@@ -187,8 +215,14 @@ const wolfProximityProportions = (
 
 		const proportion = reducePlayerUnits( p, ( max, unit ) => {
 
-			const distanceSquared = ( GetUnitX( unit ) - x ) ** 2 + ( GetUnitY( unit ) - y ) ** 2;
-			const proportion = ( 1 - Math.max( distanceSquared - 128, 0 ) ** WOLF_DISTANCE_FACTOR / WOLF_DENOM ) * unitFactor( unit );
+			const xDelta = GetUnitX( unit ) - x;
+			const yDelta = GetUnitY( unit ) - y;
+			const distance = ( xDelta ** 2 + yDelta ** 2 ) ** 0.5;
+			const proportion = ( killType === "sheep" ?
+				wolfSheepKillSigmoid :
+				wolfOtherKillSigmoid
+			)( distance ) * unitFactor( unit );
+
 			if ( proportion > max )	return proportion;
 			return max;
 
@@ -206,9 +240,9 @@ const wolfProximityProportions = (
 	for ( let i = 0; i < proportions.length; i ++ ) {
 
 		const reals = {
-			gold: ( amounts.gold || 0 ) * proportions[ i ] + remainders.gold,
-			lumber: ( amounts.lumber || 0 ) * proportions[ i ] + remainders.lumber,
-			experience: ( amounts.experience || 0 ) * proportions[ i ] + remainders.experience,
+			gold: ( amounts.gold ?? 0 ) * proportions[ i ] + remainders.gold,
+			lumber: ( amounts.lumber ?? 0 ) * proportions[ i ] + remainders.lumber,
+			experience: ( amounts.experience ?? 0 ) * proportions[ i ] + remainders.experience,
 		};
 
 		const integers = {
@@ -235,10 +269,11 @@ export const proximityProportions = (
 	origin: Point,
 	amounts: Amount,
 	killer: player,
+	killType: "sheep" | "other" = "other",
 ): Map<player, Amount> => {
 
 	if ( IsPlayerInForce( killer, wolfTeam ) )
-		return wolfProximityProportions( origin, amounts );
+		return wolfProximityProportions( origin, amounts, killType );
 
 	if ( IsPlayerInForce( killer, sheepTeam ) )
 		return sheepProximityProportions( origin, amounts );
@@ -251,15 +286,16 @@ export const awardBounty = (
 	origin: Point,
 	amounts: Amount,
 	killer: player,
+	killType: "sheep" | "other" = "other",
 ): void => {
 
-	const bounties = proximityProportions( origin, amounts, killer );
+	const bounties = proximityProportions( origin, amounts, killer, killType );
 
 	bounties.forEach( ( bounty, player ) => {
 
 		let offsets = 0;
 
-		if ( bounty.gold && bounty.gold > 0 ) {
+		if ( bounty.gold != null && bounty.gold > 0 ) {
 
 			adjustPlayerGold( player, bounty.gold );
 			SmallText( bounty.gold, mainUnit( player ), "gold", offsets * 16, offsets * - 64 );
@@ -267,7 +303,7 @@ export const awardBounty = (
 
 		}
 
-		if ( bounty.experience && bounty.experience > 0 ) {
+		if ( bounty.experience != null && bounty.experience > 0 ) {
 
 			const unit = wolfUnit( player );
 
@@ -279,7 +315,7 @@ export const awardBounty = (
 
 		}
 
-		if ( bounty.lumber && bounty.lumber > 0 ) {
+		if ( bounty.lumber != null && bounty.lumber > 0 ) {
 
 			const unit = wolfUnit( player );
 

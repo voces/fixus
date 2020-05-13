@@ -6,15 +6,20 @@ module.exports = {
 		"verit"
 	],
 	parser: "@typescript-eslint/parser",
+	parserOptions: {
+		project: `./tsconfig.json`
+	},
 	plugins: ["@typescript-eslint"],
 	rules: {
-		"no-undef": 0,
 		"@typescript-eslint/camelcase": 0,
-		"eqeqeq": ["error", "always", {"null": "never"}],
-		"no-unused-vars": 0,
+		"@typescript-eslint/no-extra-parens": ["error"],
 		"@typescript-eslint/no-unused-vars": 2,
+		"@typescript-eslint/strict-boolean-expressions": ["error", {"allowNullable": true, "allowSafe": true}],
+		"eqeqeq": ["error", "always", {"null": "never"}],
 		"no-extra-parens": 0,
-		"@typescript-eslint/no-extra-parens": ["error"]
-		// "@typescript-eslint/strict-boolean-expressions": 2
+		"no-restricted-globals": ["error", {"name": "TriggerAddAction", message: "Use wrappedTriggerAddAction"}],
+		"no-undef": 0,
+		"no-unused-vars": 0,
+		"no-undefined": ["error"]
 	},
 };

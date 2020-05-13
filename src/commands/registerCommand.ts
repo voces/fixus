@@ -32,7 +32,7 @@ export type Command<T> = {
 }
 
 export const isArgRequired = <T extends string | number>( arg: Arg<T> ): boolean =>
-	( arg.required === undefined || arg.required ) && arg.default === undefined;
+	( arg.required == null || arg.required ) && arg.default == null;
 
 let ready = false;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -55,7 +55,7 @@ const _registerCommand = <T>(
 		requiredArgs ++
 	) { /* do nothing */ }
 	const triggerWords = [ command ];
-	if ( alias ) triggerWords.push( alias );
+	if ( alias != null ) triggerWords.push( alias );
 
 	const triggerCommands = triggerWords.map( w => `-${w}` );
 	triggerCommands.forEach( triggerCommand =>
@@ -71,7 +71,7 @@ const _registerCommand = <T>(
 
 		// with args, make sure the trigger leads
 		const triggerWord = triggerWords.find( triggerWord => str.indexOf( triggerWord ) === 1 ); // we do 1 to skip the -
-		if ( ! triggerWord ) return;
+		if ( triggerWord == null ) return;
 		const offset = triggerWord.split( " " ).length;
 
 		const words = str.split( " " );
@@ -83,8 +83,8 @@ const _registerCommand = <T>(
 			argsObject = Object.fromEntries( args.map( ( { name, type, default: defualtValue }, i ) => {
 
 				const word = words[ i + offset ];
-				if ( word === "" || word === undefined ) return [ name, defualtValue ];
-				if ( type )
+				if ( word === "" || word == null ) return [ name, defualtValue ];
+				if ( type != null )
 					switch ( type ) {
 
 						case "number": return [ name, tonumber( word ) ];
