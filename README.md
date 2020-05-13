@@ -5,7 +5,7 @@ The classic Warcraft 3 map.
 [![tests](https://github.com/voces/fixus/workflows/test/badge.svg)](https://github.com/voces/fixus/actions?query=workflow%3Atest)
 [![Discord](https://img.shields.io/discord/232301193718661121)](https://discord.gg/Y4dHvwX)
 
-[Change log](CHANGELOG.md)
+[Change log](docs/CHANGELOG.md)
 
 ## Development
 This is a TypeScript map. This means that while object editing, terraining, and most other parts of editing the map still occurs in the World Editor, the custom code is written in TypeScript and transpiled to Lua. The relevant directories are:
