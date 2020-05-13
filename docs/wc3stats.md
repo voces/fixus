@@ -22,5 +22,7 @@ team). This functionality requires the replay uploader program
 
 1. Download [W3CStats.exe](https://wc3stats.com/auto-uploader)
 2. Run `WC3Stats.exe`
-3. Open the program _Settings_ file
-4. Add `api.w3x.io` to the `whitelist` array
+3. Open the program _Settings_ file:\
+![image](https://user-images.githubusercontent.com/4513209/81761198-2d003580-947e-11ea-80fe-5ec050f8871e.png)
+4. Add `api.w3x.io` to the `whitelist` array:\
+![image](https://user-images.githubusercontent.com/4513209/81761382-a566f680-947e-11ea-8def-21b1537b995d.png)
