@@ -11,7 +11,7 @@ const listBullet = [ "•", "-", "∙" ];
 
 export const generateTs = async (): Promise<string> => {
 
-	const data = await fs.readFile( "CHANGELOG.md", { encoding: "utf-8" } );
+	const data = await fs.readFile( "docs/CHANGELOG.md", { encoding: "utf-8" } );
 
 	const versions: Array<Version> = [];
 	const tokens = lexer( data );

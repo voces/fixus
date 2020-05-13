@@ -4,7 +4,7 @@
 export const changelog = [
 	{ title: "Version 11", content: [
 		"Features",
-		"• Teams are picked in game",
+		"• Teams are picked in game. If too many players want one team, players are, by default, randomly drafted until the desired teams are reached. Optionally, the map will bias towards repeat players attempting to play on a different team, but only if wc3stats is running. Read more at wc3stats.sheeptag.net.",
 		"• Added Bloodlust on save or kill",
 		"• Added Compact Mode on Factory Farms",
 		"• Default values are shown in command help",
