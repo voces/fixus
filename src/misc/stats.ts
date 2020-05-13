@@ -63,7 +63,7 @@ emitCustom( "version", compiletime( () => {
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
 	const fs = require( "fs" );
 
-	const file = fs.readFileSync( "CHANGELOG.md", { encoding: "utf-8" } );
+	const file = fs.readFileSync( "docs/CHANGELOG.md", { encoding: "utf-8" } );
 	return file.split( "\n" )[ 1 ].split( " " )[ 2 ];
 
 } ) );
