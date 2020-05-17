@@ -1,4 +1,6 @@
 
+import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
+
 const color = {
 	red: "|cffff0303",
 	blue: "|cff0042ff",
@@ -72,3 +74,37 @@ export const colorize = {} as Record<Color, ( v: any ) => string>;
 Object.entries( color ).forEach( ( [ color, code ] ) =>
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	colorize[ color as Color ] = ( string: any ): string => `${code}${string}|r` );
+
+const wc3ColorToIndexMap = new Map(
+	[ ...wc3ColorMap.keys() ].map( ( v, i ) => [ v, i ] ),
+);
+const playerColorIndexToPlayerMap: Map<number, player> = new Map();
+
+export const playerColorIndexToPlayer = ( playerColorIndex: number ): player => {
+
+	if ( playerColorIndex < 0 || playerColorIndex > 23 )
+		throw `${playerColorIndex} is an invalid player color index`;
+
+	const player = playerColorIndexToPlayerMap.get( playerColorIndex );
+
+	if ( ! player )
+		throw `could not map player color index ${playerColorIndex} to player`;
+
+	return player;
+
+};
+
+addScriptHook( W3TS_HOOK.MAIN_AFTER, () => {
+
+	for ( let i = 0; i < 23; i ++ ) {
+
+		const player = Player( i );
+		const playerColor = wc3ColorToIndexMap.get( GetPlayerColor( player ) );
+		if ( playerColor == null )
+			throw `player ${i} has no color`;
+
+		playerColorIndexToPlayerMap.set( playerColor, player );
+
+	}
+
+} );
