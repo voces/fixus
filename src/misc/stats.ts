@@ -46,7 +46,7 @@ const updateWolfGold = defineNumberValue( "wolf gold", "high", "none" );
 const updateSheepKilled = defineNumberValue( "sheep killed", "high", "none" );
 const updateWolfLevel = defineNumberValue( "wolf level", "high", "none" );
 
-emitCustom( "version", compiletime( () => {
+emitCustom( "repo", compiletime( () => {
 
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
 	const url = require( "url" );
