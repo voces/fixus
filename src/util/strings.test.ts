@@ -1,5 +1,5 @@
-
-import "test/lua";
+import { expect, it } from "test/jest-compat";
+import "w3api/dist/lua/polyfill.js";
 import { swapQuotes } from "./strings";
 
 it( "swaps single and double quotes", () => {

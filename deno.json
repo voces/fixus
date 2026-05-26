@@ -1,0 +1,49 @@
+{
+  "tasks": {
+    "build": "deno run -A scripts/build.ts",
+    "build:changelog": "deno run -A scripts/changelog.ts",
+    "test": "deno test -A --no-check src/ scripts/",
+    "lint": "deno lint",
+    "fmt": "deno fmt",
+    "launch": "/mnt/d/Warcraft\\ III/_retail_/x86_64/Warcraft\\ III.exe -loadfile \"$(wslpath -w temp/release.w3x)\" -launch -windowcode windowed -nowfpause",
+    "dev": "deno run -A scripts/dev.ts",
+    "run": "deno run -A scripts/run.ts"
+  },
+  "nodeModulesDir": "auto",
+  "unstable": ["sloppy-imports"],
+  "imports": {
+    "test/": "./test/",
+    "shared": "./src/shared.ts",
+    "types": "./src/types.ts",
+    "abilities/": "./src/abilities/",
+    "commands/": "./src/commands/",
+    "egg/": "./src/egg/",
+    "game/": "./src/game/",
+    "misc/": "./src/misc/",
+    "resources/": "./src/resources/",
+    "sandbox/": "./src/sandbox/",
+    "saveDeath/": "./src/saveDeath/",
+    "upgrades/": "./src/upgrades/",
+    "util/": "./src/util/",
+    "w3api": "npm:w3api@^3.1.0",
+    "@voces/w3ts": "npm:@voces/w3ts@^4.0.1",
+    "w3ts-w3mmd": "npm:w3ts-w3mmd@^2.2.2",
+    "typescript-to-lua": "npm:typescript-to-lua@^1.36.0",
+    "mdx-m3-viewer-th": "npm:mdx-m3-viewer-th@^5.13.0",
+    "lua-types": "npm:lua-types@^2.13.1",
+    "war3-types": "npm:war3-types@^1.0.4",
+    "@std/fs": "jsr:@std/fs@^1.0.0",
+    "@std/expect": "jsr:@std/expect@^1.0.0",
+    "@std/testing/bdd": "jsr:@std/testing@^1.0.0/bdd",
+    "@std/testing/mock": "jsr:@std/testing@^1.0.0/mock",
+    "@std/testing/snapshot": "jsr:@std/testing@^1.0.0/snapshot"
+  },
+  "fmt": {
+    "lineWidth": 120
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-sloppy-imports"]
+    }
+  }
+}

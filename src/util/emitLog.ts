@@ -9,7 +9,6 @@ export const logEvent = debounce(
 	defineEvent( "log", "${0}: {1}", "key", "message" ),
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const emitLog = ( key: string, arg: any, ...args: Array<any> ): void => {
 
 	const allArgs = [ arg, ...args ];
@@ -20,7 +19,6 @@ export const emitLog = ( key: string, arg: any, ...args: Array<any> ): void => {
 };
 
 export const wrappedTriggerAddAction = ( whichTrigger: trigger, key: string, actionFunc: () => void ): triggeraction =>
-	// eslint-disable-next-line no-restricted-globals
 	TriggerAddAction( whichTrigger, () => {
 
 		try {
@@ -35,7 +33,6 @@ export const wrappedTriggerAddAction = ( whichTrigger: trigger, key: string, act
 
 	} );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const wrapFunction = <A extends any[], B>( key: string, fn: ( ...args: A ) => B ): ( ( ...args: A ) => B ) =>
 	( ...args: A ): B => {
 

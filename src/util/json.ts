@@ -1,7 +1,6 @@
 
 import { emitLog } from "util/emitLog";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isArray = ( v: any ): boolean => {
 
 	if ( typeof v !== "object" || v == null ) return false;
@@ -25,7 +24,6 @@ const escapeString = ( str: string ): string => {
 
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const stringify = ( v: any ): string | undefined => {
 
 	if ( typeof v === "string" ) return `"${escapeString( v )}"`;
@@ -34,10 +32,8 @@ export const stringify = ( v: any ): string | undefined => {
 
 	if ( isArray( v ) ) {
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const arr = v as Array<any>;
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		return `[${arr.map( ( v: any ) => {
 
 			const stringified = stringify( v );
@@ -50,12 +46,11 @@ export const stringify = ( v: any ): string | undefined => {
 
 	if ( typeof v === "object" && v != null )
 		return `{${Object.entries( v )
-			.map( ( [ key, value ] ) => [ escapeString( key ), stringify( value ) ] )
+			.map( ( [ key, value ] ) => [ escapeString( key as string ), stringify( value ) ] )
 			.filter( ( [ , v ] ) => v != null )
 			.map( ( [ key, value ] ) => `"${key}":${value}` )
 			.join( "," )}}`;
 
-	// eslint-disable-next-line eqeqeq
 	if ( v === null ) return "null";
 
 };

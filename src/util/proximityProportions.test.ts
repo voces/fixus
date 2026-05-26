@@ -1,4 +1,5 @@
-
+import { describe, expect, it } from "test/jest-compat";
+import { assertSnapshot } from "@std/testing/snapshot";
 import "test/w3api";
 import { normalize, proximityProportions, GOLEM_TYPE } from "./proximityProportions";
 import { wolfTeam, WOLF_TYPE, sheepTeam, sheeps, SHEEP_TYPE } from "shared";
@@ -51,24 +52,30 @@ describe( "proximityProportions", () => {
 
 			const playerIds = sheepPlayerIds.slice( 0, i + 1 );
 
-			it( `with ${i + 1} sheep`, () => withTempSheep( playerIds, () => {
+			it( `with ${i + 1} sheep`, async ( t ) => {
 
-				playerIds.forEach( i => {
+				let result: unknown;
+				withTempSheep( playerIds, () => {
 
-					SetPlayerController( Player( i ), MAP_CONTROL_USER );
-					Player( i ).slotState = PLAYER_SLOT_STATE_PLAYING;
+					playerIds.forEach( i => {
+
+						SetPlayerController( Player( i ), MAP_CONTROL_USER );
+						Player( i ).slotState = PLAYER_SLOT_STATE_PLAYING;
+
+					} );
+
+					const entries = Array.from( proximityProportions(
+						{ x: 0, y: 0 },
+						{ gold: 1000 },
+						Player( 0 ),
+					).entries() );
+
+					result = entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] );
 
 				} );
+				await assertSnapshot( t, result );
 
-				const entries = Array.from( proximityProportions(
-					{ x: 0, y: 0 },
-					{ gold: 1000 },
-					Player( 0 ),
-				).entries() );
-
-				expect( entries.map( v => [ v[ 0 ].playerId, v[ 1 ] ] ) ).toMatchSnapshot();
-
-			} ) );
+			} );
 
 		}
 

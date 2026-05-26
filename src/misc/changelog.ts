@@ -1,5 +1,5 @@
 
-// DO NOT MODIFY DIRECTLY. Execute `npm run build:changelog` instead.
+// DO NOT MODIFY DIRECTLY. Execute `deno task build:changelog` instead.
 
 export const changelog = [
 	{ title: "Version 11", content: [
@@ -196,8 +196,8 @@ export const changelog = [
 		"• Cloak of Flames no longer scans for units with cloak and instead uses a managed group",
 		"• Dragon Fire is only active after cast and auto deactivates",
 		"• Wait to remove dying units increased (2 -> 5 seconds)",
-		"• Where S is the nu mber of sheep (and wisps) and W is the number of wolves, we use to do  S/W*12.5 for the killer and S/W*10 for allies. Now we determine the total bounty via  100 + typeBounty[2] + level*10 + bountyOfFarms/2. We then give allies  floor(bounty/(W+0.5)) each and the remaining to the killer.",
-		"• Increased level 1 bounty from 25 to 100; changed Sheep from level 4 to 1, Black from  level 4 to 2, Silver from level 3 to 4, and left Golden at level 4. Sheep level also  increases with save count (relating to Specialization).",
+		"• Where S is the nu mber of sheep (and wisps) and W is the number of wolves, we use to do S/W*12.5 for the killer and S/W*10 for allies. Now we determine the total bounty via 100 + typeBounty[2] + level*10 + bountyOfFarms/2. We then give allies floor(bounty/(W+0.5)) each and the remaining to the killer.",
+		"• Increased level 1 bounty from 25 to 100; changed Sheep from level 4 to 1, Black from level 4 to 2, Silver from level 3 to 4, and left Golden at level 4. Sheep level also increases with save count (relating to Specialization).",
 		"• Black = 25, Silver = 50, Golden = 100.",
 	].join( "\n" ) },
 	{ title: "Version 6", content: [

@@ -27,8 +27,8 @@ export const transitionGame = (): void => {
 
 	const state = gameState();
 	const transition = transitionsFrom[ state ];
-	if ( transition ) updateGameTimer( transition() );
-	else if ( transition !== "ended" ) throw `no transition for ${transition}`;
+	if ( transition != null ) updateGameTimer( transition() );
+	else if ( state !== "ended" ) throw `no transition for ${state}`;
 
 };
 

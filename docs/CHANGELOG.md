@@ -197,11 +197,11 @@
 	- Changed gold bounty on sheep kills[0]
 	- Increased XP bounty on sheep kills[1]
 ## Features
--z remembers zooms between games
+- z remembers zooms between games
 - Added -buy commands to items
 - Dagger is no longer actively used
 ## Bug fixes
--destroy all farms no longer removes shops
+- destroy all farms no longer removes shops
 ## Refactors
 - Cloak of Flames no longer scans for units with cloak and instead uses a managed group
 - Dragon Fire is only active after cast and auto deactivates
@@ -416,8 +416,8 @@
 - Decreased damage point by .075
 - Increased ward duration by 60 seconds
 - Computer gold is distributed when possible (checking every three seconds), only for shepherds
--buy can now be done on controlled units
--sell can now be done on controlled units
+- buy can now be done on controlled units
+- sell can now be done on controlled units
 - Dolly freezes whoever kills her for 60 seconds
 - Can now attack other shepherds
 - Added Power Tower

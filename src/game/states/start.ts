@@ -61,10 +61,10 @@ transitionsFrom[ "beat" ] = sheepStart;
 addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
 
 	const SHEEP_SIZE_OFFSET = 100;
-	const MAX_X = GetRectMaxX( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
-	const MAX_Y = GetRectMaxY( bj_mapInitialPlayableArea ) - SHEEP_SIZE_OFFSET;
-	const MIN_X = GetRectMinX( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET + 440; // :( constant seems off
-	const MIN_Y = GetRectMinY( bj_mapInitialPlayableArea ) + SHEEP_SIZE_OFFSET;
+	const MAX_X = GetRectMaxX( bj_mapInitialPlayableArea! ) - SHEEP_SIZE_OFFSET;
+	const MAX_Y = GetRectMaxY( bj_mapInitialPlayableArea! ) - SHEEP_SIZE_OFFSET;
+	const MIN_X = GetRectMinX( bj_mapInitialPlayableArea! ) + SHEEP_SIZE_OFFSET + 440; // :( constant seems off
+	const MIN_Y = GetRectMinY( bj_mapInitialPlayableArea! ) + SHEEP_SIZE_OFFSET;
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		while ( ! initialSpawns[ i ] ) {

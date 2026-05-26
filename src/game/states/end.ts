@@ -27,7 +27,7 @@ const _endGame = ( winner: "sheep" | "wolves" ): void => {
 
 	DisplayTextToPlayer( GetLocalPlayer(), 0, 0, [
 		`Fixus by ${colorize.gray( "Chakra" )}`,
-		`Join the community at ${colorize.sheepblue( "http://tiny.cc/sheeptag" )}`,
+		`Join the community at ${colorize.sheepblue( "https://dsc.gg/sheeptag" )}`,
 		`Upload replays to ${colorize.sheepblue( "https://wc3stats.com/upload" )}`,
 	].join( "\n" ) );
 

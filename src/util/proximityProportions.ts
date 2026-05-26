@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-extra-parens */
 
 import {
 	BLACK_WOLF_TYPE,

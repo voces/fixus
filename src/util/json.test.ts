@@ -1,8 +1,7 @@
-
+import { describe, expect, it } from "test/jest-compat";
 import "test/w3api";
 import { stringify, parse } from "./json";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const testRoundTrip = ( name: string, value: any ): void =>
 	it( name, () => expect( parse( stringify( value ) ?? "" ) ).toEqual( value ) );
 

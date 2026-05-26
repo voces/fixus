@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "temp",
+    "rootDir": "./src",
+    "paths": {
+      "*": [
+        "./*",
+        "../node_modules/*/index",
+        "../node_modules/*/src/index",
+        "../node_modules/*/dist/index",
+        "../node_modules/*/lib/index",
+        "../node_modules/*"
+      ]
+    }
+  },
+  "include": ["./src"],
+  "exclude": ["**/*.test.ts", "**/__snapshots__/**"],
+  "tstl": {
+    "noImplicitSelf": true,
+    "luaBundleEntry": "./src/index.ts",
+    "luaBundle": "out.lua",
+    "luaTarget": "5.3"
+  }
+}

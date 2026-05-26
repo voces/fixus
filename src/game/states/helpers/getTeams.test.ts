@@ -1,4 +1,4 @@
-
+import { describe, expect, it } from "test/jest-compat";
 import "test/w3api";
 import { forceTeams, getTeams } from "./getTeams";
 

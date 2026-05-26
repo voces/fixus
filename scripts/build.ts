@@ -1,91 +1,56 @@
+import { walk } from "@std/fs/walk";
+import { ensureDir } from "@std/fs/ensure-dir";
+import Map from "npm:mdx-m3-viewer-th/dist/cjs/parsers/w3x/map.js";
 
-import * as fs from "fs-extra";
-import { FILE_EXISTS } from "mdx-m3-viewer/src/parsers/mpq/constants";
-import War3Map from "mdx-m3-viewer/src/parsers/w3x/map";
-import * as path from "path";
-import { compileMap, getFilesInDirectory, loadJsonFile, logger, toArrayBuffer } from "./utils";
+const War3Map = Map.default;
 
-/**
- * Creates a w3x archive from a directory
- * @param output The output filename
- * @param dir The directory to create the archive from
- */
-const createMapFromDir = ( output: string, dir: string ): void=> {
+await ensureDir("temp");
 
-	const map = new War3Map();
-	const files = getFilesInDirectory( dir );
-
-	map.archive.resizeHashtable( files.length );
-
-	for ( const fileName of files ) {
-
-		const contents = toArrayBuffer( fs.readFileSync( fileName ) );
-		const archivePath = path.relative( dir, fileName );
-		const imported = map.import( archivePath, contents );
-
-		if ( ! imported ) {
-
-			logger.warn( "Failed to import " + archivePath );
-			continue;
-
-		}
-
-		if ( fileName.toLowerCase().indexOf( ".blp" ) !== - 1 || fileName.toLowerCase().indexOf( ".mp3" ) !== - 1 ) {
-
-			const file = map.archive.files.find( e => e.name === archivePath );
-			if ( file ) {
-
-				file.rawBuffer = contents;
-				file.block.compressedSize = contents.byteLength;
-				file.block.flags = FILE_EXISTS;
-
-			}
-
-		}
-
-	}
-
-	const result = map.save();
-
-	if ( ! result ) {
-
-		logger.error( "Failed to save archive." );
-		return;
-
-	}
-
-	fs.writeFileSync( output, new Uint8Array( result ) );
-
-	logger.info( "Finished!" );
-
-};
-
-const config = loadJsonFile( "config.json" );
-const result = compileMap( config );
-
-if ( ! result ) {
-
-	logger.error( "Failed to compile map." );
-	process.exit( 1 );
-
-}
-
-logger.info( "Creating w3x archive..." );
-
-const contents = fs.readFileSync(
-	`dist/${config.mapFolder}/war3map.wts`,
-	{ encoding: "utf-8" },
+const changelog = await Deno.readTextFile("docs/CHANGELOG.md");
+const version = changelog.split("\n")[1].split(" ")[2];
+const build = new Date().toISOString();
+await Deno.writeTextFile(
+  "src/misc/buildInfo.ts",
+  `export const REPO = "voces/fixus";
+export const VERSION = ${JSON.stringify(version)};
+export const BUILD = ${JSON.stringify(build)};
+`,
 );
-const match = contents.match( /Fixus (\d+\w?)/ );
-if ( ! match ) {
 
-	console.error( new Error( "Could not version in war3map.wts" ) );
-	process.exit( 1 );
+const tstl = new Deno.Command("deno", {
+  args: ["run", "-A", "npm:typescript-to-lua/dist/tstl.js", "--project", "tsconfig.build.json"],
+  stdout: "inherit",
+  stderr: "inherit",
+}).outputSync();
+if (!tstl.success) throw new Error("tstl failed");
 
-}
-const version = match[ 1 ];
+const files: string[] = [];
+for await (const entry of walk("map.w3x")) if (entry.isFile) files.push(entry.path);
 
-createMapFromDir(
-	`./dist/Ultimate Sheep Tag Fixus ${version}.w3x`,
-	`./dist/${config.mapFolder}`,
-);
+const map = new War3Map();
+map.archive.resizeHashtable(files.length);
+
+await Promise.all(files.map(async (fileName) => {
+  if (!map.import(fileName.slice(8).replace(/\//g, "\\"), await Deno.readFile(fileName))) {
+    throw new Error(`Could not import file "${fileName}"`);
+  }
+}));
+
+const scriptFile = map.getScriptFile();
+if (!scriptFile) throw new Error("Could not find script file");
+const builtLua = (await Deno.readTextFile("temp/out.lua")).replace(/__async__require__/g, "require");
+const combinedLua = scriptFile.text() + "\n" + builtLua;
+scriptFile.set(new TextEncoder().encode(combinedLua));
+
+const result = map.save();
+if (!result) throw new Error("Failed to save archive");
+
+let name: string | undefined = map.getMapInformation().name;
+if (name.startsWith("TRIGSTR")) name = map.readStringTable()?.getString(name);
+if (!name) throw new Error("Could not extract map name");
+
+await Promise.all([
+  Deno.writeFile(`temp/release.w3x`, result),
+  Deno.writeFile(`temp/${name}.w3x`, result),
+  Deno.writeTextFile("temp/combined.lua", combinedLua),
+]);

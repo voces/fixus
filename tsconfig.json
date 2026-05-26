@@ -1,52 +1,20 @@
 {
-	"compilerOptions": {
-		"outDir": "dist/js",
-		"baseUrl": "src",
-		"allowJs": true,
-		"target": "es6",
-		"lib": [ "es2019", "es2020", "dom" ],
-		"moduleResolution": "classic",
-		"strict": true,
-		"noImplicitAny": true,
-		"noImplicitThis": true,
-		"alwaysStrict": true,
-		"strictNullChecks": true,
-		"paths": {
-			"*": [
-				"../node_modules/*/dist/index",
-				"../node_modules/*/index",
-				"../node_modules/*/lib/index",
-				"../node_modules/*",
-				"../node_modules/*/src/index"
-			],
-			"test": ["../test"]
-		},
-		"esModuleInterop": true,
-		"plugins": [{"transform": "war3-transformer"}],
-		"types": [
-			"@types/jest",
-			"@types/node",
-			"@types/marked",
-			"lua-types/core/coroutine",
-			"lua-types/core/global",
-			"lua-types/core/math",
-			"lua-types/core/metatable",
-			"lua-types/core/modules",
-			"lua-types/core/string",
-			"lua-types/core/table",
-			"lua-types/core/os",
-			"lua-types/special/5.3",
-			"war3-types/core/compat",
-			"war3-types/core/common",
-			"war3-types/core/blizzard",
-			"war3-types/core/commonai",
-			"war3-types/core/polyfill",
-			"war3-types/special/w3ts",
-			"mdx-m3-viewer/src/types"
-		],
-		"noEmit": true,
-		"skipLibCheck": true
-	},
-	"include": ["src", "scripts", "test"],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "ES2019",
+    "moduleResolution": "Node",
+    "strict": true,
+    "types": [
+      "lua-types/5.3",
+      "war3-types/core/common",
+      "war3-types/core/blizzard",
+      "war3-types/core/commonai",
+      "war3-types/core/compat",
+      "war3-types/core/polyfill",
+      "war3-types/special/w3ts"
+    ],
+    "baseUrl": "./src",
+    "lib": ["es2019"],
+    "skipLibCheck": true,
+    "ignoreDeprecations": "6.0"
+  }
 }

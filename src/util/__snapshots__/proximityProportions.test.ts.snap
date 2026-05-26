@@ -1,328 +1,328 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+export const snapshot = {};
 
-exports[`proximityProportions sheep with 1 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 1 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 1000,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 1000,
+      lumber: 0,
     },
   ],
 ]
 `;
 
-exports[`proximityProportions sheep with 2 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 2 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 501,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 501,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     1,
-    Object {
-      "experience": 0,
-      "gold": 498,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 498,
+      lumber: 0,
     },
   ],
 ]
 `;
 
-exports[`proximityProportions sheep with 3 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 3 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 350,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 350,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     1,
-    Object {
-      "experience": 0,
-      "gold": 348,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 348,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     3,
-    Object {
-      "experience": 0,
-      "gold": 303,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 303,
+      lumber: 0,
     },
   ],
 ]
 `;
 
-exports[`proximityProportions sheep with 4 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 4 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 279,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 279,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     1,
-    Object {
-      "experience": 0,
-      "gold": 277,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 277,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     3,
-    Object {
-      "experience": 0,
-      "gold": 241,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 241,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     4,
-    Object {
-      "experience": 0,
-      "gold": 201,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 201,
+      lumber: 0,
     },
   ],
 ]
 `;
 
-exports[`proximityProportions sheep with 5 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 5 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 253,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 253,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     1,
-    Object {
-      "experience": 0,
-      "gold": 251,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 251,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     3,
-    Object {
-      "experience": 0,
-      "gold": 219,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 219,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     4,
-    Object {
-      "experience": 0,
-      "gold": 183,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 183,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     6,
-    Object {
-      "experience": 0,
-      "gold": 92,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 92,
+      lumber: 0,
     },
   ],
 ]
 `;
 
-exports[`proximityProportions sheep with 6 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 6 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 241,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 241,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     1,
-    Object {
-      "experience": 0,
-      "gold": 240,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 240,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     3,
-    Object {
-      "experience": 0,
-      "gold": 210,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 210,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     4,
-    Object {
-      "experience": 0,
-      "gold": 175,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 175,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     6,
-    Object {
-      "experience": 0,
-      "gold": 88,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 88,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     7,
-    Object {
-      "experience": 0,
-      "gold": 47,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 47,
+      lumber: 0,
     },
   ],
 ]
 `;
 
-exports[`proximityProportions sheep with 7 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 7 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 240,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 240,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     1,
-    Object {
-      "experience": 0,
-      "gold": 239,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 239,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     3,
-    Object {
-      "experience": 0,
-      "gold": 209,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 209,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     4,
-    Object {
-      "experience": 0,
-      "gold": 174,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 174,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     6,
-    Object {
-      "experience": 0,
-      "gold": 87,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 87,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     7,
-    Object {
-      "experience": 0,
-      "gold": 47,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 47,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     9,
-    Object {
-      "experience": 0,
-      "gold": 5,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 5,
+      lumber: 0,
     },
   ],
 ]
 `;
 
-exports[`proximityProportions sheep with 8 sheep 1`] = `
-Array [
-  Array [
+snapshot[`proximityProportions > sheep > with 8 sheep 1`] = `
+[
+  [
     0,
-    Object {
-      "experience": 0,
-      "gold": 240,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 240,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     1,
-    Object {
-      "experience": 0,
-      "gold": 239,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 239,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     3,
-    Object {
-      "experience": 0,
-      "gold": 209,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 209,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     4,
-    Object {
-      "experience": 0,
-      "gold": 174,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 174,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     6,
-    Object {
-      "experience": 0,
-      "gold": 87,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 87,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     7,
-    Object {
-      "experience": 0,
-      "gold": 47,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 47,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     9,
-    Object {
-      "experience": 0,
-      "gold": 5,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 5,
+      lumber: 0,
     },
   ],
-  Array [
+  [
     10,
-    Object {
-      "experience": 0,
-      "gold": 1,
-      "lumber": 0,
+    {
+      experience: 0,
+      gold: 1,
+      lumber: 0,
     },
   ],
 ]

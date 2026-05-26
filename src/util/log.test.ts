@@ -1,4 +1,4 @@
-
+import { expect, it } from "test/jest-compat";
 import "test/w3api";
 import { log } from "./log";
 import { getGame } from "w3api";

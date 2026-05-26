@@ -40,8 +40,7 @@ const tick = (): void => {
 
 		BlzGroupAddGroupFast( cloakHolders, tempCloakHolders );
 
-		// eslint-disable-next-line no-cond-assign
-		while ( cloakHolder = FirstOfGroup( tempCloakHolders ) ) {
+		while ( ( cloakHolder = FirstOfGroup( tempCloakHolders ) ) != null ) {
 
 			const x = GetUnitX( cloakHolder );
 			const y = GetUnitY( cloakHolder );
@@ -54,8 +53,7 @@ const tick = (): void => {
 						GroupEnumUnitsInRange( unitsToDamage, x, y, 256 + cloaks * 64, null );
 
 						let damagedUnit;
-						// eslint-disable-next-line no-cond-assign
-						while ( damagedUnit = FirstOfGroup( unitsToDamage ) ) {
+						while ( ( damagedUnit = FirstOfGroup( unitsToDamage ) ) != null ) {
 
 							if ( IsUnitType( damagedUnit, UNIT_TYPE_STRUCTURE ) && ! IsUnitAlly( damagedUnit, GetOwningPlayer( cloakHolder ) ) ) {
 

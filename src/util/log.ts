@@ -2,18 +2,16 @@
 import { colorize } from "./colorize";
 import { colorizedName } from "./player";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isArray = ( v: any ): boolean => {
 
 	if ( typeof v !== "object" ) return false;
 
 	// Lua uses 1 as the starter index
-	return Object.keys( v ).every( ( v, index ) => S2I( v ) === index + 1 || S2I( v ) === index ) &&
+	return Object.keys( v ).every( ( v, index ) => S2I( v as string ) === index + 1 || S2I( v as string ) === index ) &&
 		( v[ 0 ] != null || v[ 1 ] != null );
 
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const userdataType = ( userdata: Record<string, any> ): string => {
 
 	const typeString = userdata.toString();
@@ -21,7 +19,6 @@ const userdataType = ( userdata: Record<string, any> ): string => {
 
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const termToString = ( v: any, color = true ): string => {
 
 	if ( typeof v === "string" ) return color ? colorize.string( `"${v}"` ) : v;
@@ -32,10 +29,8 @@ export const termToString = ( v: any, color = true ): string => {
 
 	if ( isArray( v ) ) {
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const arr = v as Array<any>;
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		return `[ ${arr.map( ( v: any ) => termToString( v ) ).join( ", " )} ]`;
 
 	}
@@ -73,6 +68,5 @@ export const termToString = ( v: any, color = true ): string => {
 
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const log = ( ...args: Array<any> ): void =>
 	BJDebugMsg( args.map( v => termToString( v ) ).join( " " ) );

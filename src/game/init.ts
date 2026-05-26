@@ -29,7 +29,6 @@ export const argHelp = ( arg: Arg<string | number> ): string => {
 
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const commandHelp = ( command: Command<any> ): string =>
 	[
 		"-" + command.command,
@@ -97,7 +96,7 @@ const action = (): void => {
 
 	DisplayTimedText( 3, [
 		`Fixus by ${colorize.gray( "Chakra" )}`,
-		`Discord: ${colorize.sheepblue( "http://tiny.cc/sheeptag" )}`,
+		`Discord: ${colorize.sheepblue( "https://dsc.gg/sheeptag" )}`,
 	].join( "\n" ) );
 
 	// debug mode

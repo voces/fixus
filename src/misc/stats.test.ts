@@ -1,15 +1,6 @@
-
+import { afterEach, describe, expect, it } from "test/jest-compat";
 import "test/w3api";
 import { onWolfGoldBonus } from "./stats";
-import { getRemainingTime } from "game/states/common";
-
-jest.mock(
-	"game/states/common",
-	() => ( {
-		gameState: (): "play" => "play",
-		getRemainingTime: jest.fn(),
-	} ),
-);
 
 describe( "onWolfGoldBonus", () => {
 
@@ -58,8 +49,7 @@ describe( "onWolfGoldBonus", () => {
 
 			goldings.forEach( ( { gold, time } ) => {
 
-				( getRemainingTime as jest.Mock ).mockReturnValueOnce( 25 * 60 - time );
-				actual = onWolfGoldBonus( gold );
+				actual = onWolfGoldBonus( gold, false, 25 * 60 - time );
 
 			} );
 

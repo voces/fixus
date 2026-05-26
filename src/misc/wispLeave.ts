@@ -3,6 +3,8 @@ import { WISP_TYPE } from "shared";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
 
+declare const gg_rct_Pen: rect;
+
 // ===========================================================================
 // Trigger: sheepWispLeave
 // ===========================================================================

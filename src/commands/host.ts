@@ -1,18 +1,27 @@
 
-import { getHost } from "@voces/w3ts";
+import { addScriptHook, MapPlayer, onHostDetect, W3TS_HOOK } from "@voces/w3ts";
 import { registerCommand } from "./registerCommand";
 import { sheepTeam } from "shared";
 import { colorizedName } from "util/player";
 
+let detectedHost: player | undefined;
+addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+
+	onHostDetect( () => {
+
+		detectedHost = MapPlayer.fromLocal().handle;
+
+	} );
+
+} );
+
 export const getController = (): player => {
 
-	const host = getHost()?.handle;
-
 	if (
-		host &&
-		GetPlayerSlotState( host ) === PLAYER_SLOT_STATE_PLAYING
+		detectedHost &&
+		GetPlayerSlotState( detectedHost ) === PLAYER_SLOT_STATE_PLAYING
 	)
-		return host;
+		return detectedHost;
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		if ( GetPlayerSlotState( Player( i ) ) === PLAYER_SLOT_STATE_PLAYING )
@@ -25,14 +34,12 @@ export const getController = (): player => {
 
 export const getSheepController = (): player => {
 
-	const host = getHost()?.handle;
-
 	if (
-		host &&
-		GetPlayerSlotState( host ) === PLAYER_SLOT_STATE_PLAYING &&
-		IsPlayerInForce( host, sheepTeam )
+		detectedHost &&
+		GetPlayerSlotState( detectedHost ) === PLAYER_SLOT_STATE_PLAYING &&
+		IsPlayerInForce( detectedHost, sheepTeam )
 	)
-		return host;
+		return detectedHost;
 
 	for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
 		if (

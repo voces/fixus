@@ -1,4 +1,4 @@
-
+import { describe, expect, it, jest } from "test/jest-compat";
 import "test/w3api";
 import { gameContext, simulateChat } from "w3api";
 import { registerCommand, main } from "./registerCommand";
