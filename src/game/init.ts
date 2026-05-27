@@ -27,6 +27,7 @@ export const argHelp = (arg: Arg<string | number>): string => {
   return isArgRequired(arg) ? `<${arg.name}>` : `[${arg.name}${defaultPart}]`;
 };
 
+// deno-lint-ignore no-explicit-any
 export const commandHelp = (command: Command<any>): string =>
   [
     "-" + command.command,

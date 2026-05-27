@@ -2,7 +2,7 @@ import { describe, expect, it } from "test/jest-compat";
 import "test/w3api";
 import { parse, stringify } from "./json";
 
-const testRoundTrip = (name: string, value: any): void =>
+const testRoundTrip = (name: string, value: unknown): void =>
   it(name, () => expect(parse(stringify(value) ?? "")).toEqual(value));
 
 describe("string", () => {

@@ -30,6 +30,8 @@
     "w3ts-w3mmd": "npm:w3ts-w3mmd@^2.2.2",
     "typescript-to-lua": "npm:typescript-to-lua@^1.36.0",
     "mdx-m3-viewer-th": "npm:mdx-m3-viewer-th@^5.13.0",
+    "mdx-m3-viewer-th/w3x/map": "npm:mdx-m3-viewer-th@^5.13.0/dist/cjs/parsers/w3x/map.js",
+    "marked": "npm:marked@^14",
     "lua-types": "npm:lua-types@^2.13.1",
     "war3-types": "npm:war3-types@^1.0.4",
     "@std/fs": "jsr:@std/fs@^1.0.0",

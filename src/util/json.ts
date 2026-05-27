@@ -1,11 +1,12 @@
 import { emitLog } from "util/emitLog";
 
-const isArray = (v: any): boolean => {
+const isArray = (v: unknown): v is Record<string, unknown> => {
   if (typeof v !== "object" || v == null) return false;
 
+  const obj = v as Record<string, unknown>;
   // Lua uses 1 as the starter index
-  return Object.keys(v).every((v, index) => tonumber(v) === index + 1 || tonumber(v) === index) &&
-    (v[0] != null || v[1] != null);
+  return Object.keys(obj).every((k, index) => tonumber(k) === index + 1 || tonumber(k) === index) &&
+    (obj[0] != null || obj[1] != null);
 };
 
 const escapeString = (str: string): string => {
@@ -20,16 +21,16 @@ const escapeString = (str: string): string => {
   return s;
 };
 
-export const stringify = (v: any): string | undefined => {
+export const stringify = (v: unknown): string | undefined => {
   if (typeof v === "string") return `"${escapeString(v)}"`;
   if (typeof v === "number") return v.toString();
   if (typeof v === "boolean") return v.toString();
 
   if (isArray(v)) {
-    const arr = v as Array<any>;
+    const arr = v as unknown as unknown[];
 
     return `[${
-      arr.map((v: any) => {
+      arr.map((v) => {
         const stringified = stringify(v);
         if (stringified == null) return "null";
         return stringified;

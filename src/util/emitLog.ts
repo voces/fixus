@@ -8,7 +8,7 @@ export const logEvent = debounce(
   defineEvent("log", "${0}: {1}", "key", "message"),
 );
 
-export const emitLog = (key: string, arg: any, ...args: Array<any>): void => {
+export const emitLog = (key: string, arg: unknown, ...args: unknown[]): void => {
   const allArgs = [arg, ...args];
   const message = allArgs.map((v) => termToString(v, false)).join(" ");
   logEvent(key, message);
@@ -25,7 +25,7 @@ export const wrappedTriggerAddAction = (whichTrigger: trigger, key: string, acti
   });
 
 export const wrapFunction =
-  <A extends any[], B>(key: string, fn: (...args: A) => B): (...args: A) => B => (...args: A): B => {
+  <A extends readonly unknown[], B>(key: string, fn: (...args: A) => B): (...args: A) => B => (...args: A): B => {
     try {
       return fn(...args);
     } catch (err) {

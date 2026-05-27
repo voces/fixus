@@ -32,7 +32,3 @@ const fn = <F extends AnyFn>(impl?: F): JestMock<F> => {
 };
 
 export const jest = { fn };
-
-export namespace jest {
-  export type Mock<F extends AnyFn = AnyFn> = JestMock<F>;
-}

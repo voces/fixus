@@ -1,4 +1,4 @@
-import { Lexer, type Tokens } from "npm:marked@^14";
+import { Lexer, type Tokens } from "marked";
 
 type Version = { title: string; content: string[] };
 

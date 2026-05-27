@@ -1,6 +1,6 @@
 import { walk } from "@std/fs/walk";
 import { ensureDir } from "@std/fs/ensure-dir";
-import Map from "npm:mdx-m3-viewer-th/dist/cjs/parsers/w3x/map.js";
+import Map from "mdx-m3-viewer-th/w3x/map";
 
 const War3Map = Map.default;
 

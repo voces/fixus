@@ -14,7 +14,7 @@ type Timing = {
  * @param timing.duration The sliding window in which the debounce operates.
  * @param fn The call that will be invoked if the call is not rejected.
  */
-export const debounce = <A extends any[], B>(
+export const debounce = <A extends readonly unknown[], B>(
   { threshold, duration }: Timing,
   fn: (...args: A) => B,
 ): (...args: A) => B | undefined => {

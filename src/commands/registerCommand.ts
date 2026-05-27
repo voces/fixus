@@ -35,6 +35,7 @@ export const isArgRequired = <T extends string | number>(arg: Arg<T>): boolean =
   (arg.required == null || arg.required) && arg.default == null;
 
 let ready = false;
+// deno-lint-ignore no-explicit-any
 export const commands: Command<any>[] = [];
 const _registerCommand = <T>(
   { command, alias, args = [], fn }: {
