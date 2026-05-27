@@ -1,4 +1,3 @@
-
 import "./coins";
 import "./goldPerSecond";
 import "./goldTick";

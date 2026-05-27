@@ -9,7 +9,8 @@ The classic Warcraft 3 map.
 
 ## Development
 
-This is a TypeScript map. Object editing, terraining, and other World Editor data still live in the `.w3x`; the custom code is written in TypeScript and transpiled to Lua via [typescript-to-lua](https://typescripttolua.github.io/). Layout:
+This is a TypeScript map. Object editing, terraining, and other World Editor data still live in the `.w3x`; the custom
+code is written in TypeScript and transpiled to Lua via [typescript-to-lua](https://typescripttolua.github.io/). Layout:
 
 - `map.w3x` — base map opened in the World Editor (settings, objects, terrain — no custom code).
 - `src` — TypeScript source for the map's custom logic.
@@ -26,7 +27,8 @@ This is a TypeScript map. Object editing, terraining, and other World Editor dat
 deno task build
 ```
 
-Compiles `src/**/*.ts` to a single `temp/out.lua`, concatenates it with `map.w3x/war3map.lua`, and packs the result into `temp/release.w3x` (and `temp/<map name>.w3x`).
+Compiles `src/**/*.ts` to a single `temp/out.lua`, concatenates it with `map.w3x/war3map.lua`, and packs the result into
+`temp/release.w3x` (and `temp/<map name>.w3x`).
 
 ### Test
 
@@ -43,4 +45,5 @@ deno task fmt
 
 ## Contributing
 
-Anyone is welcome to contribute; just open a pull request and I'll review it. I strongly recommend joining the Discord and discussing ideas first before doing any work. Please make sure tests pass with `deno task test`.
+Anyone is welcome to contribute; just open a pull request and I'll review it. I strongly recommend joining the Discord
+and discussing ideas first before doing any work. Please make sure tests pass with `deno task test`.

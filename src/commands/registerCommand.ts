@@ -1,138 +1,117 @@
-
 import { TriggerRegisterPlayerChatEventAll } from "shared";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 
-export type Arg<T extends string | number> =
-	{
-		name: string;
-		required?: boolean;
-		default?: never;
-		// todo: add a function type, allowing the user to define their own transformer
-		type?: "number"
-			| "string"
-			| "player";
-	} | {
-		name: string;
-		required?: false;
-		default?: T;
-		// todo: add a function type, allowing the user to define their own transformer
-		type?: "number"
-			| "string"
-			| "player";
-	};
+export type Arg<T extends string | number> = {
+  name: string;
+  required?: boolean;
+  default?: never;
+  // todo: add a function type, allowing the user to define their own transformer
+  type?:
+    | "number"
+    | "string"
+    | "player";
+} | {
+  name: string;
+  required?: false;
+  default?: T;
+  // todo: add a function type, allowing the user to define their own transformer
+  type?:
+    | "number"
+    | "string"
+    | "player";
+};
 
 export type Command<T> = {
-	command: string;
-	category: "sheep" | "wolf" | "host" | "misc" | "hidden" | "sandbox";
-	alias?: string;
-	description: string;
-	args?: Array<Arg<string | number>>;
-	fn: ( this: void, args: T, words: Array<string> ) => void;
-}
+  command: string;
+  category: "sheep" | "wolf" | "host" | "misc" | "hidden" | "sandbox";
+  alias?: string;
+  description: string;
+  args?: Array<Arg<string | number>>;
+  fn: (this: void, args: T, words: Array<string>) => void;
+};
 
-export const isArgRequired = <T extends string | number>( arg: Arg<T> ): boolean =>
-	( arg.required == null || arg.required ) && arg.default == null;
+export const isArgRequired = <T extends string | number>(arg: Arg<T>): boolean =>
+  (arg.required == null || arg.required) && arg.default == null;
 
 let ready = false;
 export const commands: Command<any>[] = [];
 const _registerCommand = <T>(
-	{ command, alias, args = [], fn }:
-	{
-		command: string;
-		alias?: string;
-		args?: Array<Arg<string | number>>;
-		fn: ( this: void, args: T, words: Array<string> ) => void;
-	},
+  { command, alias, args = [], fn }: {
+    command: string;
+    alias?: string;
+    args?: Array<Arg<string | number>>;
+    fn: (this: void, args: T, words: Array<string>) => void;
+  },
 ): void => {
+  const t = CreateTrigger();
 
-	const t = CreateTrigger();
+  let requiredArgs = 0;
+  for (; requiredArgs < args.length && isArgRequired(args[requiredArgs]); requiredArgs++) { /* do nothing */ }
+  const triggerWords = [command];
+  if (alias != null) triggerWords.push(alias);
 
-	let requiredArgs = 0;
-	for ( ;
-		requiredArgs < args.length && isArgRequired( args[ requiredArgs ] );
-		requiredArgs ++
-	) { /* do nothing */ }
-	const triggerWords = [ command ];
-	if ( alias != null ) triggerWords.push( alias );
+  const triggerCommands = triggerWords.map((w) => `-${w}`);
+  triggerCommands.forEach((triggerCommand) =>
+    TriggerRegisterPlayerChatEventAll(
+      t,
+      `${triggerCommand}${requiredArgs > 0 ? " " : ""}`,
+      args.length === 0,
+    )
+  );
 
-	const triggerCommands = triggerWords.map( w => `-${w}` );
-	triggerCommands.forEach( triggerCommand =>
-		TriggerRegisterPlayerChatEventAll(
-			t,
-			`${triggerCommand}${requiredArgs > 0 ? " " : ""}`,
-			args.length === 0,
-		) );
+  wrappedTriggerAddAction(t, `command ${command}`, () => {
+    const str = GetEventPlayerChatString();
 
-	wrappedTriggerAddAction( t, `command ${command}`, () => {
+    // with args, make sure the trigger leads
+    const triggerWord = triggerWords.find((triggerWord) => str.indexOf(triggerWord) === 1); // we do 1 to skip the -
+    if (triggerWord == null) return;
+    const offset = triggerWord.split(" ").length;
 
-		const str = GetEventPlayerChatString();
+    const words = str.split(" ");
 
-		// with args, make sure the trigger leads
-		const triggerWord = triggerWords.find( triggerWord => str.indexOf( triggerWord ) === 1 ); // we do 1 to skip the -
-		if ( triggerWord == null ) return;
-		const offset = triggerWord.split( " " ).length;
+    // Build our args object
+    let argsObject: T;
+    try {
+      argsObject = Object.fromEntries(args.map(({ name, type, default: defualtValue }, i) => {
+        const word = words[i + offset];
+        if (word === "" || word == null) return [name, defualtValue];
+        if (type != null) {
+          switch (type) {
+            case "number":
+              return [name, tonumber(word)];
+            case "player": {
+              const playerId = S2I(word) - 1;
+              if (playerId < 0 || playerId > bj_MAX_PLAYERS) {
+                DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Invalid player number. Use 1-24.");
+                throw "invalid-player";
+              }
 
-		const words = str.split( " " );
+              return [name, Player(playerId)];
+            }
+          }
+        }
 
-		// Build our args object
-		let argsObject: T;
-		try {
+        return [name, word];
+      }));
+    } catch (err) {
+      if (err === "invalid-player") return;
+      throw err;
+    }
 
-			argsObject = Object.fromEntries( args.map( ( { name, type, default: defualtValue }, i ) => {
-
-				const word = words[ i + offset ];
-				if ( word === "" || word == null ) return [ name, defualtValue ];
-				if ( type != null )
-					switch ( type ) {
-
-						case "number": return [ name, tonumber( word ) ];
-						case "player": {
-
-							const playerId = S2I( word ) - 1;
-							if ( playerId < 0 || playerId > bj_MAX_PLAYERS ) {
-
-								DisplayTextToPlayer( GetTriggerPlayer(), 0, 0, "Invalid player number. Use 1-24." );
-								throw "invalid-player";
-
-							}
-
-							return [ name, Player( playerId ) ];
-
-						}
-
-					}
-
-				return [ name, word ];
-
-			} ) );
-
-		} catch ( err ) {
-
-			if ( err === "invalid-player" ) return;
-			throw err;
-
-		}
-
-		fn( argsObject, [ words.slice( 0, offset ).join( " " ), ...words.slice( offset ) ] );
-
-	} );
-
+    fn(argsObject, [words.slice(0, offset).join(" "), ...words.slice(offset)]);
+  });
 };
 
-export const registerCommand = <T>( command: Command<T> ): void => {
+export const registerCommand = <T>(command: Command<T>): void => {
+  commands.push(command);
 
-	commands.push( command );
-
-	if ( ready ) return _registerCommand( command );
-
+  if (ready) return _registerCommand(command);
 };
 
 export const main = (): void => {
-
-	ready = true;
-	commands.forEach( r => _registerCommand( r ) );
-
+  ready = true;
+  commands.forEach((r) => _registerCommand(r));
 };
 
-addScriptHook( W3TS_HOOK.MAIN_AFTER, main );
+addScriptHook(W3TS_HOOK.MAIN_AFTER, main);

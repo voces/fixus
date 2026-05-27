@@ -1,4 +1,3 @@
-
 import "./teamSelection";
 import "./beat";
 import "./start";

@@ -1,10 +1,9 @@
-
 import { getElapsedTime } from "@voces/w3ts";
 
 type Timing = {
-    threshold: number;
-    duration: number;
-}
+  threshold: number;
+  duration: number;
+};
 
 /**
  * A trailing debounce function. After `threshold` calls occur within
@@ -16,29 +15,25 @@ type Timing = {
  * @param fn The call that will be invoked if the call is not rejected.
  */
 export const debounce = <A extends any[], B>(
-	{ threshold, duration }: Timing,
-	fn: ( ...args: A ) => B,
-): ( ( ...args: A ) => B | undefined ) => {
+  { threshold, duration }: Timing,
+  fn: (...args: A) => B,
+): (...args: A) => B | undefined => {
+  const memory: Record<string, number[]> = {};
 
-	const memory: Record<string, number[]> = {};
+  return (...args: A): B | undefined => {
+    const now = getElapsedTime();
 
-	return ( ...args: A ): B | undefined => {
+    const key = args.join(" ");
 
-		const now = getElapsedTime();
+    const record = memory[key] || (memory[key] = []);
+    record.push(now);
 
-		const key = args.join( " " );
+    while (record[0] != null && record[0] <= now - duration) {
+      record.shift();
+    }
 
-		const record = memory[ key ] || ( memory[ key ] = [] );
-		record.push( now );
+    if (record.length > threshold) return;
 
-		while ( record[ 0 ] != null && record[ 0 ] <= now - duration )
-			record.shift();
-
-		if ( record.length > threshold ) return;
-
-		return fn( ...args );
-
-	};
-
+    return fn(...args);
+  };
 };
-

@@ -1,3 +1,6 @@
+const MAPS_DIR = "/mnt/c/Users/verit/Documents/Warcraft III/Maps/Sheep Tag";
+const DEPLOYED_MAP = `${MAPS_DIR}/fixus.w3x`;
+
 const formatDuration = (ms: number) => {
   if (ms < 1) return `${Math.round(ms * 1000000)}ns`;
   if (ms < 1000) return `${Math.round(ms)}ms`;
@@ -20,14 +23,26 @@ const withTiming = (description: string, fn: () => void, timings?: Record<string
 };
 
 const rebuild = () => {
+  let buildOk = false;
   const timings = withTiming("total", () => {
     withTiming("build", () => {
-      new Deno.Command("deno", {
+      const result = new Deno.Command("deno", {
         args: ["task", "build"],
         stdout: "inherit",
         stderr: "inherit",
       }).outputSync();
+      buildOk = result.success;
     });
+    if (buildOk) {
+      withTiming("deploy", () => {
+        try {
+          Deno.mkdirSync(MAPS_DIR, { recursive: true });
+          Deno.copyFileSync("temp/release.w3x", DEPLOYED_MAP);
+        } catch (err) {
+          console.warn(`Deploy to ${DEPLOYED_MAP} failed: ${(err as Error).message}`);
+        }
+      });
+    }
   }, {});
 
   console.log(

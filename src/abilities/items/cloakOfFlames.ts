@@ -1,4 +1,3 @@
-
 import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { CLOAK_TYPE } from "shared";
 import { withTempGroup } from "util/temp";
@@ -7,89 +6,86 @@ import { wrappedTriggerAddAction } from "util/emitLog";
 const cloakHolders = CreateGroup();
 
 const onPickupItem = (): void => {
-
-	if ( GetItemTypeId( GetManipulatedItem() ) === CLOAK_TYPE )
-		GroupAddUnit( cloakHolders, GetManipulatingUnit() );
-
+  if (GetItemTypeId(GetManipulatedItem()) === CLOAK_TYPE) {
+    GroupAddUnit(cloakHolders, GetManipulatingUnit());
+  }
 };
 
-const countCloaks = ( u: unit ): number => {
+const countCloaks = (u: unit): number => {
+  let cloaks = 0;
 
-	let cloaks = 0;
+  for (let i = 0; i < bj_MAX_INVENTORY; i++) {
+    if (GetItemTypeId(UnitItemInSlot(u, i)) === CLOAK_TYPE) {
+      cloaks++;
+    }
+  }
 
-	for ( let i = 0; i < bj_MAX_INVENTORY; i ++ )
-		if ( GetItemTypeId( UnitItemInSlot( u, i ) ) === CLOAK_TYPE )
-			cloaks ++;
-
-	return cloaks;
-
+  return cloaks;
 };
 
 const onDropItem = (): void => {
-
-	if ( GetItemTypeId( GetManipulatedItem() ) === CLOAK_TYPE && countCloaks( GetManipulatingUnit() ) === 1 )
-		GroupRemoveUnit( cloakHolders, GetManipulatingUnit() );
-
+  if (GetItemTypeId(GetManipulatedItem()) === CLOAK_TYPE && countCloaks(GetManipulatingUnit()) === 1) {
+    GroupRemoveUnit(cloakHolders, GetManipulatingUnit());
+  }
 };
 
 const tick = (): void => {
+  let cloakHolder: unit;
 
-	let cloakHolder: unit;
+  withTempGroup((tempCloakHolders) => {
+    BlzGroupAddGroupFast(cloakHolders, tempCloakHolders);
 
-	withTempGroup( tempCloakHolders => {
+    while ((cloakHolder = FirstOfGroup(tempCloakHolders)) != null) {
+      const x = GetUnitX(cloakHolder);
+      const y = GetUnitY(cloakHolder);
+      let cloaks = 0;
 
-		BlzGroupAddGroupFast( cloakHolders, tempCloakHolders );
+      for (let i = 0; i < bj_MAX_INVENTORY; i++) {
+        if (GetItemTypeId(UnitItemInSlot(cloakHolder, i)) === CLOAK_TYPE) {
+          withTempGroup((unitsToDamage) => {
+            GroupEnumUnitsInRange(unitsToDamage, x, y, 256 + cloaks * 64, null);
 
-		while ( ( cloakHolder = FirstOfGroup( tempCloakHolders ) ) != null ) {
+            let damagedUnit;
+            while ((damagedUnit = FirstOfGroup(unitsToDamage)) != null) {
+              if (
+                IsUnitType(damagedUnit, UNIT_TYPE_STRUCTURE) && !IsUnitAlly(damagedUnit, GetOwningPlayer(cloakHolder))
+              ) {
+                const damage = IsUnitIllusion(cloakHolder) ? 6 - cloaks : 15 - cloaks * 2;
+                UnitDamageTarget(
+                  cloakHolder,
+                  damagedUnit,
+                  damage,
+                  true,
+                  false,
+                  ATTACK_TYPE_MAGIC,
+                  DAMAGE_TYPE_NORMAL,
+                  WEAPON_TYPE_WHOKNOWS,
+                );
+              }
 
-			const x = GetUnitX( cloakHolder );
-			const y = GetUnitY( cloakHolder );
-			let cloaks = 0;
+              GroupRemoveUnit(unitsToDamage, damagedUnit);
+            }
 
-			for ( let i = 0; i < bj_MAX_INVENTORY; i ++ )
-				if ( GetItemTypeId( UnitItemInSlot( cloakHolder, i ) ) === CLOAK_TYPE )
-					withTempGroup( unitsToDamage => {
+            cloaks = cloaks + 1;
+          });
+        }
+      }
 
-						GroupEnumUnitsInRange( unitsToDamage, x, y, 256 + cloaks * 64, null );
-
-						let damagedUnit;
-						while ( ( damagedUnit = FirstOfGroup( unitsToDamage ) ) != null ) {
-
-							if ( IsUnitType( damagedUnit, UNIT_TYPE_STRUCTURE ) && ! IsUnitAlly( damagedUnit, GetOwningPlayer( cloakHolder ) ) ) {
-
-								const damage = IsUnitIllusion( cloakHolder ) ? 6 - cloaks : 15 - cloaks * 2;
-								UnitDamageTarget( cloakHolder, damagedUnit, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS );
-
-							}
-
-							GroupRemoveUnit( unitsToDamage, damagedUnit );
-
-						}
-
-						cloaks = cloaks + 1;
-
-					} );
-
-			GroupRemoveUnit( tempCloakHolders, cloakHolder );
-
-		}
-
-	} );
-
+      GroupRemoveUnit(tempCloakHolders, cloakHolder);
+    }
+  });
 };
 
-addScriptHook( W3TS_HOOK.MAIN_AFTER, (): void => {
+addScriptHook(W3TS_HOOK.MAIN_AFTER, (): void => {
+  let t = CreateTrigger();
+  TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_PICKUP_ITEM);
+  wrappedTriggerAddAction(t, "cloak pickup", onPickupItem);
 
-	let t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_PICKUP_ITEM );
-	wrappedTriggerAddAction( t, "cloak pickup", onPickupItem );
+  t = CreateTrigger();
+  TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_DROP_ITEM);
+  wrappedTriggerAddAction(t, "cloak drop", onDropItem);
 
-	t = CreateTrigger();
-	TriggerRegisterAnyUnitEventBJ( t, EVENT_PLAYER_UNIT_DROP_ITEM );
-	wrappedTriggerAddAction( t, "cloak drop", onDropItem );
-
-	t = CreateTrigger();
-	TriggerRegisterTimerEvent( t, 1, true );
-	wrappedTriggerAddAction( t, "cloak tick", tick );
-
-} );
+  t = CreateTrigger();
+  TriggerRegisterTimerEvent(t, 1, true);
+  wrappedTriggerAddAction(t, "cloak tick", tick);
+});

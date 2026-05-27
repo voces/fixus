@@ -1,10 +1,4 @@
-
-import {
-	isUnitSheep,
-	isUnitWolf,
-	sheeps,
-	WISP_TYPE,
-} from "shared";
+import { isUnitSheep, isUnitWolf, sheeps, WISP_TYPE } from "shared";
 import { timeout } from "util/temp";
 import { onDeath } from "util/event";
 import { reloadMultiboard } from "util/multiboard";
@@ -17,48 +11,40 @@ import { onWispTK } from "./wispTK";
 // Trigger: sheepSaveDeath
 // ===========================================================================
 
-onDeath( "saveDeath", (): void => {
+onDeath("saveDeath", (): void => {
+  const dyingUnit = GetDyingUnit();
+  const killingUnit = GetKillingUnit();
 
-	const dyingUnit = GetDyingUnit();
-	const killingUnit = GetKillingUnit();
+  let relevantDeath = false;
 
-	let relevantDeath = false;
+  // Sheep death
+  if (isUnitSheep(dyingUnit)) {
+    onSheepDeath(dyingUnit, killingUnit);
+    relevantDeath = true;
 
-	// Sheep death
-	if ( isUnitSheep( dyingUnit ) ) {
+    // Spirit death (save)
+  } else if (GetUnitTypeId(dyingUnit) === WISP_TYPE) {
+    if (GetUnitTypeId(killingUnit) !== WISP_TYPE) {
+      onSheepSave(dyingUnit, killingUnit);
+      relevantDeath = true;
+    } else onWispTK(dyingUnit);
+  } // Wolf death
+  else if (isUnitWolf(dyingUnit)) {
+    onWolfDeath(dyingUnit);
+  }
 
-		onSheepDeath( dyingUnit, killingUnit );
-		relevantDeath = true;
+  if (relevantDeath) {
+    reloadMultiboard();
 
-		// Spirit death (save)
-
-	} else if ( GetUnitTypeId( dyingUnit ) === WISP_TYPE )
-		if ( GetUnitTypeId( killingUnit ) !== WISP_TYPE ) {
-
-			onSheepSave( dyingUnit, killingUnit );
-			relevantDeath = true;
-
-		} else onWispTK( dyingUnit );
-
-	// Wolf death
-	else if ( isUnitWolf( dyingUnit ) )
-		onWolfDeath( dyingUnit );
-
-	if ( relevantDeath ) {
-
-		reloadMultiboard();
-
-		let allDead = true;
-		for ( let i = 0; i < bj_MAX_PLAYERS; i ++ )
-			if ( sheeps[ i ] && UnitAlive( sheeps[ i ] ) ) {
-
-				allDead = false;
-				break;
-
-			}
-		if ( allDead )
-			timeout( "saveDeath end", 0.125, () => endGame( "wolves" ) );
-
-	}
-
-} );
+    let allDead = true;
+    for (let i = 0; i < bj_MAX_PLAYERS; i++) {
+      if (sheeps[i] && UnitAlive(sheeps[i])) {
+        allDead = false;
+        break;
+      }
+    }
+    if (allDead) {
+      timeout("saveDeath end", 0.125, () => endGame("wolves"));
+    }
+  }
+});

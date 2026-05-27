@@ -7,7 +7,9 @@ const War3Map = Map.default;
 await ensureDir("temp");
 
 const changelog = await Deno.readTextFile("docs/CHANGELOG.md");
-const version = changelog.split("\n")[1].split(" ")[2];
+const versionMatch = changelog.match(/^#\s+Version\s+(\S+)/m);
+if (!versionMatch) throw new Error("Could not find version in docs/CHANGELOG.md");
+const version = versionMatch[1];
 const build = new Date().toISOString();
 await Deno.writeTextFile(
   "src/misc/buildInfo.ts",

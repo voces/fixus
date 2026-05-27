@@ -3,20 +3,19 @@ name: test
 on:
   push:
     paths:
-      - '**.ts'
-      - 'deno.json'
-      - 'deno.lock'
-      - 'tsconfig*.json'
+      - "**.ts"
+      - "deno.json"
+      - "deno.lock"
+      - "tsconfig*.json"
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: denoland/setup-deno@v2
-      with:
-        deno-version: v2.x
-    - run: deno task lint
-    - run: deno task test
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: deno task lint
+      - run: deno task test
