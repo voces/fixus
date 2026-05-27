@@ -13,7 +13,6 @@
       "war3-types/special/w3ts"
     ],
     "baseUrl": "./src",
-    "lib": ["es2019"],
     "skipLibCheck": true,
     "ignoreDeprecations": "6.0"
   }

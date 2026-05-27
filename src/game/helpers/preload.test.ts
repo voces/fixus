@@ -13,9 +13,9 @@ it("preloads all custom abilities", () => {
   const abilities = Object.values(game.data.units)
     .map((u) => u.abil?.abilList)
     .flat()
-    .filter((v: string | undefined, i, arr) =>
+    .filter((v, i, arr): v is string =>
       // filter to custom abilities
-      v?.startsWith("A0") &&
+      !!v?.startsWith("A0") &&
       // remove duplicates
       arr.indexOf(v) === i
     )

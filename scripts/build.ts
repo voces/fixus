@@ -33,7 +33,8 @@ const map = new War3Map();
 map.archive.resizeHashtable(files.length);
 
 await Promise.all(files.map(async (fileName) => {
-  if (!map.import(fileName.slice(8).replace(/\//g, "\\"), await Deno.readFile(fileName))) {
+  const bytes = await Deno.readFile(fileName);
+  if (!map.import(fileName.slice(8).replace(/\//g, "\\"), bytes.buffer)) {
     throw new Error(`Could not import file "${fileName}"`);
   }
 }));

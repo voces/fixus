@@ -3,7 +3,9 @@ import { fn as _fn } from "@std/expect";
 export { afterEach, beforeEach, describe, it } from "@std/testing/bdd";
 export { expect } from "@std/expect";
 
-type AnyFn = (...args: never[]) => unknown;
+// `any` here is intentional: a default callable shape that's assignable to any concrete function type.
+// deno-lint-ignore no-explicit-any
+type AnyFn = (...args: any[]) => any;
 
 export interface JestMock<F extends AnyFn = AnyFn> {
   (...args: Parameters<F>): ReturnType<F>;

@@ -16,8 +16,8 @@ describe("forceTeams", () => {
       new Map([[Player(0), 1], [Player(1), 0]]),
     );
 
-    expect(sheep.map((p) => p.playerId)).toEqual([1]);
-    expect(wolves.map((p) => p.playerId)).toEqual([0]);
+    expect(sheep.map((p) => GetPlayerId(p))).toEqual([1]);
+    expect(wolves.map((p) => GetPlayerId(p))).toEqual([0]);
   });
 
   it("one desires sheep, one desires wolf", () => {
@@ -31,8 +31,8 @@ describe("forceTeams", () => {
       new Map([[Player(0), 1], [Player(1), 0]]),
     );
 
-    expect(sheep.map((p) => p.playerId)).toEqual([1]);
-    expect(wolves.map((p) => p.playerId)).toEqual([0]);
+    expect(sheep.map((p) => GetPlayerId(p))).toEqual([1]);
+    expect(wolves.map((p) => GetPlayerId(p))).toEqual([0]);
   });
 
   it("both desire wolf", () => {
@@ -46,8 +46,8 @@ describe("forceTeams", () => {
       new Map([[Player(0), 1], [Player(1), 0]]),
     );
 
-    expect(sheep.map((p) => p.playerId)).toEqual([1]);
-    expect(wolves.map((p) => p.playerId)).toEqual([0]);
+    expect(sheep.map((p) => GetPlayerId(p))).toEqual([1]);
+    expect(wolves.map((p) => GetPlayerId(p))).toEqual([0]);
   });
 });
 
@@ -200,8 +200,8 @@ describe("getTeams", () => {
       );
       const { sheep, wolves } = getTeams(map);
 
-      expect(sheep.map((p) => p.playerId).sort(increasingSort)).toEqual(sheepExpected);
-      expect(wolves.map((p) => p.playerId).sort(increasingSort)).toEqual(wolvesExpected);
+      expect(sheep.map((p) => GetPlayerId(p)).sort(increasingSort)).toEqual(sheepExpected);
+      expect(wolves.map((p) => GetPlayerId(p)).sort(increasingSort)).toEqual(wolvesExpected);
     })
   );
 });

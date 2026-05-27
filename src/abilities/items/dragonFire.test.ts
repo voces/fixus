@@ -1,12 +1,12 @@
 import { expect, it } from "test/jest-compat";
-import "test/w3api";
+import { setPlayerSlotState } from "test/w3api";
 import { executeHooksMainAfter } from "@voces/w3ts";
 import { main, nextWolfId, units } from "./dragonFire";
 import { WOLF_TYPE, wolfTeam, wolves } from "shared";
 
 it("smoke", () => {
   SetPlayerController(Player(0), MAP_CONTROL_USER);
-  Player(0).slotState = PLAYER_SLOT_STATE_PLAYING;
+  setPlayerSlotState(Player(0), PLAYER_SLOT_STATE_PLAYING);
 
   executeHooksMainAfter();
   main();

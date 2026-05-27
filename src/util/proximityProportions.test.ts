@@ -1,6 +1,6 @@
 import { describe, expect, it } from "test/jest-compat";
 import { assertSnapshot } from "@std/testing/snapshot";
-import "test/w3api";
+import { setPlayerSlotState } from "test/w3api";
 import { GOLEM_TYPE, normalize, proximityProportions } from "./proximityProportions";
 import { SHEEP_TYPE, sheeps, sheepTeam, WOLF_TYPE, wolfTeam } from "shared";
 
@@ -48,7 +48,7 @@ describe("proximityProportions", () => {
         withTempSheep(playerIds, () => {
           playerIds.forEach((i) => {
             SetPlayerController(Player(i), MAP_CONTROL_USER);
-            Player(i).slotState = PLAYER_SLOT_STATE_PLAYING;
+            setPlayerSlotState(Player(i), PLAYER_SLOT_STATE_PLAYING);
           });
 
           const entries = Array.from(
@@ -59,7 +59,7 @@ describe("proximityProportions", () => {
             ).entries(),
           );
 
-          result = entries.map((v) => [v[0].playerId, v[1]]);
+          result = entries.map((v) => [GetPlayerId(v[0]), v[1]]);
         });
         await assertSnapshot(t, result);
       });
@@ -83,7 +83,7 @@ describe("proximityProportions", () => {
       ForceRemovePlayer(wolfTeam, Player(8));
       RemoveUnit(wolf);
 
-      expect(entries.map((v) => [v[0].playerId, v[1]]))
+      expect(entries.map((v) => [GetPlayerId(v[0]), v[1]]))
         .toEqual([[8, { gold: 125, experience: 100, lumber: 0 }]]);
     });
 
@@ -107,7 +107,7 @@ describe("proximityProportions", () => {
       ForceRemovePlayer(wolfTeam, Player(9));
       RemoveUnit(wolf2);
 
-      expect(entries.map((v) => [v[0].playerId, v[1]]))
+      expect(entries.map((v) => [GetPlayerId(v[0]), v[1]]))
         .toEqual([
           [8, { gold: 63, experience: 50, lumber: 0 }],
           [9, { gold: 62, experience: 50, lumber: 0 }],
@@ -142,7 +142,7 @@ describe("proximityProportions", () => {
       ForceRemovePlayer(wolfTeam, Player(11));
       RemoveUnit(golem);
 
-      expect(entries.map((v) => [v[0].playerId, v[1]]))
+      expect(entries.map((v) => [GetPlayerId(v[0]), v[1]]))
         .toEqual([
           [8, { gold: 46, experience: 37, lumber: 0 }],
           [9, { gold: 36, experience: 29, lumber: 0 }],
@@ -170,7 +170,7 @@ describe("proximityProportions", () => {
       ForceRemovePlayer(wolfTeam, Player(9));
       RemoveUnit(wolf2);
 
-      expect(entries.map((v) => [v[0].playerId, v[1]]))
+      expect(entries.map((v) => [GetPlayerId(v[0]), v[1]]))
         .toEqual([
           [8, { gold: 2, experience: 0, lumber: 0 }],
           [9, { gold: -0, experience: 0, lumber: 0 }],
