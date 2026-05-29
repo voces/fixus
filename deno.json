@@ -41,7 +41,8 @@
     "@std/testing/snapshot": "jsr:@std/testing@^1.0.0/snapshot"
   },
   "fmt": {
-    "lineWidth": 120
+    "lineWidth": 120,
+    "exclude": ["map.w3x/conversation.json"]
   },
   "lint": {
     "rules": {

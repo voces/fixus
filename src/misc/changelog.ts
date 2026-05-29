@@ -2,6 +2,13 @@
 
 export const changelog = [
   {
+    title: "Version 12",
+    content: [
+      "Refactors",
+      "• Reverted in-game team picking. Teams are now static based on the lobby (players 1-8 sheep, 9-12 wolves), matching the pre-v11 behavior.",
+    ].join("\n"),
+  },
+  {
     title: "Version 11",
     content: [
       "Features",

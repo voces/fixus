@@ -168,6 +168,8 @@ export const SmallText = (amount: number, u: unit, cc: Color, x: number, y: numb
 
 addScriptHook(W3TS_HOOK.MAIN_BEFORE, (): void => {
   SetMapFlag(MAP_SHARED_ADVANCED_CONTROL, true);
+  ForceEnumAllies(sheepTeam, Player(0), Condition(isHere));
+  ForceEnumAllies(wolfTeam, Player(11), Condition(isHere));
 });
 
 export const BLACK_SHEEP_TYPE = FourCC("uC02");

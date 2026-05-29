@@ -9641,7 +9641,6 @@ Increases the Intelligence of the Hero by 4 when worn. Increases the Hero's rate
 }
 
 STRING 4882
-// Units: uC04 (Sheep), Name (Name)
 {
 Sheep
 }
@@ -9842,5 +9841,76 @@ Discord: |CFF3F81F8https://dsc.gg/sheeptag|r
 STRING 4990
 {
 Fixus 12
+}
+
+STRING 5003
+{
+Wolves
+}
+
+STRING 5004
+// Units: uC04 (Sheep), Name (Name)
+{
+Sheep
+}
+
+STRING 5005
+{
+Player 1
+}
+
+STRING 5006
+{
+Player 2
+}
+
+STRING 5007
+{
+Player 3
+}
+
+STRING 5008
+{
+Player 4
+}
+
+STRING 5009
+{
+Player 5
+}
+
+STRING 5010
+{
+Player 6
+}
+
+STRING 5011
+{
+Player 7
+}
+
+STRING 5012
+{
+Player 8
+}
+
+STRING 5013
+{
+Player 9
+}
+
+STRING 5014
+{
+Player 10
+}
+
+STRING 5015
+{
+Player 11
+}
+
+STRING 5016
+{
+Player 12
 }
 

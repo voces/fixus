@@ -1,3 +1,9 @@
+# Version 12
+
+## Refactors
+
+- Teams are now static based on the lobby (players 1-8 sheep, 9-12 wolves)
+
 # Version 11
 
 ## Features

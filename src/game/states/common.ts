@@ -3,7 +3,7 @@ import { wrappedTriggerAddAction } from "util/emitLog";
 import { timeout } from "util/temp";
 import { getterSetterFunc, wolfTeam } from "shared";
 
-export type GAME_STATES = "init" | "team-selection" | "beat" | "start" | "play" | "ended";
+export type GAME_STATES = "init" | "beat" | "start" | "play" | "ended";
 export type TransitionInformation = { remaining: number; title: string };
 
 export const transitionsFrom = {} as Record<GAME_STATES, () => TransitionInformation>;
