@@ -7,6 +7,8 @@ export const changelog = [
       "Features",
       "• Teams are now static based on the lobby (players 1-8 sheep, 9-12 wolves)",
       "• Quick Shop moved into the wolf's build menu (Q): paginate with C, buy with the item's hotkey. Items cost ~25% more than the physical shop, which is still available.",
+      "Bug fixes",
+      "• Realigned buildings and fixed portraits due to Reforged changes",
     ].join("\n"),
   },
   {

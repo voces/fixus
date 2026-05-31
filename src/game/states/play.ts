@@ -1,6 +1,8 @@
 import { countHere, WOLF_TYPE, wolfTeam, wolves } from "shared";
 import { gameState, shareControlWithAllies, TransitionInformation, transitionsFrom } from "./common";
 
+declare const gg_snd_WolfriderYesAttack1: sound;
+
 const STARTER_ITEM_TYPE = FourCC("mcou"); // everyone gets this
 const ONE_WOLF_ITEM_TYPE = FourCC("ratf");
 const TWO_WOLF_ITEM_TYPE = FourCC("ratc");
@@ -42,6 +44,8 @@ const wolfStart = (): TransitionInformation => {
       spawnWolf(i, starterItem);
     }
   }
+
+  StartSound(gg_snd_WolfriderYesAttack1);
 
   gameState("play");
   return { remaining: 1500, title: "Sheep win in..." };

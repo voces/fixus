@@ -1,6 +1,7 @@
 [CustomSkin]
 CommandBasicStructNightElf=ReplaceableTextures\CommandButtons\BTNScourgeBuild.blp
 CommandBasicStructOrc=ReplaceableTextures\CommandButtons\BTNMerchant.blp
+IdlePeon=ReplaceableTextures\CommandButtons\BTNSheep.blp
 ToolTipSupplyIcon=ReplaceableTextures\CommandButtons\BTNMerchant.blp
 
 [Errors]
@@ -9,6 +10,8 @@ Nofood=TRIGSTR_5138
 
 [FrameDef]
 GAMEOVER_DEFEAT_MSG=TRIGSTR_4974
+IDLE_PEON=TRIGSTR_5139
+IDLE_PEON_DESC=TRIGSTR_5140
 PLAYER_DEFEATED=TRIGSTR_4988
 PLAYER_VICTORIOUS=TRIGSTR_4989
 QUESTSMAIN=TRIGSTR_4977

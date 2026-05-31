@@ -7,6 +7,9 @@ gg_snd_GruntNoGold1 = nil
 gg_snd_GruntNoLumber1 = nil
 gg_snd_NecromancerNoGold1 = nil
 gg_snd_NecromancerNoLumber1 = nil
+gg_snd_BattleNetTick = nil
+gg_snd_WolfriderYesAttack1 = nil
+gg_snd_Sheep1 = nil
 function InitGlobals()
 end
 
@@ -43,6 +46,19 @@ gg_snd_NecromancerNoLumber1 = CreateSound("Sound/Interface/Warning/Undead/Necrom
 SetSoundParamsFromLabel(gg_snd_NecromancerNoLumber1, "NoLumberUndead")
 SetSoundDuration(gg_snd_NecromancerNoLumber1, 1903)
 SetSoundVolume(gg_snd_NecromancerNoLumber1, 105)
+gg_snd_BattleNetTick = CreateSound("Sound/Interface/BattleNetTick.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_BattleNetTick, "ChatroomTimerTick")
+SetSoundDuration(gg_snd_BattleNetTick, 476)
+SetSoundVolume(gg_snd_BattleNetTick, 80)
+gg_snd_WolfriderYesAttack1 = CreateSound("Units/Orc/Wolfrider/WolfriderYesAttack1.flac", false, false, true, 1, 1, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_WolfriderYesAttack1, "WolfriderYesAttack")
+SetSoundDuration(gg_snd_WolfriderYesAttack1, 3041)
+SetSoundVolume(gg_snd_WolfriderYesAttack1, 127)
+gg_snd_Sheep1 = CreateSound("Sound/Dialogue/HumanExpCamp/Human03x/Sheep1.flac", false, true, false, 1, 1, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_Sheep1, "A03SheepSoundOne")
+SetSoundDuration(gg_snd_Sheep1, 712)
+SetSoundVolume(gg_snd_Sheep1, 120)
+SetSoundDistances(gg_snd_Sheep1, 1000.0, 6000.0)
 end
 
 function CreateNeutralPassiveBuildings()

@@ -3,6 +3,8 @@ import { addScriptHook, getElapsedTime, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { onSummon } from "util/event";
 
+declare const gg_snd_Sheep1: sound;
+
 const wwTimer: Array<timer> = [];
 const wwTimerDialog: Array<timerdialog> = [];
 const WHITE_WOLF_ITEM_TYPE = FourCC("I003");
@@ -22,6 +24,9 @@ const onUnitPickupItem = (): void => {
   let f = GetUnitFacing(original);
   const p = GetOwningPlayer(original);
   const pId = GetPlayerId(p);
+
+  SetSoundPosition(gg_snd_Sheep1, x, y, 0);
+  StartSound(gg_snd_Sheep1);
 
   // White wolf is a hero (wolf)
   if (IsUnitType(GetTriggerUnit(), UNIT_TYPE_HERO)) {

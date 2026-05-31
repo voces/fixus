@@ -67,7 +67,7 @@ Sheep Spirit
 STRING 1410
 // Units: eC01 (Sheep Spirit), Ubertip (Tooltip - Extended)
 {
-These little wisps are the remains of sheep who were cruelly and harshly slaughtered by the orcish shepards. They have lost all of their furryness.
+These little wisps are the remains of sheep who were cruelly and harshly slaughtered by the orcish shepherds. They have lost all of their furriness.
 }
 
 STRING 1412
@@ -157,7 +157,7 @@ White Wolf
 STRING 1432
 // Units: eC16 (White Wolf), Ubertip (Tooltip - Extended)
 {
-Call upon the White Wolfs spirit to assist you in killing other sheep.
+Call upon the White Wolf's spirit to assist you in killing other sheep.
 }
 
 STRING 1433
@@ -169,7 +169,7 @@ W
 STRING 1436
 // Units: hC07 (Tiny Farm), Ubertip (Tooltip - Extended)
 {
-This useful little farm can get you out of tight spaces where normal farms won't fit.
+A smaller farm that fits where normal farms cannot.
 }
 
 STRING 1437
@@ -187,7 +187,7 @@ Magic Farm
 STRING 1440
 // Units: e001 (Magic Farm), Ubertip (Tooltip - Extended)
 {
-An over-priced farm that many players are too dependent on. Don't rely on this thing to get you by 5 wolves and 3 golems -_-. Use invis in open spaces, and heal can piss wolves off :).
+Casts Invisibility and Heal on nearby units.
 }
 
 STRING 1441
@@ -211,7 +211,7 @@ S
 STRING 1445
 // Units: n000 (Stack Farm), Ubertip (Tooltip - Extended)
 {
-DON'T ABUSE THIS FARM PLEASE.
+A farm that can be stacked on top of other farms.
 }
 
 STRING 1446
@@ -259,7 +259,7 @@ Golden Farm
 STRING 1456
 // Units: h000 (Golden Farm), Ubertip (Tooltip - Extended)
 {
-Free aura, and upgraded farms? What the fuck was zero thinking?
+A free farm with the toughness of an Upgraded Farm and a passive aura.
 }
 
 STRING 1457
@@ -289,7 +289,7 @@ X
 STRING 1463
 // Units: h002 (Invisible Farm), Ubertip (Tooltip - Extended)
 {
-This farm is really only effective on noob wolves, but if you place them right (where wolves don't ward), they can be entertaining.
+A farm that stays invisible unless revealed by detection.
 }
 
 STRING 1464
@@ -307,7 +307,7 @@ W
 STRING 1467
 // Units: h003 (Stun Farm), Ubertip (Tooltip - Extended)
 {
-A rather gay farm that only noobs seriously use. Use it if you must for golems, but don't try to perma stun?
+A farm whose attacks have a chance to stun.
 }
 
 STRING 1470
@@ -319,7 +319,7 @@ Black Farm
 STRING 1472
 // Units: h004 (Black Farm), Ubertip (Tooltip - Extended)
 {
-Strong as upgraded farms but free, yay!
+As tough as an Upgraded Farm, but free.
 }
 
 STRING 1473
@@ -331,7 +331,7 @@ Sentry Farm
 STRING 1475
 // Units: h005 (Sentry Farm), Ubertip (Tooltip - Extended)
 {
-The New, yet Original, Sentry farm. Same looks, same high hit points, same vision.
+A farm with high HP and extended vision.
 }
 
 STRING 1476
@@ -349,7 +349,7 @@ Sentry Ward
 STRING 1478
 // Units: n001 (iStick), Tip (Tooltip - Basic)
 {
-Spies for you.
+Provides vision of an area.
 }
 
 STRING 1479
@@ -361,7 +361,7 @@ W
 STRING 1482
 // Abilities: A001 (Sentry Ward), Ubertip (Tooltip - Normal - Extended)
 {
-Places a little eye on stick somewhere to keep watch for you.
+Places a sentry ward that provides vision of the area, including invisible units.
 }
 
 STRING 1483
@@ -401,15 +401,15 @@ Boosts attack damage by 21.
 }
 
 STRING 1510
-// Items: I000 (Anti's Light Sabre +30), Name (Name)
+// Items: I000 (Anti's Light Sabre +36), Name (Name)
 {
-Anti's Light Sabre +30
+Anti's Light Sabre +36
 }
 
 STRING 1511
-// Items: I000 (Anti's Light Sabre +30), Description (Description)
+// Items: I000 (Anti's Light Sabre +36), Description (Description)
 {
-Boosts attack damage by 30.
+Boosts attack damage by 36.
 }
 
 STRING 1518
@@ -445,7 +445,7 @@ Purchase Dagger
 STRING 1526
 // Units: ohun (Saving Farm), Ubertip (Tooltip - Extended)
 {
-Saving Farm is very, very fragile but it gets 1 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+A fragile farm that generates 1 gold every 4 seconds per Saving Farm you own.
 }
 
 STRING 1529
@@ -467,9 +467,9 @@ iStick
 }
 
 STRING 1555
-// Units: EC03 (Wolf (not really...)), Name (Name)
+// Units: EC03 (Wolf), Name (Name)
 {
-Wolf (not really...)
+Wolf
 }
 
 STRING 1560
@@ -491,9 +491,9 @@ GoldenSheep
 }
 
 STRING 1563
-// Units: E002 (Black Wolf (not really...)), Name (Name)
+// Units: E002 (Black Wolf), Name (Name)
 {
-Black Wolf (not really...)
+Black Wolf
 }
 
 STRING 1564
@@ -607,7 +607,7 @@ T
 STRING 1605
 // Units: h008 (Power Tower), Ubertip (Tooltip - Extended)
 {
-SupA damage!
+A tower with very high attack damage.
 }
 
 STRING 1614
@@ -625,7 +625,7 @@ Better Saving Farm
 STRING 1617
 // Units: h009 (Better Saving Farm), Ubertip (Tooltip - Extended)
 {
-Saving Farm is very, very fragile but it gets 2 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+A fragile farm that generates 2 gold every 4 seconds per Better Saving Farm you own.
 }
 
 STRING 1618
@@ -643,7 +643,7 @@ Super Saving Farm
 STRING 1621
 // Units: h00A (Super Saving Farm), Ubertip (Tooltip - Extended)
 {
-Saving Farm is very, very fragile but it gets 4 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+A fragile farm that generates 4 gold every 4 seconds per Super Saving Farm you own.
 }
 
 STRING 1622
@@ -671,13 +671,13 @@ Purchase Claws of Attack +50
 }
 
 STRING 1641
-// Units: EC03 (Wolf (not really...)), Propernames (Proper Names)
+// Units: EC03 (Wolf), Propernames (Proper Names)
 {
 Tameyoshi,drewisfat,wanna-be-sheep,Mr.Fishy,baah,Celestial_One,Wilshire12,307thperson,Chakra,AcEx,MasteR-SheP,CowardlyShoe,GosuSheep,penguinoflight,Zo0LanDeR,RyuUboruZ,nGPure,duncan(donuts),Grim.Shadow,prodigy-,above92,Tollison,dbz-Chris138
 }
 
 STRING 1642
-// Units: E002 (Black Wolf (not really...)), Propernames (Proper Names)
+// Units: E002 (Black Wolf), Propernames (Proper Names)
 {
 Tameyoshi,drewisfat,wanna-be-sheep,Mr.Fishy,baah,Celestial_One,Wilshire12,307thperson,Chakra,AcEx,MasteR-SheP,CowardlyShoe,GosuSheep,penguinoflight,Zo0LanDeR,RyuUboruZ,nGPure,duncan(donuts),Grim.Shadow,prodigy-,above92,Tollison,dbz-Chris138
 }
@@ -697,7 +697,7 @@ Saving Farm
 STRING 1651
 // Units: otbk (Saving Farm), Ubertip (Tooltip - Extended)
 {
-Saving Farm is very, very fragile but it gets 1 gold every 4 seconds for each one you have. Don't use this much though, best way to make money is to save.
+A fragile farm that generates 1 gold every 4 seconds per Saving Farm you own.
 }
 
 STRING 1652
@@ -727,7 +727,7 @@ H
 STRING 1658
 // Upgrades: Robk (Berserker Upgrade), Ubertip (Tooltip - Extended)
 {
-Increases the size of Saving Farms so they look like normal Farms.|nDoes not effect upgraded Saving Farms.
+Increases the size of Saving Farms so they look like normal Farms.|nDoes not affect upgraded Saving Farms.
 }
 
 STRING 1661
@@ -1057,7 +1057,7 @@ Siege Tower
 STRING 1795
 // Units: h00B (Siege Tower), Ubertip (Tooltip - Extended)
 {
-A tower that kills farms.
+A tower specialized in destroying enemy farms and structures.
 }
 
 STRING 1796
@@ -1111,7 +1111,7 @@ S
 STRING 1815
 // Units: h00D (Strong Farm), Ubertip (Tooltip - Extended)
 {
-A farm with a lot more health.
+A farm with substantially more HP than the base farm.
 }
 
 STRING 1816
@@ -1201,7 +1201,7 @@ A more resilient farm with twice the health as a normal farm. Can be upgraded.|n
 STRING 1841
 // Units: hlum (Aura Farm), Ubertip (Tooltip - Extended)
 {
-Grants armor, health regeneration, and movement speed auras. Can upgrade all auras.|nPlace this in large masses bases.
+Grants armor, health regeneration, and movement speed auras. All three auras can be upgraded.
 }
 
 STRING 1843
@@ -7297,7 +7297,7 @@ Dragon Glass
 STRING 4229
 // Abilities: A00H (Dragon Glass), Ubertip (Tooltip - Normal - Extended)
 {
-Throws a vile of Dragon Fire, which spreads and burns structures until they are destroyed.
+Throws a vial of Dragon Fire, which spreads and burns structures until they are destroyed.
 }
 
 STRING 4231
@@ -7339,7 +7339,7 @@ Confuses the enemy by creating an illusion. Dispels all magic from the Blademast
 STRING 4252
 // Items: I005 (Amulet of Mana Negation), Ubertip (Tooltip - Extended)
 {
-Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
+Decreases nearby units' mana regeneration by <A00O,DataA1,%>%.
 }
 
 STRING 4254
@@ -7405,7 +7405,7 @@ C
 STRING 4275
 // Units: etol (Golem Totem), Ubertip (Tooltip - Extended)
 {
-Becomes a permement structure that increases damage of other golems in a large area of effect.|n|nHas various researches available, upgrading both golems and your shepherd.
+Becomes a permanent structure that increases damage of other golems in a large area of effect.|n|nHas various researches available, upgrading both golems and your shepherd.
 }
 
 STRING 4276
@@ -7831,7 +7831,7 @@ Increases the Intelligence of the Hero by 4 when worn.
 STRING 4382
 // Items: ofir (Orb of Fire), Description (Description)
 {
-Attacks do fire damage. Doubles as claws +21.
++16 attack damage and 15 splash damage per hit (effective +31 vs single targets).
 }
 
 STRING 4386
@@ -7861,7 +7861,7 @@ STRING 4390
 STRING 4391
 // Units: h00C (Factory Farm), Ubertip (Tooltip - Extended)
 {
-A farm that produces other farms. I'm sure that's balanced!
+A farm that builds other farms automatically.
 }
 
 STRING 4392
@@ -7963,7 +7963,7 @@ Increases the movement speed of the Hero by <AIsp,DataA1,%>% for <AIsp,Dur1> sec
 STRING 4419
 // Items: ofir (Orb of Fire), Ubertip (Tooltip - Extended)
 {
-Adds 16 bonus fire damage to the attack of a Hero when carried. The Hero's attacks also become ranged when attacking air and do 15 splash damage to nearby enemy units.|rDoes not stack.
+Adds 16 attack damage and 15 splash damage to a Hero's attacks. Splash hits the primary target for an effective +31 against single units.|nDoes not stack.
 }
 
 STRING 4420
@@ -7979,15 +7979,15 @@ Places a hidden land mine at a target point. Enemy units that move near the land
 }
 
 STRING 4422
-// Items: I000 (Anti's Light Sabre +30), Ubertip (Tooltip - Extended)
+// Items: I000 (Anti's Light Sabre +36), Ubertip (Tooltip - Extended)
 {
-When worn, increases the attack damage of the Hero by 30, attack speed by 15%, and grants a frost effect on hit units.
+When worn, increases the attack damage of the Hero by 36, attack speed by 15%, and grants a frost effect on hit units.
 }
 
 STRING 4424
 // Items: I003 (White Wolf), Ubertip (Tooltip - Extended)
 {
-Call upon the White Wolfs spirit to assist you in killing other sheep.
+Call upon the White Wolf's spirit to assist you in killing other sheep.
 }
 
 STRING 4425
@@ -7999,7 +7999,7 @@ Increases the attack damage of the Hero by 50 when worn.
 STRING 4427
 // Items: I005 (Amulet of Mana Negation), Description (Description)
 {
-Decreases nearby units mana regeneration by <A00O,DataA1,%>%.
+Decreases nearby units' mana regeneration by <A00O,DataA1,%>%.
 }
 
 STRING 4428
@@ -8021,9 +8021,9 @@ Increases the level of the Hero by <AIlm,DataA1> when used. Can be used to gain 
 }
 
 STRING 4431
-// Items: I000 (Anti's Light Sabre +30), Tip (Tooltip - Basic)
+// Items: I000 (Anti's Light Sabre +36), Tip (Tooltip - Basic)
 {
-Purchase Anti's Light Sabre +30
+Purchase Anti's Light Sabre +36
 }
 
 STRING 4433
@@ -8917,19 +8917,19 @@ Destroy Farm
 STRING 4611
 // Items: I004 (Dragon Glass), Ubertip (Tooltip - Extended)
 {
-A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.
+A vial of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.
 }
 
 STRING 4612
 // Items: I004 (Dragon Glass), Description (Description)
 {
-A vile of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.
+A vial of Dragon Fire. Can be thrown at any unit. Structures will burn forever and spread Dragon Fire to nearby structures. Deals 3.25% damage per second.
 }
 
 STRING 4613
 // Abilities: A00N (Dragon Fire), Ubertip (Tooltip - Normal - Extended)
 {
-This structure has under the effect of Dragon Fire; it will burn forever and spread Dragon Fire to nearby structures.|nDeals 3.25% damage per second.|n|cffff0000Destroy structures to stop the spread!|r
+This structure is under the effect of Dragon Fire; it will burn forever and spread Dragon Fire to nearby structures.|nDeals 3.25% damage per second.|n|cffff0000Destroy structures to stop the spread!|r
 }
 
 STRING 4616
@@ -9281,7 +9281,7 @@ R
 }
 
 STRING 4755
-// Items: I000 (Anti's Light Sabre +30), Hotkey (Hotkey)
+// Items: I000 (Anti's Light Sabre +36), Hotkey (Hotkey)
 {
 S
 }
@@ -9833,5 +9833,15 @@ Player 12
 STRING 5138
 {
  , , , 
+}
+
+STRING 5139
+{
+Idle Sheep (|Cfffed312`|R)
+}
+
+STRING 5140
+{
+Your sheep is grazing.
 }
 
