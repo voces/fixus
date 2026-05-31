@@ -1,5 +1,4 @@
 import { countHere, WOLF_TYPE, wolfTeam, wolves } from "shared";
-import { addQuickShop } from "abilities/wolves/quickShops";
 import { gameState, shareControlWithAllies, TransitionInformation, transitionsFrom } from "./common";
 
 const STARTER_ITEM_TYPE = FourCC("mcou"); // everyone gets this
@@ -21,7 +20,6 @@ const spawnWolf = (index: number, starterItem: number): void => {
   wolves[index] = CreateUnit(player, WOLF_TYPE, -256, -832, 270);
   UnitAddItem(wolves[index], CreateItem(STARTER_ITEM_TYPE, -256, -832));
   UnitAddItem(wolves[index], CreateItem(starterItem, -256, -832));
-  addQuickShop(wolves[index]);
 
   if (GetLocalPlayer() === player) {
     ClearSelection();

@@ -78,7 +78,12 @@ for await (const event of watcher) {
       cleaned.startsWith("temp/") ||
       cleaned.startsWith("node_modules/") ||
       cleaned.startsWith(".git/") ||
-      cleaned === "src/misc/buildInfo.ts"
+      cleaned === "src/misc/buildInfo.ts" ||
+      cleaned === "src/misc/changelog.ts" ||
+      cleaned === "src/abilities/wolves/quickShop.generated.ts" ||
+      // Atomic writes (Deno.writeFile, editors) drop transient *.tmp.<rand> siblings
+      // next to the target — ignore so we don't bounce the rebuild on our own writes.
+      /\.tmp\.[\w-]+$/.test(cleaned)
     ) continue;
     debounceReRun(cleaned);
   }

@@ -8831,7 +8831,7 @@ Research Devotion Aura - [|cffffcc00Level 3|r]
 }
 
 STRING 4594
-// Abilities: A00U (Next), Hotkey (Hotkey - Normal)
+// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
 {
 V
 }
@@ -9202,64 +9202,10 @@ STRING 4720
 Q
 }
 
-STRING 4722
-// Abilities: A00V (Quick Shops), Tip (Tooltip - Normal)
-{
-Activate Quick Shops
-}
-
-STRING 4724
-// Abilities: A00X (Quick Shops), Tip (Tooltip - Normal)
-{
-Deactivate Quick Shops
-}
-
-STRING 4726
-// Abilities: A00V (Quick Shops), Name (Name)
-{
-Quick Shops
-}
-
-STRING 4727
-// Abilities: A00X (Quick Shops), Name (Name)
-{
-Quick Shops
-}
-
-STRING 4728
-// Abilities: A00V (Quick Shops), EditorSuffix (Editor Suffix)
-{
-(Activate)
-}
-
-STRING 4731
-// Abilities: A00X (Quick Shops), EditorSuffix (Editor Suffix)
-{
-(Deactivate)
-}
-
-STRING 4732
-// Abilities: A00V (Quick Shops), Ubertip (Tooltip - Normal - Extended)
-{
-Activate Quick Shops to show shops, allowing you to buy and sell items.
-}
-
 STRING 4735
 // Items: tkno (Tome of Power), Hotkey (Hotkey)
 {
 Q
-}
-
-STRING 4739
-// Abilities: A00V (Quick Shops), Hotkey (Hotkey - Normal)
-{
-Q
-}
-
-STRING 4742
-// Abilities: A00X (Quick Shops), Ubertip (Tooltip - Normal - Extended)
-{
-Deactivate Quick Shops to show shops, allowing you to buy and sell items.
 }
 
 STRING 4743
@@ -9388,12 +9334,6 @@ STRING 4764
 S
 }
 
-STRING 4765
-// Abilities: A00X (Quick Shops), Hotkey (Hotkey - Normal)
-{
-Q
-}
-
 STRING 4766
 // Upgrades: R000 (Skeletal Mastery), Hotkey (Hotkey)
 {
@@ -9410,30 +9350,6 @@ STRING 4768
 // Abilities: A00E (Attacker), Hotkey (Hotkey - Normal)
 {
 A
-}
-
-STRING 4769
-// Abilities: A00U (Next), Tip (Tooltip - Normal)
-{
-Next
-}
-
-STRING 4770
-// Abilities: A00U (Next), Ubertip (Tooltip - Normal - Extended)
-{
-Selects the next shop.
-}
-
-STRING 4771
-// Abilities: A00U (Next), Name (Name)
-{
-Next
-}
-
-STRING 4772
-// Upgrades: R001 (Skeletal Mastery), Hotkey (Hotkey)
-{
-V
 }
 
 STRING 4826
@@ -9912,5 +9828,10 @@ Player 11
 STRING 5016
 {
 Player 12
+}
+
+STRING 5138
+{
+ , , , 
 }
 

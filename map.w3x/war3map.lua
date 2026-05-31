@@ -1,5 +1,61 @@
 gg_rct_Pen = nil
+gg_snd_KnightNoGold1 = nil
+gg_snd_KnightNoLumber1 = nil
+gg_snd_SentinelNoGold1 = nil
+gg_snd_SentinelNoLumber1 = nil
+gg_snd_GruntNoGold1 = nil
+gg_snd_GruntNoLumber1 = nil
+gg_snd_NecromancerNoGold1 = nil
+gg_snd_NecromancerNoLumber1 = nil
 function InitGlobals()
+end
+
+function InitSounds()
+gg_snd_KnightNoGold1 = CreateSound("Sound/Interface/Warning/Human/KnightNoGold1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_KnightNoGold1, "NoGoldHuman")
+SetSoundDuration(gg_snd_KnightNoGold1, 1486)
+SetSoundVolume(gg_snd_KnightNoGold1, 105)
+gg_snd_KnightNoLumber1 = CreateSound("Sound/Interface/Warning/Human/KnightNoLumber1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_KnightNoLumber1, "NoLumberHuman")
+SetSoundDuration(gg_snd_KnightNoLumber1, 1863)
+SetSoundVolume(gg_snd_KnightNoLumber1, 105)
+gg_snd_SentinelNoGold1 = CreateSound("Sound/Interface/Warning/NightElf/SentinelNoGold1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_SentinelNoGold1, "NoGoldNightElf")
+SetSoundDuration(gg_snd_SentinelNoGold1, 1323)
+SetSoundVolume(gg_snd_SentinelNoGold1, 105)
+gg_snd_SentinelNoLumber1 = CreateSound("Sound/Interface/Warning/NightElf/SentinelNoLumber1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_SentinelNoLumber1, "NoLumberNightElf")
+SetSoundDuration(gg_snd_SentinelNoLumber1, 1500)
+SetSoundVolume(gg_snd_SentinelNoLumber1, 105)
+gg_snd_GruntNoGold1 = CreateSound("Sound/Interface/Warning/Orc/GruntNoGold1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_GruntNoGold1, "NoGoldOrc")
+SetSoundDuration(gg_snd_GruntNoGold1, 1497)
+SetSoundVolume(gg_snd_GruntNoGold1, 105)
+gg_snd_GruntNoLumber1 = CreateSound("Sound/Interface/Warning/Orc/GruntNoLumber1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_GruntNoLumber1, "NoLumberOrc")
+SetSoundDuration(gg_snd_GruntNoLumber1, 1602)
+SetSoundVolume(gg_snd_GruntNoLumber1, 105)
+gg_snd_NecromancerNoGold1 = CreateSound("Sound/Interface/Warning/Undead/NecromancerNoGold1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_NecromancerNoGold1, "NoGoldUndead")
+SetSoundDuration(gg_snd_NecromancerNoGold1, 1805)
+SetSoundVolume(gg_snd_NecromancerNoGold1, 105)
+gg_snd_NecromancerNoLumber1 = CreateSound("Sound/Interface/Warning/Undead/NecromancerNoLumber1.flac", false, false, false, 0, 0, "DefaultEAXON")
+SetSoundParamsFromLabel(gg_snd_NecromancerNoLumber1, "NoLumberUndead")
+SetSoundDuration(gg_snd_NecromancerNoLumber1, 1903)
+SetSoundVolume(gg_snd_NecromancerNoLumber1, 105)
+end
+
+function CreateNeutralPassiveBuildings()
+local p = Player(PLAYER_NEUTRAL_PASSIVE)
+local u
+local unitID
+local t
+local life
+
+u = BlzCreateUnitWithSkin(p, FourCC("nC12"), -4608.0, 4096.0, 270.000, FourCC("nC12"))
+u = BlzCreateUnitWithSkin(p, FourCC("n003"), 5248.0, -5504.0, 270.000, FourCC("n003"))
+u = BlzCreateUnitWithSkin(p, FourCC("n004"), -4992.0, 3712.0, 270.000, FourCC("n004"))
+u = BlzCreateUnitWithSkin(p, FourCC("n004"), 4864.0, -5504.0, 270.000, FourCC("n004"))
 end
 
 function CreateNeutralPassive()
@@ -19,6 +75,7 @@ function CreatePlayerUnits()
 end
 
 function CreateAllUnits()
+CreateNeutralPassiveBuildings()
 CreatePlayerBuildings()
 CreateNeutralPassive()
 CreatePlayerUnits()
@@ -302,6 +359,7 @@ NewSoundEnvironment("Default")
 SetAmbientDaySound("LordaeronSummerDay")
 SetAmbientNightSound("LordaeronSummerNight")
 SetMapMusic("Music", true, 0)
+InitSounds()
 CreateRegions()
 CreateAllUnits()
 InitBlizzard()

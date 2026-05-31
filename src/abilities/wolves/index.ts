@@ -1,3 +1,3 @@
 import "./phoenix";
-import "./quickShops";
+import "./quickShop";
 import "./ward";

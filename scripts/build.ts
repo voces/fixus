@@ -1,10 +1,17 @@
 import { walk } from "@std/fs/walk";
 import { ensureDir } from "@std/fs/ensure-dir";
 import Map from "mdx-m3-viewer-th/w3x/map";
+import { generateTs as generateChangelogTs } from "./changelog.ts";
+import { applyQuickShopToArchive, generateQuickShopData } from "./generateQuickShop.ts";
 
 const War3Map = Map.default;
 
 await ensureDir("temp");
+
+// Pre-tstl codegen: any module the runtime imports has to land on disk before
+// the tstl compile pass.
+await generateQuickShopData();
+await Deno.writeTextFile("src/misc/changelog.ts", await generateChangelogTs());
 
 const changelog = await Deno.readTextFile("docs/CHANGELOG.md");
 const versionMatch = changelog.match(/^#\s+Version\s+(\S+)/m);
@@ -38,6 +45,11 @@ await Promise.all(files.map(async (fileName) => {
     throw new Error(`Could not import file "${fileName}"`);
   }
 }));
+
+// In-memory archive transform: inject qs* dummies, strip skin orphans, restore
+// STRING 5138. Source files in map.w3x/ stay untouched — pipeline output lives
+// only inside the built .w3x.
+applyQuickShopToArchive(map);
 
 const scriptFile = map.getScriptFile();
 if (!scriptFile) throw new Error("Could not find script file");

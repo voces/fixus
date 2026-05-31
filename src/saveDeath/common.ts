@@ -1,4 +1,3 @@
-import { removeQuickShop } from "abilities/wolves/quickShops";
 import { getDummy } from "util/dummy";
 import { timeout } from "util/temp";
 
@@ -40,7 +39,6 @@ export const replaceUnit = (u: unit, newType: number): unit => {
   }
 
   // Remove it
-  removeQuickShop(u);
   RemoveUnit(u);
 
   // Create a new one

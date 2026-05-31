@@ -1,8 +1,11 @@
 [CustomSkin]
 CommandBasicStructNightElf=ReplaceableTextures\CommandButtons\BTNScourgeBuild.blp
+CommandBasicStructOrc=ReplaceableTextures\CommandButtons\BTNMerchant.blp
+ToolTipSupplyIcon=ReplaceableTextures\CommandButtons\BTNMerchant.blp
 
 [Errors]
 Noair=TRIGSTR_4973
+Nofood=TRIGSTR_5138
 
 [FrameDef]
 GAMEOVER_DEFEAT_MSG=TRIGSTR_4974

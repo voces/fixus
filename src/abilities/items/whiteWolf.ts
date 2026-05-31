@@ -1,7 +1,6 @@
 import { fillArrayFn, WHITE_WOLF_TYPE, wolves, wws } from "shared";
 import { addScriptHook, getElapsedTime, W3TS_HOOK } from "@voces/w3ts";
 import { wrappedTriggerAddAction } from "util/emitLog";
-import { removeQuickShop } from "../wolves/quickShops";
 import { onSummon } from "util/event";
 
 const wwTimer: Array<timer> = [];
@@ -80,7 +79,6 @@ const onUnitPickupItem = (): void => {
   const unitSummonedRemaining = 300 - unitSummonedDuration;
   const wwDuration = 65 + unitSummonedRemaining * 0.2;
 
-  removeQuickShop(original);
   RemoveUnit(original);
   const ww = CreateUnit(p, WHITE_WOLF_TYPE, x, y, f);
   UnitApplyTimedLife(ww, FourCC("BTLF"), wwDuration);
