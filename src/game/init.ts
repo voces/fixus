@@ -2,6 +2,7 @@ import { addScriptHook, W3TS_HOOK } from "@voces/w3ts";
 import { DisplayTimedText, isSandbox } from "shared";
 import { board } from "util/multiboard";
 import { changelog } from "misc/changelog";
+import { widenQuestDescription } from "misc/questFrame";
 import { Arg, Command, commands, isArgRequired } from "commands/registerCommand";
 import { wrappedTriggerAddAction } from "util/emitLog";
 import { forEachPlayer } from "util/temp";
@@ -53,13 +54,13 @@ const action = (): void => {
     QuestSetDescription(q, filteredCommands.map((c) => commandHelp(c)).join("\n\n"));
   }
 
-  {
-    const filteredCommands = commands.filter((c) => c.category === "wolf");
-    const q = CreateQuest();
-    QuestSetTitle(q, "Wolf commands");
-    QuestSetIconPath(q, "ReplaceableTextures\\CommandButtons\\BTNRaider.blp");
-    QuestSetDescription(q, filteredCommands.map((c) => commandHelp(c)).join("\n\n"));
-  }
+  // {
+  //   const filteredCommands = commands.filter((c) => c.category === "wolf");
+  //   const q = CreateQuest();
+  //   QuestSetTitle(q, "Wolf commands");
+  //   QuestSetIconPath(q, "ReplaceableTextures\\CommandButtons\\BTNRaider.blp");
+  //   QuestSetDescription(q, filteredCommands.map((c) => commandHelp(c)).join("\n\n"));
+  // }
 
   {
     const filteredCommands = commands.filter((c) => c.category === "host");
@@ -104,6 +105,8 @@ const action = (): void => {
     QuestSetIconPath(q, "ReplaceableTextures\\CommandButtons\\BTNDwarfCar.blp");
     QuestSetDescription(q, filteredCommands.map((c) => commandHelp(c)).join("\n\n"));
   }
+
+  widenQuestDescription();
 
   board(CreateMultiboard());
 };
